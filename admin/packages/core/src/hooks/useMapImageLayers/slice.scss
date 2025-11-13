@@ -1,0 +1,158 @@
+.image-layer-slice-preview {
+  .row {
+    display: flex;
+  }
+  .col {
+    position: relative;
+    flex: 1;
+    &.empty {
+      &::after {
+        content: '×';
+        background-color: transparent;
+        color: $color-error;
+        font-size: 30px;
+      }
+    }
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 0.5px solid $color-primary-08;
+    }
+    &::after {
+      content: attr(data-index);
+      width: 24px;
+      height: 24px;
+      background-color: $color-primary-08;
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-size: 12px;
+    }
+    display: flex;
+    overflow: hidden;
+    img {
+      max-width: 200px;
+      max-height: 200px;
+      min-width: 100px;
+      min-height: 100px;
+    }
+  }
+}
+
+.image-slice {
+  // display: flex;
+  padding: 0 12px 12px;
+}
+.image-slice__container {
+  // width: 1000px;
+  // height: 600px;
+  background-color: #fff;
+  margin: 12px;
+  position: relative;
+  min-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-width: 1000px;
+    max-height: 600px;
+  }
+}
+.image-slice__actions {
+  margin-left: 12px;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 54px;
+  transform: translate3d(0, -100%, 0);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 12px 0 120px;
+  .input {
+    width: 70px;
+  }
+  button {
+    margin-left: 10px;
+  }
+  i.gap {
+    flex: 1;
+  }
+}
+.image-slice__image {
+  position: relative;
+}
+.image-slice__grid {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(#fff, 0.6);
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid $color-primary;
+  // pointer-events: none;
+  .row {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+  .col {
+    flex: 1;
+    position: relative;
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 0.5px solid $color-primary;
+    }
+    &::after {
+      content: attr(data-index);
+      background-color: $color-primary;
+      color: #fff;
+      width: 18px;
+      height: 18px;
+      text-align: center;
+      line-height: 18px;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    &.blank {
+      &::after {
+        content: none;
+      }
+      .size {
+        display: none;
+      }
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    .size {
+      font-size: 10px;
+      color: #000;
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      text-shadow: 0 0 1px red;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.filer-render {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--v-color-bg-200);
+  background: var(--v-color-bg-500);
+  width: fit-content;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    border: 1px solid var(--v-color-bg-50);
+    background: var(--v-color-bg-800);
+  }
+  .icon {
+    margin-left: 10px;
+    font-size: 20px;
+  }
+}

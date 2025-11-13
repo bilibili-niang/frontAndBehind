@@ -1,0 +1,16 @@
+.use-client-page-qr-code {
+  padding: 24px 36px 36px;
+  display: flex;
+  gap: 24px;
+  .code-image {
+    width: 308px;
+    height: 308px;
+    background-color: $color-bg-400;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}

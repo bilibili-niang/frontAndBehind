@@ -1,0 +1,150 @@
+.jsf-modal-wrapper {
+  .#{$prefix}-modal-content {
+    background-color: $color-bg-300;
+  }
+  .#{$prefix}-modal-body {
+    overflow: hidden;
+    max-height: unset;
+  }
+  .#{$prefix}-modal-header {
+    background-color: $color-bg-300;
+  }
+  .#{$prefix}-modal-title {
+    width: 100%;
+  }
+}
+
+// 全屏时的css
+.jsf-modal-fullscreen-wrapper {
+  background: $color-bg-500;
+  .#{$prefix}-modal {
+    height: 100vh;
+    width: 100vw !important;
+    top: 0;
+    padding: 20px;
+  }
+  .#{$prefix}-modal-content {
+    background-color: $color-bg-300;
+    height: 100%;
+    width: 100%;
+  }
+  .#{$prefix}-modal-body {
+    overflow: hidden;
+    max-height: unset;
+  }
+  .#{$prefix}-modal-header {
+    background-color: $color-bg-300;
+  }
+  .#{$prefix}-modal-title {
+    width: 100%;
+  }
+}
+
+.jsf-modal {
+  background-color: $color-bg-300;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  // padding-bottom: 24px;
+  // padding-right: 24px;
+  // width: 600px;
+  // height: 300px;
+  // width: 600px; padding-right: 48px; height: 400px;--component-container-width:400px
+  .jsf-ui-field {
+    padding-right: 5%;
+  }
+  &.loading {
+    animation: shink 1s infinite;
+    pointer-events: none;
+  }
+  @keyframes shink {
+    0%,
+    100% {
+      filter: brightness(1);
+    }
+    50% {
+      filter: brightness(0.8);
+    }
+  }
+}
+
+.jsf-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  .#{$prefix}-select {
+    width: 120px;
+    height: 100%;
+  }
+}
+
+.jsf-modal-header {
+  padding: 12px 12px 12px 16px;
+  font-size: 17px;
+  font-weight: bold;
+  position: relative;
+  z-index: 81;
+  &::after {
+    content: '';
+    width: 100%;
+    height: 0;
+    border-bottom: 1px solid $color-border-base;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+  }
+}
+
+.jsf-modal-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jsf-modal-content {
+  flex: 1;
+  flex-shrink: 0;
+  width: 600px;
+  --jsf-width: 600px;
+  max-height: calc(100vh - (var(--anteng-modal-offset-top, 100px) + var(--anteng-modal-offset-extra, 160px)));
+  margin-left: 12px;
+  margin-right: 3px;
+  position: relative;
+  .jsf_form--standard.jsf_form {
+    max-height: calc(100vh - (var(--anteng-modal-offset-top, 100px) + var(--anteng-modal-offset-extra, 160px)));
+    margin-top: 12px;
+    margin-bottom: 4px;
+    .jsf_form-content {
+      width: calc(var(--jsf-width) - 9px);
+      padding-bottom: 0;
+      margin-bottom: 1px;
+    }
+  }
+}
+
+.jsf-modal__draft {
+  font-size: 13px;
+  padding: 4px 8px 4px 12px;
+  height: $jsf-ui-component-height;
+  border-radius: $ui-border-radius;
+  .icon {
+    transform: rotate(90deg);
+    margin-left: 4px;
+  }
+}
+
+.jsf_draft-confirm-footer {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  margin-right: -12px;
+  margin-left: -4px;
+  .#{$prefix}-btn {
+    margin-right: 8px;
+    &:first-child {
+      margin-right: auto;
+    }
+  }
+}

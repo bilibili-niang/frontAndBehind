@@ -1,0 +1,111 @@
+.home-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  h2 {
+    color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .test-case {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    
+    h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #333;
+      font-size: 1.1rem;
+    }
+  }
+  
+  .button-wrapper {
+    padding: 1rem;
+    background: #fafafa;
+    border-radius: 6px;
+    text-align: center;
+    
+    > * {
+      margin: 0.5rem;
+    }
+  }
+  
+  /* 基础按钮样式 */
+  button, .test-button, .simple-button, .inline-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    
+    &:not(:disabled) {
+      &:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      
+      &:active {
+        transform: translateY(0);
+      }
+    }
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+  
+  /* 不同按钮的样式 */
+  .test-button {
+    background-color: #1890ff;
+    color: white;
+    
+    &:hover {
+      background-color: #40a9ff;
+    }
+  }
+  
+  .native-button {
+    background-color: #52c41a;
+    color: white;
+    
+    &:hover {
+      background-color: #73d13d;
+    }
+  }
+  
+  .inline-button {
+    background-color: #722ed1;
+    color: white;
+    
+    &:hover {
+      background-color: #9254de;
+    }
+  }
+  
+  .simple-button {
+    background-color: #fa8c16;
+    color: white;
+    
+    &:hover {
+      background-color: #ffa940;
+    }
+  }
+}

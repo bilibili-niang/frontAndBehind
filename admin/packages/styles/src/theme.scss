@@ -1,0 +1,635 @@
+/** 深浅色系 - light  **/
+:root[theme='light'],
+[theme='light'] {
+  --anteng-color-bg-50: #fdfdfd;
+  --anteng-color-bg-100: #fcfcfc;
+  --anteng-color-bg-200: #fafafa;
+  --anteng-color-bg-300: #ffffff;
+  --anteng-color-bg-400: #f6f6f6;
+  --anteng-color-bg-500: #f2f2f2;
+  --anteng-color-bg-600: #f1f3f5;
+  --anteng-color-bg-700: #e9ecef;
+  --anteng-color-bg-800: #dee2e6;
+  --anteng-color-bg-900: #dde1e3;
+  --anteng-color-bg-950: #d8d8d8;
+
+  --color-text-base: rgba(0, 0, 0, 0.87);
+  --color-text-secondary: rgba(0, 0, 0, 0.6);
+  --color-text-tertiary: rgba(0, 0, 0, 0.5);
+  --color-text-disabled: rgba(0, 0, 0, 0.38);
+  --color-border-base: #e5e4e4;
+  --color-border-secondary: #f2f5f7;
+  --color-border-split: #edf0f2;
+
+  --ui-bg: #ffffff;
+  --ui-bg-hover: rgba(0, 0, 0, 0.03);
+  --ui-border-color: var(--color-border-base);
+  --ui-popup-bg: #fff;
+
+  --ui-switch-bg: rgba(0, 0, 0, 0.05);
+  --ui-switch-bg-hover: rgba(0, 0, 0, 0.1);
+}
+
+/** 深浅色系 - dark  **/
+:root[theme='dark'],
+[theme='dark'] {
+  --anteng-color-bg-50: #4a4a4a;
+  --anteng-color-bg-100: #3c3c3c;
+  --anteng-color-bg-200: #323232;
+  --anteng-color-bg-300: #2d2d2d;
+  --anteng-color-bg-400: #222222;
+  --anteng-color-bg-500: #1f1f1f;
+  --anteng-color-bg-600: #1c1c1e;
+  --anteng-color-bg-700: #1b1b1b;
+  --anteng-color-bg-800: #181818;
+  --anteng-color-bg-900: #0f0f0f;
+  --anteng-color-bg-950: #000000;
+
+  --color-text-base: rgba(255, 255, 255, 0.87);
+  --color-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-text-tertiary: rgba(255, 255, 255, 0.5);
+  --color-text-disabled: rgba(255, 255, 255, 0.38);
+  --color-border-base: #383838;
+  --color-border-secondary: #343434;
+  --color-border-split: #343434;
+
+  --ui-bg: rgba(255, 255, 255, 0.07);
+  --ui-bg-hover: rgba(255, 255, 255, 0.06);
+  --ui-border-color: transparent;
+  --ui-popup-bg: #444;
+
+  --ui-switch-bg: rgba(255, 255, 255, 0.2);
+  --ui-switch-bg-hover: rgba(255, 255, 255, 0.3);
+}
+
+/** 主题色 - slate  **/
+:root[primary-color='slate'],
+[primary-color='slate'] {
+  --anteng-color-primary: #64748b;
+  --anteng-color-primary-50: #f8fafc;
+  --anteng-color-primary-100: #f1f5f9;
+  --anteng-color-primary-200: #e2e8f0;
+  --anteng-color-primary-300: #cbd5e1;
+  --anteng-color-primary-400: #94a3b8;
+  --anteng-color-primary-500: #64748b;
+  --anteng-color-primary-600: #475569;
+  --anteng-color-primary-700: #334155;
+  --anteng-color-primary-800: #1e293b;
+  --anteng-color-primary-900: #0f172a;
+  --anteng-color-primary-950: #020617;
+  --anteng-color-primary-01: rgba(100, 116, 139, 0.1);
+  --anteng-color-primary-02: rgba(100, 116, 139, 0.2);
+  --anteng-color-primary-03: rgba(100, 116, 139, 0.3);
+  --anteng-color-primary-04: rgba(100, 116, 139, 0.4);
+  --anteng-color-primary-05: rgba(100, 116, 139, 0.5);
+  --anteng-color-primary-06: rgba(100, 116, 139, 0.6);
+  --anteng-color-primary-07: rgba(100, 116, 139, 0.7);
+  --anteng-color-primary-08: rgba(100, 116, 139, 0.8);
+  --anteng-color-primary-09: rgba(100, 116, 139, 0.9);
+}
+
+/** 主题色 - gray  **/
+:root[primary-color='gray'],
+[primary-color='gray'] {
+  --anteng-color-primary: #6b7280;
+  --anteng-color-primary-50: #f9fafb;
+  --anteng-color-primary-100: #f3f4f6;
+  --anteng-color-primary-200: #e5e7eb;
+  --anteng-color-primary-300: #d1d5db;
+  --anteng-color-primary-400: #9ca3af;
+  --anteng-color-primary-500: #6b7280;
+  --anteng-color-primary-600: #4b5563;
+  --anteng-color-primary-700: #374151;
+  --anteng-color-primary-800: #1f2937;
+  --anteng-color-primary-900: #111827;
+  --anteng-color-primary-950: #030712;
+  --anteng-color-primary-01: rgba(107, 114, 128, 0.1);
+  --anteng-color-primary-02: rgba(107, 114, 128, 0.2);
+  --anteng-color-primary-03: rgba(107, 114, 128, 0.3);
+  --anteng-color-primary-04: rgba(107, 114, 128, 0.4);
+  --anteng-color-primary-05: rgba(107, 114, 128, 0.5);
+  --anteng-color-primary-06: rgba(107, 114, 128, 0.6);
+  --anteng-color-primary-07: rgba(107, 114, 128, 0.7);
+  --anteng-color-primary-08: rgba(107, 114, 128, 0.8);
+  --anteng-color-primary-09: rgba(107, 114, 128, 0.9);
+}
+
+/** 主题色 - zinc  **/
+:root[primary-color='zinc'],
+[primary-color='zinc'] {
+  --anteng-color-primary: #71717a;
+  --anteng-color-primary-50: #fafafa;
+  --anteng-color-primary-100: #f4f4f5;
+  --anteng-color-primary-200: #e4e4e7;
+  --anteng-color-primary-300: #d4d4d8;
+  --anteng-color-primary-400: #a1a1aa;
+  --anteng-color-primary-500: #71717a;
+  --anteng-color-primary-600: #52525b;
+  --anteng-color-primary-700: #3f3f46;
+  --anteng-color-primary-800: #27272a;
+  --anteng-color-primary-900: #18181b;
+  --anteng-color-primary-950: #09090b;
+  --anteng-color-primary-01: rgba(113, 113, 122, 0.1);
+  --anteng-color-primary-02: rgba(113, 113, 122, 0.2);
+  --anteng-color-primary-03: rgba(113, 113, 122, 0.3);
+  --anteng-color-primary-04: rgba(113, 113, 122, 0.4);
+  --anteng-color-primary-05: rgba(113, 113, 122, 0.5);
+  --anteng-color-primary-06: rgba(113, 113, 122, 0.6);
+  --anteng-color-primary-07: rgba(113, 113, 122, 0.7);
+  --anteng-color-primary-08: rgba(113, 113, 122, 0.8);
+  --anteng-color-primary-09: rgba(113, 113, 122, 0.9);
+}
+
+/** 主题色 - neutral  **/
+:root[primary-color='neutral'],
+[primary-color='neutral'] {
+  --anteng-color-primary: #737373;
+  --anteng-color-primary-50: #fafafa;
+  --anteng-color-primary-100: #f5f5f5;
+  --anteng-color-primary-200: #e5e5e5;
+  --anteng-color-primary-300: #d4d4d4;
+  --anteng-color-primary-400: #a3a3a3;
+  --anteng-color-primary-500: #737373;
+  --anteng-color-primary-600: #525252;
+  --anteng-color-primary-700: #404040;
+  --anteng-color-primary-800: #262626;
+  --anteng-color-primary-900: #171717;
+  --anteng-color-primary-950: #0a0a0a;
+  --anteng-color-primary-01: rgba(115, 115, 115, 0.1);
+  --anteng-color-primary-02: rgba(115, 115, 115, 0.2);
+  --anteng-color-primary-03: rgba(115, 115, 115, 0.3);
+  --anteng-color-primary-04: rgba(115, 115, 115, 0.4);
+  --anteng-color-primary-05: rgba(115, 115, 115, 0.5);
+  --anteng-color-primary-06: rgba(115, 115, 115, 0.6);
+  --anteng-color-primary-07: rgba(115, 115, 115, 0.7);
+  --anteng-color-primary-08: rgba(115, 115, 115, 0.8);
+  --anteng-color-primary-09: rgba(115, 115, 115, 0.9);
+}
+
+/** 主题色 - stone  **/
+:root[primary-color='stone'],
+[primary-color='stone'] {
+  --anteng-color-primary: #78716c;
+  --anteng-color-primary-50: #fafaf9;
+  --anteng-color-primary-100: #f5f5f4;
+  --anteng-color-primary-200: #e7e5e4;
+  --anteng-color-primary-300: #d6d3d1;
+  --anteng-color-primary-400: #a8a29e;
+  --anteng-color-primary-500: #78716c;
+  --anteng-color-primary-600: #57534e;
+  --anteng-color-primary-700: #44403c;
+  --anteng-color-primary-800: #292524;
+  --anteng-color-primary-900: #1c1917;
+  --anteng-color-primary-950: #0c0a09;
+  --anteng-color-primary-01: rgba(120, 113, 108, 0.1);
+  --anteng-color-primary-02: rgba(120, 113, 108, 0.2);
+  --anteng-color-primary-03: rgba(120, 113, 108, 0.3);
+  --anteng-color-primary-04: rgba(120, 113, 108, 0.4);
+  --anteng-color-primary-05: rgba(120, 113, 108, 0.5);
+  --anteng-color-primary-06: rgba(120, 113, 108, 0.6);
+  --anteng-color-primary-07: rgba(120, 113, 108, 0.7);
+  --anteng-color-primary-08: rgba(120, 113, 108, 0.8);
+  --anteng-color-primary-09: rgba(120, 113, 108, 0.9);
+}
+
+/** 主题色 - red  **/
+:root[primary-color='red'],
+[primary-color='red'] {
+  --anteng-color-primary: #ef4444;
+  --anteng-color-primary-50: #fef2f2;
+  --anteng-color-primary-100: #fee2e2;
+  --anteng-color-primary-200: #fecaca;
+  --anteng-color-primary-300: #fca5a5;
+  --anteng-color-primary-400: #f87171;
+  --anteng-color-primary-500: #ef4444;
+  --anteng-color-primary-600: #dc2626;
+  --anteng-color-primary-700: #b91c1c;
+  --anteng-color-primary-800: #991b1b;
+  --anteng-color-primary-900: #7f1d1d;
+  --anteng-color-primary-950: #450a0a;
+  --anteng-color-primary-01: rgba(239, 68, 68, 0.1);
+  --anteng-color-primary-02: rgba(239, 68, 68, 0.2);
+  --anteng-color-primary-03: rgba(239, 68, 68, 0.3);
+  --anteng-color-primary-04: rgba(239, 68, 68, 0.4);
+  --anteng-color-primary-05: rgba(239, 68, 68, 0.5);
+  --anteng-color-primary-06: rgba(239, 68, 68, 0.6);
+  --anteng-color-primary-07: rgba(239, 68, 68, 0.7);
+  --anteng-color-primary-08: rgba(239, 68, 68, 0.8);
+  --anteng-color-primary-09: rgba(239, 68, 68, 0.9);
+}
+
+/** 主题色 - orange  **/
+:root[primary-color='orange'],
+[primary-color='orange'] {
+  --anteng-color-primary: #f97316;
+  --anteng-color-primary-50: #fff7ed;
+  --anteng-color-primary-100: #ffedd5;
+  --anteng-color-primary-200: #fed7aa;
+  --anteng-color-primary-300: #fdba74;
+  --anteng-color-primary-400: #fb923c;
+  --anteng-color-primary-500: #f97316;
+  --anteng-color-primary-600: #ea580c;
+  --anteng-color-primary-700: #c2410c;
+  --anteng-color-primary-800: #9a3412;
+  --anteng-color-primary-900: #7c2d12;
+  --anteng-color-primary-950: #431407;
+  --anteng-color-primary-01: rgba(249, 115, 22, 0.1);
+  --anteng-color-primary-02: rgba(249, 115, 22, 0.2);
+  --anteng-color-primary-03: rgba(249, 115, 22, 0.3);
+  --anteng-color-primary-04: rgba(249, 115, 22, 0.4);
+  --anteng-color-primary-05: rgba(249, 115, 22, 0.5);
+  --anteng-color-primary-06: rgba(249, 115, 22, 0.6);
+  --anteng-color-primary-07: rgba(249, 115, 22, 0.7);
+  --anteng-color-primary-08: rgba(249, 115, 22, 0.8);
+  --anteng-color-primary-09: rgba(249, 115, 22, 0.9);
+}
+
+/** 主题色 - amber  **/
+:root[primary-color='amber'],
+[primary-color='amber'] {
+  --anteng-color-primary: #f59e0b;
+  --anteng-color-primary-50: #fffbeb;
+  --anteng-color-primary-100: #fef3c7;
+  --anteng-color-primary-200: #fde68a;
+  --anteng-color-primary-300: #fcd34d;
+  --anteng-color-primary-400: #fbbf24;
+  --anteng-color-primary-500: #f59e0b;
+  --anteng-color-primary-600: #d97706;
+  --anteng-color-primary-700: #b45309;
+  --anteng-color-primary-800: #92400e;
+  --anteng-color-primary-900: #78350f;
+  --anteng-color-primary-950: #451a03;
+  --anteng-color-primary-01: rgba(245, 158, 11, 0.1);
+  --anteng-color-primary-02: rgba(245, 158, 11, 0.2);
+  --anteng-color-primary-03: rgba(245, 158, 11, 0.3);
+  --anteng-color-primary-04: rgba(245, 158, 11, 0.4);
+  --anteng-color-primary-05: rgba(245, 158, 11, 0.5);
+  --anteng-color-primary-06: rgba(245, 158, 11, 0.6);
+  --anteng-color-primary-07: rgba(245, 158, 11, 0.7);
+  --anteng-color-primary-08: rgba(245, 158, 11, 0.8);
+  --anteng-color-primary-09: rgba(245, 158, 11, 0.9);
+}
+
+/** 主题色 - yellow  **/
+:root[primary-color='yellow'],
+[primary-color='yellow'] {
+  --anteng-color-primary: #eab308;
+  --anteng-color-primary-50: #fefce8;
+  --anteng-color-primary-100: #fef9c3;
+  --anteng-color-primary-200: #fef08a;
+  --anteng-color-primary-300: #fde047;
+  --anteng-color-primary-400: #facc15;
+  --anteng-color-primary-500: #eab308;
+  --anteng-color-primary-600: #ca8a04;
+  --anteng-color-primary-700: #a16207;
+  --anteng-color-primary-800: #854d0e;
+  --anteng-color-primary-900: #713f12;
+  --anteng-color-primary-950: #422006;
+  --anteng-color-primary-01: rgba(234, 179, 8, 0.1);
+  --anteng-color-primary-02: rgba(234, 179, 8, 0.2);
+  --anteng-color-primary-03: rgba(234, 179, 8, 0.3);
+  --anteng-color-primary-04: rgba(234, 179, 8, 0.4);
+  --anteng-color-primary-05: rgba(234, 179, 8, 0.5);
+  --anteng-color-primary-06: rgba(234, 179, 8, 0.6);
+  --anteng-color-primary-07: rgba(234, 179, 8, 0.7);
+  --anteng-color-primary-08: rgba(234, 179, 8, 0.8);
+  --anteng-color-primary-09: rgba(234, 179, 8, 0.9);
+}
+
+/** 主题色 - lime  **/
+:root[primary-color='lime'],
+[primary-color='lime'] {
+  --anteng-color-primary: #84cc16;
+  --anteng-color-primary-50: #f7fee7;
+  --anteng-color-primary-100: #ecfccb;
+  --anteng-color-primary-200: #d9f99d;
+  --anteng-color-primary-300: #bef264;
+  --anteng-color-primary-400: #a3e635;
+  --anteng-color-primary-500: #84cc16;
+  --anteng-color-primary-600: #65a30d;
+  --anteng-color-primary-700: #4d7c0f;
+  --anteng-color-primary-800: #3f6212;
+  --anteng-color-primary-900: #365314;
+  --anteng-color-primary-950: #1a2e05;
+  --anteng-color-primary-01: rgba(132, 204, 22, 0.1);
+  --anteng-color-primary-02: rgba(132, 204, 22, 0.2);
+  --anteng-color-primary-03: rgba(132, 204, 22, 0.3);
+  --anteng-color-primary-04: rgba(132, 204, 22, 0.4);
+  --anteng-color-primary-05: rgba(132, 204, 22, 0.5);
+  --anteng-color-primary-06: rgba(132, 204, 22, 0.6);
+  --anteng-color-primary-07: rgba(132, 204, 22, 0.7);
+  --anteng-color-primary-08: rgba(132, 204, 22, 0.8);
+  --anteng-color-primary-09: rgba(132, 204, 22, 0.9);
+}
+
+/** 主题色 - green  **/
+:root[primary-color='green'],
+[primary-color='green'] {
+  --anteng-color-primary: #22c55e;
+  --anteng-color-primary-50: #f0fdf4;
+  --anteng-color-primary-100: #dcfce7;
+  --anteng-color-primary-200: #bbf7d0;
+  --anteng-color-primary-300: #86efac;
+  --anteng-color-primary-400: #4ade80;
+  --anteng-color-primary-500: #22c55e;
+  --anteng-color-primary-600: #16a34a;
+  --anteng-color-primary-700: #15803d;
+  --anteng-color-primary-800: #166534;
+  --anteng-color-primary-900: #14532d;
+  --anteng-color-primary-950: #052e16;
+  --anteng-color-primary-01: rgba(34, 197, 94, 0.1);
+  --anteng-color-primary-02: rgba(34, 197, 94, 0.2);
+  --anteng-color-primary-03: rgba(34, 197, 94, 0.3);
+  --anteng-color-primary-04: rgba(34, 197, 94, 0.4);
+  --anteng-color-primary-05: rgba(34, 197, 94, 0.5);
+  --anteng-color-primary-06: rgba(34, 197, 94, 0.6);
+  --anteng-color-primary-07: rgba(34, 197, 94, 0.7);
+  --anteng-color-primary-08: rgba(34, 197, 94, 0.8);
+  --anteng-color-primary-09: rgba(34, 197, 94, 0.9);
+}
+
+/** 主题色 - emerald  **/
+:root[primary-color='emerald'],
+[primary-color='emerald'] {
+  --anteng-color-primary: #10b981;
+  --anteng-color-primary-50: #ecfdf5;
+  --anteng-color-primary-100: #d1fae5;
+  --anteng-color-primary-200: #a7f3d0;
+  --anteng-color-primary-300: #6ee7b7;
+  --anteng-color-primary-400: #34d399;
+  --anteng-color-primary-500: #10b981;
+  --anteng-color-primary-600: #059669;
+  --anteng-color-primary-700: #047857;
+  --anteng-color-primary-800: #065f46;
+  --anteng-color-primary-900: #064e3b;
+  --anteng-color-primary-950: #022c22;
+  --anteng-color-primary-01: rgba(16, 185, 129, 0.1);
+  --anteng-color-primary-02: rgba(16, 185, 129, 0.2);
+  --anteng-color-primary-03: rgba(16, 185, 129, 0.3);
+  --anteng-color-primary-04: rgba(16, 185, 129, 0.4);
+  --anteng-color-primary-05: rgba(16, 185, 129, 0.5);
+  --anteng-color-primary-06: rgba(16, 185, 129, 0.6);
+  --anteng-color-primary-07: rgba(16, 185, 129, 0.7);
+  --anteng-color-primary-08: rgba(16, 185, 129, 0.8);
+  --anteng-color-primary-09: rgba(16, 185, 129, 0.9);
+}
+
+/** 主题色 - teal  **/
+:root[primary-color='teal'],
+[primary-color='teal'] {
+  --anteng-color-primary: #14b8a6;
+  --anteng-color-primary-50: #f0fdfa;
+  --anteng-color-primary-100: #ccfbf1;
+  --anteng-color-primary-200: #99f6e4;
+  --anteng-color-primary-300: #5eead4;
+  --anteng-color-primary-400: #2dd4bf;
+  --anteng-color-primary-500: #14b8a6;
+  --anteng-color-primary-600: #0d9488;
+  --anteng-color-primary-700: #0f766e;
+  --anteng-color-primary-800: #115e59;
+  --anteng-color-primary-900: #134e4a;
+  --anteng-color-primary-950: #042f2e;
+  --anteng-color-primary-01: rgba(20, 184, 166, 0.1);
+  --anteng-color-primary-02: rgba(20, 184, 166, 0.2);
+  --anteng-color-primary-03: rgba(20, 184, 166, 0.3);
+  --anteng-color-primary-04: rgba(20, 184, 166, 0.4);
+  --anteng-color-primary-05: rgba(20, 184, 166, 0.5);
+  --anteng-color-primary-06: rgba(20, 184, 166, 0.6);
+  --anteng-color-primary-07: rgba(20, 184, 166, 0.7);
+  --anteng-color-primary-08: rgba(20, 184, 166, 0.8);
+  --anteng-color-primary-09: rgba(20, 184, 166, 0.9);
+}
+
+/** 主题色 - cyan  **/
+:root[primary-color='cyan'],
+[primary-color='cyan'] {
+  --anteng-color-primary: #06b6d4;
+  --anteng-color-primary-50: #ecfeff;
+  --anteng-color-primary-100: #cffafe;
+  --anteng-color-primary-200: #a5f3fc;
+  --anteng-color-primary-300: #67e8f9;
+  --anteng-color-primary-400: #22d3ee;
+  --anteng-color-primary-500: #06b6d4;
+  --anteng-color-primary-600: #0891b2;
+  --anteng-color-primary-700: #0e7490;
+  --anteng-color-primary-800: #155e75;
+  --anteng-color-primary-900: #164e63;
+  --anteng-color-primary-950: #083344;
+  --anteng-color-primary-01: rgba(6, 182, 212, 0.1);
+  --anteng-color-primary-02: rgba(6, 182, 212, 0.2);
+  --anteng-color-primary-03: rgba(6, 182, 212, 0.3);
+  --anteng-color-primary-04: rgba(6, 182, 212, 0.4);
+  --anteng-color-primary-05: rgba(6, 182, 212, 0.5);
+  --anteng-color-primary-06: rgba(6, 182, 212, 0.6);
+  --anteng-color-primary-07: rgba(6, 182, 212, 0.7);
+  --anteng-color-primary-08: rgba(6, 182, 212, 0.8);
+  --anteng-color-primary-09: rgba(6, 182, 212, 0.9);
+}
+
+/** 主题色 - sky  **/
+:root[primary-color='sky'],
+[primary-color='sky'] {
+  --anteng-color-primary: #0ea5e9;
+  --anteng-color-primary-50: #f0f9ff;
+  --anteng-color-primary-100: #e0f2fe;
+  --anteng-color-primary-200: #bae6fd;
+  --anteng-color-primary-300: #7dd3fc;
+  --anteng-color-primary-400: #38bdf8;
+  --anteng-color-primary-500: #0ea5e9;
+  --anteng-color-primary-600: #0284c7;
+  --anteng-color-primary-700: #0369a1;
+  --anteng-color-primary-800: #075985;
+  --anteng-color-primary-900: #0c4a6e;
+  --anteng-color-primary-950: #082f49;
+  --anteng-color-primary-01: rgba(14, 165, 233, 0.1);
+  --anteng-color-primary-02: rgba(14, 165, 233, 0.2);
+  --anteng-color-primary-03: rgba(14, 165, 233, 0.3);
+  --anteng-color-primary-04: rgba(14, 165, 233, 0.4);
+  --anteng-color-primary-05: rgba(14, 165, 233, 0.5);
+  --anteng-color-primary-06: rgba(14, 165, 233, 0.6);
+  --anteng-color-primary-07: rgba(14, 165, 233, 0.7);
+  --anteng-color-primary-08: rgba(14, 165, 233, 0.8);
+  --anteng-color-primary-09: rgba(14, 165, 233, 0.9);
+}
+
+/** 主题色 - blue  **/
+:root[primary-color='blue'],
+[primary-color='blue'] {
+  --anteng-color-primary: #3b82f6;
+  --anteng-color-primary-50: #eff6ff;
+  --anteng-color-primary-100: #dbeafe;
+  --anteng-color-primary-200: #bfdbfe;
+  --anteng-color-primary-300: #93c5fd;
+  --anteng-color-primary-400: #60a5fa;
+  --anteng-color-primary-500: #3b82f6;
+  --anteng-color-primary-600: #2563eb;
+  --anteng-color-primary-700: #1d4ed8;
+  --anteng-color-primary-800: #1e40af;
+  --anteng-color-primary-900: #1e3a8a;
+  --anteng-color-primary-950: #172554;
+  --anteng-color-primary-01: rgba(59, 130, 246, 0.1);
+  --anteng-color-primary-02: rgba(59, 130, 246, 0.2);
+  --anteng-color-primary-03: rgba(59, 130, 246, 0.3);
+  --anteng-color-primary-04: rgba(59, 130, 246, 0.4);
+  --anteng-color-primary-05: rgba(59, 130, 246, 0.5);
+  --anteng-color-primary-06: rgba(59, 130, 246, 0.6);
+  --anteng-color-primary-07: rgba(59, 130, 246, 0.7);
+  --anteng-color-primary-08: rgba(59, 130, 246, 0.8);
+  --anteng-color-primary-09: rgba(59, 130, 246, 0.9);
+}
+
+/** 主题色 - indigo  **/
+:root[primary-color='indigo'],
+[primary-color='indigo'] {
+  --anteng-color-primary: #6366f1;
+  --anteng-color-primary-50: #eef2ff;
+  --anteng-color-primary-100: #e0e7ff;
+  --anteng-color-primary-200: #c7d2fe;
+  --anteng-color-primary-300: #a5b4fc;
+  --anteng-color-primary-400: #818cf8;
+  --anteng-color-primary-500: #6366f1;
+  --anteng-color-primary-600: #4f46e5;
+  --anteng-color-primary-700: #4338ca;
+  --anteng-color-primary-800: #3730a3;
+  --anteng-color-primary-900: #312e81;
+  --anteng-color-primary-950: #1e1b4b;
+  --anteng-color-primary-01: rgba(99, 102, 241, 0.1);
+  --anteng-color-primary-02: rgba(99, 102, 241, 0.2);
+  --anteng-color-primary-03: rgba(99, 102, 241, 0.3);
+  --anteng-color-primary-04: rgba(99, 102, 241, 0.4);
+  --anteng-color-primary-05: rgba(99, 102, 241, 0.5);
+  --anteng-color-primary-06: rgba(99, 102, 241, 0.6);
+  --anteng-color-primary-07: rgba(99, 102, 241, 0.7);
+  --anteng-color-primary-08: rgba(99, 102, 241, 0.8);
+  --anteng-color-primary-09: rgba(99, 102, 241, 0.9);
+}
+
+/** 主题色 - violet  **/
+:root[primary-color='violet'],
+[primary-color='violet'] {
+  --anteng-color-primary: #8b5cf6;
+  --anteng-color-primary-50: #f5f3ff;
+  --anteng-color-primary-100: #ede9fe;
+  --anteng-color-primary-200: #ddd6fe;
+  --anteng-color-primary-300: #c4b5fd;
+  --anteng-color-primary-400: #a78bfa;
+  --anteng-color-primary-500: #8b5cf6;
+  --anteng-color-primary-600: #7c3aed;
+  --anteng-color-primary-700: #6d28d9;
+  --anteng-color-primary-800: #5b21b6;
+  --anteng-color-primary-900: #4c1d95;
+  --anteng-color-primary-950: #2e1065;
+  --anteng-color-primary-01: rgba(139, 92, 246, 0.1);
+  --anteng-color-primary-02: rgba(139, 92, 246, 0.2);
+  --anteng-color-primary-03: rgba(139, 92, 246, 0.3);
+  --anteng-color-primary-04: rgba(139, 92, 246, 0.4);
+  --anteng-color-primary-05: rgba(139, 92, 246, 0.5);
+  --anteng-color-primary-06: rgba(139, 92, 246, 0.6);
+  --anteng-color-primary-07: rgba(139, 92, 246, 0.7);
+  --anteng-color-primary-08: rgba(139, 92, 246, 0.8);
+  --anteng-color-primary-09: rgba(139, 92, 246, 0.9);
+}
+
+/** 主题色 - purple  **/
+:root[primary-color='purple'],
+[primary-color='purple'] {
+  --anteng-color-primary: #a855f7;
+  --anteng-color-primary-50: #faf5ff;
+  --anteng-color-primary-100: #f3e8ff;
+  --anteng-color-primary-200: #e9d5ff;
+  --anteng-color-primary-300: #d8b4fe;
+  --anteng-color-primary-400: #c084fc;
+  --anteng-color-primary-500: #a855f7;
+  --anteng-color-primary-600: #9333ea;
+  --anteng-color-primary-700: #7e22ce;
+  --anteng-color-primary-800: #6b21a8;
+  --anteng-color-primary-900: #581c87;
+  --anteng-color-primary-950: #3b0764;
+  --anteng-color-primary-01: rgba(168, 85, 247, 0.1);
+  --anteng-color-primary-02: rgba(168, 85, 247, 0.2);
+  --anteng-color-primary-03: rgba(168, 85, 247, 0.3);
+  --anteng-color-primary-04: rgba(168, 85, 247, 0.4);
+  --anteng-color-primary-05: rgba(168, 85, 247, 0.5);
+  --anteng-color-primary-06: rgba(168, 85, 247, 0.6);
+  --anteng-color-primary-07: rgba(168, 85, 247, 0.7);
+  --anteng-color-primary-08: rgba(168, 85, 247, 0.8);
+  --anteng-color-primary-09: rgba(168, 85, 247, 0.9);
+}
+
+/** 主题色 - fuchsia  **/
+:root[primary-color='fuchsia'],
+[primary-color='fuchsia'] {
+  --anteng-color-primary: #d946ef;
+  --anteng-color-primary-50: #fdf4ff;
+  --anteng-color-primary-100: #fae8ff;
+  --anteng-color-primary-200: #f5d0fe;
+  --anteng-color-primary-300: #f0abfc;
+  --anteng-color-primary-400: #e879f9;
+  --anteng-color-primary-500: #d946ef;
+  --anteng-color-primary-600: #c026d3;
+  --anteng-color-primary-700: #a21caf;
+  --anteng-color-primary-800: #86198f;
+  --anteng-color-primary-900: #701a75;
+  --anteng-color-primary-950: #4a044e;
+  --anteng-color-primary-01: rgba(217, 70, 239, 0.1);
+  --anteng-color-primary-02: rgba(217, 70, 239, 0.2);
+  --anteng-color-primary-03: rgba(217, 70, 239, 0.3);
+  --anteng-color-primary-04: rgba(217, 70, 239, 0.4);
+  --anteng-color-primary-05: rgba(217, 70, 239, 0.5);
+  --anteng-color-primary-06: rgba(217, 70, 239, 0.6);
+  --anteng-color-primary-07: rgba(217, 70, 239, 0.7);
+  --anteng-color-primary-08: rgba(217, 70, 239, 0.8);
+  --anteng-color-primary-09: rgba(217, 70, 239, 0.9);
+}
+
+/** 主题色 - pink  **/
+:root[primary-color='pink'],
+[primary-color='pink'] {
+  --anteng-color-primary: #ec4899;
+  --anteng-color-primary-50: #fdf2f8;
+  --anteng-color-primary-100: #fce7f3;
+  --anteng-color-primary-200: #fbcfe8;
+  --anteng-color-primary-300: #f9a8d4;
+  --anteng-color-primary-400: #f472b6;
+  --anteng-color-primary-500: #ec4899;
+  --anteng-color-primary-600: #db2777;
+  --anteng-color-primary-700: #be185d;
+  --anteng-color-primary-800: #9d174d;
+  --anteng-color-primary-900: #831843;
+  --anteng-color-primary-950: #500724;
+  --anteng-color-primary-01: rgba(236, 72, 153, 0.1);
+  --anteng-color-primary-02: rgba(236, 72, 153, 0.2);
+  --anteng-color-primary-03: rgba(236, 72, 153, 0.3);
+  --anteng-color-primary-04: rgba(236, 72, 153, 0.4);
+  --anteng-color-primary-05: rgba(236, 72, 153, 0.5);
+  --anteng-color-primary-06: rgba(236, 72, 153, 0.6);
+  --anteng-color-primary-07: rgba(236, 72, 153, 0.7);
+  --anteng-color-primary-08: rgba(236, 72, 153, 0.8);
+  --anteng-color-primary-09: rgba(236, 72, 153, 0.9);
+}
+
+/** 主题色 - rose  **/
+:root[primary-color='rose'],
+[primary-color='rose'] {
+  --anteng-color-primary: #f43f5e;
+  --anteng-color-primary-50: #fff1f2;
+  --anteng-color-primary-100: #ffe4e6;
+  --anteng-color-primary-200: #fecdd3;
+  --anteng-color-primary-300: #fda4af;
+  --anteng-color-primary-400: #fb7185;
+  --anteng-color-primary-500: #f43f5e;
+  --anteng-color-primary-600: #e11d48;
+  --anteng-color-primary-700: #be123c;
+  --anteng-color-primary-800: #9f1239;
+  --anteng-color-primary-900: #881337;
+  --anteng-color-primary-950: #4c0519;
+  --anteng-color-primary-01: rgba(244, 63, 94, 0.1);
+  --anteng-color-primary-02: rgba(244, 63, 94, 0.2);
+  --anteng-color-primary-03: rgba(244, 63, 94, 0.3);
+  --anteng-color-primary-04: rgba(244, 63, 94, 0.4);
+  --anteng-color-primary-05: rgba(244, 63, 94, 0.5);
+  --anteng-color-primary-06: rgba(244, 63, 94, 0.6);
+  --anteng-color-primary-07: rgba(244, 63, 94, 0.7);
+  --anteng-color-primary-08: rgba(244, 63, 94, 0.8);
+  --anteng-color-primary-09: rgba(244, 63, 94, 0.9);
+}

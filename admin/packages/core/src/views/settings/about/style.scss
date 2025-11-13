@@ -1,0 +1,11 @@
+.settings-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+.settings-about__logo {
+  width: 200px;
+  margin-bottom: 24px;
+}

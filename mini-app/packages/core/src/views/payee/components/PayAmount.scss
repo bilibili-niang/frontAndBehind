@@ -1,0 +1,45 @@
+.g_pay-amount {
+  display: flex;
+  justify-content: flex-end;
+  .value::before {
+    content: '¥';
+  }
+
+  .eq,
+  .sub {
+    margin: 0 8px;
+  }
+}
+
+.g_pay-amount__main,
+.g_pay-amount__total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px !important;
+  color: inherit;
+  .value {
+    font-size: inherit !important;
+    color: inherit !important;
+    &::before {
+      font-size: 10px;
+      margin-right: 2px;
+    }
+  }
+  .label {
+    font-size: 12px;
+    color: $color-text-disabled;
+    margin-top: 4px;
+  }
+}
+
+.g_pay-amount__sub {
+  color: #ff2b60;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1;
+  .value::before {
+    font-size: 14px;
+    margin-right: 2px;
+  }
+}

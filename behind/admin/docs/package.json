@@ -1,0 +1,22 @@
+{
+  "name": "frontend-docs",
+  "version": "1.0.0",
+  "description": "前端开发文档",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev .",
+    "docs:build": "vitepress build .",
+    "docs:serve": "vitepress serve .",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "eslint": "^8.48.0",
+    "eslint-plugin-vue": "^9.16.1",
+    "vitepress": "^1.0.0-rc.36",
+    "vue": "^3.3.4"
+  }
+}

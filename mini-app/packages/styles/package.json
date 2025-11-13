@@ -1,0 +1,7 @@
+{
+  "name": "@anteng/styles",
+  "version": "0.1.0",
+  "private": true,
+  "description": "公共样式依赖，应当在每个业务项目内进行引入，注意：在非业务项目内构建 lib 时请在 vite externals 内将本依赖排除掉，避免二次引入。",
+  "main": "./index.ts"
+}

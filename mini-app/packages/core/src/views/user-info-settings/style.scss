@@ -1,0 +1,36 @@
+.user-info-settings-page {
+  margin: 0 20px 20px 20px;
+  background-color: $color-bg-300;
+  display: flex;
+  flex-direction: row;
+}
+
+.user-info-settings-page__preview {
+  width: 375px + 24px;
+  background-color: $color-bg-400;
+  border-radius: 10px;
+  padding: 12px;
+  overflow: auto;
+}
+
+.user-info-settings-page__form {
+  flex: 1;
+  background-color: $color-bg-500;
+}
+
+.user-info-settings-page__table {
+  width: 740px;
+}
+.user-info-settings-page__table-desc {
+  font-size: 12px;
+  color: $color-text-disabled;
+}
+
+.user-profile-face {
+  width: 50px;
+  height: 60px;
+  object-fit: cover;
+  background-color: $color-bg-300;
+  border-radius: 4px;
+  margin-right: 12px;
+}

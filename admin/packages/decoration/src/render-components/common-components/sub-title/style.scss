@@ -1,0 +1,30 @@
+/* 主标题组件样式（c_sub-title） */
+.c_sub-title {
+  &.--row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  &.--col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+  }
+  .st-title {
+    font-weight: 600;
+  }
+  .st-subtitle {
+    opacity: 0.8;
+  }
+
+  /* 水平对齐控制 */
+  &.align-left.--row { justify-content: flex-start; }
+  &.align-center.--row { justify-content: center; }
+  &.align-right.--row { justify-content: flex-end; }
+
+  &.align-left.--col { align-items: flex-start; text-align: left; }
+  &.align-center.--col { align-items: center; text-align: center; }
+  &.align-right.--col { align-items: flex-end; text-align: right; }
+}

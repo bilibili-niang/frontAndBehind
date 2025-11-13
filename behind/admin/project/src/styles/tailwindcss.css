@@ -1,0 +1,21 @@
+/* 爆红 */
+@import 'tailwindcss';
+
+@layer components {
+  .theme-color {
+    color: var(--kacat-color-primary-500);
+  }
+  .border-theme {
+    border: 1px solid var(--kacat-color-primary-500);
+  }
+  /* 组件中引用的 */
+  .back-theme {
+    background-color: --alpha(var(--kacat-color-primary-500) / 10%);
+  }
+  .color-text {
+    color: var(--text-color);
+  }
+  .w-90vw {
+    width: 90vw;
+  }
+}

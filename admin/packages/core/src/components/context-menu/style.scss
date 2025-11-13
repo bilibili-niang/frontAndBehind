@@ -1,0 +1,133 @@
+.#{$prefix}-context-menu {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 180px;
+  background-color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border: $border-base;
+  border-radius: 6px;
+  padding: 6px 0;
+  transform-origin: left top;
+  animation: _1NaWC 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes _1NaWC {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.context-menu__item-wrapper {
+  position: relative;
+  padding: 0 6px;
+  .#{$prefix}-context-menu {
+    display: none;
+  }
+  &.--disabled {
+    opacity: 0.4;
+    .context-menu__item {
+      cursor: not-allowed;
+    }
+    &:hover {
+      & > .context-menu__item {
+        background: none;
+        .context-menu__title,
+        .context-menu__icon,
+        .context-menu__arrow {
+          color: inherit;
+        }
+        .context-menu__command {
+          color: $color-text-secondary;
+        }
+        .context-menu__icon {
+          opacity: 0.8;
+        }
+      }
+      & > .#{$prefix}-context-menu {
+        display: none;
+      }
+    }
+  }
+  &:hover {
+    & > .context-menu__item {
+      background-color: $color-primary;
+      .context-menu__title,
+      .context-menu__icon,
+      .context-menu__arrow,
+      .context-menu__command {
+        color: #fff;
+      }
+      .context-menu__icon {
+        opacity: 1;
+      }
+    }
+    & > .#{$prefix}-context-menu {
+      display: block;
+    }
+  }
+}
+
+.context-menu__item {
+  height: 30px;
+  padding: 0 6px 0 0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.context-menu__icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 4px;
+  font-size: 16px;
+  opacity: 0.8;
+}
+.context-menu__title {
+  margin-left: 6px;
+  flex: 1;
+}
+.context-menu__command {
+  flex-shrink: 0;
+  color: $color-text-secondary;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.context-menu__divider {
+  display: block;
+  height: 1px;
+  background-color: $color-border-base;
+  margin: 6px 0;
+  opacity: 0.6;
+  & + & {
+    display: none;
+  }
+  &:nth-of-type(1):is(:first-child) {
+    display: none;
+  }
+}
+
+html[theme='dark'],
+html[theme='gray'],
+html[theme='darkblue'] {
+  .#{$prefix}-context-menu {
+    background-color: $color-bg-50;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+}

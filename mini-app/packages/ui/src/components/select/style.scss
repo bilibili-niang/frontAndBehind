@@ -1,0 +1,122 @@
+.#{$prefix}-select {
+  background-color: none;
+  border-color: $ui-border-color;
+  border-radius: $ui-border-radius;
+
+  &:not(&-customize-input) &-selector {
+    background-color: $ui-bg;
+    border-radius: $ui-border-radius;
+    border-color: $ui-border-color;
+    transition: all 0.2s;
+    color: $color-text-base;
+    min-height: $jsf-ui-component-height;
+    .#{$prefix}-select-selection-item {
+      line-height: $jsf-ui-component-line-height;
+      font-weight: 500;
+    }
+    &:hover {
+      border-color: $ui-border-color-hover;
+    }
+  }
+
+  &.#{$prefix}-select-allow-clear:hover .#{$prefix}-select-arrow {
+    opacity: 0;
+  }
+
+  // 下拉箭头
+  .#{$prefix}-select-arrow {
+    color: $color-text-disabled;
+  }
+
+  // 占位符
+  .#{$prefix}-select-selection-placeholder {
+    color: $color-text-disabled;
+    display: flex;
+    align-items: center;
+  }
+
+  .#{$prefix}-select-clear {
+    color: $color-text-disabled;
+    background: none;
+    transform: scale(1.5);
+    &:hover {
+      color: $color-text-base;
+    }
+  }
+}
+
+.#{$prefix}-select:not(.#{$prefix}-select-disabled):not(.#{$prefix}-select-customize-input):not(
+    .#{$prefix}-pagination-size-changer
+  ):hover
+  .#{$prefix}-select-selector {
+  border-color: $ui-border-color-hover;
+  background-color: $ui-bg-hover;
+}
+
+// 选中时选择器样式
+.#{$prefix}-select-focused.#{$prefix}-select:not(.#{$prefix}-select-disabled):not(
+    .#{$prefix}-select-customize-input
+  ):not(.#{$prefix}-pagination-size-changer)
+  .#{$prefix}-select-selector {
+  box-shadow: $ui-wave;
+  border-color: $ui-border-color-focus;
+  background-color: $ui-bg-hover;
+}
+
+// 展开下拉选项时，当前选择器文字变淡
+.#{$prefix}-select-single.#{$prefix}-select-open .#{$prefix}-select-selection-item {
+  color: $color-text-disabled;
+}
+
+// 下拉层
+.#{$prefix}-select-dropdown {
+  background-color: $ui-popup-bg;
+  // background-image: linear-gradient(to bottom, $ui-bg-hover, $ui-bg-hover);
+  border-radius: $ui-border-radius;
+  backdrop-filter: blur(10px);
+  color: $color-text-base;
+
+  // 节点
+  .#{$prefix}-select-item {
+    color: $color-text-base;
+    // margin-bottom: 4px;
+
+    // 选中
+    &-option-selected:not(&-option-disabled) {
+      // color: #fff;
+      // background-color: $color-primary-06;
+      background-color: $color-primary-02;
+      color: $color-text-base;
+    }
+    &.#{$prefix}-select-item-option-disabled {
+      color: $color-text-disabled;
+    }
+  }
+
+  .#{$prefix}-select-item-option-selected:not(.#{$prefix}-select-item-option-disabled) .#{$prefix}-select-item-option-state {
+    color: $color-primary;
+  }
+
+  // hover
+  .#{$prefix}-select-item-option-active:not(.#{$prefix}-select-item-option-disabled) {
+    background-color: $ui-bg-hover;
+  }
+}
+
+.#{$prefix}-select-multiple .#{$prefix}-select-selection-item-content,
+.#{$prefix}-select-multiple .#{$prefix}-select-selection-item-remove {
+  line-height: 22px;
+}
+
+.#{$prefix}-select-multiple .#{$prefix}-select-selection-item-remove {
+  color: $color-text-secondary;
+  &:hover {
+    color: $color-text-base;
+  }
+}
+
+.#{$prefix}-select-single:not(.#{$prefix}-select-customize-input)
+  .#{$prefix}-select-selector
+  .#{$prefix}-select-selection-search-input {
+  height: 100%;
+}

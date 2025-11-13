@@ -1,0 +1,518 @@
+{
+  "id": "FQEUVZ",
+  "name": "2023/09/18 14:50:18",
+  "date": "2023/09/18 14:50:18",
+  "timestamp": 1695019818031,
+  "description": "",
+  "payload": {
+    "page": {
+      "basic": {
+        "name": "",
+        "backgroundEnable": false,
+        "background": "rgba(255, 255, 255, 0)",
+        "shareType": "default",
+        "shareConfig": {
+          "title": "",
+          "subtitle": "",
+          "image": ""
+        }
+      },
+      "navigator": {
+        "theme": "basic",
+        "title": "Thanks♪(･ω･)ﾉ",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "foreground": {
+          "enable": true,
+          "type": "color",
+          "backgroundColor": "rgba(105, 147, 255, 1)"
+        }
+      }
+    },
+    "components": [
+      {
+        "id": "XOgvxB",
+        "key": "search",
+        "name": "搜索",
+        "version": "0.1.0",
+        "config": {},
+        "attrs": {
+          "backgroundEnable": false,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [
+            0,
+            0,
+            12,
+            0
+          ],
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false
+      },
+      {
+        "id": "feMhQS",
+        "key": "quick-link",
+        "name": "金刚区",
+        "version": "0.1.0",
+        "config": {
+          "col": 5,
+          "titleColor": "#333333",
+          "borderRadius": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "list": []
+        },
+        "attrs": {
+          "backgroundEnable": true,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [
+            10,
+            10,
+            10,
+            10
+          ],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [
+            0,
+            12,
+            0,
+            12
+          ],
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false
+      },
+      {
+        "id": "9zI4i6",
+        "key": "notice",
+        "name": "消息通知",
+        "version": "0.1.0",
+        "config": {
+          "list": [],
+          "icon": {
+            "url": "",
+            "width": "",
+            "height": ""
+          },
+          "iconLayout": {
+            "width": 36,
+            "height": 36,
+            "marginX": 4,
+            "marginY": 4
+          },
+          "split": {
+            "enable": false,
+            "color": "#bbbbbb",
+            "height": 16,
+            "marginLeft": 0,
+            "marginRight": 8
+          },
+          "interval": 3000
+        },
+        "attrs": {
+          "backgroundEnable": true,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [
+            10,
+            10,
+            10,
+            10
+          ],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [
+            12,
+            12,
+            12,
+            12
+          ],
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false
+      },
+      {
+        "id": "lYw1fQ",
+        "key": "image",
+        "name": "图片",
+        "version": "0.1.0",
+        "config": {
+          "image": {
+            "url": "https://dev-cdn.cardcat.cn/null/HxWInD5B6QuF.png",
+            "type": "hotspot",
+            "action": {},
+            "spots": [
+              {
+                "id": "77C5c5LB5NUs",
+                "action": {
+                  "key": "",
+                  "remark": "",
+                  "config": {}
+                },
+                "deg": 0,
+                "w": 19.09,
+                "h": 100,
+                "x": 3.46,
+                "y": 0
+              },
+              {
+                "id": "o2DBkXiuWxNE",
+                "action": {
+                  "key": "",
+                  "remark": "",
+                  "config": {}
+                },
+                "deg": 0,
+                "w": 51.01,
+                "h": 99.54,
+                "x": 24.24,
+                "y": 0.46
+              },
+              {
+                "id": "vZKbDYDLHWjD",
+                "action": {
+                  "key": "",
+                  "remark": "",
+                  "config": {}
+                },
+                "deg": 0,
+                "w": 21.79,
+                "h": 99.55,
+                "x": 75.93,
+                "y": 0.45
+              }
+            ],
+            "width": 1200,
+            "height": 448
+          },
+          "borderRadius": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": {
+            "enable": true,
+            "shape": "solid",
+            "width": 1,
+            "color": "#ffffff"
+          }
+        },
+        "attrs": {
+          "backgroundEnable": false,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false
+      },
+      {
+        "id": "y7FYEB",
+        "key": "title",
+        "name": "标题",
+        "version": "0.1.0",
+        "config": {
+          "content": "房屋租赁",
+          "font": {
+            "fontFamily": "",
+            "fontSize": 18,
+            "lineHeight": null,
+            "fontWeight": "bold",
+            "color": "rgba(0, 0, 0, 1)",
+            "letterSpacing": null,
+            "textAlign": "left"
+          },
+          "arrow": {
+            "enable": true,
+            "color": "#bbbbbb",
+            "size": 16,
+            "gap": 8,
+            "text": "查看全部",
+            "offsetX": 0,
+            "offsetY": 0
+          }
+        },
+        "attrs": {
+          "backgroundEnable": false,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "padding": [
+            8,
+            12,
+            8,
+            12
+          ],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false
+      },
+      {
+        "id": "Tde0gI",
+        "key": "building-card",
+        "name": "楼栋卡片",
+        "version": "0.1.0",
+        "config": {},
+        "attrs": {
+          "backgroundEnable": false,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [
+            15,
+            15,
+            15,
+            15
+          ],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [
+            0,
+            12,
+            12,
+            12
+          ],
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false
+      },
+      {
+        "id": "zTl40Z",
+        "key": "room-card",
+        "name": "房源卡片",
+        "version": "0.1.0",
+        "config": {},
+        "attrs": {
+          "backgroundEnable": false,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [
+            15,
+            15,
+            15,
+            15
+          ],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [
+            12,
+            12,
+            12,
+            12
+          ],
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false
+      },
+      {
+        "id": "5hqwq5",
+        "key": "title",
+        "name": "标题",
+        "version": "0.1.0",
+        "config": {
+          "content": "找工作",
+          "font": {
+            "fontFamily": "",
+            "fontSize": 18,
+            "lineHeight": null,
+            "fontWeight": "bold",
+            "color": "#000000",
+            "letterSpacing": null,
+            "textAlign": "left"
+          },
+          "arrow": {
+            "enable": true,
+            "color": "#bbbbbb",
+            "size": 16,
+            "gap": 8,
+            "text": "查看全部",
+            "offsetX": 0,
+            "offsetY": 0
+          }
+        },
+        "attrs": {
+          "backgroundEnable": false,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "padding": [
+            8,
+            12,
+            8,
+            12
+          ],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false
+      },
+      {
+        "id": "ZxwRoz",
+        "key": "job-card",
+        "name": "工作卡片",
+        "version": "0.1.0",
+        "config": {},
+        "attrs": {
+          "backgroundEnable": false,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [
+            0,
+            12,
+            12,
+            12
+          ],
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false
+      }
+    ]
+  }
+}

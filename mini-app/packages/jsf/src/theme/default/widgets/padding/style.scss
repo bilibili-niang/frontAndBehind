@@ -1,0 +1,42 @@
+.widget-padding {
+  width: 100%;
+  border: $border-base;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: $border-radius-base;
+  padding: 8px; // 统一到控件自身：在窄容器下也保持舒展
+}
+.widget-padding__inner {
+  // 统一到控件自身：中心占位稍增宽，输入不至于过小
+  width: calc(34% - 16px);
+  height: $jsf-ui-component-height;
+  margin: 5px;
+  border: $border-base;
+  border-radius: $border-radius-base;
+  background: $color-bg-300 repeating-linear-gradient(-45deg, transparent, transparent 4px, $color-bg-100 4px, $color-bg-100 8px);
+}
+.widget-padding__item {
+  flex-shrink: 0;
+  .anteng-input-number {
+    width: 100%;
+  }
+  &.--top,
+  &.--bottom {
+    width: 100%;
+    // 统一到控件自身：减少左右留白比例，让顶部/底部输入更宽
+    padding: 0 30%;
+  }
+  &.--left,
+  &.--right {
+    flex: 1;
+  }
+  .widget-padding__input {
+    // width: 20px;
+    input {
+      text-align: center;
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+@import '@anteng/styles/src/cursor/index.scss';
+
+.selector-placeholder {
+  &:hover {
+  }
+  display: flex;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--ui-border-color);
+  background: $color-bg-100;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  position: relative;
+  .disable-mask {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.3s;
+    height: 0;
+    width: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: $color-bg-50;
+  }
+  .selector-content {
+    opacity: 0.4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    .icon {
+      height: var(--ui-component-height, 36px);
+      width: var(--ui-component-height, 36px);
+      margin: 0 0 0 2px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      opacity: 0.4;
+    }
+  }
+  .selected {
+    &:hover {
+      .chacha-icon {
+        opacity: 0.4 !important;
+        z-index: 2;
+      }
+      .success-icon {
+        opacity: 0 !important;
+      }
+    }
+    .success-icon,
+    .chacha-icon {
+      position: absolute;
+      right: 0;
+      font-size: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: var(--ui-component-height, 36px);
+      width: var(--ui-component-height, 36px);
+    }
+    .success-icon {
+      color: #27ae60;
+      opacity: 1;
+      transition-duration: 0.3s;
+    }
+    .chacha-icon {
+      opacity: 0;
+      z-index: -100;
+      transition-duration: 0.3s;
+      color: $color-error;
+    }
+  }
+}
+
+.highlight {
+  .selector-content {
+    opacity: 1 !important;
+  }
+}
+
+.selector-disable {
+  position: relative;
+  .disable-mask {
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 1 !important;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .dashLine {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0.25;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    cursor: not-allowed;
+    @include cursor-disabled;
+    border: 1px solid $color-text-secondary;
+    border-radius: $ui-border-radius;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 3px,
+      $color-text-secondary 3px,
+      $color-text-secondary 6px
+    );
+  }
+}

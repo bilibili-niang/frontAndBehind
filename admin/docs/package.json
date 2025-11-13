@@ -1,0 +1,24 @@
+{
+  "name": "anteng-frontend-docs",
+  "version": "1.0.0",
+  "description": "anTeng前端管理系统开发文档",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "serve": "vitepress serve"
+  },
+  "keywords": [
+    "vue",
+    "typescript",
+    "admin",
+    "documentation",
+    "vitepress"
+  ],
+  "author": "anTeng Team",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}

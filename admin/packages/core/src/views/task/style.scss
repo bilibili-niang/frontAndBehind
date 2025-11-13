@@ -1,0 +1,175 @@
+.background-task-modal {
+  position: relative;
+}
+
+.background-task {
+  // 宽度最小值,根据下面的翻页组件最大宽度定的,要不然弹窗的宽度会被撑开变形
+  $maxWidth: 750px;
+  position: relative;
+  z-index: 20000;
+  min-width: 600px;
+  min-height: 400px;
+  max-height: calc(100vh - 300px);
+  height: calc(100vh - 300px);
+  overflow: hidden auto;
+  border-radius: 10px;
+  background-color: $color-bg-100;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  .task-group {
+    margin-bottom: 12px;
+    padding-bottom: 1px;
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      margin-left: 6px;
+      height: 1px;
+      background-color: $color-border-base;
+    }
+    &:last-of-type::after {
+      display: none;
+    }
+  }
+  .task-date {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 24px;
+    background-color: $color-bg-100;
+    padding-bottom: 4px;
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    height: 54px;
+    line-height: 68px;
+  }
+  .task-item {
+    max-width: $maxWidth;
+    margin: 16px;
+    width: $maxWidth;
+    min-width: $maxWidth;
+    background-color: $color-bg-400;
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid $color-border-base;
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+  .task-item__title {
+    font-weight: 500;
+    gap: 8px;
+    width: 100%;
+    h4 {
+      font-size: 16px;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tag-title-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      .tag-limted {
+        margin-left: 10px;
+        width: fit-content;
+      }
+    }
+    .resultDownload {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      a {
+        width: fit-content;
+        margin-left: 10px;
+      }
+    }
+  }
+  .task-item__progress {
+    width: 100%;
+    height: 8px;
+    border-radius: 8px;
+    background-color: $color-bg-700;
+    // box-shadow: 0 0 4px rgba(0, 0, 0, 0.1) inset;
+    border: 1px solid $color-border-base;
+    margin-top: 8px;
+    &.success {
+      .task-item__progress-bar {
+        background-color: $color-success;
+        width: 100%;
+      }
+    }
+    &.error {
+      .task-item__progress-bar {
+        background-color: $color-error;
+        width: 100%;
+      }
+    }
+    &.running {
+      .task-item__progress-bar {
+        background-color: $color-info;
+        width: 60%;
+        position: relative;
+        overflow: hidden;
+        &::before {
+          content: '';
+          width: 100%;
+          height: 100%;
+          background-image: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+          border-radius: inherit;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: translate3d(-100%, 0, 0);
+          animation: flash 2s infinite;
+        }
+        @keyframes flash {
+          from {
+            transform: translate3d(-100%, 0, 0);
+          }
+          to {
+            transform: translate3d(100%, 0, 0);
+          }
+        }
+      }
+    }
+  }
+  .task-item__progress-bar {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+  }
+  .task-item__date {
+    margin-top: 8px;
+    font-size: 12px;
+    color: $color-text-disabled;
+    display: flex;
+    align-items: center;
+  }
+  .task-item__link {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding-right: 2px;
+    .icon {
+      font-size: 18px;
+      margin-right: 4px;
+    }
+  }
+  .task-item__msg {
+    margin-top: 8px;
+    font-size: 13px;
+    color: $color-error;
+    font-weight: 500;
+    margin-bottom: -2px;
+  }
+}
+
+.background-task__pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding: 24px;
+}

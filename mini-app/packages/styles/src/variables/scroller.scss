@@ -1,0 +1,95 @@
+.#{$prefix}-table-body{
+  position: relative;
+  &::-webkit-scrollbar {
+    /*高宽分别对应横竖滚动条的尺寸*/
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 6px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.15);
+  }
+  &::-webkit-scrollbar-track {
+    background-color: none;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+      display: block;
+    }
+  }
+}
+
+
+[theme='dark'] {
+  .#{$prefix}-table-body,{
+    &::-webkit-scrollbar-thumb {
+      // background: rgba(255, 255, 255, .3);
+      background: rgb(133, 133, 133);
+    }
+  }
+}
+
+// 全局页面滚动条（html/body 以及主内容容器）
+:where(html, body, .main-content) {
+  scrollbar-width: thin; // Firefox
+  scrollbar-color: rgba(0, 0, 0, 0.28) transparent;
+}
+
+:where(html, body, .main-content)::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+:where(html, body, .main-content)::-webkit-scrollbar-track {
+  background: transparent;
+}
+[theme='light'] :where(html, body, .main-content)::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+[theme='light'] :where(html, body, .main-content)::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.28);
+}
+
+[theme='dark'] :where(html, body, .main-content) {
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent; // Firefox
+}
+[theme='dark'] :where(html, body, .main-content)::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+[theme='dark'] :where(html, body, .main-content)::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.32);
+}
+
+// 主内容容器不再预留两侧滚动条空间，避免右侧空白
+.main-content {
+  scrollbar-gutter: auto;
+}
+
+// 通用滚动容器工具类
+.scroller {
+  overflow: auto;
+  // 作为 flex 子项时，允许内容自由溢出以便滚动
+  min-height: 0;
+  max-height: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+// 隐藏滚动条但保留滚动功能（用于标签等横向滚动场景）
+.scroller--hidden {
+  overflow: auto;
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scroller--hidden::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}

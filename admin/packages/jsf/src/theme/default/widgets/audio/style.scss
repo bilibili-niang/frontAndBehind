@@ -1,0 +1,15 @@
+.w_audio {
+  max-width: 300px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  button {
+    width: 120px;
+  }
+}
+.w_audio__remove {
+  color: $color-red-05;
+  &:hover {
+    color: $color-red;
+  }
+}

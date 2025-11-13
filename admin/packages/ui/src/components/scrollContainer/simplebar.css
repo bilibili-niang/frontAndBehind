@@ -1,0 +1,113 @@
+/* Vendored SimpleBar CSS to avoid Vite exports resolution issues. */
+@import url('https://unpkg.com/simplebar@6.2.5/dist/simplebar.css');
+/* Thickness customization using CSS variable */
+.at-scrollbar {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/* Minimal base styles to ensure visibility even if CDN import fails */
+.at-scrollbar .simplebar-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.at-scrollbar .simplebar-mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.at-scrollbar .simplebar-offset {
+  position: absolute;
+  inset: 0;
+}
+.at-scrollbar .simplebar-content-wrapper {
+  position: relative;
+  height: auto;
+  min-height: 0;
+  overflow: auto !important;
+  display: block !important;
+  /* 清除 SimpleBar 为滚动条预留的 padding，减少右侧留白 */
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
+.at-scrollbar .simplebar-content {
+  box-sizing: border-box;
+  /*
+   * 不要设置 100% 高度：SimpleBar 会用占位元素(simplebar-placeholder)
+   * 根据内容高度回写尺寸；如果内容被强制为 100%，会与占位高度互相影响，造成递增。
+   */
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  /* 取消右侧为滚动条预留的空间，让轨道覆盖在内容之上 */
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* 贴紧容器右侧 */
+.at-scrollbar .simplebar-track.simplebar-vertical {
+  right: 0;
+}
+
+/* 让滚动条圆角更细，填满轨道宽度 */
+.at-scrollbar .simplebar-scrollbar::before {
+  left: 0;
+  right: 0;
+  border-radius: 3px;
+}
+
+/* 可选：更细模式，给容器加 at-scrollbar--thin 即可 */
+.at-scrollbar.at-scrollbar--thin {
+  --sb-thickness: 4px;
+}
+.at-scrollbar .simplebar-track {
+  position: absolute;
+  z-index: 1;
+  overflow-y: hidden;
+}
+.at-scrollbar .simplebar-track.simplebar-vertical {
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.at-scrollbar .simplebar-track.simplebar-horizontal {
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.at-scrollbar .simplebar-scrollbar {
+  position: absolute;
+  inset: 0;
+}
+.at-scrollbar .simplebar-track.simplebar-vertical {
+  width: var(--sb-thickness, 6px);
+  background: rgba(0, 0, 0, 0.08);
+}
+.at-scrollbar .simplebar-track.simplebar-horizontal {
+  height: var(--sb-thickness, 6px);
+  background: rgba(0, 0, 0, 0.08);
+}
+.at-scrollbar .simplebar-scrollbar::before {
+  /*background-color: var(--anteng-color-primary-200);*/
+  background-color: var(--color-text-tertiary);
+  border-radius: var(--sb-thickness, 6px);
+  opacity: 1 !important;
+  transition: background-color .12s ease;
+}
+/* 允许滚动条元素接收鼠标事件，才能触发悬停态 */
+.at-scrollbar .simplebar-scrollbar {
+  pointer-events: auto;
+}
+/* 正确的 hover 写法：在容器上悬停时改变 ::before 的颜色 */
+.at-scrollbar .simplebar-scrollbar:hover::before {
+  background-color: var(--anteng-color-primary-300);
+  cursor: pointer;
+}
+
+/* 修饰类：隐藏横向滚动条并禁用横向滚动 */
+.at-scrollbar--no-x .simplebar-content-wrapper {
+  overflow-x: hidden !important;
+}
+.at-scrollbar--no-x .simplebar-track.simplebar-horizontal {
+  display: none !important;
+}

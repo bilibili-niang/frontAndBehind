@@ -1,0 +1,114 @@
+.btp__filter {
+  display: flex;
+  // margin-right: 12px;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+  // justify-content: flex-end;
+  // justify-content: center;
+  &.\--full {
+    .btp__filter-fold {
+      .icon {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
+.btp__filter-item {
+  flex-shrink: 0;
+  flex-flow: 0;
+  width: 25%;
+  max-width: 508px;
+  padding: 6px;
+  position: relative;
+}
+.btp__filter-widget {
+  width: 100%;
+  height: 36px !important;
+  display: block;
+  border-radius: 5px;
+  background-color: $color-bg-600 !important;
+  line-height: 36px;
+  color: $color-text-disabled;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  &:hover {
+    border-color: $color-primary;
+  }
+  & > label {
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 2px;
+    margin: 0 8px 0 6px;
+    white-space: nowrap;
+    align-self: center;
+    color: $color-text-disabled;
+    position: relative;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 5px;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+  }
+  &.\--focus::before {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 4px $color-primary-02;
+  }
+}
+.btp__filter .btp__filter-item .btp__filter-widget {
+  border: 1px solid rgba(0, 0, 0, 0.02);
+}
+.btp__filter-search {
+  flex-shrink: 0;
+  // min-width: 240px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0 6px 12px;
+}
+.btp__filter-fold {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: bold;
+  .icon {
+    margin-right: 2px;
+    transform: rotate(0);
+  }
+}
+.btp__filter-btn {
+  // height: $jsf-ui-component-height;
+  height: 28px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  min-width: 54px;
+  font-size: 13px;
+}
+[theme="dark"] {
+  .btp__filter-widget {
+    background-color: $color-bg-50 !important;
+  }
+}
+[theme="light"] {
+  .btp__filter-btn {
+    .#{$prefix}-icon {
+      color: #fff;
+    }
+    svg {
+      fill: var(--color-1);
+    }
+  }
+}

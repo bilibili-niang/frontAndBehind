@@ -1,0 +1,103 @@
+.property-tabs {
+  /* 委托外部容器控制滚动，避免嵌套滚动导致滚动条异常 */
+  overflow: visible;
+  padding-right: 3px;
+  box-sizing: border-box;
+  height: 100%;
+  .jsf_form {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 16px;
+  }
+  &__tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 5px;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 14px; /* 圆形胶囊 */
+    background: var(--anteng-color-bg-300);
+    color: var(--anteng-color-text-300);
+    cursor: pointer;
+    transition: all 0.16s ease;
+    &:hover {
+      background: var(--anteng-color-bg-100);
+    }
+    &.--active {
+      color: var(--anteng-color-primary);
+      background: var(--anteng-color-bg-500);
+      .property-tabs__title {
+        color: var(--anteng-color-primary);
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+      pointer-events: none;
+    }
+  }
+  &__icon {
+    font-size: 16px;
+  }
+  &__title {
+    font-size: 12px;
+    font-weight: 500;
+    color: $color-text-base;
+  }
+  &__arc-l,
+  &__arc-r {
+    display: none; /* 仅做兼容，需要时可启用 */
+    position: absolute;
+    top: 2px;
+    width: 12px;
+    height: 24px;
+    background: transparent;
+    pointer-events: none;
+  }
+  &__arc-l {
+    left: -6px;
+  }
+  &__arc-r {
+    right: -6px;
+  }
+  &__content {
+    height: 100%;
+    position: relative;
+    overflow: visible; // 交由外层 ScrollContainer 控制滚动
+  }
+  &__pane {
+    display: flex;
+    flex: 1;
+    will-change: transform, opacity;
+    overflow: visible; // 不在 pane 内部隐藏溢出
+    &:not([style*="display: block"]) {
+      display: none !important;
+    }
+  }
+}
+// 兼容原有样式类名
+.lego-config-tab {
+  @extend .property-tabs__header;
+  &__item {
+    @extend .property-tabs__tab;
+    .lego-icon {
+      @extend .property-tabs__icon;
+    }
+    .--arc-l {
+      @extend .property-tabs__arc-l;
+    }
+    .--arc-r {
+      @extend .property-tabs__arc-r;
+    }
+  }
+}

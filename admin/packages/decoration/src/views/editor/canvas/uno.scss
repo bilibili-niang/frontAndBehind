@@ -1,0 +1,24 @@
+.color-primary {
+  color: $color-primary;
+}
+.color-secondary {
+  color: $color-text-secondary;
+}
+.color-disabled {
+  color: $color-text-disabled;
+}
+
+.max-1-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.max-2-line {
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: wrap;
+}

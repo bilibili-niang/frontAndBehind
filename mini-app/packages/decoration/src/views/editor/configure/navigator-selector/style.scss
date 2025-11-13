@@ -1,0 +1,15 @@
+.w_navigator-selector {
+  display: flex;
+  padding: 5px 0 5px 5px;
+  img {
+    width: 100%;
+  }
+}
+
+.w_navigator-selector .w_basic-nav-wrapper {
+  height: 88px;
+  overflow: hidden;
+}
+.w_navigator-selector .w_basic-nav {
+  position: relative;
+}

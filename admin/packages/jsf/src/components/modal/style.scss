@@ -1,0 +1,130 @@
+.jsf-ui-modal-root {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+}
+
+.jsf-ui-modal {
+  position: fixed;
+  // z-index: 2000;
+  right: 340px;
+  top: 76px;
+  min-width: $jsf-ui-component-container-width;
+  max-width: 80vw;
+  overflow: hidden;
+  width: auto;
+  background-color: $color-bg-300;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 8px;
+  border: 1px solid $color-bg-100;
+  font-size: $size-font-base;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 3px 6px -4px rgb(0 0 0 / 12%),
+    0 6px 16px 0 rgb(0 0 0 / 8%),
+    0 9px 28px 8px rgb(0 0 0 / 5%);
+  &.\--hidden {
+    display: none;
+  }
+
+  &.\--centered,
+  &[centered='true'] {
+    top: 50%;
+    right: 50%;
+    transform: translate3d(50%, -50%, 0);
+  }
+}
+.jsf-ui-modal__header {
+  height: 36px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  border-bottom: $border-base;
+}
+
+.jsf-ui-modal__logo {
+  height: 22px;
+  width: 22px;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.jsf-ui-modal__title {
+  font-size: 13px;
+  font-weight: bold;
+}
+.jsf-ui-modal__close {
+  font-size: 22px;
+  margin-left: auto;
+  line-height: 36px;
+  vertical-align: top;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  line-height: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: $color-text-secondary;
+  &:hover {
+    background-color: $color-bg-200;
+  }
+}
+
+.jsf-ui-modal__content {
+  // min-height: 240px;
+  // max-height: 360px;
+}
+
+// $keyframes fade_in {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+
+.jsf-use-modal {
+  .#{$prefix}-modal-confirm-btns,
+  .#{$prefix}-modal-confirm-title,
+  .#{$prefix}-modal-close {
+    display: none !important;
+  }
+  .#{$prefix}-modal-content .#{$prefix}-modal-body {
+    padding: 12px;
+  }
+  .#{$prefix}-use-modal__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-left: 8px;
+  }
+  .#{$prefix}-use-modal__title {
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .icon {
+      font-size: 20px;
+    }
+  }
+  .#{$prefix}-use-modal__close {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+    padding-left: 1px;
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,59 @@
+.basic-layout__app-item {
+  &.--active strong {
+    color: $color-primary;
+  }
+  strong {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    .icon {
+      position: relative;
+      top: 1px;
+    }
+  }
+}
+.basic-layout__app-popover {
+  padding: 4px 0;
+  overflow: hidden;
+}
+.basic-layout__app-link {
+  display: flex;
+  min-width: 320px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 4px;
+  position: relative;
+  &.\--disabled {
+    &::after {
+      content: '暂未开放';
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translate3d(0, -50%, 0);
+      font-size: 12px;
+      opacity: 0.4;
+    }
+  }
+  &:hover,
+  &.\--active {
+    background-image: linear-gradient(to left, $color-primary-02 30%, transparent);
+    strong {
+      color: $color-primary;
+    }
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    margin-right: 12px;
+    border-radius: 4px;
+    background-color: #f5f6f7;
+  }
+  & > div {
+    display: flex;
+    flex-direction: column;
+  }
+}

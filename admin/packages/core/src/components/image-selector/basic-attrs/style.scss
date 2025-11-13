@@ -1,0 +1,72 @@
+.config-basic-attrs {
+  padding: 14px 0 6px 0;
+  .jsf_form-item__widget {
+    width: 214px;
+  }
+  .jsf_form-item {
+    margin: 0;
+  }
+  .prefix {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+  }
+  .size-lock,
+  .flip-v,
+  .flip-h {
+    flex-shrink: 0;
+    width: calc($jsf-ui-component-height - 8px);
+    height: calc($jsf-ui-component-height - 8px);
+    border-radius: $ui-border-radius;
+    // color: #fff;
+    font-size: 16px;
+    margin: 0;
+    opacity: 0.5;
+    // background-color: pink;
+    background-color: $color-bg-300;
+    align-self: center;
+    color: $color-text-base;
+    &:hover {
+      color: $color-primary;
+    }
+    &.\--active {
+      opacity: 1;
+      color: $color-primary;
+      background-color: $color-primary-02;
+    }
+  }
+  .size-lock {
+    position: relative;
+    top: -4px;
+    margin-right: 8px;
+  }
+  .flip-v {
+    transform: rotate(90deg);
+  }
+  .rotation-icon {
+    width: calc($jsf-ui-component-height - 8px);
+    height: calc($jsf-ui-component-height - 8px);
+    border-radius: 50%;
+    background-color: $color-primary-02;
+    position: relative;
+    transform: rotate(0);
+    &::after {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: $color-primary;
+      position: absolute;
+      top: 2px;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  .flip-wrap {
+    height: $jsf-ui-component-height;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

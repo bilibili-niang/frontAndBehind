@@ -1,0 +1,76 @@
+// 不知道哪里来的背景色
+.#{$prefix}-input-number {
+  background: rgba(0, 0, 0, 0) !important;
+}
+// TODO 鼠标hover时的上下调整按钮的背景色样式需要修改
+/* .#{$prefix}-input-number:hover {
+  .#{$prefix}-input-number-handler-up {
+    background: var($color-primary-950) !important;
+  }
+} */
+.#{$prefix}-input-number,
+.#{$prefix}-input-number-affix-wrapper {
+  border-radius: $ui-border-radius;
+  background-color: $ui-bg;
+  border-color: $ui-border-color;
+  color: $color-text-base;
+  height: $jsf-ui-component-height;
+  .#{$prefix}-input-number-input-wrap {
+    height: 100%;
+  }
+  .#{$prefix}-input-number-input {
+    color: $color-text-base;
+    padding: 0 8px;
+    height: 100%;
+  }
+  &:hover,
+  &:focus {
+    background-color: $ui-bg-hover;
+    border-color: $ui-border-color;
+  }
+  &.#{$prefix}-input-number:focus,
+  &.#{$prefix}-input-number-focused {
+    border-color: $color-primary;
+    box-shadow: $ui-wave;
+    border-inline-end-width: 1px;
+    outline: 0;
+  }
+  & &-handler-wrap {
+    border-radius: $ui-border-radius;
+    background: $ui-bg none;
+    .anticon {
+      color: $color-text-base;
+    }
+  }
+  & &-handler {
+    border: none $color-text-disabled;
+    &:hover .anticon {
+      color: $color-primary;
+    }
+  }
+}
+.#{$prefix}-input-number::placeholder,
+.#{$prefix}-input-number input::placeholder,
+.#{$prefix}-input-number-placeholder {
+  color: $color-text-disabled !important;
+}
+.#{$prefix}-input-number-affix-wrapper {
+  border-radius: $ui-border-radius !important;
+  background-color: $ui-bg;
+  padding-left: 0;
+  .#{$prefix}-input-number-prefix {
+    opacity: 0.3;
+    padding: 0 4px 0 8px;
+  }
+  .#{$prefix}-input-number {
+    background: none;
+    box-shadow: none !important;
+    border: none !important;
+    height: $jsf-ui-component-height - 2px;
+  }
+}
+.#{$prefix}-input-number-affix-wrapper:not(.#{$prefix}-input-number-affix-wrapper-disabled):hover,
+.#{$prefix}-input-number-affix-wrapper-focused {
+  border-color: $color-primary;
+  box-shadow: $ui-wave;
+}

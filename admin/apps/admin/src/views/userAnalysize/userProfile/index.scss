@@ -1,0 +1,137 @@
+.user-profile-page {
+  background: var(--anteng-color-bg-800);
+  min-height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 8px 100px;
+
+  /* 页面标题 */
+  .page-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--v-color-text-primary);
+      margin: 0;
+    }
+    .sub-title {
+      font-size: 14px;
+      color: var(--v-color-text-secondary);
+    }
+  }
+
+  /* 顶部指标卡片 */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .stat-card {
+    background: var(--v-color-bg-50);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    .stat-label {
+      font-size: 12px;
+      color: var(--v-color-text-secondary);
+      margin-bottom: 4px;
+    }
+    .stat-value {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--v-color-primary);
+    }
+  }
+
+  /* 图表卡片 */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .chart-card {
+    background: var(--v-color-bg-50);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .chart-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--v-color-text-primary);
+      }
+      .chart-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+    .chart-body {
+      flex: 1;
+      min-height: 300px;
+      overflow: hidden;
+    }
+  }
+
+  .chart-card--span-2 {
+    grid-column: span 2;
+  }
+
+  /* 参考数据概览的查询条样式 */
+  .user-profile-query-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--v-color-bg-100);
+    border-radius: 8px;
+    padding: 8px;
+    .user-profile-query-label { font-size: 12px; color: var(--v-color-text-secondary); }
+    .#{$prefix}-select { width: 160px; }
+  }
+
+  /* 切换按钮 */
+  .toggle-group {
+    display: inline-flex;
+    border: 1px solid var(--v-color-border);
+    border-radius: 4px;
+    overflow: hidden;
+    .toggle-btn {
+      padding: 4px 8px;
+      font-size: 12px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: var(--v-color-text-secondary);
+      &.active {
+        background: var(--v-color-primary-light);
+        color: var(--v-color-primary);
+      }
+      &:hover:not(.active) {
+        background: var(--v-color-bg-hover);
+      }
+    }
+  }
+
+  /* 响应式 */
+  @media (max-width: 1200px) {
+    .chart-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .stats-row { grid-template-columns: 1fr; }
+    .chart-grid { grid-template-columns: 1fr; }
+  }
+}

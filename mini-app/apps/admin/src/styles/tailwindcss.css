@@ -1,0 +1,22 @@
+/* 爆红 */
+@import 'tailwindcss';
+
+@layer components {
+  .theme-color {
+    color: var(--anteng-color-primary-500);
+  }
+  .border-theme {
+    border: 1px solid var(--anteng-color-primary-500);
+  }
+  /* 组件中引用的 */
+  .back-theme {
+    /* 使用 color-mix 生成透明主色背景，兼容性更好 */
+    background-color: color-mix(in oklab, var(--anteng-color-primary-500) 10%, transparent);
+  }
+  .color-text {
+    color: var(--text-color);
+  }
+  .w-90vw {
+    width: 90vw;
+  }
+}

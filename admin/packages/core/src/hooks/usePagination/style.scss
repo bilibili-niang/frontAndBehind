@@ -1,0 +1,39 @@
+.use-pag__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-text-disabled;
+  font-size: 12px;
+  margin: 12px 0;
+  .c_spin {
+    width: 24px;
+    height: 24px;
+    margin: 0 4px 0 0;
+  }
+}
+
+.use-pag__end {
+  text-align: center;
+  margin: 24px 12px 12px 12px;
+  font-size: 12px;
+  color: $color-text-disabled;
+}
+
+.use-pag__loading--empty {
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $color-text-disabled;
+  .c_spin {
+    margin-bottom: 12px;
+  }
+}
+
+.use-pag__more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  color: $color-text-disabled;
+}

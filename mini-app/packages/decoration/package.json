@@ -1,0 +1,17 @@
+{
+  "name": "@anteng/decoration",
+  "desc": "封装的装修库,后台项目都会引用到",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "module": "./lib.ts",
+  "main": "./lib.ts",
+  "exports": {
+    ".": "./lib.ts",
+    "./precision": "./src/precision.ts",
+    "./src/*": "./src/*"
+  },
+  "dependencies": {
+    "vant": "4.9.21"
+  }
+}

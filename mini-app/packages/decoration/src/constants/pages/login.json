@@ -1,0 +1,260 @@
+{
+  "id": "v8tQzF",
+  "name": "2025/08/27 17:12:10",
+  "scope": "login",
+  "template": "default",
+  "date": "2025/08/27 17:12:10",
+  "timestamp": 1756285930796,
+  "description": "",
+  "payload": {
+    "page": {
+      "mode": "modal",
+      "theme": "default",
+      "cancelText": "暂不登录，先去逛逛",
+      "themeColor": "#000000",
+      "closeButton": {
+        "color": "rgba(51, 51, 51, 1)",
+        "enable": true,
+        "offsetX": 0,
+        "offsetY": 0,
+        "placement": "topRight",
+        "backgroundColor": "rgba(255, 255, 255, 0)"
+      },
+      "userAgreement": {
+        "link": "",
+        "type": 4,
+        "title": "《用户服务协议》",
+        "content": ""
+      },
+      "hiddenQuickLogin": false,
+      "quickLogin": {
+        "h5": true,
+        "weapp": true
+      }
+    },
+    "components": [
+      {
+        "id": "bJGtw5",
+        "key": "title",
+        "name": "标题",
+        "attrs": {
+          "border": {
+            "color": "#000000",
+            "shape": "solid",
+            "width": 1,
+            "enable": false
+          },
+          "margin": [0, 0, 0, 0],
+          "opacity": 70,
+          "padding": [0, 12, 0, 12],
+          "overflow": "visible",
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [0, 0, 0, 0],
+          "backgroundEnable": false
+        },
+        "config": {
+          "font": {
+            "color": "rgba(0, 0, 0, 1)",
+            "fontSize": 14,
+            "textAlign": "left",
+            "fontFamily": "",
+            "fontWeight": "bold",
+            "lineHeight": null,
+            "letterSpacing": null
+          },
+          "arrow": {
+            "gap": 8,
+            "size": 16,
+            "text": "",
+            "color": "#bbbbbb",
+            "enable": false,
+            "offsetX": 0,
+            "offsetY": 0
+          },
+          "content": "👋🏻 欢迎使用本平台，登录可享更多服务",
+          "prefixIcon": {
+            "width": 24,
+            "height": 24,
+            "objectFit": "fill",
+            "marginRight": 8
+          },
+          "prefixIconEnable": false
+        },
+        "hidden": false,
+        "locked": false,
+        "version": "0.1.0",
+        "__RETRIEVE_DEFAULT_DATA": false
+      },
+      {
+        "id": "Wu6oFu",
+        "key": "quick-link",
+        "name": "金刚区",
+        "attrs": {
+          "border": {
+            "color": "#000000",
+            "shape": "solid",
+            "width": 1,
+            "enable": false
+          },
+          "margin": [0, 12, 0, 12],
+          "opacity": 100,
+          "padding": [0, 0, 0, 0],
+          "overflow": "visible",
+          "background": "rgba(0, 159, 255, 0.06)",
+          "borderRadius": [12, 12, 12, 12],
+          "backgroundEnable": true
+        },
+        "config": {
+          "col": 5,
+          "row": 2,
+          "list": [
+            {
+              "badge": {
+                "color": "#ffffff",
+                "enable": false,
+                "content": "",
+                "backgroundColor": "#ff4e00"
+              },
+              "image": {
+                "url": "https://dev-cdn.cardcat.cn/null/glass_1.png",
+                "width": 196,
+                "height": 196
+              },
+              "title": "更多服务",
+              "action": {
+                "key": "",
+                "config": {},
+                "remark": ""
+              }
+            },
+            {
+              "badge": {
+                "color": "#ffffff",
+                "enable": false,
+                "content": "",
+                "backgroundColor": "#ff4e00"
+              },
+              "image": {
+                "url": "https://dev-cdn.cardcat.cn/null/glass_13.png",
+                "width": 196,
+                "height": 196
+              },
+              "title": "专享福利",
+              "action": {
+                "key": "",
+                "config": {},
+                "remark": ""
+              }
+            },
+            {
+              "badge": {
+                "color": "#ffffff",
+                "enable": false,
+                "content": "",
+                "backgroundColor": "#ff4e00"
+              },
+              "image": {
+                "url": "https://dev-cdn.cardcat.cn/null/glass_3.png",
+                "width": 196,
+                "height": 196
+              },
+              "title": "专属客服",
+              "action": {
+                "key": "",
+                "config": {},
+                "remark": ""
+              }
+            },
+            {
+              "badge": {
+                "color": "#ffffff",
+                "enable": false,
+                "content": "",
+                "backgroundColor": "#ff4e00"
+              },
+              "image": {
+                "url": "https://dev-cdn.cardcat.cn/null/glass_7.png",
+                "width": 196,
+                "height": 196
+              },
+              "title": "隐私保护",
+              "action": {
+                "key": "",
+                "config": {},
+                "remark": ""
+              }
+            },
+            {
+              "badge": {
+                "color": "#ffffff",
+                "enable": false,
+                "content": "",
+                "backgroundColor": "#ff4e00"
+              },
+              "image": {
+                "url": "https://dev-cdn.cardcat.cn/null/glass_19.png",
+                "width": 196,
+                "height": 196
+              },
+              "title": "数据分析",
+              "action": {
+                "key": "",
+                "config": {},
+                "remark": ""
+              }
+            }
+          ],
+          "swipeCol": 5,
+          "indicator": {
+            "color": "#333333",
+            "width": 48,
+            "enable": true,
+            "height": 6,
+            "backgroundColor": "#e8e8e8"
+          },
+          "titleColor": "#333333",
+          "visibleCol": 5,
+          "interaction": "slide",
+          "borderRadius": [0, 0, 0, 0]
+        },
+        "hidden": false,
+        "locked": false,
+        "version": "0.1.0",
+        "__RETRIEVE_DEFAULT_DATA": false
+      },
+      {
+        "id": "ULA4de",
+        "key": "placeholder",
+        "name": "空白分隔",
+        "attrs": {
+          "border": {
+            "color": "#000000",
+            "shape": "solid",
+            "width": 1,
+            "enable": false
+          },
+          "margin": [0, 0, 0, 0],
+          "opacity": 100,
+          "padding": [0, 12, 0, 12],
+          "overflow": "visible",
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [0, 0, 0, 0],
+          "backgroundEnable": false
+        },
+        "config": {
+          "height": 24,
+          "separator": {
+            "color": "rgba(245, 245, 245, 1)",
+            "shape": "dashed",
+            "width": 2,
+            "enable": false
+          }
+        },
+        "hidden": false,
+        "locked": false,
+        "version": "0.1.0",
+        "__RETRIEVE_DEFAULT_DATA": false
+      }
+    ]
+  }
+}

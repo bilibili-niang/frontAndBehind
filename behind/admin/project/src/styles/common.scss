@@ -1,0 +1,37 @@
+// 滚动条美化
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    /*高宽分别对应横竖滚动条的尺寸*/
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 6px;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-track {
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+      display: block;
+    }
+  }
+}
+/*
+  页面背景使用 theme.scss 中定义的 --v-color-bg-* 变量
+  注意：不要使用文本颜色变量作为背景色
+*/
+html[theme="light"] {
+  /* 纯白背景 */
+  background-color: var(--v-color-bg-300);
+}
+html[theme="dark"] {
+  /* 深色背景，接近 Vuetify dark 背景 */
+  background-color: var(--v-color-bg-600);
+}
+html {
+  overflow: hidden;
+}

@@ -1,0 +1,214 @@
+.#{$prefix}-address-selector {
+  margin-top: -12px;
+  width: auto;
+  display: flex;
+  padding: 16px;
+  &__map {
+    width: 640px;
+    height: 640px;
+    background-color: $color-bg-400;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    .map-container {
+      width: 100%;
+      height: 100%;
+      & > canvas + div {
+        cursor: grab;
+        &:active {
+          cursor: grabbing;
+        }
+      }
+    }
+  }
+  &__view {
+    width: 350px;
+    height: 640px;
+    margin-left: 12px;
+    // background-color: $color-bg-400;
+    border-radius: 10px;
+    overflow: hidden auto;
+  }
+  &__actions {
+    position: absolute;
+    z-index: 30;
+    top: -28px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.map-loading {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 20;
+  top: 40%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  color: #6f7b8c;
+  font-size: 14px;
+  pointer-events: all;
+}
+.map-loading-icon {
+  width: 18px;
+  height: 18px;
+  background-image: url(https://dev-cdn.anteng.cn/upload/16681a0b9bc6cccefca423ea36464ae3.svg);
+  background-size: 100% 100%;
+  background-position: center center;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.use-poi-choose {
+  // padding: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.use-poi-choose__search-wrap {
+  padding: 12px;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  background-color: $color-bg-400;
+}
+.use-poi-choose__search {
+  // padding: 0 12px;/
+  min-height: 40px;
+  border-radius: $border-radius-base;
+  // margin-bottom: 8px;
+  // background-image: linear-gradient(to bottom, rgba(94, 144, 251, 0.1) 2px, transparent 48px);
+  // box-shadow: 0 0 12px rgba(94, 144, 251, 0.1);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  .search {
+    width: 100%;
+    background: none;
+    height: 44px;
+    font-size: 16px;
+    font-weight: bold;
+    padding-right: 0;
+    .input {
+      font-weight: bold;
+    }
+    .placeholder {
+      color: #6f7b8c;
+      opacity: 0.4;
+    }
+  }
+  .icon {
+    font-size: 20px;
+    color: $color-text-disabled;
+  }
+}
+.use-poi-choose__current {
+  flex-shrink: 0;
+  background-color: $color-bg-300;
+  // border: 2px solid $color-border-base;
+  background-color: $color-bg-400;
+
+  border-radius: 15px;
+  margin-bottom: 8px;
+  // margin-top: -32px;
+  // padding-top: 32px;
+  position: relative;
+  padding: 12px;
+  .icon {
+    width: 22px;
+    height: 22px;
+    background-image: url(./pin_spot.png);
+    background-size: 100% 100%;
+    margin-left: -5px;
+  }
+  .item {
+    margin-bottom: 8px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .text {
+      margin-bottom: 4px;
+      color: $color-text-secondary;
+      font-weight: bold;
+    }
+    .value {
+      padding: 8px 12px;
+    }
+  }
+}
+
+.use-poi-choose__list {
+  background-color: $color-bg-400;
+  border-radius: 15px;
+  flex: 1;
+  overflow: hidden auto;
+  h3 {
+    margin: 0;
+    padding: 8px 12px 0 8px;
+  }
+}
+
+.use-poi-choose__item {
+  display: flex;
+  padding: 13px 14px 0 12px;
+  &:hover {
+    background-color: $color-primary-01;
+  }
+  &:last-of-type .content {
+    border-bottom: none;
+  }
+  .icon {
+    margin-right: 2px;
+    font-size: 16px;
+    line-height: 20.5px;
+    color: $color-text-secondary;
+  }
+  .content {
+    flex: 1;
+    border-bottom: 1px solid $color-border-base;
+    overflow: hidden;
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .name {
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 48px;
+  }
+  .address {
+    color: $color-text-secondary;
+    font-size: 12px;
+    display: flex;
+    .text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-right: 12px;
+    }
+    .distance {
+      margin-left: auto;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+  }
+}

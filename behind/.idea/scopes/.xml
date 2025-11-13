@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="接口" pattern="file[fronthosting]:koa-typeScript-sequlize-swagger//*&amp;&amp;!file[fronthosting]:koa-typeScript-sequlize-swagger/src/static//*&amp;&amp;!file[fronthosting]:koa-typeScript-sequlize-swagger/src/logs//*" />
+</component>

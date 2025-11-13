@@ -1,0 +1,44 @@
+.#{$prefix}-checkbox-group {
+  color: $color-text-base;
+}
+.#{$prefix}-checkbox-wrapper {
+  color: $color-text-base;
+}
+
+.#{$prefix}-checkbox-checked .#{$prefix}-checkbox-inner {
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+
+.#{$prefix}-checkbox-wrapper:not(.#{$prefix}-checkbox-wrapper-disabled):hover .#{$prefix}-checkbox-inner,
+.#{$prefix}-checkbox:not(.#{$prefix}-checkbox-disabled):hover .#{$prefix}-checkbox-inner {
+  border-color: $color-primary;
+}
+
+.#{$prefix}-checkbox-wrapper:not(.#{$prefix}-checkbox-wrapper-disabled):hover
+.#{$prefix}-checkbox-checked:not(.#{$prefix}-checkbox-disabled)
+.#{$prefix}-checkbox-inner {
+  background-color: $color-primary;
+}
+
+.#{$prefix}-checkbox-wrapper:not(.#{$prefix}-checkbox-wrapper-disabled):hover
+.#{$prefix}-checkbox-checked:not(.#{$prefix}-checkbox-disabled):after {
+  border-color: $color-primary;
+}
+
+.#{$prefix}-checkbox-checked:after {
+  opacity: 0;
+}
+
+.#{$prefix}-checkbox-indeterminate .#{$prefix}-checkbox-inner:after {
+  background-color: $color-primary;
+}
+
+@include dark-mode {
+  .#{$prefix}-checkbox-disabled .#{$prefix}-checkbox-inner {
+    border-color: $color-text-disabled;
+  }
+  .#{$prefix}-checkbox-disabled + span {
+    color: $color-text-disabled;
+  }
+}

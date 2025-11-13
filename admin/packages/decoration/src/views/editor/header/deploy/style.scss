@@ -1,0 +1,44 @@
+.deploy-modal {
+  width: 460px;
+  padding: 24px;
+  padding-top: 0;
+}
+.deploy-modal__item {
+  margin-bottom: 16px;
+}
+.deploy-modal__label {
+  color: $color-text-secondary;
+  margin-bottom: 8px;
+  margin-top: 24px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+.deploy-modal__tip {
+  color: $color-text-secondary;
+  margin-bottom: 8px;
+  display: block;
+  text-align: right;
+  margin-top: -4px;
+}
+.deploy-modal__cover {
+  width: 100%;
+  padding-bottom: 56.25%;
+  background-color: $color-bg-200;
+  border-radius: 4px;
+  position: relative;
+}
+.deploy-modal__cover-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.deploy-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 48px;
+}

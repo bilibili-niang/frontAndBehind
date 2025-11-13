@@ -1,0 +1,18 @@
+.#{$prefix}-page-view {
+  padding: 16px;
+  overflow: hidden auto;
+  display: flex;
+  flex-direction: column;
+}
+.#{$prefix}-page-view-content {
+  flex: 1;
+  padding: 16px;
+  background-color: $color-bg-400;
+  border-radius: 10px;
+}
+
+[theme="dark"] {
+  .#{$prefix}-page-view-content {
+    background-color: $color-bg-100;
+  }
+}

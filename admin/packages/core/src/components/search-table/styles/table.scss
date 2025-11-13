@@ -1,0 +1,313 @@
+$color-border-base: rgb(82, 82, 82);
+$color-bg-base: $color-bg-100;
+[theme="dark"] {
+  .#{$prefix}-table {
+    background-color: $color-bg-base;
+    color: $color-text-base;
+    color-scheme: dark;
+  }
+  .#{$prefix}-table-sticky-holder {
+    background: none;
+  }
+  .#{$prefix}-table-summary {
+    background-color: $color-bg-base;
+  }
+  .#{$prefix}-table-thead > tr > th {
+    font-size: 15px;
+    color: $color-text-base;
+    background: $color-bg-50;
+    border-bottom: 1px solid $color-border-base;
+  }
+  .#{$prefix}-table-cell-fix-left,
+  .#{$prefix}-table-cell-fix-right {
+    background: $color-bg-base;
+  }
+  .#{$prefix}-table-tbody > tr.#{$prefix}-table-row:hover > td,
+  .#{$prefix}-table-tbody > tr > td.#{$prefix}-table-cell-row-hover {
+    background-color: $color-bg-200;
+  }
+  .#{$prefix}-table-tbody > tr > td {
+    border-bottom: 1px solid $color-border-base;
+    transition: background 0.3s;
+  }
+  .#{$prefix}-table-summary > tr > th,
+  .#{$prefix}-table-summary > tr > td {
+    // background: $color-bg-50;
+    border-bottom: 1px solid $color-border-base;
+  }
+  div.#{$prefix}-table-summary {
+    box-shadow: 0 -1px $color-border-base;
+  }
+  .#{$prefix}-table-cell-scrollbar {
+    box-shadow: 0 1px 0 1px $color-border-base;
+  }
+  /* ---------------------------------- xxxx ---------------------------------- */
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-content
+  > table
+  > thead
+  > tr
+  > th,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-header
+  > table
+  > thead
+  > tr
+  > th,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-body
+  > table
+  > thead
+  > tr
+  > th,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-summary
+  > table
+  > thead
+  > tr
+  > th,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-content
+  > table
+  > tbody
+  > tr
+  > td,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-header
+  > table
+  > tbody
+  > tr
+  > td,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-body
+  > table
+  > tbody
+  > tr
+  > td,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-summary
+  > table
+  > tbody
+  > tr
+  > td,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-content
+  > table
+  > tfoot
+  > tr
+  > th,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-header
+  > table
+  > tfoot
+  > tr
+  > th,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-body
+  > table
+  > tfoot
+  > tr
+  > th,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-summary
+  > table
+  > tfoot
+  > tr
+  > th,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-content
+  > table
+  > tfoot
+  > tr
+  > td,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-header
+  > table
+  > tfoot
+  > tr
+  > td,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-body
+  > table
+  > tfoot
+  > tr
+  > td,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-summary
+  > table
+  > tfoot
+  > tr
+  > td {
+    border-right: 1px solid $color-border-base;
+  }
+  .#{$prefix}-table.#{$prefix}-table-bordered > .#{$prefix}-table-container {
+    border-left: 1px solid $color-border-base;
+  }
+  .#{$prefix}-table.#{$prefix}-table-bordered > .#{$prefix}-table-container > .#{$prefix}-table-content > table,
+  .#{$prefix}-table.#{$prefix}-table-bordered > .#{$prefix}-table-container > .#{$prefix}-table-header > table {
+    border-top: 1px solid $color-border-base;
+  }
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-content
+  > table
+  > thead
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-header
+  > table
+  > thead
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-body
+  > table
+  > thead
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-summary
+  > table
+  > thead
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-content
+  > table
+  > tbody
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-header
+  > table
+  > tbody
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-body
+  > table
+  > tbody
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-summary
+  > table
+  > tbody
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-content
+  > table
+  > tfoot
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-header
+  > table
+  > tfoot
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-body
+  > table
+  > tfoot
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table.#{$prefix}-table-bordered
+  > .#{$prefix}-table-container
+  > .#{$prefix}-table-summary
+  > table
+  > tfoot
+  > tr
+  > .#{$prefix}-table-cell-fix-right-first:after {
+    border-right: 1px solid $color-border-base;
+  }
+  .#{$prefix}-table-ping-left .#{$prefix}-table-cell-fix-left-first:after,
+  .#{$prefix}-table-ping-left .#{$prefix}-table-cell-fix-left-last:after {
+    box-shadow: inset 10px 0 8px -8px #00000078;
+  }
+  .#{$prefix}-table-ping-right .#{$prefix}-table-cell-fix-right-first:after,
+  .#{$prefix}-table-ping-right .#{$prefix}-table-cell-fix-right-last:after {
+    box-shadow: inset -10px 0 8px -8px #00000078;
+  }
+  td.anteng-table-column-sort {
+    background: $color-bg-200;
+  }
+  .anteng-table-wrapper .anteng-table.anteng-table-bordered .anteng-table-tbody > tr > td {
+    border-color: $color-border-base;
+  }
+  .anteng-table-wrapper .anteng-table-cell-scrollbar:not([rowspan]) {
+    box-shadow: none;
+  }
+}
+.#{$prefix}-table-body {
+  scroll-behavior: smooth;
+}
+.#{$prefix}-spin-container:after {
+  background: $color-bg-300;
+}
+.#{$prefix}-spin-nested-loading > div > .#{$prefix}-spin {
+  max-height: 800px;
+}
+.#{$prefix}-table-placeholder .#{$prefix}-table-cell {
+  background: none !important;
+}
+.anteng-table-wrapper
+.anteng-table-thead
+> tr
+> th:not(:last-child):not(.anteng-table-selection-column):not(.anteng-table-row-expand-icon-cell):not(
+    [colspan]
+  )::before,
+.anteng-table-wrapper
+.anteng-table-thead
+> tr
+> td:not(:last-child):not(.anteng-table-selection-column):not(.anteng-table-row-expand-icon-cell):not(
+    [colspan]
+  )::before {
+  background-color: $color-border-base;
+}
+.anteng-table-wrapper .anteng-table:not(.anteng-table-bordered) .anteng-table-tbody > tr:last-child > td {
+  border-color: $color-border-base;
+}
+@include dark-mode {
+  .anteng-table-wrapper .anteng-table.anteng-table-bordered > .anteng-table-title {
+    border-color: $color-border-base;
+  }
+}
+.anteng-table-wrapper .anteng-table .anteng-table-title,
+.anteng-table-wrapper .anteng-table .anteng-table-header {
+  border-radius: 0;
+}
+.anteng-table-wrapper .anteng-table-sticky-scroll {
+  border-top: none;
+}
+.anteng-spin-nested-loading .anteng-spin-container::after {
+  background: $color-bg-500;
+}

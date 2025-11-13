@@ -1,0 +1,44 @@
+.btp__filter .btp__filter-item .btp__filter-widget {
+  .#{$prefix}-cascader {
+    background: none;
+    background: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-text-base;
+    &-prefix {
+      font-size: 13px;
+      font-weight: bold;
+      padding-left: 2px;
+      color: $color-text-disabled;
+      opacity: 1;
+      margin-right: 8px;
+    }
+  }
+  &.#{$prefix}-cascader-affix-wrapper-focused,
+  &.#{$prefix}-cascader-number-affix-wrapper-focused {
+    border-color: $color-primary !important;
+    box-shadow: $ui-wave;
+  }
+  .#{$prefix}-cascader-number {
+    height: 100% !important;
+    margin: 0;
+    border: none !important;
+    &-cascader {
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 500 !important;
+    }
+    &-prefix {
+      font-size: 13px;
+      padding-left: 2px;
+      font-weight: bold;
+      color: $color-text-disabled;
+      opacity: 1;
+      margin-right: 8px;
+    }
+    .#{$prefix}-cascader-number-handler-wrap {
+      border-radius: inherit;
+      background: inherit;
+    }
+  }
+}

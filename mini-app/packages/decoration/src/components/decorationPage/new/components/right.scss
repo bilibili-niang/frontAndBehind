@@ -1,0 +1,69 @@
+.decoration-right {
+  width: 100%;
+  height: 100%;
+  min-height: 0; /* 使子滚动容器在网格/弹性布局下正确计算高度 */
+  background: var(--v-color-bg-300);
+  overflow: hidden; /* 由内部 ScrollContainer 控制滚动，避免双滚动 */
+  /* 属性面板标题与空态（保留以兼容旧类名） */
+  .jsf_form {
+    width: 100%;
+  }
+  .panel__title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--color-text-base);
+  }
+  .panel__empty {
+    color: var(--color-text-secondary);
+  }
+  /* SchemaForm 外观变量（compact 主题也复用这些变量） */
+  .jsf-form {
+    --form-input-border: #E5E6EB;
+    --form-input-radius: 8px;
+    --form-input-bg: #fff;
+    --form-label-color: var(--color-text-secondary);
+  }
+  /* 右侧 SchemaForm 项间距微调 */
+  .jsf_form-item {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  /* 同步移除控件区的左内边距，避免残留空隙 */
+  .jsf_form-item__widget {
+    padding-left: 0 !important;
+  }
+  /* 面板布局占满高度，标题固定，内容可滚动 */
+  .attr-panel__body {
+    flex: 1;
+    min-height: 0; /* 使子元素滚动容器正确计算高度 */
+    padding: 0;
+    overflow: visible; /* 交由 ScrollContainer 处理滚动 */
+  }
+  .attr-scroll {
+    height: 100%;
+    min-height: 0;
+  }
+  .jsf_form-item__label {
+    width: 130px;
+  }
+
+  /* 组件标题区域样式 */
+  .component-title-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: $color-bg-600;
+    margin-bottom: 8px;
+    .component-title-name {
+      font-weight: 600;
+      color: $color-text-base;
+    }
+    .component-version-tag {
+      cursor: pointer;
+      font-size: 12px;
+      color: $color-text-secondary;
+    }
+  }
+}

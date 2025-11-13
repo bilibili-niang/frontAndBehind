@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-cn" primary-color="cyan" theme="dark">
+<head>
+    <meta charset="UTF-8"/>
+    <link href="" rel="icon"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title></title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      #app[data-mounted] + #app-loading {
+        display: none;
+      }
+      #app-loading {
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+      }
+      #app-loading img {
+        width: 128px;
+        mix-blend-mode: multiply;
+        filter: contrast(2);
+      }
+      #app-loading .app-loading__progress {
+        width: 240px;
+        height: 8px;
+        border-radius: 16px;
+        margin-top: 36px;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.05);
+        i {
+          display: block;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7);
+          border-radius: inherit;
+          animation: app-loading__progress 1s both;
+          transition: all 0.3s 1s;
+        }
+      }
+      #app-loading h5 {
+        margin-top: 36px;
+        font-size: 16px;
+        opacity: 0.6;
+        letter-spacing: 1px;
+      }
+      /* dark theme adjustments before app mounts */
+      html[theme="dark"] #app-loading {
+        background-color: #121212;
+      }
+      html[theme="dark"] #app-loading .app-loading__progress {
+        background-color: rgba(255, 255, 255, 0.12);
+      }
+      html[theme="dark"] #app-loading .app-loading__progress i {
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+      html[theme="dark"] #app-loading h5 {
+        color: rgba(255, 255, 255, 0.85);
+      }
+      @keyframes app-loading__progress {
+        from {
+          transform: translate3d(-100%, 0, 0);
+        }
+        to {
+          transform: translate3d(-10%, 0, 0);
+        }
+      }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+<script src="/src/main.ts" type="module"></script>
+</body>
+</html>

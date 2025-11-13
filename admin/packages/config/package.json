@@ -1,0 +1,8 @@
+{
+  "name": "@anteng/config",
+  "version": "0.1.0",
+  "private": true,
+  "description": "常量",
+  "main": "./index.ts",
+  "module": "./index.ts"
+}

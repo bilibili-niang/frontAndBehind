@@ -1,0 +1,94 @@
+.source-viewer {
+  border: 1px solid var(--color-border-base);
+  background: var(--ui-bg-lighten-2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.source-viewer__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--ui-text, #ddd);
+  background: var(--ui-bg-lighten-4);
+  border-bottom: 1px solid var(--color-border-base);
+}
+
+.source-viewer__title { font-weight: 500; }
+
+.source-viewer__actions { display: flex; gap: 8px; }
+.source-viewer__btn {
+  cursor: pointer;
+  color: var(--color-6, #1677ff);
+  background: transparent;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.source-viewer__btn:hover { text-decoration: underline; }
+
+.source-viewer__body {
+  margin: 0;
+  padding: 8px 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  white-space: pre;
+  overflow: visible;
+}
+
+.source-viewer__line {
+  display: grid;
+  grid-template-columns: 36px 16px 1fr; /* 行号、折叠箭头、代码 */
+  align-items: baseline;
+  will-change: opacity, transform;
+}
+
+.source-viewer__line--collapsed {
+  grid-template-columns: 20px 1fr; /* 折叠时隐藏行号列 */
+}
+.source-viewer__line--collapsed .source-viewer__ln { display: none; }
+/* 紧跟折叠占位后的结束行也隐藏行号 */
+.source-viewer__line--collapsed + .source-viewer__line .source-viewer__ln { display: none; }
+
+.source-viewer__ln {
+  user-select: none;
+  opacity: 0.5;
+  text-align: right;
+  padding-right: 6px;
+  color: var(--color-text-secondary);
+}
+
+.source-viewer__toggle {
+  user-select: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+}
+
+.source-viewer__fold-placeholder {
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-left: 1px dashed var(--color-border-base);
+  padding-left: 8px;
+}
+
+.source-viewer__code {
+}
+
+
+/* 折叠/展开动画 */
+.fold-enter-active, .fold-leave-active { transition: opacity 0.18s ease, transform 0.18s ease; }
+.fold-enter-from, .fold-leave-to { opacity: 0; transform: translateY(-6px); }
+
+
+
+/* 让 HLJS 高亮背景透明并使用主题变量文本色 */
+.source-viewer__body .hljs {
+  background: transparent;
+  color: var(--color-text-base);
+}
+
+

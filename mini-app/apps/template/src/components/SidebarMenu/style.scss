@@ -1,0 +1,42 @@
+.main-sidebar {
+	display: block;
+  // 覆盖 Ant Design Vue Menu 默认左右内边距与右侧边框，消除两侧留白
+  .ant-menu {
+    padding: 0; // 容器不留内边距
+    margin: 0;
+    border-inline-end: 0; // 去掉右侧分隔线
+  }
+  .ant-menu-root.ant-menu-inline {
+    padding-block: 0; // 去掉上下 8px 的默认 padding
+  }
+  .ant-menu-item,
+  .ant-menu-submenu-title {
+    padding-inline: 8px !important; // 缩小左右内边距（默认约 16px）
+  }
+  // 子级菜单在缩小左右内边距的同时保留适度的层级缩进
+  .ant-menu-submenu .ant-menu-item {
+    padding-left: 24px !important;
+  }
+}
+.menu-group {
+	margin-bottom: 8px;
+}
+.menu-item {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	cursor: pointer;
+	padding: 6px 8px;
+}
+.menu-item.parent { font-weight: 500; }
+.menu-item.child { padding-left: 20px; }
+.menu-item.active { color: var(--color-text); }
+.caret { display: inline-flex; transition: transform 0.2s; }
+.caret.expanded { transform: rotate(90deg); }
+.title {
+	flex: 1;
+	font-size: 15px;
+}
+.menu-children { padding-left: 10px; }
+.slide-fade-enter-active, .slide-fade-leave-active { transition: all .2s ease; }
+.slide-fade-enter-from, .slide-fade-leave-to { opacity: 0; transform: translateY(-4px); }

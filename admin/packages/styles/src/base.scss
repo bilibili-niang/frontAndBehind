@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  width: 100% !important; // body.ant-scrolling-effect ?? 这个好像会改变body宽度，目前不知道有什么作用
+  margin: 0;
+  color: rgba(0, 0, 0, 0.85);
+  color: $color-text-base;
+  font-size: 14px;
+  font-size: $size-font-base;
+  font-family:
+    Inter,
+    -apple-system,
+    San Francisco,
+    Noto sans SC,
+    Microsoft YaHei;
+  font-variant: tabular-nums;
+  line-height: 1.4;
+  line-height: 1.5;
+//  background-color: #fff;
+//  background-color: $color-bg-300;
+  font-feature-settings: 'tnum', 'tnum';
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+}
+
+// 文字选中时背景色，仅支持 background-color 和 color
+::selection {
+  background: $color-primary-03;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  &:hover {
+    color: $color-primary-hover;
+  }
+  &:active {
+    color: $color-primary-active;
+  }
+  &[disabled] {
+    color: $color-text-disabled;
+  }
+}
+
+a {
+  font-weight: 500;
+  &.\--danger {
+    color: $color-error;
+  }
+  &.\--disabled {
+    color: $color-text-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// 让通用状态类在任意元素上均生效，
+// 以适配 useTableAction 在 AuthButton 分支中将状态类挂在 span 的实现
+.\--danger {
+  color: $color-error;
+}
+
+.\--disabled {
+  color: $color-text-disabled;
+  cursor: not-allowed;
+}
+
+// 禁用图片拖拽默认行为
+img {
+  -webkit-user-drag: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: inherit;
+}
+
+// 隐藏 tiny-mce 升级按钮
+.tox-promotion {
+  display: none !important;
+}
+
+.#{$prefix}-select-dropdown {
+  z-index: 2000;
+}

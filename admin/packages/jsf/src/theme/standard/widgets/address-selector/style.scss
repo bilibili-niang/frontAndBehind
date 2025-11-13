@@ -1,0 +1,39 @@
+.w_address-selector {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.w_address-selector__input {
+  height: $jsf-ui-component-height;
+  padding-right: 120px;
+}
+
+.w_address-selector__clear {
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: $color-text-disabled;
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.4;
+  &:hover {
+    color: $color-error;
+    opacity: 1;
+  }
+}
+
+.w_address-selector__button {
+  // height: $jsf-ui-component-height;
+  margin-left: 8px;
+  padding: 0 16px !important;
+  font-size: inherit !important;
+  position: absolute;
+  z-index: 10;
+  right: 4px;
+  top: 4px;
+  height: calc($jsf-ui-component-height - 8px);
+}

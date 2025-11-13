@@ -1,0 +1,70 @@
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: '',
+  setup() {
+    return () => {
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="100%"
+          height="100%"
+          viewBox="0 0 87 32"
+          fill="none"
+        >
+          <g opacity="1" transform="translate(0 0)  rotate(0)">
+            <mask id="bg-mask-0" fill="white">
+              <use transform="translate(0 0)  rotate(0)" xlinkHref="#path_0"></use>
+            </mask>
+            <g mask="url(#bg-mask-0)">
+              <g opacity="1" transform="translate(0 0)  rotate(0)">
+                {/* <g opacity="1" transform="translate(0 0)  rotate(0)">
+                  <path
+                    id="Rectangle_2"
+                    fill-rule="evenodd"
+                    style="fill:currentColor"
+                    opacity="0.6"
+                    d="M16.3,31.5c-8.7,0 -15.8,-6.9 -15.8,-15.5c0,-8.6 7.1,-15.5 15.8,-15.5h54.4c8.7,0 15.8,6.9 15.8,15.5c0,8.6 -7.1,15.5 -15.8,15.5z"
+                  ></path>
+                  <path
+                    id="Rectangle_2_00000096054454303149265380000002066866344169999000_"
+                    fill-rule="evenodd"
+                    style="fill:#979797"
+                    opacity="0.2"
+                    d="M70.7,31c8.5,0 15.3,-6.7 15.3,-15c0,-8.3 -6.8,-15 -15.3,-15h-54.4c-8.5,0 -15.3,6.7 -15.3,15c0,8.3 6.8,15 15.3,15zM16.3,32c-9,0 -16.3,-7.2 -16.3,-16c0,-8.8 7.3,-16 16.3,-16h54.4c9,0 16.3,7.2 16.3,16c0,8.8 -7.3,16 -16.3,16z"
+                  ></path>
+                </g> */}
+                <g opacity="1" transform="translate(56.6669921875 7.3330078125)  rotate(0)">
+                  <path
+                    id="Combined_Shape"
+                    fill-rule="evenodd"
+                    style="fill:currentColor"
+                    opacity="1"
+                    d="M8.50039,0.29981c4.40001,0 8.20001,3.7 8.20001,7.99999c0,4.8 -3.8,8.5 -8.20001,8.5c-4.9,0 -8.6,-3.7 -8.6,-8.5c0,-4.3 3.7,-7.99999 8.6,-7.99999zM8.50039,14.7998c3.30001,0 6.20001,-2.8 6.20001,-6.1c0,-3.7 -2.9,-6.5 -6.20001,-6.5c-3.8,0 -6.7,2.8 -6.7,6.5c0,3.2 2.9,6.1 6.7,6.1zM5.30039,8.4998c0,-1.6 1.3,-2.9 3,-2.9c1.70001,0 3.00001,1.3 3.00001,2.9c0,1.6 -1.3,2.9 -3.00001,2.9c-1.7,0 -3,-1.3 -3,-2.9z"
+                  ></path>
+                </g>
+                <path
+                  id="Rectangle_3"
+                  fill-rule="evenodd"
+                  style="fill:currentColor"
+                  opacity="0.2"
+                  d="M43.5,24.6998v-17.9h0.5v17.9z"
+                ></path>
+                <path
+                  id="Fill_43"
+                  fill-rule="evenodd"
+                  style="fill:currentColor"
+                  opacity="1"
+                  d="M22.9998,13.0996c1.8,0 3.2,1.4 3.2,3.2c0,1.8 -1.4,3.2 -3.2,3.2c-1.8,0 -3.2,-1.4 -3.2,-3.2c0,-1.8 1.4,-3.2 3.2,-3.2zM17.7998,16.4996c0,1.1 -0.9,1.9 -2,1.9c-1.1,0 -2,-0.9 -2,-1.9c0,-1 0.9,-1.9 2,-1.9c1.1,0 2,0.8 2,1.9zM32.0998,16.4996c0,1.1 -0.9,1.9 -2,1.9c-1.1,0 -2,-0.9 -2,-1.9c0,-1 0.9,-1.9 2,-1.9c1.1,-0.1 2,0.8 2,1.9z"
+                ></path>
+              </g>
+            </g>
+          </g>
+          <defs>
+            <rect id="path_0" x="0" y="0" width="87" height="32" />
+          </defs>
+        </svg>
+      )
+    }
+  }
+})

@@ -1,0 +1,13 @@
+.#{$prefix}-menu-submenu-title {
+  color: $color-text-base;
+}
+
+.#{$prefix}-menu-item-icon {
+  color: $color-primary !important;
+}
+.#{$prefix}-menu-submenu-title {
+  color: $color-primary !important;
+}
+.#{$prefix}-menu-item-selected {
+  background-color: $color-primary-hover-soft !important;
+}

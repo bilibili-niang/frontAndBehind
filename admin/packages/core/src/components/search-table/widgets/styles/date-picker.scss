@@ -1,0 +1,15 @@
+.btp__filter .btp__filter-item .btp__filter-widget {
+  .#{$prefix}-picker {
+    flex: 1;
+    &-input > input {
+      color: $color-text-base;
+      font-size: 15px;
+      font-weight: 500;
+      &::placeholder {
+        font-size: 13px;
+        color: $color-text-disabled;
+        opacity: 0.4;
+      }
+    }
+  }
+}

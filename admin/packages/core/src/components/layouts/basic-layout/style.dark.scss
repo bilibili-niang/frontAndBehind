@@ -1,0 +1,31 @@
+[theme="dark"] {
+  .basic-layout__icon-button:hover {
+    background-color: $color-bg-50;
+    color: #fff;
+  }
+  .#{$prefix}-basic-layout__main {
+    background-color: $color-bg-300;
+  }
+  [data-layout="layoutA"] {
+    .#{$prefix}-basic-layout__nav {
+      border-bottom: 1px solid $color-bg-50;
+    }
+  }
+  [data-layout="layoutB"] {
+    .#{$prefix}-basic-layout__nav {
+      background-color: $color-bg-100;
+      border-right: 1px solid $color-bg-50;
+    }
+    .basic-layout__app-item {
+      img {
+        background-color: $color-bg-300;
+        border-color: $color-bg-300;
+      }
+    }
+  }
+  [data-layout="layoutC"] {
+    .basic-layout__apps::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, .3);
+    }
+  }
+}

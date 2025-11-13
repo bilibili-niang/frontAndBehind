@@ -1,0 +1,15 @@
+.#{$prefix}-icon {
+  font-size: inherit;
+  color: inherit;
+  vertical-align: -0.15em;
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    fill: currentColor;
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+  }
+}

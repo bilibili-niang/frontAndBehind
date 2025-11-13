@@ -1,0 +1,9 @@
+.use-sms__resend {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: $color-primary;
+  &.disabled {
+    color: $color-text-disabled;
+  }
+}

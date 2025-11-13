@@ -1,0 +1,8 @@
+.#{$prefix}-tag {
+  height: 28px;
+  line-height: 26px;
+  color: var(--color-text-base);
+}
+.#{$prefix}-tag-close-icon {
+  margin-left: 8px;
+}

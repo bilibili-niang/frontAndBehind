@@ -1,0 +1,26 @@
+.tqy-exception-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 100px 140px 100px;
+  white-space: nowrap;
+  flex-direction: row;
+  .image {
+    width: 362px;
+    height: 362px;
+    margin-right: 60px;
+  }
+  h2 {
+    font-size: 32px;
+    line-height: 1;
+  }
+  hr {
+    opacity: 0.2;
+  }
+  p {
+    font-size: 14px;
+    opacity: 0.4;
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+}

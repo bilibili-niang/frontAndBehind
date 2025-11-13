@@ -1,0 +1,42 @@
+.widget-slider {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  // overflow: hidden;
+  position: relative;
+  z-index: 0;
+  &::before {
+    content: '';
+    width: calc(100% - 76px - 8px);
+    height: 100%;
+    border-radius: $ui-border-radius;
+    padding-left: 12px;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    border: 1px solid $color-border-base;
+  }
+  .widget-slider__slider {
+    flex: 2;
+    flex-shrink: 0;
+  }
+  .widget-slider__input {
+    width: 76px;
+  }
+  .anteng-slider {
+    margin: 0 12px;
+  }
+}
+
+.widget-slider--range {
+  height: $jsf-ui-component-height;
+  background: $ui-bg;
+  border-radius: $ui-border-radius;
+  border: 1px solid $color-border-base;
+  &::before {
+    content: none;
+    display: none;
+  }
+}

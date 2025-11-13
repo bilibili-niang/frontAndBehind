@@ -1,0 +1,17 @@
+.fw_range-number {
+  .fw_range-number__min,
+  .fw_range-number__max {
+    background: none;
+    box-shadow: none;
+    border: none;
+  }
+  .fw_range-number__min {
+    flex: 1.5;
+    .anteng-input-number-input {
+      text-align: right;
+    }
+  }
+  .fw_range-number__max {
+    flex: 2;
+  }
+}

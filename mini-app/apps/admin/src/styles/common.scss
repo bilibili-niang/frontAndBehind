@@ -1,0 +1,75 @@
+// 滚动条美化
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    /*高宽分别对应横竖滚动条的尺寸*/
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 6px;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-track {
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+      display: block;
+    }
+  }
+}
+/*
+  页面背景使用 theme.scss 中定义的 --v-color-bg-* 变量
+  注意：不要使用文本颜色变量作为背景色
+*/
+html[theme="light"] {
+  /* 纯白背景 */
+  background-color: var(--v-color-bg-300);
+}
+html[theme="dark"] {
+  /* 深色背景，接近 Vuetify dark 背景 */
+  background-color: var(--v-color-bg-600);
+}
+html {
+  overflow: hidden;
+  /* 彻底隐藏页面级滚动条，避免切换路由时右侧闪现 */
+  scrollbar-width: none !important; /* Firefox */
+  overscroll-behavior: none; /* 禁止滚动链引起的页面级滚动 */
+}
+html, body { height: 100%; }
+/* 保证根容器至少撑满视口，避免页面级滚动 */
+#app { min-height: 100vh; }
+/* WebKit 内核浏览器隐藏页面级滚动条 */
+:where(html, body)::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+/* 取消浏览器默认 body 外边距，避免页面两侧留白 */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 主要滚动容器稳定滚动条占位，避免出现/消失造成布局抖动 */
+:where(.main-sidebar, .bottom-content, .anteng-basic-layout__menu, .basic-layout__apps) {
+  scrollbar-gutter: stable both-edges;
+  overscroll-behavior: contain;
+}
+
+/* 全局通用样式 */
+
+/* 主题切换期间启用正常动画与过渡，便于观察颜色过渡效果 */
+
+/* 可以按需为重绘成本较高的容器再降级一次阴影与滤镜（可选） */
+// :where(html[data-theme-switching='true']) .anteng-page-view-content { box-shadow: none !important; filter: none !important; }
+
+/* OverlayScrollbars 全局定制：缩窄滚动条宽度，并按主题调整颜色 */
+:where(.os-scrollbar) { --os-size: 4px; }
+:where(html[theme='light']) .os-scrollbar-handle { background: rgba(0,0,0,.22); }
+:where(html[theme='light']) .os-scrollbar-handle:hover { background: rgba(0,0,0,.32); }
+:where(html[theme='dark']) .os-scrollbar-handle { background: rgba(255,255,255,.22); }
+:where(html[theme='dark']) .os-scrollbar-handle:hover { background: rgba(255,255,255,.32); }
+
+/* 其他项目样式保持原样 */

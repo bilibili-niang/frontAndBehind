@@ -1,0 +1,103 @@
+.jsf-widget-color {
+  display: flex;
+  .color__thumbnail-wrap {
+    flex-shrink: 0;
+    width: $jsf-ui-component-height;
+    height: $jsf-ui-component-height;
+    margin-right: $size-gap-secondary;
+    border-radius: 2px;
+    padding: 6px;
+    background-color: $ui-bg;
+    border: 1px solid $ui-border-color;
+    transition: all 0.3s;
+    border-radius: $ui-border-radius;
+    &:hover {
+      border-color: $color-primary;
+    }
+    &.--focus {
+      border-color: $color-primary;
+      box-shadow: $shadow-focus;
+    }
+  }
+  .color__thumbnail {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    background-color: #fff;
+    $block-color: #eee;
+    border-radius: 2px;
+    transform: translate3d(0, 0, 0);
+    overflow: hidden;
+    background-image: linear-gradient(45deg, $block-color 25%, transparent 0, transparent 75%, $block-color 0),
+      linear-gradient(45deg, $block-color 25%, transparent 0, transparent 75%, $block-color 0);
+    // background-position: 0 0, 2px 2px;
+    // background-size: 4px 4px;
+    background-position:
+      0 0,
+      3px 3px;
+    background-size: 6px 6px;
+  }
+  .color__real {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #000;
+  }
+  .color__origin {
+    position: relative;
+    z-index: 2;
+    // 默认黑色
+    background-color: #000;
+    width: 200%;
+    height: 200%;
+    transform: rotate(45deg) translate3d(-50%, 50%, 0);
+  }
+}
+.jsf-widget-color__input {
+  width: 100%;
+  max-width: $jsf-ui-component-container-width;
+  height: $jsf-ui-component-height;
+  display: flex;
+  align-items: center;
+  background-color: $ui-bg;
+  border-radius: $ui-border-radius;
+  border: 1px solid $ui-border-color;
+  .#{$prefix}-input-number,
+  input {
+    height: 100%;
+    background: none !important;
+    box-shadow: none !important;
+  }
+  strong {
+    opacity: 0.3;
+    padding: 0 0 0 6px;
+  }
+  .color__hex {
+    width: 0;
+    flex: 1;
+    padding: 0 0 0 2px;
+  }
+  .color__alpha {
+    width: 2.8em;
+    flex: 0 0 2.8em;
+    text-align: right;
+    height: 100%;
+    background: transparent none !important;
+    input {
+      padding: 0 4px 0 0;
+      text-align: right;
+    }
+  }
+  .color__percent {
+    flex-shrink: 0;
+    padding: 0 4px;
+    margin-right: 4px;
+    opacity: 0.3;
+    font-weight: bold;
+  }
+}

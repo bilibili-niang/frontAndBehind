@@ -1,0 +1,106 @@
+.w_suite {
+  --grid-all: 24;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 -4px 0 -4px;
+  width: calc(100% + 8px) !important;
+}
+
+.w_suite-item {
+  padding: 0 4px 4px 4px;
+  margin-bottom: 4px;
+}
+
+.w_suite-item__label {
+  display: block;
+  margin-top: 3px;
+  color: $color-text-secondary;
+  font-size: 0.85em;
+  &.--help {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: $color-text-secondary;
+    text-underline-offset: 3px;
+    cursor: help;
+  }
+}
+
+.jsf-ui-grid-col-auto {
+  flex: 1;
+}
+.jsf-ui-grid-col-1 {
+  width: calc(1 * (100% / 24));
+}
+.jsf-ui-grid-col-2 {
+  width: calc(2 * (100% / 24));
+}
+.jsf-ui-grid-col-3 {
+  width: calc(3 * (100% / 24));
+}
+.jsf-ui-grid-col-4 {
+  width: calc(4 * (100% / 24));
+}
+.jsf-ui-grid-col-5 {
+  width: calc(5 * (100% / 24));
+}
+.jsf-ui-grid-col-6 {
+  width: calc(6 * (100% / 24));
+}
+.jsf-ui-grid-col-7 {
+  width: calc(7 * (100% / 24));
+}
+.jsf-ui-grid-col-8 {
+  width: calc(8 * (100% / 24));
+}
+.jsf-ui-grid-col-9 {
+  width: calc(9 * (100% / 24));
+}
+.jsf-ui-grid-col-10 {
+  width: calc(10 * (100% / 24));
+}
+.jsf-ui-grid-col-11 {
+  width: calc(11 * (100% / 24));
+}
+.jsf-ui-grid-col-11-5 {
+  width: calc(11.5 * (100% / 24));
+}
+.jsf-ui-grid-col-12 {
+  width: calc(12 * (100% / 24));
+}
+.jsf-ui-grid-col-13 {
+  width: calc(13 * (100% / 24));
+}
+.jsf-ui-grid-col-14 {
+  width: calc(14 * (100% / 24));
+}
+.jsf-ui-grid-col-15 {
+  width: calc(15 * (100% / 24));
+}
+.jsf-ui-grid-col-16 {
+  width: calc(16 * (100% / 24));
+}
+.jsf-ui-grid-col-17 {
+  width: calc(17 * (100% / 24));
+}
+.jsf-ui-grid-col-18 {
+  width: calc(18 * (100% / 24));
+}
+.jsf-ui-grid-col-19 {
+  width: calc(19 * (100% / 24));
+}
+.jsf-ui-grid-col-20 {
+  width: calc(20 * (100% / 24));
+}
+.jsf-ui-grid-col-21 {
+  width: calc(21 * (100% / 24));
+}
+.jsf-ui-grid-col-22 {
+  width: calc(22 * (100% / 24));
+}
+.jsf-ui-grid-col-23 {
+  width: calc(23 * (100% / 24));
+}
+.jsf-ui-grid-col-24 {
+  width: calc(24 * (100% / 24));
+}

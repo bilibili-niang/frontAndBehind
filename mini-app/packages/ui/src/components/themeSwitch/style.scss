@@ -1,0 +1,91 @@
+@use 'sass:color';
+
+.#{$prefix}-theme-switch {
+  // 尺寸变量和示例色彩（尽量贴近 CodePen）
+  --switch-w: 56px;
+  --switch-h: 28px;
+  --pad: 3px;
+  --sun: #ffd400;
+  --moon: #3c3f54;
+  --track: #e9e9ef;
+  --track-dark: #1c1e2a;
+  --border: #bfc3d7;
+  --border-dark: #4d5c7a;
+
+  display: inline-flex;
+  align-items: center;
+
+  &.size-default { --switch-w: 64px; --switch-h: 32px; }
+  &.size-large { --switch-w: 72px; --switch-h: 36px; }
+  &.size-small { --switch-w: 56px; --switch-h: 28px; }
+
+  .switch__input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+  .switch__label {
+    position: relative;
+    display: inline-block;
+    width: var(--switch-w);
+    height: var(--switch-h);
+    border-radius: 999px;
+    background: var(--track);
+    box-shadow: inset 0 0 0 2px var(--border);
+    cursor: pointer;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  // knob
+  .switch__knob {
+    position: absolute;
+    top: var(--pad);
+    left: var(--pad);
+    width: calc(var(--switch-h) - var(--pad) * 2);
+    height: calc(var(--switch-h) - var(--pad) * 2);
+    border-radius: 50%;
+    background: var(--anteng-color-primary-400); /* 浅色默认使用主题主色 */
+    transition: transform 0.28s cubic-bezier(.2,.8,.2,1), background 0.25s ease;
+    will-change: transform;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  // icons
+  .switch__icon {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    pointer-events: none;
+    z-index: 3;
+    transition: opacity .22s ease;
+    will-change: opacity;
+  }
+  .switch__icon--light { opacity: 1; }
+  .switch__icon--dark { opacity: 0; }
+
+  // 深色状态（checked）
+  .switch__input:checked + .switch__label {
+    background: var(--track-dark);
+    box-shadow: inset 0 0 0 2px var(--border-dark);
+  }
+  .switch__input:checked + .switch__label .switch__knob {
+    transform: translateX(calc(var(--switch-w) - var(--switch-h)));
+    background: var(--moon);
+    z-index: 2;
+  }
+  .switch__input:checked + .switch__label .switch__icon--light { opacity: 0; }
+  .switch__input:checked + .switch__label .switch__icon--dark { opacity: 1; }
+
+  // 兼容旧类选择器（保持行为一致，但不再直接控制图标显隐，避免与 :checked 规则冲突）
+  &[aria-checked='true'], &.is-dark {
+    .switch__label { background: var(--track-dark); box-shadow: inset 0 0 0 2px var(--border-dark); }
+    .switch__knob { transform: translateX(calc(var(--switch-w) - var(--switch-h))); background: var(--moon); z-index: 2; }
+  }
+
+  // 禁用
+  &.is-disabled .switch__label { cursor: not-allowed; opacity: .6; }
+}

@@ -1,0 +1,44 @@
+.d_container {
+  // position: relative;
+  background-repeat: no-repeat;
+}
+
+.d_container-empty {
+  padding: 36px 0 24px 0;
+}
+
+.d_container__scope {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  transform: translate3d(-102px, 0, 0);
+  border: 1px dashed $color-primary;
+  .text {
+    position: absolute;
+    top: 0;
+    left: 4px;
+    transform: translate3d(0, -50%, 0);
+    background-color: $color-bg-700;
+    color: $color-primary;
+    font-size: 12px;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+
+  &.dragging {
+    background-color: $color-primary-02;
+  }
+}
+
+.d_container {
+  border-radius: inherit;
+}
+
+@include dark-mode {
+  .d_container__scope .text {
+    background-color: $color-bg-600;
+  }
+}

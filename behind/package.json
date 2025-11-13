@@ -1,0 +1,12 @@
+{
+  "name": "birthday-mini-app",
+  "version": "1.0.0",
+  "description": "Birthday mini app project",
+  "scripts": {
+    "predev": "cd koa-typeScript-sequlize-swagger && pnpm install && cd ../miniApp && pnpm install --ignore-scripts",
+    "dev": "concurrently \"cd koa-typeScript-sequlize-swagger && pnpm dev\" \"cd miniApp && pnpm dev:tourism:weapp\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

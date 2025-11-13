@@ -1,0 +1,34 @@
+.#{$prefix}-address-selector {
+  width: 640px;
+  padding: 0 16px 20px;
+  margin-top: -12px;
+}
+
+.#{$prefix}-address-selector__container {
+  width: 100%;
+  height: 500px;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid $color-border-base;
+}
+
+.#{$prefix}-address-selector__info {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: $color-text-base;
+  border-radius: 4px;
+  padding: 12px;
+  border: 1px solid $color-border-base;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.#{$prefix}-address-selector__footer {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}

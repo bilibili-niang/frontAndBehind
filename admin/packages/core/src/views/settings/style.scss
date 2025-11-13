@@ -1,0 +1,113 @@
+.#{$prefix}-settings {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+.#{$prefix}-settings__menu {
+  width: 256px;
+  background-color: $color-bg-50;
+  padding: 24px;
+  border-radius: 10px 0 0 10px;
+  transition: all 0.3s;
+}
+
+.#{$prefix}-settings__content {
+  height: 600px;
+  flex: 1;
+  padding: 24px 24px 0 24px;
+  background-color: $color-bg-400;
+  border-radius: 0 10px 10px 0;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.#{$prefix}-settings__content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  & + * {
+    flex: 1;
+    padding-top: 12px;
+    -webkit-mask-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 1) 36px,
+      rgba(0, 0, 0, 1) calc(100% - 24px),
+      rgba(0, 0, 0, 0)
+    );
+    mask-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 1) 36px,
+      rgba(0, 0, 0, 1) calc(100% - 24px),
+      rgba(0, 0, 0, 0)
+    );
+    padding-bottom: 36px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+.#{$prefix}-settings__title {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+}
+.#{$prefix}-settings__sub-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.#{$prefix}-settings__category {
+  flex: 1 1;
+  font-size: 14px;
+  overflow: auto;
+  padding-bottom: 8px;
+  padding-top: 20px;
+}
+.#{$prefix}-settings__category-item {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  margin: 8px 0;
+  border-radius: 4px;
+  &:hover {
+    color: $color-primary;
+  }
+  &.\--active {
+    color: $color-primary;
+    background-color: $color-primary-hover-soft;
+  }
+  .icon {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  &.--disabled {
+    cursor: not-allowed;
+    .settings-item__value {
+      pointer-events: none;
+    }
+  }
+}
+.settings-item__label {
+  width: 120px;
+}
+.settings-item__value {
+  min-width: 180px;
+  width: auto !important;
+}
+
+.settings-devider {
+  margin: 24px 0;
+  height: 1px;
+  background-color: $color-bg-50;
+}

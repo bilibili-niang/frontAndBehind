@@ -1,0 +1,58 @@
+{
+  "dataSchema": {
+    "type": "array",
+    "schema": {
+      "essee": {
+        "type": "string",
+        "required": true,
+        "enumAuto": 61,
+        "generator": "sunt in Lorem magna voluptate",
+        "default": null,
+        "min": 47,
+        "max": 88,
+        "children": { "ex_fa6": null }
+      },
+      "quis6_5": {
+        "type": "string",
+        "required": true,
+        "enumAuto": { "size": 41 },
+        "generator": "eiusmod qui exercitation fugiat eu",
+        "default": null,
+        "min": 8,
+        "max": 73,
+        "children": { "tempor_b": null, "nisi28d": null, "non_4b": null, "ad_350": null }
+      },
+      "est4": {
+        "type": "string",
+        "required": true,
+        "enumAuto": { "size": 28 },
+        "generator": "officia irure dolor nulla",
+        "default": null,
+        "min": 82,
+        "max": 14,
+        "children": { "occaecat4": null }
+      },
+      "sit4": {
+        "type": "string",
+        "required": false,
+        "enumAuto": { "size": 74 },
+        "generator": "labore Lorem",
+        "default": null,
+        "min": 71,
+        "max": 89,
+        "children": { "in_6f6": null, "aute_b1b": null }
+      },
+      "anim_4": {
+        "type": "string",
+        "required": true,
+        "enumAuto": 75,
+        "generator": "adipisicing eu",
+        "default": null,
+        "min": 74,
+        "max": 92,
+        "children": { "ipsum_18": null, "est309": null, "culpaa7": null }
+      }
+    }
+  },
+  "count": 73
+}

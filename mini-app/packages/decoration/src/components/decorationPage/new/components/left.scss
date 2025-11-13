@@ -1,0 +1,174 @@
+.decoration-left {
+  padding: 12px;
+  border-right: 1px solid var(--ui-border-color);
+  height: 100%;
+  overflow: hidden; /* 使用 ScrollContainer 控制滚动 */
+  background: var(--v-color-bg-300);
+
+  .group {
+    margin-bottom: 16px;
+  }
+  .group__title {
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .group__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  /* 组件卡片（限定在左侧面板作用域） */
+  .comp-card {
+    background: var(--v-color-bg-200);
+    border: 1px solid var(--ui-border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s, border-color 0.2s;
+
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      border-color: var(--v-theme-primary);
+    }
+
+    .comp-card__thumb {
+      height: 72px;
+      background: var(--v-color-bg-400);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thumb-placeholder {
+      width: 36px;
+      height: 24px;
+      border-radius: 4px;
+      background: var(--v-color-bg-500);
+    }
+
+    .comp-card__meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      font-size: 12px;
+    }
+  }
+
+  /* 图层面板（移除卡片包裹样式） */
+  .layer-panel {
+    margin-bottom: 12px;
+  }
+  .layer-panel__title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-text-base);
+    padding: 8px 12px;
+    margin-bottom: 8px;
+  }
+  .layer-panel__body {
+    padding: 0;
+    /* 设置确定的容器高度，让内部滚动容器能以百分比高度生效 */
+    height: var(--decoration-layer-max-height, 280px);
+    min-height: var(--decoration-layer-min-height, 120px);
+    overflow: visible; /* 不隐藏 SimpleBar 轨道 */
+    overscroll-behavior: contain;
+  }
+  .layer-empty {
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* 让滚动容器占满图层面板的高度 */
+  .layer-list {
+    height: 100%;
+  }
+
+  /* 左侧整体内容滚动容器占满高度 */
+  .left-content {
+    height: 100%;
+  }
+  .layer-item {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    padding: 0 10px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    color: var(--color-text-base);
+    background: var(--v-color-bg-300);
+    border: 1px solid var(--ui-border-color);
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+  }
+  .layer-item:hover {
+    background: var(--v-color-bg-200);
+  }
+  .layer-item.--active {
+    background: var(--anteng-color-primary-50);
+    border-color: var(--anteng-color-primary-300);
+    box-shadow: inset 3px 0 0 var(--anteng-color-primary-500);
+  }
+  .layer-item__name {
+    font-size: 13px;
+  }
+
+  /* 卡片优化（限定在左侧） */
+  .comp-card {
+    background: #fff;
+    border: 1px solid #E5E6EB;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: box-shadow .2s, transform .08s;
+  }
+  .comp-card:hover {
+    box-shadow: 0 6px 16px rgba(31, 35, 41, 0.08);
+    border-color: var(--v-theme-primary);
+  }
+  .comp-card__thumb {
+    background: #F5F7FA;
+  }
+  .comp-card__meta {
+    font-size: 12px;
+    color: #4E5969;
+  }
+
+  /* 分段切换 */
+  .segmented {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .segmented__item {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ui-border-color);
+    border-radius: 8px;
+    background: var(--v-color-bg-200);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .segmented__item:hover {
+    background: var(--v-color-bg-100);
+    color: var(--color-text-base);
+  }
+  .segmented__item.--active {
+    background: var(--anteng-color-primary-50);
+    color: var(--anteng-color-primary-800);
+    border-color: var(--anteng-color-primary-300);
+  }
+
+  /* 覆盖 PropertyTabs 默认内容背景（保持左侧面板透明） */
+  .property-tabs__content {
+    background: transparent;
+  }
+}

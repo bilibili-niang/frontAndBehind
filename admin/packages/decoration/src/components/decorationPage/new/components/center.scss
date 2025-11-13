@@ -1,0 +1,199 @@
+.decoration-center {
+  background: var(--v-color-bg-50);
+  align-items: center;
+  border-right: 1px solid var(--ui-border-color);
+  display: flex;
+  /* 左对齐并去除内边距，减少左右留白 */
+  justify-content: flex-start;
+  padding: 0;
+  /* 仅纵向滚动，禁止横向滚动避免外层悬浮控件造成溢出 */
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-direction: column;
+  /* 设备框架 */
+  .phone-frame {
+    width: 375px;
+    height: 800px;
+    background: #fff;
+    border: 1px solid var(--ui-border-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    // 隐藏滚动条
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+  /* 胶囊按钮 */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: var(--v-color-bg-500);
+    border: 1px solid var(--ui-border-color);
+    color: var(--color-text-base);
+  }
+  .pill + .pill {
+    margin-left: 8px;
+  }
+  /* 顶部状态栏 */
+  .phone-topbar {
+    height: 40px;
+    /* 替换 1px 边框为内阴影，避免黑线 */
+    border-bottom: none;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    .time {
+      font-weight: 600;
+    }
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .status-icons .icon {
+      display: inline-block;
+    }
+    .status-icons .cellular {
+      width: 16px;
+      height: 10px;
+      background: linear-gradient(to top, var(--color-text-secondary) 2px, transparent 0) 0 100%/2px 2px,
+      linear-gradient(to top, var(--color-text-secondary) 4px, transparent 0) 4px 100%/2px 4px,
+      linear-gradient(to top, var(--color-text-secondary) 6px, transparent 0) 8px 100%/2px 6px,
+      linear-gradient(to top, var(--color-text-secondary) 8px, transparent 0) 12px 100%/2px 8px;
+      background-repeat: no-repeat;
+      opacity: .8;
+    }
+    .status-icons .wifi {
+      width: 14px;
+      height: 10px;
+      position: relative;
+      opacity: .8;
+    }
+    .status-icons .wifi::before, .status-icons .wifi::after {
+      content: "";
+      position: absolute;
+      border: 2px solid var(--color-text-secondary);
+      border-top-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-radius: 50%;
+    }
+    .status-icons .wifi::before {
+      width: 14px;
+      height: 14px;
+      top: -6px;
+      left: -1px;
+    }
+    .status-icons .wifi::after {
+      width: 8px;
+      height: 8px;
+      top: -3px;
+      left: 2px;
+    }
+    .status-icons .battery {
+      width: 18px;
+      height: 10px;
+      border: 2px solid var(--color-text-secondary);
+      border-radius: 2px;
+      position: relative;
+      opacity: .8;
+    }
+    .status-icons .battery i {
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      width: 10px;
+      height: 4px;
+      background: var(--color-text-secondary);
+      border-radius: 1px;
+    }
+    .status-icons .battery::after {
+      content: "";
+      position: absolute;
+      right: -3px;
+      top: 2px;
+      width: 2px;
+      height: 6px;
+      background: var(--color-text-secondary);
+      border-radius: 1px;
+    }
+  }
+  /* 导航栏样式已迁移到 components/navigator/index.scss */
+  /* 画布主体与预览项 */
+  .phone-body {
+    flex: 1;
+    /* 仅在手机框范围内滚动 */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* 给内容留左右内边距，避免贴边看起来像溢出 */
+    padding: 0;
+
+    /* 隐藏各浏览器的滚动条 */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar { /* Chrome/Safari */
+      width: 0;
+      height: 0;
+      display: none;
+    }
+    &.--dragging {
+      outline: 2px dashed var(--ui-border-color);
+      outline-offset: -2px;
+    }
+  }
+  .preview-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* 外部悬浮的操作按钮层（容器外部） */
+  .floating-controls {
+    position: absolute;
+    right: -52px;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 5;
+    pointer-events: auto;
+  }
+  .comp-control {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: var(--v-color-bg-500);
+    border: 1px solid var(--ui-border-color);
+    color: var(--color-text-base);
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+    margin-bottom: 5px;
+  }
+  .comp-control:hover {
+    background: var(--v-color-bg-600);
+  }
+  .comp-control.round {
+    border-radius: 999px;
+  }
+}
+.empty-block {
+  position: absolute;
+  top: 0;
+}
+.fixed-status-bar {
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+}

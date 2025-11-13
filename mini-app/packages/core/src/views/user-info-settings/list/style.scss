@@ -1,0 +1,32 @@
+.p_user-profile-list__user {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  align-items: center;
+  .avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $color-bg-400;
+    border: 1px solid $color-bg-300;
+    margin-right: 8px;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .info {
+    line-height: 1;
+  }
+
+  .nickname {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .phone {
+    color: $color-text-tertiary;
+    margin-top: 6px;
+  }
+}

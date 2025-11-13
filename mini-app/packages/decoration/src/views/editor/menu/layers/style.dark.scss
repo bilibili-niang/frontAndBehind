@@ -1,0 +1,8 @@
+[theme="dark"] {
+  .layer-node__lock,
+  .layer-node__visible {
+    &::before {
+      background-color: $color-bg-50;
+    }
+  }
+}

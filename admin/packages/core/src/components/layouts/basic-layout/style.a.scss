@@ -1,0 +1,115 @@
+[data-layout='layoutA'] {
+  .#{$prefix}-basic-layout__nav {
+    width: 100%;
+    flex-shrink: 0;
+    height: 56px;
+    background-color: $color-bg-100;
+    border-bottom: 1px solid $color-border-base;
+    display: flex;
+    align-items: center;
+    padding: 0 24px 0 12px;
+    gap: 12px;
+    overflow: hidden;
+  }
+  .basic-layout__brand {
+    min-width: 220px - 12px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .icon {
+      pointer-events: none;
+      font-size: 100px;
+      width: auto;
+    }
+  }
+
+  .basic-layout__apps {
+    height: 100%;
+    flex: 1;
+    flex-shrink: 1;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    gap: 16px;
+    overflow: auto hidden;
+    overflow: overlay hidden;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .basic-layout__app-item {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 4px;
+    color: $color-text-secondary;
+    white-space: nowrap;
+    cursor: pointer;
+    & > img {
+      display: none;
+    }
+    &:hover {
+      color: $color-primary-08;
+    }
+    &.--active {
+      color: $color-text-base;
+      position: relative;
+      font-weight: bolder;
+      // &::before {
+      //   content: "";
+      //   width: 60%;
+      //   height: 5px;
+      //   border-radius: 3px;
+      //   background-color: $color-primary;
+      //   position: absolute;
+      //   bottom: 0;
+      //   left: 50%;
+      //   transform: translate3d(-50%, 5px, 0);
+      // }
+    }
+  }
+  .basic-layout__user-avatar {
+    flex-shrink: 0;
+    min-width: 36px;
+    height: 36px;
+    // border: 2px solid #fff;
+    background-color: $color-bg-400;
+    background-color: #f5f6fa;
+    box-shadow: 0 0 4px rgba(#3c5de4, 0.1) inset;
+    padding: 2px 12px 2px 5px;
+    border-radius: 20px;
+    box-sizing: content-box;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    margin-right: -8px;
+    .switch {
+      right: initial;
+      left: 32px;
+      transform: translate3d(-100%, 0, 0);
+      display: none;
+    }
+    img {
+      width: 32px;
+      height: 32px;
+      // border: 2px solid #fff;
+      border-radius: 50%;
+    }
+    .company-name {
+      margin-left: 8px;
+      margin-right: 4px;
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+[theme='dark'] [data-layout='layoutA'] {
+  .basic-layout__user-avatar {
+    background-color: $color-bg-50;
+    box-shadow: 0 0 1px $color-border-base;
+  }
+}

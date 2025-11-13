@@ -1,0 +1,242 @@
+.deck-editor-header {
+  width: 100%;
+  height: 48px;
+  background-color: $color-bg-300;
+  border-bottom: 1px solid $color-border-base;
+  display: flex;
+  align-items: center;
+  // padding: 0 16px;
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+
+.deck-editor-header__left {
+  align-self: stretch;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  width: 308px;
+}
+
+.deck-editor-header__center {
+  flex: 1;
+  align-self: stretch;
+  flex-shrink: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deck-editor-header__right {
+  width: 316px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
+}
+
+.deck-editor-header__back {
+  height: 28px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-left: 12px;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+  cursor: pointer;
+  iconpark-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+    padding-right: 2px;
+    transform: scale(1.5);
+    transition: transform 0.3s;
+  }
+  &.\--hover,
+  &:hover {
+    background-color: $color-primary-02;
+    border-color: $color-primary;
+    width: 112px;
+    color: $color-primary;
+    iconpark-icon {
+      transform: scale(1);
+    }
+  }
+}
+
+.deck-editor-header__name {
+  margin-left: 12px;
+}
+
+.deck-editor-header__button {
+  min-width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  margin: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-bg-100;
+  padding: 2px 12px 1.5px 10px;
+  font-size: 16px;
+  white-space: nowrap;
+  border: $border-base;
+  transition: all 0.3s;
+  position: relative;
+  color: $color-text-secondary;
+  &:hover {
+    border-color: $color-primary;
+    color: $color-text-base;
+  }
+  strong {
+    font-size: 12px;
+    margin-left: 4px;
+  }
+  small {
+    font-size: 11px;
+    position: relative;
+    top: -1px;
+  }
+  &.__platform {
+    width: 76px;
+    padding: 0 4px 0 0;
+  }
+  &.__preview {
+    padding-left: 8px;
+    iconpark-icon {
+      transform: scale(1.2);
+    }
+  }
+  &.__publish {
+    color: $color-primary;
+  }
+
+  &:hover {
+    .sink {
+      transform: scale(0.7) translate3d(5px, 5px, 0) rotate(45deg);
+    }
+  }
+  .sink {
+    opacity: 0.4;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: scale(0.7) translate3d(2px, 2px, 0) rotate(45deg);
+    transition: all 0.3s;
+  }
+}
+
+.deck-editor-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.deck-editor-header__comp-name {
+  font-size: 15px;
+  font-weight: 500;
+  margin-right: 24px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  input {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  &::after {
+    content: '';
+    width: 1px;
+    height: 24px;
+    background-color: #ddd;
+    position: absolute;
+    right: -12px - 8px;
+  }
+  strong {
+    cursor: text;
+  }
+  iconpark-icon {
+    font-size: 16px;
+    margin-left: 4px;
+  }
+  .icon {
+    margin-left: 8px;
+  }
+}
+.deck-editor-header__comp-name-text {
+  // width: 80px;
+  display: flex;
+  font-size: inherit;
+  position: relative;
+  span {
+    max-width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+    opacity: 0;
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    &:focus {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
+.deck-editor-header__action {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  padding: 0;
+  background: initial;
+  border-color: transparent;
+  border-radius: 4px;
+  color: $color-text-secondary;
+  position: relative;
+  color: #666;
+  &:hover {
+    background-color: $color-bg-700;
+    .sink {
+      transform: translate3d(2px, 2px, 0) rotate(45deg);
+    }
+  }
+  .sink {
+    opacity: 0.6;
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    transform: translate3d(0, 0, 0) rotate(45deg);
+    transition: all 0.3s;
+    font-size: 10px;
+  }
+}
+
+.deck-editor-header__scope {
+  font-size: 12px;
+  margin-left: 12px;
+  background-color: $color-primary-02;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid $color-primary-06;
+  color: $color-primary;
+}
