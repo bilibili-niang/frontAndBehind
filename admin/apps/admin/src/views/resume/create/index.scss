@@ -1,0 +1,46 @@
+.resume-create-page {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+
+  .resume-create-page-card {
+    width: 720px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 16px;
+
+    .resume-create-page-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .resume-create-page-form {
+      .resume-create-page-form-row {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 16px;
+
+        .resume-create-page-label {
+          color: #333;
+        }
+      }
+
+      .resume-create-page-textarea {
+        min-height: 160px;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        padding: 8px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+
+      .resume-create-page-actions {
+        display: flex;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
