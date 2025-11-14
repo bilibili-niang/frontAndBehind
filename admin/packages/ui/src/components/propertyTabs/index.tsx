@@ -9,12 +9,6 @@ export interface PropertyTab {
   render: () => any
 }
 
-export interface PropertyTabsProps {
-  tabs: PropertyTab[]
-  defaultActiveKey?: string
-  onChange?: (activeKey: string) => void
-}
-
 export const PropertyTabs = defineComponent({
   name: 'PropertyTabs',
   props: {
@@ -63,30 +57,30 @@ export const PropertyTabs = defineComponent({
 
     return () => (
       <div class="property-tabs">
-        <div class="property-tabs__header">
+        <div class="property-tabs-header">
           {props.tabs.map((tab) => (
             <div
               key={tab.key}
               ref={(el) => setTabRef(tab.key, el as HTMLElement)}
               class={[
-                'property-tabs__tab clickable',
+                'property-tabs-tab clickable',
                 activeKey.value === tab.key && '--active'
               ]}
               onClick={() => handleTabClick(tab.key)}
             >
-              {tab.icon && <Icon class="property-tabs__icon" name={tab.icon}/>} 
-              <span class="property-tabs__title">{tab.title}</span>
-              <i class="property-tabs__arc-l"></i>
-              <i class="property-tabs__arc-r"></i>
+              {tab.icon && <Icon class="property-tabs-icon" name={tab.icon}/>} 
+              <span class="property-tabs-title">{tab.title}</span>
+              <i class="property-tabs-arc-l"></i>
+              <i class="property-tabs-arc-r"></i>
             </div>
           ))}
         </div>
-        <div class="property-tabs__content">
+        <div class="property-tabs-content">
           {props.tabs.map((tab) => (
             <div
               key={tab.key}
               ref={(el) => setPaneRef(tab.key, el as HTMLElement)}
-              class="property-tabs__pane"
+              class="property-tabs-pane"
               style={{ display: activeKey.value === tab.key ? 'block' : 'none', opacity: 1 }}
             >
               {tab.render()}

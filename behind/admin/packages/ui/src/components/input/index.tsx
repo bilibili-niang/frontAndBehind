@@ -1,3 +1,1 @@
-import { VTextField as Input } from 'vuetify/components'
-
-export default Input
+export { VTextField as default } from 'vuetify/components'

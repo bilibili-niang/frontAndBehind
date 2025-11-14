@@ -3,9 +3,10 @@
   height: 100%;
   overflow: hidden; /* 使用 ScrollContainer 控制滚动 */
   background: var(--v-color-bg-300);
-.property-tabs-container{
-
-}
+  .property-tabs-container {
+    display: flex;
+    max-height: 100%;
+  }
   .group {
     margin-bottom: 16px;
   }
@@ -170,7 +171,7 @@
   }
 
   /* 覆盖 PropertyTabs 默认内容背景（保持左侧面板透明） */
-  .property-tabs__content {
+  .property-tabs-content {
     background: transparent;
   }
 }

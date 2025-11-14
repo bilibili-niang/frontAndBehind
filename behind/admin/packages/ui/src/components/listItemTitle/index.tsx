@@ -1,3 +1,1 @@
-import { VListItemTitle as ListItemTitle } from 'vuetify/components'
-
-export default ListItemTitle
+export { VListItemTitle as default } from 'vuetify/components'

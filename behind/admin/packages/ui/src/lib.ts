@@ -10,5 +10,5 @@ export { default as ListItemSubtitle } from './components/listItemSubtitle/index
 export { default as ListItemTitle } from './components/listItemTitle/index'
 export { default as Modal } from './components/modal/index'
 export { createModal } from './components/modal/service'
-export { notify, notifySuccess, installNotify, notifyError } from './components/notify/index'
+export { installNotify, notify, notifyError, notifySuccess } from './components/notify/index'
 export * as vuetify from 'vuetify'

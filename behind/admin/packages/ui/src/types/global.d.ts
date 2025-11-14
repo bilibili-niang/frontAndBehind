@@ -16,7 +16,7 @@ declare module 'vuetify/components' {
 
 // 全局类型声明
 declare module '*.vue' {
-  import { DefineComponent } from 'vue'
+  import type { DefineComponent } from 'vue'
   const component: DefineComponent<{}, {}, any>
   export default component
 }

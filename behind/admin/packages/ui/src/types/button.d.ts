@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'vue'
+import type { HTMLAttributes } from 'vue'
 
 // 导出 Button 组件的属性类型
 export interface Button extends Omit<HTMLAttributes, keyof VBtn> {

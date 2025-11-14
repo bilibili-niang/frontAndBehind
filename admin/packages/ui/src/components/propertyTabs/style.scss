@@ -8,13 +8,13 @@
     width: 100%;
     box-sizing: border-box;
   }
-  &__header {
+  &-header {
     display: flex;
     align-items: center;
     gap: 3px;
     margin-bottom: 16px;
   }
-  &__tab {
+  &-tab {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -33,7 +33,7 @@
     &.--active {
       color: var(--anteng-color-primary);
       background: var(--anteng-color-bg-500);
-      .property-tabs__title {
+      .property-tabs-title {
         color: var(--anteng-color-primary);
       }
     }
@@ -46,16 +46,16 @@
       pointer-events: none;
     }
   }
-  &__icon {
+  &-icon {
     font-size: 16px;
   }
-  &__title {
+  &-title {
     font-size: 12px;
     font-weight: 500;
     color: $color-text-base;
   }
-  &__arc-l,
-  &__arc-r {
+  &-arc-l,
+  &-arc-r {
     display: none; /* 仅做兼容，需要时可启用 */
     position: absolute;
     top: 2px;
@@ -64,18 +64,18 @@
     background: transparent;
     pointer-events: none;
   }
-  &__arc-l {
+  &-arc-l {
     left: -6px;
   }
-  &__arc-r {
+  &-arc-r {
     right: -6px;
   }
-  &__content {
+  &-content {
     height: 100%;
     position: relative;
     overflow: visible; // 交由外层 ScrollContainer 控制滚动
   }
-  &__pane {
+  &-pane {
     display: flex;
     flex: 1;
     will-change: transform, opacity;
@@ -87,17 +87,17 @@
 }
 // 兼容原有样式类名
 .lego-config-tab {
-  @extend .property-tabs__header;
+  @extend .property-tabs-header;
   &__item {
-    @extend .property-tabs__tab;
+    @extend .property-tabs-tab;
     .lego-icon {
-      @extend .property-tabs__icon;
+      @extend .property-tabs-icon;
     }
     .--arc-l {
-      @extend .property-tabs__arc-l;
+      @extend .property-tabs-arc-l;
     }
     .--arc-r {
-      @extend .property-tabs__arc-r;
+      @extend .property-tabs-arc-r;
     }
   }
 }

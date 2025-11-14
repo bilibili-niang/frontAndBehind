@@ -1,3 +1,1 @@
-import { VListItem as ListItem } from 'vuetify/components'
-
-export default ListItem
+export { VListItem as default } from 'vuetify/components'

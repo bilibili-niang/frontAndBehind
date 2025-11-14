@@ -13,16 +13,16 @@ export type NotifyOptions = {
 let container: HTMLElement | null = null
 let appContext: AppContext | null = null
 
-export function installNotify(app: App) {
+export function installNotify (app: App) {
   appContext = app._context
 }
 
 // 供内部复用（例如程序化 Modal 组件）
-export function _getUiAppContext() {
+export function _getUiAppContext () {
   return appContext
 }
 
-export function notify(opts: NotifyOptions) {
+export function notify (opts: NotifyOptions) {
   const state = reactive({
     model: true,
     text: opts.text,
@@ -43,40 +43,44 @@ export function notify(opts: NotifyOptions) {
     createVNode(VBtn as any, {
       variant: 'text', onClick: () => {
         state.model = false
-      }
+      },
     }, { default: () => '关闭' })
 
   const vnode = createVNode(
     VSnackbar as any,
     {
-      modelValue: state.model,
+      'modelValue': state.model,
       'onUpdate:modelValue': (v: boolean) => {
         state.model = v
-        if (!v) cleanup()
+        if (!v) {
+          cleanup()
+        }
       },
-      timeout: state.timeout,
-      location: state.location,
-      color: state.color,
-      rounded: 'lg',
-      variant: state.variant,
-      transition: 'slide-x-reverse-transition',
+      'timeout': state.timeout,
+      'location': state.location,
+      'color': state.color,
+      'rounded': 'lg',
+      'variant': state.variant,
+      'transition': 'slide-x-reverse-transition',
     },
     {
       default: defaultSlot,
       actions: actionsSlot,
-    }
+    },
   )
 
   // 关键：让程序化渲染的节点继承宿主应用的 appContext（包含 Vuetify 注入）
-  if (appContext) vnode.appContext = appContext
+  if (appContext) {
+    vnode.appContext = appContext
+  }
 
-  function mount() {
+  function mount () {
     container = document.createElement('div')
-    document.body.appendChild(container)
+    document.body.append(container)
     render(vnode, container)
   }
 
-  function cleanup() {
+  function cleanup () {
     if (container) {
       render(null, container)
       container.parentNode?.removeChild(container)
@@ -87,10 +91,10 @@ export function notify(opts: NotifyOptions) {
   nextTick(mount)
 }
 
-export function notifySuccess(text: string, opts: Omit<NotifyOptions, 'text' | 'color' | 'icon'> = {}) {
+export function notifySuccess (text: string, opts: Omit<NotifyOptions, 'text' | 'color' | 'icon'> = {}) {
   notify({ text, color: 'success', icon: 'mdi-check-circle-outline', ...opts })
 }
 
-export function notifyError(text: string, opts: Omit<NotifyOptions, 'text' | 'color' | 'icon'> = {}) {
+export function notifyError (text: string, opts: Omit<NotifyOptions, 'text' | 'color' | 'icon'> = {}) {
   notify({ text, color: 'error', icon: 'mdi-alert-circle-outline', ...opts })
 }

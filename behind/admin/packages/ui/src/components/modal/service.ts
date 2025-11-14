@@ -1,5 +1,5 @@
-import { createVNode, render, reactive, type AppContext, type VNode, type Component, h } from 'vue'
-import { VDialog, VCard, VCardTitle, VCardText, VCardActions, VDivider } from 'vuetify/components'
+import { type AppContext, type Component, createVNode, h, reactive, render, type VNode } from 'vue'
+import { VCard, VCardActions, VCardText, VCardTitle, VDialog, VDivider } from 'vuetify/components'
 import { _getUiAppContext } from '../notify/index'
 
 export type ModalServiceSlots = {
@@ -27,13 +27,17 @@ export type ModalServiceController = {
   destroy: () => void
 }
 
-function toSlot(v?: VNode | (() => VNode | VNode[] | null)): (() => VNode | VNode[] | null) | undefined {
-  if (!v) return undefined
-  if (typeof v === 'function') return v as any
+function toSlot (v?: VNode | (() => VNode | VNode[] | null)): (() => VNode | VNode[] | null) | undefined {
+  if (!v) {
+    return undefined
+  }
+  if (typeof v === 'function') {
+    return v as any
+  }
   return () => v
 }
 
-export function createModal(opts: ModalServiceOptions = {}): ModalServiceController {
+export function createModal (opts: ModalServiceOptions = {}): ModalServiceController {
   const state = reactive({
     model: false,
     title: opts.title ?? '',
@@ -47,11 +51,15 @@ export function createModal(opts: ModalServiceOptions = {}): ModalServiceControl
   const vnode = createVNode(
     VDialog as unknown as Component,
     {
-      modelValue: state.model,
-      'onUpdate:modelValue': (v: boolean) => { state.model = v; if (!v) /* noop */ null },
-      width: state.width,
-      maxWidth: state.maxWidth,
-      persistent: state.persistent,
+      'modelValue': state.model,
+      'onUpdate:modelValue': (v: boolean) => {
+        state.model = v; if (!v) /* noop */ {
+          null
+        }
+      },
+      'width': state.width,
+      'maxWidth': state.maxWidth,
+      'persistent': state.persistent,
     },
     {
       default: () => h(
@@ -64,42 +72,68 @@ export function createModal(opts: ModalServiceOptions = {}): ModalServiceControl
             h(VCardText as unknown as Component, {}, { default: () => state.content?.() ?? null }),
             state.actions ? h(VDivider as unknown as Component) : null,
             state.actions ? h(VCardActions as unknown as Component, {}, { default: () => state.actions?.() ?? null }) : null,
-          ]
-        }
-      )
-    }
+          ],
+        },
+      ),
+    },
   )
 
   const appContext: AppContext | null = _getUiAppContext()
-  if (appContext) vnode.appContext = appContext
+  if (appContext) {
+    vnode.appContext = appContext
+  }
 
   const container = document.createElement('div')
 
-  function mount() {
-    document.body.appendChild(container)
+  function mount () {
+    document.body.append(container)
     render(vnode, container)
   }
 
-  function unmount() {
+  function unmount () {
     render(null, container)
     container.parentNode?.removeChild(container)
   }
 
   const controller: ModalServiceController = {
-    open() { state.model = true },
-    close() { state.model = false },
-    update(patch) {
-      if (patch.title !== undefined) state.title = patch.title
-      if (patch.width !== undefined) state.width = patch.width
-      if (patch.maxWidth !== undefined) state.maxWidth = patch.maxWidth
-      if (patch.persistent !== undefined) state.persistent = patch.persistent
-      if (patch.content !== undefined) state.content = toSlot(patch.content)
-      if (patch.actions !== undefined) state.actions = toSlot(patch.actions)
+    open () {
+      state.model = true
     },
-    setTitle(title) { state.title = title ?? '' },
-    setContent(content) { state.content = toSlot(content) },
-    setActions(actions) { state.actions = toSlot(actions) },
-    destroy() { unmount() },
+    close () {
+      state.model = false
+    },
+    update (patch) {
+      if (patch.title !== undefined) {
+        state.title = patch.title
+      }
+      if (patch.width !== undefined) {
+        state.width = patch.width
+      }
+      if (patch.maxWidth !== undefined) {
+        state.maxWidth = patch.maxWidth
+      }
+      if (patch.persistent !== undefined) {
+        state.persistent = patch.persistent
+      }
+      if (patch.content !== undefined) {
+        state.content = toSlot(patch.content)
+      }
+      if (patch.actions !== undefined) {
+        state.actions = toSlot(patch.actions)
+      }
+    },
+    setTitle (title) {
+      state.title = title ?? ''
+    },
+    setContent (content) {
+      state.content = toSlot(content)
+    },
+    setActions (actions) {
+      state.actions = toSlot(actions)
+    },
+    destroy () {
+      unmount()
+    },
   }
 
   // 初次挂载

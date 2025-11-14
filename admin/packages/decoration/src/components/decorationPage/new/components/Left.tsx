@@ -46,7 +46,6 @@ export default defineComponent({
         <div class="group mb-4">
           <div class="group__grid grid grid-cols-2 gap-2">
             {list.map((m) => {
-
               return (
                 <div
                   class="comp-card"
