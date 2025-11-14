@@ -1,190 +1,199 @@
-import { computed, defineComponent, ref, watch, type PropType } from 'vue'
+import Taro from '@tarojs/taro'
+import { computed, defineComponent, PropType, ref, watch } from 'vue'
 import './style.scss'
-import { message } from '@anteng/ui'
-import { requestUploadFile } from '../../api/uploadImage'
-import type { ImageDefine } from '../image-selector/Resource'
-import uuid from '../../utils/uuid'
-import { COMMON_STATUS_OPTIONS } from '@anteng/config'
+import { Icon } from '@anteng/ui'
+import { REQUEST_DOMAIN, getAuthHeaders } from '../../api/request'
+import { Image } from '@tarojs/components'
+import { uuid } from '@anteng/utils'
+import Spin from '../spin'
+import { usePreviewImages } from '../../hooks'
 
 export default defineComponent({
-  name: 'LegoImageUploader',
+  name: 'ImageUploader',
   props: {
-    src: {
-      type: String
+    rowCount: {
+      type: Number,
+      default: () => 3
     },
-    type: {
-      type: String as PropType<'image' | 'video' | 'audio'>
+    maxCount: {
+      type: Number,
+      default: () => 3
+    },
+    images: {
+      type: Array as PropType<string[]>
+    },
+    align: {
+      type: String as PropType<'left' | 'right'>,
+      default: 'left'
     }
   },
   emits: {
-    change: (image: ImageDefine) => true
+    change: (list: string[]) => true
   },
-  setup(props, { emit }) {
-    const src = ref(props.src || '')
-    const uploading = ref(false)
-    const hasError = ref(false)
+  setup(props, { emit, expose }) {
+    const initialList = computed(
+      () =>
+        props.images?.map(item => {
+          return {
+            id: uuid(),
+            url: item,
+            filePath: '',
+            fileName: '',
+            status: 'success'
+          }
+        }) || []
+    )
 
     watch(
-      () => props.src,
+      () => initialList.value,
       () => {
-        src.value = props.src || ''
+        if (list.value.length === 0) {
+          list.value = [...initialList.value]
+        }
       }
     )
 
-    const handleUpload = (options: any) => {
-      const id = uuid()
-      message.loading({
-        content: '文件上传中',
-        key: id,
-        duration: 0
+    const list = ref(initialList.value || [])
+
+    const triggerChange = () => {
+      emit(
+        'change',
+        list.value.filter(item => item.status === 'success').map(item => item.url)
+      )
+    }
+
+    /**
+     * 选择上传的图片
+     */
+    const chooseImage = () => {
+      Taro.chooseImage({
+        count: Number(props.maxCount) - list.value.length, //上传图片的数量，默认是9
+        sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 相册或者相机
+        success: res => {
+          const restCount = Number(props.maxCount) - list.value.length
+          list.value.push(
+            ...res.tempFiles.slice(0, restCount).map(item => {
+              return {
+                id: uuid(),
+                url: '',
+                filePath: item.path,
+                fileName: item.originalFileObj?.name!,
+                status: 'pending'
+              }
+            })
+          )
+          handleUpload()
+        },
+        fail: err => {
+          console.log(err)
+        }
       })
-      src.value = URL.createObjectURL(options.file)
-      uploading.value = true
-      hasError.value = false
-      requestUploadFile(options.file)
-        .then((res) => {
-          uploading.value = false
-          src.value = res.data.uri || res.data.url
-          // message.success({
-          //   content: '图片上传成功',
-          //   key: id
-          // })
-          if (fileType.value === 'image') {
-            const image = new Image()
-            image.src = src.value
-            image.onload = () => {
-              message.success({
-                content: '图片上传成功',
-                key: id
-              })
-              triggerChange({
-                url: src.value,
-                width: (image.naturalWidth ?? image.width) || 512,
-                height: (image.naturalHeight ?? image.height) || 512
-              })
+    }
+
+    const clear = () => {
+      list.value.splice(0)
+    }
+
+    expose({ chooseImage, clear })
+
+    const uploadUrl = `${REQUEST_DOMAIN ?? ''}/null-cornerstone-system/upload/image`
+
+    const handleUpload = () => {
+      list.value
+        .filter(item => item.status === 'pending')
+        .forEach(item => {
+          item.status = 'loading'
+          const filePath = item.filePath
+          // const uploadTask =
+          Taro.uploadFile({
+            url: uploadUrl,
+            filePath: filePath,
+            fileName: item.fileName,
+            // fileType: 'image',
+            header: {
+              ...getAuthHeaders()
+            },
+            name: 'file',
+            success: (res: any) => {
+              if (typeof res.data == 'string') {
+                item.url = JSON.parse(res.data).data?.url
+              } else {
+                item.url = res.data.data.url
+              }
+              item.status = 'success'
+            },
+            fail: err => {
+              console.log(err)
+              item.status = 'error'
+            },
+            complete: () => {
+              triggerChange()
             }
-            image.onerror = () => {
-              throw new Error()
-            }
-          } else if (fileType.value === 'video') {
-            const video = document.createElement('video')
-            video.src = src.value
-            video.onloadeddata = () => {
-              document.body.removeChild(video)
-              message.success({
-                content: '视频上传成功',
-                key: id
-              })
-              triggerChange({
-                url: src.value,
-                width: video.videoWidth,
-                height: video.videoHeight
-              })
-            }
-            video.onerror = () => {
-              document.body.removeChild(video)
-              throw new Error()
-            }
-            video.width = 0
-            video.height = 0
-            document.body.appendChild(video)
-          } else if (fileType.value === 'audio') {
-            const audio = document.createElement('audio')
-            audio.src = src.value
-            audio.onloadeddata = () => {
-              document.body.removeChild(audio)
-              message.success({
-                content: '音频上传成功',
-                key: id
-              })
-              triggerChange({
-                url: src.value,
-                width: 100,
-                height: 42,
-                // @ts-ignore
-                duration: audio.duration
-              })
-            }
-            audio.onerror = () => {
-              document.body.removeChild(audio)
-              throw new Error()
-            }
-            document.body.appendChild(audio)
-          }
-        })
-        .catch((err) => {
-          uploading.value = false
-          hasError.value = true
-          src.value = ''
-          // TODO 上传进度，异常处理
-          message.error({
-            content: '图片上传失败',
-            key: id
           })
+
+          // uploadTask.onProgressUpdate(progress => {
+          //   console.log(progress)
+          // })
         })
     }
-
-    const triggerChange = (image: ImageDefine) => {
-      emit('change', image)
-    }
-
-    const fileType = ref<'image' | 'video' | 'audio'>('image')
-
-    const fileTypeMap = [
-      { label: '图片', value: 'image' },
-      { label: '音频', value: 'audio' },
-      { label: '视频', value: 'video' }
-    ]
-
-    const typeText = computed(() => fileTypeMap.find((item) => item.value === props.type)?.label)
-
-    const handleChange = (e: any) => {
-      const file = e.target.files?.[0] as File
-
-      if (file) {
-        if (props.type && !file.type.startsWith(`${props.type}/`)) {
-          message.error(`当前限制上传类型：${typeText.value}`)
-          return void 0
-        }
-        if (file.type.startsWith('image/')) {
-          fileType.value = 'image'
-        } else if (file.type.startsWith('video/')) {
-          fileType.value = 'video'
-        } else if (file.type.startsWith('audio')) {
-          fileType.value = 'audio'
-        } else {
-          message.error(`暂不支持除 图片/视频/音频 外的文件类型：${file.type}`)
-          return void 0
-        }
-        const formData = new FormData()
-        formData.append(`file`, file)
-        handleUpload({ file })
-      }
+    const handleRemove = (index: number) => {
+      list.value.splice(index, 1)
+      triggerChange()
     }
 
     return () => {
       return (
-        <div class="image-uploader clickable">
-          <input
-            type="file"
-            title="拖拽 图片/视频/音频 文件到此处或点击上传"
-            accept={props.type ? `${props.type}/*` : undefined}
-            onChange={handleChange}
-          />
-          <div class="image-uploader__preview">
-            {!src.value ? (
-              <div class="image-uploader__tip" data-type={props.type}>
-                <div>
-                  拖拽 <strong>{typeText.value || '图片／视频／音频'}</strong> 文件到此处
-                </div>
-                <div>或点击上传</div>
+        <div class={['n-image-uploader', `align-${props.align}`]}>
+          {list.value.map((item, index) => {
+            return (
+              <div
+                key={item.id}
+                class="image-item"
+                style={{
+                  marginRight: (index + 1) % props.rowCount === 0 ? 0 : '4%',
+                  width: `calc((100% - 4% * ${props.rowCount - 1}) / ${props.rowCount})`,
+                  paddingBottom: `calc((100% - 4% * ${props.rowCount - 1}) / ${props.rowCount})`
+                }}
+                onClick={() => {
+                  usePreviewImages({
+                    urls: list.value.map(() => item.url || item.filePath),
+                    current: index
+                  })
+                }}
+              >
+                <Image class="image" src={item.url || item.filePath} mode="aspectFill"></Image>
+                {item.status === 'loading' && (
+                  <div class="uploading">
+                    <Spin />
+                  </div>
+                )}
+                {item.status === 'error' && <div class="uploading">上传失败</div>}
+                {item.status !== 'loading' && (
+                  <div
+                    class="remove-btn"
+                    onClick={() => {
+                      handleRemove(index)
+                    }}
+                  ></div>
+                )}
               </div>
-            ) : fileType.value === 'image' ? (
-              <img src={src.value} alt="" />
-            ) : (
-              <video src={src.value} controls={true} muted playsinline />
-            )}
-          </div>
+            )
+          })}
+          {list.value.length < props.maxCount && (
+            <div
+              class="inc-btn"
+              style={{
+                width: `calc((100% - 4% * ${props.rowCount - 1}) / ${props.rowCount})`,
+                paddingBottom: `calc((100% - 4% * ${props.rowCount - 1}) / ${props.rowCount})`
+              }}
+              onClick={chooseImage}
+            >
+              <div class="btn-cnt">
+                <Icon class="icon" name="camera" />
+              </div>
+            </div>
+          )}
         </div>
       )
     }

@@ -1,20 +1,12 @@
-export * from './order'
 
-/** 组件库类名前缀 */
-export const PREFIX_CLS = 'anteng'
+/** 腾讯地图key */
+export const TENCENT_MAP_KEY = ''
 
-export const withPrefix = (text: string) => `${PREFIX_CLS}-${text}`
+/** 腾讯地图应用来源 */
+export const TENCENT_MAP_REFERER = 'anteng'
 
-/** 默认 logo 图标 */
-export const LOGO_URL = 'https://dev-cdn.anteng.cn/upload/b3488689043533a61d23db9c688596ea.png'
-
-/** 默认用户头像，未登录,未设置时使用 */
+/** 默认用户头像，未登录、未设置时使用 */
 export const DEFAULT_AVATAR = '/defaultAvatar.png'
-
-/** 应用场景：也宋 */
-export const SCENE_YESONG = 'yesong'
-// TODO 忘了这个变量是干什么的了
-export const SCOPE_SU = 'su'
 
 /** 通用状态：禁用 */
 export const COMMON_STATUS_OFF = 0
@@ -26,7 +18,7 @@ export const COMMON_STATUS_OPTIONS = [
   { label: '启用', value: COMMON_STATUS_ON }
 ]
 
-/** 颜色 蓝色：加载中,进程中,待办 */
+/** 颜色 蓝色：加载中、进程中、待办 */
 export const COLOR_PROCESSING = '#1677ff'
 /** 颜色 绿色：成功 */
 export const COLOR_SUCCESS = '#27ae60'
@@ -34,37 +26,24 @@ export const COLOR_SUCCESS = '#27ae60'
 export const COLOR_ERROR = '#eb2f06'
 /** 颜色 黄色：警告 */
 export const COLOR_WARNING = '#f1c40f'
-/** 颜色 灰色：禁用,关闭,失效,不可预约,未使用 */
+/** 颜色 灰色：禁用、关闭、失效 */
 export const COLOR_DISABLED = '#c4c6ca'
 
-/**
- * 腾讯地图key
- * 需要在环境变量中配置 VITE_TENCENT_MAP_KEY
- * 申请地址：https://lbs.qq.com/console/mykey.html
- */
-export const TENCENT_MAP_KEY = import.meta.env.VITE_TENCENT_MAP_KEY || ''
+/** 性别：女性 */
+export const GENDER_FEMALE = 0
+/** 性别：男性 */
+export const GENDER_MALE = 1
+export const EXPRESS_COMPANY_OPTIONS = []
+export const DIRECT_WEAPP_OPTIONS = []
 
-/**
- * TinyMCE 富文本编辑器 API Key
- * 需要在环境变量中配置 VITE_TINYMCE_API_KEY
- * 申请地址：https://www.tiny.cloud/my-account/dashboard/
- * 注意：如果使用自托管版本可以不配置此项
- */
-// export const TINYMCE_API_KEY = import.meta.env.VITE_TINYMCE_API_KEY || ''
+export const PAYMENT_METHOD_NONE = 0
+export const SUB_PAYMENT_METHOD_OPTIONS = 0
 
-/** 支付渠道：微信直连 */
-export const PAY_CHANNEL_WECHAT_PAY = 0
-/** 支付渠道：微信服务商 */
-export const PAY_CHANNEL_WECHAT_MERCHANT = 1
-/** 支付渠道：云闪付（通联支付） */
+/** 支付渠道：余额支付 */
+export const PAYMENT_CHANNEL_BALANCE = 'UserAccount'
 
-export const PAY_CHANNEL_OPTIONS = [
-]
+// 也宋小程序
+export const ORIGIN_STORE = 'yesong'
+export * from './order'
 
-export * from './payment'
-export * from './src/colors'
-
-// 导航栏的一些状态
-export * from './src/navigation'
-
-export * from './src/user'
+export const PAYMENT_METHOD_VALUE_CARD = 0

@@ -1,10 +1,13 @@
 import { computed, reactive, ref, toRef } from 'vue'
-import type { PaginationData, RequestPagination, ResponseData } from '../../api/request'
-import axios from 'axios'
-import { Button, Empty as EmptyStatus, Icon } from '@anteng/ui'
+import { PaginationData, RequestPagination, ResponseData } from '../../api/request'
+import { useLoading, useLoadingEnd } from '../useLoading'
+import EmptyStatus, { EmptyAction } from '../../components/empty-status'
 import Spin from '../../components/spin'
 import './style.scss'
+import axios from 'axios'
+import { Icon } from '@anteng/ui'
 import { buildPagination } from './utils'
+import ScrollAnchor from '../../components/scroll-anchor'
 
 export type UsePaginationRequest<T> = (params: RequestPagination<{}>) => Promise<ResponseData<PaginationData<T>>>
 
@@ -92,13 +95,10 @@ const usePagination = <T,>(options: {
     isLoading.value = true
     hasError.value = false
     if (options.showLoading) {
-      // useLoading()
+      useLoading()
     }
     try {
-      isLoading.value = true
-      const _params = { ...params }
       const res = await options.requestHandler(params)
-      isLoading.value = false
       if (res.code === 200) {
         // 兼容非分页类型数据
         if (Array.isArray(res.data)) {
@@ -108,7 +108,7 @@ const usePagination = <T,>(options: {
         paginationData.current = res.data.current
         paginationData.total = res.data.total
 
-        if (_params.current === 1) {
+        if (params.current === 1) {
           // 刷新数据时，清空数据
           paginationData.records = []
         }
@@ -151,7 +151,7 @@ const usePagination = <T,>(options: {
     } finally {
       isLoading.value = false
       if (options.showLoading) {
-        // useLoadingEnd()
+        useLoadingEnd()
       }
     }
   }
@@ -160,17 +160,17 @@ const usePagination = <T,>(options: {
    * 刷新数据
    * @param key - 数据唯一索引值
    */
-  const refreshDataItem = async (key: string | number) => {
+  const refreshDataItem = async (key: string | number, _dataIndex?: string) => {
     try {
-      const dataIndex = options.dataIndex ?? 'id'
-      const index = data.value.findIndex((item: any) => item[dataIndex] === key)
+      const dataIndex = _dataIndex ?? options.dataIndex ?? 'id'
+      const index = data.value.findIndex(item => item[dataIndex] === key)
       // 列表中不存在对应数据，无需刷新
       if (index === -1) return void 0
       const res = await options.requestHandler({ current: 1, size: 1, [dataIndex]: key })
       if (res.code === 200) {
-        const newDataItem: any = res.data.records[0]
+        const newDataItem = res.data.records.find(newItem => newItem[dataIndex] === key) ?? res.data.records[0]
         // 再次比对唯一索引，保证数据安全
-        if (newDataItem[dataIndex] === (data.value[index] as any)[dataIndex]) {
+        if (newDataItem?.[dataIndex] === data.value[index][dataIndex]) {
           paginationData.records[index] = newDataItem as any
         } else {
           console.error('刷新分页子数据失败：找不到对应数据')
@@ -183,6 +183,18 @@ const usePagination = <T,>(options: {
     }
   }
 
+  const removeDataItem = (key: string | number) => {
+    try {
+      const dataIndex = options.dataIndex ?? 'id'
+      const index = data.value.findIndex(item => item[dataIndex] === key)
+      // 列表中不存在对应数据，无需删除
+      if (index === -1) return void 0
+      data.value.splice(index, 1)
+    } catch (error) {
+      console.error('删除分页子数据失败', error)
+    }
+  }
+
   /** 刷新列表数据，（重置 current = 1） */
   async function refreshData(options?: {
     /** 立即清空数据 */
@@ -191,6 +203,7 @@ const usePagination = <T,>(options: {
     current?: number
     /** 如果非下拉刷新请设置成 false，默认 true */
     isRefresherPulling?: boolean
+    silent?: boolean
   }) {
     params.current = Math.max(parseInt(options?.current as any) || 1, 1)
     isEnd.value = false
@@ -200,14 +213,21 @@ const usePagination = <T,>(options: {
       resetPaginationData()
     }
     try {
-      await fetchData()
+      if (options?.silent) {
+        isLoading.value = false
+      } else {
+        useLoading()
+      }
+      await fetchData().finally(() => {
+        useLoadingEnd()
+      })
     } catch (err) {
       resetPaginationData()
     }
     isRefresherPulling.value = false
   }
 
-  /** 结束语，无需判断 isEnd，未加载完毕时不显示，默认 "没有更多了" */
+  /** 结束语，无需判断 isEnd，未加载完毕时显示 "点击加载更多"（可作为触底刷新兜底处理），默认 "没有更多了" */
   const EndTip = () => {
     if (!(isEnd.value && !isEmpty.value)) {
       if (!isLoading.value && !hasError.value && !isEmpty.value) {
@@ -225,24 +245,21 @@ const usePagination = <T,>(options: {
   /** 缺省组件，无需判断 isEmpty */
   const Empty = () => {
     if (!isEmpty.value) return null
-    return options.customEmpty?.() ?? <EmptyStatus description="找不到相关内容" />
+    return options.customEmpty?.() ?? <EmptyStatus title="空空如也" description="找不到相关内容" />
   }
 
   /** 加载组件，无需判断 isLoading */
   const Loading = (props: { small?: boolean }) => {
     if (!isLoading.value) return null
-    return (
-      options.customLoading?.() ??
-      (data.value.length > 0 || props?.small ? (
-        <div class="use-pag__loading">
-          <Spin />
-          加载中，请稍候...
-        </div>
-      ) : (
-        <div class="use-pag__loading--empty">
-          <Spin />
-        </div>
-      ))
+    return options.customLoading?.() ?? (data.value.length > 0 || props?.small) ? (
+      <div class="use-pag__loading">
+        <Spin />
+        加载中
+      </div>
+    ) : (
+      <div class="use-pag__loading--empty">
+        <Spin />
+      </div>
     )
   }
 
@@ -250,11 +267,43 @@ const usePagination = <T,>(options: {
     if (!hasError.value) return null
     const Actions = () => (
       // @ts-ignore
-      <Button type="primary" onClick={fetchData}>
+      <EmptyAction primary onClick={fetchData}>
         重试
-      </Button>
+      </EmptyAction>
     )
-    return options.customErrorStatus?.(Actions) ?? <EmptyStatus description="数据加载失败">{Actions}</EmptyStatus>
+    return (
+      options.customErrorStatus?.(Actions) ?? (
+        <EmptyStatus
+          description="数据加载失败"
+          vSlots={{
+            actions: Actions
+          }}
+        ></EmptyStatus>
+      )
+    )
+  }
+
+  const LoadMore = () => (
+    <ScrollAnchor
+      onReach={() => {
+        if (hasError.value) {
+          return void 0
+        }
+        fetchData()
+      }}
+    />
+  )
+
+  const CommonPaginationStatus = () => {
+    return (
+      <>
+        <LoadMore />
+        <Loading />
+        <Empty />
+        <ErrorStatus />
+        <EndTip />
+      </>
+    )
   }
 
   return {
@@ -263,6 +312,7 @@ const usePagination = <T,>(options: {
     isEnd,
     isEmpty,
     refresherTriggered,
+    removeDataItem,
     fetchData,
     refreshData,
     data,
@@ -272,41 +322,10 @@ const usePagination = <T,>(options: {
     Loading,
     ErrorStatus,
     resetPaginationData,
-    hasError
+    hasError,
+    CommonPaginationStatus,
+    LoadMore
   }
 }
 
 export default usePagination
-
-export const mockRequest = (handler: <T>(resolve: (v: unknown) => T, reject: () => any) => void) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      handler(resolve, reject)
-    }, Math.random() * 1000)
-  })
-}
-
-export const buildPaginationData = <T extends {}>(records: T[], pag?: RequestPagination) => {
-  return {
-    code: 200,
-    success: true,
-    data: {
-      records: records,
-      total: records.length,
-      size: 10,
-      current: pag?.current ?? 1,
-      orders: [
-        {
-          column: 'create_time',
-          asc: false
-        }
-      ],
-      optimizeCountSql: true,
-      searchCount: true,
-      maxLimit: null,
-      countId: null,
-      pages: 1
-    },
-    msg: '操作成功'
-  }
-}

@@ -1,4 +1,4 @@
-import type { PaginationData } from '../../api/request'
+import { PaginationData } from '../../api/request'
 
 export const buildPagination = <T>(data: T[]): PaginationData<T> => {
   return {

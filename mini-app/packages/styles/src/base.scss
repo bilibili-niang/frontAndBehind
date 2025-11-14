@@ -1,93 +1,60 @@
-* {
-  box-sizing: border-box;
+// 所有默认属性不允许修改
+
+.h5-span {
+  display: inline;
 }
 
+// 小程序富文本解析图片间隙
+.wxParse-img {
+  display: flex;
+  font-size: 0;
+}
 
+// H5 input 高度
+.weui-input {
+  height: 100%;
+}
+
+body,
 html,
-body {
-  width: 100% !important; // body.ant-scrolling-effect ?? 这个好像会改变body宽度，目前不知道有什么作用
-  margin: 0;
-  color: rgba(0, 0, 0, 0.85);
-  color: $color-text-base;
+page {
   font-size: 14px;
-  font-size: $size-font-base;
-  font-family:
-    Inter,
-    -apple-system,
-    San Francisco,
-    Noto sans SC,
-    Microsoft YaHei;
-  font-variant: tabular-nums;
-  line-height: 1.4;
+  color: $color-text-base;
   line-height: 1.5;
-//  background-color: #fff;
-//  background-color: $color-bg-300;
-  font-feature-settings: 'tnum', 'tnum';
-  -webkit-font-smoothing: antialiased;
-  width: 100%;
 }
 
-// 文字选中时背景色，仅支持 background-color 和 color
-::selection {
-  background: $color-primary-03;
+*::-webkit-scrollbar {
+  display: none;
 }
 
-a {
-  color: $color-primary;
-  text-decoration: none;
-  &:hover {
-    color: $color-primary-hover;
+// 去除 H5 内手势点击高亮
+*:not(input, textarea) {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+INPUT,
+TEXTAREA {
+  webkit-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+}
+
+.skeleton {
+  animation: skeleton 1s infinite ease-in-out;
+}
+
+@keyframes skeleton {
+  0%,
+  100% {
+    opacity: 1;
   }
-  &:active {
-    color: $color-primary-active;
+  50% {
+    opacity: 0.6;
   }
-  &[disabled] {
-    color: $color-text-disabled;
-  }
-}
-
-a {
-  font-weight: 500;
-  &.\--danger {
-    color: $color-error;
-  }
-  &.\--disabled {
-    color: $color-text-disabled;
-    cursor: not-allowed;
-  }
-}
-
-// 让通用状态类在任意元素上均生效，
-// 以适配 useTableAction 在 AuthButton 分支中将状态类挂在 span 的实现
-.\--danger {
-  color: $color-error;
-}
-
-.\--disabled {
-  color: $color-text-disabled;
-  cursor: not-allowed;
-}
-
-// 禁用图片拖拽默认行为
-img {
-  -webkit-user-drag: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  color: inherit;
-}
-
-// 隐藏 tiny-mce 升级按钮
-.tox-promotion {
-  display: none !important;
-}
-
-.#{$prefix}-select-dropdown {
-  z-index: 2000;
 }

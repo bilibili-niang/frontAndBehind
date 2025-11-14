@@ -1,28 +1,41 @@
-import { Switch, type SwitchProps } from 'ant-design-vue'
+import { defineComponent } from 'vue'
 import './style.scss'
+import Taro from '@tarojs/taro'
 
-import { defineComponent, ref } from 'vue'
-import { PREFIX_CLS } from '@anteng/config'
-
-export default defineComponent<SwitchProps>({
-  name: `${PREFIX_CLS}-switch`,
+export default defineComponent({
+  name: 'c_switch',
   props: {
-    ...Switch.props
-  },
-  setup(props) {
-    const loadingRef = ref(false)
-    const handleChange = async (checked: any, e: Event) => {
-      loadingRef.value = true
-      try {
-        await props.onChange?.(checked, e)
-        loadingRef.value = false
-      } catch (err) {
-        loadingRef.value = false
-      }
+    checked: {
+      type: Boolean
+    },
+    disabled: {
+      type: Boolean
     }
+  },
+  emits: {
+    change: (value: any) => true
+  },
+  setup(props, { emit }) {
     return () => {
-      const { onChange, loading, ...nativeProps } = props
-      return <Switch {...nativeProps} loading={loading ?? loadingRef.value} onChange={handleChange}/>
+      return (
+        <div
+          class={['c_switch', props.checked && 'c_switch--checked']}
+          onClick={() => {
+            if (!props.disabled) {
+              emit('change', !props.checked)
+            }
+          }}
+          onTouchstart={() => {
+            Taro.vibrateShort({
+              type: 'light'
+            })
+          }}
+        >
+          <div class="c_switch-button">
+            <div class="c_switch-thumb"></div>
+          </div>
+        </div>
+      )
     }
   }
 })

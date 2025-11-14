@@ -1,15 +1,9 @@
-import { isAllowedImageFormat } from './utils'
-
-export const resize = (image: string, options: ImageProcessResizeOptions) => {
+export const resize = (image: string | undefined, options: ImageProcessResizeOptions) => {
   try {
-    if (!isAllowedImageFormat(image)) {
-      return image
-    }
-
     if (!image?.match?.(/\.(jpg|jpeg|png)$/i)) return image
     const params = Object.keys(options) as (keyof typeof options)[]
     if (params.length === 0) return image
-    return `${image}?x-oss-process=image/resize,${params.map((k) => `${k}_${options[k]}`).join(',')}`
+    return `${image}?x-oss-process=image/resize,${params.map(k => `${k}_${options[k]}`).join(',')}`
   } catch (err) {
     return image
   }

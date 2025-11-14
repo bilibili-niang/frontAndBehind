@@ -1,4 +1,4 @@
-import { computed, type ComputedRef, isRef, type Ref } from 'vue'
+import { computed, ComputedRef, isRef, Ref } from 'vue'
 
 export type ComputedValue<T> = T | Ref<T> | (() => T)
 

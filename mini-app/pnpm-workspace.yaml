@@ -1,4 +1,10 @@
 packages:
-  - packages/*
-  - apps/*
-  - docs
+  - 'packages/*'
+  - 'apps/*'
+  - 'shared/*'
+  # - "template/app-template"
+
+shared-workspace-lockfile: true
+link-workspace-packages: true
+auto-install-peers: true
+sync-git-submodules: true
