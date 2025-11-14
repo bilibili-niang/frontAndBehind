@@ -3,7 +3,10 @@
   padding-right: 3px;
   box-sizing: border-box;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
+  .property-tabs-pane {
+    padding-bottom: 340px;
+  }
   .jsf_form {
     width: 100%;
     box-sizing: border-box;

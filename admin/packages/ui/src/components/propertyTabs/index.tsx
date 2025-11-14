@@ -68,7 +68,7 @@ export const PropertyTabs = defineComponent({
               ]}
               onClick={() => handleTabClick(tab.key)}
             >
-              {tab.icon && <Icon class="property-tabs-icon" name={tab.icon}/>} 
+              {tab.icon && <Icon class="property-tabs-icon" name={tab.icon}/>}
               <span class="property-tabs-title">{tab.title}</span>
               <i class="property-tabs-arc-l"></i>
               <i class="property-tabs-arc-r"></i>
@@ -86,6 +86,8 @@ export const PropertyTabs = defineComponent({
               {tab.render()}
             </div>
           ))}
+          <div></div>
+          <div></div>
         </div>
       </div>
     )
