@@ -1,0 +1,174 @@
+.pay-result {
+  padding: 12px;
+  margin-bottom: 20px;
+}
+.pay-result__status {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48px;
+  &.end {
+    .pay-result__spin {
+      transition: all 0.4s 1s linear;
+      transform: translate3d(-44px, 0, 0) scale(0.6);
+    }
+    .pay-result__title {
+      transition: all 0.4s 1s linear;
+      margin-bottom: -32px;
+      transform: translate3d(24px, -18px - 32px, 0) scale(1);
+    }
+  }
+}
+.pay-result__spin {
+  width: 54px;
+  height: 54px;
+  transition: all 0.4s 0s linear;
+  transform: translate3d(0, 0, 0) scale(1);
+  overflow: hidden;
+  will-change: transform;
+}
+.pay-result__spin-canvas {
+  width: 100%;
+  height: 100%;
+}
+.pay-result__title {
+  height: 22px;
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 12px;
+  transition: all 0.4s 0s linear;
+  transform: translate3d(0, 0, 0) scale(0.6363);
+  line-height: 22px;
+  will-change: transform, margin-bottom, font-size;
+}
+.pay-result__desc {
+  font-size: 14px;
+  margin-top: 12px;
+  color: $color-text-secondary;
+}
+.pay-result__actions {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  animation: slide_in;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  animation: slide_in 0.6s both;
+  @keyframes slide_in {
+    from {
+      height: 0;
+      transform: translate3d(0, 24px, 0);
+      opacity: 0;
+    }
+    to {
+      height: 50px;
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+}
+.pay-result__action {
+  width: 115px;
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin: 0 6px;
+}
+.pay-result__pending {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 12px;
+  .count-down {
+    font-size: 14px;
+    color: #999;
+  }
+  .amount {
+    font-size: 42px;
+    display: flex;
+    align-items: baseline;
+    .yen {
+      font-size: 17px;
+    }
+  }
+  .pay-action {
+    width: 270px;
+    height: 45px;
+    background-color: $color-primary;
+    border-radius: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-text-primary-bg;
+    margin-top: 40px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    position: relative;
+    &.jd {
+      margin: 24px auto 12px auto;
+      width: 70%;
+      height: 49px;
+      border-radius: 8px;
+      background-color: #ff5454;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 2px;
+      position: relative;
+      &:hover,
+      &:active {
+        background-color: rgba(#ff5454, 0.85);
+      }
+      &::before {
+        content: '';
+        background-image: url(https://dev-cdn.anteng.cn/upload/8c5b8cfa1ee768f2658e436dc76875e7.png);
+        background-size: contain;
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        width: 55px;
+        height: 40px;
+        position: absolute;
+        bottom: 0;
+        left: -8px;
+      }
+    }
+  }
+  .tip {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    color: #999;
+    .service {
+      color: $color-info;
+      padding: 0 4px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      position: relative;
+      .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(2);
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+      }
+    }
+  }
+  .refresh {
+    color: $color-primary;
+    font-weight: 500;
+    padding: 4px 8px;
+    margin-left: -4px;
+  }
+}

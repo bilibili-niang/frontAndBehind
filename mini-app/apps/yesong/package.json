@@ -1,0 +1,46 @@
+{
+  "name": "@anteng/yesong",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "templateInfo": {
+    "name": "vue3-pinia",
+    "typescript": true,
+    "css": "sass"
+  },
+  "scripts": {
+    "build:weapp": "taro build --type weapp",
+    "build:swan": "taro build --type swan",
+    "build:alipay": "taro build --type alipay",
+    "build:tt": "taro build --type tt",
+    "build:h5": "taro build --type h5",
+    "build:rn": "taro build --type rn",
+    "build:qq": "taro build --type qq",
+    "build:quickapp": "taro build --type quickapp",
+    "dev:weapp": "npm run build:weapp -- --watch",
+    "devTrialVersion:wxapp": "taro build --type weapp --env production --mode test",
+    "devForCompress:wxapp": "taro build --type weapp --watch --env production --mode test",
+    "dev:swan": "npm run build:swan -- --watch",
+    "dev:alipay": "npm run build:alipay -- --watch",
+    "dev:tt": "npm run build:tt -- --watch",
+    "dev:h5": "npm run build:h5 -- --watch",
+    "dev:rn": "npm run build:rn -- --watch",
+    "dev:qq": "npm run build:qq -- --watch",
+    "dev:quickapp": "npm run build:quickapp -- --watch"
+  },
+  "browserslist": [
+    "last 3 versions",
+    "Android >= 4.1",
+    "ios >= 8"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@anteng/styles": "workspace:*",
+    "@anteng/utils": "workspace:*",
+    "@anteng/deck": "workspace:*",
+    "@anteng-shared": "workspace:*",
+    "taro-code": "^4.0.1",
+    "mockjs": "^1.1.0"
+  }
+}

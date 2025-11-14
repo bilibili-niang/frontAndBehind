@@ -1,0 +1,74 @@
+function buildContainerClass(
+  windowShow,
+  animing,
+  showOrHideAnimate,
+  round,
+  bottomSafeArea,
+  topSafeArea,
+  hideModeOpacity,
+  positionBottomFixTop
+) {
+  var classes = 'pop-window-body container-class'
+  if (windowShow) {
+    if (showOrHideAnimate) {
+      classes = classes + ' show-animate'
+    } else {
+      classes = classes + ' hide-animate'
+    }
+  }
+  if (animing) classes += ' animing'
+  if (round) {
+    classes = classes + ' round'
+  }
+  if (bottomSafeArea) {
+    classes = classes + ' safe-area'
+  }
+  if (topSafeArea) {
+    classes = classes + ' top-safe-area'
+  }
+  if (hideModeOpacity) {
+    classes = classes + ' hide-mode-opacity'
+  }
+  if (positionBottomFixTop) {
+    classes = classes + ' bottom-fix-top'
+  }
+  return classes
+}
+
+function buildMaskClasses(hideCover, windowShow, showOrHideAnimate) {
+  var classes = ' tms-popup-cover '
+  if (hideCover || !windowShow) {
+    classes = classes + 'tms-popup-hide-cover '
+  }
+  if (showOrHideAnimate) {
+    classes = classes + 'show-bg-animate '
+  } else {
+    classes = classes + 'hide-bg-animate '
+  }
+  return classes
+}
+
+function buildContainerStyle(duration, zIndex, computedPosition, positionBottomFixTop) {
+  var style = 'transition-duration:' + duration + 'ms;'
+  if (zIndex) {
+    style = style + 'z-index:' + zIndex + ';'
+  }
+  if (computedPosition === 'bottom' && positionBottomFixTop) {
+    style = style + 'top:100vh;'
+  }
+  return style
+}
+
+function buildOverlayStyle(duration, zIndex) {
+  var style = 'transition-duration:' + duration + 'ms;'
+  if (zIndex) {
+    style = style + 'z-index:' + zIndex + ';'
+  }
+  return style
+}
+module.exports = {
+  buildContainerClass: buildContainerClass,
+  buildMaskClasses: buildMaskClasses,
+  buildOverlayStyle: buildOverlayStyle,
+  buildContainerStyle: buildContainerStyle
+}

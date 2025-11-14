@@ -1,0 +1,30 @@
+.index-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.count {
+  color: $color-error;
+}
+.increasement {
+  width: 140px;
+  height: 50px;
+  background-color: #f3f3f3;
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  @include safe-area-inset-bottom(height, 49px);
+  color: #fff;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding-top: 12px;
+}

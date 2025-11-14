@@ -1,0 +1,30 @@
+.c_radio {
+}
+.c_radio-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  // background-color: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1px;
+  transition: all 0.3s;
+  color: $color-text-primary-bg;
+  .icon {
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s;
+  }
+}
+.c_radio--checked {
+  .c_radio-button {
+    background-color: $color-primary;
+    border-color: $color-primary;
+  }
+  .icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

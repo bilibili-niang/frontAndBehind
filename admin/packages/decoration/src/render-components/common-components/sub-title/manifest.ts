@@ -62,7 +62,7 @@ export const subTitleManifest = {
     }
   },
   default: {
-    align: 'center',
+    align: 'left',
     title: {
       text: '主标题',
       color: '#1f1f1f',
@@ -73,7 +73,7 @@ export const subTitleManifest = {
       text: '副标题',
       color: '#999999',
       fontSize: 12,
-      placement: 'bottom'
+      placement: 'right'
     }
   },
   defaultAttrs: {

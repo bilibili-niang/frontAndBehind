@@ -1,9 +1,9 @@
 .property-tabs {
   /* 委托外部容器控制滚动，避免嵌套滚动导致滚动条异常 */
-  overflow: visible;
   padding-right: 3px;
   box-sizing: border-box;
-  height: 100%;
+  width: 100%;
+  overflow: auto;
   .jsf_form {
     width: 100%;
     box-sizing: border-box;

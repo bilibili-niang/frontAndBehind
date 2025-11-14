@@ -1,0 +1,118 @@
+.poster-render {
+  flex: 1;
+  width: 100%;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.poster-render__tool {
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  .poster-render__images {
+    display: flex;
+    padding: 8px 0;
+    &::after {
+      content: '';
+      width: 8px;
+      height: 80px;
+      flex-shrink: 0;
+    }
+  }
+  .poster-render__image-item {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background-color: #f3f3f3;
+    background-size: cover;
+    border-radius: 4px;
+    margin: 3px;
+    position: relative;
+    transition: all 0.3s;
+    border: 0 solid #ff6b00;
+    padding: 0 !important;
+    &.selected {
+      transition: all 0.3s;
+      border: 2px solid #ff2b60;
+      padding: 2px !important;
+    }
+    .poster-render__image-index {
+      transition: all 0.3s;
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background-color: #ff2b60;
+      color: #fff;
+      height: 20px;
+      width: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-size: 12px;
+    }
+  }
+}
+.poster-render__view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 16px 24px 24px 24px;
+  @include safe-area-inset-bottom(padding-bottom, 24px);
+  overflow: hidden auto;
+  .poster-render__canvas-area {
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
+    border-radius: 8px;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    .poster-render__canvas-wrapper {
+      width: 100%;
+      border-radius: inherit;
+      display: flex;
+      justify-content: center;
+    }
+    .poster-render__canvas {
+      &.off-screen {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      image-rendering: optimizeQuality;
+      font-smooth: antialiased;
+    }
+  }
+}
+.options-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+  .left-input-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .poster-render__done {
+    height: 32px;
+    padding: 0 12px;
+    background-color: var(--themeColor);
+    border-radius: 20px;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid #eee;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+}

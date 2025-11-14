@@ -1,0 +1,2 @@
+export const STORE_COUPON_MODE_STATIC = 1;
+export const STORE_COUPON_MODE_DYNAMIC = 2;

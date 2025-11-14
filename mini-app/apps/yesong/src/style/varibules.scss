@@ -1,0 +1,10 @@
+page {
+  --themeColor: #ff2b60;
+  --dangerColor: #eb2f06;
+}
+.theme-color {
+  color: var(--themeColor);
+}
+.danger-color {
+  color: var(--dangerColor);
+}

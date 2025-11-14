@@ -1,0 +1,16 @@
+.use-mobile-verify {
+  width: 100%;
+  .c_quick-login__button {
+    background-color: $color-primary;
+    color: $color-text-primary-bg;
+  }
+}
+
+.use-mobile-verify__cancel {
+  text-align: center;
+  height: 36px;
+  line-height: 36px;
+  width: 100px;
+  margin: 20px auto;
+  color: $color-text-disabled;
+}

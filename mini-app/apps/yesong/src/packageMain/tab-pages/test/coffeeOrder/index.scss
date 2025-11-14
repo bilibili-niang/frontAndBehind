@@ -1,0 +1,177 @@
+@import "../_theme.scss";
+
+.coffee-order-page {
+  padding: 0 12px 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; // 设定明确高度，保证百分比高度可用
+  overflow: hidden; // 禁止整页滚动
+  @include safe-area-inset-bottom(padding-bottom, 60px);
+}
+
+.coffee-order-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 12px;
+}
+
+// 顶部切换（菜单 / 订单）
+.coffee-order-page__tabs {
+  display: flex;
+  gap: 8px;
+}
+.coffee-order-page__tab {
+  padding: 6px 12px;
+  border-radius: 14px;
+  color: #666;
+  background: transparent;
+  border: 1px solid transparent;
+}
+.coffee-order-page__tab.is-active {
+  color: #333;
+  font-weight: 600;
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.coffee-order-page__title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.coffee-order-page__body {
+  display: flex;
+  flex: 1;
+  overflow: hidden; // 仅右侧可滚动
+}
+
+.coffee-order-page__left {
+  width: 96px;
+  flex-shrink: 0;
+  padding-right: 8px;
+}
+.coffee-order-page__cat-item {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #666;
+}
+.coffee-order-page__cat-item.is-active {
+  background: #fff;
+  color: #333;
+  font-weight: 500;
+  position: relative;
+}
+.coffee-order-page__cat-item.is-active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 22px;
+  background: $coffee-theme-color;
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+
+.coffee-order-page__right {
+  @include safe-area-inset-bottom(padding-bottom, 60px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.coffee-order-page__banner {
+  width: 100%;
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f2f2f2;
+}
+.coffee-order-page__banner .image {
+  width: 100%;
+  height: 100%;
+}
+
+.coffee-order-page__list {
+  margin-top: 12px;
+  flex: 1;
+  overflow: hidden;
+}
+.coffee-order-page__list-scroll {
+  height: 100%;
+}
+.coffee-order-page__list-item + .coffee-order-page__list-item {
+  margin-top: 12px;
+}
+
+.coffee-order-page__add {
+  width: 28px;
+  height: 28px;
+  border: 1px solid $coffee-theme-color;
+  border-radius: 50%;
+  color: $coffee-theme-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+// 订单视图样式
+.coffee-order-page__orders {
+  flex: 1;
+  overflow: hidden;
+}
+.coffee-order-page__order-scroll {
+  height: 100%;
+}
+.coffee-order-page__order-card + .coffee-order-page__order-card {
+  margin-top: 12px;
+}
+.coffee-order-page__order-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.coffee-order-page__order-main {
+  min-width: 0;
+}
+.coffee-order-page__order-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+.coffee-order-page__order-sub {
+  margin-top: 6px;
+  color: #888;
+  font-size: 12px;
+}
+.coffee-order-page__order-sub span + span {
+  margin-left: 6px;
+}
+.coffee-order-page__order-side {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.coffee-order-page__order-amount {
+  font-size: 16px;
+  font-weight: 600;
+  color: #d14a00;
+}
+.coffee-order-page__order-action {
+  padding: 6px 12px;
+  border-radius: 16px;
+  border: 1px solid $coffee-theme-color;
+  color: $coffee-theme-color;
+  white-space: nowrap;
+}

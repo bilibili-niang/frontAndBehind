@@ -1,0 +1,28 @@
+.discount-coupon-usage {
+  min-height: 100vh;
+  background-color: #f5f6f8;
+}
+
+.discount-coupon-usage__header {
+  padding: $nav-height 12px 1px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-image: linear-gradient(to bottom, #ff2b60, #fff 90%, #f5f6f8);
+}
+
+.discount-coupon-usage__goods {
+  position: relative;
+  z-index: 0;
+}
+
+.discount-coupon-usage__continue-tips {
+  font-size: 10px;
+  color: $color-price;
+  text-align: center;
+  width: 10px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  margin: 4px auto 0 auto;
+}

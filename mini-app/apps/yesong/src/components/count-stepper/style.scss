@@ -1,0 +1,27 @@
+.c_count-stepper {
+  margin-left: auto;
+  display: flex;
+  height: 36px;
+  border-radius: 40px;
+  background-color: #f8f8f8;
+  font-weight: bold;
+  &.c_count-stepper--small {
+    height: 30px;
+  }
+  .decrease,
+  .increase {
+    width: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.disabled {
+      color: $color-text-disabled;
+    }
+  }
+  .count {
+    width: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

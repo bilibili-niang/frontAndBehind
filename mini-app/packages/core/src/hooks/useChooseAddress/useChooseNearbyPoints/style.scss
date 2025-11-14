@@ -1,0 +1,120 @@
+.use-poi-choose {
+  padding: 0 10px 10px 10px;
+  @include safe-area-inset-bottom(padding-bottom, 10px);
+}
+.use-poi-choose__sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0 -9px;
+  padding: 0 9px;
+  background-color: #f3f6fa;
+  padding-top: 0;
+  padding-bottom: 8px;
+  flex-shrink: 0;
+}
+.use-poi-choose__search {
+  // padding: 0 12px;/
+  min-height: 52px;
+  background-color: #fff;
+  border-radius: 15px;
+  // margin-bottom: 8px;
+  border: 2px solid #fff;
+  // background-image: linear-gradient(to bottom, rgba(94, 144, 251, 0.1) 2px, transparent 48px);
+  // box-shadow: 0 0 12px rgba(94, 144, 251, 0.1);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  .search {
+    width: 100%;
+    background: none;
+    height: 44px;
+    font-size: 16px;
+    font-weight: bold;
+    padding-right: 0;
+    .input {
+      font-weight: bold;
+    }
+    .placeholder {
+      color: #6f7b8c;
+      opacity: 0.4;
+    }
+  }
+  .icon {
+    font-size: 20px;
+    margin-right: 8px;
+    font-weight: normal;
+  }
+}
+.use-poi-choose__current {
+  flex-shrink: 0;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  margin-bottom: 8px;
+  // margin-top: -32px;
+  // padding-top: 32px;
+  position: relative;
+  .icon {
+    width: 22px;
+    height: 22px;
+    background-image: url(../images/pin_spot.png);
+    background-size: 100% 100%;
+    margin-left: -5px;
+  }
+  .distance {
+    opacity: 1 !important;
+    color: #55ba78;
+  }
+}
+
+.use-poi-choose__list {
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.use-poi-choose__item {
+  display: flex;
+  padding: 13px 14px 0 12px;
+  &:last-of-type .content {
+    border-bottom: none;
+  }
+  .icon {
+    margin-right: 2px;
+    font-size: 16px;
+    line-height: 20.5px;
+    color: #6f7b8c;
+  }
+  .content {
+    flex: 1;
+    border-bottom: 1px solid rgba(#6f7b8c, 0.1);
+    overflow: hidden;
+    padding-bottom: 12px;
+  }
+  .name {
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 48px;
+  }
+  .address {
+    color: #6f7b8c;
+    font-size: 12px;
+    display: flex;
+    .text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-right: 12px;
+    }
+    .distance {
+      margin-left: auto;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.goods-detail-info {
+  background-color: #fff;
+  margin-top: 10px;
+  vertical-align: top;
+  padding: 2px;
+  overflow: hidden;
+  img {
+    font-size: 0;
+    vertical-align: top;
+  }
+}
+.goods-detail-info__content {
+  border-radius: 8px;
+  clip-path: border-box;
+  overflow: hidden;
+}

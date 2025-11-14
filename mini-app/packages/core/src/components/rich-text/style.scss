@@ -1,0 +1,22 @@
+.c_rich-text-wrapper {
+  width: 100%;
+  height: auto;
+  transform-origin: 0 0;
+  overflow: visible;
+  zoom: 1;
+  zoom: var(--ratio);
+}
+.c_rich-text-content {
+  width: 375px;
+  overflow: hidden;
+}
+.c_rich-text {
+  /* prettier-ignore */
+  font-size: 14PX;
+}
+
+// 解决富文本图片存在间隙
+.c_rich-img {
+  font-size: 0 !important;
+  vertical-align: top;
+}

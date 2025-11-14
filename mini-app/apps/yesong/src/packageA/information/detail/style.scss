@@ -1,0 +1,32 @@
+.information-detail {
+  overflow: auto;
+  height: 100vh;
+}
+.information-detail__header {
+  padding: 12px 20px;
+}
+.information-detail__title-star-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.information-detail__title {
+  font-size: 21px;
+  font-weight: 600;
+  color: #000;
+}
+.information-detail__type {
+  font-size: 14px;
+  color: rgb(87, 107, 149);
+  margin-top: 4px;
+}
+.information-detail__publish {
+  margin-top: 6px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.information-detail__content {
+  padding: 0 20px 20px 20px;
+  @include safe-area-inset-bottom(padding-bottom, 20px);
+  display: flex;
+  flex-direction: column;
+}

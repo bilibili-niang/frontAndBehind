@@ -1,0 +1,27 @@
+.page-turning-list {
+  flex: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+  // 有时候一个不够
+  @include safe-area-inset-bottom-max(padding-bottom, 50px);
+  // 垫脚石
+  .bottom-block {
+    display: flex;
+    height: 0;
+    width: 100%;
+    @include safe-area-inset-bottom-max(padding-bottom, 50px);
+  }
+  &.as-tab-page .bottom-block {
+    height: var(--tab-height);
+  }
+  .page-turning-list-item-content {
+    flex: 1;
+  }
+  .bottom-tips-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}

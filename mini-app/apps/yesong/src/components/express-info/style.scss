@@ -1,0 +1,98 @@
+@mixin dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid $color-primary;
+  position: absolute;
+  left: 0;
+  top: 7px;
+}
+
+.c_goods-express__info {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin-left: -5px;
+  .logo,
+  .logo-placeholder {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border-radius: 2px;
+    background-size: contain;
+  }
+  .logo-placeholder {
+    background-color: #f5f5f5;
+  }
+
+  .name {
+    margin-right: 12px;
+  }
+  .copy {
+    margin-left: auto;
+    color: $color-primary;
+  }
+}
+
+.c_goods-express__progress {
+  padding-left: 24px;
+  margin-top: 12px;
+  margin-bottom: 24px;
+  position: relative;
+  .dot {
+    @include dot();
+    background-color: $color-primary;
+  }
+  .dash-line {
+    position: absolute;
+    top: 12px;
+    left: 5px;
+    height: calc(100% + 19px);
+    transform: translate3d(-50%, 0, 0);
+    width: 0;
+    border-right: 1px dashed $color-primary;
+    opacity: 0.4;
+  }
+  .status {
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: baseline;
+  }
+  .date,
+  .desc {
+    font-size: 13px;
+    color: $color-text-disabled;
+  }
+  .date {
+    margin-left: 8px;
+    font-weight: 400;
+  }
+  .more {
+    font-size: 13px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    .icon {
+      font-size: 13px;
+      color: $color-text-disabled;
+    }
+  }
+}
+
+.c_goods-express__contact {
+  padding-left: 24px;
+  position: relative;
+  .address {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .user {
+    font-size: 13px;
+    color: $color-text-disabled;
+  }
+  .dot {
+    @include dot();
+  }
+}

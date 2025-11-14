@@ -1,0 +1,171 @@
+
+@import '../_theme.scss';
+
+.coffee-order {
+  padding: 12px 12px 24px;
+  @include safe-area-inset-bottom(padding-bottom, 60px);
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f7f7f7;
+}
+
+.coffee-order__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.coffee-order__title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.coffee-order__shop-btn {
+  padding: 6px 10px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  .label {
+    line-height: 1;
+  }
+  .switch-icon {
+    width: 14px;
+    height: 14px;
+    color: $coffee-theme-color;
+    transform: rotate(90deg);
+    transition: transform 0.2s ease;
+  }
+  &:active .switch-icon {
+    transform: rotate(-90deg);
+  }
+}
+
+.shop-selector {
+  padding: 12px;
+}
+.shop-selector__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin-bottom: 10px;
+}
+.shop-selector__item.active {
+  border-color: $coffee-theme-color;
+}
+.shop-selector__item .checked {
+  color: $coffee-theme-color;
+  font-size: 12px;
+}
+
+.coffee-order__banner {
+  width: 100%;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.coffee-order__banner-img {
+  width: 100%;
+  height: 100%;
+}
+
+.coffee-order__tabs {
+  margin: 8px 0 12px;
+}
+
+.coffee-order__tab {
+  padding: 8px 12px;
+  color: #666;
+  background: transparent;
+  border-radius: 14px;
+}
+
+.coffee-order__tab.is-active {
+  color: #333;
+  font-weight: 600;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.coffee-order__search {
+  margin: 8px 0 14px;
+  // 强化搜索框外观，统一圆角、阴影与高度（NutUI Searchbar 类）
+  .nut-searchbar {
+    padding: 0;
+    border: none;
+    background: transparent !important;
+  }
+  .nut-searchbar__search-input {
+    height: 40px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) inset;
+    color: #555;
+  }
+  .nut-searchbar__search-input input,
+  .nut-searchbar__input-search input {
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+.coffee-order__section-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 6px 0 10px;
+}
+
+.coffee-order__grid {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.coffee-order__col {
+  flex: 1;
+  min-width: 0; // 防止子元素导致列拉伸
+}
+
+.coffee-order__card {
+  margin-bottom: 12px;
+  // 让商品卡片占满列宽，避免内部布局撑破
+  .c_goods-item {
+    width: 100%;
+  }
+}
+
+.coffee-order__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.coffee-order__buy {
+  background: $coffee-theme-color;
+  color: #fff;
+  border-radius: 18px;
+  padding: 6px 12px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+// 规格弹窗按钮样式统一由 test/_theme.scss 控制

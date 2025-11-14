@@ -1,10 +1,11 @@
 .decoration-left {
-  padding: 12px;
-  border-right: 1px solid var(--ui-border-color);
+  padding: 0 3px;
   height: 100%;
   overflow: hidden; /* 使用 ScrollContainer 控制滚动 */
   background: var(--v-color-bg-300);
+.property-tabs-container{
 
+}
   .group {
     margin-bottom: 16px;
   }
@@ -58,7 +59,8 @@
 
   /* 图层面板（移除卡片包裹样式） */
   .layer-panel {
-    margin-bottom: 12px;
+    margin-bottom: 0;
+    height: 40%;
   }
   .layer-panel__title {
     font-weight: 600;

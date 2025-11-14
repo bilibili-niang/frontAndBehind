@@ -1,0 +1,134 @@
+@import '../_theme.scss';
+
+.coffee-mine {
+  padding: 12px 12px 24px; // 与 coffeeHome 保持一致
+  @include safe-area-inset-bottom(padding-bottom, 60px);
+  background: #f7f7f7;
+}
+
+.mine-header {
+  width: 100%;
+  height: 116px; // 压缩高度，避免显得厚重
+  border-radius: 14px;
+  background: #ffffff; // 卡片白底
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  padding: 12px; // 统一为 12px 内边距
+  margin-bottom: 12px; // 与其他页面模块间距保持一致
+}
+.mine-header__profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mine-header .avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.mine-header .info .nickname {
+  font-size: 16px; // 与其他页面标题层级拉开，避免突兀
+  font-weight: 600;
+  color: #333;
+}
+.mine-header .info .desc {
+  font-size: 12px;
+  color: #666;
+}
+.mine-header .login-btn {
+  margin-top: 4px;
+  display: inline-block;
+  padding: 4px 8px; // 更紧凑的胶囊尺寸
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid rgba($coffee-theme-color, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+  color: $coffee-theme-color;
+}
+
+.mine-actions {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 12px; // 与 coffeeHome 保持一致
+}
+.mine-actions__item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  gap: 10px;
+  min-height: 52px; // 行高统一
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+.mine-actions__item .left {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba($coffee-theme-color, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mine-actions__item .center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mine-actions__item .center .label {
+  font-size: 15px; // 与 coffeeHome 输入字号接近
+}
+.mine-actions__item .right {
+  color: #bbb;
+}
+.mine-coffee {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 12px; // 卡片内边距与其他页面统一
+}
+.mine-actions__item:last-child {
+  border-bottom: none;
+}
+.mine-actions__item .label {
+  flex: 1;
+  margin-left: 8px;
+  color: #333;
+}
+.mine-actions__item .extra {
+  margin-right: 8px;
+  color: #ff7d00;
+}
+
+.mine-coffee .section-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 8px 0 12px; // 标题与胶囊间距统一为 12px
+}
+.mine-coffee .chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px; // 与 coffeeHome 的卡片间距一致
+}
+.mine-coffee .chip {
+  height: 36px; // 胶囊更轻
+  padding: 0 10px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba($coffee-theme-color, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.mine-actions__item:active,
+.mine-coffee .chip:active {
+  background: rgba($coffee-theme-color, 0.06);
+}

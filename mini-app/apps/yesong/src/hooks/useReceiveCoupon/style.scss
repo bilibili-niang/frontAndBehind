@@ -1,0 +1,29 @@
+.receive-coupon-modal-content {
+  background-color: #fff;
+  border-radius: 15px 15px 0 0;
+  min-height: 400px;
+  .modal-title {
+    text-align: center;
+    font-size: 16px;
+    padding: 12px 0;
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+}
+
+.use-receive-coupon-modal {
+  padding-top: 2px;
+  padding-bottom: 24px;
+  @include safe-area-inset-bottom(padding-bottom, 24px);
+}
+
+.use-receive-coupon-modal__continue-tips {
+  font-size: 10px;
+  color: $color-price;
+  text-align: center;
+  width: 10px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  margin: 4px auto 0 auto;
+}

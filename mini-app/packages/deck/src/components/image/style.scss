@@ -1,0 +1,29 @@
+.d_image {
+  font-size: 0;
+  vertical-align: top;
+  transform: translateZ(0);
+  position: relative;
+  overflow: hidden;
+  // height: 0!important;
+}
+.d_image__image {
+  width: 100%;
+  display: block;
+  transform: translateZ(0);
+  position: relative;
+  top: 0;
+  left: 0;
+  pointer-events: all;
+}
+
+.d_image__spots {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.d_image__spot-item {
+  position: absolute;
+  // background-color: rgba(244, 63, 94, 0.3);
+}

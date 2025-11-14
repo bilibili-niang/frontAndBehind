@@ -1,0 +1,61 @@
+.c_information-card-list--slide {
+  display: flex;
+  width: 100%;
+  overflow: auto hidden;
+  padding: 12px;
+}
+
+.c_information-card--slide {
+  flex-shrink: 0;
+  width: 150px;
+  padding: 8px;
+  background-color: #fff;
+  margin-right: 8px;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  &:last-of-type {
+    margin-right: 0;
+  }
+  &.--shadow {
+    position: relative;
+    overflow: hidden;
+    &::after {
+      content: '不可见，请配置';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+  }
+}
+
+.c_information-card--slide__thumbnail {
+  width: 100%;
+  padding-bottom: 105%;
+  background-color: #f3f3f3;
+  border-radius: 4px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.c_information-card--slide__title {
+  font-size: 14px;
+  margin-top: 8px;
+  padding: 0 4px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.c_information-card--slide__date {
+  font-size: 11px;
+  opacity: 0.4;
+  padding: 0 4px;
+  margin-top: auto;
+}

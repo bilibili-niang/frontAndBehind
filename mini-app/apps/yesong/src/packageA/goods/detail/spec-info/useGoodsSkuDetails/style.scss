@@ -1,0 +1,137 @@
+.goods-sku-details-scroller {
+  width: 100%;
+  height: 100%;
+}
+.goods-sku-details-modal {
+  padding-bottom: 3px;
+  .c_goods-item__image {
+    width: 50px !important;
+    padding-bottom: 50px !important;
+  }
+  .sku-list {
+    height: 84px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    background-color: #f5f5f5;
+    .swiper {
+      height: 100%;
+      width: 100%;
+    }
+    &.single {
+      .sku-item {
+        margin-right: 12px;
+      }
+    }
+  }
+  .sku-item {
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    margin-left: 12px;
+    /* #ifdef h5 */
+    margin-right: 12px;
+    /* #endif */
+  }
+  .sku-item__action {
+    flex-shrink: 0;
+    margin-left: 10px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-primary;
+    color: $color-text-primary-bg;
+    border-radius: 27px;
+    font-size: 12px;
+    width: 72px;
+    &.disabled {
+      background-color: #ccc;
+    }
+  }
+  .must-know {
+    margin: 0 12px;
+    border-radius: 10px;
+  }
+}
+.goods-sku-details__scroller {
+  width: 100%;
+  height: 100%;
+}
+.goods-sku-details {
+  @include safe-area-inset-bottom(padding-bottom, 24px);
+}
+.goods-sku-details__content {
+  margin-top: 12px;
+  margin: 0 12px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
+  font-size: 14px;
+  .title {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: $color-text-strong;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: $color-text-secondary;
+    font-weight: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .group {
+    padding: 15px 0;
+    border-bottom: 0.5px solid #ebebeb;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .group-title {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .group-remark {
+    margin-top: 12px;
+    opacity: 0.5;
+    font-size: 13px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: $color-primary;
+    .icon {
+      margin-right: 8px;
+      position: relative;
+      bottom: 2.5px;
+      float: left;
+      width: 13px;
+      height: 13px;
+    }
+  }
+  .group-item {
+    display: flex;
+    align-items: baseline;
+    padding: 4px 0;
+    .name {
+      flex: 1;
+    }
+    .count {
+      text-align: right;
+      color: $color-text-disabled;
+    }
+    .value {
+      width: 50px;
+      text-align: right;
+      font-size: 15px;
+      opacity: 0.8;
+    }
+  }
+}

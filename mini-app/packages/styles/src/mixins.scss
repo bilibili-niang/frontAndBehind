@@ -1,0 +1,37 @@
+// 底部安全距离，（属性名，高度）
+@mixin safe-area-inset-bottom($property, $height, $ratio: 1) {
+  #{$property}: $height;
+  #{$property}: calc(#{$height} + constant(safe-area-inset-bottom) * #{$ratio});
+  #{$property}: calc(#{$height} + env(safe-area-inset-bottom) * #{$ratio});
+  /* #ifndef h5 */
+  #{$property}: calc(#{$height} + var(--safe-area-inset-bottom) * #{$ratio});
+  /* #endif */
+}
+
+// 底部安全距离，（属性名，高度）
+@mixin safe-area-inset-bottom-max($property, $height) {
+  #{$property}: $height;
+  #{$property}: max(constant(safe-area-inset-bottom), $height);
+  #{$property}: max(env(safe-area-inset-bottom), $height);
+  /* #ifndef h5 */
+  #{$property}: max(var(--safe-area-inset-bottom), $height);
+  /* #endif */
+}
+
+// 底部安全距离，（属性名，高度）
+@mixin safe-area-inset-bottom-min($property, $height) {
+  #{$property}: $height;
+  #{$property}: min(constant(safe-area-inset-bottom), $height);
+  #{$property}: min(env(safe-area-inset-bottom), $height);
+  /* #ifndef h5 */
+  #{$property}: min(var(--safe-area-inset-bottom), $height);
+  /* #endif */
+}
+
+@function getNavHeight() {
+  @return var(--nav-height);
+}
+
+@mixin number-font {
+  font-family: AlibabaSans102v1TaoBao-Bold, sans-serif;
+}

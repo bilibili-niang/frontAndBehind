@@ -1,0 +1,35 @@
+export interface couponType {
+  id: string
+  tenantId: string
+  merchantId: string
+  merchantName: string
+  recordNo: string
+  orderNo: string
+  cardNo: string
+  password: string
+  cardInfo: object
+  userId: string
+  phone: string
+  goodsId: string
+  goodsName: string
+  goodsImages: string[]
+  goodsStockId: string
+  goodsStockName: object
+  totalTimes: number
+  availableTimes: number
+  status: number
+  qrcodeType: number
+  expireStartAt: string
+  expireEndAt: string
+  unavailableDate: number
+  unavailableDateWeekday: number[]
+  unavailableDateHoliday: number
+  unavailableDateRange: number
+  unavailableDateStartAt: string
+  unavailableDateEndAt: string
+  availableDate: number
+  availableDateStartAt: string
+  availableDateEndAt: string
+  createTime: string
+  updateTime: string
+}

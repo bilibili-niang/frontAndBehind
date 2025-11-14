@@ -1,0 +1,94 @@
+.profile-order {
+  background-color: #fff;
+  border-radius: 15px;
+  margin-bottom: 12px;
+}
+.profile-order__header {
+  display: flex;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+.profile-order__title {
+  font-size: 15px;
+  font-weight: 500;
+  color: $color-text-strong;
+}
+.profile-order__all {
+  font-size: 12px;
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  color: $color-text-disabled;
+  .icon {
+    opacity: 0.6;
+    font-size: 12px;
+  }
+}
+
+.profile-order__content {
+  display: flex;
+  padding-bottom: 15px;
+}
+.profile-order__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  position: relative;
+  .icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+}
+.profile-order__badge {
+  height: 18px;
+  min-width: 18px;
+  border: 1px solid rgb(255, 255, 255);
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 16px;
+  background-color: rgb(254, 112, 1);
+  padding: 2px 4.5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -6px;
+  right: 24px;
+  &.flicker::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(
+      -75deg,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0) 60%
+    );
+    background-size: 400% 100%;
+    animation: badge_flicker 4s infinite linear;
+  }
+}
+@keyframes badge_flicker {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -300% 0;
+  }
+}
+
+.profile-order__name {
+  font-size: 12px;
+  color: $color-text-secondary;
+  margin-top: 2px;
+}

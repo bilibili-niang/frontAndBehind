@@ -1,0 +1,45 @@
+.goods-detail-must-know {
+  background-color: #fff;
+  margin-top: 10px;
+  padding-bottom: 15px;
+  .main-title {
+    font-size: 17px;
+    color: $color-text-strong;
+    padding: 15px;
+    font-weight: 500;
+    padding-bottom: 0;
+  }
+  .main-content {
+    padding: 12px;
+    img {
+      font-size: 0;
+      vertical-align: top;
+      width: 100%;
+    }
+  }
+  .must-know__group {
+    margin: 0 14px;
+    padding: 15px 0;
+    border-bottom: 0.5px solid #ebebeb;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .must-know__group-title {
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    .icon {
+      margin-right: 4px;
+      vertical-align: middle;
+      position: relative;
+      bottom: 0.5px;
+    }
+  }
+  .must-know__group-content {
+    font-size: 13px;
+    color: $color-text-secondary;
+    margin-top: 4px;
+  }
+}

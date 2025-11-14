@@ -1,0 +1,68 @@
+.p_login {
+  background-color: #fff;
+  height: 80vh;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  --text-color: #000;
+  --theme: #000;
+
+  &.p_login--modal {
+    min-height: 60vh;
+    max-height: 80vh;
+    // height: 80vh;
+  }
+
+  &.p_login--page {
+    height: 100vh;
+    /* #ifdef h5 */
+    padding-top: 48px;
+    /* #endif */
+    /* #ifndef h5 */
+    padding-top: 88px;
+    /* #endif */
+    .p_login-close {
+      top: getNavHeight() !important;
+      left: 0 !important;
+      right: initial !important;
+      /* #ifdef h5 */
+      transform: translate3d(0, calc(-100% - 12px), 0);
+      /* #endif */
+      /* #ifndef h5 */
+      transform: translate3d(0, calc(-100% - 18px), 0);
+      /* #endif */
+    }
+  }
+}
+
+.p_login-close {
+  width: 32px;
+  height: 32px;
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 24px;
+  margin: 12px;
+  top: 0;
+  right: 0;
+}
+
+.p_login-content {
+  animation: login_in 0.6s 0.4s both;
+  // height: 100%;
+  margin-bottom: auto;
+}
+
+@keyframes login_in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

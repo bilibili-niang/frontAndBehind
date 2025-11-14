@@ -1,0 +1,197 @@
+.common-navigator__title-content--text {
+  color: rgba(192, 202, 211, 1);
+}
+.poster-create-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+  padding: 10px 10px 40px;
+  @include safe-area-inset-bottom(padding-bottom, 50px);
+  .poster-create-top-operations {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .poster-name-input {
+      flex: 1;
+      height: 30px;
+      background: #fff;
+      border-radius: 42px;
+      padding: 0 15px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+    .bottom-btn {
+      font-size: 12px;
+      margin-left: 5px;
+      display: flex;
+      width: 75px;
+      background-color: #ff2b60;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 42px;
+      margin-right: 5px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .image-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    //    height: 550px;
+    height: 650px;
+    border-radius: 10px;
+    //    align-items: center;
+    //    justify-content: center;
+    .content-layout {
+      display: flex;
+      width: 100%;
+      position: relative;
+      .qr-image {
+        position: absolute;
+      }
+    }
+    position: relative;
+    .image-uploader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    padding-bottom: 80px;
+    .tips {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      color: rgba(0, 0, 0, 0.7);
+      margin-top: 10px;
+      padding: 10px;
+    }
+    .row-layout {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      margin-top: 10px;
+      //      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 10px;
+      .key-title {
+        display: flex;
+        width: 170px;
+        margin-right: 5px;
+      }
+      .page-selector {
+        border-radius: 42px;
+      }
+      .save-post,
+      .save-local,
+      .bottom-btn {
+        display: flex;
+        width: 30%;
+        background-color: #ff2b60;
+        color: #fff;
+        padding: 10px;
+        border-radius: 42px;
+        margin-right: 5px;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .btn-layout {
+      padding: 0;
+      justify-content: space-between;
+      border: none !important;
+    }
+  }
+}
+.custom-pop {
+  .nut-dialog__footer-ok {
+    background: var(--themeColor);
+  }
+  .nut-dialog__footer-cancel {
+    color: var(--themeColor);
+    border-color: var(--themeColor);
+  }
+}
+// 上传图片组件的样式覆盖
+.image-uploader {
+  .inc-btn {
+    width: 60vw !important;
+    height: 60vw !important;
+    background-color: rgba(0, 0, 0, 0);
+    &:before {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    .btn-cnt {
+      background-color: rgba(0, 0, 0, 0);
+      border: 3px dashed #6f7989;
+      border-radius: 10px;
+      .anteng-icon {
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+}
+.poster-create-bottom-operations {
+  box-shadow: 0 5px 5px 5px rgba(255, 255, 255, 0.15);
+  border-radius: 10px 10px 0 0;
+  background-color: rgba(20, 28, 44, 1);
+  padding-bottom: calc(0rpx + var(--safe-area-inset-bottom) * 1);
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 13px;
+  color: rgba(192, 202, 211, 1);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .poster-create-bottom-left,
+  .poster-create-bottom-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.5);
+    padding-bottom: 5px;
+    font-size: 12px;
+    .anteng-icon {
+      color: rgba(255, 255, 255, 1);
+      font-size: 17px;
+    }
+  }
+}
+/* 商品选择的组件 */
+.row-layout {
+  position: fixed;
+  bottom: -900px;
+}
+.nut-tabs__titles-item__line {
+  display: none;
+}
+/* 海报图片样式 */
+.poster-image {
+  width: 100% !important;
+  display: flex;
+  flex: 1;
+  padding: 0;
+  //  min-width: 100% !important;
+  //  min-height: 100% !important;
+  object-fit: contain !important;
+}

@@ -1,0 +1,40 @@
+.detail-images-swiper {
+  width: 100%;
+  height: 100vw;
+  background-color: #ffffff;
+  position: relative;
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .indicator {
+    width: 44px;
+    height: 20px;
+    line-height: 1;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    position: absolute;
+    z-index: 2;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 12px;
+    padding-left: 1px;
+    .current,
+    .total {
+      width: 20px;
+      display: flex;
+    }
+    .current {
+      justify-content: flex-end;
+    }
+  }
+}
+.detail-images-swiper__image {
+  width: 100%;
+  height: 100%;
+}
