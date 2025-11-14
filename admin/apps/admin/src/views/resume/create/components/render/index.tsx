@@ -1,6 +1,4 @@
-import './index.scss'
 import { defineComponent } from 'vue'
-import Render from '../render/index'
 
 export default defineComponent({
   props: {},
@@ -8,10 +6,8 @@ export default defineComponent({
   setup(props, { emit }) {
     return () => {
       return (
-        <div class="resume-center">
-
-          <Render/>
-
+        <div class="render">
+          render
         </div>
       )
     }
