@@ -1,7 +1,0 @@
-packages:
-  - "packages/*"
-  - "project/*"
-  - "apps/*"
-  - "apps/cs/*"
-  - "docs"
-  
