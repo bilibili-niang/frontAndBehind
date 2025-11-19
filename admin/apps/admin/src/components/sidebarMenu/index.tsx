@@ -3,6 +3,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { Icon, Menu } from '@anteng/ui'
 import { menuTree } from '@/router/auto'
 import './style.scss'
+import router from '@/router'
 
 export default defineComponent({
   name: 'SidebarMenu',
@@ -29,20 +30,20 @@ export default defineComponent({
         const children = (group.children || []).map((child) => ({
           key: child.path!,
           label: child.title,
-          icon: child.icon ? <Icon name={child.icon} /> : undefined
+          icon: child.icon ? <Icon name={child.icon}/> : undefined
         }))
         if (children.length > 0) {
           return {
             key,
             label: group.title,
-            icon: group.icon ? <Icon name={group.icon} /> : undefined,
+            icon: group.icon ? <Icon name={group.icon}/> : undefined,
             children
           }
         }
         return {
           key,
           label: group.title,
-          icon: group.icon ? <Icon name={group.icon} /> : undefined
+          icon: group.icon ? <Icon name={group.icon}/> : undefined
         }
       })
     )
@@ -56,6 +57,13 @@ export default defineComponent({
 
     return () => (
       <div class="main-sidebar">
+        <div
+          class="p-3 flex flex-column">
+          <a
+            onClick={() => {
+              router.push('/resume/home')
+            }}>简历制作</a>
+        </div>
         <Menu
           mode="inline"
           items={items.value as any}

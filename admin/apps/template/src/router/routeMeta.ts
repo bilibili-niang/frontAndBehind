@@ -13,6 +13,8 @@ export interface RouteMeta {
   keepAlive?: boolean
   /** 纯界面模式：用于控制布局元素的显示/隐藏 */
   pureInterface?: boolean
+  /** 页面独占模式：仅渲染 RouterView，不显示侧边栏与顶部栏 */
+  purePage?: boolean
   /** 可选的路由重定向，留空字符串时默认跳至该目录首个子路由 */
   redirect?: string
 }

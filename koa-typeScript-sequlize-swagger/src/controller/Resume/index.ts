@@ -1,6 +1,7 @@
 import { Context } from 'koa'
 import { body, middlewares, ParsedArgs, responses, routeConfig } from 'koa-swagger-decorator'
 import { ctxBody } from '@/utils'
+import { getCurrentUserId } from '@/utils/auth'
 import {
   resumeCreateReq,
   resumeDeleteRes,
@@ -63,9 +64,17 @@ class ResumeController {
   ])
   @responses(resumeListRes)
   async getResumeList(ctx: Context, args: ParsedArgs<any>) {
+
+    console.log('ctx')
+    console.log(ctx.user)
+
     try {
-      // 从ctx.decode中获取当前登录用户的ID
-      const userId = ctx.decode.id
+      // 获取当前登录用户ID（兼容 ctx.decode 与 JWT 请求头）
+      const userId = getCurrentUserId(ctx)
+      if (!userId) {
+        ctx.body = ctxBody({ success: false, code: 401, msg: '未登录或凭证无效', data: null })
+        return
+      }
       // 修改Sequelize查询参数，增加用户ID筛选
       const { size, page } = ctx.parsed.query
       // 执行分页查询，只返回当前用户的简历

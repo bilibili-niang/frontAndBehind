@@ -1,15 +1,16 @@
 import { defineComponent } from 'vue'
-import { Spin } from '@anteng/core'
 
 export default defineComponent({
-  name: 'Settings',
+  name: 'ResumeCard',
   props: {},
   emits: [''],
   setup(props, { emit }) {
+    console.log('props:')
+    console.log(props)
     return () => {
       return (
-        <div class="seeting-page">
-          <Spin></Spin>
+        <div class="resume-card">
+
         </div>
       )
     }

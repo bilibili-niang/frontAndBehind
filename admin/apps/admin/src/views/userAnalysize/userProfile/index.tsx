@@ -10,7 +10,10 @@ export default defineComponent({
   name: 'UserProfile',
   setup() {
     // 筛选条件
-    const query = ref<{ time?: 'today' | 'week' | 'month'; platform?: 'all' | 'android' | 'ios' | 'web' }>({ time: 'today', platform: 'all' })
+    const query = ref<{
+      time?: 'today' | 'week' | 'month';
+      platform?: 'all' | 'android' | 'ios' | 'web'
+    }>({ time: 'today', platform: 'all' })
 
     // 顶部指标
     const stats = ref([
@@ -31,11 +34,15 @@ export default defineComponent({
         const male = Math.round((40 + Math.random() * 30) * timeFactor * platFactor)
         const female = Math.round((30 + Math.random() * 30) * timeFactor * platFactor)
         const other = Math.max(100 - male - female, 0)
-        return { data: { records: [
-          { name: '男', value: male },
-          { name: '女', value: female },
-          { name: '其他', value: other }
-        ] } }
+        return {
+          data: {
+            records: [
+              { name: '男', value: male },
+              { name: '女', value: female },
+              { name: '其他', value: other }
+            ]
+          }
+        }
       },
       build: (data) => ({
         tooltip: { trigger: 'item', confine: true },
@@ -61,7 +68,10 @@ export default defineComponent({
         const platFactor = p === 'android' ? 1.0 : p === 'ios' ? 0.95 : p === 'web' ? 0.85 : 1
         const names = ['18-25', '26-35', '36-45', '46+']
         const base = [120, 220, 180, 140]
-        const records = names.map((n, i) => ({ name: n, value: Math.round((base[i] + Math.random() * 180) * timeFactor * platFactor) }))
+        const records = names.map((n, i) => ({
+          name: n,
+          value: Math.round((base[i] + Math.random() * 180) * timeFactor * platFactor)
+        }))
         return { data: { records } }
       },
       build: (data) => ({
@@ -84,7 +94,7 @@ export default defineComponent({
       customRequest: async (params: any) => {
         const t = params?.time || 'today'
         const p = params?.platform || 'all'
-        const labels = t === 'today' ? ['0','2','4','6','8','10','12','14'] : t === 'week' ? ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'] : Array.from({length: 15}, (_,i)=>`${i+1}`)
+        const labels = t === 'today' ? ['0', '2', '4', '6', '8', '10', '12', '14'] : t === 'week' ? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] : Array.from({ length: 15 }, (_, i) => `${i + 1}`)
         const timeFactor = t === 'today' ? 0.8 : t === 'week' ? 1.0 : 1.1
         const platFactor = p === 'android' ? 1.0 : p === 'ios' ? 0.95 : p === 'web' ? 0.85 : 1
         const randSeries = () => labels.map(() => Math.round((50 + Math.random() * 80) * timeFactor * platFactor))
@@ -92,10 +102,24 @@ export default defineComponent({
       },
       build: (data) => ({
         tooltip: { trigger: 'axis', confine: true },
-        legend: { top: 8, right: 8, data: ['老访客', '新访客'], selectedMode: true, selected: { '老访客': true, '新访客': true } },
+        legend: {
+          top: 8,
+          right: 8,
+          data: ['老访客', '新访客'],
+          selectedMode: true,
+          selected: { '老访客': true, '新访客': true }
+        },
         grid: { left: 48, right: 24, top: 40, bottom: 24, containLabel: true },
         xAxis: { type: 'category', boundaryGap: false, data: data?.labels ?? [] },
-        yAxis: { type: 'value', name: '时长(分钟)', nameLocation: 'end', nameRotate: 0, nameGap: 8, nameTextStyle: { padding: [0,0,8,0] }, axisLabel: { margin: 8 } },
+        yAxis: {
+          type: 'value',
+          name: '时长(分钟)',
+          nameLocation: 'end',
+          nameRotate: 0,
+          nameGap: 8,
+          nameTextStyle: { padding: [0, 0, 8, 0] },
+          axisLabel: { margin: 8 }
+        },
         series: [
           {
             name: '老访客',
@@ -162,7 +186,10 @@ export default defineComponent({
         const timeFactor = t === 'today' ? 0.9 : t === 'week' ? 1.0 : 1.1
         const platFactor = p === 'android' ? 1.0 : p === 'ios' ? 0.95 : p === 'web' ? 0.85 : 1
         const pages = ['首页', '商品', '订单', '个人', '帮助']
-        const records = pages.map((pg, i) => ({ name: pg, value: Math.round((10 + i * 6 + Math.random() * 30) * timeFactor * platFactor) }))
+        const records = pages.map((pg, i) => ({
+          name: pg,
+          value: Math.round((10 + i * 6 + Math.random() * 30) * timeFactor * platFactor)
+        }))
         return { data: { records } }
       },
       build: (data) => ({
@@ -257,15 +284,29 @@ export default defineComponent({
         const platFactor = p === 'android' ? 1.0 : p === 'ios' ? 0.95 : p === 'web' ? 0.85 : 1
         const sources = ['使用优惠券', '添加到收藏', '搜索商品(有结果)', '搜索商品(无结果)']
         const base = [520, 460, 620, 140]
-        const records = sources.map((s, i) => ({ name: s, value: Math.round((base[i] + Math.random() * 120) * timeFactor * platFactor) }))
+        const records = sources.map((s, i) => ({
+          name: s,
+          value: Math.round((base[i] + Math.random() * 120) * timeFactor * platFactor)
+        }))
         return { data: { records } }
       },
       build: (data) => ({
         tooltip: { trigger: 'axis', confine: true },
         grid: { left: 48, right: 24, top: 24, bottom: 24, containLabel: true },
         xAxis: { type: 'category', data: (data?.records ?? data ?? []).map((it: any) => it.name) },
-        yAxis: { type: 'value', name: '次数(次)', nameLocation: 'end', nameRotate: 0, nameGap: 8, axisLabel: { margin: 8 } },
-        series: [{ type: 'bar', itemStyle: { borderRadius: [4, 4, 0, 0] }, data: (data?.records ?? data ?? []).map((it: any) => it.value) }]
+        yAxis: {
+          type: 'value',
+          name: '次数(次)',
+          nameLocation: 'end',
+          nameRotate: 0,
+          nameGap: 8,
+          axisLabel: { margin: 8 }
+        },
+        series: [{
+          type: 'bar',
+          itemStyle: { borderRadius: [4, 4, 0, 0] },
+          data: (data?.records ?? data ?? []).map((it: any) => it.value)
+        }]
       })
     })
 
@@ -288,22 +329,43 @@ export default defineComponent({
         legend: { top: 8, right: 8, data: ['有结果', '无结果'] },
         grid: { left: 48, right: 24, top: 40, bottom: 24, containLabel: true },
         xAxis: { type: 'category', data: (data ?? []).map((it: any) => it.term) },
-        yAxis: { type: 'value', name: '搜索次数(次)', nameLocation: 'end', nameRotate: 0, nameGap: 8, axisLabel: { margin: 8 } },
+        yAxis: {
+          type: 'value',
+          name: '搜索次数(次)',
+          nameLocation: 'end',
+          nameRotate: 0,
+          nameGap: 8,
+          axisLabel: { margin: 8 }
+        },
         series: [
-          { name: '有结果', type: 'bar', itemStyle: { borderRadius: [4, 4, 0, 0] }, data: (data ?? []).map((it: any) => it.hasRes) },
-          { name: '无结果', type: 'bar', itemStyle: { borderRadius: [4, 4, 0, 0] }, data: (data ?? []).map((it: any) => it.noRes) }
+          {
+            name: '有结果',
+            type: 'bar',
+            itemStyle: { borderRadius: [4, 4, 0, 0] },
+            data: (data ?? []).map((it: any) => it.hasRes)
+          },
+          {
+            name: '无结果',
+            type: 'bar',
+            itemStyle: { borderRadius: [4, 4, 0, 0] },
+            data: (data ?? []).map((it: any) => it.noRes)
+          }
         ]
       })
     })
 
-    let behaviorRelationSetFilter: (payload: any) => void = () => {}
-    let behaviorRelationRefresh: () => void = () => {}
+    let behaviorRelationSetFilter: (payload: any) => void = () => {
+    }
+    let behaviorRelationRefresh: () => void = () => {
+    }
     const BehaviorRelationChart = defineComponent({
       setup() {
         const el = ref<HTMLDivElement | null>(null)
         let instance: echarts.ECharts | null = null
         let filter = { ...query.value }
-        const setFilter = (payload: any) => { filter = { ...payload } }
+        const setFilter = (payload: any) => {
+          filter = { ...payload }
+        }
         behaviorRelationSetFilter = setFilter
         const customRequest = async () => {
           const t = filter?.time || 'today'
@@ -338,8 +400,28 @@ export default defineComponent({
             tooltip: { trigger: 'item', confine: true },
             legend: { top: 8, left: 'center' },
             grid: { left: 56, right: 56, top: 24, bottom: 56, containLabel: true },
-            xAxis: { type: 'value', name: '行为触发(次)', nameLocation: 'middle', nameRotate: 0, nameGap: 28, axisLabel: { margin: 10 }, min: 0, max: maxX, splitLine: { show: true } },
-            yAxis: { type: 'value', name: '支付成功(单)', nameLocation: 'end', nameRotate: 0, nameGap: 10, axisLabel: { margin: 8 }, min: 0, max: maxY, splitLine: { show: true } },
+            xAxis: {
+              type: 'value',
+              name: '行为触发(次)',
+              nameLocation: 'middle',
+              nameRotate: 0,
+              nameGap: 28,
+              axisLabel: { margin: 10 },
+              min: 0,
+              max: maxX,
+              splitLine: { show: true }
+            },
+            yAxis: {
+              type: 'value',
+              name: '支付成功(单)',
+              nameLocation: 'end',
+              nameRotate: 0,
+              nameGap: 10,
+              axisLabel: { margin: 8 },
+              min: 0,
+              max: maxY,
+              splitLine: { show: true }
+            },
             series: (items || []).map((r: any) => ({
               name: r.name,
               type: 'scatter',
@@ -349,7 +431,10 @@ export default defineComponent({
                 return Math.max(10, Math.min(26, size))
               },
               data: [[r.count, r.payments, r.aov, r.name]],
-              emphasis: { focus: 'series', label: { show: true, formatter: (p: any) => (Array.isArray(p.value) ? p.value[3] : r.name) } }
+              emphasis: {
+                focus: 'series',
+                label: { show: true, formatter: (p: any) => (Array.isArray(p.value) ? p.value[3] : r.name) }
+              }
             }))
           }
         }
@@ -357,7 +442,11 @@ export default defineComponent({
           const res: any = await customRequest()
           const option = build(res?.data ?? res)
           instance?.setOption(option, true)
-          try { requestAnimationFrame(() => instance?.resize()) } catch {}
+          try {
+            requestAnimationFrame(() => instance?.resize())
+          } catch (e) {
+            console.log(e)
+          }
         }
         behaviorRelationRefresh = refresh
         onMounted(() => {
@@ -396,7 +485,10 @@ export default defineComponent({
         const platFactor = p === 'android' ? 1.0 : p === 'ios' ? 0.95 : p === 'web' ? 0.85 : 1
         const sources = ['公众号文章', '扫码', '搜索', '好友分享', '广告']
         const base = [260, 220, 280, 200, 180]
-        const records = sources.map((s, i) => ({ name: s, value: Math.round((base[i] + Math.random() * 120) * timeFactor * platFactor) }))
+        const records = sources.map((s, i) => ({
+          name: s,
+          value: Math.round((base[i] + Math.random() * 120) * timeFactor * platFactor)
+        }))
         return { data: { records } }
       },
       build: (data) => ({
@@ -411,7 +503,11 @@ export default defineComponent({
           nameGap: 8,
           axisLabel: { margin: 8 }
         },
-        series: [{ type: 'bar', itemStyle: { borderRadius: [4, 4, 0, 0] }, data: (data?.records ?? data ?? []).map((it: any) => it.value) }]
+        series: [{
+          type: 'bar',
+          itemStyle: { borderRadius: [4, 4, 0, 0] },
+          data: (data?.records ?? data ?? []).map((it: any) => it.value)
+        }]
       })
     })
 
@@ -426,11 +522,15 @@ export default defineComponent({
         const v1 = Math.round((60 + Math.random() * 25) * timeFactor * platFactor)
         const v2 = Math.round((40 + Math.random() * 25) * timeFactor * platFactor)
         const v3 = Math.max(100 - v1 - v2, 10)
-        return { data: { records: [
-          { name: '会员', value: v1 },
-          { name: '付费', value: v2 },
-          { name: '普通', value: v3 }
-        ] } }
+        return {
+          data: {
+            records: [
+              { name: '会员', value: v1 },
+              { name: '付费', value: v2 },
+              { name: '普通', value: v3 }
+            ]
+          }
+        }
       },
       build: (data) => ({
         tooltip: { trigger: 'item', confine: true },
@@ -462,10 +562,14 @@ export default defineComponent({
         const platFactor = p === 'android' ? 1.0 : p === 'ios' ? 0.95 : p === 'web' ? 0.85 : 1
         const a = Math.round((40 + Math.random() * 30) * timeFactor * platFactor)
         const b = Math.max(100 - a, 0)
-        return { data: { records: [
-          { name: '普通用户停留热点', value: a },
-          { name: '会员集中停留', value: b }
-        ] } }
+        return {
+          data: {
+            records: [
+              { name: '普通用户停留热点', value: a },
+              { name: '会员集中停留', value: b }
+            ]
+          }
+        }
       },
       build: (data) => ({
         tooltip: { trigger: 'item', confine: true },
@@ -560,17 +664,26 @@ export default defineComponent({
         {/* 过滤器 */}
         <div class="user-profile-query-bar">
           <span class="user-profile-query-label">平台：</span>
-            <Select
-              value={query.value.platform}
-              options={platformSelection}
-              onChange={(v:any)=>{ query.value.platform = v; applyFilters(); }}
-            />
-            <span class="user-profile-query-label">时间：</span>
-            <Select
-              value={query.value.time}
-              options={[{label:'今日',value:'today'},{label:'本周',value:'week'},{label:'本月',value:'month'}]}
-              onChange={(v:any)=>{ query.value.time = v; applyFilters(); }}
-            />
+          <Select
+            value={query.value.platform}
+            options={platformSelection}
+            onChange={(v: any) => {
+              query.value.platform = v
+              applyFilters()
+            }}
+          />
+          <span class="user-profile-query-label">时间：</span>
+          <Select
+            value={query.value.time}
+            options={[{ label: '今日', value: 'today' }, { label: '本周', value: 'week' }, {
+              label: '本月',
+              value: 'month'
+            }]}
+            onChange={(v: any) => {
+              query.value.time = v
+              applyFilters()
+            }}
+          />
         </div>
 
         {/* 图表网格 */}
@@ -578,90 +691,90 @@ export default defineComponent({
           {/* 性别占比 */}
           <Card title={genderChart.title} class="chart-card">
             <div class="chart-body">
-              <genderChart.Chart />
+              <genderChart.Chart/>
             </div>
           </Card>
 
           {/* 年龄区间 */}
           <Card title={ageChart.title} class="chart-card">
             <div class="chart-body">
-              <ageChart.Chart />
+              <ageChart.Chart/>
             </div>
           </Card>
 
           {/* 用户浏览时长趋势（带切换） */}
           <Card title={durationChart.title} class="chart-card">
             <div class="chart-body">
-              <durationChart.Chart />
+              <durationChart.Chart/>
             </div>
           </Card>
 
           {/* 消费分次热力 */}
           <Card title={heatChart.title} class="chart-card">
             <div class="chart-body">
-              <heatChart.Chart />
+              <heatChart.Chart/>
             </div>
           </Card>
 
           {/* 页面浏览量TOP5 */}
           <Card title={top5Chart.title} class="chart-card">
             <div class="chart-body">
-              <top5Chart.Chart />
+              <top5Chart.Chart/>
             </div>
           </Card>
 
           {/* 新老用户 */}
           <Card title={newOldUsersChart.title} class="chart-card">
             <div class="chart-body">
-              <newOldUsersChart.Chart />
+              <newOldUsersChart.Chart/>
             </div>
           </Card>
 
           {/* 核心转化漏斗 */}
           <Card title={coreFunnelChart.title} class="chart-card">
             <div class="chart-body">
-              <coreFunnelChart.Chart />
+              <coreFunnelChart.Chart/>
             </div>
           </Card>
 
           {/* 辅助转化行为 */}
           <Card title={auxiliaryBehaviorChart.title} class="chart-card">
             <div class="chart-body">
-              <auxiliaryBehaviorChart.Chart />
+              <auxiliaryBehaviorChart.Chart/>
             </div>
           </Card>
 
           {/* 搜索词TOP10（结果/无结果） */}
           <Card title={searchTermsChart.title} class="chart-card">
             <div class="chart-body">
-              <searchTermsChart.Chart />
+              <searchTermsChart.Chart/>
             </div>
           </Card>
 
           {/* 行为-转化关系 */}
           <Card title={'行为-转化关系'} class="chart-card chart-card--span-2">
             <div class="chart-body">
-              <BehaviorRelationChart />
+              <BehaviorRelationChart/>
             </div>
           </Card>
 
           <Card title={acquisitionChart.title} class="chart-card">
             <div class="chart-body">
-              <acquisitionChart.Chart />
+              <acquisitionChart.Chart/>
             </div>
           </Card>
 
           {/* 单品浏览占比（漏斗） */}
           <Card title={funnelChart.title} class="chart-card">
             <div class="chart-body">
-              <funnelChart.Chart />
+              <funnelChart.Chart/>
             </div>
           </Card>
 
           {/* 用户分层 */}
           <Card title={layerChart.title} class="chart-card">
             <div class="chart-body">
-              <layerChart.Chart />
+              <layerChart.Chart/>
             </div>
           </Card>
         </div>

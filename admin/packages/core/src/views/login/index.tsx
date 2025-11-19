@@ -18,7 +18,6 @@ import useAppStore from '../../stores/app'
 import useUserStore from '../../stores/user'
 import { isDev } from '@anteng/utils'
 import { LOGIN_IDENTITY } from '@anteng/config'
-import MagnetMatrix from './magnet-matrix'
 
 export default defineComponent({
   name: 'LegoLoginPage',
@@ -502,78 +501,6 @@ export default defineComponent({
       )
     }
 
-    const loginBoxRef = ref<HTMLElement | null>(null)
-
-    const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max)
-    const glowX = ref(0.5)
-    const glowY = ref(0.5)
-
-    const onGlowMove = (e: MouseEvent) => {
-      const el = loginBoxRef.value
-      if (!el) return
-      const rect = el.getBoundingClientRect()
-      const nx = (e.clientX - rect.left) / rect.width
-      const ny = (e.clientY - rect.top) / rect.height
-
-      // 计算与当前光晕中心的距离与方向
-      const dx = nx - glowX.value
-      const dy = ny - glowY.value
-      const dist = Math.hypot(dx, dy) // 0 ~ √2
-
-      // 避让阈值与强度（可按需微调）
-      const threshold = 0.25 // 接近时触发避让（相对容器尺寸）
-      const strength = 0.35 // 推远强度
-
-      if (dist < threshold) {
-        // 距离越近，推开越强，方向为远离鼠标
-        const inv = 1 / (dist + 1e-4)
-        const push = (threshold - dist) * strength * inv
-        glowX.value = clamp(glowX.value - dx * push, 0.05, 0.95)
-        glowY.value = clamp(glowY.value - dy * push, 0.05, 0.95)
-      } else {
-        // 不靠近时，缓慢向鼠标方向漂移，避免突兀
-        glowX.value = clamp(glowX.value + (nx - glowX.value) * 0.03, 0.05, 0.95)
-        glowY.value = clamp(glowY.value + (ny - glowY.value) * 0.03, 0.05, 0.95)
-      }
-
-      // 边缘靠近时增强发光强度（维持原逻辑）
-      const edgeDist = Math.min(glowX.value, 1 - glowX.value, glowY.value, 1 - glowY.value)
-      const proximityEdge = Math.max(0, 1 - edgeDist * 2)
-      const baseGlow = 0.35
-      const proximity = Math.min(1, baseGlow + proximityEdge * 0.65)
-
-      el.style.setProperty('--mx', glowX.value * 100 + '%')
-      el.style.setProperty('--my', glowY.value * 100 + '%')
-      el.style.setProperty('--glow', proximity.toFixed(3))
-
-      // 调试输出（节流简单处理）
-      ;(window as any).__glowLogTs = (window as any).__glowLogTs || 0
-      const now = Date.now()
-      if (now - (window as any).__glowLogTs > 200) {
-        (window as any).__glowLogTs = now
-      }
-    }
-
-    const onGlowEnter = () => {
-      const el = loginBoxRef.value
-      if (el) {
-        el.style.setProperty('--glow', '0.65')
-      }
-      console.log('[login glow] enter')
-    }
-
-    const onGlowLeave = () => {
-      return void 0
-      const el = loginBoxRef.value
-      if (!el) return
-      // 回到中心并关闭发光
-      glowX.value = 0.5
-      glowY.value = 0.5
-      el.style.setProperty('--mx', '50%')
-      el.style.setProperty('--my', '50%')
-      el.style.setProperty('--glow', '0')
-    }
-
     return () => {
       return (
         <div class="login-page">
@@ -583,11 +510,16 @@ export default defineComponent({
             <div class="blob blob--pink"></div>
             <div class="blob blob--teal"></div>
           </div>
-          <MagnetMatrix/>
           <div class="frosted-film"></div>
           {/* @ts-ignore */}
-          <div class="login-box" theme="light" ref={loginBoxRef} onMouseenter={onGlowEnter} onMousemove={onGlowMove}
-               onMouseleave={onGlowLeave}>
+          <div
+            class="login-box"
+            theme="light"
+          >
+            {/*ref={loginBoxRef}*/}
+            {/*onMouseenter={onGlowEnter}*/}
+            {/*onMousemove={onGlowMove}*/}
+            {/*onMouseleave={onGlowLeave}>*/}
             {state.type === 'resetPassword' ? (
               <ResetPassword/>
             ) : state.type === 'merchant' ? (

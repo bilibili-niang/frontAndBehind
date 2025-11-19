@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
   const isTest = mode === 'test'
   // 确保测试/部署构建的静态资源路径带上项目名前缀
   return {
-    // 统一使用以斜杠包裹的前缀：`/yesong-admin/`；未设置则为 `/`
+    // 统一使用以斜杠包裹的前缀：`/admin/`；未设置则为 `/`
     base: VITE_APP_NAME ? `/${VITE_APP_NAME}/` : '/',
     define: {
       'import.meta.env.VITE_APP_NAME': `"${VITE_APP_NAME || ''}"`

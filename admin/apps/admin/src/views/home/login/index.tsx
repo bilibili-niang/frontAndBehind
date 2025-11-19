@@ -9,7 +9,7 @@ const APPS = [
     key: 'admin',
     title: '后台管理（admin）',
     // 与 apps/admin 的 vite.config.ts 保持一致：base 由 package.json 的 name 决定
-    baseName: 'yesong-admin'
+    baseName: 'admin'
   }
 ]
 

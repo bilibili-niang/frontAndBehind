@@ -47,7 +47,9 @@ const children: RouteRecordRaw[] = Object.keys(viewModules).map((key) => {
       icon: meta.icon,
       keepAlive: !!meta.keepAlive,
       // 透传 pureInterface 以便页面实时控制布局元素显示/隐藏
-      pureInterface: !!meta.pureInterface
+      pureInterface: !!meta.pureInterface,
+      // 页面独占模式：仅渲染 RouterView，不显示侧边栏与顶部栏
+      purePage: !!meta.purePage
     },
     // 组件采用按需加载，避免一次性打包所有视图
     component: viewModules[key] as any
