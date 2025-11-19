@@ -10,7 +10,7 @@ import Icon from '../icon'
  * - 可折叠/展开，折叠状态保存在 localStorage
  */
 export default defineComponent({
-  name: 'AntengTestFloat',
+  name: 'TestFloat',
   props: {
     label: {
       type: String,

@@ -18,7 +18,6 @@ export default defineComponent({
         size: 9999
       } as RequestPagination)
         .then(res => {
-          console.log(res)
           if (res.success) {
             dataList.value = res.data.records
           }
@@ -51,7 +50,9 @@ export default defineComponent({
                 key={1}
                 tab={'我的简历'}
               >
-                {dataList.value.map(ResumeCard)}
+                {dataList.value.length?dataList.value.map(p=><ResumeCard data={p}/>):
+                <ResumeCard empty={true}/>
+                }
               </TabPane>
             </Tabs>
           </div>

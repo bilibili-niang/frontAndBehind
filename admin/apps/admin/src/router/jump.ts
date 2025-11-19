@@ -8,3 +8,7 @@ export const redirectIndex = () => {
 export const jumpBack = () => {
   router.back()
 }
+// 用户新建简历
+export const jumpCreateResume = () => {
+  router.push('/resume/create')
+}
