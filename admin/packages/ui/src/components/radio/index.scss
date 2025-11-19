@@ -1,0 +1,14 @@
+.#{$prefix}-radio-wrapper .#{$prefix}-radio-checked .#{$prefix}-radio-inner {
+	background-color: $color-primary;
+	border-color: $color-primary;
+}
+
+.#{$prefix}-radio-wrapper:hover .#{$prefix}-radio-wrapper,
+.#{$prefix}-radio-wrapper:hover .#{$prefix}-radio-inner {
+	border-color: $color-primary;
+}
+
+.#{$prefix}-radio-wrapper {
+	margin-inline-end: 16px;
+	color: $color-text-secondary;
+}

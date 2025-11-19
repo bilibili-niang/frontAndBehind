@@ -32,6 +32,7 @@ export { default as ScrollContainer } from './components/scrollContainer'
 export { default as Tag } from './components/tag'
 export { default as InfoList } from './components/infoList'
 export { default as JsonView } from './components/json-view'
+export { default as Radio } from './components/radio'
 
 export {
   Settings,

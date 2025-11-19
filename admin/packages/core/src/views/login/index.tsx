@@ -1,5 +1,5 @@
 import { computed, defineComponent, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
-import { Button, Empty, Icon, Input, message, Spin } from '@anteng/ui'
+import { Button, Empty, Icon, Input, message, Spin, Radio } from '@anteng/ui'
 import './style.scss'
 import { useRouter } from 'vue-router'
 import md5 from 'blueimp-md5'
@@ -18,6 +18,7 @@ import useAppStore from '../../stores/app'
 import useUserStore from '../../stores/user'
 import { isDev } from '@anteng/utils'
 import { LOGIN_IDENTITY } from '@anteng/config'
+import MagnetMatrix from './magnet-matrix'
 
 export default defineComponent({
   name: 'LegoLoginPage',
@@ -81,12 +82,12 @@ export default defineComponent({
     // 调试：确认背景和容器挂载状态
     onMounted(() => {
       document.querySelector('.login-page')
-        .addEventListener('pointermove', (e) => {
-          const { currentTarget: el, clientX: x, clientY: y } = e
-          const { top: t, left: l, width: w, height: h } = el.getBoundingClientRect()
-          el.style.setProperty('--posX', x - l - w / 2)
-          el.style.setProperty('--posY', y - t - h / 2)
-        })
+              .addEventListener('pointermove', (e) => {
+                const { currentTarget: el, clientX: x, clientY: y } = e
+                const { top: t, left: l, width: w, height: h } = el.getBoundingClientRect()
+                el.style.setProperty('--posX', x - l - w / 2)
+                el.style.setProperty('--posY', y - t - h / 2)
+              })
     })
 
     const handleLogin = () => {
@@ -133,9 +134,9 @@ export default defineComponent({
         const loginData: any = {
           password: md5(password),
           // 根据选择的登录方式添加相应字段
-          ...(loginMethod === 'account' ? { account } : 
-             loginMethod === 'userName' ? { userName: account } : 
-             loginMethod === 'phoneNumber' ? { phoneNumber: account } : {})
+          ...(loginMethod === 'account' ? { account } :
+            loginMethod === 'userName' ? { userName: account } :
+              loginMethod === 'phoneNumber' ? { phoneNumber: account } : {})
         }
 
         loginByAccountAndPassword(loginData)
@@ -337,40 +338,24 @@ export default defineComponent({
       return (
         <>
           <div class="main-title">账号密码登录</div>
-          
+
           {/* 登录方式选择 */}
           <div class="login-method-selector">
-            <label class="radio-label">
-              <input 
-                type="radio" 
-                value="account" 
-                v-model={state.loginMethod}
-              /> 
-              通用账号
-            </label>
-            <label class="radio-label">
-              <input 
-                type="radio" 
-                value="userName" 
-                v-model={state.loginMethod}
-              /> 
-              用户名
-            </label>
-            <label class="radio-label">
-              <input 
-                type="radio" 
-                value="phoneNumber" 
-                v-model={state.loginMethod}
-              /> 
-              手机号
-            </label>
+            <Radio.Group
+              value={state.loginMethod}
+              onChange={(e: any) => (state.loginMethod = e.target.value)}
+            >
+              <Radio value="account">手机号+密码</Radio>
+              <Radio value="userName">用户名+密码</Radio>
+              <Radio value="phoneNumber" disabled>手机号</Radio>
+            </Radio.Group>
           </div>
 
           <Input
             class="ipt"
-            placeholder={state.loginMethod === 'phoneNumber' ? '请输入手机号' : 
-                          state.loginMethod === 'userName' ? '请输入用户名' : 
-                          '请输入手机号/用户名'}
+            placeholder={state.loginMethod === 'phoneNumber' ? '请输入手机号' :
+              state.loginMethod === 'userName' ? '请输入用户名' :
+                '请输入手机号/用户名'}
             value={state.account}
             onChange={(e) => (state.account = e.target.value as string)}
           ></Input>
@@ -400,16 +385,14 @@ export default defineComponent({
                   </div>
                 }
               ></Input>
-              <a onClick={() => (state.type = 'resetPassword')}>忘记密码</a>
             </div>
           )}
 
           <Button class="primary-btn" type="primary" loading={state.loading} onClick={handleLogin}>
             登录
           </Button>
-
-          <div class="toggle-type clickable" onClick={() => (state.type = 'sms')}>
-            手机短信登录
+          <div class="login-page-bottom-limit">
+            <a onClick={() => (state.type = 'resetPassword')}>忘记密码</a>
           </div>
         </>
       )
@@ -600,7 +583,7 @@ export default defineComponent({
             <div class="blob blob--pink"></div>
             <div class="blob blob--teal"></div>
           </div>
-          {/*<MagnetMatrix/>*/}
+          <MagnetMatrix/>
           <div class="frosted-film"></div>
           {/* @ts-ignore */}
           <div class="login-box" theme="light" ref={loginBoxRef} onMouseenter={onGlowEnter} onMousemove={onGlowMove}
