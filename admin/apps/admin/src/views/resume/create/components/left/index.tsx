@@ -1,5 +1,6 @@
 import './index.scss'
 import { defineComponent } from 'vue'
+// import componentsStore from ''
 
 export default defineComponent({
   name: 'componentName',
@@ -9,7 +10,14 @@ export default defineComponent({
     return () => {
       return (
         <div class="resume-left">
-          left
+          {/*当前使用的组件列表*/}
+          <div class="used-list">
+
+          </div>
+          {/*可以使用的组件列表*/}
+          <div class="resume-components-list">
+
+          </div>
         </div>
       )
     }
