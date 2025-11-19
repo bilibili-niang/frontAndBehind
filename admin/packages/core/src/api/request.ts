@@ -42,9 +42,12 @@ export type PaginationData<Record> = {
 export type ResponsePaginationData<Record> = ResponseBody<PaginationData<Record>>
 
 export const getAuthHeaders = () => {
+  const raw = localStorage.getItem('Blade-Auth') || ''
+  const bearer = /^Bearer\s+/i.test(raw) ? raw : raw ? `Bearer ${raw}` : ''
+  const pure = raw.replace(/^Bearer\s+/i, '') || ''
   return {
-    Authorization: localStorage.getItem('Authorization') || 'Basic c3U6c3Vfc2VjcmV0',
-    'Blade-Auth': localStorage.getItem('Blade-Auth')
+    Authorization: bearer || localStorage.getItem('Authorization') || 'Basic c3U6c3Vfc2VjcmV0',
+    'Blade-Auth': pure || null
   }
 }
 
@@ -107,13 +110,19 @@ const err = (error: AxiosError) => {
  * @returns {AxiosRequestConfig} config
  */
 request.interceptors.request.use(async (config: any) => {
-  Object.assign(config.headers, getAuthHeaders())
+  Object.assign(config.headers ??= {}, getAuthHeaders())
   if (config?.noBladeAuth === true) {
     delete config.headers['Authorization']
   }
 
   if (config?.noToken === true) {
     delete config.headers['Blade-Auth']
+  } else {
+    const raw = localStorage.getItem('Blade-Auth') || ''
+    const bearer = /^Bearer\s+/i.test(raw) ? raw : raw ? `Bearer ${raw}` : ''
+    const pure = raw.replace(/^Bearer\s+/i, '')
+    config.headers['Authorization'] = bearer || config.headers['Authorization']
+    config.headers['Blade-Auth'] = pure || config.headers['Blade-Auth']
   }
 
   return config

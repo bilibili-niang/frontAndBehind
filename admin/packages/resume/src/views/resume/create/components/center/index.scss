@@ -1,7 +1,36 @@
 .resume-center {
   display: flex;
   flex-direction: column;
-  background: gray;
+  background: var(--anteng-color-bg-200);
   height: 100%;
   flex: 1;
+  padding-top: 120px;
+  overflow: hidden;
+  border-left: 1px solid var(--color-border-base);
+  border-right: 1px solid var(--color-border-base);
 }
+
+.a4-drag-wrapper {
+  position: relative;
+  width: 794px;
+  margin: 0;
+  will-change: transform;
+  cursor: move;
+}
+.a4-drag-handle {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  border: 1px solid var(--color-border-base);
+  background: var(--anteng-color-bg-100);
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  cursor: grab;
+}
+.a4-drag-handle:active { cursor: grabbing; }
+
+.a4-page { user-select: none; }

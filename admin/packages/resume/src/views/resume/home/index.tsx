@@ -9,10 +9,10 @@ export default defineComponent({
   setup() {
     const dataList = ref<any[]>([])
     const init = () => {
-      $resumeList({ size: 9999 } as any)
-        .then(res => {
-          if ((res as any).success) {
-            dataList.value = (res as any).data.records
+      $resumeList({ size: 9999, current: 1 } as any)
+        .then((res: any) => {
+          if (res?.success) {
+            dataList.value = Array.isArray(res?.data?.rows) ? res.data.rows : []
           }
         })
         .catch(useRequestErrorMessage)
@@ -30,7 +30,8 @@ export default defineComponent({
         <div class="tabs-container p-3">
           <Tabs>
             <TabPane key={1} tab={'我的简历'}>
-              {dataList.value?.length ? dataList.value.map(p => <ResumeCard data={p} />) : <ResumeCard empty={true} />}
+              <ResumeCard empty={true} />
+              {dataList.value.map((p: any) => <ResumeCard data={p} />)}
             </TabPane>
           </Tabs>
         </div>

@@ -9,7 +9,7 @@ export default defineComponent({
     empty: { type: Boolean, default: false },
     data: {
       type: Object,
-      default: () => ({ name: '我的简历', id: 0, createTime: new Date() })
+      default: () => ({ title: '我的简历', id: 0, createdAt: new Date() })
     }
   },
   setup(props) {
@@ -27,7 +27,11 @@ export default defineComponent({
           </div>
         )
       }
-      return <div class="resume-card"></div>
+      return (
+        <div class="resume-card p-2" onClick={() => router.push(`/resume/create?id=${props.data?.id}`)}>
+          <div class="title">{props.data?.title || '未命名简历'}</div>
+        </div>
+      )
     }
   }
 })

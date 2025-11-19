@@ -30,13 +30,21 @@ class ResumeController {
     validateUserExist
   ])
   async createResume(ctx: Context, args: ParsedArgs<any>) {
-    await Resume.create(args.body)
+    const body = { ...(args.body || {}) }
+    if (body && typeof body.data === 'object') {
+      body.data = JSON.stringify(body.data)
+    }
+    await Resume.create(body)
       .then((res: any) => {
+        const plain = res.toJSON()
+        try {
+          plain.data = JSON.parse(plain.data || '{}')
+        } catch {}
         ctx.body = ctxBody({
           success: true,
           code: 200,
           msg: '创建成功',
-          data: res
+          data: plain
         })
       })
       .catch(e => {
@@ -78,29 +86,26 @@ class ResumeController {
       // 修改Sequelize查询参数，增加用户ID筛选
       const { size, page } = ctx.parsed.query
       // 执行分页查询，只返回当前用户的简历
-      await Resume.findAndCountAll({
-        limit: Number(size),
-        offset: Number((page - 1) * size),
+      const pageNum = Number(size ? page : 1) || 1
+      const sizeNum = Number(size) || 20
+      const result = await Resume.findAndCountAll({
+        limit: sizeNum,
+        offset: (pageNum - 1) * sizeNum,
         where: {
           userId
         }
       })
-        .then((res: any) => {
-          ctx.body = ctxBody({
-            success: true,
-            code: 200,
-            msg: '获取简历列表成功',
-            data: res
-          })
-        })
-        .catch(e => {
-          ctx.body = ctxBody({
-            success: false,
-            code: 500,
-            msg: '获取简历列表失败',
-            data: e?.message || '服务器错误'
-          })
-        })
+      const rows = (result.rows || []).map((r: any) => {
+        const plain = r.toJSON()
+        try { plain.data = JSON.parse(plain.data || '{}') } catch {}
+        return plain
+      })
+      ctx.body = ctxBody({
+        success: true,
+        code: 200,
+        msg: '获取简历列表成功',
+        data: { count: result.count || rows.length, rows }
+      })
     } catch (e) {
       ctx.body = ctxBody({
         success: false,
@@ -155,11 +160,13 @@ class ResumeController {
         })
         return
       }
+      const plain = resume.toJSON()
+      try { plain.data = JSON.parse(plain.data || '{}') } catch {}
       ctx.body = ctxBody({
         success: true,
         code: 200,
         msg: '获取简历详情成功',
-        data: resume
+        data: plain
       })
     } catch (e) {
       ctx.body = ctxBody({
@@ -199,7 +206,10 @@ class ResumeController {
         return
       }
       const userId = ctx.decode.id
-      const updateData = args.body
+      const updateData = { ...(args.body || {}) }
+      if (updateData && typeof updateData.data === 'object') {
+        updateData.data = JSON.stringify(updateData.data)
+      }
       // 查询指定简历，确保属于当前用户
       // 使用字符串类型的id进行查询
       const resume = await Resume.findOne({
@@ -219,11 +229,13 @@ class ResumeController {
       }
       // 更新数据
       await resume.update(updateData)
+      const plain = resume.toJSON()
+      try { plain.data = JSON.parse(plain.data || '{}') } catch {}
       ctx.body = ctxBody({
         success: true,
         code: 200,
         msg: '更新简历成功',
-        data: resume
+        data: plain
       })
     } catch (e) {
       ctx.body = ctxBody({
