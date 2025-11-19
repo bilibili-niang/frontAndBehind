@@ -288,5 +288,6 @@ export default defineComponent({
 export const routeMeta: RouteMeta = {
   title: '趋势分析',
   icon: 'trend-two',
-  order: 1
+  order: 1,
+  hideInMenu: true
 }

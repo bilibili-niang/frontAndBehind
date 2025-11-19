@@ -254,9 +254,9 @@ export default defineComponent({
 
     const onAuthResolve = (res: any) => {
       const token = res?.access_token
-        ? `${res.token_type} ${res.access_token}`
+        ? res.access_token
         : res?.token
-          ? `${res.token_type || 'Bearer'} ${res.token}`
+          ? res.token
           : ''
       if (token) {
         localStorage.setItem(LOGIN_IDENTITY, token)

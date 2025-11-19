@@ -13,6 +13,7 @@
     "@anteng/config": "workspace:*",
     "@anteng/core": "workspace:*",
     "@anteng/decoration": "workspace:*",
+    "@anteng/resume": "workspace:*",
     "@anteng/jsf": "workspace:*",
     "@anteng/styles": "workspace:*",
     "@anteng/ui": "workspace:*",

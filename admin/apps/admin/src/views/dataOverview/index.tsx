@@ -465,5 +465,6 @@ export const routeMeta: RouteMeta = {
   title: '数据概览',
   redirect: '',
   icon: 'analysis',
-  order: 1
+  order: 1,
+  hideInMenu: true
 }

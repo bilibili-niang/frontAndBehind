@@ -786,5 +786,6 @@ export default defineComponent({
 export const routeMeta: RouteMeta = {
   title: '用户画像',
   // icon: 'user-positioning',
-  order: 1
+  order: 1,
+  hideInMenu: true
 }

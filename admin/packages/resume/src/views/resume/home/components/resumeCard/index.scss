@@ -1,0 +1,19 @@
+.resume-card {
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+  width: 170px;
+  border: var(--color-border-base) 1px solid;
+  border-radius: var(--border-radious);
+  &:hover {
+    cursor: pointer;
+  }
+  .resume-card-empty {
+    .empty-icon {
+      margin: auto;
+    }
+    .icon {
+      font-size: 30px;
+    }
+  }
+}

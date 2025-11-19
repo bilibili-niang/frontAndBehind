@@ -63,6 +63,7 @@ export { default as router, defineRoute, type IRoute, registerRoutes } from './s
 // 部分请求
 export { requestUploadFile } from './src/api/uploadImage'
 export { default as useRequestErrorMessage, useResponseMessage } from './src/hooks/useRequestErrorMessage'
+export * from './src/api/resume'
 
 // 路由/Meta相关常量与Hook
 export * from './src/constants'

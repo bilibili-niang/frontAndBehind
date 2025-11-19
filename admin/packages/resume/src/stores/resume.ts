@@ -1,5 +1,3 @@
-// 简历的store
-
 import { defineStore } from 'pinia'
 
 const resumeStore = defineStore('resume', {
@@ -12,4 +10,5 @@ const resumeStore = defineStore('resume', {
     }
   })
 })
+
 export default resumeStore

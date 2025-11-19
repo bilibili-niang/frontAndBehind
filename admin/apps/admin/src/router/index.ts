@@ -1,18 +1,20 @@
 import MainLayout from '@/layouts/MainLayout'
 import { generatedChildrenRoutes } from './auto'
 import { registerRoutes, router } from '@anteng/core'
+import { resumeRoutes } from '@anteng/resume'
 // 移除登录判断拦截
 
 const homeRoute = generatedChildrenRoutes.find(r => r.path === '/home')
 const defaultRoutePath = homeRoute?.path || (generatedChildrenRoutes[0]?.path ?? '/home')
 
+const children = [...generatedChildrenRoutes, ...resumeRoutes]
 // 将 admin 的根路由注册到 @anteng/core 的 router 实例上
 router.addRoute({
   path: '/',
   name: 'root',
   component: MainLayout,
   redirect: defaultRoutePath,
-  children: generatedChildrenRoutes
+  children
 })
 // 同步注册到核心路由存储（期望一个路由数组），供基础布局与侧边菜单解析
 registerRoutes([
@@ -20,7 +22,7 @@ registerRoutes([
     path: '/',
     name: 'index',
     component: MainLayout as any,
-    children: generatedChildrenRoutes
+    children
   } as any
 ])
 

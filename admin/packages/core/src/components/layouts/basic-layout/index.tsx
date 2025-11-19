@@ -361,7 +361,7 @@ const ToggleAcctount = defineComponent({
         scope: useAppStore().scope
       })
         .then((res: any) => {
-          localStorage.setItem('Blade-Auth', `${res.token_type} ${res.access_token}`)
+          localStorage.setItem('Blade-Auth', res.access_token)
           message.success('切换成功')
           // router.replace('/')
           setTimeout(() => {

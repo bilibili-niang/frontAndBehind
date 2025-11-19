@@ -1,0 +1,17 @@
+{
+  "name": "@anteng/resume",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./lib.ts",
+  "module": "./lib.ts",
+  "dependencies": {
+    "@anteng/core": "workspace:*",
+    "@anteng/ui": "workspace:*",
+    "vue": "^3.3.11"
+  },
+  "peerDependencies": {
+    "pinia": "^2.1.7",
+    "vue-router": "^4.2.5"
+  }
+}
