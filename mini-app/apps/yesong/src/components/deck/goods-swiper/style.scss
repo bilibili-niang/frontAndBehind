@@ -1,0 +1,201 @@
+$offset: var(--offset);
+$duration: 0.6s;
+// $fn: cubic-bezier(0.42, 0.16, 0.49, 0.97);
+$fn: ease-in-out;
+$parallax: calc(var(--parallax, 0) * 0.5s);
+$interval: 3s;
+
+.d_goods-swiper {
+  border-radius: 10px;
+  padding: 10px;
+  // border: 1px solid #fff;
+  // background-color: #ff5656;
+  // background-image: linear-gradient(to bottom, #ff5656, #ff7700);
+
+  .top-placeholder {
+    height: 0;
+  }
+  position: relative;
+}
+
+.d_goods-swiper__bg {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top 0;
+}
+
+.d_goods-swiper__title {
+  margin-top: -6px;
+  margin-bottom: 2px;
+  position: relative;
+  z-index: 2;
+}
+
+.d_goods-swiper__content {
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
+
+.d_goods-swiper__col {
+  flex: 1;
+  background-color: rgba(#fff, 1);
+  border-radius: 6px;
+  margin-right: 8px;
+  padding: 3px 3px 4px 3px;
+  overflow: hidden;
+  &.last {
+    margin-right: 0;
+  }
+
+  &.sliding {
+  }
+  &.no-transition {
+    .image-track,
+    .price-track {
+      transition: none;
+      animation: none;
+    }
+  }
+}
+
+.d_goods-swiper__col-content {
+  overflow: hidden;
+}
+
+.d_goods-swiper__image {
+  width: 100%;
+  padding-bottom: 100%;
+  height: 0;
+  background-color: #fff;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  .image-track {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate3d(0, -100%, 0);
+    transition: all 0.3s;
+
+    transform: translate3d(0, calc($offset * 100%), 0);
+    transition: all $duration $parallax $fn;
+
+    .item {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 4px;
+      opacity: 0;
+      transition: all $duration $parallax $fn;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.d_goods-swiper__price {
+  background-color: #fce2c4;
+  background-color: var(--price-bg, #fce2c4);
+
+  height: 21px;
+  border-radius: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  margin: 3px 1px 0 1px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  .tag {
+    height: 100%;
+    font-size: 9px;
+    font-weight: bold;
+    color: #fff;
+    color: var(--label-color, #ffffff);
+    background-color: #ff5656;
+    background-color: var(--label-bg, #ff5656);
+    border-radius: 24px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 6px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .price-track {
+    flex: 1;
+    transform: translate3d(0, calc($offset * 100%), 0);
+    transition: transform $duration $parallax $fn;
+    height: calc(100% + 4px);
+    height: 100%;
+    .item {
+      height: 100%;
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+      font-size: 16px;
+      justify-content: center;
+      color: #ff5656;
+      color: var(--price-color, #ff5656);
+
+      font-weight: 700;
+
+      opacity: 0;
+      transition: all $duration $parallax $fn;
+      transition-property: opacity, transform;
+      &.active {
+        opacity: 1;
+      }
+
+      .yen {
+        font-size: 10px;
+        margin-right: 1px;
+      }
+      .decimal {
+        font-size: 11px;
+      }
+    }
+  }
+
+  // .flash-light {
+  //   width: 100%;
+  //   height: 100%;
+  //   position: absolute;
+  //   z-index: 2;
+  //   top: 0;
+  //   left: 0;
+  //   background-color: rgba(#000, 0.1);
+
+  //   background: linear-gradient(115deg, hsla(0, 0%, 100%, 0) 40%, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0) 60%);
+  //   background-repeat: no-repeat;
+  //   background-size: 200% 100%;
+  //   background-position: -200% 0;
+  //   pointer-events: none;
+  //   // animation: flash_light 5s calc($parallax + $duration) $fn infinite;
+  // }
+
+  // @keyframes flash_light {
+  //   0% {
+  //     background-position: 100% 0;
+  //   }
+  //   33.33%,
+  //   100% {
+  //     background-position: -100% 0;
+  //   }
+  // }
+}

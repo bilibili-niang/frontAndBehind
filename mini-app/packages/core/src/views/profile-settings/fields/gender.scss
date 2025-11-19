@@ -1,0 +1,51 @@
+.use-choose-gender-modal {
+  @include safe-area-inset-bottom-max(padding-bottom, 24px);
+
+  .list {
+    padding-top: 12px;
+    display: flex;
+    justify-content: center;
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 6px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    padding-bottom: 6px;
+    &.active {
+      .label {
+        color: inherit;
+      }
+      .logo {
+        opacity: 1;
+      }
+    }
+    &.secret {
+      .logo {
+        transform: scale(0.8) translate3d(0, 4px, 0);
+      }
+    }
+    .logo {
+      width: 88px;
+      height: 88px;
+      position: relative;
+      background-size: 80%;
+      background-position: center center;
+      opacity: 0.6;
+      background-repeat: no-repeat;
+    }
+    .label {
+      color: $color-text-disabled;
+    }
+  }
+  .tips {
+    font-size: 12px;
+    color: $color-text-disabled;
+    margin-top: 20px;
+    text-align: center;
+  }
+}

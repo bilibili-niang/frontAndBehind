@@ -1,7 +1,6 @@
-import mitt from 'mitt'
+import Taro from '@tarojs/taro'
 
-const emitter = mitt()
+/** 事件中心 */
+const emitter = Taro.eventCenter
 
 export default emitter
-
-

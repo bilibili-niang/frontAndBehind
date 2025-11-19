@@ -1,0 +1,133 @@
+.c_login {
+  // background-color: #fff;
+  // height: 80vh;
+  // min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0 32px;
+  // padding-top: 52px;
+  // padding-bottom: 24px;
+  --theme-color: #ff961e;
+}
+.c_login__subtitle {
+  font-size: 17px;
+}
+.c_login__title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 36px;
+  margin-top: 4px;
+}
+.c_login__mobile,
+.c_login__code {
+  height: 55px;
+  background-color: #f6f7f7;
+  border-radius: 30px;
+  margin: 8px 0;
+  display: flex;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.c_login__input {
+  width: auto;
+  width: 0;
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  padding-left: 24px;
+  font-size: 20px;
+  line-height: 55px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  /* #ifdef h5 */
+  input {
+    width: 100%;
+    height: 100%;
+  }
+  /* #endif */
+}
+.c_login__input-placeholder,
+.c_login__input input::placeholder {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.2);
+}
+.c_login__sms {
+  flex-shrink: 0;
+  padding: 0 16px 0 12px;
+  min-width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // color: #ff961e;
+  color: var(--theme-color);
+  font-weight: 500;
+  font-size: 16px;
+}
+.c_login__confirm {
+  height: 55px;
+  // background-color: #ff961e;
+  background-color: var(--theme-color);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  margin-top: 32px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+.c_login__user-agreement {
+  margin-top: 24px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  line-height: 18px;
+  padding: 0 12px;
+  .checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #c8c8c8;
+    margin-right: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: #fff;
+    transition: all 0.3s;
+    &.active {
+      background-color: #2ecc71;
+      border-color: #2ecc71;
+    }
+  }
+}
+.c_login__link {
+  color: #000;
+  text-decoration: underline;
+}
+
+.c_login__skip {
+  margin-top: auto;
+  text-align: center;
+  opacity: 0.4;
+  font-size: 13px;
+  margin-top: 24px;
+  color: #000;
+}

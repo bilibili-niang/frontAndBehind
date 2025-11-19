@@ -1,0 +1,52 @@
+.jd-cashier-page {
+  overflow: hidden;
+}
+.jd-cashier {
+  padding: 12px 15px;
+  background-color: #fff;
+  margin: 12px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background-image: linear-gradient(to bottom, rgba(#ff5454, 0.1), #fff);
+  .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #ff5454;
+  }
+  .subtitle {
+    color: $color-text-tertiary;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  .main-button {
+    margin: 24px auto 12px auto;
+    width: 70%;
+    height: 49px;
+    border-radius: 8px;
+    background-color: #ff5454;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 2px;
+    position: relative;
+    &:hover,
+    &:active {
+      background-color: rgba(#ff5454, 0.85);
+    }
+    &::before {
+      content: '';
+      background-image: url(https://dev-cdn.anteng.cn/upload/8c5b8cfa1ee768f2658e436dc76875e7.png);
+      background-size: contain;
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      width: 55px;
+      height: 40px;
+      position: absolute;
+      bottom: 0;
+      left: -8px;
+    }
+  }
+}

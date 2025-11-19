@@ -1,0 +1,50 @@
+.c_jump-card {
+  display: block;
+  .jump-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    color: #fff;
+    .greet { font-size: 14px; }
+    .unlogin-text { font-size: 12px; opacity: 0.9; }
+  }
+  .jump-card-body {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    column-gap: 0;
+    padding: 0;
+    .opt {
+      min-height: 88px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 0; /* 仅外侧需要圆角，内侧保持直角 */
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* 左右卡片仅保留外侧圆角 */
+    .opt:first-child { border-radius: 8px 0 0 8px; }
+    .opt:last-child { border-radius: 0 8px 8px 0; }
+    .split-line { width: 1px; background: rgba(0,0,0,0.08); margin: 0; }
+  }
+}
+
+.c_sub-title {
+  &.--row { display: flex; gap: 6px; align-items: center; justify-content: flex-start; }
+  &.--col { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .st-title { font-weight: 600; }
+  .st-subtitle { opacity: 0.8; }
+
+  /* 水平对齐控制 */
+  &.align-left.--row { justify-content: flex-start; }
+  &.align-center.--row { justify-content: center; }
+  &.align-right.--row { justify-content: flex-end; }
+
+  &.align-left.--col { align-items: flex-start; text-align: left; }
+  &.align-center.--col { align-items: center; text-align: center; }
+  &.align-right.--col { align-items: flex-end; text-align: right; }
+}
+
+.clickable { cursor: pointer; }

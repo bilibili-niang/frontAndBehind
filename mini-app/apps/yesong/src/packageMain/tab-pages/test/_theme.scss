@@ -1,0 +1,27 @@
+// 咖啡项目测试页主题色变量（仅作用于 test 目录内页面）
+// 使用方式：在页面的 scss 中 `@import '../_theme.scss';`
+// 然后可通过 `$coffee-theme-color` 引用主题色
+
+$coffee-theme-color: rgba(132, 71, 25, 1);
+
+// 统一规格弹窗主按钮主题色（test 目录内页面均生效）
+.goods-sku-modal .actions .action-item.primary {
+  background-color: $coffee-theme-color;
+}
+
+// 统一规格选中态颜色（边框/背景/文字）
+.goods-sku-modal .spec-item.selected {
+  border-color: $coffee-theme-color;
+  background-color: rgba(132, 71, 25, 0.08);
+  color: $coffee-theme-color;
+}
+
+// 为使用本主题的页面注入 CSS 变量，仅在引入此文件的页面生效
+page,
+:root {
+  --anteng-color-primary: rgba(132, 71, 25, 1);
+  --anteng-color-primary-rgb: 132, 71, 25;
+  // 提供常用状态变量，必要时可继续扩展
+  --anteng-color-primary-400: rgba(132, 71, 25, 1);
+  --anteng-color-primary-600: rgba(114, 63, 22, 1);
+}

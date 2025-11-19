@@ -1,0 +1,71 @@
+.use-order-coupon-selector {
+  min-height: 300px;
+}
+
+.use-order-coupon-selector__title {
+  display: flex;
+  width: 80%;
+  padding-top: 2px;
+  .item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    opacity: 0.4;
+    transition: all 0.3s;
+    font-weight: bold;
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
+.use-order-coupon-selector__content {
+  padding-top: 8px;
+}
+
+.use-order-coupon-selector__tips {
+  text-align: center;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .value {
+    color: $color-price;
+  }
+}
+
+.use-order-coupon-selector__entrance {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  .useable-count {
+    margin: 0 4px;
+    color: $color-price;
+  }
+}
+
+.use-order-coupon-selector__selected {
+  color: $color-price;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 200px;
+  // overflow: hidden;
+  font-size: 12px;
+  text-align: right;
+  .amount {
+    font-size: 15px;
+    display: inline-flex;
+    align-items: baseline;
+  }
+  .name {
+    font-size: 12px;
+    margin-right: -14px;
+    opacity: 0.85;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

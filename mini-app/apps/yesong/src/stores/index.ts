@@ -1,0 +1,6 @@
+export { default as useGlobalStore } from './global'
+export { default as useCartStore } from './cart'
+export { default as useCategoryStore } from './category'
+export { default as useSearchStore } from './search'
+export { default as useGoodsStore } from './goods'
+export { default as utmStore } from './utm'

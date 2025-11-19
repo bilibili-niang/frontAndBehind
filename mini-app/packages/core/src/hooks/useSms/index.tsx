@@ -1,16 +1,14 @@
-import { clamp } from 'lodash'
+import { clamp } from 'lodash-es'
 import { ref } from 'vue'
+import { useLoading, useLoadingEnd, useResponseMessage, useToast } from '@anteng/core'
 import './style.scss'
-import { message } from '@anteng/ui'
-import { useResponseMessage } from '../useRequestErrorMessage'
-import { sendMessageCode, sendMessageCodeWithoutPhone } from '../../api/login'
-import test from '../../utils/test'
-import useUserStore from '../../stores/user'
+import { test } from '@anteng/utils'
+import { sendMessageCode } from '../../api'
 
-export const useSms = (options?: { resendInterval?: number; sendToCurrentUser?: boolean }) => {
+export const useSms = (options?: { resendInterval?: number }) => {
   const resendInterval = clamp(options?.resendInterval ?? 60, 30, 60)
 
-  const lastSmsMobile = ref('')
+  let lastSmsMobile = ref('')
 
   const smsCountDownSeconds = ref(0)
   let timer: NodeJS.Timeout
@@ -24,32 +22,26 @@ export const useSms = (options?: { resendInterval?: number; sendToCurrentUser?: 
   }
 
   const smsId = ref('')
-  const smsLoading = ref(false)
 
   const sms = (/** 要发送的手机号 */ mobile: string, /** 是否强行尝试发送 */ force: boolean = false) => {
-    const _mobile = options?.sendToCurrentUser ? useUserStore().userInfo?.phone! : mobile
-
-    if (!options?.sendToCurrentUser && !test.mobile(_mobile)) {
-      message.info('请输入正确11位手机号')
+    if (!test.mobile(mobile)) {
+      useToast('请输入正确11位手机号')
       return Promise.reject()
     }
 
-    if (smsLoading.value) return Promise.reject()
-
-    if (_mobile === lastSmsMobile.value && smsCountDownSeconds.value > 0 && force !== true) {
+    if (mobile === lastSmsMobile.value && smsCountDownSeconds.value > 0 && force !== true) {
       // 号码不变，且在冷静期内，直接视为已发送
       return Promise.resolve()
     }
 
-    const endLoading = message.loading('短信验证码发送中...')
-    smsLoading.value = true
-    return (options?.sendToCurrentUser ? sendMessageCodeWithoutPhone : sendMessageCode)(_mobile)
-      .then((res) => {
+    useLoading()
+    return sendMessageCode(mobile)
+      .then(res => {
         if (res.code === 200) {
           // 保存smsId
           smsId.value = res.data?.id
           // 保存上次发送的手机号
-          lastSmsMobile.value = _mobile
+          lastSmsMobile.value = mobile
           // 重置倒计时
           smsCountDownSeconds.value = resendInterval
           countDown()
@@ -57,12 +49,11 @@ export const useSms = (options?: { resendInterval?: number; sendToCurrentUser?: 
         useResponseMessage(res)
         return res
       })
-      .catch((err) => {
+      .catch(err => {
         useResponseMessage(err)
       })
       .finally(() => {
-        endLoading()
-        smsLoading.value = false
+        useLoadingEnd()
       })
   }
 

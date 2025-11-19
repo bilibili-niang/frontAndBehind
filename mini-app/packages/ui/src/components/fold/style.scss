@@ -1,0 +1,82 @@
+.c_fold-wrapper {
+  display: flex;
+}
+.c_fold {
+  width: 100%;
+  overflow: hidden;
+  max-height: 200px;
+  &::before {
+    content: '';
+    width: 100px;
+    height: 100%;
+    float: left;
+    opacity: 0;
+    pointer-events: none;
+  }
+  &.c_fold--expand {
+    max-height: fit-content;
+    .c_fold-content {
+      padding-bottom: 32px;
+      mask: none;
+    }
+    .c_fold-btn {
+      left: auto;
+      right: calc(50% - 50px);
+      .icon {
+        transform: scaleY(-1) translate3d(50%, 0, 0);
+      }
+    }
+    .c_fold-btn-text {
+      animation: none;
+    }
+  }
+}
+
+.c_fold-content {
+  width: 100%;
+  float: right;
+  margin-left: -100px;
+  -webkit-mask: linear-gradient(#000 150px, transparent 200px);
+  mask: linear-gradient(#000 150px, transparent 200px);
+}
+
+.c_fold-btn {
+  float: right;
+  width: 100px;
+  text-align: center;
+  position: relative;
+  left: calc(50% - 50px);
+  transform: translateY(-100%);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: rgba(255, 255, 255, 0.4);
+  // background-image: linear-gradient(to top, #fff, #fff0);
+  // backdrop-filter: blur(2px);
+  color: #666;
+  font-size: 13px;
+  font-weight: bold;
+  .icon {
+    font-size: 16px;
+    position: absolute;
+    left: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.c_fold-btn-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: c_fold-btn 1s infinite;
+}
+
+@keyframes c_fold-btn {
+  0%,
+  100% {
+    transform: translate3d(0, 2px, 0);
+  }
+  50% {
+    transform: translate3d(0, -2px, 0);
+  }
+}

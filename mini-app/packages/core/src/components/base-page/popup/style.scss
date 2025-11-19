@@ -1,0 +1,85 @@
+.c_popup-list {
+  color: transparent;
+}
+
+.c_popup {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: $color-text-base;
+
+  &.no-transition {
+    .c_popup__overlay,
+    .c_popup__content {
+      transition: none;
+    }
+  }
+}
+
+.c_popup__overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: all 0.3s;
+  transition-timing-function: ease-out;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  opacity: 1;
+  &.c_popup__overlay--hidden {
+    opacity: 0 !important;
+  }
+}
+.c_popup--out .c_popup__overlay {
+  opacity: 0;
+  transition-timing-function: ease-in;
+}
+
+.c_popup__content {
+  width: 100%;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.3s;
+  position: absolute;
+  z-index: 2;
+  // transition-timing-function: ease-out;
+  will-change: transform;
+}
+
+// 底部弹出
+.c_popup--bottom .c_popup__content {
+  bottom: 0;
+  transform: translate3d(0, 0, 0);
+}
+.c_popup--bottom.c_popup--out .c_popup__content {
+  transform: translate3d(0, 100%, 0);
+  // transition-timing-function: ease-in;
+}
+
+// 居中弹出
+.c_popup--center .c_popup__content {
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  opacity: 1;
+}
+.c_popup--center.c_popup--out .c_popup__content {
+  transform: translate3d(-50%, 0, 0);
+  opacity: 0;
+  // transition-timing-function: ease-in;
+}
+
+// 顶部弹出
+.c_popup--top .c_popup__content {
+  top: 0;
+  transform: translate3d(0, 0, 0);
+}
+.c_popup--top.c_popup--out .c_popup__content {
+  transform: translate3d(0, -100%, 0);
+  // transition-timing-function: ease-in;
+}

@@ -1,0 +1,46 @@
+.n-scroll-list-content {
+  height: fit-content;
+  .n-scroll-navigation-content {
+    background: #fff;
+    flex: 1;
+    overflow: hidden;
+    padding: 4px 2px;
+    .n-scroll-navigation-tabs {
+      align-items: baseline;
+      display: flex;
+      width: 100%;
+      &::before,
+      &::after {
+        content: '';
+        flex-shrink: 0;
+        height: 1px;
+        width: 12px;
+      }
+    }
+    .n-scroll-navigation-tabs-item {
+      color: $color-text-disabled;
+      flex-shrink: 0;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 8px 12px;
+      position: relative;
+      transition: all 0.3s linear;
+      &.active {
+        color: $color-text-base;
+        &::before {
+          background-color: $color-primary;
+          border-radius: 4px;
+          bottom: 2px;
+          content: '';
+          height: 4px;
+          left: 50%;
+          position: absolute;
+          transform: translate3d(-50%, 0, 0);
+          width: 25px;
+        }
+      }
+    }
+  }
+  .n-scroll-swiper {
+  }
+}

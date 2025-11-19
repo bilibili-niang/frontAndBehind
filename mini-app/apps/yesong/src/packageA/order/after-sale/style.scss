@@ -1,0 +1,306 @@
+@mixin amount {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  color: $color-price;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  margin-left: 4px;
+  vertical-align: baseline;
+  position: relative;
+  top: 1px;
+  @include number-font;
+  .yen {
+    font-size: 14px;
+    margin-right: 2px;
+  }
+}
+
+@mixin action {
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-primary;
+  color: $color-text-primary-bg;
+  border-radius: 10px;
+}
+
+.after-sale-confirm-page {
+  @include safe-area-inset-bottom(padding-bottom, 100px);
+  .order-item {
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 12px;
+    width: auto;
+    .c_goods-item {
+      width: 100%;
+      overflow: hidden;
+    }
+    .split {
+      border-bottom: 1px solid #f5f5f5;
+      margin: 12px 0;
+    }
+  }
+  .info-item {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+    font-size: 13px;
+    align-items: baseline;
+    .label {
+      font-weight: 500;
+      margin-right: 12px;
+      margin-right: auto;
+      .small {
+        font-size: 11px;
+        text-align: right;
+        margin-top: 4px;
+        color: $color-text-disabled;
+        &.primary {
+          color: $color-price;
+        }
+      }
+    }
+    .value {
+      text-align: right;
+      .stepper {
+        position: relative;
+        right: -16px;
+      }
+      .small,
+      .refund-calculator {
+        font-size: 12px;
+        text-align: right;
+        margin-top: 6px;
+        color: $color-text-disabled;
+        position: relative;
+        right: -14px;
+        &.primary {
+          color: $color-price;
+        }
+      }
+      .refund-calculator {
+        // display: flex;
+        // align-items: center;
+      }
+    }
+    .placeholder {
+      text-align: right;
+      color: $color-text-disabled;
+    }
+    .icon-right {
+      margin-left: 4px;
+      color: $color-text-disabled;
+      margin-right: -12px;
+      font-size: 14px;
+      position: relative;
+      top: 1px;
+    }
+  }
+  .order-item-desc {
+    width: calc(100% + 16px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 8px -8px;
+    background-color: #f8f8f8;
+    border: 2px solid #f8f8f8;
+    border-radius: 10px;
+    .subtitle {
+      font-size: 13px;
+      font-weight: 500;
+      padding-left: 4px;
+      padding: 8px 8px 0 8px;
+      display: flex;
+      align-items: center;
+    }
+    .text {
+      padding: 4px 8px 8px 8px;
+      font-size: 12px;
+      &.placeholder {
+        color: $color-text-disabled;
+        text-align: left;
+      }
+    }
+  }
+  .desc-images {
+    display: flex;
+    padding: 2px;
+    &::after {
+      content: '';
+      width: 2px;
+      height: 10px;
+      flex-shrink: 0;
+    }
+    .image-wrap {
+      width: 68px;
+      height: 68px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      margin: 4px 2px 4px 4px;
+      border: 2px solid #fff;
+      background-color: #fff;
+      &:last-of-type {
+        margin-right: 4px;
+      }
+    }
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+  }
+
+  .footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid #eee;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    padding: 12px;
+    @include safe-area-inset-bottom(padding-bottom, 12px);
+    .tip {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      padding: 0 12px;
+      display: flex;
+      align-items: baseline;
+    }
+    .action {
+      @include action();
+    }
+  }
+
+  .info-item,
+  .footer {
+    .amount {
+      @include amount();
+    }
+  }
+  .info-item .amount {
+    position: relative;
+    top: 2px;
+  }
+
+  .action-bar {
+    display: flex;
+  }
+}
+
+.after-sale-reasons {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  width: auto;
+  border: 2px solid #fff;
+  padding: 8px;
+  margin-bottom: 12px;
+  @include safe-area-inset-bottom(margin-bottom, 12px);
+  .item {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    .text {
+      margin-left: 16px;
+    }
+  }
+}
+
+.after-sale-edit-amount {
+  .amount {
+    @include amount();
+  }
+  .tip {
+    margin-left: 4px;
+    font-size: 12px;
+  }
+  .input {
+    width: 100%;
+    height: 44px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding-left: 80px;
+  }
+  .input-wrap {
+    position: relative;
+    margin: 12px 0;
+    .label {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translate3d(0, -50%, 0);
+      color: $color-text-disabled;
+      pointer-events: none;
+    }
+  }
+  .action {
+    @include action();
+    border-radius: 10px;
+  }
+}
+
+.after-sale-edit-desc {
+  padding-bottom: 12px;
+  @include safe-area-inset-bottom(padding-bottom, 12px);
+  .subtitle {
+    font-size: 15px;
+    font-weight: 500;
+    padding-left: 4px;
+    padding: 8px 12px 0 12px;
+    display: flex;
+    align-items: center;
+    .small {
+      font-size: 12px;
+      color: $color-text-disabled;
+    }
+  }
+  .textarea-wrap {
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    position: relative;
+    padding-bottom: 10px;
+    .count {
+      color: $color-text-disabled;
+      position: absolute;
+      bottom: 4px;
+      right: 8px;
+    }
+  }
+  .textarea {
+    width: 100%;
+    height: 150px;
+    background: none;
+    overflow: hidden;
+    padding: 8px 12px;
+    font-size: 14px;
+    margin-bottom: 16px;
+    .taro-textarea,
+    textarea {
+      background: none;
+      font-size: 14px;
+    }
+  }
+  .images-list {
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin-top: 12px;
+  }
+  .action {
+    @include action();
+    margin-top: 12px;
+    border-radius: 10px;
+    position: sticky;
+    bottom: 12px;
+    @include safe-area-inset-bottom(bottom, 12px);
+  }
+}

@@ -1,0 +1,97 @@
+.goods-store-verif-type-spec {
+  .title {
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    .more {
+      margin-left: auto;
+      font-size: 12px;
+      color: $color-text-disabled;
+    }
+  }
+  .spec-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 0.5px solid #f3f3f3;
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: -15px;
+    }
+  }
+  .spec-item__image {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #f5f5f5;
+    margin-right: 10px;
+    .image {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+    }
+  }
+  .spec-item__info {
+    flex: 1;
+    overflow: hidden;
+  }
+  .spec-item__name {
+    font-size: 14px;
+    font-weight: 500;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    .text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .icon {
+      flex-shrink: 0;
+      color: $color-text-disabled;
+    }
+  }
+  .spec-item__price {
+    display: flex;
+    align-items: baseline;
+    font-size: 18px;
+    line-height: 22px;
+    .yen {
+      font-size: 12px;
+    }
+  }
+  .spec-item__list-price {
+    font-size: 12px;
+    margin-left: 4px;
+    color: $color-text-disabled;
+    font-weight: normal;
+    text-decoration: line-through;
+  }
+
+  .spec-item__action {
+    flex-shrink: 0;
+    margin-left: 10px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-primary;
+    color: $color-text-primary-bg;
+    border-radius: 27px;
+    font-size: 12px;
+    width: 72px;
+    &.disabled {
+      background-color: #ccc;
+    }
+  }
+  .unfold-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    padding: 12px;
+    margin-bottom: -15px;
+  }
+}

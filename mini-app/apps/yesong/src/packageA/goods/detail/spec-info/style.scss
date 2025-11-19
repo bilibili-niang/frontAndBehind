@@ -1,0 +1,78 @@
+.goods-detail-spec-info {
+  margin-top: 10px;
+  background-color: #fff;
+  padding: 15px;
+  font-size: 14px;
+  .current-selected {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    .icon {
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+  }
+  .current-selected-label {
+    margin-right: 15px;
+    color: $color-text-disabled;
+  }
+  .current-selected-value {
+    flex: 1;
+    mask-image: linear-gradient(to left, transparent, #000 48px);
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: 500;
+  }
+  .spec-optional-list {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    margin-top: 12px;
+  }
+  .spec-optional-count {
+    flex-shrink: 0;
+    font-size: 12px;
+    color: $color-text-disabled;
+    white-space: nowrap;
+    margin-right: 4px;
+  }
+  .spec-thumbnails {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+    mask-image: linear-gradient(to left, transparent, #000 48px);
+    margin-left: -11px;
+    &::before {
+      content: '';
+      width: 11px;
+      flex-shrink: 0;
+    }
+    &::after {
+      content: '';
+      width: 32px;
+      flex-shrink: 0;
+    }
+  }
+  .spec-thumbnail-item {
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background-color: $color-bg-default;
+    margin-right: 10px;
+    border: 1px solid $color-bg-default;
+    font-size: 8px;
+    color: $color-text-disabled;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    .image {
+      width: 100%;
+      height: 100%;
+      border-radius: 7px;
+    }
+  }
+}

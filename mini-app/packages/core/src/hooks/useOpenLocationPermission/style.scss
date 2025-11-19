@@ -1,0 +1,55 @@
+.modal-location-deny {
+  width: 280px;
+  padding-bottom: 32px;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.modal-location-deny__image {
+  width: 280px;
+  height: 145px;
+  background-image: url(http://null-test.oss-cn-hangzhou.aliyuncs.com/upload/20231107/598f0d3242f5b748fa08be0d47f0ee66.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  margin-top: -40px;
+}
+
+.modal-location-deny__title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.modal-location-deny__desc {
+  padding: 0 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 12px;
+  opacity: 0.7;
+}
+
+.modal-location-deny__button {
+  width: 240px;
+  min-height: 44px;
+  padding: 12px 32px;
+  border-radius: 44px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-success;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 24px;
+}
+
+.modal-location-deny__cancel {
+  color: $color-text-disabled;
+  margin-top: 12px;
+  font-size: 13px;
+  margin-top: 24px;
+}

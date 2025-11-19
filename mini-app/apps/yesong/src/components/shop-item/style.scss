@@ -1,0 +1,73 @@
+.c_shop-item {
+  padding: 15px;
+}
+.c_shop-item__content {
+  display: flex;
+}
+.c_shop-item__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #f5f6fa;
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    opacity: 0.1;
+    font-size: 24px;
+    line-height: 1;
+    width: 24px;
+    height: 24px;
+  }
+}
+.c_shop-item__base {
+  flex: 1;
+  overflow: hidden;
+}
+.c_shop-item__actions {
+  display: flex;
+}
+.c_shop-item__action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 10px;
+  color: $color-text-tertiary;
+  .icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+}
+
+.c_shop-item__name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.c_shop-item__time {
+  color: $color-text-secondary;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.c_shop-item__address {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-size: 12px;
+  color: $color-text-secondary;
+  margin-top: 8px;
+  .icon-location {
+    margin-right: 4px;
+    font-size: 12px;
+    opacity: 0.8;
+  }
+}
+.c_shop-item__distance {
+  flex-shrink: 0;
+}

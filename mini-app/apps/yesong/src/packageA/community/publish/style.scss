@@ -1,0 +1,73 @@
+@import '../../../packageMain/tab-pages/test/_theme.scss';
+.community-publish {
+  padding: 16px;
+}
+.form-item {
+  margin-bottom: 12px;
+}
+.form-item .label {
+  font-size: 13px;
+  color: #666;
+}
+.form-item .input,
+.form-item .textarea {
+  margin-top: 6px;
+  display: block;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-item .input {
+  height: 40px;
+  line-height: 20px;
+}
+.form-item .input::placeholder,
+.form-item .textarea::placeholder {
+  color: #9aa0a6;
+}
+.form-item .input:focus,
+.form-item .textarea:focus {
+  border-color: $coffee-theme-color;
+  box-shadow: 0 0 0 3px transparentize($coffee-theme-color, 0.85);
+}
+.form-item .textarea {
+  min-height: 120px;
+  line-height: 1.6;
+}
+.upload-hint {
+  margin-top: 8px;
+  padding: 12px;
+  background: #fafafa;
+  border: 1px dashed #e5e5e5;
+  border-radius: 8px;
+  color: #999;
+  font-size: 12px;
+}
+.publish-actions {
+  position: sticky;
+  bottom: 12px;
+  @include safe-area-inset-bottom(bottom, 12px);
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+.publish-actions .btn {
+  flex: 1;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  text-align: center;
+}
+.publish-actions .btn.ghost {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  color: #333;
+}
+.publish-actions .btn.primary {
+  background: $coffee-theme-color;
+  color: #fff;
+}

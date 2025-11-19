@@ -1,0 +1,48 @@
+.swiper-for-poster {
+  --imageHeight: 60vh;
+  --actice-height: 567px;
+  .swiper {
+    height: var(--actice-height);
+    .swiper-item-layout {
+      height: var(--actice-height) !important;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .qr-image {
+        position: absolute;
+        border-radius: 8px;
+        //        transform: scale(.9);
+      }
+      .swiper-item-content {
+        transform: scale(0.9);
+        width: 375px;
+        height: 667px;
+        padding: 0 5px;
+        display: flex;
+        position: relative;
+        align-items: center;
+        .IMediaAlbumItem {
+          width: 100%;
+          margin: auto;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+      }
+      .width-100 {
+        width: 100% !important;
+      }
+    }
+  }
+  .IMediaAlbumItem-image {
+    width: 375px;
+    height: 667px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: all 0.25s;
+    animation-iteration-count: infinite;
+  }
+}
+.active-height {
+  height: var(--actice-height) !important;
+}

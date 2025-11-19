@@ -1,0 +1,46 @@
+.launch-page__logo {
+  display: flex;
+  align-items: center;
+}
+.launch-page__logo-image {
+  width: 48px;
+  height: 48px;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  margin-right: 12px;
+  margin-left: -12px;
+}
+.launch-page__logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background: -webkit-linear-gradient(145deg, #4c53d2, #2fb3ff);
+  background: linear-gradient(145deg, #4c53d2, #2fb3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.launch-get-merchant-error {
+  display: flex;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $color-text-disabled;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2;
+  .btn {
+    width: 120px;
+    height: 32px;
+    background-color: $color-primary;
+    color: $color-text-primary-bg;
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+  }
+}

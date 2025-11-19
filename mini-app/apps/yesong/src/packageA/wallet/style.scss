@@ -1,0 +1,114 @@
+.wallet-page {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: none;
+  &::before {
+    content: '';
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(230deg, #dff6f8, #d6dafa);
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    mask-image: linear-gradient(to bottom, #000 50%, transparent);
+  }
+  .back-cover2 {
+    display: flex;
+    width: 130vw;
+    height: 100vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -30vw;
+    border-radius: 50%;
+    z-index: 4;
+    background: linear-gradient(230deg, #dff6f8, #d6dafa);
+  }
+  .wallet-page-scroll {
+    @include safe-area-inset-bottom(padding-bottom, 100px);
+    width: 100%;
+    z-index: 3;
+    height: 100vh;
+  }
+  .top-info-block {
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+    .top-card {
+      .top-balance-title,
+      .balance-number {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+      .top-balance-title {
+        font-size: 12px;
+        color: rgb(0, 0, 0);
+        font-weight: 400;
+      }
+      .balance-number {
+        align-items: baseline;
+        .yuan-number {
+          font-weight: 500;
+          font-size: 36px;
+          color: rgb(0, 0, 0);
+        }
+        .fen-number {
+          color: rgb(0, 0, 0);
+          font-size: 23px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .bottom-scroll-list {
+    padding-top: 23px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 10px;
+    margin: 0 12px;
+    height: fit-content;
+    box-sizing: border-box;
+    .top-title {
+      font-size: 17px;
+      font-weight: 500;
+      padding: 0 15px;
+    }
+    .title-selection {
+      display: flex;
+      flex-direction: column;
+      min-height: 50vh;
+      .balance-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 1px dashed #eee;
+        // border-bottom: 2px dashed red;
+        padding: 18px 15px;
+        align-items: center;
+        .left-text {
+          .key-title {
+            color: rgba(0, 0, 0);
+            font-size: 14px;
+            font-weight: 400;
+          }
+          .key-create-time {
+            font-size: 11px;
+            color: rgba(144, 147, 153);
+            font-weight: 400;
+          }
+        }
+        .right-text {
+          font-size: 14px;
+          color: rgba(48, 49, 51);
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

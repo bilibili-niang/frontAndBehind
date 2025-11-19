@@ -1,0 +1,137 @@
+.order-detail-page {
+}
+.order-detail__header {
+  // background-color: #ff2b60;
+  color: #000;
+  padding: 16px 24px 0 24px;
+  .title {
+    font-size: 23px;
+    font-weight: 500;
+  }
+  .subtitle {
+    color: #999;
+    font-size: 12px;
+  }
+}
+.order-detail__content {
+  padding: 0 12px 12px 12px;
+  @include safe-area-inset-bottom-max(padding-bottom, 12px);
+}
+.order-detail__goods {
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 10px;
+  .c_goods-item {
+    margin-bottom: 12px;
+  }
+}
+.order-detail__goods-count {
+  opacity: 0.3;
+}
+.order-detail__info,
+.order-detail__bill {
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 10px;
+  .main-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .info-item {
+    display: flex;
+    align-items: baseline;
+    min-height: 44px;
+    .label {
+      width: 80px;
+      color: $color-text-secondary;
+    }
+    .value {
+      flex: 1;
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-end;
+      &.primary {
+        color: $color-price;
+      }
+      .yen {
+        font-size: 10px;
+        margin-right: 2px;
+      }
+      &.number-font {
+        font-size: 16px;
+      }
+      &.secondary {
+        color: $color-text-disabled;
+      }
+    }
+    .copy-btn {
+      font-size: 10px;
+      padding: 2px 10px;
+      margin-left: 8px;
+      background-color: #fff;
+      border: 1px solid #f3f3f3;
+      border-radius: 20px;
+      align-self: center;
+    }
+  }
+}
+
+.order-detail__bill {
+  padding: 4px;
+  margin-top: 12px;
+}
+
+.order-detail__summary {
+  display: flex;
+  border-top: 1px solid #f3f3f3;
+  padding-top: 12px;
+  // margin-top: 24px;
+  .icon-down {
+    align-self: center;
+    margin-left: 4px;
+    opacity: 0.4;
+    transition: all 0.3s;
+    &.up {
+      transform: rotate(-180deg);
+    }
+  }
+}
+.order-detail__pay-amount {
+  display: flex;
+  align-items: baseline;
+  margin-left: auto;
+  font-size: 13px;
+  .yen {
+    font-size: 10px;
+    margin-left: 4px;
+    color: $color-price;
+  }
+  .value {
+    font-size: 18px;
+    color: $color-price;
+  }
+}
+
+.discount-coupon-use-details {
+  padding: 12px 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  margin: -16px -2px 16px -2px;
+  .coupon-item {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 12px;
+    color: $color-text-disabled;
+    .name {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .text {
+      margin-left: 24px;
+    }
+  }
+}

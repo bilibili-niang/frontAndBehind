@@ -1,0 +1,49 @@
+.ellipse {
+  -webkit-mask-image: url(./assets/ellipse.svg);
+  mask-image: url(./assets/ellipse.svg);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  overflow: hidden;
+}
+
+.color-primary {
+  color: $color-primary;
+}
+.color-secondary {
+  color: $color-text-secondary;
+}
+.color-disabled {
+  color: $color-text-disabled;
+}
+.color-error {
+  color: $color-error;
+}
+.color-warn {
+  color: $color-warn;
+}
+.color-success {
+  color: $color-success;
+}
+.color-info {
+  color: $color-info;
+}
+
+.max-1-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.max-2-rows,
+.max-2-line {
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: wrap;
+}
+
+.safe-bottom {
+  @include safe-area-inset-bottom-max(padding-bottom, 16px);
+}

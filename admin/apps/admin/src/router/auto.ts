@@ -4,8 +4,15 @@ import type { RouteMeta } from '@/router/routeMeta'
 // 使用统一的 RouteMeta 类型定义
 
 // 视图组件改为按需加载；仅 meta 采用 eager 导入，避免将所有视图打进一个包
-const viewModules = import.meta.glob('../views/**/index.{tsx,vue}') as Record<string, () => Promise<any>>
-const metaModules = import.meta.glob('../views/**/index.{tsx,vue}', {
+// 排除任何位于 `components` 目录下的 index 文件，防止误注册子组件为路由
+const viewModules = import.meta.glob([
+  '../views/**/index.{tsx,vue}',
+  '!../views/**/components/**/index.{tsx,vue}'
+]) as Record<string, () => Promise<any>>
+const metaModules = import.meta.glob([
+  '../views/**/index.{tsx,vue}',
+  '!../views/**/components/**/index.{tsx,vue}'
+], {
   eager: true,
   import: 'routeMeta'
 }) as Record<string, RouteMeta>

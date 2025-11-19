@@ -1,0 +1,11 @@
+.shopping-cart-union-page {
+  .shopping-cart-page {
+    padding-bottom: 0;
+  }
+  .shopping-cart__title {
+    margin-left: 24px;
+  }
+  .shopping-cart__action-bar {
+    @include safe-area-inset-bottom(padding-bottom, 0px);
+  }
+}

@@ -1,0 +1,686 @@
+  [
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 6999,
+      "cost": "0.00",
+      "stock": 9,
+      "weight": "0.80",
+      "sort": 1,
+      "path": "Mq1GG4,STJ57X,bRCpAq",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "黑",
+          "vId": "Mq1GG4",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/108805/15/38868/40407/6500d82eFc8c4241a/c52384bff9ddf65f.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+256GB",
+          "vId": "STJ57X"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "标配",
+          "vId": "bRCpAq",
+          "image": null
+        }
+      ],
+      "id": "1771066329319124994",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 7299,
+      "cost": "0.00",
+      "stock": 6,
+      "weight": "0.80",
+      "sort": 0,
+      "path": "Mq1GG4,STJ57X,bY1C3Y",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "黑",
+          "vId": "Mq1GG4",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/108805/15/38868/40407/6500d82eFc8c4241a/c52384bff9ddf65f.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+256GB",
+          "vId": "STJ57X"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保1年",
+          "vId": "bY1C3Y",
+          "image": null
+        }
+      ],
+      "id": "1771066329331707905",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 7599,
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "0.80",
+      "sort": 0,
+      "path": "Mq1GG4,STJ57X,bMLcMd",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "黑",
+          "vId": "Mq1GG4",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/108805/15/38868/40407/6500d82eFc8c4241a/c52384bff9ddf65f.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+256GB",
+          "vId": "STJ57X"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保2年",
+          "vId": "bMLcMd",
+          "image": null
+        }
+      ],
+      "id": "1771066329621114882",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": "7999.00",
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "0.80",
+      "sort": 0,
+      "path": "Mq1GG4,DW0xbx,bRCpAq",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "黑",
+          "vId": "Mq1GG4",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/108805/15/38868/40407/6500d82eFc8c4241a/c52384bff9ddf65f.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+512GB",
+          "vId": "DW0xbx"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "标配",
+          "vId": "bRCpAq",
+          "image": null
+        }
+      ],
+      "id": "1771066329633697793",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 8299,
+      "cost": "0.00",
+      "stock": 36,
+      "weight": "1.00",
+      "sort": 0,
+      "path": "Mq1GG4,DW0xbx,bY1C3Y",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "黑",
+          "vId": "Mq1GG4",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/108805/15/38868/40407/6500d82eFc8c4241a/c52384bff9ddf65f.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+512GB",
+          "vId": "DW0xbx"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保1年",
+          "vId": "bY1C3Y",
+          "image": null
+        }
+      ],
+      "id": "1771066329646280705",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 8599,
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "1.00",
+      "sort": 0,
+      "path": "Mq1GG4,DW0xbx,bMLcMd",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "黑",
+          "vId": "Mq1GG4",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/108805/15/38868/40407/6500d82eFc8c4241a/c52384bff9ddf65f.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+512GB",
+          "vId": "DW0xbx"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保2年",
+          "vId": "bMLcMd",
+          "image": null
+        }
+      ],
+      "id": "1771066329658863618",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 6999,
+      "cost": "0.00",
+      "stock": 2,
+      "weight": "1.00",
+      "sort": 2,
+      "path": "1aHdNq,STJ57X,bRCpAq",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "白",
+          "vId": "1aHdNq",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/105789/11/44066/51054/6500d720F4c7ab5a2/71908f2b36980eb5.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+256GB",
+          "vId": "STJ57X"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "标配",
+          "vId": "bRCpAq",
+          "image": null
+        }
+      ],
+      "id": "1771066329663057922",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 7299,
+      "cost": "0.00",
+      "stock": 99,
+      "weight": "1.00",
+      "sort": 0,
+      "path": "1aHdNq,STJ57X,bY1C3Y",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "白",
+          "vId": "1aHdNq",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/105789/11/44066/51054/6500d720F4c7ab5a2/71908f2b36980eb5.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+256GB",
+          "vId": "STJ57X"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保1年",
+          "vId": "bY1C3Y",
+          "image": null
+        }
+      ],
+      "id": "1771066329671446530",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 7599,
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "0.00",
+      "sort": 0,
+      "path": "1aHdNq,STJ57X,bMLcMd",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "白",
+          "vId": "1aHdNq",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/105789/11/44066/51054/6500d720F4c7ab5a2/71908f2b36980eb5.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+256GB",
+          "vId": "STJ57X"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保2年",
+          "vId": "bMLcMd",
+          "image": null
+        }
+      ],
+      "id": "1771066329675640833",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 8299,
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "0.00",
+      "sort": 0,
+      "path": "1aHdNq,DW0xbx,bRCpAq",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "白",
+          "vId": "1aHdNq",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/105789/11/44066/51054/6500d720F4c7ab5a2/71908f2b36980eb5.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+512GB",
+          "vId": "DW0xbx"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "标配",
+          "vId": "bRCpAq",
+          "image": null
+        }
+      ],
+      "id": "1771066329679835137",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 8299,
+      "cost": "0.00",
+      "stock": 3,
+      "weight": "0.00",
+      "sort": 0,
+      "path": "1aHdNq,DW0xbx,bY1C3Y",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "白",
+          "vId": "1aHdNq",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/105789/11/44066/51054/6500d720F4c7ab5a2/71908f2b36980eb5.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+512GB",
+          "vId": "DW0xbx"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保1年",
+          "vId": "bY1C3Y",
+          "image": null
+        }
+      ],
+      "id": "1771066329684029442",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 8599,
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "0.00",
+      "sort": 0,
+      "path": "1aHdNq,DW0xbx,bMLcMd",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "白",
+          "vId": "1aHdNq",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/105789/11/44066/51054/6500d720F4c7ab5a2/71908f2b36980eb5.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+512GB",
+          "vId": "DW0xbx"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保2年",
+          "vId": "bMLcMd",
+          "image": null
+        }
+      ],
+      "id": "1771066329692418049",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 6999,
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "0.00",
+      "sort": 0,
+      "path": "JB3QBV,STJ57X,bRCpAq",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "深空灰",
+          "vId": "JB3QBV",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/184209/1/37878/47812/6500d4e3F17f706f7/167eb9fe7830a259.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+256GB",
+          "vId": "STJ57X"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "标配",
+          "vId": "bRCpAq",
+          "image": null
+        }
+      ],
+      "id": "1771066329696612353",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 7299,
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "0.00",
+      "sort": 0,
+      "path": "JB3QBV,STJ57X,bY1C3Y",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "深空灰",
+          "vId": "JB3QBV",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/184209/1/37878/47812/6500d4e3F17f706f7/167eb9fe7830a259.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+256GB",
+          "vId": "STJ57X"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保1年",
+          "vId": "bY1C3Y",
+          "image": null
+        }
+      ],
+      "id": "1771066329705000962",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 7599,
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "0.00",
+      "sort": 0,
+      "path": "JB3QBV,STJ57X,bMLcMd",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "深空灰",
+          "vId": "JB3QBV",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/184209/1/37878/47812/6500d4e3F17f706f7/167eb9fe7830a259.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+256GB",
+          "vId": "STJ57X"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保2年",
+          "vId": "bMLcMd",
+          "image": null
+        }
+      ],
+      "id": "1771066329709195266",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 7999,
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "0.00",
+      "sort": 3,
+      "path": "JB3QBV,DW0xbx,bRCpAq",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "深空灰",
+          "vId": "JB3QBV",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/184209/1/37878/47812/6500d4e3F17f706f7/167eb9fe7830a259.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+512GB",
+          "vId": "DW0xbx"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "标配",
+          "vId": "bRCpAq",
+          "image": null
+        }
+      ],
+      "id": "1771066329713389569",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 8299,
+      "cost": "0.00",
+      "stock": 1,
+      "weight": "0.00",
+      "sort": 0,
+      "path": "JB3QBV,DW0xbx,bY1C3Y",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "深空灰",
+          "vId": "JB3QBV",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/184209/1/37878/47812/6500d4e3F17f706f7/167eb9fe7830a259.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+512GB",
+          "vId": "DW0xbx"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保1年",
+          "vId": "bY1C3Y",
+          "image": null
+        }
+      ],
+      "id": "1771066329721778178",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    },
+    {
+      "specCode": null,
+      "underlinePrice": 8999,
+      "price": 8599,
+      "cost": "0.00",
+      "stock": 0,
+      "weight": "0.00",
+      "sort": 0,
+      "path": "JB3QBV,DW0xbx,bMLcMd",
+      "specs": [
+        {
+          "k": "颜色",
+          "kId": "TPLl8L",
+          "v": "深空灰",
+          "vId": "JB3QBV",
+          "image": "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/184209/1/37878/47812/6500d4e3F17f706f7/167eb9fe7830a259.jpg!q70.dpg.webp"
+        },
+        {
+          "k": "版本",
+          "kId": "qKBvRV",
+          "v": "12GB+512GB",
+          "vId": "DW0xbx"
+        },
+        {
+          "k": "套餐",
+          "kId": "leDKAg",
+          "v": "延保2年",
+          "vId": "bMLcMd",
+          "image": null
+        }
+      ],
+      "id": "1771066329730166786",
+      "goodsId": "1771066328945831937",
+      "name": null,
+      "title": null,
+      "image": null,
+      "sales": 0
+    }
+  ]

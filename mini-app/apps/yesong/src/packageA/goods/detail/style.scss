@@ -1,0 +1,51 @@
+.goods-detail-page__content {
+  overflow-x: hidden;
+  padding-bottom: 11px + 28px;
+  .goods-detail-base-info,
+  .goods-detail-other-info,
+  .goods-detail-spec-info,
+  .goods-detail-info,
+  .goods-suitable-shops,
+  .goods-detail-must-know,
+  .goods-detail-recs {
+    margin: 10px;
+    border-radius: 10px;
+  }
+}
+
+.goods-detail__anchor {
+  display: flex;
+  position: relative;
+  .anchor-content {
+    display: flex;
+  }
+  .anchor-item {
+    font-size: 14px;
+    padding: 0 8px;
+    color: $color-text-disabled;
+    &.active {
+      color: $color-text-base;
+    }
+  }
+  .anchor-bar {
+    width: 16px;
+    height: 4px;
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: $color-primary;
+      display: block;
+      border-radius: 4px;
+      width: calc(100% - 44px);
+      min-width: 16px;
+    }
+  }
+}

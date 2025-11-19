@@ -1,5 +1,4 @@
 import { resize, type ImageProcessResizeOptions } from './resize'
-import { isAllowedImageFormat } from './utils'
 
 export { resize as withImageResize }
 
@@ -21,10 +20,6 @@ export const withImageProcess = <T extends keyof ImageProcessActions>(
   options: ImageProcessActions[T]
 ) => {
   // TODO 这里先判断下cdn域名？
-
-  if (!isAllowedImageFormat(image)) {
-    return image
-  }
 
   switch (action) {
     case 'resize':

@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "module": "./lib.ts",
-  "main": "./lib.ts",
-  "exports": {
-    ".": "./lib.ts",
-    "./precision": "./src/precision.ts"
-  }
+  "main": "./index.ts",
+  "module": "./index.ts"
 }

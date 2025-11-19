@@ -1,0 +1,160 @@
+.use-choose-address__pin-wrap {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.use-choose-address__pin-view {
+  height: 50vh;
+  position: relative;
+  opacity: 1;
+  transition: opacity 0.3s;
+  // background-color: rgba(red, 0.1);
+  &.view-hidden {
+    pointer-events: none;
+    opacity: 0;
+    .pin-bubble {
+      pointer-events: none !important;
+    }
+  }
+}
+
+.pin-loading {
+  position: absolute;
+  z-index: 2;
+  bottom: calc(50% - 48px);
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  height: 35px;
+  width: 24px;
+  // background-image: url(./images/pin_loading.png);
+  background-image: url(http://null-test.oss-cn-hangzhou.aliyuncs.com/upload/99a63bb2c5e1e4befe3843f4f93af30d.png);
+  background-size: 100% 100%;
+  display: none;
+  &.visible {
+    display: block;
+  }
+  &.loading {
+    display: block;
+    animation: pin-loading 0.4s infinite;
+  }
+}
+
+@keyframes pin-loading {
+  0%,
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  50% {
+    transform: translate3d(-50%, -4px, 0);
+  }
+}
+
+.pin-tip {
+  position: absolute;
+  z-index: 1;
+  bottom: calc(50% - 48px);
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &.visible {
+    display: flex;
+    .pin-bubble {
+      transform: scale(1);
+      transition: all 0.2s ease-out;
+    }
+    .pin-line {
+      opacity: 1;
+    }
+    .pin-spot {
+      transform: translate3d(-50%, 50%, 0) scale(1);
+      transition: all 0.2s 0.2s ease-out;
+    }
+  }
+}
+.pin-bubble {
+  align-items: center;
+  background: #00ba77;
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  font-weight: 600;
+  justify-content: space-between;
+  max-height: 56px;
+  // min-width: 100px;
+  max-width: 172px;
+  min-height: 44px;
+  padding: 8px 8px 8px 12px;
+  position: relative;
+  transform: scale(0);
+  transform-origin: center bottom;
+  z-index: 1;
+  pointer-events: all;
+}
+.pin-line {
+  flex-shrink: 0;
+  height: 21px;
+  width: 12px;
+  // background-image: url(./images/pin_line.png);
+  background-image: url(http://null-test.oss-cn-hangzhou.aliyuncs.com/upload/658b90b586c2d42b94dd9129e5299743.png);
+  background-size: 100% 100%;
+  position: relative;
+  z-index: 1;
+  // prettier-ignore
+  margin-top: -0.5PX;
+  opacity: 0;
+}
+.pin-spot {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translate3d(-50%, 50%, 0) scale(0);
+  // animation: pin-spot 2s infinite;
+  border-radius: 50%;
+  box-shadow: 0 0 2px hsla(0, 0%, 100%, 0.2);
+  height: 22px;
+  width: 22px;
+  // background-image: url(./images/pin_spot.png);
+  background-image: url(http://null-test.oss-cn-hangzhou.aliyuncs.com/upload/0e55503e9bba647d6b24271b67081603.png);
+  background-size: 100% 100%;
+}
+
+@-webkit-keyframes pin-spot {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pin-text {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pin-center {
+  position: absolute;
+  z-index: 80;
+  width: 5px;
+  height: 5px;
+  background-color: blue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate3d(-50%, -50%, 0);
+}

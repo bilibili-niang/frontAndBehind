@@ -1,0 +1,22 @@
+.recommended {
+  margin: 0 10px;
+  border-radius: 10px;
+  .recommend-title {
+    flex: auto;
+    color: rgba(34, 197, 93, 1);
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
+  }
+  .c_goods-list {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+.recommendLoading {
+  opacity: 0 !important;
+  .c_goods-list {
+    opacity: 0 !important;
+  }
+}

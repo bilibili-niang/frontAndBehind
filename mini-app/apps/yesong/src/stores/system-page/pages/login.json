@@ -1,0 +1,256 @@
+{
+  "id": "1YWDm3",
+  "name": "2023/11/23 18:03:34",
+  "date": "2023/11/23 18:03:34",
+  "timestamp": 1700733814862,
+  "description": "",
+  "payload": {
+    "page": {
+      "mode": "page",
+      "closeButton": {
+        "enable": true,
+        "color": "rgba(51, 51, 51, 1)",
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "placement": "topRight",
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "useAgreement": null
+    },
+    "components": [
+      {
+        "id": "bJGtw5",
+        "key": "title",
+        "name": "标题",
+        "version": "0.1.0",
+        "config": {
+          "content": "登录即享以下权益",
+          "font": {
+            "fontFamily": "",
+            "fontSize": 24,
+            "lineHeight": null,
+            "fontWeight": "bold",
+            "color": "#000000",
+            "letterSpacing": null,
+            "textAlign": "left"
+          },
+          "arrow": {
+            "enable": false,
+            "color": "#bbbbbb",
+            "size": 16,
+            "gap": 8,
+            "text": "",
+            "offsetX": 0,
+            "offsetY": 0
+          }
+        },
+        "attrs": {
+          "backgroundEnable": false,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [0, 0, 0, 0],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [0, 0, 0, 0],
+          "padding": [13, 12, 13, 12],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false,
+        "__RETRIEVE_DEFAULT_DATA": false
+      },
+      {
+        "id": "Wu6oFu",
+        "key": "quick-link",
+        "name": "金刚区",
+        "version": "0.1.0",
+        "config": {
+          "col": 5,
+          "titleColor": "#333333",
+          "borderRadius": [0, 0, 0, 0],
+          "list": [
+            {
+              "title": "资金保障",
+              "image": {
+                "url": "https://dev-cdn.cardcat.cn/anteng/glass_7.png",
+                "width": 196,
+                "height": 196
+              },
+              "action": {
+                "key": "",
+                "remark": "",
+                "config": {}
+              },
+              "badge": {
+                "enable": false,
+                "content": "",
+                "color": "#ffffff",
+                "backgroundColor": "#ff4e00"
+              }
+            },
+            {
+              "title": "会员特权",
+              "image": {
+                "url": "https://dev-cdn.cardcat.cn/anteng/glass_1.png",
+                "width": 196,
+                "height": 196
+              },
+              "action": {
+                "key": "",
+                "remark": "",
+                "config": {}
+              },
+              "badge": {
+                "enable": false,
+                "content": "",
+                "color": "#ffffff",
+                "backgroundColor": "#ff4e00"
+              }
+            },
+            {
+              "title": "数据分析",
+              "image": {
+                "url": "https://dev-cdn.cardcat.cn/anteng/glass_19.png",
+                "width": 196,
+                "height": 196
+              },
+              "action": {
+                "key": "",
+                "remark": "",
+                "config": {}
+              },
+              "badge": {
+                "enable": false,
+                "content": "",
+                "color": "#ffffff",
+                "backgroundColor": "#ff4e00"
+              }
+            },
+            {
+              "title": "专享折扣",
+              "image": {
+                "url": "https://dev-cdn.cardcat.cn/anteng/glass_13.png",
+                "width": 196,
+                "height": 196
+              },
+              "action": {
+                "key": "",
+                "remark": "",
+                "config": {}
+              },
+              "badge": {
+                "enable": false,
+                "content": "",
+                "color": "#ffffff",
+                "backgroundColor": "#ff4e00"
+              }
+            },
+            {
+              "title": "专属客服",
+              "image": {
+                "url": "https://dev-cdn.cardcat.cn/anteng/glass_3.png",
+                "width": 196,
+                "height": 196
+              },
+              "action": {
+                "key": "",
+                "remark": "",
+                "config": {}
+              },
+              "badge": {
+                "enable": false,
+                "content": "",
+                "color": "#ffffff",
+                "backgroundColor": "#ff4e00"
+              }
+            }
+          ]
+        },
+        "attrs": {
+          "backgroundEnable": true,
+          "background": "rgba(0, 159, 255, 0.06)",
+          "borderRadius": [12, 12, 12, 12],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [0, 12, 0, 12],
+          "padding": [0, 0, 0, 0],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false,
+        "__RETRIEVE_DEFAULT_DATA": false
+      },
+      {
+        "id": "ULA4de",
+        "key": "placeholder",
+        "name": "空白分隔",
+        "version": "0.1.0",
+        "config": {
+          "height": 48,
+          "separator": {
+            "enable": true,
+            "color": "rgba(245, 245, 245, 1)",
+            "shape": "dashed",
+            "width": 2
+          }
+        },
+        "attrs": {
+          "backgroundEnable": false,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [0, 0, 0, 0],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [0, 0, 0, 0],
+          "padding": [0, 12, 0, 12],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false,
+        "__RETRIEVE_DEFAULT_DATA": false
+      },
+      {
+        "id": "eCGhrk",
+        "key": "login",
+        "name": "登录模组",
+        "version": "0.1.0",
+        "config": {
+          "theme": "default",
+          "themeColor": "#000000",
+          "cancelText": "暂不登录，先去逛逛"
+        },
+        "attrs": {
+          "backgroundEnable": false,
+          "background": "rgba(255, 255, 255, 1)",
+          "borderRadius": [0, 0, 0, 0],
+          "border": {
+            "enable": false,
+            "shape": "solid",
+            "width": 1,
+            "color": "#000000"
+          },
+          "opacity": 100,
+          "margin": [0, 0, 0, 0],
+          "padding": [0, 0, 0, 0],
+          "overflow": "visible"
+        },
+        "hidden": false,
+        "locked": false,
+        "__RETRIEVE_DEFAULT_DATA": false
+      }
+    ]
+  }
+}

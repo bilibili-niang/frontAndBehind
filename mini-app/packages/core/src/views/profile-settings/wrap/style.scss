@@ -1,0 +1,58 @@
+.profile-settings__form {
+  .form-item {
+    // border-bottom: 0.5px solid #f3f3f3;
+    font-size: 14px;
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+  .form-item__content {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 12px 0 12px 4px;
+  }
+  .form-item__label {
+    position: relative;
+    .tips {
+      font-size: 12px;
+      color: $color-text-disabled;
+      position: absolute;
+      white-space: nowrap;
+    }
+    .required {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      transform: translate3d(4px, 0, 0);
+      color: $color-error;
+    }
+  }
+  .form-item__value {
+    flex: 1;
+    // display: flex;
+    // justify-content: flex-end;
+    text-align: right;
+    color: rgba(#000, 0.5);
+    .placeholder {
+      color: rgba(#000, 0.25);
+    }
+  }
+  .form-item__placeholder {
+    opacity: 0.25;
+  }
+  .form-item__suffix {
+    opacity: 0.25;
+    width: 20px;
+    height: 20px;
+    text-align: right;
+    font-size: 16px;
+    line-height: 20px;
+    .icon {
+      width: inherit;
+      height: inherit;
+      line-height: 20px;
+      margin: 0;
+    }
+  }
+}

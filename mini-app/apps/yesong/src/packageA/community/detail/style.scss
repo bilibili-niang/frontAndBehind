@@ -1,0 +1,118 @@
+.community-detail {
+  padding: 12px;
+}
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.detail-header .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.author-info .name {
+  font-size: 14px;
+  color: #333;
+}
+.author-info .likes {
+  font-size: 12px;
+  color: #999;
+}
+.detail-title {
+  margin-top: 8px;
+  font-weight: 600;
+}
+.detail-content {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #333;
+}
+.detail-media {
+  margin-top: 10px;
+}
+.detail-video {
+  width: 100%;
+  height: 220px; /* 置顶视频更大，便于观看 */
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.detail-media .image {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+/* 评论区 */
+.comments {
+  margin-top: 12px;
+}
+.comments__title {
+  font-weight: 600;
+  font-size: 15px;
+}
+.comment-item {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.comment-item .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+.comment-item .main {
+  flex: 1;
+}
+.comment-item .meta {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 12px;
+}
+.comment-item .meta .name {
+  color: #333;
+  font-weight: 500;
+}
+.comment-item .meta .time {
+  color: #999;
+}
+.comment-item .content {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #333;
+}
+.comment-item .actions {
+  margin-top: 6px;
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+}
+.comment-item .actions .action.like {
+  color: var(--anteng-color-primary);
+}
+
+/* 浮动发布按钮，避开底部安全区与 TabBar */
+.floating-publish {
+  position: fixed;
+  right: 16px;
+  // 距底部适当上移，避免遮挡 TabBar
+  bottom: 70px;
+  @include safe-area-inset-bottom(bottom, 70px);
+  width: 52px;
+  height: 52px;
+  border-radius: 26px;
+  background: var(--anteng-color-primary);
+  box-shadow: 0 6px 16px rgba(var(--anteng-color-primary-rgb, 0,0,0), 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 1000;
+}
+.floating-publish__icon {
+  font-size: 28px;
+  line-height: 1;
+}

@@ -162,7 +162,7 @@ export const useDecorationStore = defineStore('decoration', () => {
     // 恢复页面级配置
     page.value = cloneDeep(__initialPageValue)
     // 预览缩放回到默认
-    zoom.value = 1.2
+    zoom.value = 1.0
     // 恢复头部默认配置
     header.value = {
       value: cloneDeep(__initialHeaderValue),
@@ -231,6 +231,7 @@ export const useDecorationStore = defineStore('decoration', () => {
       }
     } catch (e) {
       // no-op
+      null;
     }
   }
 

@@ -1,79 +1,123 @@
-// 基座组件
-import BaseApp from './src/components/baseApp'
-import useCrud from './src/hooks/useCrud'
-import useModal from './src/hooks/useModal'
-import useImagePreview from './src/hooks/useImagePreview'
-import useImageSelector from './src/hooks/useImageSelector'
-import test from './src/utils/test'
+// log 拦截
+import './src/utils/log'
+// 时间偏移
+import './src/utils/date-offset'
 
-// 导出组件/方法
-export { default as useRichTextEditor } from './src/hooks/useRichTextEditor'
-export { default as request } from './src/api/request'
+import Taro, { nextTick } from '@tarojs/taro'
+import { QuickMenuItem } from './lib'
+import useCoreStore, { GlobalShareHandler } from './src/stores/core'
+
+import './src/setup'
+
 export {
-  BaseApp,
-  useCrud,
-  useModal,
-  useImagePreview,
-  useImageSelector,
-  test
-}
-// 详情视图/预览相关 Hook
-export { useDetailView } from './src/hooks/useDetailView'
-export { default as usePreviewPage } from './src/hooks/usePreviewPage'
-export { default as useWebView } from './src/hooks/useWebView'
-export * from './src/hooks/useRequestErrorMessage'
-export * from './src/hooks/useSchemaFormModal'
-export { default as SchemaErrors } from './src/hooks/useSchemaFormModal/errors'
+  default as commonRequest,
+  default as request,
+  type RequestPagination,
+  type ResponseBody,
+  type ResponseData,
+  type PaginationData,
+  type ResponsePaginationData
+} from './src/api/request'
 
-// 搜索表格相关导出
-export {
-  default as SearchTable,
-  useSearchTable,
-  useTabSearchTable,
-  useSearchTableRefresh,
-  useSearchTableReload,
-  useTableAction,
-  useTableLongText,
-  useTableImages,
-  useTableAddress,
-  type SearchTableConfig
-} from './src/components/search-table'
+export { $getMerchantId, $OCR_License } from './src/api'
 
-export { default as Spin } from './src/components/spin'
-export { type ImageDefine } from './src/components/image-selector/Resource'
-export * from './src/utils'
-export { default as useAddressSelector, type AddressData } from './src/hooks/useAddressSelector'
-export { default as useContextMenu, type ContextMenuItem, type ContextMenuConfig } from './src/hooks/useContextMenu'
-export { default as useUserStore } from './src/stores/user'
-export { registerActions, defineAction, registerPreCondition, useAction, type ActionItem } from './src/hooks/useAction'
-export {default  as Action} from './src/widgets/action'
-export { default as emitter } from './src/utils/emitter'
+export { $getIndustry, standardIndustryData, getIndustryName } from './src/api'
 
-// 封装的通用选择器组件
-export { default as useCommonSelector, CommonSelectorPropsDefine } from './src/hooks/useCommonSelector'
+export * from './src/api/coupon'
 
-export { useMapCenter } from './src/hooks/useMapCenter'
-
-// 动作选择器
-export { useActionSelector } from './src/hooks/useAction'
-
-// 路由管理
-export { default as router, defineRoute, type IRoute, registerRoutes } from './src/router'
-
-// 部分请求
-export { requestUploadFile } from './src/api/uploadImage'
-export { default as useRequestErrorMessage, useResponseMessage } from './src/hooks/useRequestErrorMessage'
-
-// 路由/Meta相关常量与Hook
+// 常量
 export * from './src/constants'
 
-// 状态管理
-export { default as useAppStore, openSettings, closeSettings, initApp } from './src/stores/app'
+export * from './src/utils/index'
+export { default as emitter } from './src/utils/emitter'
+export * from './src/utils/weapp'
+export * from './src/utils/router'
+export * from './src/utils/image-process'
+export { onTabPageActivated } from './src/utils/onTabPageActivated'
+export * from './src/utils/onPageShow'
+export * from './src/utils/webview-bridge'
 
-// 系统页面
-export {default as AccountTable} from './src/views/account'
-export {default as ShopTable} from './src/views/shop'
-export {default as LoginPage} from './src/views/login'
-export { default as useG6Graph } from './src/components/g6'
-export { default as useECharts, createEChartsWidget } from './src/components/echarts'
-export { default as Card } from './src/components/card'
+// 翻页scroll
+export { default as ScrollList, type ScrollListRefType } from './src/components/scroll-list'
+
+export {
+  default as NavigationScrollList,
+  type navigationItemType,
+  type navigationIRefType
+} from './src/components/navigation-scroll-list'
+
+export { default as ScrollAnchor } from './src/components/scroll-anchor'
+
+// 钩子
+export * from './src/hooks'
+export { useShareAppMessage, useShareAppMessageBus } from './src/hooks/useShareAppMessage'
+
+// 状态
+export * from './src/stores'
+
+// 视图
+export * from './src/views'
+
+// 组件
+export { default as LaunchPage } from './src/components/launch-page'
+
+export { default as BasePage } from './src/components/base-page'
+export { default as WebView } from './src/components/web-view'
+export { default as TabPage, CommonTab, useCommonTab, type TabPageItem } from './src/components/tab-page'
+
+export { default as TabBar, type ITabBarItem } from './src/components/tab-bar'
+
+export { type PopupConfig, type PopupFunc } from './src/components/base-page/popup'
+
+export { default as EmptyStatus, EmptyAction } from './src/components/empty-status'
+
+export { default as Spin } from './src/components/spin'
+
+export { default as RichText } from './src/components/rich-text'
+export { default as ImageUploader } from './src/components/image-uploader'
+
+export { CommonProfileHeader } from './src/components/profile-header'
+
+const anteng = {
+  /** 设置快捷导航默认功能项，请确保在 Pinia 挂载后使用 */
+  setQuickMenuList: (list: QuickMenuItem[]) => {
+    useCoreStore().setQuickMenuList(list)
+  },
+  /** 设置全局默认分享回调 */
+  setDefaultShare: (handler: GlobalShareHandler) => {
+    useCoreStore().setGlobalShareHandler(handler)
+  },
+  /** 隐藏分享按钮 */
+  hideShareMenu: () => {
+    if (process.env.TARO_ENV !== 'h5') {
+      nextTick(() => {
+        useCoreStore().setDisabledSharePage(anteng.getPageId()!, true)
+      })
+      return Taro.hideShareMenu()
+    }
+  },
+  /** 显示分享按钮 */
+  showShareMenu: (options?: Taro.showShareMenu.Option) => {
+    if (process.env.TARO_ENV !== 'h5') {
+      nextTick(() => {
+        useCoreStore().setDisabledSharePage(anteng.getPageId()!, false)
+      })
+      return Taro.showShareMenu(options ?? {})
+    }
+    // TODO h5 使用 wx jssdk 实现
+  },
+  getPageId: () => {
+    return useCoreStore().getPageId()
+  }
+}
+
+export default anteng
+
+export * from './src/components/dev'
+
+export const SCENE_STORE = 'store'
+export const ORIGIN_STORE = 'store'
+
+export const useAction = (action: any) => {
+  console.log(action)
+}

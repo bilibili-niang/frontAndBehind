@@ -1,0 +1,11 @@
+.demo-page {
+  height: 3000px;
+  background: linear-gradient(to bottom, #fff, #000);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: red;
+  button {
+    height: 32px;
+  }
+}

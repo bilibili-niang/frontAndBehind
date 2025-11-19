@@ -1,0 +1,219 @@
+@mixin column {
+  display: flex;
+  flex-direction: column;
+}
+
+// 隐藏滚动条
+@mixin hideScroll {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@mixin row {
+  display: flex;
+  flex-direction: row;
+}
+
+.multiLineGoods-page {
+  @include column;
+  width: 100%;
+
+  .multi-line-goods-container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+
+    .backgroundImageCover {
+      width: 100%;
+      height: fit-content;
+      box-sizing: border-box;
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      min-height: 170px;
+      background-size: cover;
+
+      img {
+        width: 100%;
+        height: fit-content;
+      }
+    }
+
+    // styleB下只显示图片的上面部分
+    .backgroundImageCover-styleB {
+      height: 75px !important;
+      overflow: hidden;
+    }
+
+    // styleC下隐藏图片
+    .backgroundImageCover-styleC {
+      display: none;
+    }
+
+    div:not(.backgroundImageCover) {
+      z-index: 2;
+    }
+
+    // 商品列表
+    .multi-line-goods-container-styleA {
+      .m-l-top-goods,
+      .m-l-bottom-goods {
+        @include row;
+        flex-wrap: nowrap;
+      }
+
+      .m-l-top-goods {
+        justify-content: space-between;
+      }
+
+      .m-l-bottom-goods {
+        margin-top: 7px;
+        justify-content: space-between;
+        overflow: auto;
+      }
+
+      .m-l-top-goods::-webkit-scrollbar,
+      .m-l-bottom-goods::-webkit-scrollbar {
+        @include hideScroll;
+      }
+    }
+  }
+
+  .text-top-content {
+    margin-bottom: 10px;
+
+    .headerTitle {
+      font-size: 17px;
+    }
+
+    .subTitle {
+      font-size: 13px;
+    }
+
+    .m-l-button {
+      font-weight: 550;
+    }
+  }
+
+  //　标题的三种样式
+  .m-l-title-styleA {
+    @include column;
+    width: 100%;
+
+    .m-l-title-container {
+      display: flex;
+      flex-direction: column-reverse;
+
+      .headerTitle {
+        margin-top: 3px;
+        font-weight: 500;
+      }
+
+      .subTitle {
+        font-weight: 400;
+      }
+    }
+
+    .m-l-button {
+      display: flex;
+      flex-wrap: nowrap;
+      background: #ffffff;
+      border-radius: 33px;
+      color: #000000;
+      padding: 5px 7px;
+      width: fit-content;
+      height: fit-content;
+      margin-top: 12px;
+    }
+  }
+
+  .m-l-title-styleB {
+    @include row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .m-l-title-container {
+      @include column;
+    }
+
+    .m-l-button {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border-radius: 33px;
+      padding: 5px 7px;
+      width: fit-content;
+      height: fit-content;
+      @include row;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+  }
+
+  .m-l-title-styleC {
+    @include row;
+    justify-content: space-between;
+
+    .headerTitle {
+      font-size: 12px;
+    }
+
+    .subTitle {
+      display: none;
+    }
+
+    .m-l-button {
+      @include row;
+      flex-wrap: nowrap;
+      font-size: 12px;
+      align-items: center;
+
+      .iconfont {
+        font-weight: 400;
+      }
+    }
+  }
+
+  .styleB {
+    margin-top: 30px;
+
+    .one-line-goods {
+      @include row;
+      overflow: auto;
+    }
+
+    .one-line-goods::-webkit-scrollbar {
+      @include hideScroll;
+    }
+  }
+
+  .styleC {
+    .m-l-top-goods::-webkit-scrollbar,
+    .m-l-bottom-goods::-webkit-scrollbar {
+      @include hideScroll;
+    }
+
+    .m-l-top-goods {
+      @include row;
+      overflow: auto;
+      justify-content: space-between;
+    }
+
+    .m-l-bottom-goods {
+      margin-top: 3px;
+      @include row;
+      overflow: auto;
+      justify-content: space-between;
+    }
+  }
+
+  // 占位元素,不需要显示
+  .placeholder {
+    opacity: 0;
+  }
+}

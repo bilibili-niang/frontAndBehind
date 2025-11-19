@@ -1,0 +1,47 @@
+.c_checked-border {
+  width: calc(100%);
+  height: calc(100%);
+  border: 2px solid $color-primary;
+  position: absolute;
+  z-index: 18;
+  top: -2px;
+  left: -2px;
+  border-radius: 10px;
+  box-sizing: content-box;
+  pointer-events: none;
+  display: none;
+  &.checked {
+    display: block;
+  }
+  .check-icon {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: $color-primary;
+    color: $color-text-primary-bg;
+    font-size: 10px;
+    padding: 0 4px 0 6px;
+    border-radius: 0 7px 0 10px;
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background-image: radial-gradient(at 0 100%, transparent 6px, $color-primary 0);
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+    &::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background-image: radial-gradient(at 0 100%, transparent 6px, $color-primary 0);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+}

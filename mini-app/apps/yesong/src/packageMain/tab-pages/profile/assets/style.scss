@@ -1,0 +1,14 @@
+.profile-assets {
+  display: flex;
+  padding-bottom: 12px;
+  .assets-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .assets-name {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+}

@@ -1,0 +1,88 @@
+.common-modal-content__actions {
+  position: sticky;
+  z-index: 20;
+  @include safe-area-inset-bottom-max(bottom, 12px);
+  width: 100%;
+  &.fixed-bottom {
+    margin-top: auto;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    border-top: 1px solid #f8f8f8;
+    padding: 12px;
+    @include safe-area-inset-bottom-max(padding-bottom, 12px);
+    background-color: #fff;
+  }
+
+  .action {
+    flex: 2;
+    flex-shrink: 0;
+    min-width: 48px;
+    height: 44px;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-primary-01;
+    color: $color-primary;
+    border-radius: 8px;
+    margin-right: 10px;
+    transition: all 0.3s;
+    position: relative;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    &.primary {
+      flex: 5;
+      background-color: $color-primary;
+      color: $color-text-primary-bg;
+    }
+    &:active {
+      opacity: 0.6;
+    }
+    &.disabled {
+      opacity: 0.4;
+    }
+    &.loading {
+      position: relative;
+      color: transparent;
+      opacity: 0.4;
+      .spin {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+      }
+    }
+  }
+}
+
+.common-modal-content__actions-prepend {
+  margin-bottom: 8px;
+}
+
+.common-modal-content__actions-append {
+  margin-top: 8px;
+}
+
+.common-modal-content__actions-list {
+  display: flex;
+  align-items: center;
+}
+
+.common-modal-content__actions-placeholder {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: relative;
+  padding: 12px;
+  @include safe-area-inset-bottom-max(padding-bottom, 12px);
+  transform: none !important;
+  top: initial;
+  left: initial;
+  right: initial;
+  bottom: initial;
+}

@@ -1,0 +1,51 @@
+.multi-line-goods-item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-right: 1px;
+  margin-left: 1px;
+  background: rgba(255, 255, 255, 1);
+  justify-content: space-between;
+  min-width: 32%;
+
+  .item-image {
+    display: flex;
+    width: 100%;
+    height: auto;
+
+    img {
+      display: flex;
+      min-width: 100px;
+      width: 100%;
+      height: 100%;
+      min-height: 120px;
+      object-fit: cover;
+    }
+  }
+
+  .text-container {
+    padding: 3px;
+    box-sizing: border-box;
+
+    .m-l-item-title {
+      font-size: 9px;
+      /* 强制文本在一行内显示，不换行 */
+      white-space: nowrap;
+      /* 超出容器部分的内容应被隐藏 */
+      overflow: hidden;
+      /* 当文本溢出时，用省略号替换 */
+      text-overflow: ellipsis;
+      /* 为文本容器设置合适的宽度，以便内容可以溢出 */
+      width: 130px; /* 请根据实际情况指定一个具体的宽度 */
+    }
+
+    .price {
+      margin: 4px 0;
+      color: #ff6b00;
+      font-size: 10px;
+      padding: 3px 0;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,80 @@
+.coupon-audit-confirm-shop {
+  background-color: #fff;
+  margin: 12px;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: -10px;
+  background-image: linear-gradient(to bottom, rgba(94, 144, 251, 0.1) 2px, transparent 48px);
+  border: 2px solid #fff;
+}
+.coupon-audit-confirm-content {
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 0 12px 12px 12px;
+  padding: 15px;
+  .item {
+    display: flex;
+    padding: 16px 8px;
+    .label {
+      width: 80px;
+      margin-right: 8px;
+      color: $color-text-disabled;
+    }
+    .value {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      &.count {
+        flex-direction: column;
+        align-items: flex-end;
+        .count-tip {
+          display: flex;
+          align-items: center;
+          font-size: 13px;
+          margin-top: 8px;
+          color: $color-text-disabled;
+        }
+      }
+    }
+  }
+}
+
+.coupon-audit-confirm-alert {
+  font-size: 12px;
+  text-align: center;
+  color: $color-error;
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+.coupon-audit-record {
+  background-color: #fff;
+  padding: 0 12px 8px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-image: linear-gradient(to bottom, rgba(94, 144, 251, 0.1) 2px, transparent 48px);
+  border: 2px solid #fff;
+  .c_order-goods-item__image {
+    width: 60px;
+    height: 60px;
+  }
+  // .c_order-goods-item__summary {
+  //   display: none;
+  // }
+}
+.coupon-audit-record__info {
+  .item {
+    display: flex;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .label {
+    float: left;
+    color: $color-text-tertiary;
+  }
+  .value {
+    white-space: wrap;
+    color: $color-text-base;
+  }
+}

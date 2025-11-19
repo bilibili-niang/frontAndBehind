@@ -1,0 +1,53 @@
+.goods-suitable-shops {
+  background-color: #fff;
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 15px 8px 15px 15px;
+    .title {
+      font-size: 17px;
+      font-weight: 500;
+    }
+    .more {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      color: $color-text-tertiary;
+    }
+    & + .c_shop-item {
+      margin-top: -15px;
+    }
+  }
+}
+
+.goods-suitable-shops-list {
+  height: 100%;
+  width: 100%;
+  .c_shop-item {
+    // border-top: 1px solid #f5f5f5;
+    background-color: #fff;
+    margin: 8px;
+    border-radius: 10px;
+    &:last-of-type {
+      border-bottom: 1px solid #f5f5f5;
+    }
+    &.active {
+      position: relative;
+      z-index: 0;
+      &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        background-color: $color-primary-01;
+        border: 2px solid $color-primary;
+        box-sizing: border-box;
+      }
+    }
+  }
+}

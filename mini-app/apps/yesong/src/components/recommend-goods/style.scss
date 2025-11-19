@@ -1,0 +1,49 @@
+$gap: 8px;
+.c_recommend-goods {
+  .swiper {
+    height: 100%;
+  }
+  .swiper-item {
+    height: 100%;
+  }
+  .c_goods-item {
+    width: calc((100% - $gap * 2) / 3);
+    margin-right: $gap;
+    margin-bottom: $gap;
+    &:nth-child(3n + 3) {
+      margin-right: 0;
+    }
+  }
+}
+.c_recommend-goods__list {
+  transition: all 0.3s;
+}
+.c_recommend-goods__cnt {
+  padding: 0 12px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c_recommend-goods__indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c_recommend-goods__track {
+  width: 50px;
+  height: 4px;
+  border-radius: 10px;
+  background-color: #f3f3f3;
+  position: relative;
+}
+.c_recommend-goods__thumb {
+  width: 50%;
+  height: 100%;
+  background-color: #333;
+  border-radius: inherit;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all .5s;
+  will-change: left, transform;
+}

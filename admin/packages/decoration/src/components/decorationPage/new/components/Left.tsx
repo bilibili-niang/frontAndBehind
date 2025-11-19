@@ -46,7 +46,6 @@ export default defineComponent({
         <div class="group mb-4">
           <div class="group__grid grid grid-cols-2 gap-2">
             {list.map((m) => {
-
               return (
                 <div
                   class="comp-card"
@@ -55,7 +54,8 @@ export default defineComponent({
                     try {
                       e.dataTransfer?.setData('DECORATION_COMPONENT_KEY', m.key)
                       e.dataTransfer!.effectAllowed = 'copy'
-                    } catch {}
+                    } catch {
+                    }
                   }}
                 >
                   <div class="comp-card__thumb">
@@ -89,10 +89,13 @@ export default defineComponent({
     return () => (
       <div
         class="decoration-left p-3 border-r border-[var(--color-border-base)] bg-[var(--anteng-color-bg-300)]">
-        <ScrollContainer class="left-content" thickness={8} autoHide={false}>
-          {renderLayerPanel()}
-          <PropertyTabs tabs={tabs} defaultActiveKey="common"/>
-        </ScrollContainer>
+        {renderLayerPanel()}
+        <div class="property-tabs-container">
+          <PropertyTabs
+            tabs={tabs}
+            defaultActiveKey="common"
+          />
+        </div>
       </div>
     )
   }

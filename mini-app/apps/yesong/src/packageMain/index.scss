@@ -1,0 +1,21 @@
+.index-page {
+}
+
+.index-page__tab-page {
+  &.hidden {
+    display: none;
+  }
+
+  .d_common-navigator__menu {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.index-page__tab {
+  position: fixed;
+  z-index: 50;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

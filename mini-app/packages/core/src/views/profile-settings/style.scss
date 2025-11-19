@@ -1,0 +1,115 @@
+.profile-settings-loading {
+  padding-top: $nav-height;
+  min-height: 100vh;
+  background-color: #f5f6fa;
+  padding-bottom: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-settings {
+  padding-top: $nav-height;
+  min-height: 100vh;
+  background-color: #f5f6fa;
+  padding-bottom: 24px;
+  .avatar-wrap {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto;
+    position: relative;
+    filter: drop-shadow(0 0 4px rgb(208, 235, 255));
+    .icon {
+      background-color: #333444;
+      position: absolute;
+      bottom: 2px;
+      right: -4px;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-size: 10px;
+      border: 2px solid #f5f6fa;
+      color: #fff;
+    }
+  }
+  .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #fff;
+    padding: 2px;
+  }
+  .avatar-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #f3f3f3;
+    background-position: center center;
+    background-size: cover;
+  }
+}
+
+.profile-settings__title {
+  position: relative;
+  &.loading {
+    .loading-content {
+      opacity: 1;
+      transition: none;
+    }
+    .text {
+      opacity: 0;
+      transition: none;
+    }
+  }
+  .loading-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-text-disabled;
+    font-size: 12px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  .text {
+    opacity: 1;
+    transition: all 0.3s;
+    text-align: center;
+  }
+  .spin {
+    width: 14px;
+    height: 14px;
+    background-image: url(https://dev-cdn.null.cn/upload/97525b0e737e2d1f6b5a61aeb23a13aa.svg);
+    background-size: contain;
+    background-position: center center;
+    animation: spin 1s steps(12) infinite;
+    margin-left: 8px;
+  }
+}
+
+.profile-settings__form {
+  background-color: #fff;
+  margin: 12px 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgba(#000, 0.05);
+  padding: 4px 12px;
+}
+
+.profile-settings__tips {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 12px;
+  opacity: 0.25;
+}
+
+
+.profile-settings__form-hr {
+  height: 1px;
+  background-color: #f5f5f5;
+  transform: scale(1, 0.5);
+}
