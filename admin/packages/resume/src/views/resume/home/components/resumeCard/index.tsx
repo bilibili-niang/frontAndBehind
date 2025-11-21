@@ -1,6 +1,7 @@
 import './index.scss'
 import { defineComponent } from 'vue'
 import { Icon } from '@anteng/ui'
+import { formatDate } from '@anteng/core'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
@@ -22,7 +23,7 @@ export default defineComponent({
             onClick={() => router.push('/resume/create')}
           >
             <div class="empty-icon flex align-center justify-center h-full">
-              <Icon name="add" />
+              <Icon name="add"/>
             </div>
           </div>
         )
@@ -30,6 +31,9 @@ export default defineComponent({
       return (
         <div class="resume-card p-2" onClick={() => router.push(`/resume/create?id=${props.data?.id}`)}>
           <div class="title">{props.data?.title || '未命名简历'}</div>
+          <div class="bottom-info-time">
+            {formatDate(props.data?.createdAt || props.data?.created_at || '')}
+          </div>
         </div>
       )
     }

@@ -4,8 +4,7 @@ import { registerRoutes, router } from '@anteng/core'
 import { resumeRoutes } from '@anteng/resume'
 // 移除登录判断拦截
 
-const homeRoute = generatedChildrenRoutes.find(r => r.path === '/home')
-const defaultRoutePath = homeRoute?.path || (generatedChildrenRoutes[0]?.path ?? '/home')
+const defaultRoutePath = '/resume/home'
 
 const children = [...generatedChildrenRoutes, ...resumeRoutes]
 // 将 admin 的根路由注册到 @anteng/core 的 router 实例上

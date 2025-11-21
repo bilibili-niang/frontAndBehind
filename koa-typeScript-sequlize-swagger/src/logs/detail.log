@@ -349,3 +349,87 @@
 [2025-11-20 02:50:03.916] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:11ms
 [2025-11-20 02:50:11.330] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
 [2025-11-20 02:50:11.337] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:7ms
+[2025-11-20 02:58:26.367] [IP:::1] 请求开始 - GET /swagger-json
+[2025-11-20 02:58:26.390] [IP:::1] 请求结束 - GET /swagger-json - 状态码:200 - 响应时间:23ms
+[2025-11-20 03:50:14.437] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 03:50:14.448] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:11ms
+[2025-11-20 05:58:30.135] [IP:::1] 请求开始 - GET /swagger-json
+[2025-11-20 05:58:30.163] [IP:::1] 请求结束 - GET /swagger-json - 状态码:200 - 响应时间:28ms
+[2025-11-20 08:58:31.068] [IP:::1] 请求开始 - GET /swagger-json
+[2025-11-20 08:58:31.098] [IP:::1] 请求结束 - GET /swagger-json - 状态码:200 - 响应时间:30ms
+[2025-11-20 11:58:32.177] [IP:::1] 请求开始 - GET /swagger-json
+[2025-11-20 11:58:32.213] [IP:::1] 请求结束 - GET /swagger-json - 状态码:200 - 响应时间:36ms
+[2025-11-20 12:55:48.195] [IP:::1] 请求开始 - POST /resume/create
+[2025-11-20 12:55:48.202] [IP:::1] 请求结束 - POST /resume/create - 状态码:401 - 响应时间:7ms
+[2025-11-20 12:55:52.712] [IP:::1] 请求开始 - POST /user/login
+[2025-11-20 12:55:52.716] [IP:::1] 请求结束 - POST /user/login - 状态码:200 - 响应时间:4ms
+[2025-11-20 12:55:55.110] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 12:55:55.122] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:12ms
+[2025-11-20 12:55:59.210] [IP:::1] 请求开始 - POST /resume/create
+[2025-11-20 12:55:59.222] [IP:::1] 请求结束 - POST /resume/create - 状态码:200 - 响应时间:12ms
+[2025-11-20 12:56:04.634] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 12:56:04.640] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:6ms
+[2025-11-20 12:56:06.322] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 12:56:06.328] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:6ms
+[2025-11-20 12:59:10.584] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 12:59:10.603] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:19ms
+[2025-11-20 13:05:10.275] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 13:05:10.289] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:14ms
+[2025-11-20 14:47:50.532] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 14:47:50.564] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:32ms
+[2025-11-20 14:48:15.262] [IP:::1] 请求开始 - GET /resume/detail/762a1b1398314ec986f28b020e74d8cd
+[2025-11-20 14:48:15.283] [IP:::1] 请求结束 - GET /resume/detail/762a1b1398314ec986f28b020e74d8cd - 状态码:200 - 响应时间:21ms
+[2025-11-20 14:48:16.245] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 14:48:16.253] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:8ms
+[2025-11-20 14:48:17.791] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 14:48:17.801] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:10ms
+[2025-11-20 14:50:39.616] [IP:::1] 请求开始 - GET /resume/detail/0d15e4e7e2e04d438b0c3645a39f5fb6
+[2025-11-20 14:50:39.624] [IP:::1] 请求结束 - GET /resume/detail/0d15e4e7e2e04d438b0c3645a39f5fb6 - 状态码:200 - 响应时间:8ms
+[2025-11-20 14:50:40.814] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 14:50:40.822] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:8ms
+[2025-11-20 14:50:41.352] [IP:::1] 请求开始 - GET /resume/detail/0d15e4e7e2e04d438b0c3645a39f5fb6
+[2025-11-20 14:50:41.359] [IP:::1] 请求结束 - GET /resume/detail/0d15e4e7e2e04d438b0c3645a39f5fb6 - 状态码:200 - 响应时间:7ms
+[2025-11-20 14:50:42.268] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 14:50:42.274] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:6ms
+[2025-11-20 14:58:39.436] [IP:::1] 请求开始 - GET /swagger-json
+[2025-11-20 14:58:39.458] [IP:::1] 请求结束 - GET /swagger-json - 状态码:200 - 响应时间:22ms
+[2025-11-20 15:05:57.065] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 15:05:57.077] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:12ms
+[2025-11-20 16:20:53.324] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 16:20:53.348] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:24ms
+[2025-11-20 16:38:37.499] [IP:::1] 请求开始 - GET /resume/detail/0d15e4e7e2e04d438b0c3645a39f5fb6
+[2025-11-20 16:38:37.510] [IP:::1] 请求结束 - GET /resume/detail/0d15e4e7e2e04d438b0c3645a39f5fb6 - 状态码:200 - 响应时间:11ms
+[2025-11-20 16:38:38.484] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 16:38:38.492] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:8ms
+[2025-11-20 16:48:42.553] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 16:48:42.566] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:13ms
+[2025-11-20 16:48:44.137] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 16:48:44.145] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:8ms
+[2025-11-20 16:48:46.189] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 16:48:46.196] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:7ms
+[2025-11-20 16:48:48.510] [IP:::1] 请求开始 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong
+[2025-11-20 16:48:48.520] [IP:::1] 请求结束 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong - 状态码:200 - 响应时间:10ms
+[2025-11-20 16:48:50.105] [IP:::1] 请求开始 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong
+[2025-11-20 16:48:50.109] [IP:::1] 请求结束 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong - 状态码:200 - 响应时间:4ms
+[2025-11-20 16:48:52.031] [IP:::1] 请求开始 - POST /user/login
+[2025-11-20 16:48:52.037] [IP:::1] 请求结束 - POST /user/login - 状态码:200 - 响应时间:6ms
+[2025-11-20 16:48:52.068] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 16:48:52.075] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:7ms
+[2025-11-20 16:49:00.405] [IP:::1] 请求开始 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong
+[2025-11-20 16:49:00.409] [IP:::1] 请求结束 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong - 状态码:200 - 响应时间:4ms
+[2025-11-20 16:49:02.227] [IP:::1] 请求开始 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong
+[2025-11-20 16:49:02.233] [IP:::1] 请求结束 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong - 状态码:200 - 响应时间:6ms
+[2025-11-20 16:49:02.685] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 16:49:02.692] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:7ms
+[2025-11-20 16:49:03.495] [IP:::1] 请求开始 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong
+[2025-11-20 16:49:03.499] [IP:::1] 请求结束 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong - 状态码:200 - 响应时间:4ms
+[2025-11-20 16:49:04.481] [IP:::1] 请求开始 - GET /navigation/list?current=1&size=20&descs=create_time&scene=yesong
+[2025-11-20 16:49:04.488] [IP:::1] 请求结束 - GET /navigation/list?current=1&size=20&descs=create_time&scene=yesong - 状态码:200 - 响应时间:7ms
+[2025-11-20 16:49:04.990] [IP:::1] 请求开始 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong
+[2025-11-20 16:49:04.994] [IP:::1] 请求结束 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong - 状态码:200 - 响应时间:4ms
+[2025-11-20 16:51:06.738] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 16:51:06.751] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:13ms
+[2025-11-20 16:51:15.332] [IP:::1] 请求开始 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong
+[2025-11-20 16:51:15.336] [IP:::1] 请求结束 - GET /system-page/list?current=1&size=20&descs=create_time&scene=yesong - 状态码:200 - 响应时间:4ms
+[2025-11-20 16:51:19.313] [IP:::1] 请求开始 - GET /resume/list?size=9999&page=1
+[2025-11-20 16:51:19.318] [IP:::1] 请求结束 - GET /resume/list?size=9999&page=1 - 状态码:200 - 响应时间:5ms

@@ -29,7 +29,7 @@ export default defineComponent({
         </TestFloat>
         <div class="tabs-container p-3">
           <Tabs>
-            <TabPane key={1} tab={'我的简历'}>
+            <TabPane key={1} tab={'我的简历'} class='flex flex-row'>
               <ResumeCard empty={true} />
               {dataList.value.map((p: any) => <ResumeCard data={p} />)}
             </TabPane>
