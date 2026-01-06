@@ -45,9 +45,9 @@
     "vuetify": "^3.9.2"
   },
   "devDependencies": {
-    "@anteng/core": "workspace:*",
-    "@anteng/ui": "workspace:*",
-    "@anteng/resume": "workspace:*",
+    "@pkg/core": "workspace:*",
+    "@pkg/ui": "workspace:*",
+    "@pkg/resume": "workspace:*",
     "@rushstack/eslint-patch": "^1.3.3",
     "@swc/core": "~1.6.0",
     "@tailwindcss/vite": "^4.1.12",

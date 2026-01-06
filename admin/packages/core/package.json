@@ -1,12 +1,12 @@
 {
-  "name": "@anteng/core",
+  "name": "@pkg/core",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "main": "./lib.ts",
   "module": "./lib.ts",
   "dependencies": {
-    "@anteng/ui": "workspace:*",
+    "@pkg/ui": "workspace:*",
     "@antv/g6": "^5.0.50",
     "blueimp-md5": "^2.19.0"
   },

@@ -1,5 +1,5 @@
 {
-  "name": "@anteng/decoration",
+  "name": "@pkg/decoration",
   "desc": "封装的装修库,后台项目都会引用到",
   "version": "0.1.0",
   "private": true,

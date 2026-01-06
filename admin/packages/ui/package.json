@@ -1,5 +1,5 @@
 {
-  "name": "@anteng/ui",
+  "name": "@pkg/ui",
   "version": "1.0.0",
   "private": true,
   "description": "页面ui组件",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
-    "@anteng/config": "workspace:*",
+    "@pkg/config": "workspace:*",
     "@fontsource/roboto": "5.2.6",
     "@mdi/font": "7.4.47",
     "ant-design-vue": "^4.2.6",
