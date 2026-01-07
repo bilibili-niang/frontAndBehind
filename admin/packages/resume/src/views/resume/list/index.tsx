@@ -1,6 +1,6 @@
 import { computed, defineComponent, ref } from 'vue'
-import { useSearchTable, $resumeList } from '@anteng/core'
-import { Button, Image } from '@anteng/ui'
+import { useSearchTable, $resumeList } from '@pkg/core'
+import { Button, Image } from '@pkg/ui'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({

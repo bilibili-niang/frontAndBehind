@@ -1,7 +1,7 @@
 import './index.scss'
 import { defineComponent } from 'vue'
-import { Icon } from '@anteng/ui'
-import { formatDate } from '@anteng/core'
+import { Icon } from '@pkg/ui'
+import { formatDate } from '@pkg/core'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({

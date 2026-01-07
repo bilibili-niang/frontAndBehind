@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { uuid } from '@anteng/core'
+import { uuid } from '@pkg/core'
 
 export type ResumeBlock = { id: string; type: string; props: any }
 

@@ -1,11 +1,11 @@
 {
-  "name": "@anteng/core",
+  "name": "@pkg/core",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "main": "./lib.ts",
   "module": "./lib.ts",
   "dependencies": {
-    "@anteng/ui": "workspace:*"
+    "@pkg/ui": "workspace:*"
   }
 }

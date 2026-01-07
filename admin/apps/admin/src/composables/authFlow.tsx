@@ -1,8 +1,8 @@
 import { reactive, ref } from 'vue'
 import router from '@/router'
-import { Input, message, Button } from '@anteng/ui'
+import { Input, message, Button } from '@pkg/ui'
 import { $login } from '@/api'
-import { useModal } from '@anteng/core'
+import { useModal } from '@pkg/core'
 import { useAuthStore } from '@/store/auth'
 import md5 from 'blueimp-md5'
 

@@ -1,6 +1,6 @@
 import './index.scss'
 import { defineComponent, onMounted, ref, onBeforeUnmount, nextTick } from 'vue'
-import { useResumeStore } from '@anteng/resume'
+import { useResumeStore } from '@pkg/resume'
 import Render from '../render'
 
 export default defineComponent({

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { LOGIN_IDENTITY } from '@anteng/config'
+import { LOGIN_IDENTITY } from '@pkg/config'
 
 export interface UserInfo {
   id: string

@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { Button, Card } from '@anteng/ui'
+import { Button, Card } from '@pkg/ui'
 import type { RouteMeta } from '@/router/routeMeta'
 
 // 当前工作区内已存在的可选应用列表（静态）

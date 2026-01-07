@@ -1,6 +1,6 @@
 import './styles/settings.scss'
 import 'ant-design-vue/dist/reset.css'
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 import { ConfigProvider } from 'ant-design-vue'
 import message from './components/message'
 import Icon from './components/icon'

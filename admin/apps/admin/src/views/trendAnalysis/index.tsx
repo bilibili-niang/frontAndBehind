@@ -2,8 +2,8 @@ import './index.scss'
 import type { RouteMeta } from '@/router/routeMeta'
 import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import * as echarts from 'echarts'
-import { Select } from '@anteng/ui'
-import { Card, createEChartsWidget } from '@anteng/core'
+import { Select } from '@pkg/ui'
+import { Card, createEChartsWidget } from '@pkg/core'
 
 export default defineComponent({
   name: 'trend-analysis',

@@ -1,5 +1,5 @@
 import { computed, defineComponent, withModifiers } from 'vue'
-import { getIndexLabel } from '@anteng-shared/utils'
+import { getIndexLabel } from '@pkg/shared/utils'
 import './style.scss'
 
 import { ANSWER_EXTRA_FIELD, ANSWER_VALUE_FIELD, ERROR_MESSAGE_REQUIRED, WIDGET_CHECKBOX } from '../../../constants'

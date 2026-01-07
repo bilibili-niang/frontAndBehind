@@ -1,4 +1,4 @@
-import { useCopy } from '@anteng/utils'
+import { useCopy } from '@pkg/utils'
 
 export {
   useCopy

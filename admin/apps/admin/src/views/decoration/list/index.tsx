@@ -1,6 +1,6 @@
 // 装修列表
 import { RouteMeta } from '@/router/routeMeta'
-import { navigationList } from '@anteng/decoration'
+import { navigationList } from '@pkg/decoration'
 
 export default navigationList
 

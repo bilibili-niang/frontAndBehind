@@ -16,8 +16,8 @@ import { useRequestErrorMessage } from '../../hooks/useRequestErrorMessage'
 import test from '../../utils/test'
 import useAppStore from '../../stores/app'
 import useUserStore from '../../stores/user'
-import { isDev } from '@anteng/utils'
-import { LOGIN_IDENTITY } from '@anteng/config'
+import { isDev } from '@pkg/utils'
+import { LOGIN_IDENTITY } from '@pkg/config'
 
 export default defineComponent({
   name: 'LegoLoginPage',

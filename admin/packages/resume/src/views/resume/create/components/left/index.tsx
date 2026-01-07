@@ -1,6 +1,6 @@
 import './index.scss'
 import { defineComponent } from 'vue'
-import { useResumeStore } from '@anteng/resume'
+import { useResumeStore } from '@pkg/resume'
 
 const registry = [
   { type: 'basic-info', label: '基本信息' },

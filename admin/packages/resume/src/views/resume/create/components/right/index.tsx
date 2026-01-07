@@ -1,8 +1,8 @@
 import './index.scss'
 import { defineComponent } from 'vue'
-import { Button, Input, Textarea, Select } from '@anteng/ui'
-import { useResumeStore } from '@anteng/resume'
-import { $resumeCreate, $resumeUpdate, useUserStore, requestUploadFile } from '@anteng/core'
+import { Button, Input, Textarea, Select } from '@pkg/ui'
+import { useResumeStore } from '@pkg/resume'
+import { $resumeCreate, $resumeUpdate, useUserStore, requestUploadFile } from '@pkg/core'
 
 export default defineComponent({
   name: 'resume-right',

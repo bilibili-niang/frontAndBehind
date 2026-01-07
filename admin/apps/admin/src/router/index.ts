@@ -1,13 +1,13 @@
 import MainLayout from '@/layouts/MainLayout'
 import { generatedChildrenRoutes } from './auto'
-import { registerRoutes, router } from '@anteng/core'
-import { resumeRoutes } from '@anteng/resume'
+import { registerRoutes, router } from '@pkg/core'
+import { resumeRoutes } from '@pkg/resume'
 // 移除登录判断拦截
 
-const defaultRoutePath = '/resume/home'
+const defaultRoutePath = '/dataOverview'
 
 const children = [...generatedChildrenRoutes, ...resumeRoutes]
-// 将 admin 的根路由注册到 @anteng/core 的 router 实例上
+// 将 admin 的根路由注册到 @pkg/core 的 router 实例上
 router.addRoute({
   path: '/',
   name: 'root',

@@ -8,7 +8,7 @@ import './style.b.scss'
 import './style.c.scss'
 
 import useAppStore, { openSettings } from '../../../stores/app'
-import { Badge, Empty, Icon, message, Modal, Popover, Spin, Tooltip } from '@anteng/ui'
+import { Badge, Empty, Icon, message, Modal, Popover, Spin, Tooltip } from '@pkg/ui'
 import Apps from './apps'
 import Menu from './menu'
 import PageLabel from './label'
@@ -17,14 +17,14 @@ import useBasicLayoutStore from '../../../stores/basic-layout'
 import useUserStore from '../../../stores/user'
 import useBackgroundTask from '../../../hooks/useBackgroundTask'
 import emitter from '../../../utils/emitter'
-import { LOGO_URL, PREFIX_CLS, SCOPE_SU } from '@anteng/config'
+import { LOGO_URL, PREFIX_CLS, SCOPE_SU } from '@pkg/config'
 
 import defaultAvatar from '../../../assets/default-avatar.svg'
 import uuid from '../../../utils/uuid'
 import { Exception404 } from '../../../router'
 import { authMerchantDirect, getSwitchableMerchantList } from '../../../api/login'
 import { useRequestErrorMessage } from '../../../hooks/useRequestErrorMessage'
-import { renderAnyNode } from '@anteng/utils'
+import { renderAnyNode } from '@pkg/utils'
 
 const exclusion = ['CommonDeckPage']
 

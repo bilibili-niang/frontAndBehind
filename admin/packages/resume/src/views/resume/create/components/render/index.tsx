@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue'
-import { useResumeStore } from '@anteng/resume'
+import { useResumeStore } from '@pkg/resume'
 
 const BasicInfo = (p: any) => (
   <div class="widget widget-basic-info" style={{display:'grid',gridTemplateColumns:'100px 1fr',gap:'12px',alignItems:'center'}}>

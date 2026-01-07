@@ -1,5 +1,5 @@
 import { RouterView } from 'vue-router'
-import { ROUTE_META_PURE, type IRoute } from '@anteng/core'
+import { ROUTE_META_PURE, type IRoute } from '@pkg/core'
 
 export const resumeRoutes: IRoute[] = [
   {

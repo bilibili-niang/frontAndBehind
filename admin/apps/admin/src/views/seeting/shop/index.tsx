@@ -1,5 +1,5 @@
 import type { RouteMeta } from '@/router/routeMeta'
-import { ShopTable } from '@anteng/core'
+import { ShopTable } from '@pkg/core'
 
 export const routeMeta: RouteMeta = {
   title: '门店管理',

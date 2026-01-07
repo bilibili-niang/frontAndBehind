@@ -2,12 +2,12 @@ import './style.scss'
 import { computed, defineComponent, h, KeepAlive, ref, Transition, watch } from 'vue'
 import { RouterView, useRoute, useRouter } from 'vue-router'
 import { menuTree } from '@/router/auto'
-import { Button, Icon, Modal, Popover, ScrollContainer } from '@anteng/ui'
-import { ROUTE_META_PURE_INTERFACE } from '@anteng/core'
+import { Button, Icon, Modal, Popover, ScrollContainer } from '@pkg/ui'
+import { ROUTE_META_PURE_INTERFACE } from '@pkg/core'
 import { useAuthStore } from '@/store/auth'
 import SettingsPanel from '@/components/SettingsPanel'
 import SidebarMenu from '@/components/SidebarMenu'
-import { renderHeader as RenderHeader } from '@anteng/decoration'
+import { renderHeader as RenderHeader } from '@pkg/decoration'
 
 export default defineComponent({
     name: 'MainLayout',

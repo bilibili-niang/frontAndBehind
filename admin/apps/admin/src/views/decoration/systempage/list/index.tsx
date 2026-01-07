@@ -1,6 +1,6 @@
-import { systemList } from '@anteng/decoration'
+import { systemList } from '@pkg/decoration'
 import type { RouteMeta } from '@/router/routeMeta'
-import { ROUTE_META_PURE } from '@anteng/core'
+import { ROUTE_META_PURE } from '@pkg/core'
 
 export default systemList
 

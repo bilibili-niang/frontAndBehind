@@ -1,9 +1,9 @@
 import './index.scss'
 import type { RouteMeta } from '@/router/routeMeta'
 import { defineComponent, ref } from 'vue'
-import { Checkbox, Select } from '@anteng/ui'
-import { Card, createEChartsWidget } from '@anteng/core'
-import { percentFormat } from '@anteng/utils'
+import { Checkbox, Select } from '@pkg/ui'
+import { Card, createEChartsWidget } from '@pkg/core'
+import { percentFormat } from '@pkg/utils'
 import { Table } from 'ant-design-vue'
 
 export const platformSelection = [

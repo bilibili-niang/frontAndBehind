@@ -8,7 +8,7 @@ import App from './App'
 import router from './router'
 import './setup'
 import { useAuthStore } from '@/store/auth'
-import { registerDecorationActions } from '@anteng/decoration'
+import { registerDecorationActions } from '@pkg/decoration'
 
 const app = createApp(App)
 const pinia = createPinia()

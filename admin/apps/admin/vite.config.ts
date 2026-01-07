@@ -100,7 +100,7 @@ export default defineConfig(({ mode }) => {
           // 同步在 Vite 级别静默提示
           silenceDeprecations: ['import', 'legacy-js-api'],
           // 全局注入样式变量，所有 SCSS 均可使用 $prefix 等变量
-          additionalData: '@use \'@anteng/styles/src/variables/index.scss\' as *;'
+          additionalData: '@use \'@pkg/styles/src/variables/index.scss\' as *;'
         }
       },
       postcss: {

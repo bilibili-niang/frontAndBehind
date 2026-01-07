@@ -1,13 +1,13 @@
 import './index.scss'
 import { defineComponent, onMounted, ref, computed } from 'vue'
-import { ROUTE_META_PURE } from '@anteng/core'
+import { ROUTE_META_PURE } from '@pkg/core'
 import Center from './components/center'
 import Left from './components/left'
 import Right from './components/right'
-import { useResumeStore } from '@anteng/resume'
+import { useResumeStore } from '@pkg/resume'
 import { useRoute, useRouter } from 'vue-router'
-import { $resumeDetail, $resumeCreate, $resumeUpdate, useUserStore } from '@anteng/core'
-import { Button, Input, message } from '@anteng/ui'
+import { $resumeDetail, $resumeCreate, $resumeUpdate, useUserStore } from '@pkg/core'
+import { Button, Input, message } from '@pkg/ui'
 
 export default defineComponent({
   name: 'resume-create-page',

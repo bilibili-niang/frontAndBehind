@@ -1,8 +1,8 @@
 import './index.scss'
 import { defineComponent, ref } from 'vue'
-import { Button, Tabs, TabPane, TestFloat } from '@anteng/ui'
-import { $resumeList } from '@anteng/core'
-import { useRequestErrorMessage } from '@anteng/core'
+import { Button, Tabs, TabPane, TestFloat } from '@pkg/ui'
+import { $resumeList } from '@pkg/core'
+import { useRequestErrorMessage } from '@pkg/core'
 import ResumeCard from './components/resumeCard'
 
 export default defineComponent({

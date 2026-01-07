@@ -1,6 +1,6 @@
 import { computed, defineComponent, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Icon, Menu } from '@anteng/ui'
+import { Icon, Menu } from '@pkg/ui'
 import { menuTree } from '@/router/auto'
 import './style.scss'
 import router from '@/router'

@@ -1,5 +1,5 @@
 import type { RouteMeta } from '@/router/routeMeta'
-import { AccountTable } from '@anteng/core'
+import { AccountTable } from '@pkg/core'
 
 export const routeMeta: RouteMeta = {
   title: '账号配置',
