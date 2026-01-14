@@ -4,9 +4,9 @@ import { commonResponse } from '@/controller/common'
 // 创建简历的请求
 const resumeCreateReq = z.object({
   userId: z.string(),
-  data: z.string(),
-  img: z.string(),
-  title: z.string()
+  data: z.object({}).passthrough(),
+  img: z.string().optional(),
+  title: z.string().optional()
 })
 
 // 创建简历的响应
@@ -14,9 +14,9 @@ const resumeCreateRes = commonResponse({
   data: z.object({
     id: z.number(),
     userId: z.string(),
-    data: z.string(),
-    img: z.string(),
-    title: z.string(),
+    data: z.object({}).passthrough(),
+    img: z.string().optional(),
+    title: z.string().optional(),
     createdAt: z.string(),
     updatedAt: z.string()
   })
@@ -29,9 +29,9 @@ const resumeListRes = commonResponse({
     rows: z.array(z.object({
       id: z.number(),
       userId: z.string(),
-      data: z.string(),
-      img: z.string(),
-      title: z.string(),
+      data: z.object({}).passthrough(),
+      img: z.string().optional(),
+      title: z.string().optional(),
       createdAt: z.string(),
       updatedAt: z.string()
     }))
@@ -46,9 +46,9 @@ const resumeDetailRes = commonResponse({
   data: z.object({
     id: z.number(),
     userId: z.string(),
-    data: z.string(),
-    img: z.string(),
-    title: z.string(),
+    data: z.object({}).passthrough(),
+    img: z.string().optional(),
+    title: z.string().optional(),
     createdAt: z.string(),
     updatedAt: z.string()
   })
@@ -56,9 +56,8 @@ const resumeDetailRes = commonResponse({
 
 // 更新简历的请求
 const resumeUpdateReq = z.object({
-  id: z.number(),
   userId: z.string().optional(),
-  data: z.string().optional(),
+  data: z.object({}).passthrough().optional(),
   img: z.string().optional(),
   title: z.string().optional()
 })
@@ -68,9 +67,9 @@ const resumeUpdateRes = commonResponse({
   data: z.object({
     id: z.number(),
     userId: z.string(),
-    data: z.string(),
-    img: z.string(),
-    title: z.string(),
+    data: z.object({}).passthrough(),
+    img: z.string().optional(),
+    title: z.string().optional(),
     createdAt: z.string(),
     updatedAt: z.string()
   })

@@ -1,5 +1,5 @@
 {
-  "name": "@anteng/yesong",
+  "name": "@pkg/yesong",
   "version": "1.0.0",
   "private": true,
   "description": "",
@@ -36,10 +36,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@anteng/styles": "workspace:*",
-    "@anteng/utils": "workspace:*",
-    "@anteng/deck": "workspace:*",
-    "@anteng-shared": "workspace:*",
+    "@pkg/styles": "workspace:*",
+    "@pkg/utils": "workspace:*",
+    "@pkg/deck": "workspace:*",
+    "@pkg/shared": "workspace:*",
     "taro-code": "^4.0.1",
     "mockjs": "^1.1.0"
   }

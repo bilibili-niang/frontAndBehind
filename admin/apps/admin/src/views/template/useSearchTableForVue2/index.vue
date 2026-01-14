@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import {Button, SourceView} from '@anteng/ui'
-import {SearchTable, useCrud, useTableAction} from '@anteng/core'
+import {Button, SourceView} from '@pkg/ui'
+import {SearchTable, useCrud, useTableAction} from '@pkg/core'
 import sourceCode from './index.vue?raw' // 路由元信息（用于菜单标题与排序）
 
 // 路由元信息（用于菜单标题与排序）,这个是每个页面必须的

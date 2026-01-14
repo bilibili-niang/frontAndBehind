@@ -2,7 +2,7 @@ import { defineComponent, ref } from 'vue'
 import { openLoginModal, closeLoginModal, loginVisible, notifyLoginSuccess } from '@/composables/authFlow'
 import { $login } from '@/api'
 import { useAuthStore } from '@/store/auth'
-import { message, Modal, Input, Button } from '@anteng/ui'
+import { message, Modal, Input, Button } from '@pkg/ui'
 
 export default defineComponent({
   name: 'LoginModal',

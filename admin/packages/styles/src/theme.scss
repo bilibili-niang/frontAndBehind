@@ -28,6 +28,7 @@
 
   --ui-switch-bg: rgba(0, 0, 0, 0.05);
   --ui-switch-bg-hover: rgba(0, 0, 0, 0.1);
+	--border-radious:9px;
 }
 
 /** 深浅色系 - dark  **/
@@ -60,6 +61,7 @@
 
   --ui-switch-bg: rgba(255, 255, 255, 0.2);
   --ui-switch-bg-hover: rgba(255, 255, 255, 0.3);
+	--border-radious:9px;
 }
 
 /** 主题色 - slate  **/

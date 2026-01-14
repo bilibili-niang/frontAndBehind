@@ -1,9 +1,10 @@
 import { reactive, ref } from 'vue'
 import router from '@/router'
-import { Input, message,  } from '@anteng/ui'
+import { Input, message, Button } from '@pkg/ui'
 import { $login } from '@/api'
-import {useModal} from '@anteng/core'
+import { useModal } from '@pkg/core'
 import { useAuthStore } from '@/store/auth'
+import md5 from 'blueimp-md5'
 
 // 全局登录弹窗可见状态
 export const loginVisible = ref(false)
@@ -31,7 +32,7 @@ function ensureModal() {
     }
     try {
       state.loading = true
-      const res = await $login({ userName: state.userName, password: state.password })
+      const res = await $login({ userName: state.userName, password: md5(state.password) })
       if (res.success) {
         const { token, userInfo } = res.data
         auth.setAuth(token, userInfo)
@@ -52,7 +53,7 @@ function ensureModal() {
     width: 420,
     persistent: true,
     content: () => (
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4 p-3">
         <Input
           label="用户名"
           variant="outlined"
@@ -74,8 +75,12 @@ function ensureModal() {
     ),
     actions: () => (
       <div class="w-full flex justify-end gap-2">
-        <UiButton variant="text" disabled={state.loading} onClick={() => closeLoginModal()}>取消</UiButton>
-        <UiButton color="primary" loading={state.loading} onClick={submit}>登录</UiButton>
+        <Button variant="text"
+                disabled={state.loading}
+                onClick={() => closeLoginModal()}>取消</Button>
+        <Button color="primary"
+                loading={state.loading}
+                onClick={submit}>登录</Button>
       </div>
     )
   })
@@ -83,8 +88,13 @@ function ensureModal() {
 }
 
 export function openLoginModal() {
-  ensureModal().open()
-  loginVisible.value = true
+  try {
+
+    ensureModal()?.open()
+    loginVisible.value = true
+  } catch (e) {
+    throw new Error(e)
+  }
 }
 
 export function closeLoginModal() {

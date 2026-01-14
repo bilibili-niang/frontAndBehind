@@ -43,9 +43,12 @@ export type PaginationData<Record> = {
 export type ResponsePaginationData<Record> = ResponseBody<PaginationData<Record>>
 
 export const getAuthHeaders = () => {
+  const raw = localStorage.getItem('Blade-Auth') || ''
+  const bearer = /^Bearer\s+/i.test(raw) ? raw : ''
+  const pure = raw.replace(/^Bearer\s+/i, '') || ''
   return {
-    Authorization: localStorage.getItem('Authorization') || 'Basic c3U6c3Vfc2VjcmV0',
-    'Blade-Auth': localStorage.getItem('Blade-Auth')
+    Authorization: bearer || localStorage.getItem('Authorization') || 'Basic c3U6c3Vfc2VjcmV0',
+    'Blade-Auth': pure || null
   }
 }
 
@@ -110,7 +113,11 @@ request.interceptors.request.use(async (config: any) => {
   Object.assign(config.headers, getAuthHeaders())
 
   if (!config.noToken) {
-    config.headers['Blade-Auth'] = localStorage.getItem('Blade-Auth')
+    const raw = localStorage.getItem('Blade-Auth') || ''
+    const bearer = /^Bearer\s+/i.test(raw) ? raw : `Bearer ${raw}`
+    const pure = raw.replace(/^Bearer\s+/i, '')
+    config.headers['Authorization'] = bearer
+    config.headers['Blade-Auth'] = pure
   } else {
     config.headers['Blade-Auth'] = null
     delete config.headers['Blade-Auth']

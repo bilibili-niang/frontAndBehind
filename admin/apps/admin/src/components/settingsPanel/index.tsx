@@ -1,8 +1,8 @@
 import { defineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
-import { message, ThemeSwitch } from '@anteng/ui'
-import { colorThemes } from '@anteng/config'
+import { message, ThemeSwitch } from '@pkg/ui'
+import { colorThemes } from '@pkg/config'
 import { applyTheme } from '@/composables/theme'
-import { getPrimaryColor, setPrimaryColor } from '@anteng/utils'
+import { getPrimaryColor, setPrimaryColor } from '@pkg/utils'
 
 export default defineComponent({
   name: 'SettingsPanel',

@@ -1,5 +1,5 @@
 import { computed, defineComponent, withModifiers } from 'vue'
-import { getIndexLabel } from '@anteng-shared/utils'
+import { getIndexLabel } from '@pkg/shared/utils'
 import './style.scss'
 import { CommonSurveyWidgetPropsDefine, defineManifest, RemoveAnswer, useAnswerValue } from '../ types'
 import { Input } from '@tarojs/components'

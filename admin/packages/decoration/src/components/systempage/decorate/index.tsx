@@ -7,7 +7,7 @@ import Center from '../../decorationPage/new/components/Center'
 import Right from '../../decorationPage/new/components/Right'
 import { useRoute } from 'vue-router'
 import { $getSystemPageDetail } from '../../../api'
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import useEditorStore from '../../../stores/editor'
 import useSnapshotStore from '../../../stores/snapshot'
 

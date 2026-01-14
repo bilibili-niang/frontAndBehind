@@ -1,5 +1,5 @@
 {
-  "name": "@anteng/ui",
+  "name": "@pkg/ui",
   "version": "0.1.0",
   "private": true,
   "description": "Taro3 UI组件",
@@ -7,6 +7,6 @@
   "main": "./src/index.ts",
   "module": "./src/index.ts",
   "dependencies": {
-    "@anteng/styles": "workspace:*"
+    "@pkg/styles": "workspace:*"
   }
 }

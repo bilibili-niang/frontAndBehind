@@ -1,6 +1,6 @@
 // 装修列表
 import { RouteMeta } from '@/router/routeMeta'
-import {decorationList} from '@anteng/decoration'
+import {decorationList} from '@pkg/decoration'
 export default decorationList
 
 export const routeMeta: RouteMeta = {

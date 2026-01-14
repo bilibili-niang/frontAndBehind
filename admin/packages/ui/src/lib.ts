@@ -1,7 +1,6 @@
 import './styles/settings.scss'
 import 'ant-design-vue/dist/reset.css'
-import Settings from './views/settings'
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 import { ConfigProvider } from 'ant-design-vue'
 import message from './components/message'
 import Icon from './components/icon'
@@ -32,9 +31,10 @@ export { default as ScrollContainer } from './components/scrollContainer'
 export { default as Tag } from './components/tag'
 export { default as InfoList } from './components/infoList'
 export { default as JsonView } from './components/json-view'
+export { default as Radio } from './components/radio'
+export { default as TestFloat } from './components/test-float'
 
 export {
-  Settings,
   ConfigProvider,
   message,
   Icon,

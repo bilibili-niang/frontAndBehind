@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 import "./style.scss";
 import { copyText } from "@/utils/copy";
-import { message } from "@anteng/ui";
+import { message } from "@pkg/ui";
 
 export default defineComponent({
   name: "SourceViewer",

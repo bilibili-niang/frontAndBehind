@@ -1,5 +1,5 @@
 {
-  "name": "@anteng/jsf",
+  "name": "@pkg/jsf",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -9,8 +9,8 @@
     "ant-design-vue": "^4.2.6"
   },
   "devDependencies": {
-    "@anteng/core": "workspace:*",
-    "@anteng/styles": "workspace:*",
+    "@pkg/core": "workspace:*",
+    "@pkg/styles": "workspace:*",
     "@types/jsonpath": "^0.2.4",
     "json-schema": "^0.4.0"
   },

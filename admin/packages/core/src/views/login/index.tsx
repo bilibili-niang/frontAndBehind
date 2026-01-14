@@ -1,5 +1,5 @@
 import { computed, defineComponent, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
-import { Button, Empty, Icon, Input, message, Spin } from '@anteng/ui'
+import { Button, Empty, Icon, Input, message, Spin, Radio } from '@anteng/ui'
 import './style.scss'
 import { useRouter } from 'vue-router'
 import md5 from 'blueimp-md5'
@@ -16,8 +16,8 @@ import { useRequestErrorMessage } from '../../hooks/useRequestErrorMessage'
 import test from '../../utils/test'
 import useAppStore from '../../stores/app'
 import useUserStore from '../../stores/user'
-import { isDev } from '@anteng/utils'
-import { LOGIN_IDENTITY } from '@anteng/config'
+import { isDev } from '@pkg/utils'
+import { LOGIN_IDENTITY } from '@pkg/config'
 
 export default defineComponent({
   name: 'LegoLoginPage',
@@ -81,12 +81,12 @@ export default defineComponent({
     // 调试：确认背景和容器挂载状态
     onMounted(() => {
       document.querySelector('.login-page')
-        .addEventListener('pointermove', (e) => {
-          const { currentTarget: el, clientX: x, clientY: y } = e
-          const { top: t, left: l, width: w, height: h } = el.getBoundingClientRect()
-          el.style.setProperty('--posX', x - l - w / 2)
-          el.style.setProperty('--posY', y - t - h / 2)
-        })
+              .addEventListener('pointermove', (e) => {
+                const { currentTarget: el, clientX: x, clientY: y } = e
+                const { top: t, left: l, width: w, height: h } = el.getBoundingClientRect()
+                el.style.setProperty('--posX', x - l - w / 2)
+                el.style.setProperty('--posY', y - t - h / 2)
+              })
     })
 
     const handleLogin = () => {
@@ -133,9 +133,9 @@ export default defineComponent({
         const loginData: any = {
           password: md5(password),
           // 根据选择的登录方式添加相应字段
-          ...(loginMethod === 'account' ? { account } : 
-             loginMethod === 'userName' ? { userName: account } : 
-             loginMethod === 'phoneNumber' ? { phoneNumber: account } : {})
+          ...(loginMethod === 'account' ? { account } :
+            loginMethod === 'userName' ? { userName: account } :
+              loginMethod === 'phoneNumber' ? { phoneNumber: account } : {})
         }
 
         loginByAccountAndPassword(loginData)
@@ -254,9 +254,9 @@ export default defineComponent({
 
     const onAuthResolve = (res: any) => {
       const token = res?.access_token
-        ? `${res.token_type} ${res.access_token}`
+        ? res.access_token
         : res?.token
-          ? `${res.token_type || 'Bearer'} ${res.token}`
+          ? res.token
           : ''
       if (token) {
         localStorage.setItem(LOGIN_IDENTITY, token)
@@ -337,40 +337,24 @@ export default defineComponent({
       return (
         <>
           <div class="main-title">账号密码登录</div>
-          
+
           {/* 登录方式选择 */}
           <div class="login-method-selector">
-            <label class="radio-label">
-              <input 
-                type="radio" 
-                value="account" 
-                v-model={state.loginMethod}
-              /> 
-              通用账号
-            </label>
-            <label class="radio-label">
-              <input 
-                type="radio" 
-                value="userName" 
-                v-model={state.loginMethod}
-              /> 
-              用户名
-            </label>
-            <label class="radio-label">
-              <input 
-                type="radio" 
-                value="phoneNumber" 
-                v-model={state.loginMethod}
-              /> 
-              手机号
-            </label>
+            <Radio.Group
+              value={state.loginMethod}
+              onChange={(e: any) => (state.loginMethod = e.target.value)}
+            >
+              <Radio value="account">手机号+密码</Radio>
+              <Radio value="userName">用户名+密码</Radio>
+              <Radio value="phoneNumber" disabled>手机号</Radio>
+            </Radio.Group>
           </div>
 
           <Input
             class="ipt"
-            placeholder={state.loginMethod === 'phoneNumber' ? '请输入手机号' : 
-                          state.loginMethod === 'userName' ? '请输入用户名' : 
-                          '请输入手机号/用户名'}
+            placeholder={state.loginMethod === 'phoneNumber' ? '请输入手机号' :
+              state.loginMethod === 'userName' ? '请输入用户名' :
+                '请输入手机号/用户名'}
             value={state.account}
             onChange={(e) => (state.account = e.target.value as string)}
           ></Input>
@@ -400,16 +384,14 @@ export default defineComponent({
                   </div>
                 }
               ></Input>
-              <a onClick={() => (state.type = 'resetPassword')}>忘记密码</a>
             </div>
           )}
 
           <Button class="primary-btn" type="primary" loading={state.loading} onClick={handleLogin}>
             登录
           </Button>
-
-          <div class="toggle-type clickable" onClick={() => (state.type = 'sms')}>
-            手机短信登录
+          <div class="login-page-bottom-limit">
+            <a onClick={() => (state.type = 'resetPassword')}>忘记密码</a>
           </div>
         </>
       )
@@ -519,78 +501,6 @@ export default defineComponent({
       )
     }
 
-    const loginBoxRef = ref<HTMLElement | null>(null)
-
-    const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max)
-    const glowX = ref(0.5)
-    const glowY = ref(0.5)
-
-    const onGlowMove = (e: MouseEvent) => {
-      const el = loginBoxRef.value
-      if (!el) return
-      const rect = el.getBoundingClientRect()
-      const nx = (e.clientX - rect.left) / rect.width
-      const ny = (e.clientY - rect.top) / rect.height
-
-      // 计算与当前光晕中心的距离与方向
-      const dx = nx - glowX.value
-      const dy = ny - glowY.value
-      const dist = Math.hypot(dx, dy) // 0 ~ √2
-
-      // 避让阈值与强度（可按需微调）
-      const threshold = 0.25 // 接近时触发避让（相对容器尺寸）
-      const strength = 0.35 // 推远强度
-
-      if (dist < threshold) {
-        // 距离越近，推开越强，方向为远离鼠标
-        const inv = 1 / (dist + 1e-4)
-        const push = (threshold - dist) * strength * inv
-        glowX.value = clamp(glowX.value - dx * push, 0.05, 0.95)
-        glowY.value = clamp(glowY.value - dy * push, 0.05, 0.95)
-      } else {
-        // 不靠近时，缓慢向鼠标方向漂移，避免突兀
-        glowX.value = clamp(glowX.value + (nx - glowX.value) * 0.03, 0.05, 0.95)
-        glowY.value = clamp(glowY.value + (ny - glowY.value) * 0.03, 0.05, 0.95)
-      }
-
-      // 边缘靠近时增强发光强度（维持原逻辑）
-      const edgeDist = Math.min(glowX.value, 1 - glowX.value, glowY.value, 1 - glowY.value)
-      const proximityEdge = Math.max(0, 1 - edgeDist * 2)
-      const baseGlow = 0.35
-      const proximity = Math.min(1, baseGlow + proximityEdge * 0.65)
-
-      el.style.setProperty('--mx', glowX.value * 100 + '%')
-      el.style.setProperty('--my', glowY.value * 100 + '%')
-      el.style.setProperty('--glow', proximity.toFixed(3))
-
-      // 调试输出（节流简单处理）
-      ;(window as any).__glowLogTs = (window as any).__glowLogTs || 0
-      const now = Date.now()
-      if (now - (window as any).__glowLogTs > 200) {
-        (window as any).__glowLogTs = now
-      }
-    }
-
-    const onGlowEnter = () => {
-      const el = loginBoxRef.value
-      if (el) {
-        el.style.setProperty('--glow', '0.65')
-      }
-      console.log('[login glow] enter')
-    }
-
-    const onGlowLeave = () => {
-      return void 0
-      const el = loginBoxRef.value
-      if (!el) return
-      // 回到中心并关闭发光
-      glowX.value = 0.5
-      glowY.value = 0.5
-      el.style.setProperty('--mx', '50%')
-      el.style.setProperty('--my', '50%')
-      el.style.setProperty('--glow', '0')
-    }
-
     return () => {
       return (
         <div class="login-page">
@@ -600,11 +510,16 @@ export default defineComponent({
             <div class="blob blob--pink"></div>
             <div class="blob blob--teal"></div>
           </div>
-          {/*<MagnetMatrix/>*/}
           <div class="frosted-film"></div>
           {/* @ts-ignore */}
-          <div class="login-box" theme="light" ref={loginBoxRef} onMouseenter={onGlowEnter} onMousemove={onGlowMove}
-               onMouseleave={onGlowLeave}>
+          <div
+            class="login-box"
+            theme="light"
+          >
+            {/*ref={loginBoxRef}*/}
+            {/*onMouseenter={onGlowEnter}*/}
+            {/*onMousemove={onGlowMove}*/}
+            {/*onMouseleave={onGlowLeave}>*/}
             {state.type === 'resetPassword' ? (
               <ResetPassword/>
             ) : state.type === 'merchant' ? (

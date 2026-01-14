@@ -2,12 +2,12 @@ import './style.scss'
 import { computed, defineComponent, h, KeepAlive, ref, Transition, watch } from 'vue'
 import { RouterView, useRoute, useRouter } from 'vue-router'
 import { menuTree } from '@/router/auto'
-import { Button, Icon, Modal, Popover } from '@anteng/ui'
-import { ROUTE_META_PURE_INTERFACE } from '@anteng/core'
+import { Button, Icon, Modal, Popover } from '@pkg/ui'
+import { ROUTE_META_PURE_INTERFACE } from '@pkg/core'
 import { useAuthStore } from '@/store/auth'
 import SettingsPanel from '../../components/settingsPanel'
 import SidebarMenu from '../../components/sidebarMenu'
-import { renderHeader as RenderHeader } from '@anteng/decoration'
+import { renderHeader as RenderHeader } from '@pkg/decoration'
 
 export default defineComponent({
     name: 'MainLayout',
@@ -19,6 +19,12 @@ export default defineComponent({
       const pureInterface = computed(() => {
         const val = (route.meta as any)?.[ROUTE_META_PURE_INTERFACE]
         return typeof val === 'boolean' ? val : false
+      })
+      // 页面独占：仅渲染 RouterView，不显示侧边栏与顶部栏
+      const pageOnly = computed(() => {
+        const metaVal = (route.meta as any)?.purePage
+        const queryVal = new URLSearchParams(window.location.search).get('pageOnly') === 'true'
+        return Boolean(metaVal) || queryVal
       })
 
       // 用户信息与头像、首字母
@@ -70,6 +76,21 @@ export default defineComponent({
       }
 
       return () => (
+        pageOnly.value ? (
+          <RouterView
+            v-slots={{
+              default: ({ Component, route }: any) => (
+                <Transition name="view-fade" mode="out-in">
+                  {route?.meta?.keepAlive ? (
+                    <KeepAlive>{h(Component)}</KeepAlive>
+                  ) : (
+                    h(Component)
+                  )}
+                </Transition>
+              )
+            }}
+          />
+        ) : (
         <div class={{ 'main-layout': true, 'no-sidebar': pureInterface.value }}>
           {!pureInterface.value ? <SidebarMenu/> : null}
           <section class={{
@@ -107,8 +128,6 @@ export default defineComponent({
                     style={{ marginRight: '8px' }}>
                     <Icon name="seeting"/>
                   </Button>
-                  {/* 用户悬停菜单（右侧头像） */}
-                  {/*{auth.isLogin ? (*/}
                   {auth.isLogin ? (
                     <Popover
                       trigger="hover"
@@ -165,7 +184,7 @@ export default defineComponent({
             </div>
           </section>
         </div>
-      )
+      ))
     }
   }
 )

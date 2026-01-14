@@ -34,7 +34,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@anteng/styles": "workspace:*",
-    "@anteng/utils": "workspace:*"
+    "@pkg/styles": "workspace:*",
+    "@pkg/utils": "workspace:*"
   }
 }

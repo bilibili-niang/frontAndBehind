@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { getThemeMode, initTheme as initThemeUtil, setThemeMode } from '@anteng/utils'
+import { getThemeMode, initTheme as initThemeUtil, setThemeMode } from '@pkg/utils'
 
 export type ThemeMode = 'dark' | 'light'
 

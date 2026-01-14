@@ -7,11 +7,13 @@ import type { RouteMeta } from '@/router/routeMeta'
 // 排除任何位于 `components` 目录下的 index 文件，防止误注册子组件为路由
 const viewModules = import.meta.glob([
   '../views/**/index.{tsx,vue}',
-  '!../views/**/components/**/index.{tsx,vue}'
+  '!../views/**/components/**/index.{tsx,vue}',
+  '!../views/resume/**'
 ]) as Record<string, () => Promise<any>>
 const metaModules = import.meta.glob([
   '../views/**/index.{tsx,vue}',
-  '!../views/**/components/**/index.{tsx,vue}'
+  '!../views/**/components/**/index.{tsx,vue}',
+  '!../views/resume/**'
 ], {
   eager: true,
   import: 'routeMeta'
@@ -60,6 +62,8 @@ const childrenRaw: RouteRecordRaw[] = Object.keys(viewModules).map((key) => {
       keepAlive: !!meta.keepAlive,
       // 透传 pureInterface 以便页面实时控制布局元素显示/隐藏
       pureInterface: !!meta.pureInterface,
+      // 页面独占模式：仅渲染 RouterView，不显示侧边栏与顶部栏
+      purePage: !!meta.purePage,
       // 仅用于运行时判断（不参与菜单显示），保留 hideInProd 信息
       hideInProd: !!meta.hideInProd
     } as any,

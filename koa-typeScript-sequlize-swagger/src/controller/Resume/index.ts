@@ -1,6 +1,7 @@
 import { Context } from 'koa'
 import { body, middlewares, ParsedArgs, responses, routeConfig } from 'koa-swagger-decorator'
 import { ctxBody } from '@/utils'
+import { getCurrentUserId } from '@/utils/auth'
 import {
   resumeCreateReq,
   resumeDeleteRes,
@@ -12,6 +13,21 @@ import {
 import { jwtMust, validateUserExist } from '@/middleware'
 import { headerParams, paginationQuery } from '@/controller/common'
 import { Resume } from '@/schema'
+
+// 防脏数据的通用归一化
+const toPlain = (r: any) => {
+  const base = r && typeof r.toJSON === 'function' ? r.toJSON() : (typeof r === 'object' ? { ...r } : { data: r })
+  try {
+    if (typeof base?.data === 'string') {
+      base.data = JSON.parse(base.data || '{}')
+    } else if (!base?.data || typeof base.data !== 'object') {
+      base.data = {}
+    }
+  } catch {
+    base.data = {}
+  }
+  return base
+}
 
 class ResumeController {
   @routeConfig({
@@ -29,23 +45,28 @@ class ResumeController {
     validateUserExist
   ])
   async createResume(ctx: Context, args: ParsedArgs<any>) {
-    await Resume.create(args.body)
-      .then((res: any) => {
-        ctx.body = ctxBody({
-          success: true,
-          code: 200,
-          msg: '创建成功',
-          data: res
-        })
-      })
-      .catch(e => {
-        ctx.body = ctxBody({
-          success: false,
-          code: 500,
-          msg: '创建失败',
-          data: e?.errors?.[0]?.message
-        })
-      })
+    const body = { ...(args.body || {}) }
+    if (body && typeof body.data === 'object') {
+      body.data = JSON.stringify(body.data)
+    }
+    await Resume.create(body)
+                .then((res: any) => {
+                  const plain = toPlain(res)
+                  ctx.body = ctxBody({
+                    success: true,
+                    code: 200,
+                    msg: '创建成功',
+                    data: plain
+                  })
+                })
+                .catch(e => {
+                  ctx.body = ctxBody({
+                    success: false,
+                    code: 500,
+                    msg: '创建失败',
+                    data: e?.errors?.[0]?.message
+                  })
+                })
   }
 
   @routeConfig({
@@ -63,35 +84,36 @@ class ResumeController {
   ])
   @responses(resumeListRes)
   async getResumeList(ctx: Context, args: ParsedArgs<any>) {
+
+    console.log('ctx')
+    console.log(ctx.user)
+
     try {
-      // 从ctx.decode中获取当前登录用户的ID
-      const userId = ctx.decode.id
+      // 获取当前登录用户ID（兼容 ctx.decode 与 JWT 请求头）
+      const userId = getCurrentUserId(ctx)
+      if (!userId) {
+        ctx.body = ctxBody({ success: false, code: 401, msg: '未登录或凭证无效', data: null })
+        return
+      }
       // 修改Sequelize查询参数，增加用户ID筛选
       const { size, page } = ctx.parsed.query
       // 执行分页查询，只返回当前用户的简历
-      await Resume.findAndCountAll({
-        limit: Number(size),
-        offset: Number((page - 1) * size),
+      const pageNum = Number(size ? page : 1) || 1
+      const sizeNum = Number(size) || 20
+      const result = await Resume.findAndCountAll({
+        limit: sizeNum,
+        offset: (pageNum - 1) * sizeNum,
         where: {
           userId
         }
       })
-        .then((res: any) => {
-          ctx.body = ctxBody({
-            success: true,
-            code: 200,
-            msg: '获取简历列表成功',
-            data: res
-          })
-        })
-        .catch(e => {
-          ctx.body = ctxBody({
-            success: false,
-            code: 500,
-            msg: '获取简历列表失败',
-            data: e?.message || '服务器错误'
-          })
-        })
+      const rows = (result.rows || []).map((r: any) => toPlain(r))
+      ctx.body = ctxBody({
+        success: true,
+        code: 200,
+        msg: '获取简历列表成功',
+        data: { count: result.count || rows.length, rows }
+      })
     } catch (e) {
       ctx.body = ctxBody({
         success: false,
@@ -146,11 +168,12 @@ class ResumeController {
         })
         return
       }
+      const plain = toPlain(resume)
       ctx.body = ctxBody({
         success: true,
         code: 200,
         msg: '获取简历详情成功',
-        data: resume
+        data: plain
       })
     } catch (e) {
       ctx.body = ctxBody({
@@ -190,7 +213,10 @@ class ResumeController {
         return
       }
       const userId = ctx.decode.id
-      const updateData = args.body
+      const updateData = { ...(args.body || {}) }
+      if (updateData && typeof updateData.data === 'object') {
+        updateData.data = JSON.stringify(updateData.data)
+      }
       // 查询指定简历，确保属于当前用户
       // 使用字符串类型的id进行查询
       const resume = await Resume.findOne({
@@ -210,11 +236,12 @@ class ResumeController {
       }
       // 更新数据
       await resume.update(updateData)
+      const plain = toPlain(resume)
       ctx.body = ctxBody({
         success: true,
         code: 200,
         msg: '更新简历成功',
-        data: resume
+        data: plain
       })
     } catch (e) {
       ctx.body = ctxBody({
@@ -243,7 +270,7 @@ class ResumeController {
     try {
       // 从URL路径参数获取ID
       const id = ctx.params.id
-      
+
       // 如果ID为空或undefined，则返回错误
       if (!id) {
         ctx.body = ctxBody({
@@ -255,7 +282,7 @@ class ResumeController {
         return
       }
       const userId = ctx.decode.id
-      
+
       // 直接通过条件删除简历，不需要先查询再删除
       const result = await Resume.destroy({
         where: {
@@ -263,7 +290,7 @@ class ResumeController {
           userId  // 确保只能删除当前用户的简历
         }
       })
-      
+
       // 如果删除了 0 条记录，说明简历不存在或不属于当前用户
       if (result === 0) {
         ctx.body = ctxBody({

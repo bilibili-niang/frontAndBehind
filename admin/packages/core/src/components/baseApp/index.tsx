@@ -1,6 +1,6 @@
-import { ConfigProvider, Settings } from '@anteng/ui'
+import { ConfigProvider, } from '@pkg/ui'
 import { defineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 import zhCN from 'ant-design-vue/locale/zh_CN'
 import { theme as antdTheme } from 'ant-design-vue'
 
@@ -37,7 +37,6 @@ export default defineComponent({
       return (
         <ConfigProvider prefixCls={PREFIX_CLS} locale={zhCN} theme={themeConfig}>
           <div class={`${PREFIX_CLS}-base-app`}>{slots.default?.()}</div>
-          <Settings/>
           <Progress/>
         </ConfigProvider>
       )

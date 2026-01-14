@@ -18,7 +18,7 @@ import { IOrderDetail } from '../../../../api/order/types'
 import { $getCouponAuditRecords, $postAuditDynamicCoupon, $postAuditStaticCoupon } from '../../../../api/coupon'
 import { ModalActions } from '@anteng/core/src/hooks/useModal/useModalActions'
 import OrderGoodsItem from '../../../../components/order-goods-item'
-import { STORE_COUPON_MODE_DYNAMIC, STORE_COUPON_MODE_STATIC } from '@anteng-shared/constants'
+import { STORE_COUPON_MODE_DYNAMIC, STORE_COUPON_MODE_STATIC } from '@pkg/shared/constants'
 
 export const useCouponAudit = async (options: {
   goodsId: string

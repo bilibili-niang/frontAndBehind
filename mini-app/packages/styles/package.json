@@ -1,5 +1,5 @@
 {
-  "name": "@anteng/styles",
+  "name": "@pkg/styles",
   "version": "0.1.0",
   "private": true,
   "description": "公共样式放这里",

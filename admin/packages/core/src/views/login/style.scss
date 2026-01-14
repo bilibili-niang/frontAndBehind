@@ -1,76 +1,159 @@
 
 .login-page {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f7f8fa;
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f7f8fa;
+	// 背景模糊色块容器
+	.color-blobs {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		overflow: hidden;
+	}
+	.blob {
+		position: absolute;
+		width: 360px;
+		height: 360px;
+		border-radius: 50%;
+		filter: blur(60px);
+		opacity: 0.35;
+		animation: blob-move var(--duration, 30s) ease-in-out infinite;
+	}
+	.blob--blue {
+		background: radial-gradient(circle at 30% 30%, #7aa0ff, transparent 60%);
+		top: 8%;
+		left: 6%;
+		--duration: 28s;
+	}
+	.blob--pink {
+		background: radial-gradient(circle at 60% 40%, #ff8ac1, transparent 60%);
+		top: 38%;
+		right: 6%;
+		--duration: 32s;
+	}
+	.blob--teal {
+		background: radial-gradient(circle at 50% 70%, #4fd1c5, transparent 60%);
+		bottom: 8%;
+		left: 42%;
+		--duration: 35s;
+	}
 
-  .login-box {
-    position: relative;
-    width: 480px;
-    max-width: 92vw;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    background: #fff;
-  }
+	// 毛玻璃遮罩，柔化背景
+	.frosted-film {
+		position: absolute;
+		inset: 0;
+		background: rgba(255, 255, 255, 0.12);
+		backdrop-filter: blur(6px) saturate(1.1);
+		pointer-events: none;
+	}
 
-  .main-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
+	@keyframes blob-move {
+		0%, 100% { transform: translate(0, 0) scale(1); }
+		25% { transform: translate(60px, -30px) scale(1.05); }
+		50% { transform: translate(-40px, 40px) scale(0.95); }
+		75% { transform: translate(20px, -20px) scale(1.02); }
+	}
 
-  .ipt {
-    width: 100%;
-    margin-bottom: 12px;
-  }
+	// 磁场矩阵背景（CSS Paint API）
+	.magnet-matrix {
+		width: 100vw;
+		height: 100vh;
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 80px;
+		--magnet-color: rgb(97, 123, 255);
+		--magnet-size: 1;
+		--magnet-gap: 32;
+		--magnet-radius: 200;
+		background-image: paint(magnet-matrix);
+		pointer-events: none;
+		z-index: 0;
+		&.--fallback {
+			background-image:
+				repeating-linear-gradient(90deg, rgba(97,123,255,0.25) 0 2px, transparent 2px var(--magnet-gap)),
+				repeating-linear-gradient(0deg, rgba(97,123,255,0.25) 0 2px, transparent 2px var(--magnet-gap));
+			animation: magnet-fallback-move 12s ease-in-out infinite alternate;
+		}
+	}
 
-  .ipt-wrap {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .suffix-icon {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .primary-btn {
-    width: 100%;
-    margin-top: 12px;
-  }
-
-  .toggle-type {
-    margin-top: 12px;
-    text-align: right;
-    color: #666;
-  }
-
-  .sms-btn {
-    color: #1677ff;
-  }
-
-  .login-method-selector {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-    justify-content: center;
-
-    .radio-label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      color: #555;
-      cursor: pointer;
-
-      input[type='radio'] {
-        margin: 0;
-      }
-    }
-  }
+	@keyframes magnet-fallback-move {
+		0% { background-position: 0 0, 0 0; }
+		50% { background-position: 40px -20px, -20px 30px; }
+		100% { background-position: -30px 30px, 30px -40px; }
+	}
+	.login-page-bottom-limit {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	.login-box {
+		position: relative;
+		width: 480px;
+		max-width: 92vw;
+		border-radius: 12px;
+		padding: 24px;
+		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+		background: #fff;
+		// 盒子光晕效果：跟随鼠标，使用 TSX 中设置的 CSS 变量
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 50%), rgba(129, 140, 248, 0.35), transparent 70%);
+			opacity: var(--glow, 0);
+			transition: opacity 0.2s ease;
+			pointer-events: none;
+		}
+	}
+	.main-title {
+		font-size: 20px;
+		font-weight: 600;
+		margin-bottom: 16px;
+	}
+	.ipt {
+		width: 100%;
+		margin-bottom: 12px;
+	}
+	.ipt-wrap {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+	.suffix-icon {
+		display: inline-flex;
+		align-items: center;
+	}
+	.primary-btn {
+		width: 100%;
+		margin-top: 12px;
+	}
+	.toggle-type {
+		margin-top: 12px;
+		text-align: right;
+		color: #666;
+	}
+	.sms-btn {
+		color: #1677ff;
+	}
+	.login-method-selector {
+		display: flex;
+		gap: 16px;
+		margin-bottom: 16px;
+		justify-content: center;
+		.radio-label {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 14px;
+			color: #555;
+			cursor: pointer;
+			input[type="radio"] {
+				margin: 0;
+			}
+		}
+	}
 }

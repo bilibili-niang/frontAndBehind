@@ -3,6 +3,7 @@ export * from './download'
 export { default as emitter } from './emitter'
 export * from './test'
 export * from './uuid'
+export * from './date'
 
 /** 将 html 转成文本 */
 export const getSimpleText = (html: string) => {

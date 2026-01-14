@@ -2,8 +2,8 @@ import './index.scss'
 import type { RouteMeta } from '@/router/routeMeta'
 import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import * as echarts from 'echarts'
-import { Select } from '@anteng/ui'
-import { Card, createEChartsWidget } from '@anteng/core'
+import { Select } from '@pkg/ui'
+import { Card, createEChartsWidget } from '@pkg/core'
 
 export default defineComponent({
   name: 'trend-analysis',
@@ -90,7 +90,8 @@ export default defineComponent({
       customRequest: async (params: any) => {
         const t = params?.time || 'today'
         const len = t === 'today' ? 24 : t === 'week' ? 7 : 30
-        const labels = Array.from({ length: len }, (_, i) => (t === 'today' ? `${String(i).padStart(2, '0')}时` : `D${i + 1}`))
+        const labels = Array.from({ length: len }, (_, i) => (t === 'today' ? `${String(i)
+          .padStart(2, '0')}时` : `D${i + 1}`))
         const values = labels.map(() => Number((60 + Math.random() * 120).toFixed(2)))
         return { data: { labels, values } }
       },
@@ -115,7 +116,8 @@ export default defineComponent({
       customRequest: async (params: any) => {
         const t = params?.time || 'today'
         const len = t === 'today' ? 24 : t === 'week' ? 7 : 30
-        const labels = Array.from({ length: len }, (_, i) => (t === 'today' ? `${String(i).padStart(2, '0')}时` : `D${i + 1}`))
+        const labels = Array.from({ length: len }, (_, i) => (t === 'today' ? `${String(i)
+          .padStart(2, '0')}时` : `D${i + 1}`))
         const values = labels.map(() => Math.round(50 + Math.random() * 180))
         return { data: { labels, values } }
       },
@@ -168,8 +170,28 @@ export default defineComponent({
             },
             legend: { top: 8, right: 8, data: ['新客', '老客'] },
             grid: { left: 48, right: 24, top: 24, bottom: 36, containLabel: true },
-            xAxis: { type: 'value', name: '浏览量(次)', nameLocation: 'end', nameRotate: 0, nameGap: 8, axisLabel: { margin: 8 }, min: 0, max: maxX, splitLine: { show: true } },
-            yAxis: { type: 'value', name: '点单量(单)', nameLocation: 'end', nameRotate: 0, nameGap: 8, axisLabel: { margin: 8 }, min: 0, max: maxY, splitLine: { show: true } },
+            xAxis: {
+              type: 'value',
+              name: '浏览量(次)',
+              nameLocation: 'end',
+              nameRotate: 0,
+              nameGap: 8,
+              axisLabel: { margin: 8 },
+              min: 0,
+              max: maxX,
+              splitLine: { show: true }
+            },
+            yAxis: {
+              type: 'value',
+              name: '点单量(单)',
+              nameLocation: 'end',
+              nameRotate: 0,
+              nameGap: 8,
+              axisLabel: { margin: 8 },
+              min: 0,
+              max: maxY,
+              splitLine: { show: true }
+            },
             series: [
               {
                 name: '新客',
@@ -200,7 +222,11 @@ export default defineComponent({
           const res = await customRequest()
           const option = build(res?.data ?? res)
           instance?.setOption(option, true)
-          try { requestAnimationFrame(() => instance?.resize()) } catch {}
+          try {
+            requestAnimationFrame(() => instance?.resize())
+          } catch {
+            null
+          }
         }
         onMounted(() => {
           const container = el.value as HTMLDivElement
@@ -262,5 +288,6 @@ export default defineComponent({
 export const routeMeta: RouteMeta = {
   title: '趋势分析',
   icon: 'trend-two',
-  order: 1
+  order: 1,
+  hideInMenu: true
 }

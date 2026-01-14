@@ -1,5 +1,5 @@
 {
-  "name": "@anteng/config",
+  "name": "@pkg/config",
   "version": "0.1.0",
   "type": "module",
   "main": "./index.ts",
