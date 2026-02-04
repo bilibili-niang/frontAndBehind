@@ -1,7 +1,7 @@
-import { EmptyStatus, useLoading, useLoadingEnd, useModal, useToast } from '@anteng/core'
-import { Icon, Search } from '@anteng/ui'
+import { EmptyStatus, useLoading, useLoadingEnd, useModal, useToast } from '@pkg/core'
+import { Icon, Search } from '@pkg/ui'
 import './style.scss'
-import { formatDistance, uuid } from '@anteng/utils'
+import { formatDistance, uuid } from '@pkg/utils'
 import { ref } from 'vue'
 import { $searchNearbyPoints } from '../api'
 

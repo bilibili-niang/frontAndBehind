@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
 import { WxAddress } from '../types'
-import { safeParse, useToast } from '@anteng/core'
+import { safeParse, useToast } from '@pkg/core'
 import { ref, toRaw } from 'vue'
 import { defineStore } from 'pinia'
 

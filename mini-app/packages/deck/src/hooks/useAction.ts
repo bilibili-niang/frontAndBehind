@@ -1,4 +1,4 @@
-import { emitter } from '@anteng/core'
+import { emitter } from '@pkg/core'
 
 // TODO 应该使用 core 来管理 useAction，子应用内注册自己的 actions
 

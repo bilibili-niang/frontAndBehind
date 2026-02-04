@@ -1,7 +1,7 @@
 // 周一到周日的选择
 import { defineComponent, ref, watch } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { Checkbox, CheckboxGroup } from '@anteng/ui'
+import { Checkbox, CheckboxGroup } from '@pkg/ui'
 
 const days = [
   { label: '一', value: 1 },

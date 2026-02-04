@@ -1,4 +1,4 @@
-import { BasePage } from '@anteng/core'
+import { BasePage } from '@pkg/core'
 import { defineComponent, ref } from 'vue'
 import Deck from './index'
 

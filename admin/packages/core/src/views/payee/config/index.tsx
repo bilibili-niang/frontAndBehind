@@ -1,4 +1,4 @@
-import { Button, Icon, JsonView, message, RadioButton, Select, Switch, Table, TabPane, Tabs, Tooltip } from '@anteng/ui'
+import { Button, Icon, JsonView, message, RadioButton, Select, Switch, Table, TabPane, Tabs, Tooltip } from '@pkg/ui'
 import { computed, defineComponent, onMounted, PropType, ref, watch } from 'vue'
 
 import './style.scss'
@@ -16,8 +16,8 @@ import {
   SCENE_VENUE,
   SUB_PAYMENT_OPTIONS,
   SubPaymentMethod
-} from '@anteng/config'
-import { CommonWidgetPropsDefine } from '@anteng/jsf'
+} from '@pkg/config'
+import { CommonWidgetPropsDefine } from '@pkg/jsf'
 import usePagination from '../../../hooks/usePagination'
 import useAppStore from '../../../stores/app'
 import { $getShopList } from '../../../../../../apps/cs/shophub/src/api/shop'
@@ -25,7 +25,7 @@ import useSchemaFormModal from '../../../hooks/useSchemaFormModal'
 import { defaults, flatten, uniq } from 'lodash'
 import { $fakeRequest, $getPayeeConfig, $updatePayeeConfig } from '../api'
 import { useResponseMessage } from '../../../hooks/useRequestErrorMessage'
-import { requestGetShopList } from '@anteng/cs-microstore/src/api/shop'
+import { requestGetShopList } from '@pkg/cs-microstore/src/api/shop'
 
 enum PayeeRule {
   Union = 0,

@@ -1,7 +1,7 @@
 // 钱包
 import './style.scss'
 import { defineComponent, onMounted, ref } from 'vue'
-import { BasePage, SCENE_STORE, useLoading, useLoadingEnd, usePagination, useToast } from '@anteng/core'
+import { BasePage, SCENE_STORE, useLoading, useLoadingEnd, usePagination, useToast } from '@pkg/core'
 import { getAccountLog, getUserBalance } from '../../api'
 import { ScrollView } from '@tarojs/components'
 import { convertFenToYuanAndFen } from '../../utils'

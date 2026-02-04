@@ -2,7 +2,7 @@ import { ScrollView } from '@tarojs/components'
 import { defineComponent, onMounted, ref, watch } from 'vue'
 import './style.scss'
 import Taro from '@tarojs/taro'
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 
 export const ScrollTabItem = (props, { slots }) => {
   const cnt = slots.default?.()

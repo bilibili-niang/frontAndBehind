@@ -7,7 +7,7 @@ import {
   useContact,
   useCountdown,
   usePay
-} from '@anteng/core'
+} from '@pkg/core'
 import { computed, defineComponent, onMounted, onUnmounted, PropType, ref } from 'vue'
 import './result.scss'
 import SPIN from './spin.json'
@@ -21,7 +21,7 @@ import { backToIndex, navigateBack, navigateToJdOrderList, redirectToOrderDetail
 import { triggerOrderItemRefresh } from '../../utils/emitter'
 import { ROUTE_ORDER_DETAIL } from '../../router/routes'
 import Recommended from '../../components/recommended'
-import { PAYMENT_CHANNEL_BALANCE } from '@anteng/config'
+import { PAYMENT_CHANNEL_BALANCE } from '@pkg/config'
 
 definePageConfig({
   navigationStyle: 'custom'

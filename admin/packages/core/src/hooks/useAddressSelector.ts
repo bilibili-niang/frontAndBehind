@@ -1,5 +1,5 @@
 import { createVNode } from 'vue'
-import { Modal } from '@anteng/ui'
+import { Modal } from '@pkg/ui'
 import { type AddressData } from '../components/address-selector'
 import newAddressSelector from '../components/new-address-selector'
 import useAppStore from '../stores/app'

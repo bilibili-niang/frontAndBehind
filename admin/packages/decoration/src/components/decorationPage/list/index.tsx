@@ -1,17 +1,17 @@
 // 自定义装修页面列表
 import './index.scss'
 import { defineComponent } from 'vue'
-import { SCENE_YESONG } from '@anteng/config'
+import { SCENE_YESONG } from '@pkg/config'
 import { $decorationList, $deleteDecorationPage } from '../../../api/decoration'
-import { CommonSelectorPropsDefine, router, useSearchTable, useTableAction } from '@anteng/core'
-import { Button } from '@anteng/ui'
-import { commonDelete } from '@anteng/utils'
+import { CommonSelectorPropsDefine, router, useSearchTable, useTableAction } from '@pkg/core'
+import { Button } from '@pkg/ui'
+import { commonDelete } from '@pkg/utils'
 import { useDecorationStore } from '../../../store'
 
 export default defineComponent({
   props: CommonSelectorPropsDefine,
   setup(props) {
-    // 统一使用 @anteng/core 导出的 router 实例
+    // 统一使用 @pkg/core 导出的 router 实例
     if (import.meta.env.VITE_APP_SCENE === SCENE_YESONG) {
       // 也宋,获取也宋的装修列表
       console.log('当前是也宋的装修列表')

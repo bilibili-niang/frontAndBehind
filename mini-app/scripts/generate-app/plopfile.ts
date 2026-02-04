@@ -28,7 +28,7 @@ module.exports = async function (plop: NodePlopAPI) {
       {
         name: 'name',
         type: 'input',
-        message: '请输入项目名 @anteng/',
+        message: '请输入项目名 @pkg/',
         validate: (input, answer) => {
           if (!input) {
             return '请输入项目名'
@@ -37,7 +37,7 @@ module.exports = async function (plop: NodePlopAPI) {
             return '请使用 kebab-case 方式命名'
           }
           if (checkExist(input)) {
-            return `项目 @anteng/${input} 已存在`
+            return `项目 @pkg/${input} 已存在`
           }
           return true
         }

@@ -1,7 +1,7 @@
 import { computed, defineComponent, onMounted, onUnmounted, type PropType, type Ref, ref } from 'vue'
 import './sub-page.scss'
 import test from '../../utils/test'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import usePreviewImage from '../../hooks/useImagePreview'
 import type { ImageDefine } from './Resource'
 import useAudioPreview from '../../hooks/useAudioPreview'

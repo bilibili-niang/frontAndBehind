@@ -16,7 +16,7 @@ import {
   navigateToProfile,
   navigateToWallet
 } from '../../router'
-import { commonActions, emitter, useLogin, useQuickMenu, useToast, useUserStore } from '@anteng/core'
+import { commonActions, emitter, useLogin, useQuickMenu, useToast, useUserStore } from '@pkg/core'
 import h5 from './actions/h5'
 import jd from './actions/jd'
 

@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue'
 import { useUserStore } from '../../stores'
 import { storeToRefs } from 'pinia'
-import { DEFAULT_AVATAR } from '@anteng/config'
+import { DEFAULT_AVATAR } from '@pkg/config'
 import { useLogin } from '../../hooks'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import './style.scss'
 import { navigateTo } from '../../utils'
 

@@ -2,10 +2,10 @@ import { computed, defineComponent, PropType, ref, withModifiers } from 'vue'
 import useCanvasStore from '../../../../stores/canvas'
 import { storeToRefs } from 'pinia'
 import { LayerTreeNode } from '../../../../stores/canvas/tree'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import './layer-node.scss'
 import { clamp } from 'lodash'
-import { useContextMenu } from '@anteng/core'
+import { useContextMenu } from '@pkg/core'
 import useComponentStore from '../../../../stores/component'
 
 export default defineComponent({

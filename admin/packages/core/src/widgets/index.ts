@@ -1,4 +1,4 @@
-import JSF from '@anteng/jsf'
+import JSF from '@pkg/jsf'
 
 export { default as ActionWidget } from './action'
 

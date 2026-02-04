@@ -1,9 +1,9 @@
 import { computed, defineComponent, withModifiers } from 'vue'
 import './order-item.scss'
 import GoodsItem from '../../../components/goods-item'
-import { formatPrice } from '@anteng/utils'
+import { formatPrice } from '@pkg/utils'
 import { navigateToOrderDetail, navigateToPayResult } from '../../../router'
-import { useCountdown, usePay } from '@anteng/core'
+import { useCountdown, usePay } from '@pkg/core'
 import {
   COMMON_STATUS_ON,
   GOODS_TYPE_ENTITY,
@@ -16,7 +16,7 @@ import useMerchantStore from '../../../stores/merchant'
 import { triggerOrderItemRefresh } from '../../../utils/emitter'
 import useOrderStore from '../../../stores/orderStore'
 import useAfterSale from '../after-sale/useAfterSale'
-import { PAYMENT_CHANNEL_BALANCE } from '@anteng/config'
+import { PAYMENT_CHANNEL_BALANCE } from '@pkg/config'
 
 export default defineComponent({
   name: 'OrderItem',

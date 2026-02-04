@@ -4,7 +4,7 @@ import weapp from './actions/weapp'
 import copy from './actions/copy'
 import h5 from './actions/h5'
 
-import { type Schema } from '@anteng/jsf'
+import { type Schema } from '@pkg/jsf'
 import { ref } from 'vue'
 import wxChannelsActivity from './actions/wx-channels-activity'
 import wxChannelsProfile from './actions/wx-channels-profile'

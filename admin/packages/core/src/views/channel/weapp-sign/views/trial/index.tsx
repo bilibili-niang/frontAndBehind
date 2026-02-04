@@ -1,4 +1,4 @@
-import { Button, Input, Modal, message } from '@anteng/ui'
+import { Button, Input, Modal, message } from '@pkg/ui'
 import { defineComponent, onMounted, ref } from 'vue'
 import './style.scss'
 import Base from '../base'

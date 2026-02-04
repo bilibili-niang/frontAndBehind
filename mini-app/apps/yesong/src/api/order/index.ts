@@ -1,4 +1,4 @@
-import { SCENE_STORE, useAppStore } from '@anteng/core'
+import { SCENE_STORE, useAppStore } from '@pkg/core'
 import request, { PaginationData, type RequestPagination, getMerchantId } from '../request'
 import { IAfterSaleOrder, IOrderDetail } from './types'
 import { CancelTokenSource } from 'axios'

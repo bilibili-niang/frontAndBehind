@@ -1,8 +1,8 @@
 // 储值卡列表
 import { defineComponent, onMounted, ref } from 'vue'
-import { CommonSelectorPropsDefine, useSearchTable, useTableImages } from '@anteng/core'
-import { Button, Switch } from '@anteng/ui'
-import { COMMON_STATUS_ON, COMMON_STATUS_OPTIONS } from '@anteng/config'
+import { CommonSelectorPropsDefine, useSearchTable, useTableImages } from '@pkg/core'
+import { Button, Switch } from '@pkg/ui'
+import { COMMON_STATUS_ON, COMMON_STATUS_OPTIONS } from '@pkg/config'
 import { $getValueCardList } from '../../../api/valueCard'
 
 export default defineComponent({

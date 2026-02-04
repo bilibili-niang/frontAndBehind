@@ -5,7 +5,7 @@ import {
   releaseWeapp,
   upgradeTrailWeapp
 } from '../../../api/weapp'
-import { Modal, message } from '@anteng/ui'
+import { Modal, message } from '@pkg/ui'
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { WEAPP_VERSION_STATUS_ACCESS, WEAPP_VERSION_STATUS_AUDITING } from './constant'
 import uuid from '../../../utils/uuid'

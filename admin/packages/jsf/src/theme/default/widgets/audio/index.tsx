@@ -1,8 +1,8 @@
 import { defineComponent, ref, watch } from 'vue'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { test, useImageSelector } from '@anteng/core'
-import { Button, message } from '@anteng/ui'
+import { test, useImageSelector } from '@pkg/core'
+import { Button, message } from '@pkg/ui'
 
 export default defineComponent({
   name: 'W_Audio',

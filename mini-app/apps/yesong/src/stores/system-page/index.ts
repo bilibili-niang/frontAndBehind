@@ -6,8 +6,8 @@ import defaultLoginPage from './pages/login.json'
 import Taro from '@tarojs/taro'
 import { h, Ref, ref, toRaw, watch } from 'vue'
 import requestGetSystemPage from '../../api/deck/getSystemPage'
-import { useLoginDeck } from '@anteng/core'
-import { DeckRender } from '@anteng/deck'
+import { useLoginDeck } from '@pkg/core'
+import { DeckRender } from '@pkg/deck'
 
 const SYSTEM_PAGE_STORAGE_KEY = 'system-pages'
 

@@ -1,7 +1,7 @@
 import { Image } from '@tarojs/components'
 import { computed, defineComponent, PropType } from 'vue'
 import './style.scss'
-import { withUnit } from '@anteng/utils'
+import { withUnit } from '@pkg/utils'
 import { useAction } from '../../hooks/useAction'
 
 export default defineComponent({

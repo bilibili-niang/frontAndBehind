@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import './app.scss'
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 
 const App = createApp({
   onShow(options) {}

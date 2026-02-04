@@ -4,7 +4,7 @@ import './style.scss'
 import { $getCities } from '../../api'
 import { useLoading, useLoadingEnd } from '../useLoading'
 import useResponseMessage from '../useResponseMessage'
-import { ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { ScrollTab, ScrollTabItem } from '@pkg/ui'
 import EmptyStatus, { EmptyAction } from '../../components/empty-status'
 import fj from './fj'
 

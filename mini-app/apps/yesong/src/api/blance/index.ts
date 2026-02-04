@@ -1,4 +1,4 @@
-import { SCENE_STORE } from '@anteng/core'
+import { SCENE_STORE } from '@pkg/core'
 import request from '../request'
 
 /**

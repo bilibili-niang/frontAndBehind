@@ -1,6 +1,6 @@
-import ImageModalManifest from '@anteng/decoration/src/render-components/common-components/image-modal/manifest'
+import ImageModalManifest from '@pkg/decoration/src/render-components/common-components/image-modal/manifest'
 import { defineAction } from '../utils'
-import ImageModal from '@anteng/decoration/src/render-components/common-components/image-modal/render'
+import ImageModal from '@pkg/decoration/src/render-components/common-components/image-modal/render'
 import './image-modal.scss'
 import { cloneDeep } from 'lodash'
 

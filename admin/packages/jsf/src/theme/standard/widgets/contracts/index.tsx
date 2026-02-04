@@ -2,7 +2,7 @@
 import './index.scss'
 import { defineComponent, ref, watch, nextTick } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { Input, message } from '@anteng/ui'
+import { Input, message } from '@pkg/ui'
 import { cloneDeep } from 'lodash'
 
 interface Contract {

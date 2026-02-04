@@ -3,9 +3,9 @@ import { CommonSurveyWidgetPropsDefine, defineManifest, RemoveAnswer, useAnswerV
 import './style.scss'
 import { ANSWER_VALUE_FIELD, ERROR_MESSAGE_REQUIRED, WIDGET_INPUT } from '../../../constants'
 import { clamp } from 'lodash-es'
-import { formatFileSize } from '@anteng/utils'
-import { usePreviewImages, useToast, useUploadFile } from '@anteng/core'
-import { Icon } from '@anteng/ui'
+import { formatFileSize } from '@pkg/utils'
+import { usePreviewImages, useToast, useUploadFile } from '@pkg/core'
+import { Icon } from '@pkg/ui'
 
 const STATUS_NONE = 0
 const STATUS_UPLOADING = 1

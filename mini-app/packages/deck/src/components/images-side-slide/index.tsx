@@ -2,7 +2,7 @@ import { computed, defineComponent } from 'vue'
 import Title from '../title'
 import './style.scss'
 import { chunk } from 'lodash-es'
-import { withUnit } from '@anteng/utils'
+import { withUnit } from '@pkg/utils'
 import { Image } from '@tarojs/components'
 import { useAction } from '../../hooks/useAction'
 

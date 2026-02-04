@@ -1,9 +1,9 @@
 import { computed, defineComponent, onMounted, type PropType, ref } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import { clamp } from 'lodash'
-import { formatFileSize } from '@anteng/utils'
-import { Icon, message } from '@anteng/ui'
-import { requestUploadFile, useImagePreview } from '@anteng/core'
+import { formatFileSize } from '@pkg/utils'
+import { Icon, message } from '@pkg/ui'
+import { requestUploadFile, useImagePreview } from '@pkg/core'
 import './style.scss'
 
 export interface FileUploaderOptions {

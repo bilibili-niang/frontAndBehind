@@ -1,6 +1,6 @@
 import './style.scss'
 import { defineComponent, type PropType } from 'vue'
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 
 export default defineComponent({
   name: 'ThemeSwitch',

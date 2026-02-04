@@ -2,7 +2,7 @@ import { defineComponent, PropType } from 'vue'
 import './style.scss'
 import { DeckComponent } from '../../../stores/canvas'
 import SubTitle from '../sub-title/render'
-import { useAction } from '@anteng/core'
+import { useAction } from '@pkg/core'
 
 export { default as manifest } from './manifest'
 

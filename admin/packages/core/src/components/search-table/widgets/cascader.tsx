@@ -1,7 +1,7 @@
 import { defineComponent, ref } from 'vue'
 import './styles/cascader.scss'
 import { commonSearchTableWidgetPropsDefine } from './types'
-import { Cascader } from '@anteng/ui'
+import { Cascader } from '@pkg/ui'
 
 export default defineComponent({
   name: 'fw_cascader',

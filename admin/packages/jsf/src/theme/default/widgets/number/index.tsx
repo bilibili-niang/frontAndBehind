@@ -1,6 +1,6 @@
 import { computed, defineComponent, ref, type PropType, watch } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { InputNumber } from '@anteng/ui'
+import { InputNumber } from '@pkg/ui'
 import './style.scss'
 import { getWidgetConfig } from '../../../../utils/widget'
 

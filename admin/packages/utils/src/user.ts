@@ -1,4 +1,4 @@
-import { LOGIN_IDENTITY } from '@anteng/config'
+import { LOGIN_IDENTITY } from '@pkg/config'
 /*
  * 从本地token中判断用户是否登录
  * */

@@ -1,7 +1,7 @@
 // 数据处理逻辑
 
-import { message, Modal } from '@anteng/ui'
-import { useRequestErrorMessage } from '@anteng/core'
+import { message, Modal } from '@pkg/ui'
+import { useRequestErrorMessage } from '@pkg/core'
 
 /**
  * 通用修改状态,不止是修改状态,还可以修改其他字段

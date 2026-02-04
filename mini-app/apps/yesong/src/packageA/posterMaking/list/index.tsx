@@ -10,7 +10,7 @@ import {
   useResponseMessage,
   useToast,
   useUserStore
-} from '@anteng/core'
+} from '@pkg/core'
 import { deletePoster, getPosterList } from '../../../api/posterMarking'
 import { Image } from '@tarojs/components'
 import { navigateToPosterMakingCreate } from '../../../router'
@@ -18,14 +18,14 @@ import '@nutui/nutui-taro/dist/packages/dialog/index.css'
 import { tabsValue } from '../../../constants'
 import Taro from '@tarojs/taro'
 import { editorPoster } from '../create/dataProcessing'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import PosterBuilder from '../create/PosterBuilder/index.vue'
 import { storeToRefs } from 'pinia'
 import { downloadImage } from '../../../utils/downloadFile'
 import { utmStore } from '../../../stores'
-import { $getWxacodeUnlimit } from '@anteng/core/src/api'
+import { $getWxacodeUnlimit } from '@pkg/core/src/api'
 import { base64src } from '../create/PosterBuilder/utils/tools'
-import { DEFAULT_AVATAR } from '@anteng/config'
+import { DEFAULT_AVATAR } from '@pkg/config'
 
 definePageConfig({
   navigationStyle: 'custom',

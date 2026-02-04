@@ -1,9 +1,9 @@
 import { computed, defineComponent, onBeforeUnmount, onMounted, PropType, ref } from 'vue'
 import './style.scss'
 import { DeckComponent } from '../../../stores/canvas'
-import { ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { ScrollTab, ScrollTabItem } from '@pkg/ui'
 import { findLastIndex } from 'lodash'
-import { withUnit } from '@anteng/decoration'
+import { withUnit } from '@pkg/decoration'
 
 export { default as manifest } from './manifest'
 type AnchorComp = {

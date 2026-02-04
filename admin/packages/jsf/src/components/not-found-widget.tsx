@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { Alert } from '@anteng/ui'
+import { Alert } from '@pkg/ui'
 import { CommonWidgetPropsDefine } from '../types/widget'
 
 export default defineComponent({

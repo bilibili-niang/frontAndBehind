@@ -4,8 +4,8 @@ import { storeToRefs } from 'pinia'
 import themeConfig from './theme.json'
 import './style.scss'
 import Colors from './colors'
-import { PREFIX_CLS } from '@anteng/config'
-import { Icon } from '@anteng/ui'
+import { PREFIX_CLS } from '@pkg/config'
+import { Icon } from '@pkg/ui'
 
 export default defineComponent({
   name: 'SettingsTheme',

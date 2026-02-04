@@ -5,7 +5,7 @@ import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import { getObjectOrderedPropetiesRef, useObjectFiled } from '../../../../utils/field'
 import type { ObjectSchema } from '../../../../types/schema'
 import { getWidgetConfig } from '../../../../utils/widget'
-import { Tooltip } from '@anteng/ui'
+import { Tooltip } from '@pkg/ui'
 import { isObject } from '../../../../utils/common'
 
 export const SuiteWidget = defineComponent({

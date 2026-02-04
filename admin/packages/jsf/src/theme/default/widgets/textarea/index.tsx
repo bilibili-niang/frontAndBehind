@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { Textarea } from '@anteng/ui'
+import { Textarea } from '@pkg/ui'
 import './style.scss'
 
 export default defineComponent({

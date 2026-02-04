@@ -1,5 +1,5 @@
 import { defineComponent, nextTick, reactive, ref, watch } from 'vue'
-import { Input, Tag } from '@anteng/ui'
+import { Input, Tag } from '@pkg/ui'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 

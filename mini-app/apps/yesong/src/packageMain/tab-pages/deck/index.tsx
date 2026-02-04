@@ -2,9 +2,9 @@ import { computed, defineComponent, ref } from 'vue'
 import './style.scss'
 import Taro from '@tarojs/taro'
 import getCustomPage from '../../../api/deck/getCustomPage'
-import { EmptyStatus } from '@anteng/core'
+import { EmptyStatus } from '@pkg/core'
 import { COMMON_STATUS_OFF } from '../../../constants'
-import { DeckNavigator, DeckRender } from '@anteng/deck'
+import { DeckNavigator, DeckRender } from '@pkg/deck'
 
 export default defineComponent({
   name: 'CustomPage',

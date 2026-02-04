@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import './style.scss'
-import { useAppStore } from '@anteng/core'
-import { Icon } from '@anteng/ui'
+import { useAppStore } from '@pkg/core'
+import { Icon } from '@pkg/ui'
 
 export default defineComponent({
   name: 'GoodsDetailSkleton',

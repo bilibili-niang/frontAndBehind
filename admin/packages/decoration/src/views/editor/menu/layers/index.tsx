@@ -1,7 +1,7 @@
 import { computed, defineComponent } from 'vue'
 import './style.scss'
 import './style.dark.scss'
-import { Empty, message } from '@anteng/ui'
+import { Empty, message } from '@pkg/ui'
 import useCanvasStore from '../../../../stores/canvas'
 import type { ComponentDefine } from '../../../../stores/component'
 import useComponentStore from '../../../../stores/component'

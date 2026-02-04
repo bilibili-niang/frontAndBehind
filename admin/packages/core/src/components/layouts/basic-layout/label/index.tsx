@@ -3,8 +3,8 @@ import './style.scss'
 import useBasicLayoutStore, { type PageTab } from '../../../../stores/basic-layout'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
-import { Icon, message } from '@anteng/ui'
-import { PREFIX_CLS } from '@anteng/config'
+import { Icon, message } from '@pkg/ui'
+import { PREFIX_CLS } from '@pkg/config'
 
 export default defineComponent({
   name: 'BasicLayoutPageLabel',

@@ -6,7 +6,7 @@ import CustomMenu from '../suctom-menu'
 import useEditorStore from '../../../../stores/editor'
 import { withUnit } from '../../../../utils'
 import { defaultsDeep } from 'lodash'
-import { emitter } from '@anteng/core'
+import { emitter } from '@pkg/core'
 import useCanvasStore from '../../../../stores/canvas'
 import { useDecorationStore } from '../../../../store'
 

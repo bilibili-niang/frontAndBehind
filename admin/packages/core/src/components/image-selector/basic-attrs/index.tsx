@@ -1,6 +1,6 @@
 import { computed, defineComponent, reactive, ref, type PropType } from 'vue'
 import './style.scss'
-import { Icon, InputNumber, Slider, Tooltip } from '@anteng/ui'
+import { Icon, InputNumber, Slider, Tooltip } from '@pkg/ui'
 
 export default defineComponent({
   name: 'BasicAttrs',

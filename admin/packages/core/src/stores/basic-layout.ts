@@ -2,7 +2,7 @@ import { getHeaderMenus, getSideMenus } from '../api/menu'
 import { defineStore } from 'pinia'
 import { computed, ref, shallowRef } from 'vue'
 import router, { BasicLayout, Exception404, type IRoute } from '../router'
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import urlParse from 'url-parse'
 import { usePermissionStore } from './permission'
 

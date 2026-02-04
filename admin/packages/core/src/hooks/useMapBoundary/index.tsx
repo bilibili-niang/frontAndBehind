@@ -1,10 +1,10 @@
 /* eslint-disabled */
 // @ts-nocheck
 
-import { loadTMap } from '@anteng/utils'
+import { loadTMap } from '@pkg/utils'
 import useModal from '../useModal'
 import './style.scss'
-import { Button, Input, message } from '@anteng/ui'
+import { Button, Input, message } from '@pkg/ui'
 import useRequestErrorMessage from '../useRequestErrorMessage'
 import { nextTick, ref, shallowRef, toRaw, watch, type Ref } from 'vue'
 import { Scene } from '@antv/l7'

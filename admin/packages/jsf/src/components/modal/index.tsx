@@ -1,6 +1,6 @@
 import { createVNode, render } from 'vue'
 import Modal, { type ModalConfig } from './Modal'
-import { Modal as AntModal, type ModalProps, type ModalFuncProps } from '@anteng/ui'
+import { Modal as AntModal, type ModalProps, type ModalFuncProps } from '@pkg/ui'
 ;(window as any).modals = []
 
 // let container = document.querySelector('.jsf-ui-modal-root')

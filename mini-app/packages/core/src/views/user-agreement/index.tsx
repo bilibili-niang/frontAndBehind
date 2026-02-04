@@ -3,7 +3,7 @@ import './style.scss'
 import { useModal, useModalActions } from '../../hooks'
 import { navigateTo } from '../../utils'
 import RichText from '../../components/rich-text'
-import { ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { ScrollTab, ScrollTabItem } from '@pkg/ui'
 
 export const UserAgreementPage = defineComponent({
   name: 'P_User-Agreement',

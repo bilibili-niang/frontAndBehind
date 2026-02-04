@@ -1,4 +1,4 @@
-import { Button, Checkbox, TabPane, Tabs } from '@anteng/ui'
+import { Button, Checkbox, TabPane, Tabs } from '@pkg/ui'
 import { defineComponent, ref } from 'vue'
 import Guide1 from './tiny-mce-guide-135-1.png'
 import Guide2 from './tiny-mce-guide-135-2.jpg'

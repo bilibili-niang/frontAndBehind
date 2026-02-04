@@ -1,10 +1,10 @@
-import { Icon, Popover } from '@anteng/ui'
+import { Icon, Popover } from '@pkg/ui'
 import { computed, defineComponent } from 'vue'
 import './style.scss'
 import useBasicLayoutStore, { type IHeaderMenuNode } from '../../../../stores/basic-layout'
 import useAppStore from '../../../../stores/app'
 import { storeToRefs } from 'pinia'
-import { LOGO_URL } from '@anteng/config'
+import { LOGO_URL } from '@pkg/config'
 
 export default defineComponent({
   setup() {

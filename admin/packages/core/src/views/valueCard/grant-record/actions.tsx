@@ -1,5 +1,5 @@
-import { SchemaForm } from '@anteng/jsf'
-import { Modal, message } from '@anteng/ui'
+import { SchemaForm } from '@pkg/jsf'
+import { Modal, message } from '@pkg/ui'
 import { ref } from 'vue'
 import {
   $batchPreActivateValueCard,

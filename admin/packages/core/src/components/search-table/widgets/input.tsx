@@ -1,4 +1,4 @@
-import { Input } from '@anteng/ui'
+import { Input } from '@pkg/ui'
 import { defineComponent } from 'vue'
 import './styles/input.scss'
 import { commonSearchTableWidgetPropsDefine } from './types'

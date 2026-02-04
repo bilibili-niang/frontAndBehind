@@ -1,4 +1,4 @@
-import { PaginationData, request, RequestPagination } from '@anteng/core'
+import { PaginationData, request, RequestPagination } from '@pkg/core'
 import { SurveyDetail } from './types'
 
 /** 获取问卷详情 */

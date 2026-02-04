@@ -1,4 +1,4 @@
-import { EXPRESS_COMPANY_OPTIONS } from '@anteng/config'
+import { EXPRESS_COMPANY_OPTIONS } from '@pkg/config'
 import { getExpressInfo, IExpressInfo } from '../../api/express'
 import { ref } from 'vue'
 

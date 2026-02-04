@@ -9,15 +9,15 @@ import {
   useToast,
   withLogin,
   withWechatBind
-} from '@anteng/core'
+} from '@pkg/core'
 import GoodsItem from '../../../components/goods-item'
 import { computed, defineComponent, onMounted, onUnmounted, ref, watch, withModifiers } from 'vue'
 import './style.scss'
 import CountStepper from '../../../components/count-stepper'
-import { Icon, Radio, Switch } from '@anteng/ui'
+import { Icon, Radio, Switch } from '@pkg/ui'
 import AddressSelector from './address-selector'
 import Taro, { nextTick, useRouter } from '@tarojs/taro'
-import { formatPrice, uuid } from '@anteng/utils'
+import { formatPrice, uuid } from '@pkg/utils'
 import { useOrderPayStore } from './store'
 import Skeleton from './skeleton'
 import { commitCartGoodsOrder, commitGoodsOrder, ICartGoodsOrderParams, IGoodsOrderParams } from '../../../api/order'
@@ -34,7 +34,7 @@ import {
   PAYMENT_METHOD_NONE,
   PAYMENT_METHOD_VALUE_CARD,
   SUB_PAYMENT_METHOD_WECHAT_PAY
-} from '@anteng/config'
+} from '@pkg/config'
 import useMerchantStore from '../../../stores/merchant'
 
 definePageConfig({

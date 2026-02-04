@@ -5,8 +5,8 @@ import { merge } from 'lodash-es'
 import { WIDGET_OPTIONS, WIDGET_TYPE_OPTIONS } from '../constants'
 import { $getSurveyAnswerRecord, $getSurveyDetail, $submitSurvey } from '../api'
 import { SurveyDetail } from '../api/types'
-import { useAppStore, useLoading, useLoadingEnd, useResponseMessage, useToast } from '@anteng/core'
-import { formatDate } from '@anteng/utils'
+import { useAppStore, useLoading, useLoadingEnd, useResponseMessage, useToast } from '@pkg/core'
+import { formatDate } from '@pkg/utils'
 
 const stores: {
   [key: string]: ReturnType<typeof defineSurveyFormStore>

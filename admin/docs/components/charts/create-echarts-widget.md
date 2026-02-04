@@ -7,14 +7,14 @@ outline: deep
 
 在 `useECharts` 基础上增加 `title` 字段，便于与卡片组合使用，快速形成“卡片 + 图表”的页面模块。
 
-- 导入：`import { createEChartsWidget } from '@anteng/core'`
+- 导入：`import { createEChartsWidget } from '@pkg/core'`
 - 源码：`packages/core/src/components/echarts/index.tsx`
 
 ## 快速示例
 
 ```ts
-import { Card } from '@anteng/ui'
-import { createEChartsWidget } from '@anteng/core'
+import { Card } from '@pkg/ui'
+import { createEChartsWidget } from '@pkg/core'
 
 const trendChart = createEChartsWidget({
   title: '趋势图表',

@@ -1,5 +1,5 @@
 import { defineComponent, reactive, watch } from 'vue'
-import { InputNumber } from '@anteng/ui'
+import { InputNumber } from '@pkg/ui'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 

@@ -2,7 +2,7 @@ import { toRaw } from 'vue'
 import { DeckComponentConfig } from '../../canvas-components/defineDeckComponent'
 import { cloneDeep, defaultsDeep } from 'lodash'
 import useComponentStore from '../component'
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 
 /** 嵌套关系计算结果缓存 */
 const cachedNestableMap = new Map<string, boolean>()

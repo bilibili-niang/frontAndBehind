@@ -1,7 +1,7 @@
 import { defineComponent, PropType, withModifiers } from 'vue'
 import './style.scss'
 import { Image } from '@tarojs/components'
-import { renderAnyNode } from '@anteng/utils'
+import { renderAnyNode } from '@pkg/utils'
 
 export default defineComponent({
   name: 'OrderGoodsItem',

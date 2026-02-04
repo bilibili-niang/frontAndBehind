@@ -1,4 +1,4 @@
-import { Button, Modal, message } from '@anteng/ui'
+import { Button, Modal, message } from '@pkg/ui'
 import { defineComponent, nextTick, onMounted } from 'vue'
 import Base from './base'
 import urlParse from 'url-parse'

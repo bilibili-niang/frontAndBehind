@@ -1,3 +1,3 @@
 # Components 组件
 
-你可以从 @anteng/components 包导入使用
+你可以从 @pkg/components 包导入使用

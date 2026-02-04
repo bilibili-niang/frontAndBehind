@@ -8,7 +8,7 @@
 ## 最小示例
 
 ```text
-import { AuthButton } from '@anteng/core'
+import { AuthButton } from '@pkg/core'
 
 &lt;AuthButton
   type="primary"
@@ -27,7 +27,7 @@ import { AuthButton } from '@anteng/core'
 - `hiddenMode`：`'hide' | 'disable'`，默认 `'hide'`。
 - `label`：按钮文案，用于采集权限点；未提供时尝试使用插槽文本。
 - `pagePath`：所属页面路径，用于采集权限点；未提供时 fallback 为 `window.location.pathname`。
-- 其余属性均透传 `@anteng/ui` 的 `Button`（如 `type/size/danger/onClick` 等）。
+- 其余属性均透传 `@pkg/ui` 的 `Button`（如 `type/size/danger/onClick` 等）。
 
 ## 环境变量
 - `VITE_APP_USE_BUTTON_PERMISSION='false'`：跳过权限控制，等同原生 `Button` 渲染。

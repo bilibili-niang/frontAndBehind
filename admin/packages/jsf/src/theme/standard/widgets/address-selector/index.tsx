@@ -1,7 +1,7 @@
 import { defineComponent, ref, withModifiers, watch, computed } from 'vue'
 import './style.scss'
-import { Button, Icon, Input } from '@anteng/ui'
-import { type AddressData, useAddressSelector } from '@anteng/core'
+import { Button, Icon, Input } from '@pkg/ui'
+import { type AddressData, useAddressSelector } from '@pkg/core'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import { getWidgetConfig } from '../../../../utils/widget'
 

@@ -1,4 +1,4 @@
-import { RangePicker } from '@anteng/ui'
+import { RangePicker } from '@pkg/ui'
 import { defineComponent } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 

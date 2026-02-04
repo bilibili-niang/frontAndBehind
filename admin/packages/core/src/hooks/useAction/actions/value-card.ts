@@ -1,4 +1,4 @@
-import { defineAction, useCommonSelector } from '@anteng/core'
+import { defineAction, useCommonSelector } from '@pkg/core'
 import ValueCardList from '../../../views/valueCard/list'
 
 const ValueCardSelector = useCommonSelector({

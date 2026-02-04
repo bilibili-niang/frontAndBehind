@@ -2,7 +2,7 @@ import { computed, defineComponent, ref, watch } from 'vue'
 import './style.scss'
 import Spin from '../spin'
 import { clamp } from 'lodash-es'
-import { Image } from '@anteng/deck'
+import { Image } from '@pkg/deck'
 
 /** 通用启动页组件 */
 export default defineComponent({

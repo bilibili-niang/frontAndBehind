@@ -1,7 +1,7 @@
 // 通用组件-图片
 import './index.scss'
 import { defineComponent } from 'vue'
-import { DeckImage } from '@anteng/ui'
+import { DeckImage } from '@pkg/ui'
 import manifest from './manifest'
 
 export { manifest }

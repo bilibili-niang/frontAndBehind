@@ -2,7 +2,7 @@ import { PropType, computed, defineComponent } from 'vue'
 import './style.scss'
 import { DeckComponent } from '../../../stores/canvas'
 import { withUnit } from '../../../canvas-components/utils'
-import { ActionItem, ImageDefine, useAction } from '@anteng/core'
+import { ActionItem, ImageDefine, useAction } from '@pkg/core'
 
 export { default as manifest } from './manifest'
 

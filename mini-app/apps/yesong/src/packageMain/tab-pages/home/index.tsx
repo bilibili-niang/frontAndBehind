@@ -1,9 +1,9 @@
 import './style.scss'
-import { BasePage } from '@anteng/core'
+import { BasePage } from '@pkg/core'
 import { computed, defineComponent, ref } from 'vue'
 import Taro from '@tarojs/taro'
 import getIndexPage from '../../../api/deck/getIndexPage'
-import { DeckNavigator, DeckRender } from '@anteng/deck'
+import { DeckNavigator, DeckRender } from '@pkg/deck'
 
 export default defineComponent({
   name: 'IndexHomePage',

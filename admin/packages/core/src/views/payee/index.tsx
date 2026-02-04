@@ -1,7 +1,7 @@
 import { computed, defineComponent, onMounted, reactive, ref, toRaw } from 'vue'
 import './style.scss'
-import { Icon, JsonView, message, Switch, Table } from '@anteng/ui'
-import { CommonWidgetPropsDefine, type Schema, SchemaForm } from '@anteng/jsf'
+import { Icon, JsonView, message, Switch, Table } from '@pkg/ui'
+import { CommonWidgetPropsDefine, type Schema, SchemaForm } from '@pkg/jsf'
 import { usePayeeSelector } from '../../../../../apps/cs/center/src/shared'
 import { $getPayeeConfig, $updatePayeeConfig } from './api'
 import {
@@ -11,7 +11,7 @@ import {
   PaymentScene,
   SCENE_SHOP_HUB,
   SCENE_VENUE
-} from '@anteng/config'
+} from '@pkg/config'
 import { useTableAction } from '../../components/search-table'
 import { $getStadiumList } from '../../../../../apps/cs/venue/src/api/stadium'
 import usePagination from '../../hooks/usePagination'

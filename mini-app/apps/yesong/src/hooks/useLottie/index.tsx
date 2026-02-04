@@ -1,4 +1,4 @@
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 import { Canvas } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { defineComponent, onMounted, onUnmounted, ref, shallowRef } from 'vue'

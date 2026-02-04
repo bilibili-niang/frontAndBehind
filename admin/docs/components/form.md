@@ -4,7 +4,7 @@ title: 表单组件
 
 # 表单组件
 
-表单相关组件与能力由 `@anteng/ui` 提供，结合 Ant Design Vue 的 Form 使用。
+表单相关组件与能力由 `@pkg/ui` 提供，结合 Ant Design Vue 的 Form 使用。
 
 ## 概述
 
@@ -28,7 +28,7 @@ title: 表单组件
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Form, FormItem, Input, Select } from '@anteng/ui'
+import { Form, FormItem, Input, Select } from '@pkg/ui'
 
 const model = ref({ name: '', type: '' })
 const opts = [

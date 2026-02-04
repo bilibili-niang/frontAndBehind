@@ -1,7 +1,7 @@
 import { Button, Image } from '@tarojs/components'
 import useModal from '../useModal'
 import './style.scss'
-import { renderAnyNode } from '@anteng/utils'
+import { renderAnyNode } from '@pkg/utils'
 import Taro from '@tarojs/taro'
 import useResponseMessage from '../useResponseMessage'
 import { useLoading, useLoadingEnd } from '../useLoading'

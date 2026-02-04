@@ -1,5 +1,5 @@
 import { computed, defineComponent, onBeforeUnmount, onMounted, PropType, ref, watch } from 'vue'
-import { BasePage, useAppStore, useShareAppMessage } from '@anteng/core'
+import { BasePage, useAppStore, useShareAppMessage } from '@pkg/core'
 import Taro, { usePageScroll, useRouter } from '@tarojs/taro'
 import './style.scss'
 import ActionBar from './action-bar'

@@ -2,7 +2,7 @@
 // FIXME 用到该组件可能会爆警告,但不知为何
 import './style.scss'
 import { computed, defineComponent, inject, onMounted, PropType, Ref } from 'vue'
-import { usePagination } from '@anteng/core'
+import { usePagination } from '@pkg/core'
 import { ScrollView } from '@tarojs/components'
 
 /*

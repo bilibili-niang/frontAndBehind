@@ -5,7 +5,7 @@ import { useWidget } from './widget'
 import { isObject, orderProperties } from './common'
 import schemaFormItem from '../schema-form-item'
 import { cloneDeep } from 'lodash'
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import { retrieveSchema } from './schema'
 
 export type PropsArg = ExtractPropTypes<typeof commonFieldPropsDefine>

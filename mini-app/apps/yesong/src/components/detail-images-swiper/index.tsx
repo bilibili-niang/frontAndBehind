@@ -1,7 +1,7 @@
 import { Image, Swiper, SwiperItem } from '@tarojs/components'
 import { PropType, computed, defineComponent, reactive } from 'vue'
 import './style.scss'
-import { usePreviewImages } from '@anteng/core'
+import { usePreviewImages } from '@pkg/core'
 
 export default defineComponent({
   name: 'CommonDetailSwiper',

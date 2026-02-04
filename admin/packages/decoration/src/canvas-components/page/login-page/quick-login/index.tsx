@@ -1,7 +1,7 @@
 import { computed, defineComponent, onBeforeUnmount, ref } from 'vue'
 import './style.scss'
 import Code from './code'
-import { Icon, Input, message } from '@anteng/ui'
+import { Icon, Input, message } from '@pkg/ui'
 
 const STEP_INDEX = 0
 const STEP_MOBILE = 1

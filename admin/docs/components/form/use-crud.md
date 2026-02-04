@@ -6,7 +6,7 @@
 
 ::: code-group
 ```ts [TSX]
-import { useCrud } from '@anteng/core'
+import { useCrud } from '@pkg/core'
 
 const { onCreate, onUpdate, onRemove, onRead } = useCrud<{ id: number; name: string }>({
   title: '分类',
@@ -33,7 +33,7 @@ onRead(row)
 
 ```vue [Vue2]
 <script>
-import { useCrud } from '@anteng/core'
+import { useCrud } from '@pkg/core'
 
 // 在 Vue2 中同样直接调用 useCrud 获取动作函数
 const { onCreate, onUpdate, onRemove, onRead } = useCrud({
@@ -102,8 +102,8 @@ const schema = {
 
 ::: code-group
 ```tsx [TSX]
-import { Button } from '@anteng/ui'
-import { SearchTable, useCrud, useTableAction } from '@anteng/core'
+import { Button } from '@pkg/ui'
+import { SearchTable, useCrud, useTableAction } from '@pkg/core'
 
 export default function Demo() {
   const { onCreate, onUpdate, onRemove, refresh } = useCrud({
@@ -173,8 +173,8 @@ export default function Demo() {
 </template>
 
 <script>
-import { Button } from '@anteng/ui'
-import { SearchTable, useCrud, useTableAction } from '@anteng/core'
+import { Button } from '@pkg/ui'
+import { SearchTable, useCrud, useTableAction } from '@pkg/core'
 
 const TABLE_KEY = 'vue2-demo-search-table'
 const { onCreate, onUpdate, onRemove, refresh } = useCrud({

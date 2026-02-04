@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue'
-import { Icon, InputNumber, Tooltip } from '@anteng/ui'
+import { Icon, InputNumber, Tooltip } from '@pkg/ui'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 

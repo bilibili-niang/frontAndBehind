@@ -1,10 +1,10 @@
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { computed, defineComponent, onUnmounted, PropType, watch, withModifiers } from 'vue'
 import './style.scss'
-import { EmptyStatus, RichText, useCountdown, useModal } from '@anteng/core'
+import { EmptyStatus, RichText, useCountdown, useModal } from '@pkg/core'
 import { renderAnyNode } from '../../../../../../../packages/utils/src/render'
 import dayjs from 'dayjs'
-import { formatPrice } from '@anteng/utils'
+import { formatPrice } from '@pkg/utils'
 import { COUPON_SCOPE_OPTIONS } from '../../../../api/discount-coupon/types'
 
 export default defineComponent({

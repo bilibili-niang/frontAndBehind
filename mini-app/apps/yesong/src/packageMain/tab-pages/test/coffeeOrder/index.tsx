@@ -1,6 +1,6 @@
 // 点单列表（可交互）
 import { defineComponent, ref, computed, withModifiers } from 'vue'
-import { BasePage, useToast } from '@anteng/core'
+import { BasePage, useToast } from '@pkg/core'
 import './index.scss'
 import GoodsItem from '../../../../components/goods-item'
 import { Image, ScrollView } from '@tarojs/components'

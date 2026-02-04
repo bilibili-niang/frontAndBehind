@@ -1,6 +1,6 @@
 import { defineComponent, onMounted } from 'vue'
 import QRCode from 'qrcode'
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 import { commonQRCodePropsDefine } from './common'
 import './style.scss'
 

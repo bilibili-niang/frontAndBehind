@@ -1,4 +1,4 @@
-import { useToast } from '@anteng/core'
+import { useToast } from '@pkg/core'
 import { computed, defineComponent, PropType, ref, watch } from 'vue'
 import './style.scss'
 

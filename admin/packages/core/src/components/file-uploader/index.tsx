@@ -1,8 +1,8 @@
 import './styles.scss'
-import { Icon, message } from '@anteng/ui'
+import { Icon, message } from '@pkg/ui'
 import { defineComponent, ref, type PropType } from 'vue'
 import request, { type ResponseBody } from '../../api/request'
-import { CommonWidgetPropsDefine } from '@anteng/jsf'
+import { CommonWidgetPropsDefine } from '@pkg/jsf'
 
 /**
  * 上传文件类型的映射,这里只做一个展示的文字转换
@@ -27,7 +27,7 @@ export default defineComponent({
       type: String,
       required: true
     },
-    // 文件上传的场景值 @anteng/config 中有
+    // 文件上传的场景值 @pkg/config 中有
     scene: {
       type: String,
       default: ''

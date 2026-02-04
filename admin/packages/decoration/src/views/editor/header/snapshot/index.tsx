@@ -1,9 +1,9 @@
 import { defineComponent, type PropType, ref, nextTick } from 'vue'
 import './style.scss'
-import { Button, Tooltip, Input, Popover } from '@anteng/ui'
+import { Button, Tooltip, Input, Popover } from '@pkg/ui'
 import useSnapshotStore, { type Snapshot } from '../../../../stores/snapshot'
 import { storeToRefs } from 'pinia'
-import { Modal, message } from '@anteng/ui'
+import { Modal, message } from '@pkg/ui'
 
 const SnapshotItem = defineComponent({
   name: 'LegoSnapshotItem',

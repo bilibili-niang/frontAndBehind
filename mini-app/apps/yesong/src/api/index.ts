@@ -1,4 +1,4 @@
-import { $getMerchantId } from '@anteng/core';
+import { $getMerchantId } from '@pkg/core';
 
 export const getMerchantId = appId => {
   return $getMerchantId(appId)

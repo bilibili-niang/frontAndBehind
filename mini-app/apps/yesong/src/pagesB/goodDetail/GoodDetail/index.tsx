@@ -1,7 +1,7 @@
 import './style.scss'
 import { defineComponent, ref } from 'vue'
 import Taro, { useRouter } from '@tarojs/taro'
-import { redirectTo, safeParse, Spin, useToast } from '@anteng/core'
+import { redirectTo, safeParse, Spin, useToast } from '@pkg/core'
 import { $getShortLink } from '../../../api/utm'
 import { ROUTE_INFORMATION_DETAIL } from '../../../router/routes'
 import { utmStore } from '../../../stores'

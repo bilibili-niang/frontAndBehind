@@ -1,6 +1,6 @@
 import { defineComponent, onBeforeUnmount, type PropType, ref, toRaw, watch } from 'vue'
 import { $getLocationDetails } from '../../api/tmap'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import './pin-view.scss'
 import { debounce } from 'lodash'
 

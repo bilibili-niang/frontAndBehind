@@ -1,8 +1,8 @@
 import { computed, defineComponent, withModifiers } from 'vue'
 import './style.scss'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import Taro from '@tarojs/taro'
-import { useOpenLocation, useToast } from '@anteng/core'
+import { useOpenLocation, useToast } from '@pkg/core'
 
 export interface IShopItemOptions {
   id: string

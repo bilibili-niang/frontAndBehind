@@ -1,8 +1,8 @@
 import './style.scss'
 import { Button } from '@tarojs/components'
 import { navigateToPoster } from '../../router'
-import { usePopup } from '@anteng/core'
-import { Icon } from '@anteng/ui'
+import { usePopup } from '@pkg/core'
+import { Icon } from '@pkg/ui'
 
 /**
  *  分享菜单

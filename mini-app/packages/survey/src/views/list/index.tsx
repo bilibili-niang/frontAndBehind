@@ -1,9 +1,9 @@
-import { BasePage, usePagination, navigateTo, useToast } from '@anteng/core'
+import { BasePage, usePagination, navigateTo, useToast } from '@pkg/core'
 import { defineComponent, onMounted } from 'vue'
 import { $getSurveyList } from '../../api'
 import './style.scss'
-import { Icon } from '@anteng/ui'
-import { simplifyDate } from '@anteng/utils'
+import { Icon } from '@pkg/ui'
+import { simplifyDate } from '@pkg/utils'
 
 export default defineComponent({
   name: '',

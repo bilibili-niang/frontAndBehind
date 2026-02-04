@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType, ref, withModifiers } from 'vue'
 import useCanvasStore, { DeckComponent } from '../../../stores/canvas'
-import { Empty } from '@anteng/ui'
+import { Empty } from '@pkg/ui'
 import { storeToRefs } from 'pinia'
 import ComponentItem from '../../../views/editor/canvas/component-item'
 import './style.scss'

@@ -1,4 +1,4 @@
-import { Alert, Button } from '@anteng/ui'
+import { Alert, Button } from '@pkg/ui'
 import { computed, defineComponent } from 'vue'
 import { useWechatPayApply } from '../../../../../../apps/cs/center/src/views/finance/wechat-pay-apply'
 import {

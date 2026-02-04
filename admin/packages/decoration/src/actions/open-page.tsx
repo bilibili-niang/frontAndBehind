@@ -1,4 +1,4 @@
-import { defineAction } from '@anteng/core'
+import { defineAction } from '@pkg/core'
 import PagesSelector from '../widget/pagesSelector'
 
 export default defineAction({

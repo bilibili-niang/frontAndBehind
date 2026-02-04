@@ -1,4 +1,4 @@
-import { Schema } from '@anteng/jsf'
+import { Schema } from '@pkg/jsf'
 
 export default {
   key: 'user-agreement-page',

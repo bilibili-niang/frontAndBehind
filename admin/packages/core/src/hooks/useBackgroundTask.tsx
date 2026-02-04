@@ -1,5 +1,5 @@
 import Task from '../views/task'
-import { Modal } from '@anteng/ui'
+import { Modal } from '@pkg/ui'
 
 const useBackgroundTask = () => {
   Modal.open({

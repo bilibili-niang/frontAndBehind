@@ -1,4 +1,4 @@
-import { openImageModal } from '@anteng/deck/src/components/image-modal'
+import { openImageModal } from '@pkg/deck/src/components/image-modal'
 
 export default {
   key: 'image-modal',

@@ -3,7 +3,7 @@ import { computed, defineComponent, onMounted, ref } from 'vue'
 // import { template } from './template'
 import './style.scss'
 import Taro from '@tarojs/taro'
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 import { useAppStore } from '../../stores'
 
 const replacePxWithRem = (htmlString: string) => {

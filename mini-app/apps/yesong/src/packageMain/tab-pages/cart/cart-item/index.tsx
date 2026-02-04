@@ -1,13 +1,13 @@
 import GoodsItem from '../../../../components/goods-item'
 import { computed, defineComponent, PropType, ref, watch, withModifiers } from 'vue'
 import './style.scss'
-import { Icon, Radio } from '@anteng/ui'
+import { Icon, Radio } from '@pkg/ui'
 import CountStepper from '../../../../components/count-stepper'
 import { useGoodsLimit, useGoodsSkuModal } from '../../../../hooks'
 import { ICartItem } from '../../../../api/cart/types'
 import { navigateToGoodsDetail } from '../../../../router'
 import { useCartStore } from '../../../../stores'
-import { useResponseMessage } from '@anteng/core'
+import { useResponseMessage } from '@pkg/core'
 
 export default defineComponent({
   name: 'CartItem',

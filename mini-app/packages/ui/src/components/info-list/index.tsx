@@ -1,8 +1,8 @@
 import { computed, defineComponent, PropType, withModifiers } from 'vue'
 import './style.scss'
 import Icon from '../icon'
-import { renderAnyNode } from '@anteng/utils'
-import { useCopyText } from '@anteng/core'
+import { renderAnyNode } from '@pkg/utils'
+import { useCopyText } from '@pkg/core'
 
 type InfoListItem = {
   /** 标签 */

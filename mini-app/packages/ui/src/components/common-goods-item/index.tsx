@@ -1,7 +1,7 @@
 import { computed, defineComponent, PropType, SlotsType } from 'vue'
 import './style.scss'
 import { Image } from '@tarojs/components'
-import { formatPrice } from '@anteng/utils'
+import { formatPrice } from '@pkg/utils'
 
 export type GoodsItemOptions = {
   id: string

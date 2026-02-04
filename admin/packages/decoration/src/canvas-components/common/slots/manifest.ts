@@ -1,4 +1,4 @@
-import { defineSchema } from '@anteng/jsf/src/utils/schema'
+import { defineSchema } from '@pkg/jsf/src/utils/schema'
 
 export default {
   key: 'slots',

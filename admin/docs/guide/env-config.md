@@ -65,17 +65,17 @@ define: {
 css: {
   preprocessorOptions: {
     scss: {
-      additionalData: "@use '@anteng/styles/src/variables/index.scss' as *;"
+      additionalData: "@use '@pkg/styles/src/variables/index.scss' as *;"
     }
   }
 }
 ```
 
-`@anteng/ui` 内部使用 Ant Design Vue 的 `ConfigProvider` 设置统一样式前缀 `PREFIX_CLS`。
+`@pkg/ui` 内部使用 Ant Design Vue 的 `ConfigProvider` 设置统一样式前缀 `PREFIX_CLS`。
 
 ## isTestDev()（开发/测试辅助）
 
-工具位置：`@anteng/utils`（`packages/utils/src/env.ts`）
+工具位置：`@pkg/utils`（`packages/utils/src/env.ts`）
 
 作用：在开发或测试环境下返回 `true`；可选执行传入回调以统一异步判断。
 
@@ -90,7 +90,7 @@ declare function isTestDev<T extends boolean | Promise<boolean>>(
 使用示例（登录页快速登录）：
 
 ```ts
-import { isTestDev } from '@anteng/utils'
+import { isTestDev } from '@pkg/utils'
 
 if (await isTestDev()) {
   // 写入用户信息与 auth store，并跳转首页

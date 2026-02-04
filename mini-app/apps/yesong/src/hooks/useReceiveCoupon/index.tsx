@@ -6,14 +6,14 @@ import {
   usePagination,
   useResponseMessage,
   withLogin
-} from '@anteng/core'
+} from '@pkg/core'
 import { defineComponent } from 'vue'
 import './style.scss'
 import CouponItem, { CouponItemButton } from '../../packageA/discount-coupon/components/coupon-item'
 import { couponUseTimeRangeType, IDiscountCoupon } from '../../api/discount-coupon/types'
 import { $receiveDiscountCoupon } from '../../api/discount-coupon'
 import dayjs from 'dayjs'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { navigateToCouponUsage } from '../../router'
 import { DiscountCouponScene } from '../../constants/discount-coupon'
 

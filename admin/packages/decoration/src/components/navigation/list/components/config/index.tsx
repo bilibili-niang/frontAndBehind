@@ -1,9 +1,9 @@
 import './index.scss'
 import { computed, defineComponent, type PropType, reactive, ref, watch } from 'vue'
-import { Button, message } from '@anteng/ui'
-import { type Schema, SchemaForm } from '@anteng/jsf'
+import { Button, message } from '@pkg/ui'
+import { type Schema, SchemaForm } from '@pkg/jsf'
 import { cloneDeep } from 'lodash'
-import { SCENE_YESONG } from '@anteng/config'
+import { SCENE_YESONG } from '@pkg/config'
 import { $createNavigation, $updateNavigation } from '../../../../../api'
 import PagesSelector from '../../../../../widget/pagesSelector'
 

@@ -10,8 +10,8 @@ import type {
   SelectProps,
   TimePickerProps,
   TimeRangePickerProps
-} from '@anteng/ui'
-import { Button, Icon } from '@anteng/ui'
+} from '@pkg/ui'
+import { Button, Icon } from '@pkg/ui'
 
 import Input from './widgets/input'
 import InputNumber from './widgets/input-number'

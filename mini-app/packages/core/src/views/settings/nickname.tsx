@@ -1,4 +1,4 @@
-import { useLoading, useLoadingEnd, useModal, useToast, useUserStore } from '@anteng/core'
+import { useLoading, useLoadingEnd, useModal, useToast, useUserStore } from '@pkg/core'
 import { Input } from '@tarojs/components'
 import { defineComponent, ref } from 'vue'
 import './nickname.scss'

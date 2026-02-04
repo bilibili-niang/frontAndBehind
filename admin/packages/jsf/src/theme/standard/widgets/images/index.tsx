@@ -1,5 +1,5 @@
 import { defineComponent, computed } from 'vue'
-import { type ImageDefine, uuid } from '@anteng/core'
+import { type ImageDefine, uuid } from '@pkg/core'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import { getWidgetConfig } from '../../../../utils/widget'

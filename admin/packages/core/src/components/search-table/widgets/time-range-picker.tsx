@@ -1,4 +1,4 @@
-import { TimeRangePicker } from '@anteng/ui'
+import { TimeRangePicker } from '@pkg/ui'
 import { defineComponent, ref } from 'vue'
 import './styles/time-picker.scss'
 import { commonSearchTableWidgetPropsDefine } from './types'

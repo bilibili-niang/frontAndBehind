@@ -1,6 +1,6 @@
 import { computed, defineComponent, type PropType, reactive, ref } from 'vue'
-import { Button, ConfigProvider, Input, message, Modal } from '@anteng/ui'
-import { PREFIX_CLS } from '@anteng/config'
+import { Button, ConfigProvider, Input, message, Modal } from '@pkg/ui'
+import { PREFIX_CLS } from '@pkg/config'
 import './style.scss'
 import './style.dark.scss'
 import {
@@ -11,7 +11,7 @@ import {
   preConditionDefault,
   preConditionSchema
 } from './actions'
-import { type ObjectSchema, type Schema, SchemaForm } from '@anteng/jsf'
+import { type ObjectSchema, type Schema, SchemaForm } from '@pkg/jsf'
 import { cloneDeep, defaultsDeep } from 'lodash'
 import type { ActionDefine } from './utils'
 

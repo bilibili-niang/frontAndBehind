@@ -6,7 +6,7 @@ packages/core/src/hooks/useLoading/index.tsx
 
 ## 使用
 ```ts
-import { useLoading, useLoadingEnd } from '@anteng/core'
+import { useLoading, useLoadingEnd } from '@pkg/core'
 
 useLoading()
 asyncFn1().finally(useLoadingEnd)

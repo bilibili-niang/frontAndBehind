@@ -2,8 +2,8 @@
 import { defineComponent } from 'vue'
 import themeConfig from './theme.json'
 import './color.scss'
-import { PREFIX_CLS } from '@anteng/config'
-import { message } from '@anteng/ui'
+import { PREFIX_CLS } from '@pkg/config'
+import { message } from '@pkg/ui'
 
 export default defineComponent({
   name: 'DevColors',

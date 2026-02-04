@@ -1,4 +1,4 @@
-import { useRichTextEditor } from '@anteng/core'
+import { useRichTextEditor } from '@pkg/core'
 import { computed, defineComponent } from 'vue'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'

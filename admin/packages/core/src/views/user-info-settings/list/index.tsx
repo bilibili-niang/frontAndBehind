@@ -4,10 +4,10 @@ import { useSearchTable, useTableAction } from '../../../components/search-table
 import { useProfileFieldsMap } from '../fields'
 import { $createUserProfile, $getUserList, $getUserProfileList, $updateUserProfile } from '../../../api/user-profile'
 import emitter from '../../../utils/emitter'
-import { Button } from '@anteng/ui'
+import { Button } from '@pkg/ui'
 import useCrud from '../../../hooks/useCrud'
 import { CommonSelectorPropsDefine } from '../../../hooks/useCommonSelector/index'
-import { DEFAULT_AVATAR } from '@anteng/config'
+import { DEFAULT_AVATAR } from '@pkg/config'
 
 export default defineComponent({
   name: 'UserList',

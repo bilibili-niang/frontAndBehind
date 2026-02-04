@@ -1,7 +1,7 @@
 import { computed, reactive, ref, toRef } from 'vue'
 import type { PaginationData, RequestPagination, ResponseData } from '../../api/request'
 import axios from 'axios'
-import { Button, Empty as EmptyStatus, Icon } from '@anteng/ui'
+import { Button, Empty as EmptyStatus, Icon } from '@pkg/ui'
 import Spin from '../../components/spin'
 import './style.scss'
 import { buildPagination } from './utils'

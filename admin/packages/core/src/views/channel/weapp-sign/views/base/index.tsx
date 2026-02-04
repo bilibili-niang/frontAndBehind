@@ -1,4 +1,4 @@
-import { Button, Timeline, TimelineItem } from '@anteng/ui'
+import { Button, Timeline, TimelineItem } from '@pkg/ui'
 import { computed, defineComponent, type PropType, shallowRef } from 'vue'
 import './style.scss'
 import { PageView } from '../../../../../router'

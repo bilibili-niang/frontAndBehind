@@ -1,10 +1,10 @@
 import { computed, defineComponent, inject, PropType, Ref, ref, watch } from 'vue'
 import './style.scss'
-import { ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { ScrollTab, ScrollTabItem } from '@pkg/ui'
 import { DeckComponentConfig } from '../types'
 import Taro from '@tarojs/taro'
-import { uuid, withUnit } from '@anteng/utils'
-import { emitter, useAppStore } from '@anteng/core'
+import { uuid, withUnit } from '@pkg/utils'
+import { emitter, useAppStore } from '@pkg/core'
 import { findLastIndex } from 'lodash-es'
 
 type AnchorComp = {

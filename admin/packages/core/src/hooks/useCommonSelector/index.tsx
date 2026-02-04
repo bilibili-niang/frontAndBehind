@@ -1,10 +1,10 @@
-import { ConfigProvider, Modal } from '@anteng/ui'
+import { ConfigProvider, Modal } from '@pkg/ui'
 import { defineAsyncComponent, defineComponent, ref, render, type PropType, watch } from 'vue'
 import './style.scss'
-import { PREFIX_CLS } from '@anteng/config'
-import { CommonWidgetPropsDefine } from '@anteng/jsf'
-import { type FunctionalWidgetProps } from '@anteng/jsf/src/types/schema'
-import { renderAnyNode } from '@anteng/utils'
+import { PREFIX_CLS } from '@pkg/config'
+import { CommonWidgetPropsDefine } from '@pkg/jsf'
+import { type FunctionalWidgetProps } from '@pkg/jsf/src/types/schema'
+import { renderAnyNode } from '@pkg/utils'
 import useAppStore from '../../stores/app'
 
 /**

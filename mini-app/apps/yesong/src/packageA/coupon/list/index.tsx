@@ -1,5 +1,5 @@
 import './style.scss'
-import { BasePage, EmptyStatus, useAppStore, usePagination, useUserStore } from '@anteng/core'
+import { BasePage, EmptyStatus, useAppStore, usePagination, useUserStore } from '@pkg/core'
 import { Button, ScrollView, Swiper, SwiperItem } from '@tarojs/components'
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'

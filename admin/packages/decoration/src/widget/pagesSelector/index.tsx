@@ -1,7 +1,7 @@
 // 页面选择器（通用选择器样式），对齐导航编辑器中的“展示页面”选择器
-import { CommonWidgetPropsDefine } from '@anteng/jsf'
+import { CommonWidgetPropsDefine } from '@pkg/jsf'
 import { defineComponent } from 'vue'
-import { useCommonSelector, useTabSearchTable } from '@anteng/core'
+import { useCommonSelector, useTabSearchTable } from '@pkg/core'
 import { decorationList as DecorationList, systemList as SystemList } from '../../../lib'
 
 // 作为通用选择器的弹窗内容

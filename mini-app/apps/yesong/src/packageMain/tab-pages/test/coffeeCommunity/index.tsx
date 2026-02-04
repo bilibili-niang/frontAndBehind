@@ -1,8 +1,8 @@
 import { computed, defineComponent, ref, watch } from 'vue'
 import './index.scss'
-import { BasePage, navigateTo } from '@anteng/core'
+import { BasePage, navigateTo } from '@pkg/core'
 import { Image, Text, View } from '@tarojs/components'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { buildImgUrl } from '../../../../utils/test'
 import { navigateToCommunityDetail } from '../../../../router'
 

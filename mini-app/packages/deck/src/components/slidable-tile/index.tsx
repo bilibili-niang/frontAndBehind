@@ -1,10 +1,10 @@
 import { computed, defineComponent, onUnmounted, ref, watch } from 'vue'
 import './style.scss'
 import { Image, Swiper, SwiperItem } from '@tarojs/components'
-import { onPageHide, onPageShow } from '@anteng/core'
-import { Icon } from '@anteng/ui'
+import { onPageHide, onPageShow } from '@pkg/core'
+import { Icon } from '@pkg/ui'
 import { nextTick } from '@tarojs/taro'
-import { uuid, withUnit } from '@anteng/utils'
+import { uuid, withUnit } from '@pkg/utils'
 import { clamp } from 'lodash-es'
 import { useAction } from '../../hooks/useAction'
 

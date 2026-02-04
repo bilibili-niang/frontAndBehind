@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType } from 'vue'
 import './style.scss'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { useGoodsSkuModal, useGoodsSku } from '../../../../hooks'
 import { Image } from '@tarojs/components'
 import { IGoodsDetail } from '../../../../api/goods/types'

@@ -1,5 +1,5 @@
 import Config from '../components/config'
-import { message, Modal } from '@anteng/ui'
+import { message, Modal } from '@pkg/ui'
 import { $getNavigationDetail } from '../../../../api'
 
 export const createNavigation = (refresh: () => 0) => {

@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { DatePicker } from '@anteng/ui'
+import { DatePicker } from '@pkg/ui'
 
 export default defineComponent({
   name: 'sw_date-picker',

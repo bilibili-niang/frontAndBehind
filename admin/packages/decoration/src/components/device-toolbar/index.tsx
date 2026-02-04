@@ -1,6 +1,6 @@
 import './style.scss'
 import { defineComponent, computed } from 'vue'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { useDecorationStore } from '../../store'
 
 export default defineComponent({

@@ -3,7 +3,7 @@ import './style.scss'
 import { useAction } from '../../hooks/useAction'
 import Taro from '@tarojs/taro'
 import { DeckComponentConfig } from '../types'
-import { withUnit } from '@anteng/utils'
+import { withUnit } from '@pkg/utils'
 
 type TileComp = {
   content: string

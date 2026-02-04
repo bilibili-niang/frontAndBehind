@@ -52,7 +52,7 @@ useAuthStore().initFromLocal()
 
 ## 开发/测试环境快速登录
 
-为提升联调效率，系统提供 `isTestDev()` 环境判断工具（来自 `@anteng/utils`）。
+为提升联调效率，系统提供 `isTestDev()` 环境判断工具（来自 `@pkg/utils`）。
 
 在 `packages/core/src/views/login/index.tsx` 的处理逻辑中，当未输入账号/验证码且当前为开发或测试环境时，将：
 
@@ -63,7 +63,7 @@ useAuthStore().initFromLocal()
 示例（节选）：
 
 ```ts
-import { isTestDev } from '@anteng/utils'
+import { isTestDev } from '@pkg/utils'
 import useUserStore from '../../stores/user'
 import { useAuthStore } from '@/store/auth'
 

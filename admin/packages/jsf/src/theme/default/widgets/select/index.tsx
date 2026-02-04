@@ -1,5 +1,5 @@
 import { computed, defineComponent, ref } from 'vue'
-import { Icon, Select } from '@anteng/ui'
+import { Icon, Select } from '@pkg/ui'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import { getWidgetConfig } from '../../../../utils/widget'

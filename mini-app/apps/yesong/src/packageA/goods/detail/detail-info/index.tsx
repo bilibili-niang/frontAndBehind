@@ -1,4 +1,4 @@
-import { RichText } from '@anteng/core'
+import { RichText } from '@pkg/core'
 import { defineComponent, PropType } from 'vue'
 import './style.scss'
 import { IGoodsDetail } from '../../../../api/goods/types'

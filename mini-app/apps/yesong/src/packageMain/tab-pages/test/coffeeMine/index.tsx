@@ -1,12 +1,12 @@
 // 我的（个人中心 - Coffee 风格）
 import { computed, defineComponent, onMounted } from 'vue'
-import { BasePage, useLogin, useUserStore, withLogin } from '@anteng/core'
+import { BasePage, useLogin, useUserStore, withLogin } from '@pkg/core'
 import { Image, Text, View } from '@tarojs/components'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import './index.scss'
 import { storeToRefs } from 'pinia'
 import { navigateToCoupon, navigateToOrderList, navigateToSettings, navigateToWallet } from '../../../../router'
-import { DEFAULT_AVATAR } from '@anteng/config'
+import { DEFAULT_AVATAR } from '@pkg/config'
 import { useProfileStore } from '../../../../stores/profile'
 import { REQUEST_DOMAIN } from '../../../../api/request'
 

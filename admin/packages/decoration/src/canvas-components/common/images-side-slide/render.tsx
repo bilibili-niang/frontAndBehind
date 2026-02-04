@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType } from 'vue'
 import manifest from './manifest'
-import Title from '@anteng/decoration/src/canvas-components/common/title/render'
+import Title from '@pkg/decoration/src/canvas-components/common/title/render'
 import './style.scss'
 import Image1 from './temp/1.png'
 import Image2 from './temp/2.png'
@@ -10,7 +10,7 @@ import Image5 from './temp/5.png'
 import Image6 from './temp/6.png'
 import { chunk } from 'lodash'
 
-import { DeckComponent, withUnit } from '@anteng/decoration'
+import { DeckComponent, withUnit } from '@pkg/decoration'
 
 export { manifest }
 

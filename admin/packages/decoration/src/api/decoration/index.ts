@@ -1,4 +1,4 @@
-import { request } from '@anteng/core'
+import { request } from '@pkg/core'
 
 // 获取装修页面列表（接入后端系统页面分页接口）
 export const $decorationList = (params: any) => {

@@ -7,7 +7,7 @@ import {
   usePagination,
   useResponseMessage,
   useToast
-} from '@anteng/core'
+} from '@pkg/core'
 import { ShopList } from '../../../../components/suitable-shops'
 import { computed, ref, shallowRef } from 'vue'
 import ShopItem from '../../../../components/shop-item'
@@ -16,7 +16,7 @@ import CountStepper from '../../../../components/count-stepper'
 import { getGoodsOrderDetail } from '../../../../api'
 import { IOrderDetail } from '../../../../api/order/types'
 import { $getCouponAuditRecords, $postAuditDynamicCoupon, $postAuditStaticCoupon } from '../../../../api/coupon'
-import { ModalActions } from '@anteng/core/src/hooks/useModal/useModalActions'
+import { ModalActions } from '@pkg/core/src/hooks/useModal/useModalActions'
 import OrderGoodsItem from '../../../../components/order-goods-item'
 import { STORE_COUPON_MODE_DYNAMIC, STORE_COUPON_MODE_STATIC } from '@pkg/shared/constants'
 

@@ -7,17 +7,17 @@ anTeng 前端管理系统是一个基于 Vue 3 + TypeScript + Vite + Ant Design 
 ## 技术栈
 
 - Vue 3、TypeScript、Vite、Vue Router、Pinia
-- Ant Design Vue（由 `@anteng/ui` 做轻封装并统一样式前缀）
+- Ant Design Vue（由 `@pkg/ui` 做轻封装并统一样式前缀）
 - pnpm + workspace（apps + packages 多仓协同）
 - TSX 优先的组件开发体验（同时兼容 Vue SFC）
 
 ## 包与模块
 
-- `@anteng/ui`：在 Ant Design Vue 之上封装按钮、输入、Modal、message、Icon 等通用组件与能力
-- `@anteng/core`：通用业务逻辑与基础能力（路由增强、弹窗登录、CRUD、Hooks 等）
-- `@anteng/utils`：工具函数（如 `isTestDev()`、环境/颜色/文本等工具）
-- `@anteng/config`：跨应用的常量、主题与前缀约定（`PREFIX_CLS` 等）
-- `@anteng/styles`：全局样式变量与主题（SCSS）
+- `@pkg/ui`：在 Ant Design Vue 之上封装按钮、输入、Modal、message、Icon 等通用组件与能力
+- `@pkg/core`：通用业务逻辑与基础能力（路由增强、弹窗登录、CRUD、Hooks 等）
+- `@pkg/utils`：工具函数（如 `isTestDev()`、环境/颜色/文本等工具）
+- `@pkg/config`：跨应用的常量、主题与前缀约定（`PREFIX_CLS` 等）
+- `@pkg/styles`：全局样式变量与主题（SCSS）
 - 业务应用：`apps/admin` 为管理端应用，按需引用上述包
 
 ## 主要特性

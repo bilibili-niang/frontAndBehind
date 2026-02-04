@@ -1,4 +1,4 @@
-import { BasePage, useLoading, useLoadingEnd, useToast } from '@anteng/core'
+import { BasePage, useLoading, useLoadingEnd, useToast } from '@pkg/core'
 import { defineComponent } from 'vue'
 import './style.scss'
 import { Button } from '@tarojs/components'

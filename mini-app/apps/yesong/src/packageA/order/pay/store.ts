@@ -5,7 +5,7 @@ import { cloneDeep } from 'lodash-es'
 import Taro from '@tarojs/taro'
 import { IGoodsDetail } from '../../../api/goods/types'
 import { WxAddress } from '../../../types'
-import { PAYMENT_METHOD_NONE, SUB_PAYMENT_METHOD_OPTIONS } from '@anteng/config'
+import { PAYMENT_METHOD_NONE, SUB_PAYMENT_METHOD_OPTIONS } from '@pkg/config'
 import useMerchantStore from '../../../stores/merchant'
 import { useOrderCouponSelector } from './coupon-selector'
 

@@ -1,7 +1,7 @@
 // 页面/列表/商品 路径选择
 import './style.scss'
 import { defineComponent, ref, computed, nextTick, watch } from 'vue'
-import { EmptyStatus, usePopup, useUserStore } from '@anteng/core'
+import { EmptyStatus, usePopup, useUserStore } from '@pkg/core'
 import { Tabs, TabPane } from '@nutui/nutui-taro'
 import '@nutui/nutui-taro/dist/packages/tabs/index.css'
 import '@nutui/nutui-taro/dist/packages/tabpane/index.css'
@@ -11,7 +11,7 @@ import GoodsCategory from './commponents/goods-category/index'
 import { editorPoster } from '../../packageA/posterMaking/create/dataProcessing'
 import { HOME_PAGE, tabsValue } from '../../constants'
 import { utmStore } from '../../stores'
-import { Search } from '@anteng/ui'
+import { Search } from '@pkg/ui'
 import { storeToRefs } from 'pinia'
 
 export default defineComponent({

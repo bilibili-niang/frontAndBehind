@@ -1,8 +1,8 @@
 import { ref } from 'vue'
 import type { SchemaFormModalOptions } from './useSchemaFormModal'
 import useSchemaFormModal from './useSchemaFormModal'
-import { useRequestErrorMessage } from '@anteng/core'
-import { message, Modal } from '@anteng/ui'
+import { useRequestErrorMessage } from '@pkg/core'
+import { message, Modal } from '@pkg/ui'
 import { COMMON_STATUS_OFF, COMMON_STATUS_ON } from '../constants'
 import type { CommonStatus, UseCrudOptions } from '../types'
 

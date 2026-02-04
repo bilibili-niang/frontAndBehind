@@ -1,5 +1,5 @@
 import { computed, defineComponent } from 'vue'
-import { Radio } from '@anteng/ui'
+import { Radio } from '@pkg/ui'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import { getWidgetConfig } from '../../../../utils/widget'
 

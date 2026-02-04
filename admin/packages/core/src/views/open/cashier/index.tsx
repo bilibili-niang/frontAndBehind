@@ -1,5 +1,5 @@
-import { useCrud, useSearchTable, useTableAction } from '@anteng/core'
-import { Button } from '@anteng/ui'
+import { useCrud, useSearchTable, useTableAction } from '@pkg/core'
+import { Button } from '@pkg/ui'
 import { defineComponent } from 'vue'
 import {
   $createOpenAppCashier,

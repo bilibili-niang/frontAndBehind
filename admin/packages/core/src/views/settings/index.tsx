@@ -1,14 +1,14 @@
 import { computed, defineComponent } from 'vue'
 import useAppStore from '../../stores/app'
 import { storeToRefs } from 'pinia'
-import { Icon, Modal } from '@anteng/ui'
+import { Icon, Modal } from '@pkg/ui'
 import './style.scss'
 import './style.dark.scss'
 
 import Appearance from './appearance'
 import About from './about'
 import User from './user'
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 
 export default defineComponent({
   name: 'AppSettings',

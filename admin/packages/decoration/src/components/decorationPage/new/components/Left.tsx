@@ -1,6 +1,6 @@
 import './left.scss'
 import { defineComponent } from 'vue'
-import { Icon, PropertyTabs, ScrollContainer } from '@anteng/ui'
+import { Icon, PropertyTabs, ScrollContainer } from '@pkg/ui'
 import { useDecorationStore } from '../../../../store'
 
 export default defineComponent({

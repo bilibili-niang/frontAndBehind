@@ -2,9 +2,9 @@
 import './style.scss'
 import { defineComponent, ref } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { Icon, message } from '@anteng/ui'
+import { Icon, message } from '@pkg/ui'
 import request from '../../../../../../core/src/api/request'
-import { Spin } from '@anteng/core'
+import { Spin } from '@pkg/core'
 import { cloneDeep } from 'lodash'
 
 export default defineComponent({

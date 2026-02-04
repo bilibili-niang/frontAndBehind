@@ -4,8 +4,8 @@ import './style.scss'
 import { type RouteRecordRaw, useRoute, useRouter } from 'vue-router'
 import useBasicLayoutStore from '../../../../stores/basic-layout'
 import { storeToRefs } from 'pinia'
-import { PREFIX_CLS } from '@anteng/config'
-import { Icon } from '@anteng/ui'
+import { PREFIX_CLS } from '@pkg/config'
+import { Icon } from '@pkg/ui'
 
 type MenuNode = RouteRecordRaw & {
   children?: MenuNode[]

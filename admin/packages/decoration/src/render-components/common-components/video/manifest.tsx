@@ -1,5 +1,5 @@
-import { useImageSelector } from '@anteng/core'
-import { Button, Input } from '@anteng/ui'
+import { useImageSelector } from '@pkg/core'
+import { Button, Input } from '@pkg/ui'
 
 export default {
   schema: {

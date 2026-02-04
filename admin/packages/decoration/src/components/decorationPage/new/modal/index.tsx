@@ -1,13 +1,13 @@
 import './index.scss'
 import { defineComponent, reactive, ref } from 'vue'
-import { Button, message, Modal } from '@anteng/ui'
-import { type Schema, SchemaForm } from '@anteng/jsf'
+import { Button, message, Modal } from '@pkg/ui'
+import { type Schema, SchemaForm } from '@pkg/jsf'
 import { $createDecorationPage, $updateDecorationPage } from '../../../../api/decoration'
 import { $createSystemPage, $updateSystemPage } from '../../../../api/systempage'
 import { useDecorationStore } from '../../../../store'
-import { SCENE_YESONG } from '@anteng/config'
+import { SCENE_YESONG } from '@pkg/config'
 import { cloneDeep } from 'lodash'
-import { router } from '@anteng/core'
+import { router } from '@pkg/core'
 
 type PublishMeta = {
   title: string

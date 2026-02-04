@@ -1,4 +1,4 @@
-import { formatTimeDuration } from '@anteng/utils'
+import { formatTimeDuration } from '@pkg/utils'
 import { ref, Ref, watch, onUnmounted, computed } from 'vue'
 
 interface CountdownHook {

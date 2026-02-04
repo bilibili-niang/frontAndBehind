@@ -1,6 +1,6 @@
 import { computed, defineComponent, ref, watch } from 'vue'
 import './hot-search.scss'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { useSearchStore } from '../../stores'
 import { storeToRefs } from 'pinia'
 import useAction from '../../hooks/useAction'

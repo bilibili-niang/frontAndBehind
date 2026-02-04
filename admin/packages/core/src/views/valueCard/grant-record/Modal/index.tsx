@@ -1,7 +1,7 @@
 // 该储值卡的收支明细
-import { useModal, useSearchTable } from '@anteng/core'
+import { useModal, useSearchTable } from '@pkg/core'
 import { budgetType } from '@/constants/valueCard'
-import { moneyToYuan } from '@anteng/utils'
+import { moneyToYuan } from '@pkg/utils'
 
 export const budgetRecord = (cardNo?: string) => {
   const { Table, refresh } = useSearchTable({

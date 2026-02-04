@@ -8,8 +8,8 @@ import {
   useSelector,
   useSmsSchema,
   useTableAction
-} from '@anteng/core'
-import { Alert, Button, JsonView, message } from '@anteng/ui'
+} from '@pkg/core'
+import { Alert, Button, JsonView, message } from '@pkg/ui'
 import { computed, defineComponent, ref, watch } from 'vue'
 import {
   $createPhysicalValueCard,
@@ -18,7 +18,7 @@ import {
   $getPhysicalValueCardOperateLog,
   $getValueCardList
 } from '../../../api/valueCard'
-import { Schema } from '@anteng/jsf'
+import { Schema } from '@pkg/jsf'
 import {
   ValueCardOperateLogTypeOptions,
   ValueCardBatchStatusOptions,

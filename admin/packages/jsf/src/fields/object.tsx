@@ -3,7 +3,7 @@ import { useCommonField, useObjectFiled } from '../utils/field'
 import { commonFieldPropsDefine } from '../types/field'
 import { isObject } from '../utils/common'
 import type { ObjectSchema, Schema } from '../types/schema'
-import { Switch } from '@anteng/ui'
+import { Switch } from '@pkg/ui'
 import { mountWidgetRef } from '../pluginsInject'
 
 // TODO 将这个逻辑提升到 retrieveSchema 阶段

@@ -1,4 +1,4 @@
-import { PRESET_SCHEMA, getPresetFieldDefault, getPresetFieldSchema } from '@anteng/jsf'
+import { PRESET_SCHEMA, getPresetFieldDefault, getPresetFieldSchema } from '@pkg/jsf'
 
 export default {
   schema: {

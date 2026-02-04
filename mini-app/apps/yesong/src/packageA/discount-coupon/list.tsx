@@ -1,4 +1,4 @@
-import { BasePage, emitter, TabPage, TabPageItem, useCommonTab, usePagination } from '@anteng/core'
+import { BasePage, emitter, TabPage, TabPageItem, useCommonTab, usePagination } from '@pkg/core'
 import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
 import './list.scss'
 import { $getMyDiscountCouponList } from '../../api/discount-coupon'

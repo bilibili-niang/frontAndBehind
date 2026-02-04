@@ -1,6 +1,6 @@
 // TODO 使用类实现，数据、视图分离。
 
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import { DeckComponent } from './types'
 import { checkIsNestable } from './nest'
 

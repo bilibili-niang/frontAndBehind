@@ -8,7 +8,7 @@ import {
   removeCartItem,
   updateCartItem
 } from '../api/cart'
-import { useLoading, useLoadingEnd, useResponseMessage, useToast, withLogin } from '@anteng/core'
+import { useLoading, useLoadingEnd, useResponseMessage, useToast, withLogin } from '@pkg/core'
 import { navigateToOrderPay } from '../router'
 import { ORDER_ORIGIN_CART } from '../constants'
 import { buildImgUrl } from '../utils'

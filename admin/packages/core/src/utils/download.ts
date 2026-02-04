@@ -1,4 +1,4 @@
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 // 文件下载
 export const downloadFile = (url: string, fileName?: string) => {
   if (!url) return void 0

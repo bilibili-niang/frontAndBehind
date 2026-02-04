@@ -21,7 +21,7 @@ title: 数据展示
 </template>
 
 <script setup lang="ts">
-import { Result, Empty } from '@anteng/ui'
+import { Result, Empty } from '@pkg/ui'
 </script>
 ```
 

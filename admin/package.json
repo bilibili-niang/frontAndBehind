@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "admin:dev": "pnpm --filter ./apps/admin dev",
-    "admin:build:test": "pnpm --filter ./apps/admin build-test",
-    "admin:build:prod": "pnpm --filter ./apps/admin build",
+    "admin:dev": "pnpm --filter @pkg/admin dev",
+    "admin:build:test": "pnpm --filter @pkg/admin build-test",
+    "admin:build:prod": "pnpm --filter @pkg/admin build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

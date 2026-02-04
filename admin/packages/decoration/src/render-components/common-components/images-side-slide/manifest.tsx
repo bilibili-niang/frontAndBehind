@@ -1,4 +1,4 @@
-import { manifest as titleManifest } from '@anteng/decoration/src/canvas-components/common/title/render'
+import { manifest as titleManifest } from '@pkg/decoration/src/canvas-components/common/title/render'
 
 export default {
   schema: {

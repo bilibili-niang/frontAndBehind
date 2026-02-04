@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, readonly, ref, shallowRef, toRaw, watch } from 'vue'
 import Taro from '@tarojs/taro'
-import { DIRECT_WEAPP_OPTIONS } from '@anteng/config'
+import { DIRECT_WEAPP_OPTIONS } from '@pkg/config'
 import dayjs from 'dayjs'
 import { generateColorPalette } from '../../../utils/src/color'
 import { $getOpenAppId, $getShortLinkContent } from '../api'

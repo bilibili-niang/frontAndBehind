@@ -1,7 +1,7 @@
 import { defineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
 import * as echarts from 'echarts'
 import request from '../../api/request'
-import { Spin } from '@anteng/ui'
+import { Spin } from '@pkg/ui'
 
 type UseEChartsOptions = {
   config?: any

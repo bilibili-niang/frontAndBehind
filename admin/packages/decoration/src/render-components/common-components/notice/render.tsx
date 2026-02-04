@@ -4,9 +4,9 @@ import './style.scss'
 export { default as manifest } from './manifest'
 import images from '../../images.json'
 import { DeckComponent } from '../../../stores/canvas'
-import { ImageDefine } from '@anteng/core'
+import { ImageDefine } from '@pkg/core'
 import { withUnit } from '../../../canvas-components/utils'
-import { useAction, ActionItem } from '@anteng/core'
+import { useAction, ActionItem } from '@pkg/core'
 import { clamp } from 'lodash'
 
 type NoticeItem = {

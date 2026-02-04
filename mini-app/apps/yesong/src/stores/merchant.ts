@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, readonly, ref } from 'vue'
 import { IMerchantOrderFlow, requestGetMerchantOrderFlow } from '../api/merchant'
-import { useAppStore } from '@anteng/core'
+import { useAppStore } from '@pkg/core'
 import { getMerchantId } from '../api'
 import dayjs from 'dayjs'
 import { PAYMENT_END_UNIT_DAY, PAYMENT_END_UNIT_HOUR, PAYMENT_END_UNIT_MINUTE } from '../constants'

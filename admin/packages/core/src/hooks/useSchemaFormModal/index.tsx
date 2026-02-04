@@ -1,10 +1,10 @@
-import { Button, Modal, message } from '@anteng/ui'
+import { Button, Modal, message } from '@pkg/ui'
 import { type Ref, defineComponent, ref, reactive, isRef, computed, toRaw } from 'vue'
 import { cloneDeep } from 'lodash'
 import uuid from '../../utils/uuid'
 import './style.scss'
 
-import { type Schema, SchemaForm, validateForm } from '@anteng/jsf'
+import { type Schema, SchemaForm, validateForm } from '@pkg/jsf'
 import Errors from './errors'
 import useContextMenu from '../useContextMenu'
 import useRequestErrorMessage from '../useRequestErrorMessage'

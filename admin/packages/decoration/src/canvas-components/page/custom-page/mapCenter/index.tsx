@@ -1,6 +1,6 @@
-import { useMapCenter } from '@anteng/core'
-import { CommonWidgetPropsDefine } from '@anteng/jsf'
-import { Icon } from '@anteng/ui'
+import { useMapCenter } from '@pkg/core'
+import { CommonWidgetPropsDefine } from '@pkg/jsf'
+import { Icon } from '@pkg/ui'
 import { computed, defineComponent, withModifiers } from 'vue'
 
 export default defineComponent({

@@ -1,8 +1,8 @@
 import { computed, defineComponent } from 'vue'
 import { CommonSurveyWidgetPropsDefine, RemoveAnswer, useAnswerValue } from '../ types'
 import './style.scss'
-import { Icon, Radio } from '@anteng/ui'
-import { useModal } from '@anteng/core'
+import { Icon, Radio } from '@pkg/ui'
+import { useModal } from '@pkg/core'
 import { ANSWER_VALUE_FIELD } from '../../../constants'
 
 export const Select = defineComponent({

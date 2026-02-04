@@ -1,4 +1,4 @@
-import type { Schema } from '@antengjsf'
+import type { Schema } from '@pkgjsf'
 
 export type ActionDefine = {
   key: string

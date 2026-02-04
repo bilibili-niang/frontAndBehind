@@ -1,10 +1,10 @@
 import Taro from '@tarojs/taro'
 import { computed, defineComponent, PropType, ref, watch } from 'vue'
 import './style.scss'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { REQUEST_DOMAIN, getAuthHeaders } from '../../api/request'
 import { Image } from '@tarojs/components'
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 import Spin from '../spin'
 import { usePreviewImages } from '../../hooks'
 

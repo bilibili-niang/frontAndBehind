@@ -1,4 +1,4 @@
-import { BasePage } from '@anteng/core'
+import { BasePage } from '@pkg/core'
 import { defineComponent } from 'vue'
 import './404.scss'
 

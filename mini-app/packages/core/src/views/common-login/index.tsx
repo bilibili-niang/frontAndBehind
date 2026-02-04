@@ -1,6 +1,6 @@
 import { computed, defineComponent, onUnmounted, shallowRef, watch } from 'vue'
 import './style.scss'
-import { withUnit } from '@anteng/utils'
+import { withUnit } from '@pkg/utils'
 import { useUserStore, useAppStore } from '../../stores'
 import QuickLogin from './quick-login'
 import config from './config.json'

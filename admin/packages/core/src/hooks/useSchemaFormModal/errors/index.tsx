@@ -1,7 +1,7 @@
 import { computed, defineComponent, type PropType } from 'vue'
 import './style.scss'
-import { Button, message, Popover } from '@anteng/ui'
-import type { ErrorSchema } from '@anteng/jsf'
+import { Button, message, Popover } from '@pkg/ui'
+import type { ErrorSchema } from '@pkg/jsf'
 import Icon from '../../../../../ui/src/components/icon'
 
 export default defineComponent({

@@ -1,4 +1,4 @@
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import { defineAction } from '../utils'
 import { ACTION_KEY_SEARCH } from '../constant'
 

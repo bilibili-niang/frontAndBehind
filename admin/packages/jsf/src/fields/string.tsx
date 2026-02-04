@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { commonFieldPropsDefine } from '../types/field'
 import { useCommonField } from '../utils/field'
-import { Button } from '@anteng/ui'
+import { Button } from '@pkg/ui'
 import { mountWidgetRef } from '../pluginsInject'
 
 export default defineComponent({

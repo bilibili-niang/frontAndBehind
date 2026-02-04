@@ -1,7 +1,7 @@
 import { computed, defineComponent, ref, watch } from 'vue'
 import './style.scss'
 import { clamp } from 'lodash'
-import { uuid } from '@anteng/core'
+import { uuid } from '@pkg/core'
 
 export default defineComponent({
   name: 'TextSlider',

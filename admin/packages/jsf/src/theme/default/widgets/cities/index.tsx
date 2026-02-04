@@ -1,6 +1,6 @@
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { Cascader, Icon, message } from '@anteng/ui'
+import { Cascader, Icon, message } from '@pkg/ui'
 
 // ！！！不要用同步代码，数据很大，使用异步加载
 // import citiesDate from './cities.json'

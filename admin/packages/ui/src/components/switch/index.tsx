@@ -2,7 +2,7 @@ import { Switch, type SwitchProps } from 'ant-design-vue'
 import './style.scss'
 
 import { defineComponent, ref } from 'vue'
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 
 export default defineComponent<SwitchProps>({
   name: `${PREFIX_CLS}-switch`,

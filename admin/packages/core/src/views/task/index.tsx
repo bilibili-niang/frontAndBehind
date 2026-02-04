@@ -1,6 +1,6 @@
 import { computed, defineComponent, onMounted, reactive, ref } from 'vue'
 import './style.scss'
-import { Button, Empty, Icon, Pagination, Spin, Tag } from '@anteng/ui'
+import { Button, Empty, Icon, Pagination, Spin, Tag } from '@pkg/ui'
 import Dayjs from 'dayjs'
 import { getBackgroundTasks } from '../../api/task'
 import { useRequestErrorMessage } from '../../hooks/useRequestErrorMessage'

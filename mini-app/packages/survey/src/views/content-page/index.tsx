@@ -4,8 +4,8 @@ import { useSurveyFormStore } from '../../stores/form'
 import { storeToRefs } from 'pinia'
 import QuestionItem from './question-item'
 import { DEFAULT_SURVEY_NAME } from '../../constants'
-import { Icon } from '@anteng/ui'
-import { useLoading, useLoadingEnd, useLogin, useResponseMessage, useUserStore } from '@anteng/core'
+import { Icon } from '@pkg/ui'
+import { useLoading, useLoadingEnd, useLogin, useResponseMessage, useUserStore } from '@pkg/core'
 
 export default defineComponent({
   name: '',

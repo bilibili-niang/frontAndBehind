@@ -1,4 +1,4 @@
-import { RangePicker } from '@anteng/ui'
+import { RangePicker } from '@pkg/ui'
 import { defineComponent, ref } from 'vue'
 import './styles/range-picker.scss'
 import { commonSearchTableWidgetPropsDefine } from './types'

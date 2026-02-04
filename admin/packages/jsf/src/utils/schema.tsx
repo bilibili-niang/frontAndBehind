@@ -1,7 +1,7 @@
 import { defaultsDeep } from 'lodash'
 import { useThemeContext } from '../theme'
 import type { ArraySchema, Schema, SchemaTypes } from '../types/schema'
-import { Alert } from '@anteng/ui'
+import { Alert } from '@pkg/ui'
 
 /** 定义 Schema 辅助函数 */
 export const defineSchema = (schema: Schema) => schema

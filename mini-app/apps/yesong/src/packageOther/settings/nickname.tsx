@@ -1,4 +1,4 @@
-import { BasePage, navigateBack, useToast, useUserStore } from '@anteng/core'
+import { BasePage, navigateBack, useToast, useUserStore } from '@pkg/core'
 import { Input } from '@tarojs/components'
 import { defineComponent, ref } from 'vue'
 import './nickname.scss'

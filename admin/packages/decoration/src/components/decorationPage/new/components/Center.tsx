@@ -1,6 +1,6 @@
 import './center.scss'
 import { defineComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { Icon, Modal } from '@anteng/ui'
+import { Icon, Modal } from '@pkg/ui'
 import { useDecorationStore } from '../../../../store'
 import customPageSchema from '../../../../store/customPageSchema'
 import { cloneDeep, defaultsDeep } from 'lodash'

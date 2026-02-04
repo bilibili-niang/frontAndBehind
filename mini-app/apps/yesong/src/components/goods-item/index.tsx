@@ -1,7 +1,7 @@
 import { computed, defineComponent, PropType, ref, SlotsType, watch } from 'vue'
 import './style.scss'
 import { Image } from '@tarojs/components'
-import { formatPrice } from '@anteng/utils'
+import { formatPrice } from '@pkg/utils'
 import { GOODS_TYPE_STORE_VERIFICATION } from '../../../src/constants'
 
 export type GoodsItemOptions = {

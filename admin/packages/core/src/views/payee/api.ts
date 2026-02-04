@@ -1,4 +1,4 @@
-import { PaymentScene } from '@anteng/uiconfig'
+import { PaymentScene } from '@pkg/uiconfig'
 import request from '../../api/request'
 
 /** 获取收款账户配置 */

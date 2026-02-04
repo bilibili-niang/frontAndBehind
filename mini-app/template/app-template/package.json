@@ -1,5 +1,5 @@
 {
-  "name": "@anteng/{{name}}",
+  "name": "@pkg/{{name}}",
   "version": "1.0.0",
   "private": true,
   "description": "",

@@ -1,4 +1,4 @@
-import { Modal } from '@anteng/ui'
+import { Modal } from '@pkg/ui'
 
 const useVideoPreview = (config: { url: string }) => {
   Modal.open({

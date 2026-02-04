@@ -2,8 +2,8 @@ import { PropType, computed, defineComponent, withModifiers } from 'vue'
 import './style.scss'
 import useAction, { Action } from '../../../hooks/useAction'
 import TextSlider from '../../text-slider'
-import Iconfont from '@anteng/core/src/components/iconfont'
-import { DeckComponentConfig } from '@anteng/deck'
+import Iconfont from '@pkg/core/src/components/iconfont'
+import { DeckComponentConfig } from '@pkg/deck'
 
 interface ISearchData {
   placeholder: string

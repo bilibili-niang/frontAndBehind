@@ -4,7 +4,7 @@ import { DeckComponentConfig } from '../types'
 import { BaseEventOrigFunction, ScrollView, ScrollViewProps, Swiper, SwiperItem } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { clamp } from 'lodash-es'
-import { uuid, withUnit } from '@anteng/utils'
+import { uuid, withUnit } from '@pkg/utils'
 import { Action, useAction } from '../../hooks/useAction'
 
 type ImageDefine = any

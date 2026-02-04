@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import uuid from '../utils/uuid'
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 
 const useLicenseOcr = () => {
   const licenseStatus = ref<'loading' | 'success' | 'error' | null>(null)

@@ -1,9 +1,9 @@
 import { ref, render } from 'vue'
-import { Button, ConfigProvider, Modal, message } from '@anteng/ui'
+import { Button, ConfigProvider, Modal, message } from '@pkg/ui'
 import TinyMce from '../components/tiny-mce'
 import useDumpImages, { useCheckThirdPartyImageFromRichText } from './useDumpImages'
 import { useRequestErrorMessage } from './useRequestErrorMessage'
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 import useAppStore from '../stores/app'
 
 let modal: any = null

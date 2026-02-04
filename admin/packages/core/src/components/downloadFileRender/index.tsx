@@ -1,8 +1,8 @@
 // 下载模板的按钮
 import './index.scss'
 import { defineComponent } from 'vue'
-import { Icon, message } from '@anteng/ui'
-import { downloadFile } from '@anteng/core'
+import { Icon, message } from '@pkg/ui'
+import { downloadFile } from '@pkg/core'
 
 /*
  * @param item: string 文件地址

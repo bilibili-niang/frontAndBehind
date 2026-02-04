@@ -1,9 +1,9 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { WxAddress } from '../../types'
 import { useExpress, useExpressModal } from '../../hooks'
-import { useCopyText, useToast } from '@anteng/core'
+import { useCopyText, useToast } from '@pkg/core'
 import { EXPRESS_STATUS_OPTIONS } from '../../constants'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import './style.scss'
 import { onMounted } from 'vue'
 

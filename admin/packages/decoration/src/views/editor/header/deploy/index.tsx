@@ -2,10 +2,10 @@ import { defineComponent, ref } from 'vue'
 import './style.scss'
 import useCanvasStore from '../../../../stores/canvas'
 import { storeToRefs } from 'pinia'
-import { Button, DatePicker, Input, Switch, Textarea, message } from '@anteng/ui'
+import { Button, DatePicker, Input, Switch, Textarea, message } from '@pkg/ui'
 import useEditorStore from '../../../../stores/editor'
 import useSnapshotStore from '../../../../stores/snapshot'
-import { router, useRequestErrorMessage } from '@anteng/core'
+import { router, useRequestErrorMessage } from '@pkg/core'
 
 export default defineComponent({
   name: 'LegoDeployModal',

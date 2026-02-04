@@ -52,33 +52,33 @@ apps/admin/
 
 ## packages 结构
 
-### `@anteng/core`
+### `@pkg/core`
 - 通用逻辑与基础能力：路由增强、CRUD、Hooks、组件封装等
 - 重要视图：`packages/core/src/views/**`
 
-### `@anteng/ui`
+### `@pkg/ui`
 - 在 Ant Design Vue 之上封装常用组件（Button、Input、Modal、message、Icon 等）
 - 全局前缀：通过 `ConfigProvider.config({ prefixCls: PREFIX_CLS })` 统一样式前缀
 
-### `@anteng/utils`
+### `@pkg/utils`
 - 工具方法：颜色、文本、复制、环境判断（`isTestDev()`）等
 
-### `@anteng/config`
+### `@pkg/config`
 - 常量与主题：`PREFIX_CLS`、场景常量、LOGO 等
 
-### `@anteng/styles`
+### `@pkg/styles`
 - SCSS 变量与主题色，Vite 通过 `additionalData` 全局注入
 
 ## 命名与导入约定
 
 - 组件文件与导出使用 PascalCase；路由页面位于 `views/**/index.tsx`
-- 使用 `@` 指向应用 `src`；工作区包使用 `@anteng/<name>` 引入
+- 使用 `@` 指向应用 `src`；工作区包使用 `@pkg/<name>` 引入
 
 ```ts
-import { Button, message } from '@anteng/ui'
-import { router } from '@anteng/core'
-import { PREFIX_CLS } from '@anteng/config'
-import { isTestDev } from '@anteng/utils'
+import { Button, message } from '@pkg/ui'
+import { router } from '@pkg/core'
+import { PREFIX_CLS } from '@pkg/config'
+import { isTestDev } from '@pkg/utils'
 ```
 
 ## 代码组织原则

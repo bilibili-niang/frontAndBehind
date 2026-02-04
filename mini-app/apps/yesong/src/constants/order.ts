@@ -1,4 +1,4 @@
-import { COLOR_DISABLED, COLOR_ERROR, COLOR_PROCESSING, COLOR_SUCCESS } from '@anteng/config'
+import { COLOR_DISABLED, COLOR_ERROR, COLOR_PROCESSING, COLOR_SUCCESS } from '@pkg/config'
 import { GOODS_TYPE_ENTITY } from './goods'
 
 /** 订单来源：商品详情下单 */

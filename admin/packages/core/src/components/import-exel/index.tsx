@@ -1,7 +1,7 @@
 // 导入表单文件
 import DownloadFileRender from '../downloadFileRender/index'
 import FileUploader from '../file-uploader/index'
-import { useModal } from '@anteng/core'
+import { useModal } from '@pkg/core'
 import { ref } from 'vue'
 
 /*

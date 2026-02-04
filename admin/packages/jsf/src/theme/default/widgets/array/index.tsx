@@ -2,7 +2,7 @@ import { computed, defineComponent, type PropType, ref, watch } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import Collapse from '../../../../components/collapse'
 import './style.scss'
-import { Empty, Icon, Popover, Tabs, Tooltip } from '@anteng/ui'
+import { Empty, Icon, Popover, Tabs, Tooltip } from '@pkg/ui'
 import { useArrayField } from '../../../../utils/field'
 import { getWidgetConfig, useInjectInlineEnable } from '../../../../utils/widget'
 

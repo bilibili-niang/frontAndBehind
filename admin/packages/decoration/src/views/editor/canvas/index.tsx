@@ -5,7 +5,7 @@ import { storeToRefs } from 'pinia'
 import ComponentItem from './component-item'
 import useCanvasStore from '../../../stores/canvas'
 
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import useComponentStore, { type ComponentDefine } from '../../../stores/component'
 import { SCOPE_LOGIN } from '../../../constants'
 

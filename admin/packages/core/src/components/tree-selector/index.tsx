@@ -3,8 +3,8 @@
  * @description 基于 TreeSelect 的树形选择器组件,用于widget,
  */
 
-import { Cascader, TreeSelect } from '@anteng/ui'
-import { CommonWidgetPropsDefine } from '@anteng/jsf'
+import { Cascader, TreeSelect } from '@pkg/ui'
+import { CommonWidgetPropsDefine } from '@pkg/jsf'
 import { request } from '../../../lib'
 import { computed, ref, DefineComponent, Ref, ComputedRef } from 'vue'
 

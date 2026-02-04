@@ -1,4 +1,4 @@
-import { TENCENT_MAP_KEY } from '@anteng/config'
+import { TENCENT_MAP_KEY } from '@pkg/config'
 import jsonp from 'jsonp'
 
 /**

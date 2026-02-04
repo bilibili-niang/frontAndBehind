@@ -1,6 +1,6 @@
-import { Spin, message } from '@anteng/ui'
+import { Spin, message } from '@pkg/ui'
 import { computed, reactive, ref } from 'vue'
-import { ImageWidget } from '@anteng/jsf/src/theme/default/widgets/image'
+import { ImageWidget } from '@pkg/jsf/src/theme/default/widgets/image'
 import uuid from '../../../../../utils/uuid'
 import recognizeBusinessLicense from '../../../../../api/recognizeBusinessLicense'
 import { useSchemaFormModal, type ImageDefine, useRequestErrorMessage, useAppStore } from '../../../../../../lib'

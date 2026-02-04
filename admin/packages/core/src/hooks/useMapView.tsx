@@ -1,5 +1,5 @@
 import useWebView from './useWebView'
-import { TENCENT_MAP_KEY } from '@anteng/config'
+import { TENCENT_MAP_KEY } from '@pkg/config'
 
 export interface IUseMapViewOptions {
   name: string

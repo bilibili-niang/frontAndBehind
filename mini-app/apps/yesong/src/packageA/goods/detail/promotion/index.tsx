@@ -1,9 +1,9 @@
 import { defineComponent, PropType } from 'vue'
 import './style.scss'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { useReceiveCoupon } from '../../../../hooks'
-import { formatPrice } from '@anteng/utils'
-import { usePagination } from '@anteng/core'
+import { formatPrice } from '@pkg/utils'
+import { usePagination } from '@pkg/core'
 import { IDiscountCoupon } from '../../../../api/discount-coupon/types'
 import { DiscountCouponScene } from '../../../../constants/discount-coupon'
 

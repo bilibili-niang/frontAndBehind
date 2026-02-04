@@ -1,6 +1,6 @@
 import { ref, render } from 'vue'
-import { ConfigProvider, Modal } from '@anteng/ui'
-import { PREFIX_CLS } from '@anteng/config'
+import { ConfigProvider, Modal } from '@pkg/ui'
+import { PREFIX_CLS } from '@pkg/config'
 import type { ImageDefine, ResourceModalCfg } from '../components/image-selector/Resource'
 import Resource from '../components/image-selector/Resource'
 import { useImageCrop } from '../components/image-selector/useImageCrop'

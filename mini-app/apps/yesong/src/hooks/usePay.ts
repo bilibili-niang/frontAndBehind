@@ -8,7 +8,7 @@ import {
   useToast,
   withWechatBind,
   useOpenWeapp
-} from '@anteng/core'
+} from '@pkg/core'
 
 /** 唤起支付，注意：此处 orderNo 为统一订单单号！ */
 export const usePay = (

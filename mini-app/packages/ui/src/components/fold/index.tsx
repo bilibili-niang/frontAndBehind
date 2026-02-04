@@ -2,7 +2,7 @@ import { defineComponent, onMounted, ref } from 'vue'
 import './style.scss'
 import Taro from '@tarojs/taro'
 import Icon from '../icon'
-import { useAppStore } from '@anteng/core'
+import { useAppStore } from '@pkg/core'
 
 export default defineComponent({
   name: 'c_fold',

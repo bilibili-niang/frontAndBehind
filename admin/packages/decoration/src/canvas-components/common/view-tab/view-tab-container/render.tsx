@@ -1,6 +1,6 @@
 import { PropType, computed, defineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
 import useCanvasStore, { DeckComponent } from '../../../../stores/canvas'
-import { Empty, message, ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { Empty, message, ScrollTab, ScrollTabItem } from '@pkg/ui'
 import { findLastIndex } from 'lodash'
 import { storeToRefs } from 'pinia'
 import ComponentItem from '../../../../views/editor/canvas/component-item'

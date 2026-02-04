@@ -1,6 +1,6 @@
 import './style.scss'
 import { defineComponent, computed, onMounted, reactive, ref, nextTick } from 'vue'
-import { BasePage, useConfirm, useUserStore, ImageUploader } from '@anteng/core'
+import { BasePage, useConfirm, useUserStore, ImageUploader } from '@pkg/core'
 import Taro from '@tarojs/taro'
 import { Input } from '@tarojs/components'
 import PageSelector from '../../../components/page-selector'
@@ -10,10 +10,10 @@ import { base64src } from './PosterBuilder/utils/tools'
 import { utmStore } from '../../../stores'
 import { getGoodsDetail } from '../../../api'
 import { cloneDeep } from 'lodash-es'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { navigateBack } from '../../../router'
 import { storeToRefs } from 'pinia'
-import { DEFAULT_AVATAR } from '@anteng/config'
+import { DEFAULT_AVATAR } from '@pkg/config'
 
 definePageConfig({
   navigationStyle: 'custom',

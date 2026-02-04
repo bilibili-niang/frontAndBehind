@@ -1,4 +1,4 @@
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import './icon.js'
 import './style.scss'

@@ -1,7 +1,7 @@
 import { Button } from '@tarojs/components'
 import useModal from '../useModal'
 import './style.scss'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { makePhoneCall } from '../../utils'
 import useToast from '../useToast'
 import Taro from '@tarojs/taro'

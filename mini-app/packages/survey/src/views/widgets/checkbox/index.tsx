@@ -5,7 +5,7 @@ import './style.scss'
 import { ANSWER_EXTRA_FIELD, ANSWER_VALUE_FIELD, ERROR_MESSAGE_REQUIRED, WIDGET_CHECKBOX } from '../../../constants'
 import { CommonSurveyWidgetPropsDefine, defineManifest, RemoveAnswer, useAnswerValue } from '../ types'
 import { Input } from '@tarojs/components'
-import { useToast } from '@anteng/core'
+import { useToast } from '@pkg/core'
 import { getTextValueValidator, validateTextValue } from '../../../utils'
 
 export const Checkbox = defineComponent({

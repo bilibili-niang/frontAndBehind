@@ -1,4 +1,4 @@
-import { registerActions } from '@anteng/core'
+import { registerActions } from '@pkg/core'
 import openPage from './open-page'
 
 // 暴露注册函数，避免在包加载阶段产生循环依赖

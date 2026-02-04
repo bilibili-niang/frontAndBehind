@@ -1,5 +1,5 @@
 import { defineComponent, onMounted } from 'vue'
-import { Alert, Button } from '@anteng/ui'
+import { Alert, Button } from '@pkg/ui'
 import './style.scss'
 import { RouterView, useRoute, useRouter } from 'vue-router'
 import { PageView } from '../../../router'

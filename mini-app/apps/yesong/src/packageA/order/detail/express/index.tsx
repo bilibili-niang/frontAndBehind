@@ -1,11 +1,11 @@
 import { computed, defineComponent, onMounted, PropType, ref, watch } from 'vue'
 import './style.scss'
 import { WxAddress } from '../../../../types'
-import { Icon, ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { Icon, ScrollTab, ScrollTabItem } from '@pkg/ui'
 import { useExpress, useExpressModal } from '../../../../hooks'
-import { useCopyText } from '@anteng/core'
+import { useCopyText } from '@pkg/core'
 import { EXPRESS_STATUS_OPTIONS } from '../../../../constants'
-import { EXPRESS_COMPANY_OPTIONS } from '@anteng/config'
+import { EXPRESS_COMPANY_OPTIONS } from '@pkg/config'
 
 export type ExpressPackItem = {
   courierName: string

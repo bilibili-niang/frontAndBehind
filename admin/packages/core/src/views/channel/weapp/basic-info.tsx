@@ -1,4 +1,4 @@
-import { Icon, Tooltip, message } from '@anteng/ui'
+import { Icon, Tooltip, message } from '@pkg/ui'
 import { defineComponent } from 'vue'
 import { CUSTOMER_TYPE_OPTIONS, PRINCIPAL_TYPE_OPTIONS } from './constant'
 import { WECHATPAY_APPLY_STAUS_COMPLETED } from '../../../../../../apps/cs/center/src/views/finance/wechat-pay-apply/constants'

@@ -1,6 +1,6 @@
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import './style.scss'
-import { Alert, Button, Icon, message } from '@anteng/ui'
+import { Alert, Button, Icon, message } from '@pkg/ui'
 import { useRoute } from 'vue-router'
 import DevSettings from './dev-settings'
 import PermissionList from './permission-list'
@@ -11,7 +11,7 @@ import { useRequestErrorMessage } from '../../../hooks/useRequestErrorMessage'
 import Spin from '../../../components/spin'
 import WechatPayApply from './wechat-pay-apply'
 import useAppStore from '../../../stores/app'
-import { SCENE_STORE, SCENE_VENUE } from '@anteng/config'
+import { SCENE_STORE, SCENE_VENUE } from '@pkg/config'
 
 export default defineComponent({
   name: 'StoreChannelWeapp',

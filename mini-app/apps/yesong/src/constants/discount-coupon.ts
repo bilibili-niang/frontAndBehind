@@ -1,4 +1,4 @@
-import { COLOR_DISABLED, COLOR_ERROR, COLOR_PROCESSING, COLOR_SUCCESS, COLOR_WARNING } from '@anteng/config'
+import { COLOR_DISABLED, COLOR_ERROR, COLOR_PROCESSING, COLOR_SUCCESS, COLOR_WARNING } from '@pkg/config'
 
 export enum DiscountCouponStatus {
   /** 待使用 */

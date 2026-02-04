@@ -1,4 +1,4 @@
-import { Radio } from '@anteng/ui'
+import { Radio } from '@pkg/ui'
 import useModal from '../useModal'
 import { ComputedValue, useComputedValue } from '../useComputedValue'
 import './style.scss'

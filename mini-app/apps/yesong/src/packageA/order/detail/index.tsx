@@ -1,4 +1,4 @@
-import { BasePage, emitter, EmptyStatus, onPageShow, useCopyText, useCountdown, useResponseMessage } from '@anteng/core'
+import { BasePage, emitter, EmptyStatus, onPageShow, useCopyText, useCountdown, useResponseMessage } from '@pkg/core'
 import { computed, defineComponent, onUnmounted, ref } from 'vue'
 import './style.scss'
 import { useRouter } from '@tarojs/taro'
@@ -14,7 +14,7 @@ import {
   PAYMENT_CHANNEL_OPTIONS
 } from '../../../constants'
 import { navigateToAfterSaleResult, navigateToGoodsDetail } from '../../../router'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import ActionBar from './action-bar'
 import Express from './express'
 import useMerchantStore from '../../../stores/merchant'
@@ -32,7 +32,7 @@ import {
   ORDER_STATUS_COMPLETED,
   ORDER_STATUS_PENDING_PAYMENT
 } from '../../../constants/order'
-import { formatPrice } from '@anteng/utils'
+import { formatPrice } from '@pkg/utils'
 
 definePageConfig({
   navigationStyle: 'custom'

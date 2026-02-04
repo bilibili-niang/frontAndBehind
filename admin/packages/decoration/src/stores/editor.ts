@@ -1,4 +1,4 @@
-import { type ContextMenuItem } from '@anteng/core'
+import { type ContextMenuItem } from '@pkg/core'
 import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
 // 移除接口相关逻辑与快照依赖，保留画布与缩放逻辑

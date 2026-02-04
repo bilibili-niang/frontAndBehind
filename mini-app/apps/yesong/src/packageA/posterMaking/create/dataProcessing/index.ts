@@ -1,9 +1,9 @@
 // 海报创建/更新的数据处理逻辑
 import { ref } from 'vue'
-import { useResponseMessage, useToast } from '@anteng/core'
+import { useResponseMessage, useToast } from '@pkg/core'
 import { createPoster, updatePoster } from '../../../../api/posterMarking'
 import { base64src } from '../PosterBuilder/utils/tools'
-import { $getWxacodeUnlimit } from '@anteng/core/src/api'
+import { $getWxacodeUnlimit } from '@pkg/core/src/api'
 import { utmStore } from '../../../../stores'
 
 interface posterItem {

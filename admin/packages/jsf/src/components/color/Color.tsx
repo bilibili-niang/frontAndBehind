@@ -1,6 +1,6 @@
 import { computed, reactive, ref, watch } from 'vue'
 import { defineComponent } from 'vue'
-import { Icon, Input, InputNumber, message } from '@anteng/ui'
+import { Icon, Input, InputNumber, message } from '@pkg/ui'
 import { hsv2rgb, rgb2hsv, rgb2hex, hex2rgb } from './utils'
 import type { RGB, RGBA, HSV } from './utils'
 

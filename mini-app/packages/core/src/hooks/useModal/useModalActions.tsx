@@ -1,7 +1,7 @@
 import { computed, defineComponent, isRef, PropType, Ref } from 'vue'
 import './useModalActions.scss'
 import Spin from '../../components/spin'
-import { renderAnyNode } from '@anteng/utils'
+import { renderAnyNode } from '@pkg/utils'
 import { ComputedValue, useComputedValue } from '../useComputedValue'
 
 export type ModalActions = {

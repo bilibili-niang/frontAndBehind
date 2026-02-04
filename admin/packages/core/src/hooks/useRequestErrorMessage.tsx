@@ -1,4 +1,4 @@
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import { uuid } from '../../lib'
 import { ResponseData } from '../api/request'
 

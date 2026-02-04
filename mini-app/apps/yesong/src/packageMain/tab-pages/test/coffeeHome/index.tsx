@@ -1,8 +1,8 @@
 // 点单列表（可交互）
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { Image, Text, View } from '@tarojs/components'
-import { ScrollTab, ScrollTabItem, SearchBar, Icon } from '@anteng/ui'
-import { BasePage, useToast, Spin, useModal } from '@anteng/core'
+import { ScrollTab, ScrollTabItem, SearchBar, Icon } from '@pkg/ui'
+import { BasePage, useToast, Spin, useModal } from '@pkg/core'
 import GoodsItem from '../../../../components/goods-item'
 import { buildCoffeeImgUrl } from '../../../../utils/test'
 import './index.scss'

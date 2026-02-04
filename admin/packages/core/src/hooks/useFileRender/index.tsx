@@ -3,12 +3,12 @@ import { useComputedValue, type ComputedValue } from '../useComputedValue'
 import './style.scss'
 import { difference } from 'lodash'
 import test from '../../utils/test'
-import { Button, Icon } from '@anteng/ui'
+import { Button, Icon } from '@pkg/ui'
 import useModal from '../useModal'
 import { downloadFile, useContextMenu, useImagePreview } from '../../../lib'
 import useVideoPreview from '../useVideoPreview'
 import useAudioPreview from '../useAudioPreview'
-import { copyText } from '@anteng/utils'
+import { copyText } from '@pkg/utils'
 
 export const useFileRender = (
   files: ComputedValue<string[]>,

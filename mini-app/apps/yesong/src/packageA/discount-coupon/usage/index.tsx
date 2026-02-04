@@ -8,7 +8,7 @@ import {
   usePagination,
   useResponseMessage,
   withLogin
-} from '@anteng/core'
+} from '@pkg/core'
 import CouponItem, { CouponItemButton } from '../components/coupon-item'
 import GoodsList from '../../../components/goods-list'
 import { $getGoodsList } from '../../../api'
@@ -21,7 +21,7 @@ import {
 import { useRouter } from '@tarojs/taro'
 import { couponUseTimeRangeType, IDiscountCoupon, IDiscountCouponRecord } from '../../../api/discount-coupon/types'
 import dayjs from 'dayjs'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { DiscountCouponScene } from '../../../constants/discount-coupon'
 
 definePageConfig({

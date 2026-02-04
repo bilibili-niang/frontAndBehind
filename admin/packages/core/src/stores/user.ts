@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import request from '../api/request'
-import { message, Modal } from '@anteng/ui'
+import { message, Modal } from '@pkg/ui'
 import router from '../router'
 import useAppStore from './app'
-import { SCENE_YESONG } from '@anteng/config'
+import { SCENE_YESONG } from '@pkg/config'
 import { $logout } from '../api/login'
 
 interface IUserInfo {

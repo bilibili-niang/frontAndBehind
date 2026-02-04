@@ -1,5 +1,5 @@
 import { getWebviewAuthFile, updatePrivacy, updateWebviewUrls } from '../../../api/weapp'
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import { defineComponent, ref } from 'vue'
 import { useRequestErrorMessage } from '../../../hooks/useRequestErrorMessage'
 

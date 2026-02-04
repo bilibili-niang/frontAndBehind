@@ -1,5 +1,5 @@
-import { Schema } from '@anteng/jsf'
-import { Icon } from '@anteng/ui'
+import { Schema } from '@pkg/jsf'
+import { Icon } from '@pkg/ui'
 import { h } from 'vue'
 
 const notCustomCondition = (rootValue: any, parentalValue: any) => {

@@ -2,8 +2,8 @@ import { computed, defineComponent, onUnmounted, PropType, ref, watch } from 'vu
 import './style.scss'
 import { storeToRefs } from 'pinia'
 import Taro from '@tarojs/taro'
-import { emitter, useAppStore, useQuickMenu } from '@anteng/core'
-import { Icon } from '@anteng/ui'
+import { emitter, useAppStore, useQuickMenu } from '@pkg/core'
+import { Icon } from '@pkg/ui'
 
 const backToIndex = () => {
   const url = '/packageMain/index'

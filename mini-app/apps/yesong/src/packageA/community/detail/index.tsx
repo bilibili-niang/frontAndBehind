@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue'
-import { BasePage } from '@anteng/core'
+import { BasePage } from '@pkg/core'
 import { Image, Text, Video, View } from '@tarojs/components'
 import { buildImgUrl } from '../../../utils/test'
 import './style.scss'

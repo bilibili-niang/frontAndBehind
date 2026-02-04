@@ -5,8 +5,8 @@ import { SCHEMA_FORM_THEME } from './theme'
 import './style.scss'
 import type { Theme } from './types/theme'
 import { defaultsDeep } from 'lodash'
-import { message, Modal, Textarea } from '@anteng/ui'
-import { useContextMenu, uuid } from '@anteng/core'
+import { message, Modal, Textarea } from '@pkg/ui'
+import { useContextMenu, uuid } from '@pkg/core'
 
 const { rootSchema, rootValue, path, ...schemaFormPropsDefine } = CommonPropsDefine
 

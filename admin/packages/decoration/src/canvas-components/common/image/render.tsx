@@ -3,7 +3,7 @@ import './style.scss'
 import type { DeckComponent } from '../../../stores/canvas'
 import Empty from '../empty.vue'
 import { ActionImageDefine } from '../../../widgets/action-image'
-import { useAction } from '@anteng/core'
+import { useAction } from '@pkg/core'
 
 export { default as manifest } from './manifest'
 

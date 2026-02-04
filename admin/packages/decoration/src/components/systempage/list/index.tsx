@@ -1,10 +1,10 @@
 // 系统页面
 import { defineComponent } from 'vue'
 import { $createSystemPage, $deleteSystemPage, $systemPageList, $updateSystemPage } from '../../../api'
-import { Button } from '@anteng/ui'
-import type { Schema } from '@anteng/core'
-import { CommonSelectorPropsDefine, useCrud, useSearchTable, useTableAction, router } from '@anteng/core'
-import { SCENE_YESONG } from '@anteng/config'
+import { Button } from '@pkg/ui'
+import type { Schema } from '@pkg/core'
+import { CommonSelectorPropsDefine, useCrud, useSearchTable, useTableAction, router } from '@pkg/core'
+import { SCENE_YESONG } from '@pkg/config'
 
 export default defineComponent({
   props: CommonSelectorPropsDefine,

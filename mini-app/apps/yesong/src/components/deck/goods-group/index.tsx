@@ -1,4 +1,4 @@
-import { useLoadMore, usePagination } from '@anteng/core'
+import { useLoadMore, usePagination } from '@pkg/core'
 import { computed, defineComponent, PropType, ref } from 'vue'
 import GoodsList from '../../../components/goods-list'
 import { requestGetGroupGoods } from '../../../api'

@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import './style.scss'
-import { type Schema, SchemaForm } from '@anteng/jsf'
+import { type Schema, SchemaForm } from '@pkg/jsf'
 import useUserStore from '../../../stores/user'
 import { storeToRefs } from 'pinia'
 export default defineComponent({

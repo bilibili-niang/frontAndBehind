@@ -2,7 +2,7 @@ import usePopup from '../usePopup'
 import { defineComponent, onUnmounted, PropType, ref } from 'vue'
 import Spin from '../../components/spin'
 import './style.scss'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { getPageKey } from '../../utils/router'
 
 const loadingStack: Record<

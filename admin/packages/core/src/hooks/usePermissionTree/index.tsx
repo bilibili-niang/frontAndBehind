@@ -1,8 +1,8 @@
 import { computed, defineComponent, ref, watchEffect, type PropType } from 'vue'
 import './style.scss'
-import { Checkbox, Icon, Popover } from '@anteng/ui'
+import { Checkbox, Icon, Popover } from '@pkg/ui'
 import { PermissionTree, type MenuItem } from './tree'
-import { copyText, renderAnyNode } from '@anteng/utils'
+import { copyText, renderAnyNode } from '@pkg/utils'
 
 const useIndeterminate = false
 

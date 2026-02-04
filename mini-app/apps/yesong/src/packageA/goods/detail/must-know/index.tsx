@@ -1,7 +1,7 @@
 import { RichText } from '@tarojs/components'
 import { computed, defineComponent, PropType } from 'vue'
 import './style.scss'
-import { Fold, Icon } from '@anteng/ui'
+import { Fold, Icon } from '@pkg/ui'
 import { IGoodsDetail } from '../../../../api/goods/types'
 import { COMMON_STATUS_ON, GOODS_TYPE_STORE_VERIFICATION } from '../../../../constants'
 import { calcGoodsUnusableTimeText, calcGoodsUsableTimeText, calcGoodsValidTimeText } from '../../../../utils/goods'

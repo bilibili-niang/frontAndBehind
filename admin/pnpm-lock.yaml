@@ -8,30 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@anteng/config':
-        specifier: workspace:*
-        version: link:packages/config
-      '@anteng/core':
-        specifier: workspace:*
-        version: link:packages/core
-      '@anteng/decoration':
-        specifier: workspace:*
-        version: link:packages/decoration
-      '@anteng/jsf':
-        specifier: workspace:*
-        version: link:packages/jsf
-      '@anteng/resume':
-        specifier: workspace:*
-        version: link:packages/resume
-      '@anteng/styles':
-        specifier: workspace:*
-        version: link:packages/styles
-      '@anteng/ui':
-        specifier: workspace:*
-        version: link:packages/ui
-      '@anteng/utils':
-        specifier: workspace:*
-        version: link:packages/utils
       '@antv/l7':
         specifier: ^2.22.0
         version: 2.23.0
@@ -41,6 +17,30 @@ importers:
       '@antv/l7-maps':
         specifier: ^2.22.0
         version: 2.23.0
+      '@pkg/config':
+        specifier: workspace:*
+        version: link:packages/config
+      '@pkg/core':
+        specifier: workspace:*
+        version: link:packages/core
+      '@pkg/decoration':
+        specifier: workspace:*
+        version: link:packages/decoration
+      '@pkg/jsf':
+        specifier: workspace:*
+        version: link:packages/jsf
+      '@pkg/resume':
+        specifier: workspace:*
+        version: link:packages/resume
+      '@pkg/styles':
+        specifier: workspace:*
+        version: link:packages/styles
+      '@pkg/ui':
+        specifier: workspace:*
+        version: link:packages/ui
+      '@pkg/utils':
+        specifier: workspace:*
+        version: link:packages/utils
       '@surely-vue/table':
         specifier: 4.2.12
         version: 4.2.12(vue@3.5.22(typescript@5.3.3))
@@ -319,248 +319,13 @@ importers:
         specifier: ^3.9.2
         version: 3.10.5(typescript@5.3.3)(vite-plugin-vuetify@2.1.2)(vue@3.5.22(typescript@5.3.3))
     devDependencies:
-      '@anteng/core':
+      '@pkg/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@anteng/resume':
+      '@pkg/resume':
         specifier: workspace:*
         version: link:../../packages/resume
-      '@anteng/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      '@rushstack/eslint-patch':
-        specifier: ^1.3.3
-        version: 1.14.0
-      '@swc/core':
-        specifier: ~1.6.0
-        version: 1.6.13
-      '@tailwindcss/vite':
-        specifier: ^4.1.12
-        version: 4.1.14(vite@5.4.20(@types/node@18.19.130)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.1))
-      '@tsconfig/node18':
-        specifier: ^18.2.2
-        version: 18.2.4
-      '@types/jsdom':
-        specifier: ^21.1.6
-        version: 21.1.7
-      '@types/jsonp':
-        specifier: ^0.2.3
-        version: 0.2.3
-      '@types/lodash':
-        specifier: ^4.14.202
-        version: 4.17.20
-      '@types/node':
-        specifier: ^18.19.3
-        version: 18.19.130
-      '@types/nprogress':
-        specifier: ^0.2.3
-        version: 0.2.3
-      '@types/postcss-pxtorem':
-        specifier: ^6.0.0
-        version: 6.1.0
-      '@types/qrcode':
-        specifier: ^1.5.5
-        version: 1.5.5
-      '@types/url-parse':
-        specifier: ^1.4.11
-        version: 1.4.11
-      '@vitejs/plugin-vue':
-        specifier: ^4.5.2
-        version: 4.6.2(vite@5.4.20(@types/node@18.19.130)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.1))(vue@3.5.22(typescript@5.3.3))
-      '@vitejs/plugin-vue-jsx':
-        specifier: ^3.1.0
-        version: 3.1.0(vite@5.4.20(@types/node@18.19.130)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.1))(vue@3.5.22(typescript@5.3.3))
-      '@vue/eslint-config-prettier':
-        specifier: ^8.0.0
-        version: 8.0.0(@types/eslint@8.56.12)(eslint@8.57.1)(prettier@3.6.2)
-      '@vue/eslint-config-typescript':
-        specifier: ^12.0.0
-        version: 12.0.0(eslint-plugin-vue@9.33.0(eslint@8.57.1))(eslint@8.57.1)(typescript@5.3.3)
-      '@vue/test-utils':
-        specifier: ^2.4.3
-        version: 2.4.6
-      '@vue/tsconfig':
-        specifier: ^0.5.0
-        version: 0.5.1
-      autoprefixer:
-        specifier: ^10.4.21
-        version: 10.4.21(postcss@8.5.6)
-      chalk:
-        specifier: ^5.3.0
-        version: 5.6.2
-      commitizen:
-        specifier: ^4.3.0
-        version: 4.3.1(@types/node@18.19.130)(typescript@5.3.3)
-      cz-git:
-        specifier: ^1.8.0
-        version: 1.12.0
-      esbuild:
-        specifier: ^0.23.1
-        version: 0.23.1
-      eslint:
-        specifier: ^8.49.0
-        version: 8.57.1
-      eslint-plugin-vue:
-        specifier: ^9.17.0
-        version: 9.33.0(eslint@8.57.1)
-      esno:
-        specifier: ^4.0.0
-        version: 4.8.0
-      husky:
-        specifier: ^9.0.7
-        version: 9.1.7
-      inquirer:
-        specifier: ^9.2.12
-        version: 9.3.8(@types/node@18.19.130)
-      jsdom:
-        specifier: ^23.0.1
-        version: 23.2.0
-      lint-staged:
-        specifier: ^15.2.1
-        version: 15.5.2
-      minimist:
-        specifier: ^1.2.8
-        version: 1.2.8
-      move-cli:
-        specifier: ^2.0.0
-        version: 2.0.0
-      npm-run-all2:
-        specifier: ^6.1.1
-        version: 6.2.6
-      patch-package:
-        specifier: ^8.0.0
-        version: 8.0.1
-      plop:
-        specifier: ^4.0.1
-        version: 4.0.4(@types/node@18.19.130)
-      postcss:
-        specifier: ^8.5.3
-        version: 8.5.6
-      postcss-pxtorem:
-        specifier: ^5.1.1
-        version: 5.1.1
-      prettier:
-        specifier: ^3.0.3
-        version: 3.6.2
-      rimraf:
-        specifier: ^5.0.7
-        version: 5.0.10
-      sass:
-        specifier: ^1.69.7
-        version: 1.93.2
-      sass-embedded:
-        specifier: ^1.93.2
-        version: 1.93.2
-      tailwindcss:
-        specifier: ^4.1.12
-        version: 4.1.14
-      typescript:
-        specifier: ~5.3.0
-        version: 5.3.3
-      vite:
-        specifier: ^5.0.10
-        version: 5.4.20(@types/node@18.19.130)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.1)
-      vite-plugin-ali-oss:
-        specifier: ^2.0.2
-        version: 2.1.1(vite@5.4.20(@types/node@18.19.130)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.1))
-      vite-plugin-eslint:
-        specifier: ^1.8.1
-        version: 1.8.1(eslint@8.57.1)(vite@5.4.20(@types/node@18.19.130)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.1))
-      vite-plugin-top-level-await:
-        specifier: ^1.4.1
-        version: 1.6.0(rollup@4.52.4)(vite@5.4.20(@types/node@18.19.130)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.1))
-      vite-plugin-vue-devtools:
-        specifier: ^7.2.1
-        version: 7.7.7(rollup@4.52.4)(vite@5.4.20(@types/node@18.19.130)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.1))(vue@3.5.22(typescript@5.3.3))
-      vite-plugin-vuetify:
-        specifier: ^2.1.1
-        version: 2.1.2(vite@5.4.20(@types/node@18.19.130)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.1))(vue@3.5.22(typescript@5.3.3))(vuetify@3.10.5)
-      vitest:
-        specifier: ^1.0.4
-        version: 1.6.1(@types/node@18.19.130)(jsdom@23.2.0)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.1)
-      vue-tsc:
-        specifier: ^1.8.25
-        version: 1.8.27(typescript@5.3.3)
-
-  apps/template:
-    dependencies:
-      '@ant-design/icons-vue':
-        specifier: ^7.0.1
-        version: 7.0.1(vue@3.5.22(typescript@5.3.3))
-      '@antv/l7':
-        specifier: ^2.22.0
-        version: 2.23.0
-      '@antv/l7-draw':
-        specifier: ^3.1.4
-        version: 3.1.5(@antv/l7@2.23.0)
-      '@antv/l7-maps':
-        specifier: ^2.22.0
-        version: 2.23.0
-      '@surely-vue/table':
-        specifier: 4.2.12
-        version: 4.2.12(vue@3.5.22(typescript@5.3.3))
-      '@tinymce/tinymce-vue':
-        specifier: ^5.1.1
-        version: 5.1.1(vue@3.5.22(typescript@5.3.3))
-      ant-design-vue:
-        specifier: ^4.2.6
-        version: 4.2.6(vue@3.5.22(typescript@5.3.3))
-      axios:
-        specifier: ^1.6.7
-        version: 1.12.2
-      cropperjs:
-        specifier: ^1.6.2
-        version: 1.6.2
-      dayjs:
-        specifier: ^1.11.10
-        version: 1.11.18
-      echarts:
-        specifier: ^5.5.1
-        version: 5.6.0
-      jsonp:
-        specifier: ^0.2.1
-        version: 0.2.1
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
-      mitt:
-        specifier: ^3.0.1
-        version: 3.0.1
-      nprogress:
-        specifier: ^0.2.0
-        version: 0.2.0
-      overlayscrollbars:
-        specifier: ^2.12.0
-        version: 2.12.0
-      pinia:
-        specifier: ^2.1.7
-        version: 2.3.1(typescript@5.3.3)(vue@3.5.22(typescript@5.3.3))
-      qrcode:
-        specifier: ^1.5.3
-        version: 1.5.4
-      tinymce:
-        specifier: ^7.0.0
-        version: 7.9.1
-      url-parse:
-        specifier: ^1.5.10
-        version: 1.5.10
-      vue:
-        specifier: ^3.3.11
-        version: 3.5.22(typescript@5.3.3)
-      vue-draggable-plus:
-        specifier: ^0.5.3
-        version: 0.5.6(@types/sortablejs@1.15.8)
-      vue-router:
-        specifier: ^4.2.5
-        version: 4.5.1(vue@3.5.22(typescript@5.3.3))
-      vuetify:
-        specifier: ^3.9.2
-        version: 3.10.5(typescript@5.3.3)(vite-plugin-vuetify@2.1.2)(vue@3.5.22(typescript@5.3.3))
-    devDependencies:
-      '@anteng/core':
-        specifier: workspace:*
-        version: link:../../packages/core
-      '@anteng/ui':
+      '@pkg/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@rushstack/eslint-patch':
@@ -727,12 +492,12 @@ importers:
 
   packages/core:
     dependencies:
-      '@anteng/ui':
-        specifier: workspace:*
-        version: link:../ui
       '@antv/g6':
         specifier: ^5.0.50
         version: 5.0.50(workerize-loader@2.0.2(webpack@5.102.1(@swc/core@1.6.13)(esbuild@0.23.1)))
+      '@pkg/ui':
+        specifier: workspace:*
+        version: link:../ui
       ant-design-vue:
         specifier: ^4.2.6
         version: 4.2.6(vue@3.5.22(typescript@5.8.3))
@@ -758,10 +523,10 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1
     devDependencies:
-      '@anteng/core':
+      '@pkg/core':
         specifier: workspace:*
         version: link:../core
-      '@anteng/styles':
+      '@pkg/styles':
         specifier: workspace:*
         version: link:../styles
       '@types/jsonpath':
@@ -773,10 +538,10 @@ importers:
 
   packages/resume:
     dependencies:
-      '@anteng/core':
+      '@pkg/core':
         specifier: workspace:*
         version: link:../core
-      '@anteng/ui':
+      '@pkg/ui':
         specifier: workspace:*
         version: link:../ui
       pinia:
@@ -796,15 +561,15 @@ importers:
       '@ant-design/icons-vue':
         specifier: ^7.0.1
         version: 7.0.1(vue@3.5.22(typescript@5.8.3))
-      '@anteng/config':
-        specifier: workspace:*
-        version: link:../config
       '@fontsource/roboto':
         specifier: 5.2.6
         version: 5.2.6
       '@mdi/font':
         specifier: 7.4.47
         version: 7.4.47
+      '@pkg/config':
+        specifier: workspace:*
+        version: link:../config
       ant-design-vue:
         specifier: ^4.2.6
         version: 4.2.6(vue@3.5.22(typescript@5.8.3))

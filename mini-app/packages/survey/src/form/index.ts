@@ -10,7 +10,7 @@ import {
   WIDGET_FILE_UPLOADER,
   WIDGET_OPTIONS
 } from '../constants'
-import { useToast } from '@anteng/core'
+import { useToast } from '@pkg/core'
 
 interface SurveyFormItemOptions {
   $id: string

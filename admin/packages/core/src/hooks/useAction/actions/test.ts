@@ -1,4 +1,4 @@
-import { PRESET_SCHEMA } from '@anteng/jsf'
+import { PRESET_SCHEMA } from '@pkg/jsf'
 import { defineAction } from '../utils'
 
 export default defineAction({

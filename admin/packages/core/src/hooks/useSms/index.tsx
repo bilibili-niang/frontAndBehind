@@ -1,7 +1,7 @@
 import { clamp } from 'lodash'
 import { ref } from 'vue'
 import './style.scss'
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import { useResponseMessage } from '../useRequestErrorMessage'
 import { sendMessageCode, sendMessageCodeWithoutPhone } from '../../api/login'
 import test from '../../utils/test'

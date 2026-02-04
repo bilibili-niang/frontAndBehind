@@ -8,7 +8,7 @@ import {
   useToast,
   withWechatBind,
   useOpenWeapp
-} from '@anteng/core'
+} from '@pkg/core'
 
 let TARO_APP_NO_WECHAT_PAY = false
 

@@ -3,12 +3,12 @@ import { DeckComponentConfig } from '../../types'
 import './style.scss'
 import { Input } from '@tarojs/components'
 import Taro, { useRouter } from '@tarojs/taro'
-import { emitter, useUserStore } from '@anteng/core'
-import { Icon } from '@anteng/ui'
-import { sendMessageCode } from '@anteng/core/src/api'
-import { test } from '@anteng/utils'
-import { useToast } from '@anteng/core'
-import { authMessageCode } from '@anteng/core/src/api'
+import { emitter, useUserStore } from '@pkg/core'
+import { Icon } from '@pkg/ui'
+import { sendMessageCode } from '@pkg/core/src/api'
+import { test } from '@pkg/utils'
+import { useToast } from '@pkg/core'
+import { authMessageCode } from '@pkg/core/src/api'
 
 function buildUrl(url, query) {
   const queryString = new URLSearchParams(query).toString()

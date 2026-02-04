@@ -1,8 +1,8 @@
-import { renderAnyNode } from '@anteng/utils'
+import { renderAnyNode } from '@pkg/utils'
 import './style.scss'
 import { clamp, minBy, sortBy, sortedIndex } from 'lodash-es'
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
-import { ComputedValue, useAppStore, useComputedValue } from '@anteng/core'
+import { ComputedValue, useAppStore, useComputedValue } from '@pkg/core'
 import { storeToRefs } from 'pinia'
 import { MovableArea, MovableView, ScrollView } from '@tarojs/components'
 

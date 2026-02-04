@@ -1,4 +1,4 @@
-import { useLoading, useLoadingEnd, useResponseMessage, withLogin } from '@anteng/core'
+import { useLoading, useLoadingEnd, useResponseMessage, withLogin } from '@pkg/core'
 import { navigateToWebview } from '../../../router'
 import { $getJdURL } from '../../../api/other'
 

@@ -1,6 +1,6 @@
 import { type InputHTMLAttributes, computed, defineComponent, reactive, ref, watch } from 'vue'
 import './style.scss'
-import { Input, InputNumber } from '@anteng/ui'
+import { Input, InputNumber } from '@pkg/ui'
 import { hex2Rgb, formatHex, type Rgb, validateHexColor, getRGBA } from './utils'
 import { useColorModal } from '../../../../components/color'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'

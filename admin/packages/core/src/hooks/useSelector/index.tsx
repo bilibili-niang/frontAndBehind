@@ -1,4 +1,4 @@
-import { Select, type SelectProps } from '@anteng/ui'
+import { Select, type SelectProps } from '@pkg/ui'
 import { computed, onMounted, ref, type SetupContext, watch } from 'vue'
 import type { RequestPagination, ResponsePaginationData } from '../../api/request'
 import request from '../../api/request'

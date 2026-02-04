@@ -1,8 +1,8 @@
-import { CommonWidgetPropsDefine, type ObjectSchema, type Schema } from '@anteng/jsf'
+import { CommonWidgetPropsDefine, type ObjectSchema, type Schema } from '@pkg/jsf'
 import { computed, defineComponent, ref, watch } from 'vue'
 import './style.scss'
-import { Icon, Popover } from '@anteng/ui'
-import { getWidgetConfig } from '@anteng/jsf/src/utils/widget'
+import { Icon, Popover } from '@pkg/ui'
+import { getWidgetConfig } from '@pkg/jsf/src/utils/widget'
 import useVideoPreview from '../../hooks/useVideoPreview'
 
 import { cloneDeep } from 'lodash'

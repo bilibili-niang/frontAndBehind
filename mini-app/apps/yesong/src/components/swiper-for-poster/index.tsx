@@ -3,7 +3,7 @@ import './style.scss'
 import { defineComponent, ref } from 'vue'
 import { Image, SwiperItem } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import { withUnit } from '@anteng/utils'
+import { withUnit } from '@pkg/utils'
 
 interface imageItem {
   image: string

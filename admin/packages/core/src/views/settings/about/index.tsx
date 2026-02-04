@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import './style.scss'
-import { Button } from '@anteng/ui'
+import { Button } from '@pkg/ui'
 export default defineComponent({
   name: 'SettingsAbout',
   setup() {

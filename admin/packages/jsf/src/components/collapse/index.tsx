@@ -1,6 +1,6 @@
 import { defineComponent, nextTick, onMounted, ref, watch, withModifiers } from 'vue'
 import './style.scss'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 
 export default defineComponent({
   name: 'jsf_collapse',

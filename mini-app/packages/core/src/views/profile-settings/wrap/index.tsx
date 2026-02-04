@@ -1,4 +1,4 @@
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { defineComponent, PropType } from 'vue'
 import './style.scss'
 

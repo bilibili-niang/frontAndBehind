@@ -1,5 +1,5 @@
-import { PAYMENT_CHANNEL_OPTIONS, UNIFIED_PAYMENT_OPTIONS } from '@anteng/config'
-import { Tooltip } from '@anteng/ui'
+import { PAYMENT_CHANNEL_OPTIONS, UNIFIED_PAYMENT_OPTIONS } from '@pkg/config'
+import { Tooltip } from '@pkg/ui'
 import { defineComponent } from 'vue'
 
 export const PaymentChannelInfo = defineComponent({

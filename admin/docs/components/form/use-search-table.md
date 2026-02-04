@@ -6,7 +6,7 @@
 
 ::: code-group
 ```ts [TSX]
-import { useSearchTable } from '@anteng/core'
+import { useSearchTable } from '@pkg/core'
 
 const { Table, refresh, reload, filterRef, setFilterState } = useSearchTable({
   requestURL: '/api/example/page',
@@ -52,8 +52,8 @@ const { Table, refresh, reload, filterRef, setFilterState } = useSearchTable({
 </template>
 
 <script>
-import { Button } from '@anteng/ui'
-import { SearchTable } from '@anteng/core'
+import { Button } from '@pkg/ui'
+import { SearchTable } from '@pkg/core'
 
 const TABLE_KEY = 'vue2-search-table-demo'
 
@@ -109,7 +109,7 @@ export default {
 - `toolbar`/`toolbarHidden`：工具栏元素与隐藏开关。
 - `filter`：筛选器定义，见下方 Filter DSL。
 - `filterFront`/`filterBehind`：筛选器前/后插槽。
-- `table`：表格参数，继承 `@anteng/ui` 的 `TableProps`，支持 `columns` 中的 `hidden` 字段。
+- `table`：表格参数，继承 `@pkg/ui` 的 `TableProps`，支持 `columns` 中的 `hidden` 字段。
 - `customTable(dataSource, { loading })`：自定义表格渲染，接管默认表格。
 - `requestURL`：分页接口地址（与 `customRequest` 至少一个存在）。
 - `exportURL`：导出地址。
@@ -146,7 +146,7 @@ export default {
 ## 多标签列表
 
 ```ts
-import { useTabSearchTable } from '@anteng/core'
+import { useTabSearchTable } from '@pkg/core'
 
 const { Tabs } = useTabSearchTable([
   { title: '全部', config: { requestURL: '/api/example/page' } },

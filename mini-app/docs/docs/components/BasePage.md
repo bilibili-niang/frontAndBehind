@@ -10,7 +10,7 @@ BasePage 组件解决了这一痛点，并支持使用 hooks 来处理 UI 事务
 ## 使用
 
 ```tsx
-import { BasePage } from '@anteng/core'
+import { BasePage } from '@pkg/core'
 
 <BasePage>
   {/* 页面内容 */}

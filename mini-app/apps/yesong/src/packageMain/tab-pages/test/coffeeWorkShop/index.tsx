@@ -1,9 +1,9 @@
 // 文创
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { Image, Text, View } from '@tarojs/components'
-import { BasePage, useToast, Spin } from '@anteng/core'
+import { BasePage, useToast, Spin } from '@pkg/core'
 import { navigateToCreativeDetail } from '../../../../router'
-import { ScrollTab, ScrollTabItem, SearchBar } from '@anteng/ui'
+import { ScrollTab, ScrollTabItem, SearchBar } from '@pkg/ui'
 import GoodsItem from '../../../../components/goods-item'
 import { buildImgUrl } from '../../../../utils/test'
 import './index.scss'

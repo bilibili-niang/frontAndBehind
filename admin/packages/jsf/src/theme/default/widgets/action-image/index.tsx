@@ -2,7 +2,7 @@ import { defineComponent, ref, watch } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import { ImageWidget } from '../image'
 import ActionWidget from '../../../standard/widgets/action'
-import type { ImageDefine } from '@anteng/core'
+import type { ImageDefine } from '@pkg/core'
 
 export default defineComponent({
   name: 'JSFWidgetActionImage',

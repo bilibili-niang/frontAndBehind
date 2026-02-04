@@ -3,13 +3,13 @@
 统一封装 ECharts 图表，内置数据请求、刷新与筛选、自动高度以及父容器 ResizeObserver 监听，适用于后台 `apps/admin` 等页面快速构建图表。
 
 - 组件/方法路径：`packages/core/src/components/echarts/index.tsx`
-- 对外导出：`import { useECharts, createEChartsWidget } from '@anteng/core'`
+- 对外导出：`import { useECharts, createEChartsWidget } from '@pkg/core'`
 
 ## 最小示例
 
 ```ts
-import { Card } from '@anteng/ui'
-import { createEChartsWidget } from '@anteng/core'
+import { Card } from '@pkg/ui'
+import { createEChartsWidget } from '@pkg/core'
 
 const chart = createEChartsWidget({
   title: '趋势图表',

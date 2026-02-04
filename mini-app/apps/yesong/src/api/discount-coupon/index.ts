@@ -1,6 +1,6 @@
-import { COMMON_STATUS_OFF, COMMON_STATUS_ON } from '@anteng/config'
+import { COMMON_STATUS_OFF, COMMON_STATUS_ON } from '@pkg/config'
 import request from '../request'
-import { PaginationData, RequestPagination } from '@anteng/core'
+import { PaginationData, RequestPagination } from '@pkg/core'
 import { IDiscountCoupon, IDiscountCouponRecord } from './types'
 import { DiscountCouponScene } from '../../constants/discount-coupon'
 

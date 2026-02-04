@@ -7,7 +7,7 @@ import {
   GOODS_VALID_TIME_DURATION,
   GOODS_VALID_TIME_RANGE
 } from '../constants'
-import { formatDate } from '@anteng/utils'
+import { formatDate } from '@pkg/utils'
 
 /** 商品有效期文案 */
 export const calcGoodsValidTimeText = (detail: IGoodsDetail) => {

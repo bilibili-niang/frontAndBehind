@@ -10,7 +10,7 @@ import {
   useToast,
   withLogin,
   usePay
-} from '@anteng/core'
+} from '@pkg/core'
 import { defineComponent, onMounted, reactive } from 'vue'
 import './style.scss'
 import url from 'url-parse'

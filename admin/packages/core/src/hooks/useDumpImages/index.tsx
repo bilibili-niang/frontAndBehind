@@ -1,4 +1,4 @@
-import { Button, Modal, Spin } from '@anteng/ui'
+import { Button, Modal, Spin } from '@pkg/ui'
 import { uniq } from 'lodash'
 import { computed, defineComponent, onMounted, type PropType, ref, toRaw } from 'vue'
 import './style.scss'

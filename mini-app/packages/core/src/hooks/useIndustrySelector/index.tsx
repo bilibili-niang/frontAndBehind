@@ -4,7 +4,7 @@ import './style.scss'
 import { $getIndustry } from '../../api'
 import { useLoading, useLoadingEnd } from '../useLoading'
 import useResponseMessage from '../useResponseMessage'
-import { Icon, ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { Icon, ScrollTab, ScrollTabItem } from '@pkg/ui'
 import EmptyStatus, { EmptyAction } from '../../components/empty-status'
 import useToast from '../useToast'
 

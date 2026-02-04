@@ -1,7 +1,7 @@
 import { computed, defineComponent, onBeforeMount, onMounted, onUnmounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import './style.scss'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import useBasicLayoutStore from '../../../../stores/basic-layout'
 import { storeToRefs } from 'pinia'
 import emitter from '../../../../utils/emitter'

@@ -1,4 +1,4 @@
-import { request } from '@anteng/core'
+import { request } from '@pkg/core'
 
 // 系统页面列表（分页）
 export const $systemPageList = (params: any) => {

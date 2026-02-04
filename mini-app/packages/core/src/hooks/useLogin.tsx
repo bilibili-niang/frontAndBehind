@@ -1,5 +1,5 @@
 import { useAppStore, useUserStore } from '../stores'
-import { buildUrl, navigateTo, redirectTo, usePopup, useToast } from '@anteng/core'
+import { buildUrl, navigateTo, redirectTo, usePopup, useToast } from '@pkg/core'
 import Login from '../views/common-login'
 import Taro, { useRouter } from '@tarojs/taro'
 

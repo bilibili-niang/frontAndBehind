@@ -1,7 +1,7 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { DeckComponentConfig } from '../../types'
 import { DeckRender } from '../../index'
-import { withUnit } from '@anteng/utils'
+import { withUnit } from '@pkg/utils'
 import './style.scss'
 
 export default defineComponent({

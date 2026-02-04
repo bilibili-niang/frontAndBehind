@@ -1,6 +1,6 @@
 import { defineComponent, ref, watch } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../types/widget'
-import { useActionSelector } from '@anteng/core'
+import { useActionSelector } from '@pkg/core'
 
 const ActionWidget = defineComponent({
   name: 'w_action',

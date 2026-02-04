@@ -1,8 +1,8 @@
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { computed, defineComponent, onMounted, PropType, ref, watch } from 'vue'
 import './style.scss'
 import ShopItem, { IShopItemOptions } from '../shop-item'
-import { EmptyStatus, useModal, usePagination, useUserStore } from '@anteng/core'
+import { EmptyStatus, useModal, usePagination, useUserStore } from '@pkg/core'
 import { getGoodsSuitableShops } from '../../api/shop'
 import { ScrollView } from '@tarojs/components'
 

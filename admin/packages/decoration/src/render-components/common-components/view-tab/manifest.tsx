@@ -1,9 +1,9 @@
-import { CommonWidgetPropsDefine } from '@anteng/jsf'
-import { defineSchema } from '@anteng/jsf/src/utils/schema'
+import { CommonWidgetPropsDefine } from '@pkg/jsf'
+import { defineSchema } from '@pkg/jsf/src/utils/schema'
 import { defineComponent } from 'vue'
 import useCanvasStore from '../../../stores/canvas'
 import { storeToRefs } from 'pinia'
-import { Button } from '@anteng/ui'
+import { Button } from '@pkg/ui'
 import container from './view-tab-container'
 
 const List = defineComponent({

@@ -1,9 +1,9 @@
 // 面值widget
 import './style.scss'
 import { defineComponent, ref } from 'vue'
-import { CommonWidgetPropsDefine } from '@anteng/jsf'
-import { Button, message, Table, Input, InputNumber, Icon, Popconfirm } from '@anteng/ui'
-import { useTableAction } from '@anteng/core'
+import { CommonWidgetPropsDefine } from '@pkg/jsf'
+import { Button, message, Table, Input, InputNumber, Icon, Popconfirm } from '@pkg/ui'
+import { useTableAction } from '@pkg/core'
 import { cloneDeep } from 'lodash'
 import { checkObject } from '@/utils'
 

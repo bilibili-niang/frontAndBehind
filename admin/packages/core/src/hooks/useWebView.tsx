@@ -1,4 +1,4 @@
-import { Modal } from '@anteng/ui'
+import { Modal } from '@pkg/ui'
 export interface IUseWebViewOptions {
   title?: string
   link: string

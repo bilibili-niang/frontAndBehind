@@ -1,4 +1,4 @@
-import { PaginationData, RequestPagination } from '@anteng/core'
+import { PaginationData, RequestPagination } from '@pkg/core'
 import request from '../request'
 
 export interface IGoodsGroup {

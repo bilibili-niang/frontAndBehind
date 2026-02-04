@@ -1,7 +1,7 @@
 import { computed, defineComponent, onBeforeUnmount, onMounted, PropType, ref, watch, withModifiers } from 'vue'
 import './style.scss'
 import useCanvasStore, { DeckComponent } from '../../../stores/canvas'
-import { Empty, ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { Empty, ScrollTab, ScrollTabItem } from '@pkg/ui'
 import { storeToRefs } from 'pinia'
 import ComponentItem from '../../../views/editor/canvas/component-item'
 import { withUnit } from '../../utils'

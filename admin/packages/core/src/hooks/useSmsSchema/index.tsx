@@ -1,8 +1,8 @@
-import { Button, Input } from '@anteng/ui'
+import { Button, Input } from '@pkg/ui'
 import { useSms } from '../useSms'
 import useUserStore from '../../stores/user'
 import { storeToRefs } from 'pinia'
-import type { Schema } from '@anteng/jsf'
+import type { Schema } from '@pkg/jsf'
 export const useSmsSchema = (options?: { smsIdKey?: string; valueKey?: string; sendToCurrentUser?: boolean }) => {
   const userStore = useUserStore()
   const { userInfo } = storeToRefs(userStore)

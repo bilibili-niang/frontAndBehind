@@ -1,6 +1,6 @@
 import { type PropType, defineComponent, reactive, watch } from 'vue'
 import './style.scss'
-import { ConfigProvider } from '@anteng/ui'
+import { ConfigProvider } from '@pkg/ui'
 import { PREFIX_CLS } from '../../../../config'
 // 移除对 ant-design-vue locale 的直接依赖，改由应用层统一提供
 

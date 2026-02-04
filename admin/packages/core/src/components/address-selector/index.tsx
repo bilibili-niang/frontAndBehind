@@ -1,7 +1,7 @@
 import { defineComponent, reactive } from 'vue'
 import './style.scss'
-import { Button, Input } from '@anteng/ui'
-import { PREFIX_CLS, TENCENT_MAP_KEY } from '@anteng/config'
+import { Button, Input } from '@pkg/ui'
+import { PREFIX_CLS, TENCENT_MAP_KEY } from '@pkg/config'
 
 export type AddressData = {
   /** 地名 */

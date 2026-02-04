@@ -1,5 +1,5 @@
 
-import { TENCENT_MAP_KEY } from '@anteng/config'
+import { TENCENT_MAP_KEY } from '@pkg/config'
 
 /**
  * 异步加载腾讯地图jssdk

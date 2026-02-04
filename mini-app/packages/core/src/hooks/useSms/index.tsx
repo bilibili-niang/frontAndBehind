@@ -1,8 +1,8 @@
 import { clamp } from 'lodash-es'
 import { ref } from 'vue'
-import { useLoading, useLoadingEnd, useResponseMessage, useToast } from '@anteng/core'
+import { useLoading, useLoadingEnd, useResponseMessage, useToast } from '@pkg/core'
 import './style.scss'
-import { test } from '@anteng/utils'
+import { test } from '@pkg/utils'
 import { sendMessageCode } from '../../api'
 
 export const useSms = (options?: { resendInterval?: number }) => {

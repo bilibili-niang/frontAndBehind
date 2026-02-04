@@ -1,4 +1,4 @@
-import { useConfirm } from '@anteng/core'
+import { useConfirm } from '@pkg/core'
 import Taro from '@tarojs/taro'
 import { defineStore, storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'

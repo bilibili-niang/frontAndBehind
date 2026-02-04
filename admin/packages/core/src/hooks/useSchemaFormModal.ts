@@ -1,8 +1,8 @@
 import { h, reactive, ref } from 'vue'
 import type { Schema } from '../types'
 import useModal from './useModal'
-import { Button, message } from '@anteng/ui'
-import { SchemaForm, validateForm, type ErrorSchema } from '@anteng/jsf'
+import { Button, message } from '@pkg/ui'
+import { SchemaForm, validateForm, type ErrorSchema } from '@pkg/jsf'
 
 export interface SchemaFormModalOptions {
   title: string

@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
-import '@anteng/styles'
+import '@pkg/styles'
 import './app.scss'
 import './style/varibules.scss'
-import { buildUrl, getWeappQrcodeScene, SCENE_STORE, useAppStore, useUserStore } from '@anteng/core'
+import { buildUrl, getWeappQrcodeScene, SCENE_STORE, useAppStore, useUserStore } from '@pkg/core'
 import Taro, { useRouter } from '@tarojs/taro'
 import setup from './setup'
 import { useGlobalStore } from './stores'

@@ -1,7 +1,7 @@
 import { defineComponent, onMounted, ref, watch } from 'vue'
 import './history-records.scss'
 import Taro, { useDidShow } from '@tarojs/taro'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { useSearchStore } from '../../stores'
 import { storeToRefs } from 'pinia'
 

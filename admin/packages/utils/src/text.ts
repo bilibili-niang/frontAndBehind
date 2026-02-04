@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 
 /** 复制文本 */
 export const copyText = (content: string, successMsg?: string) => {

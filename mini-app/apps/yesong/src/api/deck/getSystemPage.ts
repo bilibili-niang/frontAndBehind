@@ -1,6 +1,6 @@
-import { ResponseData } from '@anteng/core'
+import { ResponseData } from '@pkg/core'
 import request from '../request'
-import { ORIGIN_STORE } from '@anteng/config'
+import { ORIGIN_STORE } from '@pkg/config'
 
 const RequestQueue: Record<string, Promise<ResponseData<any>>> = {}
 

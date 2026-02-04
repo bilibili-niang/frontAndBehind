@@ -37,8 +37,8 @@ properties: {
 
 ```ts
 import { defineComponent } from 'vue'
-import { Input } from '@anteng/ui'
-import { CommonWidgetPropsDefine } from '@anteng/jsf'
+import { Input } from '@pkg/ui'
+import { CommonWidgetPropsDefine } from '@pkg/jsf'
 
 const MyInput = defineComponent({
   name: 'MyInput',
@@ -73,7 +73,7 @@ properties: {
 若希望在多个页面复用并通过字符串引用，建议在主题中注册：
 
 ```ts
-import { registerWidget } from '@anteng/jsf'
+import { registerWidget } from '@pkg/jsf'
 
 registerWidget('my-input', MyInput) // 同时注册到 standard/compact 两个主题
 // 或者仅注册到某个主题：registerWidget('my-input', MyInput, 'standard')
@@ -102,7 +102,7 @@ SchemaForm 内置两种主题，用于适配不同的使用场景与展示风格
 注册到指定主题：
 
 ```ts
-import { registerWidget, registerTheme, type Theme } from '@anteng/jsf'
+import { registerWidget, registerTheme, type Theme } from '@pkg/jsf'
 
 // 控件注册到某个主题
 registerWidget('my-input', MyInput, 'standard')

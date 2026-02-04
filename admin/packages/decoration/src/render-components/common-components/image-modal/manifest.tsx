@@ -1,7 +1,7 @@
-import { Schema } from '@anteng/jsf'
+import { Schema } from '@pkg/jsf'
 import image from '../image/manifest'
 import { h } from 'vue'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 
 export const ImageModalManifest = {
   schema: {

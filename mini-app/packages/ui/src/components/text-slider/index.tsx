@@ -1,6 +1,6 @@
 import { computed, defineComponent, onUnmounted, ref, watch } from 'vue'
 import './style.scss'
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 
 export default defineComponent({
   name: 'TextSlider',

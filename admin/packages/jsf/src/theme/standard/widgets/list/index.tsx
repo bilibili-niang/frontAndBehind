@@ -2,7 +2,7 @@ import { defineComponent, ref, watch, type PropType } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 
 import './style.scss'
-import { Button, Icon, Tabs } from '@anteng/ui'
+import { Button, Icon, Tabs } from '@pkg/ui'
 import { useArrayField } from '../../../../utils/field'
 import { getWidgetConfig, useInjectInlineEnable } from '../../../../utils/widget'
 

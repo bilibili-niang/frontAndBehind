@@ -1,6 +1,6 @@
 import { PropType, Ref, computed, defineComponent, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import './style.scss'
-import { withUnit } from '@anteng/utils'
+import { withUnit } from '@pkg/utils'
 import { clamp } from 'lodash-es'
 import { useAction } from '../../hooks/useAction'
 

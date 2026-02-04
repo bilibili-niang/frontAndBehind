@@ -1,4 +1,4 @@
-import { request } from '@anteng/core'
+import { request } from '@pkg/core'
 
 /**
  * 获取京东链接（需登录）

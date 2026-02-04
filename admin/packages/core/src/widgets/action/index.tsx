@@ -1,7 +1,7 @@
 import { defineComponent, ref, type PropType, computed, toRaw } from 'vue'
 import './style.scss'
 import { getActionDefine, type ActionItem, useActionSelector } from '../../hooks/useAction'
-import { CommonWidgetPropsDefine } from '@anteng/jsf'
+import { CommonWidgetPropsDefine } from '@pkg/jsf'
 
 export const ActionWidget = defineComponent({
   name: 'w_action',

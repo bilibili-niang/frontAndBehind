@@ -1,6 +1,6 @@
 import { computed, defineComponent, type PropType, ref, watch } from 'vue'
-import { Icon } from '@anteng/ui'
-import { type ImageDefine, useImagePreview, useImageSelector } from '@anteng/core'
+import { Icon } from '@pkg/ui'
+import { type ImageDefine, useImagePreview, useImageSelector } from '@pkg/core'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import { getWidgetConfig } from '../../../../utils/widget'

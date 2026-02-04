@@ -1,4 +1,4 @@
-import { useAppStore } from '@anteng/core'
+import { useAppStore } from '@pkg/core'
 import request from '../request'
 
 export const getPayParams = (orderNo: string) => {

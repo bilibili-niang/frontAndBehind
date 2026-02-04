@@ -1,5 +1,5 @@
 import { computed, defineComponent, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
-import { Button, Empty, Icon, Input, message, Spin, Radio } from '@anteng/ui'
+import { Button, Empty, Icon, Input, message, Spin, Radio } from '@pkg/ui'
 import './style.scss'
 import { useRouter } from 'vue-router'
 import md5 from 'blueimp-md5'

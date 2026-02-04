@@ -1,10 +1,10 @@
 import { computed, defineComponent, ref, watch, type PropType } from 'vue'
 import './style.scss'
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import { requestUploadFile } from '../../api/uploadImage'
 import type { ImageDefine } from '../image-selector/Resource'
 import uuid from '../../utils/uuid'
-import { COMMON_STATUS_OPTIONS } from '@anteng/config'
+import { COMMON_STATUS_OPTIONS } from '@pkg/config'
 
 export default defineComponent({
   name: 'LegoImageUploader',

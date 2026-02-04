@@ -1,5 +1,5 @@
 import request, { REQUEST_DOMAIN } from '../request'
-import { ORIGIN_STORE } from '@anteng/config'
+import { ORIGIN_STORE } from '@pkg/config'
 
 /** 获取首页底部导航栏数据 */
 const requestGetIndexTabs = () => {

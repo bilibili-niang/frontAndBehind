@@ -10,11 +10,11 @@ import {
   useUploadFile,
   useUserAgreement,
   useUserStore
-} from '@anteng/core'
+} from '@pkg/core'
 import { computed, defineComponent } from 'vue'
 import './style.scss'
 import { Image, Button as NativeButton } from '@tarojs/components'
-import Icon from '@anteng/ui/src/components/icon'
+import Icon from '@pkg/ui/src/components/icon'
 import { storeToRefs } from 'pinia'
 import Taro from '@tarojs/taro'
 import { useGlobalStore } from '../../stores'

@@ -9,7 +9,7 @@ import {
   usePreviewImages,
   useResponseMessage,
   useToast
-} from '@anteng/core'
+} from '@pkg/core'
 import { useRouter } from '@tarojs/taro'
 import { computed, defineComponent, onMounted, reactive, ref, toRaw, watch, withModifiers } from 'vue'
 import { $getRefundAmountCalculator, getGoodsOrderDetail, requestSubmitAfterSale } from '../../../api'
@@ -17,7 +17,7 @@ import { IOrderDetail } from '../../../api/order/types'
 import './style.scss'
 import GoodsItem from '../../../components/goods-item'
 import CountStepper from '../../../components/count-stepper'
-import { Icon, Radio } from '@anteng/ui'
+import { Icon, Radio } from '@pkg/ui'
 import useMerchantStore from '../../../stores/merchant'
 import { storeToRefs } from 'pinia'
 import { Image, Input, ScrollView, Textarea } from '@tarojs/components'

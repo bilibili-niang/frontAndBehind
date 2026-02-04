@@ -1,11 +1,11 @@
-import { ComputedValue, useComputedValue, useModal, useModalActions, usePagination } from '@anteng/core'
+import { ComputedValue, useComputedValue, useModal, useModalActions, usePagination } from '@pkg/core'
 import './style.scss'
 import { OrderPayGoodsItem } from '../store'
 import CouponItem from '../../../discount-coupon/components/coupon-item'
-import { Radio } from '@anteng/ui'
+import { Radio } from '@pkg/ui'
 import { computed, ref, watch } from 'vue'
 import { $getOrderUseableDiscountCouponList } from '../../../../api/discount-coupon'
-import { formatPrice } from '@anteng/utils'
+import { formatPrice } from '@pkg/utils'
 
 export const useOrderCouponSelector = (items: ComputedValue<OrderPayGoodsItem[]>) => {
   const itemsRef = useComputedValue(items)

@@ -6,7 +6,7 @@ import type { Schema } from '../types/schema'
 import type { SchemaValidateResult, SchemaValidator } from '../types/validate'
 import jsonPath from 'jsonpath'
 import type { PropsArg } from './field'
-import { validateBankCardNumber, validateDate, validateEmail } from '@anteng/utils'
+import { validateBankCardNumber, validateDate, validateEmail } from '@pkg/utils'
 
 /** string 类型只适用于外部使用定义，排除 */
 type SchemaValidatorDefine = Exclude<SchemaValidator, string>

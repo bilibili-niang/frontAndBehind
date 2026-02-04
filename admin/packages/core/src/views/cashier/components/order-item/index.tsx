@@ -1,5 +1,5 @@
-import { Icon } from '@anteng/ui'
-import { copyText } from '@anteng/utils'
+import { Icon } from '@pkg/ui'
+import { copyText } from '@pkg/utils'
 import { type PropType, defineComponent } from 'vue'
 import './style.scss'
 import { PayAmount } from '../../../payee/components/PayAmount'

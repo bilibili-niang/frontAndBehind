@@ -1,4 +1,4 @@
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import { formatDate } from './date'
 
 /**

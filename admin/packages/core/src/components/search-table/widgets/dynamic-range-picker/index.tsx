@@ -1,7 +1,7 @@
 import { defineComponent, ref, type PropType, reactive, watch, nextTick } from 'vue'
 import { commonSearchTableWidgetPropsDefine } from '../types'
 import './style.scss'
-import { Button, Icon, Input, JsonView, Popover, Switch, Tooltip, message } from '@anteng/ui'
+import { Button, Icon, Input, JsonView, Popover, Switch, Tooltip, message } from '@pkg/ui'
 import {
   DEFAULT_START_TIME,
   DynamicDateMode,

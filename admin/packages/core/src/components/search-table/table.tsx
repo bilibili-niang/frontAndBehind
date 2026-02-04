@@ -1,5 +1,5 @@
-import { PREFIX_CLS } from '@anteng/config'
-import { Table } from '@anteng/ui'
+import { PREFIX_CLS } from '@pkg/config'
+import { Table } from '@pkg/ui'
 import { type PropType, computed, defineComponent, onBeforeUnmount, onMounted } from 'vue'
 import { ref } from 'vue'
 import './styles/table.scss'

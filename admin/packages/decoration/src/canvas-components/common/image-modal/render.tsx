@@ -3,7 +3,7 @@ import './style.scss'
 import useCanvasStore, { DeckComponent } from '../../../stores/canvas'
 import { storeToRefs } from 'pinia'
 import Image from '../image/render'
-import { Empty, message } from '@anteng/ui'
+import { Empty, message } from '@pkg/ui'
 import { withUnit } from '../../utils'
 
 export { default as manifest } from './manifest'

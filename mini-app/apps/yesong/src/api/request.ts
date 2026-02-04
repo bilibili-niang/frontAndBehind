@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import axios, { AxiosError } from 'axios'
 import useMerchantStore from '../stores/merchant'
-import { useUserStore } from '@anteng/core'
+import { useUserStore } from '@pkg/core'
 import useUTMStore from '../stores/utm'
 import { storeToRefs } from 'pinia'
 

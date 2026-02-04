@@ -1,6 +1,6 @@
 // 装修模式下的头部区域
 import { defineComponent } from 'vue'
-import { Button } from '@anteng/ui'
+import { Button } from '@pkg/ui'
 import { useRoute } from 'vue-router'
 import DeviceToolbar from '../device-toolbar'
 import { openPublishModal } from '../decorationPage/new/modal'

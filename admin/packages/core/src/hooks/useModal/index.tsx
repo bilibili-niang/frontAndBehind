@@ -1,4 +1,4 @@
-import { Modal as AntModal, type ModalProps } from '@anteng/ui'
+import { Modal as AntModal, type ModalProps } from '@pkg/ui'
 import useAppStore from '../../stores/app'
 
 type UseModalOptions = { content: any } & ModalProps

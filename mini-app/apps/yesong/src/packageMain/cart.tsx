@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import Cart from './tab-pages/cart'
-import { BasePage } from '@anteng/core'
+import { BasePage } from '@pkg/core'
 import './cart.scss'
 
 definePageConfig({

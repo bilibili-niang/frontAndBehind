@@ -1,4 +1,4 @@
-import { getGeoDistance } from '@anteng/utils'
+import { getGeoDistance } from '@pkg/utils'
 import { useUserStore } from '../stores'
 
 export default (

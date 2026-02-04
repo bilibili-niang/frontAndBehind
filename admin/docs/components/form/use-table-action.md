@@ -6,7 +6,7 @@
 
 ::: code-group
 ```ts [TSX]
-import { useTableAction } from '@anteng/core'
+import { useTableAction } from '@pkg/core'
 
 const columns = [
   { title: '名称', dataIndex: 'name' },
@@ -31,7 +31,7 @@ const columns = [
 </template>
 
 <script>
-import { useTableAction } from '@anteng/core'
+import { useTableAction } from '@pkg/core'
 
 // Ant Design Vue 2.x 表格示例列配置
 export default {

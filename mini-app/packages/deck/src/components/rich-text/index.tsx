@@ -1,6 +1,6 @@
 import { PropType, defineComponent } from 'vue'
 
-import { RichText } from '@anteng/core'
+import { RichText } from '@pkg/core'
 import { DeckComponentConfig } from '../types'
 
 export default defineComponent({

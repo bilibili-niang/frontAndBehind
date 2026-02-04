@@ -1,6 +1,6 @@
-import { uuid } from '@anteng/core'
+import { uuid } from '@pkg/core'
 import { defineComponent, onDeactivated, onMounted, onUnmounted } from 'vue'
-import { DeckApp } from '@anteng/decoration'
+import { DeckApp } from '@pkg/decoration'
 import './style.scss'
 import { useRoute } from 'vue-router'
 

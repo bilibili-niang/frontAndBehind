@@ -1,7 +1,7 @@
 // 文字省略
 import './style.scss'
 import { defineComponent, ref, computed } from 'vue'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 
 export default defineComponent({
   name: 'TextOmitted',

@@ -1,6 +1,6 @@
 import { defineComponent, type PropType, ref, onMounted, onBeforeUnmount, withModifiers } from 'vue'
-import { ConfigProvider, Icon, message } from '@anteng/ui'
-import { PREFIX_CLS } from '@anteng/config'
+import { ConfigProvider, Icon, message } from '@pkg/ui'
+import { PREFIX_CLS } from '@pkg/config'
 import './style.scss'
 
 export interface Config {

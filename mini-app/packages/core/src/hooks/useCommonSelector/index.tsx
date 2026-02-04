@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import useModal from '../useModal'
 import usePagination from '../usePagination'
-import { Search } from '@anteng/ui'
+import { Search } from '@pkg/ui'
 import './style.scss'
 import { EmptyStatus } from '../../../lib'
 

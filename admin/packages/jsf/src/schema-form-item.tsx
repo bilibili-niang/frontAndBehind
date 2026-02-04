@@ -4,7 +4,7 @@ import { getSchemaFiled } from './fields'
 import { useThemeContext } from './theme'
 import { retrieveSchema } from './utils/schema'
 import { useValidate } from './utils/validate'
-import { message, Popover } from '@anteng/ui'
+import { message, Popover } from '@pkg/ui'
 import { BUILT_IN_THEME_COMPACT, BUILT_IN_THEME_STANDARD } from './constants'
 import { isVueComponent } from './utils/common'
 

@@ -1,4 +1,4 @@
-import { PaginationData, RequestPagination, ResponseData } from '@anteng/core'
+import { PaginationData, RequestPagination, ResponseData } from '@pkg/core'
 import { IGroupGoods } from './group'
 import Mock from 'mockjs'
 import {buildImgUrl} from '../../utils'

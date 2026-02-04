@@ -1,4 +1,4 @@
-import { request } from '@anteng/core'
+import { request } from '@pkg/core'
 
 // 装修导航列表
 export const $navigationList = (params: any) => {

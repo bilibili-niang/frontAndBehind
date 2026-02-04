@@ -1,4 +1,4 @@
-import { Button, Icon, Result } from '@anteng/ui'
+import { Button, Icon, Result } from '@pkg/ui'
 import { defineComponent, ref, watch } from 'vue'
 import './404.scss'
 import { useRouter } from 'vue-router'

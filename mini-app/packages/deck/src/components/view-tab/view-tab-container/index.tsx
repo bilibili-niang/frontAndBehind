@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { DeckComponentConfig } from '../../types'
-import { EmptyStatus } from '@anteng/core'
+import { EmptyStatus } from '@pkg/core'
 import { DeckRender } from '../../../index'
 
 export default defineComponent({

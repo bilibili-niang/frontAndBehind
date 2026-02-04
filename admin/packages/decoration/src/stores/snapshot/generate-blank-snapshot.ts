@@ -1,4 +1,4 @@
-import { uuid } from '@anteng/core'
+import { uuid } from '@pkg/core'
 import { formatDate } from '../../utils/date'
 import useCanvasStore from '../canvas'
 

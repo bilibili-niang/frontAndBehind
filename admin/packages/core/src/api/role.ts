@@ -1,4 +1,4 @@
-import { request } from '@anteng/core'
+import { request } from '@pkg/core'
 
 // 删除指定路由/按钮权限
 export const $removeRolePermission = (id: string) => {

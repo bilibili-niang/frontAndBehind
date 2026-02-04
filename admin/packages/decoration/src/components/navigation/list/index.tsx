@@ -1,11 +1,11 @@
 // 小程序导航装修列表
 import { defineComponent } from 'vue'
-import { Button, message, Tag } from '@anteng/ui'
-import { COMMON_STATUS_ON, useSearchTable, useTableAction } from '@anteng/core'
+import { Button, message, Tag } from '@pkg/ui'
+import { COMMON_STATUS_ON, useSearchTable, useTableAction } from '@pkg/core'
 import { $deleteNavigation, $navigationList, $updateNavigation } from '../../../api'
-import { SCENE_YESONG, STATUS_OPTIONS } from '@anteng/config'
+import { SCENE_YESONG, STATUS_OPTIONS } from '@pkg/config'
 import { createNavigation, updateNavigation } from './modal'
-import { commonDelete } from '@anteng/utils'
+import { commonDelete } from '@pkg/utils'
 
 export default defineComponent({
   setup() {

@@ -1,4 +1,4 @@
-import { Button, Modal, message, Popover, QRCode } from '@anteng/ui'
+import { Button, Modal, message, Popover, QRCode } from '@pkg/ui'
 import './style.scss'
 
 type PreviewPageOptions = {

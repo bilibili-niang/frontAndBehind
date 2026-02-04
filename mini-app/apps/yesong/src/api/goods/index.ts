@@ -1,4 +1,4 @@
-import { RequestPagination } from '@anteng/core'
+import { RequestPagination } from '@pkg/core'
 import request from '../request'
 import type { IGoodsDetail, IGoodsShowRule } from './types'
 import { GoodsListByRule } from './types'

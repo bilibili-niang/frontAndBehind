@@ -1,4 +1,4 @@
-import { Checkbox, Button } from '@anteng/ui'
+import { Checkbox, Button } from '@pkg/ui'
 import type { SearchTablePlugin, SearchTablePluginContext } from '../index'
 import '../styles/expansionStyle.scss'
 

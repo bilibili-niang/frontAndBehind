@@ -1,4 +1,4 @@
-import { InputNumber } from '@anteng/ui'
+import { InputNumber } from '@pkg/ui'
 import { defineComponent } from 'vue'
 import { commonSearchTableWidgetPropsDefine } from './types'
 import './styles/range-number.scss'

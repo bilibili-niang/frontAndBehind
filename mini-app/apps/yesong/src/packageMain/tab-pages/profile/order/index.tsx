@@ -1,7 +1,7 @@
 import { computed, defineComponent, onMounted, reactive, withModifiers } from 'vue'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import './style.scss'
-import { navigateTo } from '@anteng/core'
+import { navigateTo } from '@pkg/core'
 import { requestGetOrderCounts } from '../../../../api/order'
 import { navigateToOrderList } from '../../../../router'
 

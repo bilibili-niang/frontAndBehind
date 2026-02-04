@@ -1,4 +1,4 @@
-import { message } from '@anteng/ui'
+import { message } from '@pkg/ui'
 import useModal from '../useModal'
 import './slice.scss'
 

@@ -7,14 +7,14 @@ outline: deep
 
 封装 ECharts 图表的基础 Hook，内置数据请求、刷新与筛选、自动高度以及父容器 ResizeObserver 监听。适用于后台页面快速构建图表。
 
-- 导入：`import { useECharts } from '@anteng/core'`
+- 导入：`import { useECharts } from '@pkg/core'`
 - 源码：`packages/core/src/components/echarts/index.tsx`
 
 ## 最小示例
 
 ```ts
 import { defineComponent } from 'vue'
-import { useECharts } from '@anteng/core'
+import { useECharts } from '@pkg/core'
 
 export default defineComponent(() => {
   const chart = useECharts({

@@ -1,4 +1,4 @@
-import { request } from '@anteng/core'
+import { request } from '@pkg/core'
 
 /** 提交京东 */
 export const $createJdOrder = (params: JdOrderParams) => {

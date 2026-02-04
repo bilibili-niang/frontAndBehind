@@ -35,10 +35,10 @@
 </template>
 
 <script lang="ts" setup>
-import { router } from '@anteng/core'
+import { router } from '@pkg/core'
 import useEditorStore from '../stores/editor'
 import { storeToRefs } from 'pinia'
-import { Button } from '@anteng/ui'
+import { Button } from '@pkg/ui'
 
 const back = () => {
   router.back()

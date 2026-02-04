@@ -1,4 +1,4 @@
-import { uuid } from '@anteng/core'
+import { uuid } from '@pkg/core'
 import { LayerTree } from './tree'
 import { DefineComponent } from 'vue'
 

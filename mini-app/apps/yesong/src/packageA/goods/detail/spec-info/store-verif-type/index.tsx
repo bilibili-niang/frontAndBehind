@@ -2,13 +2,13 @@
  * 门店核销类型商品规格列表
  */
 
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { computed, defineComponent, ref } from 'vue'
 import './style.scss'
 import { useGoodsDetailStore } from '../../store'
 import { storeToRefs } from 'pinia'
 import { Image } from '@tarojs/components'
-import { usePreviewImages } from '@anteng/core'
+import { usePreviewImages } from '@pkg/core'
 import { useGoodsSkuModal } from '../../../../../hooks'
 import { navigateToOrderPay } from '../../../../../router'
 import { ORDER_ORIGIN_DETAIL } from '../../../../../constants'

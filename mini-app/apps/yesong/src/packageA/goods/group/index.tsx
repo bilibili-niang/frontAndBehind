@@ -1,4 +1,4 @@
-import { BasePage, useAppStore, usePagination } from '@anteng/core'
+import { BasePage, useAppStore, usePagination } from '@pkg/core'
 import { computed, defineComponent, ref } from 'vue'
 import GoodsList from '../../../components/goods-list'
 import { IGoodsGroup, requestGetGoodsGroupDetail, requestGetGroupGoods } from '../../../api'

@@ -1,13 +1,13 @@
 import { computed, defineComponent, PropType, ref, ExtractPublicPropTypes, watch } from 'vue'
 import './style.scss'
-import { Icon, ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { Icon, ScrollTab, ScrollTabItem } from '@pkg/ui'
 import { ScrollView, ScrollViewProps, Swiper, SwiperItem } from '@tarojs/components'
 import EmptyStatus from '../empty-status'
 import Spin from '../spin'
 import { pick } from 'lodash-es'
 import Taro from '@tarojs/taro'
 import { ComputedValue, useComputedValue } from '../../hooks'
-import { renderAnyNode } from '@anteng/utils'
+import { renderAnyNode } from '@pkg/utils'
 
 export interface TabPageItem {
   key?: string | number

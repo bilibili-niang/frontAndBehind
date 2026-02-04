@@ -1,7 +1,7 @@
-import { BasePage, emitter, useAppStore } from '@anteng/core'
+import { BasePage, emitter, useAppStore } from '@pkg/core'
 import { computed, defineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
 import './style.scss'
-import { Search } from '@anteng/ui'
+import { Search } from '@pkg/ui'
 import { getPageKey } from '../../router'
 import { nextTick, useDidShow, useRouter } from '@tarojs/taro'
 import SearchRecords from './history-records'
@@ -9,7 +9,7 @@ import { useSearchStore } from '../../stores'
 import HotSearch from './hot-search'
 import { storeToRefs } from 'pinia'
 import useAction from '../../hooks/useAction'
-import { DeckRender } from '@anteng/deck'
+import { DeckRender } from '@pkg/deck'
 
 definePageConfig({
   navigationStyle: 'custom'

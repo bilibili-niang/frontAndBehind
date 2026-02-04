@@ -1,4 +1,4 @@
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 import Taro from '@tarojs/taro'
 import { onUnmounted, ref, watch } from 'vue'
 

@@ -1,4 +1,4 @@
-import { EmptyStatus, makePhoneCall, useCopyText, useModal } from '@anteng/core'
+import { EmptyStatus, makePhoneCall, useCopyText, useModal } from '@pkg/core'
 import { defineComponent } from 'vue'
 import './style.scss'
 import useExpress from './index'

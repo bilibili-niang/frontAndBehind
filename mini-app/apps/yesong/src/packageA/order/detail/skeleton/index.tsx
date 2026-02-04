@@ -1,4 +1,4 @@
-import { Spin } from '@anteng/core'
+import { Spin } from '@pkg/core'
 import { defineComponent } from 'vue'
 import './style.scss'
 

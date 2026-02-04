@@ -7,7 +7,7 @@ packages/core/src/hooks/usePagination
 参考示例：apps/store/src/packageA/goods/list/index.tsx
 
 ```tsx
-import { usePagination } from '@anteng/core'
+import { usePagination } from '@pkg/core'
 
 const pagination = usePagination({
   requestHandler: (params: RequestPagination) => {

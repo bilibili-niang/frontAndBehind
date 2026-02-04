@@ -1,4 +1,4 @@
-import type { Schema } from '@anteng/jsf'
+import type { Schema } from '@pkg/jsf'
 
 // 页面右侧面板的「导航按钮」开关配置（映射到 decorationStore.header.value.value）
 const headerSchema: Schema = {

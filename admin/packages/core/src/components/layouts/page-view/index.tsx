@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import './style.scss'
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 
 export default defineComponent({
   name: 'PageView',

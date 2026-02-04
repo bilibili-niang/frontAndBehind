@@ -1,7 +1,7 @@
 import './style.scss'
 import { defineComponent } from 'vue'
 import { Slider as AntSlider } from 'ant-design-vue'
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 
 export default defineComponent({
   name: `${PREFIX_CLS}-slider`,

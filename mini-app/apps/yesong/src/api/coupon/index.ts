@@ -1,5 +1,5 @@
 import request from '../request'
-import { PaginationData } from '@anteng/core'
+import { PaginationData } from '@pkg/core'
 import { ICouponAuditRecord } from './types'
 
 /**

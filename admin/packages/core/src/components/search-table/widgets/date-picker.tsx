@@ -1,4 +1,4 @@
-import { DatePicker } from '@anteng/ui'
+import { DatePicker } from '@pkg/ui'
 import { defineComponent, ref } from 'vue'
 import './styles/date-picker.scss'
 import { commonSearchTableWidgetPropsDefine } from './types'

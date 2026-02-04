@@ -1,4 +1,4 @@
-import { BasePage, LaunchPage, useAppStore, usePrivacyAgreement } from '@anteng/core'
+import { BasePage, LaunchPage, useAppStore, usePrivacyAgreement } from '@pkg/core'
 import { defineComponent, ref, watch } from 'vue'
 import './launch.scss'
 import { backToIndex } from '../router'

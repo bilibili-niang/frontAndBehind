@@ -5,7 +5,7 @@ import './style.scss'
 
 import { useObjectFiled } from '../../../../utils/field'
 import { useInjectInlineEnable } from '../../../../utils/widget'
-import { Popover } from '@anteng/ui'
+import { Popover } from '@pkg/ui'
 import { useThemeContext } from '../../../index'
 import { BUILT_IN_THEME_COMPACT } from '../../../../constants'
 

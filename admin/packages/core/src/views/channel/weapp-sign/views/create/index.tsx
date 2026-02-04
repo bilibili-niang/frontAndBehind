@@ -1,4 +1,4 @@
-import { Button } from '@anteng/ui'
+import { Button } from '@pkg/ui'
 import { defineComponent } from 'vue'
 import Base from '../base'
 import { commit } from './action'

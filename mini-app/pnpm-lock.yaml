@@ -10,25 +10,25 @@ importers:
 
   .:
     dependencies:
-      '@anteng/config':
+      '@pkg/config':
         specifier: workspace:*
         version: link:packages/config
-      '@anteng/core':
+      '@pkg/core':
         specifier: workspace:*
         version: link:packages/core
-      '@anteng/deck':
+      '@pkg/deck':
         specifier: workspace:*
         version: link:packages/deck
-      '@anteng/styles':
+      '@pkg/styles':
         specifier: workspace:*
         version: link:packages/styles
-      '@anteng/survey':
+      '@pkg/survey':
         specifier: workspace:*
         version: link:packages/survey
-      '@anteng/ui':
+      '@pkg/ui':
         specifier: workspace:*
         version: link:packages/ui
-      '@anteng/utils':
+      '@pkg/utils':
         specifier: workspace:*
         version: link:packages/utils
       '@babel/runtime':
@@ -230,16 +230,16 @@ importers:
 
   apps/yesong:
     dependencies:
-      '@anteng-shared':
+      '@pkg-shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@anteng/deck':
+      '@pkg/deck':
         specifier: workspace:*
         version: link:../../packages/deck
-      '@anteng/styles':
+      '@pkg/styles':
         specifier: workspace:*
         version: link:../../packages/styles
-      '@anteng/utils':
+      '@pkg/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       mockjs:
@@ -253,7 +253,7 @@ importers:
 
   packages/core:
     dependencies:
-      '@anteng/ui':
+      '@pkg/ui':
         specifier: workspace:*
         version: link:../ui
 
@@ -267,7 +267,7 @@ importers:
 
   packages/ui:
     dependencies:
-      '@anteng/styles':
+      '@pkg/styles':
         specifier: workspace:*
         version: link:../styles
 

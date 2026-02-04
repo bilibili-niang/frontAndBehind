@@ -1,4 +1,4 @@
-import { defineDeckComponent } from '@anteng/decoration'
+import { defineDeckComponent } from '@pkg/decoration'
 
 export default defineDeckComponent({
   key: 'images-side-slide',

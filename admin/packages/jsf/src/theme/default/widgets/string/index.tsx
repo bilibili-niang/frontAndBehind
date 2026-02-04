@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { Input } from '@anteng/ui'
+import { Input } from '@pkg/ui'
 import './style.scss'
 
 export default defineComponent({

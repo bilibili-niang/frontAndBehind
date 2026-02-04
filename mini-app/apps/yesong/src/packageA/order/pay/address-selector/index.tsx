@@ -1,8 +1,8 @@
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { defineComponent, PropType, toRaw, computed } from 'vue'
 import './style.scss'
 import Taro from '@tarojs/taro'
-import { useToast } from '@anteng/core'
+import { useToast } from '@pkg/core'
 import { WxAddress } from '../../../../types'
 import { emptyAddress } from '../../../../hooks/useAddress'
 

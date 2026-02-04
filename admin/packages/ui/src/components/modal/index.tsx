@@ -1,9 +1,9 @@
 import { ConfigProvider, Modal, type ModalFuncProps, type ModalProps } from 'ant-design-vue'
 import './index.scss'
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 import { createVNode, render as vueRender } from 'vue'
 import { CloseOutlined } from '@ant-design/icons-vue'
-import { renderAnyNode } from '@anteng/utils'
+import { renderAnyNode } from '@pkg/utils'
 import zhCN from 'ant-design-vue/locale/zh_CN'
 
 type ConfigUpdate = ModalProps | ((prevConfig: ModalProps) => ModalProps)

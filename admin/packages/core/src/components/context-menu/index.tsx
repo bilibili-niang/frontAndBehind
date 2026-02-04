@@ -1,7 +1,7 @@
 import { defineComponent, reactive, computed, type PropType, type ComputedRef } from 'vue'
 import './style.scss'
-import { PREFIX_CLS } from '@anteng/config'
-import { Icon } from '@anteng/ui'
+import { PREFIX_CLS } from '@pkg/config'
+import { Icon } from '@pkg/ui'
 
 export interface ContextMenuItem {
   /** 唯一的key */

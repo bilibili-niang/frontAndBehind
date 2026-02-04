@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { Tooltip, message } from '@anteng/ui'
-import { openSettings } from '@anteng/core'
+import { Tooltip, message } from '@pkg/ui'
+import { openSettings } from '@pkg/core'
 import './style.scss'
 
 import Comps from './comps'

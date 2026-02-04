@@ -3,10 +3,10 @@ import './style.scss'
 import { useAppStore } from '../../stores'
 import { storeToRefs } from 'pinia'
 import Taro from '@tarojs/taro'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import useQuickMenu, { QuickMenuOptions } from '../../hooks/useQuickMenu'
 import { navigateBack } from '../../utils/router'
-import { calcTransitionColor } from '@anteng/utils'
+import { calcTransitionColor } from '@pkg/utils'
 
 export type NavigatorOptions = {
   navigatorStyle?: 'common' | 'blank' | 'immersive'

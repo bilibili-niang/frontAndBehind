@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { TimeRangePicker } from '@anteng/ui'
+import { TimeRangePicker } from '@pkg/ui'
 
 export default defineComponent({
   name: 'sw_time-range',

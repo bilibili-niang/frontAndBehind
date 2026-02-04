@@ -10,17 +10,17 @@ import {
   usePreviewImages,
   useResponseMessage,
   useToast
-} from '@anteng/core'
+} from '@pkg/core'
 import { IAfterSaleOrder } from '../../../api/order/types'
 import { requestCancelAfterSale, requestGetAfterSaleDetail, requestUpdateAfterSaleExpress } from '../../../api'
 import Taro, { nextTick, useRouter } from '@tarojs/taro'
 import OrderGoodsItem from '../../../components/order-goods-item'
 import { navigateToGoodsDetail } from '../../../router'
-import { Icon, Radio } from '@anteng/ui'
+import { Icon, Radio } from '@pkg/ui'
 import ExpressInfo from '../../../components/express-info'
 import { Button, Image, View } from '@tarojs/components'
 import { Input } from '@tarojs/components'
-import { EXPRESS_COMPANY_OPTIONS } from '@anteng/config'
+import { EXPRESS_COMPANY_OPTIONS } from '@pkg/config'
 import useMerchantStore from '../../../stores/merchant'
 import { storeToRefs } from 'pinia'
 import {

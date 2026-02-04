@@ -3,7 +3,7 @@ import './style.scss'
 import { Image } from '@tarojs/components'
 import { useSurveyFormStore } from '../../stores/form'
 import { storeToRefs } from 'pinia'
-import { withUnit } from '@anteng/utils'
+import { withUnit } from '@pkg/utils'
 
 export default defineComponent({
   emits: {

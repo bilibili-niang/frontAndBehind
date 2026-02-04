@@ -2,7 +2,7 @@ import './style.scss'
 import { defineComponent, onMounted, ref } from 'vue'
 import Taro, { useRouter } from '@tarojs/taro'
 import { getInformationDetail } from '../../../api/information'
-import { BasePage, RichText } from '@anteng/core'
+import { BasePage, RichText } from '@pkg/core'
 
 definePageConfig({
   navigationStyle: 'custom',

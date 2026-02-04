@@ -1,5 +1,5 @@
 import { computed, defineComponent, nextTick, onMounted, onUnmounted, ref } from 'vue'
-import { Tooltip } from '@anteng/ui'
+import { Tooltip } from '@pkg/ui'
 import { clamp } from 'lodash'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'

@@ -1,4 +1,4 @@
-import { Popover } from '@anteng/ui'
+import { Popover } from '@pkg/ui'
 import { defineComponent } from 'vue'
 import './style.scss'
 

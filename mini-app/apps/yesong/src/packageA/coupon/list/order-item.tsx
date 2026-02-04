@@ -1,6 +1,6 @@
 import './order-item.scss'
 import { computed, defineComponent, ref } from 'vue'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { Image, RichText } from '@tarojs/components'
 import '@nutui/nutui-taro/dist/packages/ellipsis/index.css'
 import { COUPON_STATUS_OPTIONS, COUPON_STATUS_PENDING_USE } from '../../../constants'

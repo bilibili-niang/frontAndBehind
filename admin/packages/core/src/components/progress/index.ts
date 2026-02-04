@@ -1,5 +1,5 @@
 import Progress from 'nprogress'
-import { PREFIX_CLS } from '@anteng/uiconfig'
+import { PREFIX_CLS } from '@pkg/uiconfig'
 import './style.scss'
 
 Progress.configure({

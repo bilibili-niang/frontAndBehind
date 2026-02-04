@@ -2,15 +2,15 @@ import { computed, defineComponent, inject, onBeforeUnmount, onUnmounted, PropTy
 import './style.scss'
 import Popup, { usePopupClose } from './popup'
 import Navigator, { NavigatorOptions } from '../navigator'
-import { renderAnyNode, uuid } from '@anteng/utils'
+import { renderAnyNode, uuid } from '@pkg/utils'
 import { BaseEventOrigFunction, ScrollView, ScrollViewProps } from '@tarojs/components'
-import Anteng, { emitter, navigateBack, useAppStore, useLogin, useUserStore } from '@anteng/core/lib'
+import Anteng, { emitter, navigateBack, useAppStore, useLogin, useUserStore } from '@pkg/core/lib'
 import { storeToRefs } from 'pinia'
 import Taro, { useRouter } from '@tarojs/taro'
 import useCoreStore from '../../stores/core'
 import EmptyStatus, { EmptyAction } from '../empty-status'
 import Spin from '../spin'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { onDev } from './dev'
 
 export default defineComponent({

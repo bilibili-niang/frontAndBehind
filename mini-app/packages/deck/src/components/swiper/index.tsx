@@ -4,7 +4,7 @@ import ActionImage from '../image'
 import { DeckComponentConfig } from '../types'
 import Taro from '@tarojs/taro'
 import { Swiper, SwiperItem } from '@tarojs/components'
-import { emitter } from '@anteng/core'
+import { emitter } from '@pkg/core'
 
 export interface ISwiperConfig {
   images: (any & {

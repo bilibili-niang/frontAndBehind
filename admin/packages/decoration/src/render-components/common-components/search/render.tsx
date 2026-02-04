@@ -1,7 +1,7 @@
 import { PropType, computed, defineComponent } from 'vue'
 import './style.scss'
 import { DeckComponent } from '../../../stores/canvas'
-import { useAction, type ActionItem } from '@anteng/core'
+import { useAction, type ActionItem } from '@pkg/core'
 import TextSlider from '../../../canvas-components/components/text-slider'
 
 export { default as manifest } from './manifest'

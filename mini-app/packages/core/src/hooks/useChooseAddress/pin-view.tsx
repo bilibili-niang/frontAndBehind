@@ -1,7 +1,7 @@
 import { defineComponent, onBeforeUnmount, PropType, ref, toRaw, watch } from 'vue'
 import { INearbyPoint, useChooseNearbyPoints } from './useChooseNearbyPoints'
 import { $getLocationDetails } from './api'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import './pin-view.scss'
 import { debounce } from 'lodash-es'
 

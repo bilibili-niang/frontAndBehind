@@ -1,8 +1,8 @@
 import './index.scss'
 import { defineComponent, onMounted, ref, withModifiers } from 'vue'
-import { Icon, Tooltip } from '@anteng/ui'
+import { Icon, Tooltip } from '@pkg/ui'
 import { useCrud } from '../../../lib'
-import type { Schema } from '@anteng/jsf'
+import type { Schema } from '@pkg/jsf'
 import request from '../../api/request'
 
 export default defineComponent({

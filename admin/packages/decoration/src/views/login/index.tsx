@@ -1,5 +1,5 @@
 import { defineComponent, reactive } from 'vue'
-import { Button, Input, message } from '@anteng/ui'
+import { Button, Input, message } from '@pkg/ui'
 import './style.scss'
 import logo from '../assets/logo.svg'
 import wechat from '../assets/wechat.svg'

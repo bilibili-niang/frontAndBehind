@@ -3,7 +3,7 @@ import './style.scss'
 import { clamp } from 'lodash-es'
 import Taro from '@tarojs/taro'
 import Icon from '../icon'
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 
 const secondsToString = (seconds: number) => {
   const mm = Math.floor(seconds / 60)

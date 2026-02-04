@@ -1,4 +1,4 @@
-import { emitter } from '@anteng/core'
+import { emitter } from '@pkg/core'
 
 export const EMITTER_ORDER_REFRESH = Symbol('EMITTER_ORDER_ITEM_REFRESH')
 

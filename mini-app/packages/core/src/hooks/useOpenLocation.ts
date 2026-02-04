@@ -1,4 +1,4 @@
-import { TENCENT_MAP_KEY, TENCENT_MAP_REFERER } from '@anteng/config'
+import { TENCENT_MAP_KEY, TENCENT_MAP_REFERER } from '@pkg/config'
 import Taro from '@tarojs/taro'
 import useToast from './useToast'
 

@@ -1,4 +1,4 @@
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 
 export type ThemeMode = 'dark' | 'light'
 

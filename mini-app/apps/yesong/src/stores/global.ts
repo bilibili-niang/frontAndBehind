@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { safeParse, useTabBar } from '@anteng/core'
+import { safeParse, useTabBar } from '@pkg/core'
 import { computed, ref } from 'vue'
 import pkg from '../../package.json'
 import Taro from '@tarojs/taro'

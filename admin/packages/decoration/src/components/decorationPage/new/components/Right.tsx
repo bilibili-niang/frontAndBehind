@@ -1,10 +1,10 @@
 import './right.scss'
 import { defineComponent } from 'vue'
-import { SchemaForm } from '@anteng/jsf'
-import { Empty, PropertyTabs, ScrollContainer } from '@anteng/ui'
+import { SchemaForm } from '@pkg/jsf'
+import { Empty, PropertyTabs, ScrollContainer } from '@pkg/ui'
 import { useDecorationStore } from '../../../../store'
 import commonAttrsSchema from '../../../../common/attrs-schema'
-import { copyText } from '@anteng/utils'
+import { copyText } from '@pkg/utils'
 import customPageSchema from '../../../../store/customPageSchema'
 
 export default defineComponent({

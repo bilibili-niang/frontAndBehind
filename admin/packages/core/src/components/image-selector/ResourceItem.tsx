@@ -1,7 +1,7 @@
 import { defineComponent, ref } from 'vue'
 import useImagePreview from '../../hooks/useImagePreview'
 import test from '../../utils/test'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { withImageResize } from '../../utils'
 
 export default defineComponent({

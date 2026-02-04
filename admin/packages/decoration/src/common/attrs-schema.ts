@@ -1,4 +1,4 @@
-import { PRESET_SCHEMA } from '@anteng/jsf'
+import { PRESET_SCHEMA } from '@pkg/jsf'
 
 // 与编辑侧 attrs 配置保持一致：圆角/内外边距为数组，背景支持开关
 const commonAttrsSchema = {

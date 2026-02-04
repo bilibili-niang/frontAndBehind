@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { InputNumber, Slider } from '@anteng/ui'
+import { InputNumber, Slider } from '@pkg/ui'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import { getWidgetConfig } from '../../../../utils/widget'

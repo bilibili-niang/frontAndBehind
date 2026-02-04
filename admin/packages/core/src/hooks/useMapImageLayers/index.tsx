@@ -1,7 +1,7 @@
-import { loadTMap } from '@anteng/utils'
+import { loadTMap } from '@pkg/utils'
 import useModal from '../useModal'
 import './style.scss'
-import { Button, Empty, Icon, Input, InputNumber, message, Slider, Switch } from '@anteng/ui'
+import { Button, Empty, Icon, Input, InputNumber, message, Slider, Switch } from '@pkg/ui'
 import useRequestErrorMessage from '../useRequestErrorMessage'
 import { computed, ref, shallowRef, toRaw, watch, type Ref } from 'vue'
 import { ImageLayer, Scene } from '@antv/l7'
@@ -14,10 +14,10 @@ import { VueDraggable } from 'vue-draggable-plus'
 import { useImageSlice } from './slice'
 import { requestUploadFile } from '../../api/uploadImage'
 import { withModifiers } from 'vue'
-import { SchemaForm } from '@anteng/jsf'
+import { SchemaForm } from '@pkg/jsf'
 import { data } from '../../../../../apps/cs/tongbao/src/api/receiver/data'
 import CommonSelector from '../../components/common-selector'
-import { ImageWidget } from '@anteng/jsf/src/theme/default/widgets/image'
+import { ImageWidget } from '@pkg/jsf/src/theme/default/widgets/image'
 
 type TMapBoundary = { ne: { lat?: number; lng?: number }; sw: { lat?: number; lng?: number } }
 

@@ -17,9 +17,9 @@ import './style.scss'
 import { defineComponent, PropType, ref } from 'vue'
 import { usePagination } from '../../hooks'
 import { AxiosPromise } from 'axios'
-import { ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { ScrollTab, ScrollTabItem } from '@pkg/ui'
 import { Swiper, SwiperItem } from '@tarojs/components'
-import { ScrollList, ScrollListRefType } from '@anteng/core'
+import { ScrollList, ScrollListRefType } from '@pkg/core'
 
 // ref的类型
 export interface navigationIRefType extends ScrollListRefType {

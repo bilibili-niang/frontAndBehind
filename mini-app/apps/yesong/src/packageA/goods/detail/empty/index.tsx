@@ -1,4 +1,4 @@
-import { EmptyStatus, useAppStore } from '@anteng/core'
+import { EmptyStatus, useAppStore } from '@pkg/core'
 import { defineComponent } from 'vue'
 import './style.scss'
 

@@ -6,7 +6,7 @@ import { storeToRefs } from 'pinia'
 import { DEFAULT_QUESTION_NAME } from '../../../constants'
 import RenderError from './error'
 import { manifestMap } from '../../widgets'
-import { formatHtmlUnit } from '@anteng/utils'
+import { formatHtmlUnit } from '@pkg/utils'
 
 export default defineComponent({
   name: '',

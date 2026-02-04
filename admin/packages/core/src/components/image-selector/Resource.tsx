@@ -1,11 +1,11 @@
 import { computed, defineComponent, onMounted, type PropType, reactive, ref, type Ref } from 'vue'
-import { Button, Checkbox, ConfigProvider, message } from '@anteng/ui'
+import { Button, Checkbox, ConfigProvider, message } from '@pkg/ui'
 import ImageUploader from '../image-uploader'
 import './style.scss'
 import './style.dark.scss'
 import SubPage from './SubPage'
 
-import { PREFIX_CLS } from '@anteng/config'
+import { PREFIX_CLS } from '@pkg/config'
 import test from '../../utils/test'
 import ImageProcess from './image-process'
 import Network from './Network'

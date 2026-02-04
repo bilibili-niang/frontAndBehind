@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import useModal from '../useModal'
 import './style.scss'
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 import useToast from '../useToast'
 export const useOpenWeapp = (options: {
   title?: string

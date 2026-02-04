@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue'
-import { BasePage } from '@anteng/core'
+import { BasePage } from '@pkg/core'
 import { View, Text, Textarea, Input } from '@tarojs/components'
 import './style.scss'
 

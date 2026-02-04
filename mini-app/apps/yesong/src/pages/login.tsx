@@ -1,4 +1,4 @@
-import { CommonLoginPage } from '@anteng/core'
+import { CommonLoginPage } from '@pkg/core'
 
 definePageConfig({
   navigationStyle: 'custom'

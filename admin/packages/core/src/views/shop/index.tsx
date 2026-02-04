@@ -1,10 +1,10 @@
 import { defineComponent } from 'vue'
 import { useSearchTable, useTableAction } from '../../components/search-table'
-import { STATUS_OPTIONS } from '@anteng/config'
-import { Button, Tag } from '@anteng/ui'
+import { STATUS_OPTIONS } from '@pkg/config'
+import { Button, Tag } from '@pkg/ui'
 import { onCreate, onUpdate } from './modal'
 import { $shopCreate, $shopDelete, $shopList, $shopUpdate } from '../../api/shop'
-import { commonDelete } from '@anteng/utils'
+import { commonDelete } from '@pkg/utils'
 
 export default defineComponent({
   name: 'ShopTable',

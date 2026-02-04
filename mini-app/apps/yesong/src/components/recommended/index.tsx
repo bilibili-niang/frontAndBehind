@@ -4,7 +4,7 @@ import { defineComponent, ref, computed, onMounted } from 'vue'
 import GoodsItem from '../goods-item'
 import { navigateToGoodsDetail } from '../../router'
 import { requestGetGoodsListByRule } from '../../api'
-import { ScrollAnchor, usePagination } from '@anteng/core'
+import { ScrollAnchor, usePagination } from '@pkg/core'
 
 export default defineComponent({
   name: 'Recommended',

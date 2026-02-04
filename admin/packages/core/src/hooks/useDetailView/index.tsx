@@ -1,4 +1,4 @@
-import { Empty, Skeleton } from '@anteng/ui'
+import { Empty, Skeleton } from '@pkg/ui'
 import { onMounted, ref } from 'vue'
 import type { ResponseData } from '../../api/request'
 import { useComputedValue, type ComputedValue } from '../useComputedValue'

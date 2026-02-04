@@ -1,5 +1,5 @@
 import { defineComponent, PropType } from 'vue'
-import { Button } from '@anteng/ui'
+import { Button } from '@pkg/ui'
 import { withPermission } from '../../stores/permission'
 
 export interface AuthButtonProps {

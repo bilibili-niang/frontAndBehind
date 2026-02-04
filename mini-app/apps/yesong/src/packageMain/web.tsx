@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { useRouter } from '@tarojs/taro'
-import { BasePage, WebView } from '@anteng/core'
+import { BasePage, WebView } from '@pkg/core'
 
 export default defineComponent({
   name: 'custom-page',

@@ -4,12 +4,12 @@ import './style.scss'
 import getGoodsList from '../../../api/deck-comps/getGoodsList'
 import { navigateToGoodsDetail } from '../../../router'
 import { COMMON_STATUS_OFF } from '../../../constants'
-import { DeckComponentConfig } from '@anteng/deck'
-import { formatPrice, withUnit } from '@anteng/utils'
-import Title from '@anteng/deck/src/components/title'
+import { DeckComponentConfig } from '@pkg/deck'
+import { formatPrice, withUnit } from '@pkg/utils'
+import Title from '@pkg/deck/src/components/title'
 import { clamp } from 'lodash-es'
 import useAction from '../../../hooks/useAction'
-import { onPageHide, onPageShow } from '@anteng/core'
+import { onPageHide, onPageShow } from '@pkg/core'
 
 function groupArray<T>(arr: T[], columns: number): T[][] {
   const result: T[][] = new Array(columns).fill(null).map(() => [])

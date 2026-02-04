@@ -1,7 +1,7 @@
 // 储值卡的面值展示
 import './style.scss'
-import { Table } from '@anteng/ui'
-import { useModal } from '@anteng/core'
+import { Table } from '@pkg/ui'
+import { useModal } from '@pkg/core'
 
 export const displayPriceRuleModal = (data, name) => {
   const columns = [

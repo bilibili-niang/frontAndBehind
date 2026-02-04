@@ -1,7 +1,7 @@
 import { computed, defineComponent, onMounted, PropType, ref } from 'vue'
 import './network.scss'
 import sourceList from './source-list'
-import { Icon, ScrollTab, ScrollTabItem } from '@anteng/ui'
+import { Icon, ScrollTab, ScrollTabItem } from '@pkg/ui'
 import SubPage from './SubPage'
 import type { ImageDefine } from './Resource'
 import { $getIconSourceList } from '../../api/icons'

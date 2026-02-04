@@ -1,6 +1,6 @@
 import { defineComponent, computed, PropType } from 'vue'
 import './style.scss'
-import { withUnit } from '@anteng/utils'
+import { withUnit } from '@pkg/utils'
 import { multiLineGoodsType } from '../index'
 import Taro from '@tarojs/taro'
 

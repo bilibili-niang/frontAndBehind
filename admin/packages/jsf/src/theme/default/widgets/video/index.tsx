@@ -1,10 +1,10 @@
 import { defineComponent, ref, type PropType, computed } from 'vue'
-import { Icon } from '@anteng/ui'
-import { useImageSelector, type ImageDefine } from '@anteng/core'
+import { Icon } from '@pkg/ui'
+import { useImageSelector, type ImageDefine } from '@pkg/core'
 import './style.scss'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
 import { getWidgetConfig } from '../../../../utils/widget'
-import useVideoPreview from '@anteng/core/src/hooks/useVideoPreview'
+import useVideoPreview from '@pkg/core/src/hooks/useVideoPreview'
 
 export const ImageWidget = defineComponent({
   name: 'ImageWidget',

@@ -13,7 +13,7 @@ import {
 import './style.scss'
 import { View } from '@tarojs/components'
 import Taro, { nextTick } from '@tarojs/taro'
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 import { withScope } from '../../../hooks'
 import emitter from '../../../utils/emitter'
 

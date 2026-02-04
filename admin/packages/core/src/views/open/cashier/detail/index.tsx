@@ -1,8 +1,8 @@
 import { computed, defineComponent } from 'vue'
 import './style.scss'
-import { useDetailView, useModal, usePreviewPage, useResponseMessage, useWebView } from '@anteng/core'
+import { useDetailView, useModal, usePreviewPage, useResponseMessage, useWebView } from '@pkg/core'
 import { $getOpenAppCashierDetail, $getOpenAppCashierMallURL } from '../../../../api/open/cashier'
-import { InfoList } from '@anteng/ui'
+import { InfoList } from '@pkg/ui'
 
 const CashierDetail = defineComponent({
   props: {

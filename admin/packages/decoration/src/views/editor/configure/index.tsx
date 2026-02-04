@@ -3,10 +3,10 @@ import './style.scss'
 import useCanvasStore from '../../../stores/canvas'
 import { storeToRefs } from 'pinia'
 import attrsDefine from './attrs'
-import { SchemaForm } from '@anteng/jsf'
-import { uuid } from '@anteng/core'
-import { Icon, JsonView } from '@anteng/ui'
-import { copyText } from '@anteng/utils'
+import { SchemaForm } from '@pkg/jsf'
+import { uuid } from '@pkg/core'
+import { Icon, JsonView } from '@pkg/ui'
+import { copyText } from '@pkg/utils'
 
 export default defineComponent({
   name: 'IndexPage',

@@ -1,4 +1,4 @@
-import { usePagination } from '@anteng/core'
+import { usePagination } from '@pkg/core'
 import { defineComponent, onMounted } from 'vue'
 import { $getDiscountCouponReceiveList } from '../../../../api/discount-coupon'
 import Promotion from '../../detail/promotion'

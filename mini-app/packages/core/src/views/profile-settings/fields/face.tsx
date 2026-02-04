@@ -14,10 +14,10 @@ import {
 } from '../../../hooks'
 import request from '../../../api/request'
 import { useLoadingEnd } from '../../../hooks/useLoading/index'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { Camera, Image } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 
 const check = (url: string) => {
   return request({

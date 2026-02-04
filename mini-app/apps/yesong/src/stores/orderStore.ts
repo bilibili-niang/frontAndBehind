@@ -1,4 +1,4 @@
-import { useConfirm, useLoading, useLoadingEnd, useResponseMessage } from '@anteng/core'
+import { useConfirm, useLoading, useLoadingEnd, useResponseMessage } from '@pkg/core'
 import { defineStore } from 'pinia'
 import { cancelPaymentPendingOrder, requestCompleteOrder } from '../api'
 import { triggerOrderItemRefresh } from '../utils/emitter'

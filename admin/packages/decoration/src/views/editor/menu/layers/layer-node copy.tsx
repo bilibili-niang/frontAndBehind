@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType, ref, withModifiers } from 'vue'
 import './layer-node.scss'
-import { Icon, message } from '@anteng/ui'
+import { Icon, message } from '@pkg/ui'
 import { type FlattenTreeCompNode } from '../../../../stores/canvas/types'
 import useCanvasStore from '../../../../stores/canvas'
 import { storeToRefs } from 'pinia'

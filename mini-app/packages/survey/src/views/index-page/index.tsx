@@ -3,8 +3,8 @@ import './style.scss'
 import { Image } from '@tarojs/components'
 import { useSurveyFormStore } from '../../stores/form'
 import { storeToRefs } from 'pinia'
-import { useLoading, useLoadingEnd, useResponseMessage, withLogin } from '@anteng/core'
-import { withUnit } from '@anteng/utils'
+import { useLoading, useLoadingEnd, useResponseMessage, withLogin } from '@pkg/core'
+import { withUnit } from '@pkg/utils'
 import { $startSurvey } from '../../api'
 
 export default defineComponent({

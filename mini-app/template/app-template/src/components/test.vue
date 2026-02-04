@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { uuid } from '@anteng/utils'
+import { uuid } from '@pkg/utils'
 import { ref } from 'vue'
 import { defineComponent } from 'vue'
 export default defineComponent({

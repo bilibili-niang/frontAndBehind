@@ -1,4 +1,4 @@
-import { BasePage, emitter, EmptyStatus, useAppStore, usePagination, useUserStore } from '@anteng/core'
+import { BasePage, emitter, EmptyStatus, useAppStore, usePagination, useUserStore } from '@pkg/core'
 import { ScrollView, Swiper, SwiperItem } from '@tarojs/components'
 import { useRouter } from '@tarojs/taro'
 import { $getAfterSaleOrders, getOrderList } from '../../../api/order'

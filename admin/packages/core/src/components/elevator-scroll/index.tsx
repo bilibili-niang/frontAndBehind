@@ -1,10 +1,10 @@
 // 电梯滚动组件
 import './index.scss'
 import { computed, defineComponent, nextTick, onBeforeUnmount, onMounted, ref, Transition, watch } from 'vue'
-import { Button, Icon, JsonView, message } from '@anteng/ui'
-import Collapse from '@anteng/jsf/src/components/collapse'
-import { SchemaErrors, Spin, useContextMenu } from '@anteng/core'
-import { SchemaForm, validateForm } from '@anteng/jsf'
+import { Button, Icon, JsonView, message } from '@pkg/ui'
+import Collapse from '@pkg/jsf/src/components/collapse'
+import { SchemaErrors, Spin, useContextMenu } from '@pkg/core'
+import { SchemaForm, validateForm } from '@pkg/jsf'
 
 // 内容容器ID，用于获取滚动容器
 const CONTAINER_ID = 'elevator-content-container'

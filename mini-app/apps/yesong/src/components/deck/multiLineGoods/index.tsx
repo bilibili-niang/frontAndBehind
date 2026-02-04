@@ -1,11 +1,11 @@
 // 多行商品
 import { defineComponent, computed, ref, watch, PropType, ComputedRef } from 'vue'
 import './style.scss'
-import { withUnit } from '@anteng/utils'
+import { withUnit } from '@pkg/utils'
 import GoodsItem from './goods-item/index'
 import getGoodsList from '../../../api/deck-comps/getGoodsList'
 import useAction from '../../../hooks/useAction'
-import { DeckComponentConfig } from '@anteng/deck'
+import { DeckComponentConfig } from '@pkg/deck'
 
 type cacheArrayType = any
 

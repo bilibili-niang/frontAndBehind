@@ -86,7 +86,7 @@ server: {
   - 设置本地 token（`localStorage`）并同步 admin 侧 `auth` store
   - 直接跳转到首页（`/home`）
 
-该逻辑位于 `packages/core/src/views/login/index.tsx`，环境判断与外部使用参考 `@anteng/utils` 的 `isTestDev()`。
+该逻辑位于 `packages/core/src/views/login/index.tsx`，环境判断与外部使用参考 `@pkg/utils` 的 `isTestDev()`。
 
 ## 下一步
 

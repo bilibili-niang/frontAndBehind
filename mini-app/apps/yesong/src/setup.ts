@@ -1,6 +1,6 @@
 import './components/deck'
 
-import anteng, { useAppStore } from '@anteng/core'
+import anteng, { useAppStore } from '@pkg/core'
 
 import {
   QUICK_MENU_ITEM_CATEGORY,

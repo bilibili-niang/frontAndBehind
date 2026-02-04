@@ -21,7 +21,7 @@ title: ScrollContainer
 </template>
 
 <script setup lang="ts">
-import { ScrollContainer } from '@anteng/ui'
+import { ScrollContainer } from '@pkg/ui'
 </script>
 ```
 
@@ -29,7 +29,7 @@ TSX 示例：
 
 ```ts
 import { defineComponent } from 'vue'
-import { ScrollContainer } from '@anteng/ui'
+import { ScrollContainer } from '@pkg/ui'
 
 export default defineComponent(() => {
   return () => (
@@ -70,7 +70,7 @@ export default defineComponent(() => {
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button, ScrollContainer } from '@anteng/ui'
+import { Button, ScrollContainer } from '@pkg/ui'
 
 const scRef = ref<InstanceType<typeof ScrollContainer> | null>(null)
 

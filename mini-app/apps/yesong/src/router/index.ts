@@ -10,7 +10,7 @@ import {
   useLoading,
   useResponseMessage,
   useLoadingEnd
-} from '@anteng/core'
+} from '@pkg/core'
 import { useGlobalStore } from '../stores'
 import {
   ROUTE_AFTER_SALE,

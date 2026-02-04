@@ -1,5 +1,5 @@
-import { useToast } from '@anteng/core'
-import { Search } from '@anteng/ui'
+import { useToast } from '@pkg/core'
+import { Search } from '@pkg/ui'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

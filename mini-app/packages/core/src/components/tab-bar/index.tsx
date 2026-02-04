@@ -1,7 +1,7 @@
 import { computed, defineComponent, PropType } from 'vue'
 import './style.scss'
 import Taro from '@tarojs/taro'
-import { parseBorderRadius } from '@anteng/utils'
+import { parseBorderRadius } from '@pkg/utils'
 import { Button } from '@tarojs/components'
 import { REQUEST_DOMAIN } from '../../api/request'
 

@@ -2,8 +2,8 @@ import { PropType, defineComponent, computed } from 'vue'
 import './style.scss'
 import { foodRecommendationsConfig } from './manifest'
 import { DeckComponent } from '../../../stores/canvas'
-import { withUnit } from '@anteng/decoration'
-import { useAction } from '@anteng/core'
+import { withUnit } from '@pkg/decoration'
+import { useAction } from '@pkg/core'
 
 export { default as manifest } from './manifest'
 

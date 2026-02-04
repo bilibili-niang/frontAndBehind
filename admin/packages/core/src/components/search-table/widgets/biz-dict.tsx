@@ -1,4 +1,4 @@
-import { Select } from '@anteng/ui'
+import { Select } from '@pkg/ui'
 import { defineComponent } from 'vue'
 import './styles/select.scss'
 import { commonSearchTableWidgetPropsDefine } from './types'

@@ -1,6 +1,6 @@
 import './style.scss'
 import { computed, defineComponent, ref } from 'vue'
-import { BasePage, useToast } from '@anteng/core'
+import { BasePage, useToast } from '@pkg/core'
 import { Image, Swiper, SwiperItem, Text, View } from '@tarojs/components'
 import { useRouter } from '@tarojs/taro'
 import { buildImgUrl } from '../../../utils/test'

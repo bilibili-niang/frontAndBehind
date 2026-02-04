@@ -4,7 +4,7 @@ outline: deep
 
 # 组件概览
 
-组件能力由 `@anteng/ui` 提供，基于 Ant Design Vue 进行轻封装并统一样式前缀，与项目的 TSX/SFC 开发方式保持一致。
+组件能力由 `@pkg/ui` 提供，基于 Ant Design Vue 进行轻封装并统一样式前缀，与项目的 TSX/SFC 开发方式保持一致。
 
 ## 主要组件与能力
 
@@ -18,7 +18,7 @@ outline: deep
 ### 导入与使用
 
 ```ts
-import { Button, Input, Modal, message, Icon } from '@anteng/ui'
+import { Button, Input, Modal, message, Icon } from '@pkg/ui'
 
 message.success('操作成功')
 ```
@@ -34,7 +34,7 @@ message.success('操作成功')
 </template>
 
 <script>
-import { Button, Input, message } from '@anteng/ui'
+import { Button, Input, message } from '@pkg/ui'
 
 export default {
   name: 'UiBasicExample',
@@ -53,7 +53,7 @@ export default {
 
 ```tsx [TSX]
 import { defineComponent, ref } from 'vue'
-import { Button, Input, message } from '@anteng/ui'
+import { Button, Input, message } from '@pkg/ui'
 
 export default defineComponent(() => {
   const text = ref('')
@@ -70,12 +70,12 @@ export default defineComponent(() => {
 
 ### 全局样式前缀与主题
 
-`@anteng/ui` 在包内部通过 Ant Design Vue 的 `ConfigProvider` 设置了统一前缀 `PREFIX_CLS`，并内置基础样式与重置（`ant-design-vue/dist/reset.css`）。应用无需额外配置即可获得统一外观。
+`@pkg/ui` 在包内部通过 Ant Design Vue 的 `ConfigProvider` 设置了统一前缀 `PREFIX_CLS`，并内置基础样式与重置（`ant-design-vue/dist/reset.css`）。应用无需额外配置即可获得统一外观。
 
 ### 常见问题
 
 - TSX 下某些事件类型不完整？
-  - 可在应用中进行适当断言（如 `onChange={fn as any}`），同时欢迎在 `@anteng/ui` 提交类型完善 PR。
+  - 可在应用中进行适当断言（如 `onChange={fn as any}`），同时欢迎在 `@pkg/ui` 提交类型完善 PR。
 
 ---
 

@@ -1,7 +1,7 @@
 import { defineComponent, ref } from 'vue'
 import Custom from './tab-pages/deck'
 import { useRouter } from '@tarojs/taro'
-import { BasePage, useShareAppMessage } from '@anteng/core'
+import { BasePage, useShareAppMessage } from '@pkg/core'
 
 definePageConfig({
   navigationStyle: 'custom',

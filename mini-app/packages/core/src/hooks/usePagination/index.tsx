@@ -5,7 +5,7 @@ import EmptyStatus, { EmptyAction } from '../../components/empty-status'
 import Spin from '../../components/spin'
 import './style.scss'
 import axios from 'axios'
-import { Icon } from '@anteng/ui'
+import { Icon } from '@pkg/ui'
 import { buildPagination } from './utils'
 import ScrollAnchor from '../../components/scroll-anchor'
 

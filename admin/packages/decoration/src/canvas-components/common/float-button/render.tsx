@@ -14,7 +14,7 @@ import { withUnit } from '../../../canvas-components/utils'
 import useEditorStore from '../../../stores/editor'
 import { storeToRefs } from 'pinia'
 import { clamp } from 'lodash'
-import { useAction } from '@anteng/core'
+import { useAction } from '@pkg/core'
 
 export { default as manifest } from './manifest'
 

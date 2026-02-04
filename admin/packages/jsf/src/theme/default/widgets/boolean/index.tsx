@@ -1,9 +1,9 @@
 // widget-switch
 import './style.scss'
-import { Switch } from '@anteng/ui'
+import { Switch } from '@pkg/ui'
 import { computed, defineComponent } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { COMMON_STATUS_OFF, COMMON_STATUS_ON } from '@anteng/config'
+import { COMMON_STATUS_OFF, COMMON_STATUS_ON } from '@pkg/config'
 
 export default defineComponent({
   name: 'w_boolean',

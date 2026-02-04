@@ -1,7 +1,7 @@
 import { computed, ref, watch } from 'vue'
 import useModal from '../useModal'
 import './slice.scss'
-import { Button, Icon, InputNumber, message } from '@anteng/ui'
+import { Button, Icon, InputNumber, message } from '@pkg/ui'
 
 export const useImageSlice = async (options: { url: string; slices?: any[][]; onSuccess?: (slices) => void }) => {
   const image = new Image()

@@ -1,4 +1,4 @@
-import { Input } from '@anteng/ui'
+import { Input } from '@pkg/ui'
 import useModal from '../useModal'
 
 export const useScanDevice = () => {

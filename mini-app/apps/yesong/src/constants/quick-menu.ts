@@ -1,4 +1,4 @@
-import { QuickMenuItem } from '@anteng/core'
+import { QuickMenuItem } from '@pkg/core'
 import {
   backToIndex,
   navigateToCategory,

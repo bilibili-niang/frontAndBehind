@@ -1,7 +1,7 @@
 import { computed, defineComponent, ref, watch } from 'vue'
 import { useModal } from '../../../hooks'
 import './gender.scss'
-import { CheckedBorder } from '@anteng/ui'
+import { CheckedBorder } from '@pkg/ui'
 import Taro from '@tarojs/taro'
 import Wrap, { commonProfileWidgetPropsDefine } from '../wrap'
 

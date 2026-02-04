@@ -8,7 +8,7 @@ title: 基础组件
 
 ## 概述
 
-`@anteng/ui` 在 Ant Design Vue 之上封装了常用基础组件，统一样式前缀与交互体验。以下为二次封装并对外导出的组件清单（按类别分组）：
+`@pkg/ui` 在 Ant Design Vue 之上封装了常用基础组件，统一样式前缀与交互体验。以下为二次封装并对外导出的组件清单（按类别分组）：
 
 基础输入与选择
 - Button
@@ -80,7 +80,7 @@ title: 基础组件
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button, Input, Switch } from '@anteng/ui'
+import { Button, Input, Switch } from '@pkg/ui'
 
 const text = ref('')
 </script>

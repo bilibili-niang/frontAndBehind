@@ -1,11 +1,11 @@
 // 账号页面的管理
 import { defineComponent } from 'vue'
 import { useSearchTable, useTableAction } from '../../components/search-table'
-import { STATUS_OPTIONS } from '@anteng/config'
-import { Button, Tag } from '@anteng/ui'
+import { STATUS_OPTIONS } from '@pkg/config'
+import { Button, Tag } from '@pkg/ui'
 import { onCreate, onUpdate } from './modal'
 import { $accountCreate, $accountDelete, $accountList } from '../../api'
-import { commonDelete } from '@anteng/utils'
+import { commonDelete } from '@pkg/utils'
 
 export default defineComponent({
   name: 'componentName',

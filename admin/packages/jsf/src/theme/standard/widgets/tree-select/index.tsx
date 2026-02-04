@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { CommonWidgetPropsDefine } from '../../../../types/widget'
-import { TreeSelect } from '@anteng/ui'
+import { TreeSelect } from '@pkg/ui'
 
 export default defineComponent({
   name: 'sw_tree-select',

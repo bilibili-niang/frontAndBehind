@@ -1,6 +1,6 @@
 // 商品的选择器
 import './style.scss'
-import { ScrollList, ScrollListRefType } from '@anteng/core'
+import { ScrollList, ScrollListRefType } from '@pkg/core'
 import { defineComponent, ref } from 'vue'
 import { $getGoodsBySearchParams, $getGoodsList } from '../../../../api'
 import { Image } from '@tarojs/components'

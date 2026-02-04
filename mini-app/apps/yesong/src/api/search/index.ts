@@ -1,5 +1,5 @@
 import request from '../request'
-import { PaginationData, RequestPagination } from '@anteng/core'
+import { PaginationData, RequestPagination } from '@pkg/core'
 
 interface ISearchResult {
   code: string
