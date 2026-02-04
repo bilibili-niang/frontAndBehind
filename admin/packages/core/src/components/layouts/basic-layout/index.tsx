@@ -30,20 +30,31 @@ const exclusion = ['CommonDeckPage']
 
 const getRouterView = (key?: any) => {
   return (
-    <RouterView class={`${PREFIX_CLS}-basic-layout__router-view-content keep-alive ui-scrollbar`}>
-      {(scope: any) => {
-        if (scope.Component?.type.name === 'RouterView') {
-          return <KeepAlive exclude={[...exclusion]}>{getRouterView(scope?.route?.name)}</KeepAlive>
-        }
-        return scope.route.meta.keepAlive === false ? (
-          <KeepAlive exclude={[scope.route.name, ...exclusion]}>
-            <scope.Component key={uuid()}/>
-          </KeepAlive>
-        ) : (
-          <KeepAlive exclude={[...exclusion]}>{scope.Component}</KeepAlive>
-        )
-      }}
-    </RouterView>
+    <div class={`${PREFIX_CLS}-basic-layout__router-view-content ui-scrollbar`}>
+      <RouterView>
+        {(scope: any) => {
+          const Component = scope.Component
+          // 确保不渲染空的 Component
+          if (!Component) return null
+          
+          const isKeepAlive = scope.route.meta.keepAlive !== false
+          
+          // 如果是 RouterView 本身（嵌套路由容器），直接渲染，不包裹 KeepAlive
+          // 避免 <KeepAlive><RouterView /></KeepAlive> 的错误结构
+          if (Component.type.name === 'RouterView' || Component.type === RouterView) {
+             return <component is={Component} />
+          }
+
+          return isKeepAlive ? (
+            <KeepAlive exclude={[scope.route.name, ...exclusion]}>
+              <component is={Component} key={scope.route.fullPath || uuid()} />
+            </KeepAlive>
+          ) : (
+            <component is={Component} />
+          )
+        }}
+      </RouterView>
+    </div>
   )
 }
 

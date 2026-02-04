@@ -23,16 +23,32 @@ export default defineComponent({
             onClick={() => router.push('/resume/create')}
           >
             <div class="empty-icon flex align-center justify-center h-full">
-              <Icon name="add"/>
+              <div class="icon-wrapper">
+                <Icon name="add" size={32} />
+              </div>
+              <span class="empty-text">新建简历</span>
             </div>
           </div>
         )
       }
       return (
-        <div class="resume-card p-2" onClick={() => router.push(`/resume/create?id=${props.data?.id}`)}>
-          <div class="title">{props.data?.title || '未命名简历'}</div>
-          <div class="bottom-info-time">
-            {formatDate(props.data?.createdAt || props.data?.created_at || '')}
+        <div class="resume-card p-0" onClick={() => router.push(`/resume/create?id=${props.data?.id}`)}>
+          {/* 缩略图区域 */}
+          <div class="preview-area">
+            {/* 暂时使用渐变色块代替缩略图 */}
+            <div class="preview-placeholder"></div>
+          </div>
+          
+          <div class="info-area p-3">
+            <div class="title text-truncate">{props.data?.title || '未命名简历'}</div>
+            <div class="bottom-info-time">
+              {formatDate(props.data?.createdAt || props.data?.created_at || '')}
+            </div>
+          </div>
+          
+          {/* 悬浮操作栏 - 后续功能预留 */}
+          <div class="hover-actions">
+            {/* <div class="action-btn"><Icon name="edit" /></div> */}
           </div>
         </div>
       )

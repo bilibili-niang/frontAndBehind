@@ -1,38 +1,146 @@
 .resume-card {
-    margin-right: 5px;
+    // 移除原有 margin，由 grid gap 控制
+    // margin-right: 5px; 
     display: flex;
     flex-direction: column;
-    height: 220px;
-    width: 170px;
+    height: 240px; // 稍微增加高度
+    width: 100%; // 宽度由 grid 控制
     border: var(--color-border-base) 1px solid;
-    border-radius: var(--border-radious);
+    border-radius: 12px; // 更圆润的圆角
     background: var(--anteng-color-bg-100);
-    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
+    overflow: hidden; // 确保子元素不溢出圆角
+
     &:hover {
         cursor: pointer;
-        transform: translateY(-4px);
-        box-shadow: 0 8px 22px rgba(0,0,0,.12);
+        transform: translateY(-6px); // 更明显的上浮
+        box-shadow: 0 12px 32px rgba(0,0,0,.08); // 更柔和的阴影
         border-color: var(--anteng-color-primary-200);
-        background: var(--anteng-color-bg-150);
+        // background: var(--anteng-color-bg-150); // 移除背景色变化，保持干净
     }
+
+    // 缩略图区域
+    .preview-area {
+        height: 140px;
+        background-color: var(--anteng-color-bg-200);
+        position: relative;
+        overflow: hidden;
+        
+        .preview-placeholder {
+            width: 100%;
+            height: 100%;
+            // 漂亮的渐变背景作为占位
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            opacity: 0.8;
+            transition: transform 0.4s ease;
+        }
+    }
+
+    &:hover .preview-placeholder {
+        transform: scale(1.05); // 缩略图轻微放大
+    }
+
+    // 信息区域
+    .info-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #fff;
+        z-index: 1;
+        
+        .title { 
+            font-size: 16px; 
+            font-weight: 600; 
+            color: var(--color-text-base); 
+            margin-bottom: 6px;
+            padding: 0;
+        }
+        
+        .bottom-info-time {
+            font-size: 12px;
+            color: var(--anteng-color-text-tertiary); // 使用更浅的颜色
+        }
+    }
+
+    // 各种装饰效果 (保留原有的一些，做微调)
     &::after {
         content: '';
         position: absolute;
         inset: 0;
         pointer-events: none;
-        border-radius: var(--border-radious);
-        background: radial-gradient(120px 60px at 20% 0%, rgba(99,102,241,.12), transparent 60%),
-                    linear-gradient(180deg, rgba(99,102,241,.04), transparent 60%);
+        border-radius: 12px;
+        // 调整光效，使其更微妙
+        background: radial-gradient(160px 80px at 50% 0%, rgba(99,102,241,.08), transparent 70%);
         opacity: 0;
-        transition: opacity .2s ease;
+        transition: opacity .3s ease;
+        z-index: 2;
     }
     &:hover::after { opacity: 1; }
-    .title { font-size: 14px; font-weight: 600; color: var(--color-text-base); margin-top: 12px; padding: 0 8px; }
-    .resume-card-empty {
-        border-style: dashed;
-        .empty-icon { margin: auto; }
-        .icon { font-size: 30px; }
-        &:hover { border-color: var(--anteng-color-primary-300); }
+
+    // 空状态卡片样式优化
+    &.resume-card-empty {
+        border: 2px dashed var(--anteng-color-border-secondary);
+        background: var(--anteng-color-bg-100); // 使用项目背景色变量
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .empty-icon { 
+            margin: auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--anteng-color-text-tertiary);
+            transition: color 0.2s ease;
+            width: 100%;
+            height: 100%;
+            
+            .icon-wrapper {
+                width: 64px; // 加大图标区域
+                height: 64px;
+                border-radius: 50%;
+                background: var(--anteng-color-bg-200); // 默认状态下深一点的背景，显出层次
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 16px;
+                transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
+                
+                // 默认状态下给一点淡淡的阴影
+                box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            }
+            
+            .empty-text {
+                font-size: 16px;
+                font-weight: 600;
+                color: var(--color-text-secondary);
+            }
+        }
+        
+        &:hover { 
+            border-color: var(--anteng-color-primary-400);
+            background: var(--anteng-color-bg-100); // 保持背景色一致
+            box-shadow: 0 8px 24px rgba(99,102,241,0.12); // 添加悬浮阴影
+            transform: translateY(-6px);
+            
+            .empty-icon {
+                color: var(--anteng-color-primary-600);
+                
+                .icon-wrapper {
+                    transform: scale(1.1) rotate(90deg);
+                    background: var(--anteng-color-primary-50);
+                    color: var(--anteng-color-primary-500);
+                    box-shadow: 0 4px 12px rgba(99,102,241,0.2);
+                }
+
+                .empty-text {
+                    color: var(--anteng-color-primary-600);
+                }
+            }
+        }
     }
 }

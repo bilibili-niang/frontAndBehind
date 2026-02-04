@@ -1,18 +1,24 @@
 import './index.scss'
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, nextTick, watch } from 'vue'
 import { Button, Tabs, TabPane, TestFloat } from '@pkg/ui'
-import { $resumeList } from '@pkg/core'
-import { useRequestErrorMessage } from '@pkg/core'
+import { $resumeList, useRequestErrorMessage } from '@pkg/core'
+import { useGsapList } from '@pkg/utils'
 import ResumeCard from './components/resumeCard'
 
 export default defineComponent({
   setup() {
     const dataList = ref<any[]>([])
+    const { animate } = useGsapList('.resume-card-item')
+
     const init = () => {
       $resumeList({ size: 9999, current: 1 } as any)
         .then((res: any) => {
           if (res?.success) {
             dataList.value = Array.isArray(res?.data?.rows) ? res.data.rows : []
+            // 数据更新后重新触发动画
+            nextTick(() => {
+              animate()
+            })
           }
         })
         .catch(useRequestErrorMessage)
@@ -29,9 +35,15 @@ export default defineComponent({
         </TestFloat>
         <div class="tabs-container p-3">
           <Tabs>
-            <TabPane key={1} tab={'我的简历'} class='flex flex-row'>
-              <ResumeCard empty={true} />
-              {dataList.value.map((p: any) => <ResumeCard data={p} />)}
+            <TabPane key={1} tab={'我的简历'} class='resume-grid-container'>
+              <div class="resume-card-item">
+                <ResumeCard empty={true} />
+              </div>
+              {dataList.value.map((p: any) => (
+                <div class="resume-card-item" key={p.id}>
+                  <ResumeCard data={p} />
+                </div>
+              ))}
             </TabPane>
           </Tabs>
         </div>

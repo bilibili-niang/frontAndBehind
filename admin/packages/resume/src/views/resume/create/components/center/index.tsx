@@ -44,11 +44,31 @@ export default defineComponent({
       const nextX = startOffsetX + dx
       const center = centerRef.value
       const wrapper = wrapperRef.value
-      const maxY = Math.max(0, (center?.clientHeight || 0) - (wrapper?.offsetHeight || 0) - 24)
-      const maxX = Math.max(0, (center?.clientWidth || 0) - (wrapper?.offsetWidth || 0) - 24)
-      offsetY.value = Math.max(0, Math.min(nextY, maxY))
-      offsetX.value = Math.max(0, Math.min(nextX, maxX))
-      console.log('drag:move', { dx, dy, nextX, nextY, maxX, maxY, offsetX: offsetX.value, offsetY: offsetY.value })
+      
+      // 修正边界计算逻辑
+      // 允许 wrapper 向上移动（offsetY 为负），以便查看底部内容
+      // 限制范围：
+      // 1. 顶部限制：wrapper 底部不能高于 center 顶部 (minY)
+      // 2. 底部限制：wrapper 顶部不能低于 center 底部 (maxY)
+      
+      const wrapperHeight = wrapper?.offsetHeight || 0
+      const centerHeight = center?.clientHeight || 0
+      const wrapperWidth = wrapper?.offsetWidth || 0
+      const centerWidth = center?.clientWidth || 0
+
+      // 垂直方向：允许更自由的拖动，只要有一部分在可视区域内即可
+      // 比如保留 100px 的重叠区域
+      const minY = -(wrapperHeight - 100) 
+      const maxY = centerHeight - 100
+
+      // 水平方向同理
+      const minX = -(wrapperWidth - 100)
+      const maxX = centerWidth - 100
+      
+      offsetY.value = Math.max(minY, Math.min(nextY, maxY))
+      offsetX.value = Math.max(minX, Math.min(nextX, maxX))
+      
+      // console.log('drag:move', { dx, dy, nextX, nextY, offsetX: offsetX.value, offsetY: offsetY.value })
     }
     const onHandleUp = () => {
       dragging.value = false
