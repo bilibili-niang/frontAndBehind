@@ -1,0 +1,8 @@
+node_modules/
+_bmad-output/
+.trae/
+.idea/
+.vscode/
+*.log
+dist/
+.DS_Store

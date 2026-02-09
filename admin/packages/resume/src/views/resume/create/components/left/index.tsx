@@ -20,7 +20,22 @@ export default defineComponent({
       e.dataTransfer?.setData('text/plain', type)
     }
     const onAdd = (type: string) => {
-      store.add(type)
+      if (type === 'basic-info' || type === 'summary') {
+        store.setActiveModule('profile', 'profile')
+      } else if (type === 'education') {
+        // 先选中教育模块
+        // 如果想自动添加一条，可以调用 addListItem
+        const newId = store.addListItem('educations', { school: 'New School' })
+        store.setActiveModule(newId, 'education')
+      } else if (type === 'work') {
+        const newId = store.addListItem('experiences', { company: 'New Company' })
+        store.setActiveModule(newId, 'work')
+      } else if (type === 'project') {
+        const newId = store.addListItem('projects', { name: 'New Project' })
+        store.setActiveModule(newId, 'project')
+      } else if (type === 'skills') {
+        store.setActiveModule('skills', 'skills')
+      }
     }
     return () => (
       <div class="resume-left">

@@ -7,7 +7,30 @@ export default defineComponent({
   setup() {
     const store = useResumeStore()
     const onDragOver = (e: DragEvent) => { e.preventDefault() }
-    const onDrop = (e: DragEvent) => { e.preventDefault(); const type = e.dataTransfer?.getData('text/plain') || ''; if (type) store.add(type) }
+    const onDrop = (e: DragEvent) => { 
+      e.preventDefault(); 
+      const type = e.dataTransfer?.getData('text/plain') || ''; 
+      console.log('Center: onDrop', { type })
+      if (!type) return
+
+      if (type === 'basic-info' || type === 'summary') {
+        store.setActiveModule('profile', 'profile')
+      } else if (type === 'education') {
+        const newId = store.addListItem('educations', { school: 'New School' })
+        console.log('Center: added education', newId)
+        store.setActiveModule(newId, 'education')
+      } else if (type === 'work') {
+        const newId = store.addListItem('experiences', { company: 'New Company' })
+        console.log('Center: added work', newId)
+        store.setActiveModule(newId, 'work')
+      } else if (type === 'project') {
+        const newId = store.addListItem('projects', { name: 'New Project' })
+        console.log('Center: added project', newId)
+        store.setActiveModule(newId, 'project')
+      } else if (type === 'skills') {
+        store.setActiveModule('skills', 'skills')
+      }
+    }
 
     const offsetX = ref(0)
     const offsetY = ref(80)

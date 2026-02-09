@@ -168,19 +168,26 @@ export default defineComponent({
             </div>
 
             <div class="bottom-content">
-              <RouterView
-                v-slots={{
-                  default: ({ Component, route }: any) => (
-                    <Transition name="view-fade" mode="out-in">
-                      {route?.meta?.keepAlive ? (
-                        <KeepAlive>{h(Component)}</KeepAlive>
-                      ) : (
-                        h(Component)
-                      )}
-                    </Transition>
-                  )
-                }}
-              />
+                <RouterView
+                  v-slots={{
+                    default: ({ Component, route }: any) => {
+                      if (!Component) return null
+                      const isRouterView = Component.type.name === 'RouterView' || Component.type === RouterView
+                      if (isRouterView) {
+                         return h(Component)
+                      }
+                      return (
+                        <Transition name="view-fade" mode="out-in">
+                          {route?.meta?.keepAlive ? (
+                            <KeepAlive>{h(Component)}</KeepAlive>
+                          ) : (
+                            h(Component)
+                          )}
+                        </Transition>
+                      )
+                    }
+                  }}
+                />
             </div>
           </section>
         </div>

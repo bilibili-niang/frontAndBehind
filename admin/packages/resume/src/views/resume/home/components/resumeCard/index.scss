@@ -30,8 +30,10 @@
         .preview-placeholder {
             width: 100%;
             height: 100%;
-            // 漂亮的渐变背景作为占位
-            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            // 使用带有透明度的渐变，使其能适应深浅背景
+            background: linear-gradient(135deg, rgba(224, 231, 255, 0.5) 0%, rgba(243, 232, 255, 0.5) 100%);
+            // 深色模式下的覆盖层效果可能需要更精细的调整，或者直接用变量
+            // 暂时用半透明叠加
             opacity: 0.8;
             transition: transform 0.4s ease;
         }
@@ -47,7 +49,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background: #fff;
+        background: var(--anteng-color-bg-100); // 适配深色模式
         z-index: 1;
         
         .title { 

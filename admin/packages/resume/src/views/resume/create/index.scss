@@ -35,7 +35,7 @@
 		box-sizing: border-box;
 	}
 	.a4-block { border-bottom: 1px solid rgba(0, 0, 0, 0.06); padding: 12px 0; transition: background .15s ease, outline .15s ease; }
-	.a4-block:hover { outline: 2px dashed var(--anteng-color-primary-400); background: rgba(0, 0, 0, 0.02); }
+	.a4-block:hover { outline: 2px dashed var(--anteng-color-primary-400); background: rgba(0, 0, 0, 0.05); }
 	.a4-block.is-active { outline: 1px solid var(--anteng-color-primary-150); background: var(--anteng-color-bg-150); border-radius: var(--border-radious); box-shadow: 0 2px 8px rgba(0,0,0,.06); }
 	.a4-block { border-radius: var(--border-radious); position: relative; }
 	.a4-block { cursor: grab; }
@@ -43,7 +43,7 @@
 	.a4-block.dragging { opacity: 0.85; outline: 2px solid var(--anteng-color-primary-400); background: rgba(99, 102, 241, 0.04); }
 	.a4-placeholder { margin: 12px 0; padding: 10px 12px; border: 2px solid var(--anteng-color-primary-300); border-radius: 12px; background: rgba(99, 102, 241, 0.06); min-height: 44px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
 
-	.a4-block-controls { position: absolute; right: -36px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; }
+	.a4-block-controls { position: absolute; right: -50px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; }
 	.a4-block-controls .ctrl-btn { width: 26px; height: 26px; border-radius: var(--border-radious); border: 1px solid var(--anteng-color-primary-300); background: var(--anteng-color-bg-100); display: flex; align-items: center; justify-content: center; color: var(--anteng-color-primary-600); cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
 	.a4-placeholder .placeholder-block { display: flex; align-items: center; }
 	.a4-placeholder .placeholder-title { font-size: 14px; font-weight: 600; color: var(--anteng-color-primary-700); }

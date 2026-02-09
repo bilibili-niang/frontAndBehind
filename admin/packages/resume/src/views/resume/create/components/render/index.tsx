@@ -93,127 +93,94 @@ const placeholderComponent = (type: string) => (
 export default defineComponent({
   setup() {
     const store = useResumeStore()
-    const onSelect = (id: string) => store.select(id)
+    const onSelect = (id: string, type: string) => store.setActiveModule(id, type)
 
-    const dragging = ref(false)
-    const srcIndex = ref<number | null>(null)
-    const overIndex = ref<number | null>(null)
-    let previewEl: HTMLElement | null = null
-
-    const makePreview = (text: string) => {
-      const el = document.createElement('div')
-      el.style.cssText = [
-        'position:fixed',
-        'top:0',
-        'left:0',
-        'padding:4px 10px',
-        'border:1px solid #8b5cf6',
-        'background: rgba(99,102,241,0.08)',
-        'color:#4c1d95',
-        'border-radius:999px',
-        'box-shadow:0 6px 18px rgba(0,0,0,.18)',
-        'font-size:12px',
-        'pointer-events:none'
-      ].join(';')
-      el.textContent = text
-      document.body.appendChild(el)
-      return el
-    }
-
-    const onBlockDragStart = (e: DragEvent, idx: number) => {
-      dragging.value = true
-      srcIndex.value = idx
-      overIndex.value = idx
-      const b = store.blocks[idx]
-      previewEl = makePreview(labelMap[b.type] || b.type)
-      e.dataTransfer?.setData('text/plain', String(idx))
-      e.dataTransfer?.setDragImage(previewEl, 40, 20)
-      e.dataTransfer!.effectAllowed = 'move'
-    }
-    const onBlockDragEnd = () => {
-      dragging.value = false
-      srcIndex.value = null
-      overIndex.value = null
-      if (previewEl) { previewEl.remove(); previewEl = null }
-    }
-    const onBlockDragOver = (e: DragEvent, idx: number) => {
-      e.preventDefault()
-      const target = e.currentTarget as HTMLElement
-      const rect = target.getBoundingClientRect()
-      const afterHalf = e.clientY > rect.top + rect.height / 2
-      overIndex.value = afterHalf ? idx + 1 : idx
-    }
-    const commitMove = () => {
-      if (srcIndex.value == null || overIndex.value == null) return
-      let from = srcIndex.value
-      let to = overIndex.value
-      if (to > from) to = to - 1
-      store.move(from, to)
-      onBlockDragEnd()
-    }
-    const onContainerDrop = (e: DragEvent) => {
-      e.preventDefault()
-      commitMove()
-    }
-    const onContainerDragOver = (e: DragEvent) => {
-      if (!dragging.value) return
-      e.preventDefault()
-      const container = e.currentTarget as HTMLElement
-      const rect = container.getBoundingClientRect()
-      const y = e.clientY - rect.top
-      // 当在容器底部区域时，占位到最后
-      if (y > rect.height - 20) overIndex.value = store.blocks.length
-    }
-
-    const moveUp = (idx: number) => {
-      if (idx <= 0) return
-      store.move(idx, idx - 1)
-    }
-    const moveDown = (idx: number) => {
-      if (idx >= store.blocks.length - 1) return
-      store.move(idx, idx + 1)
-    }
+    // 暂时移除拖拽逻辑，等后续 Story 实现左侧拖拽时再加回来
+    // 现在的 Render 只负责渲染
+    
     return () => (
-      <div class="a4-page" onDrop={onContainerDrop} onDragover={onContainerDragOver} onDragenter={(e: DragEvent) => e.preventDefault()}>
-        {store.blocks.map((b, idx) => (
-          <>
-            {overIndex.value === idx && dragging.value && (
-              <div
-                class="a4-placeholder"
-                onDragover={(e: DragEvent) => { e.preventDefault(); overIndex.value = idx }}
-                onDrop={(e: DragEvent) => { e.preventDefault(); commitMove() }}
-              >
-                {placeholderComponent(store.blocks[srcIndex.value!]?.type)}
-              </div>
-            )}
-            <div
-              class={['a4-block', store.selectedId === b.id && 'is-active', dragging.value && srcIndex.value === idx && 'dragging']}
-              draggable
-              onDragstart={(e: DragEvent) => onBlockDragStart(e, idx)}
-              onDragend={onBlockDragEnd}
-              onDragover={(e: DragEvent) => onBlockDragOver(e, idx)}
-              onDrop={(e: DragEvent) => { e.preventDefault(); commitMove() }}
-              onClick={() => onSelect(b.id)}
-            >
-              {registry[b.type]?.(b.props) || null}
-              {store.selectedId === b.id && (
-                <div class="a4-block-controls" onClick={(e: MouseEvent) => e.stopPropagation()}>
-                  <div class="ctrl-btn" onClick={() => moveUp(idx)}>↑</div>
-                  <div class="ctrl-btn" onClick={() => moveDown(idx)}>↓</div>
-                </div>
-              )}
-            </div>
-          </>
-        ))}
-        {overIndex.value === store.blocks.length && dragging.value && (
-          <div
-            class="a4-placeholder"
-            onDragover={(e: DragEvent) => { e.preventDefault(); overIndex.value = store.blocks.length }}
-            onDrop={(e: DragEvent) => { e.preventDefault(); commitMove() }}
-          >
-            {placeholderComponent(store.blocks[srcIndex.value!]?.type)}
-          </div>
-        )}
+      <div class="a4-page" style={{ color: '#333' }}>
+        {/* 遍历布局顺序 */}
+        {store.content.layout.order.map((key) => {
+          // 获取模块数据
+          const data = store.content[key as keyof typeof store.content]
+          
+          // 如果是对象类型（Profile），渲染单个
+          if (key === 'profile') {
+             return (
+               <div 
+                 class={['a4-block', store.activeModuleId === 'profile' && 'is-active']}
+                 onClick={(e) => { e.stopPropagation(); onSelect('profile', 'profile') }}
+               >
+                 {registry['basic-info']?.(data) || null}
+               </div>
+             )
+          }
+
+          // Skills 特殊处理：作为整体渲染，而不是列表
+          if (key === 'skills') {
+             // data 是 string[]
+             if (!Array.isArray(data) || data.length === 0) {
+                return (
+                  <div class="module-group-empty" key={key} style={{padding: '10px', border: '1px dashed #ccc', textAlign: 'center', color: '#999'}} onClick={(e) => { e.stopPropagation(); onSelect('skills', 'skills') }}>
+                    {labelMap[key] || key} (Empty)
+                  </div>
+                )
+             }
+             return (
+               <div 
+                 class={['a4-block', store.activeModuleId === 'skills' && 'is-active']}
+                 onClick={(e) => { e.stopPropagation(); onSelect('skills', 'skills') }}
+               >
+                 {registry['skills']?.({ text: data.join(' / '), detail: data }) || null}
+                 {store.activeModuleId === 'skills' && (
+                    <div class="a4-block-controls" onClick={(e) => e.stopPropagation()}>
+                      <div class="ctrl-btn delete" onClick={() => store.updateModuleData('skills', [])}>🗑️</div>
+                    </div>
+                 )}
+               </div>
+             )
+          }
+
+          // 如果是数组类型（教育、经历等），渲染整个列表
+          if (Array.isArray(data)) {
+             // 简单的映射：key -> type
+             // educations -> education, experiences -> work, projects -> project
+             const typeMap: Record<string, string> = {
+               educations: 'education',
+               experiences: 'work',
+               projects: 'project',
+               customModules: 'custom'
+             }
+             const itemType = typeMap[key] || key
+             
+             if (data.length === 0) {
+                return (
+                  <div class="module-group-empty" key={key} style={{padding: '10px', border: '1px dashed #ccc', textAlign: 'center', color: '#999'}}>
+                    {labelMap[key] || key} (Empty)
+                  </div>
+                )
+             } 
+
+             return (
+               <div class="module-group" key={key}>
+                 {data.map((item: any) => (
+                   <div 
+                     class={['a4-block', store.activeModuleId === item.id && 'is-active']}
+                     onClick={(e) => { e.stopPropagation(); onSelect(item.id, itemType) }}
+                   >
+                     {registry[itemType]?.(item) || null}
+                     {store.activeModuleId === item.id && (
+                        <div class="a4-block-controls" onClick={(e) => e.stopPropagation()}>
+                          <div class="ctrl-btn delete" onClick={() => store.removeListItem(key as any, item.id)}>🗑️</div>
+                        </div>
+                     )}
+                   </div>
+                 ))}
+               </div>
+             )
+          }
+        })}
       </div>
     )
   }
