@@ -87,18 +87,47 @@ export const useResumeStore = defineStore('resume', {
     // 移动列表项
     moveListItem(moduleKey: 'educations' | 'experiences' | 'projects' | 'awards', itemId: string, direction: 'up' | 'down') {
       const list = this.content[moduleKey] as any[]
+      console.debug('[Store] moveListItem start', { moduleKey, itemId, direction, order: list.map(i => i.id) })
       const index = list.findIndex(item => item.id === itemId)
-      if (index === -1) return
+      if (index === -1) {
+        console.debug('[Store] moveListItem not found', { moduleKey, itemId })
+        return
+      }
       const target = direction === 'up' ? index - 1 : index + 1
-      if (target < 0 || target >= list.length) return
+      if (target < 0 || target >= list.length) {
+        console.debug('[Store] moveListItem out-of-range', { moduleKey, index, target, len: list.length })
+        return
+      }
       const tmp = list[index]
       list[index] = list[target]
       list[target] = tmp
+      console.debug('[Store] moveListItem done', { moduleKey, order: list.map(i => i.id) })
     },
 
     // 更新布局顺序
     updateLayoutOrder(newOrder: string[]) {
       this.content.layout.order = newOrder
+    },
+    
+    // 移动模块在布局中的位置
+    moveModule(moduleKey: string, direction: 'up' | 'down') {
+      const order = this.content.layout.order.slice()
+      const idx = order.indexOf(moduleKey)
+      console.debug('[Store] moveModule start', { moduleKey, direction, order })
+      if (idx === -1) {
+        console.debug('[Store] moveModule not found', { moduleKey })
+        return
+      }
+      const target = direction === 'up' ? idx - 1 : idx + 1
+      if (target < 0 || target >= order.length) {
+        console.debug('[Store] moveModule out-of-range', { idx, target, len: order.length })
+        return
+      }
+      const tmp = order[idx]
+      order[idx] = order[target]
+      order[target] = tmp
+      this.updateLayoutOrder(order)
+      console.debug('[Store] moveModule done', { order })
     },
 
     // 更新主题配置

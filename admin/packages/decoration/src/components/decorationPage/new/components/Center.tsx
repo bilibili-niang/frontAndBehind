@@ -129,7 +129,7 @@ export default defineComponent({
           style={{ transform: `scale(${store.zoom})`, transformOrigin: 'top center' }}
         >
           <StatusBar class={{
-            'fixed-status-bar':true
+            'fixed-status-bar': true
           }}/>
           {(() => {
             // 从页面级配置（customPageSchema）读取导航栏属性
@@ -144,7 +144,7 @@ export default defineComponent({
           })()}
           <div
             ref={bodyRef}
-            class={["phone-body", "flex-1", dragging.value && "--dragging"]}
+            class={['phone-body', 'flex-1', dragging.value && '--dragging']}
             onClick={onBodyClick}
             onDragover={(e) => {
               e.preventDefault()
@@ -185,22 +185,30 @@ export default defineComponent({
 
           {/* 外部悬浮的操作控件层（容器外部） */}
           <div ref={controlsRef} class="floating-controls" style={controlsStyle.value}>
-            <div class="comp-control" onClick={(e) => {
-              e.stopPropagation()
-              store.activeId && store.moveComponentUp(store.activeId)
-            }}>
+
+            <div
+              class="comp-control"
+              onClick={(e) => {
+                e.stopPropagation()
+                store.activeId && store.moveComponentUp(store.activeId)
+              }}>
               <Icon name="arrow-up"/>
             </div>
-            <div class="comp-control" onClick={(e) => {
-              e.stopPropagation()
-              store.activeId && store.moveComponentDown(store.activeId)
-            }}>
+
+            <div
+              class="comp-control"
+              onClick={(e) => {
+                e.stopPropagation()
+                store.activeId && store.moveComponentDown(store.activeId)
+              }}>
               <Icon name="arrow-down"/>
             </div>
-            <div class="comp-control" onClick={(e) => {
-              e.stopPropagation()
-              store.activeId && store.copyComponent(store.activeId)
-            }}>
+            <div
+              class="comp-control"
+              onClick={(e) => {
+                e.stopPropagation()
+                store.activeId && store.copyComponent(store.activeId)
+              }}>
               <Icon name="copy"/>
             </div>
             <div class="comp-control" onClick={(e) => {

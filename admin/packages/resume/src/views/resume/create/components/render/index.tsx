@@ -192,9 +192,23 @@ export default defineComponent({
                      )}
                      {store.activeModuleId === item.id && (
                         <div class="a4-block-controls" onClick={(e) => e.stopPropagation()}>
-                          <div class="ctrl-btn delete" onClick={() => store.removeListItem(key as any, item.id)}><Icon name="delete" /></div>
-                          <div class="ctrl-btn" onClick={() => store.moveListItem(key as any, item.id, 'up')}><Icon name="arrow-up" /></div>
-                          <div class="ctrl-btn" onClick={() => store.moveListItem(key as any, item.id, 'down')}><Icon name="arrow-down" /></div>
+                          <div class="ctrl-btn delete" onClick={() => { console.debug('[UI] click delete', { key, id: item.id }); store.removeListItem(key as any, item.id) }}><Icon name="delete" /></div>
+                          <div class="ctrl-btn" onClick={() => { 
+                            console.debug('[UI] click move up', { key, id: item.id, count: data.length }); 
+                            if (Array.isArray(data) && data.length <= 1) {
+                              store.moveModule(key, 'up')
+                            } else {
+                              store.moveListItem(key as any, item.id, 'up')
+                            }
+                          }}><Icon name="arrow-up" /></div>
+                          <div class="ctrl-btn" onClick={() => { 
+                            console.debug('[UI] click move down', { key, id: item.id, count: data.length }); 
+                            if (Array.isArray(data) && data.length <= 1) {
+                              store.moveModule(key, 'down')
+                            } else {
+                              store.moveListItem(key as any, item.id, 'down')
+                            }
+                          }}><Icon name="arrow-down" /></div>
                         </div>
                      )}
                    </div>
@@ -221,9 +235,21 @@ export default defineComponent({
                 )}
                 {store.activeModuleId === item.id && (
                   <div class="a4-block-controls" onClick={(e) => e.stopPropagation()}>
-                    <div class="ctrl-btn delete" onClick={() => store.removeListItem('awards', item.id)}><Icon name="delete" /></div>
-                    <div class="ctrl-btn" onClick={() => store.moveListItem('awards', item.id, 'up')}><Icon name="arrow-up" /></div>
-                    <div class="ctrl-btn" onClick={() => store.moveListItem('awards', item.id, 'down')}><Icon name="arrow-down" /></div>
+                    <div class="ctrl-btn delete" onClick={() => { console.debug('[UI] click delete', { key: 'awards', id: item.id }); store.removeListItem('awards', item.id) }}><Icon name="delete" /></div>
+                    <div class="ctrl-btn" onClick={() => { 
+                      console.debug('[UI] click move up', { key: 'awards', id: item.id }); 
+                      if (!store.content.layout.order.includes('awards')) {
+                        store.updateLayoutOrder([...store.content.layout.order, 'awards'])
+                      }
+                      store.moveModule('awards', 'up')
+                    }}><Icon name="arrow-up" /></div>
+                    <div class="ctrl-btn" onClick={() => { 
+                      console.debug('[UI] click move down', { key: 'awards', id: item.id }); 
+                      if (!store.content.layout.order.includes('awards')) {
+                        store.updateLayoutOrder([...store.content.layout.order, 'awards'])
+                      }
+                      store.moveModule('awards', 'down')
+                    }}><Icon name="arrow-down" /></div>
                   </div>
                 )}
               </div>
