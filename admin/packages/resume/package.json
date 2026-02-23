@@ -8,7 +8,9 @@
   "dependencies": {
     "@pkg/core": "workspace:*",
     "@pkg/ui": "workspace:*",
-    "vue": "^3.3.11"
+    "vue": "^3.3.11",
+    "html-to-image": "^1.11.11",
+    "pdf-lib": "^1.17.1"
   },
   "peerDependencies": {
     "pinia": "^2.1.7",

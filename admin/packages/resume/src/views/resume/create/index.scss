@@ -34,7 +34,7 @@
 		padding: 24px;
 		box-sizing: border-box;
 	}
-	.a4-block { border-bottom: 1px solid rgba(0, 0, 0, 0.06); padding: 14px 16px; transition: background .15s ease, outline-color .15s ease; outline: 2px dashed transparent; }
+	.a4-block { border-bottom: none; padding: 14px 16px; transition: background .15s ease, outline-color .15s ease; outline: 2px dashed transparent; }
 	.a4-block:hover { outline-color: var(--anteng-color-primary-400); background: rgba(0, 0, 0, 0.05); }
 	.a4-block.is-active { outline: 2px solid var(--anteng-color-primary-300); background: var(--anteng-color-bg-150); border-radius: var(--border-radious); box-shadow: 0 2px 8px rgba(0,0,0,.06); }
 	.a4-block { border-radius: var(--border-radious); position: relative; }
@@ -55,6 +55,17 @@
 	.a4-block .block-divider { position: absolute; left: 0; right: 0; bottom: 0; }
 }
 	@media print {
-		.resume-left, .resume-right, .resume-create-page__header { display: none !important; }
+		@page { size: A4; margin: 0; }
+		* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+		/* 仅打印画布区域 */
+		body * { visibility: hidden !important; }
+		.a4-page, .a4-page * { visibility: visible !important; }
+		.a4-page { position: absolute; left: 0; top: 0; }
+
+		.resume-left, .resume-right, .resume-create-page__header, .pdf-modal { display: none !important; }
+		.resume-center { padding-top: 0 !important; border: none !important; background: #fff !important; }
+		.a4-drag-handle { display: none !important; }
+		.a4-drag-wrapper { transform: translate(0,0) !important; margin: 0 auto !important; }
+		.a4-block, .a4-block.is-active { outline: none !important; box-shadow: none !important; background: none !important; }
 		.a4-page { box-shadow: none; margin: 0; width: 210mm; min-height: 297mm; transform-origin: top left; transform: scale(var(--print-scale, 1)); }
 	}

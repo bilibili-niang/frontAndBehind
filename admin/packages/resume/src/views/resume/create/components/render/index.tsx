@@ -1,5 +1,6 @@
 import { defineComponent, ref } from 'vue'
 import { useResumeStore } from '@pkg/resume'
+import { Icon } from '@pkg/ui'
 
 const renderText = (txt?: string) => {
   const t = String(txt || '').trim()
@@ -107,7 +108,6 @@ export default defineComponent({
     
     return () => (
       <div class="a4-page" style={{ color: '#333', padding: `${store.themeConfig.pagePadding ?? 24}px` }} onClick={() => store.setActiveModule(null, null)}>
-        {console.debug('[Render] layout.order=', store.content.layout.order)}
         {/* 遍历布局顺序 */}
         {store.content.layout.order.map((key) => {
           // 获取模块数据（兼容旧键名 'award' 映射到 'awards'）
@@ -115,7 +115,6 @@ export default defineComponent({
           if (key === 'award' && !Array.isArray(data)) {
             data = (store.content as any).awards
           }
-          console.debug('[Render] key=', key, 'dataType=', Array.isArray(data) ? 'array' : typeof data, 'length=', Array.isArray(data) ? data.length : undefined)
           
           // 如果是对象类型（Profile），渲染单个
           if (key === 'profile') {
@@ -172,14 +171,14 @@ export default defineComponent({
                customModules: 'custom'
              }
              const itemType = typeMap[key] || key
-             console.debug('[Render] list itemType=', itemType, 'count=', Array.isArray(data) ? data.length : 0)
              
              if (data.length === 0) return null
 
              return (
                <div class="module-group" key={key}>
-                 {data.map((item: any) => (
-                   <div 
+                {data.map((item: any) => (
+                  <div 
+                    key={item.id}
                      class={['a4-block', store.activeModuleId === item.id && 'is-active']}
                    style={{ 
                      padding: `${store.themeConfig.blockPadding ?? 16}px`, 
@@ -193,9 +192,9 @@ export default defineComponent({
                      )}
                      {store.activeModuleId === item.id && (
                         <div class="a4-block-controls" onClick={(e) => e.stopPropagation()}>
-                          <div class="ctrl-btn delete" onClick={() => store.removeListItem(key as any, item.id)}>🗑️</div>
-                          <div class="ctrl-btn" onClick={() => store.moveListItem(key as any, item.id, 'up')}>↑</div>
-                          <div class="ctrl-btn" onClick={() => store.moveListItem(key as any, item.id, 'down')}>↓</div>
+                          <div class="ctrl-btn delete" onClick={() => store.removeListItem(key as any, item.id)}><Icon name="delete" /></div>
+                          <div class="ctrl-btn" onClick={() => store.moveListItem(key as any, item.id, 'up')}><Icon name="arrow-up" /></div>
+                          <div class="ctrl-btn" onClick={() => store.moveListItem(key as any, item.id, 'down')}><Icon name="arrow-down" /></div>
                         </div>
                      )}
                    </div>
@@ -208,6 +207,7 @@ export default defineComponent({
           <div class="module-group" key="awards">
             {(store.content as any).awards.map((item: any) => (
               <div 
+                key={item.id}
                 class={['a4-block', store.activeModuleId === item.id && 'is-active']}
                 style={{ 
                   padding: `${store.themeConfig.blockPadding ?? 16}px`, 
@@ -221,9 +221,9 @@ export default defineComponent({
                 )}
                 {store.activeModuleId === item.id && (
                   <div class="a4-block-controls" onClick={(e) => e.stopPropagation()}>
-                    <div class="ctrl-btn delete" onClick={() => store.removeListItem('awards', item.id)}>🗑️</div>
-                    <div class="ctrl-btn" onClick={() => store.moveListItem('awards', item.id, 'up')}>↑</div>
-                    <div class="ctrl-btn" onClick={() => store.moveListItem('awards', item.id, 'down')}>↓</div>
+                    <div class="ctrl-btn delete" onClick={() => store.removeListItem('awards', item.id)}><Icon name="delete" /></div>
+                    <div class="ctrl-btn" onClick={() => store.moveListItem('awards', item.id, 'up')}><Icon name="arrow-up" /></div>
+                    <div class="ctrl-btn" onClick={() => store.moveListItem('awards', item.id, 'down')}><Icon name="arrow-down" /></div>
                   </div>
                 )}
               </div>

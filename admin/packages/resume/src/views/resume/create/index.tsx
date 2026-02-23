@@ -8,6 +8,8 @@ import { useResumeStore } from '@pkg/resume'
 import { useRoute, useRouter } from 'vue-router'
 import { $resumeDetail, $resumeCreate, $resumeUpdate, useUserStore } from '@pkg/core'
 import { Button, Input, message } from '@pkg/ui'
+import { toPng } from 'html-to-image'
+import { PDFDocument } from 'pdf-lib'
 
 export default defineComponent({
   name: 'resume-create-page',
@@ -66,12 +68,33 @@ export default defineComponent({
     const onExportPdf = () => {
       qualityModal.value = true
     }
-    const confirmExport = () => {
+    const confirmExport = async () => {
       qualityModal.value = false
+      store.setActiveModule(null, null)
+      const node = document.querySelector('.a4-page') as HTMLElement
+      if (!node) return
+      const pixelRatio = quality.value === 'high' ? 3 : quality.value === 'low' ? 1.5 : 2
+      const dataUrl = await toPng(node, { cacheBust: true, pixelRatio, style: { boxShadow: 'none', margin: '0' } })
+      const pngBytes = await fetch(dataUrl).then(r => r.arrayBuffer())
+      const pdf = await PDFDocument.create()
+      const img = await pdf.embedPng(pngBytes)
+      const wPx = node.offsetWidth
+      const hPx = node.offsetHeight
       const scale = quality.value === 'high' ? 1.25 : quality.value === 'low' ? 0.95 : 1
-      document.documentElement.style.setProperty('--print-scale', String(scale))
-      window.print()
-      document.documentElement.style.removeProperty('--print-scale')
+      const wPt = wPx * 0.75 * scale
+      const hPt = hPx * 0.75 * scale
+      const page = pdf.addPage([wPt, hPt])
+      page.drawImage(img, { x: 0, y: 0, width: wPt, height: hPt })
+      const bytes = await pdf.save()
+      const blob = new Blob([bytes], { type: 'application/pdf' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `${title.value || 'resume'}.pdf`
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
     }
     const inNewMode = computed(() => !route.query.id)
     return () => (
