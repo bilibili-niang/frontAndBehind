@@ -140,3 +140,4 @@ vite.config.ts.timestamp-*
 
 # 自定义的忽略规则
 *.txt.log
+src/upload/**

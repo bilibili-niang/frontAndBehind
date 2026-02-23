@@ -8,7 +8,13 @@ const defaultTheme: ThemeConfig = {
   templateId: 'modern',
   spacing: 1,
   pagePadding: 24,
-  blockPadding: 16
+  blockPadding: 16,
+  blockGap: 12,
+  blockDividerEnabled: true,
+  blockDividerWidth: 1,
+  blockDividerColor: 'rgba(0,0,0,0.06)',
+  canvasOffsetX: 0,
+  canvasOffsetY: 80
 }
 
 const defaultContent: ResumeContent = {
@@ -75,6 +81,18 @@ export const useResumeStore = defineStore('resume', {
       if (this.activeModuleId === itemId) {
         this.activeModuleId = null
       }
+    },
+    
+    // 移动列表项
+    moveListItem(moduleKey: 'educations' | 'experiences' | 'projects', itemId: string, direction: 'up' | 'down') {
+      const list = this.content[moduleKey] as any[]
+      const index = list.findIndex(item => item.id === itemId)
+      if (index === -1) return
+      const target = direction === 'up' ? index - 1 : index + 1
+      if (target < 0 || target >= list.length) return
+      const tmp = list[index]
+      list[index] = list[target]
+      list[target] = tmp
     },
 
     // 更新布局顺序

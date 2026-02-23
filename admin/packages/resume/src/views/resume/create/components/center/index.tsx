@@ -1,5 +1,5 @@
 import './index.scss'
-import { defineComponent, onMounted, ref, onBeforeUnmount, nextTick } from 'vue'
+import { defineComponent, onMounted, ref, onBeforeUnmount, nextTick, watch } from 'vue'
 import { useResumeStore } from '@pkg/resume'
 import Render from '../render'
 
@@ -30,8 +30,8 @@ export default defineComponent({
       }
     }
 
-    const offsetX = ref(0)
-    const offsetY = ref(80)
+    const offsetX = ref(store.themeConfig.canvasOffsetX ?? 0)
+    const offsetY = ref(store.themeConfig.canvasOffsetY ?? 80)
     const dragging = ref(false)
     let startY = 0
     let startX = 0
@@ -39,6 +39,13 @@ export default defineComponent({
     let startOffsetX = 0
     const centerRef = ref<HTMLElement | null>(null)
     const wrapperRef = ref<HTMLElement | null>(null)
+    const computeCenterX = () => {
+      const center = centerRef.value
+      const wrapper = wrapperRef.value
+      const cw = center?.clientWidth || 0
+      const ww = wrapper?.offsetWidth || 0
+      return Math.max(0, Math.floor((cw - ww) / 2))
+    }
 
     const onHandleDown = (e: MouseEvent) => {
       dragging.value = true
@@ -86,6 +93,12 @@ export default defineComponent({
       dragging.value = false
       window.removeEventListener('mousemove', onHandleMove)
       window.removeEventListener('mouseup', onHandleUp)
+      store.updateTheme({ canvasOffsetX: offsetX.value, canvasOffsetY: offsetY.value })
+    }
+    const onBackgroundClick = () => {
+      if (!dragging.value) {
+        store.setActiveModule(null, null)
+      }
     }
 
     onMounted(async () => {
@@ -94,12 +107,29 @@ export default defineComponent({
       const wrapper = wrapperRef.value
       const cw = center?.clientWidth || 0
       const ww = wrapper?.offsetWidth || 0
-      offsetX.value = Math.max(0, Math.floor((cw - ww) / 2))
+      if (store.themeConfig.canvasOffsetX === undefined || store.themeConfig.canvasOffsetX === null) {
+        offsetX.value = Math.max(0, Math.floor((cw - ww) / 2))
+      } else {
+        offsetX.value = store.themeConfig.canvasOffsetX || 0
+      }
+      if (store.themeConfig.canvasOffsetY !== undefined && store.themeConfig.canvasOffsetY !== null) {
+        offsetY.value = store.themeConfig.canvasOffsetY || 0
+      }
     })
+    
+    watch(
+      () => [store.themeConfig.canvasOffsetX, store.themeConfig.canvasOffsetY],
+      ([x, y]) => {
+        if (dragging.value) return
+        offsetX.value = (x ?? computeCenterX())
+        offsetY.value = (y ?? offsetY.value)
+      },
+      { immediate: true }
+    )
     onBeforeUnmount(() => onHandleUp())
 
     return () => (
-      <div class="resume-center" ref={(el) => (centerRef.value = el as HTMLElement)} onDragover={onDragOver} onDrop={onDrop}>
+      <div class="resume-center" ref={(el) => (centerRef.value = el as HTMLElement)} onDragover={onDragOver} onDrop={onDrop} onClick={onBackgroundClick}>
         <div class="a4-drag-wrapper" ref={(el) => (wrapperRef.value = el as HTMLElement)} style={{ transform: `translate(${offsetX.value}px, ${offsetY.value}px)` }}>
           <div class="a4-drag-handle" onMousedown={onHandleDown}>拖动页面</div>
           <Render />

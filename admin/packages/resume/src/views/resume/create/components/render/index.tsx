@@ -90,7 +90,7 @@ export default defineComponent({
     // 现在的 Render 只负责渲染
     
     return () => (
-      <div class="a4-page" style={{ color: '#333', padding: `${store.themeConfig.pagePadding ?? 24}px` }}>
+      <div class="a4-page" style={{ color: '#333', padding: `${store.themeConfig.pagePadding ?? 24}px` }} onClick={() => store.setActiveModule(null, null)}>
         {/* 遍历布局顺序 */}
         {store.content.layout.order.map((key) => {
           // 获取模块数据
@@ -103,10 +103,16 @@ export default defineComponent({
              return (
                <div 
                  class={['a4-block', store.activeModuleId === 'profile' && 'is-active']}
-                 style={{ padding: `${store.themeConfig.blockPadding ?? 16}px` }}
+                 style={{ 
+                   padding: `${store.themeConfig.blockPadding ?? 16}px`, 
+                   marginBottom: `${store.themeConfig.blockGap ?? 12}px`
+                 }}
                  onClick={(e) => { e.stopPropagation(); onSelect('profile', 'profile') }}
                >
                  {node}
+                 {store.themeConfig.blockDividerEnabled !== false && (
+                   <div class="block-divider" style={{ height: `${store.themeConfig.blockDividerWidth ?? 1}px`, background: store.themeConfig.blockDividerColor ?? 'rgba(0,0,0,0.06)' }} />
+                 )}
                </div>
              )
           }
@@ -117,9 +123,16 @@ export default defineComponent({
              return (
                <div 
                  class={['a4-block', store.activeModuleId === 'skills' && 'is-active']}
+               style={{ 
+                 padding: `${store.themeConfig.blockPadding ?? 16}px`, 
+                 marginBottom: `${store.themeConfig.blockGap ?? 12}px`
+               }}
                  onClick={(e) => { e.stopPropagation(); onSelect('skills', 'skills') }}
                >
                  {registry['skills']?.({ text: data.join(' / '), detail: data }) || null}
+                  {store.themeConfig.blockDividerEnabled !== false && (
+                    <div class="block-divider" style={{ height: `${store.themeConfig.blockDividerWidth ?? 1}px`, background: store.themeConfig.blockDividerColor ?? 'rgba(0,0,0,0.06)' }} />
+                  )}
                  {store.activeModuleId === 'skills' && (
                     <div class="a4-block-controls" onClick={(e) => e.stopPropagation()}>
                       <div class="ctrl-btn delete" onClick={() => store.updateModuleData('skills', [])}>🗑️</div>
@@ -147,14 +160,22 @@ export default defineComponent({
                <div class="module-group" key={key}>
                  {data.map((item: any) => (
                    <div 
-                    class={['a4-block', store.activeModuleId === item.id && 'is-active']}
-                    style={{ padding: `${store.themeConfig.blockPadding ?? 16}px` }}
+                     class={['a4-block', store.activeModuleId === item.id && 'is-active']}
+                   style={{ 
+                     padding: `${store.themeConfig.blockPadding ?? 16}px`, 
+                     marginBottom: `${store.themeConfig.blockGap ?? 12}px`
+                   }}
                      onClick={(e) => { e.stopPropagation(); onSelect(item.id, itemType) }}
                    >
                      {registry[itemType]?.(item) || null}
+                     {store.themeConfig.blockDividerEnabled !== false && (
+                       <div class="block-divider" style={{ height: `${store.themeConfig.blockDividerWidth ?? 1}px`, background: store.themeConfig.blockDividerColor ?? 'rgba(0,0,0,0.06)' }} />
+                     )}
                      {store.activeModuleId === item.id && (
                         <div class="a4-block-controls" onClick={(e) => e.stopPropagation()}>
                           <div class="ctrl-btn delete" onClick={() => store.removeListItem(key as any, item.id)}>🗑️</div>
+                          <div class="ctrl-btn" onClick={() => store.moveListItem(key as any, item.id, 'up')}>↑</div>
+                          <div class="ctrl-btn" onClick={() => store.moveListItem(key as any, item.id, 'down')}>↓</div>
                         </div>
                      )}
                    </div>

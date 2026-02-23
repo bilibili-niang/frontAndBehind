@@ -1,6 +1,6 @@
 import './index.scss'
 import { defineComponent, computed } from 'vue'
-import { Button, Input, Textarea, Select, InputNumber, Slider } from '@pkg/ui'
+import { Button, Input, Textarea, Select, InputNumber, Slider, Switch, ColorPicker, UploadImage } from '@pkg/ui'
 import { useResumeStore } from '@pkg/resume'
 import { requestUploadFile } from '@pkg/core'
 
@@ -84,17 +84,15 @@ export default defineComponent({
                 <div class="field-block"><div class="field-label">电话</div><Input value={currentData.value.phone} onUpdate:modelValue={(v: any) => update('phone', v)} /></div>
                 <div class="field-block"><div class="field-label">邮箱</div><Input value={currentData.value.email} onUpdate:modelValue={(v: any) => update('email', v)} /></div>
                 <div class="field-block"><div class="field-label">头像</div>
-                   <div class="avatar-upload">
-                      <div class="preview" style={{width:'80px',height:'80px',border:'1px solid var(--color-border-base)'}}> 
-                        {currentData.value.avatar && (<img src={currentData.value.avatar} style={{width:'100%',height:'100%',objectFit:'cover'}}/>)} 
-                      </div>
-                      <input type="file" accept="image/*" onChange={async (e: any) => {
-                        const file = e?.target?.files?.[0]
-                        if (!file) return
-                        const res: any = await requestUploadFile(file)
-                        if (res?.data?.url) update('avatar', res.data.url)
-                      }}/>
-                   </div>
+                  <UploadImage 
+                    value={currentData.value.avatar} 
+                    size={90}
+                    onUpload={async (file: File) => {
+                      const res: any = await requestUploadFile(file)
+                      return res?.data?.url || ''
+                    }}
+                    onUpdate:value={(url: string) => update('avatar', url)}
+                  />
                 </div>
               </div>
             )}
@@ -117,6 +115,28 @@ export default defineComponent({
                   <div class="field-label">模块内边距 (px)</div>
                   <InputNumber min={0} max={96} value={store.themeConfig.blockPadding ?? 16} onUpdate:value={(v: any) => update('blockPadding', Number(v) || 0)} />
                 </div>
+                <div class="field-block">
+                  <div class="field-label">卡片间距 (px)</div>
+                  <InputNumber min={0} max={64} value={store.themeConfig.blockGap ?? 12} onUpdate:value={(v: any) => update('blockGap', Number(v) || 0)} />
+                </div>
+                <div class="field-block">
+                  <div class="field-label">显示分隔线</div>
+                  <div style={{ width: '48px' }}>
+                    <Switch checked={store.themeConfig.blockDividerEnabled !== false} onClick={() => update('blockDividerEnabled', !(store.themeConfig.blockDividerEnabled !== false))} />
+                  </div>
+                </div>
+                {store.themeConfig.blockDividerEnabled !== false && (
+                  <>
+                    <div class="field-block">
+                      <div class="field-label">分隔线粗细 (px)</div>
+                      <InputNumber min={0} max={6} value={store.themeConfig.blockDividerWidth ?? 1} onUpdate:value={(v: any) => update('blockDividerWidth', Number(v) || 0)} />
+                    </div>
+                    <div class="field-block">
+                      <div class="field-label">分隔线颜色</div>
+                      <ColorPicker modelValue={store.themeConfig.blockDividerColor ?? 'rgba(0,0,0,0.06)'} alphaLabel="透明度" showAlpha onUpdate:modelValue={(v: any) => update('blockDividerColor', v)} />
+                    </div>
+                  </>
+                )}
               </div>
             )}
 

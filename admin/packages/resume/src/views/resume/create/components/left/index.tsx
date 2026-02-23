@@ -1,9 +1,10 @@
 import './index.scss'
 import { defineComponent } from 'vue'
+import { Icon } from '@pkg/ui'
 import { useResumeStore } from '@pkg/resume'
 
 const registry = [
-  { type: 'style', label: '页面样式' },
+  { type: 'style', label: '页面样式', icon: 'platte' },
   { type: 'basic-info', label: '基本信息' },
   { type: 'summary', label: '个人总结' },
   { type: 'education', label: '教育经历' },
@@ -50,7 +51,12 @@ export default defineComponent({
               onDragstart={(e: DragEvent) => onDragStart(e, it.type)}
               onClick={() => onAdd(it.type)}
             >
-              {it.label}
+              <span>{it.label}</span>
+              {it.icon && (
+                <span class="suffix-icon" aria-label={it.label}>
+                  <Icon name={it.icon as any} />
+                </span>
+              )}
             </div>
           ))}
         </div>

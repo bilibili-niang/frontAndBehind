@@ -33,6 +33,8 @@ export { default as InfoList } from './components/infoList'
 export { default as JsonView } from './components/json-view'
 export { default as Radio } from './components/radio'
 export { default as TestFloat } from './components/test-float'
+export { default as ColorPicker } from './components/colorPicker'
+export { default as UploadImage } from './components/uploadImage'
 
 export {
   ConfigProvider,

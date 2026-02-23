@@ -6,3 +6,4 @@ _bmad-output/
 *.log
 dist/
 .DS_Store
+behind/src/upload/**

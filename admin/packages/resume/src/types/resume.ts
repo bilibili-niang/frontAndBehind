@@ -33,6 +33,12 @@ export interface ThemeConfig {
   spacing: number;      // 间距系数
   pagePadding?: number; // 画布页面内边距（px）
   blockPadding?: number; // 模块内边距（px）
+  blockGap?: number; // 卡片间距（px）
+  blockDividerEnabled?: boolean; // 是否显示块底部分隔线
+  blockDividerWidth?: number; // 分隔线粗细（px）
+  blockDividerColor?: string; // 分隔线颜色
+  canvasOffsetX?: number; // 画布水平偏移
+  canvasOffsetY?: number; // 画布垂直偏移
 }
 
 // 基础信息
