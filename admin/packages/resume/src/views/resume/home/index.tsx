@@ -1,5 +1,5 @@
 import './index.scss'
-import { defineComponent, ref, nextTick, watch } from 'vue'
+import { defineComponent, ref, nextTick } from 'vue'
 import { Button, Tabs, TabPane, TestFloat } from '@pkg/ui'
 import { $resumeList, useRequestErrorMessage } from '@pkg/core'
 import { useGsapList } from '@pkg/utils'
@@ -35,13 +35,13 @@ export default defineComponent({
         </TestFloat>
         <div class="tabs-container p-3">
           <Tabs>
-            <TabPane key={1} tab={'我的简历'} class='resume-grid-container'>
+            <TabPane key={1} tab={'我的简历'} class="resume-grid-container">
               <div class="resume-card-item">
-                <ResumeCard empty={true} />
+                <ResumeCard empty={true}/>
               </div>
               {dataList.value.map((p: any) => (
                 <div class="resume-card-item" key={p.id}>
-                  <ResumeCard data={p} />
+                  <ResumeCard data={p}/>
                 </div>
               ))}
             </TabPane>
