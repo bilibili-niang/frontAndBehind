@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 import { useResumeStore } from '@pkg/resume'
 
 const registry = [
+  { type: 'style', label: '页面样式' },
   { type: 'basic-info', label: '基本信息' },
   { type: 'summary', label: '个人总结' },
   { type: 'education', label: '教育经历' },
@@ -21,7 +22,9 @@ export default defineComponent({
     }
     const onAdd = (type: string) => {
       if (type === 'basic-info' || type === 'summary') {
-        store.setActiveModule('profile', 'profile')
+        store.setActiveModule('profile', type === 'summary' ? 'summary' : 'profile')
+      } else if (type === 'style') {
+        store.setActiveModule('style', 'style')
       } else if (type === 'education') {
         // 先选中教育模块
         // 如果想自动添加一条，可以调用 addListItem

@@ -31,6 +31,8 @@ export interface ThemeConfig {
   fontFamily: string;
   templateId: string;   // 'classic' | 'modern' | 'minimal'
   spacing: number;      // 间距系数
+  pagePadding?: number; // 画布页面内边距（px）
+  blockPadding?: number; // 模块内边距（px）
 }
 
 // 基础信息

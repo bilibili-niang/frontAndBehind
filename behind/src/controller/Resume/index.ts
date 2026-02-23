@@ -217,15 +217,11 @@ class ResumeController {
       if (updateData && typeof updateData.data === 'object') {
         updateData.data = JSON.stringify(updateData.data)
       }
-      // 查询指定简历，确保属于当前用户
-      // 使用字符串类型的id进行查询
-      const resume = await Resume.findOne({
-        where: {
-          id: id.toString(), // 确保转换为字符串
-          userId
-        }
+      // 采用静态更新，避免实例方法在某些场景不可用的问题
+      const [count] = await Resume.update(updateData, {
+        where: { id: id.toString(), userId }
       })
-      if (!resume) {
+      if (count === 0) {
         ctx.body = ctxBody({
           success: false,
           code: 404,
@@ -234,9 +230,9 @@ class ResumeController {
         })
         return
       }
-      // 更新数据
-      await resume.update(updateData)
-      const plain = toPlain(resume)
+      // 读取最新数据返回
+      const latest: any = await Resume.findOne({ where: { id: id.toString(), userId } })
+      const plain = toPlain(latest)
       ctx.body = ctxBody({
         success: true,
         code: 200,

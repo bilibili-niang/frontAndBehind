@@ -1,19 +1,21 @@
 import { defineComponent, ref } from 'vue'
 import { useResumeStore } from '@pkg/resume'
 
-const BasicInfo = (p: any) => (
-  <div class="widget widget-basic-info" style={{display:'grid',gridTemplateColumns:'100px 1fr',gap:'12px',alignItems:'center'}}>
-    <div class="avatar">{p.avatarUrl && <img src={p.avatarUrl} style={{width:'90px',height:'90px',objectFit:'cover'}}/>}</div>
-    <div>
-      <div class="title">{p.name || '姓名'}</div>
-      <div class="meta">{[p.phone, p.email].filter(Boolean).join(' / ')}</div>
-      <div class="meta">{[p.city, p.site, p.wechat].filter(Boolean).join(' / ')}</div>
-      <div class="meta">{[p.gender, p.status].filter(Boolean).join(' / ')}</div>
-      <div class="meta">{[p.intentJob, p.intentCity, p.salaryMin && `期望薪资 ${p.salaryMin}~${p.salaryMax || ''}`].filter(Boolean).join(' / ')}</div>
-      {p.linkedin && <div class="meta">{p.linkedin}</div>}
+const BasicInfo = (p: any) => {
+  const hasAny = !!(p?.name || p?.phone || p?.email || p?.location || p?.summary || p?.avatar)
+  if (!hasAny) return null
+  return (
+    <div class="widget widget-basic-info" style={{display:'grid',gridTemplateColumns:'100px 1fr',gap:'12px',alignItems:'center'}}>
+      <div class="avatar">{p.avatar && <img src={p.avatar} style={{width:'90px',height:'90px',objectFit:'cover'}}/>}</div>
+      <div>
+        {p.name && <div class="title">{p.name}</div>}
+        <div class="meta">{[p.phone, p.email].filter(Boolean).join(' / ')}</div>
+        {p.location && <div class="meta">{p.location}</div>}
+        {p.summary && <div class="text">{p.summary}</div>}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 const Summary = (p: any) => (
   <div class="widget widget-summary">
     <div class="section-title">个人总结</div>
@@ -33,21 +35,17 @@ const registry: Record<string, (p: any) => any> = {
   education: (p) => (
     <div class="widget widget-education">
       <div class="section-title">教育经历</div>
-      <div class="meta">{[p.schoolName, p.major, p.degree, p.studyType].filter(Boolean).join(' | ')}</div>
-      <div class="meta">{[p.college, p.city].filter(Boolean).join(' / ')}</div>
+      <div class="meta">{[p.school, p.major, p.degree].filter(Boolean).join(' | ')}</div>
       <div class="meta">{[p.startDate, p.endDate].filter(Boolean).join(' - ')}</div>
-      {Array.isArray(p.tags) && p.tags.length > 0 && (<div class="meta">{p.tags.join(' / ')}</div>)}
-      {p.detail && <div class="text">{p.detail}</div>}
+      {p.description && <div class="text">{p.description}</div>}
     </div>
   ),
   work: (p) => (
     <div class="widget widget-work">
       <div class="section-title">工作经历</div>
-      <div class="meta">{[p.company, p.role].filter(Boolean).join(' | ')}</div>
-      <div class="meta">{[p.department, p.city].filter(Boolean).join(' / ')}</div>
+      <div class="meta">{[p.company, p.position].filter(Boolean).join(' | ')}</div>
       <div class="meta">{[p.startDate, p.endDate].filter(Boolean).join(' - ')}</div>
-      {Array.isArray(p.techStack) && p.techStack.length > 0 && (<div class="meta">{p.techStack.join(' / ')}</div>)}
-      {p.detail && <div class="text">{p.detail}</div>}
+      {p.description && <div class="text">{p.description}</div>}
     </div>
   ),
   project: (p) => (
@@ -55,14 +53,7 @@ const registry: Record<string, (p: any) => any> = {
       <div class="section-title">项目经历</div>
       <div class="meta">{[p.name, p.role].filter(Boolean).join(' | ')}</div>
       <div class="meta">{[p.startDate, p.endDate].filter(Boolean).join(' - ')}</div>
-      {Array.isArray(p.techStack) && p.techStack.length > 0 && (<div class="meta">{p.techStack.join(' / ')}</div>)}
-      {p.link && <div class="meta">{p.link}</div>}
-      {p.detail && <div class="text">{p.detail}</div>}
-      {Array.isArray(p.images) && p.images.length > 0 && (
-        <div class="images" style={{display:'flex',gap:'6px',flexWrap:'wrap'}}>
-          {p.images.map((u: string) => (<img src={u} style={{width:'100px',height:'60px',objectFit:'cover'}}/>))}
-        </div>
-      )}
+      {p.description && <div class="text">{p.description}</div>}
     </div>
   ),
   skills: (p) => PlainSection('专业技能', p),
@@ -99,7 +90,7 @@ export default defineComponent({
     // 现在的 Render 只负责渲染
     
     return () => (
-      <div class="a4-page" style={{ color: '#333' }}>
+      <div class="a4-page" style={{ color: '#333', padding: `${store.themeConfig.pagePadding ?? 24}px` }}>
         {/* 遍历布局顺序 */}
         {store.content.layout.order.map((key) => {
           // 获取模块数据
@@ -107,26 +98,22 @@ export default defineComponent({
           
           // 如果是对象类型（Profile），渲染单个
           if (key === 'profile') {
+             const node = registry['basic-info']?.(data)
+             if (!node) return null
              return (
                <div 
                  class={['a4-block', store.activeModuleId === 'profile' && 'is-active']}
+                 style={{ padding: `${store.themeConfig.blockPadding ?? 16}px` }}
                  onClick={(e) => { e.stopPropagation(); onSelect('profile', 'profile') }}
                >
-                 {registry['basic-info']?.(data) || null}
+                 {node}
                </div>
              )
           }
 
           // Skills 特殊处理：作为整体渲染，而不是列表
           if (key === 'skills') {
-             // data 是 string[]
-             if (!Array.isArray(data) || data.length === 0) {
-                return (
-                  <div class="module-group-empty" key={key} style={{padding: '10px', border: '1px dashed #ccc', textAlign: 'center', color: '#999'}} onClick={(e) => { e.stopPropagation(); onSelect('skills', 'skills') }}>
-                    {labelMap[key] || key} (Empty)
-                  </div>
-                )
-             }
+             if (!Array.isArray(data) || data.length === 0) return null
              return (
                <div 
                  class={['a4-block', store.activeModuleId === 'skills' && 'is-active']}
@@ -154,19 +141,14 @@ export default defineComponent({
              }
              const itemType = typeMap[key] || key
              
-             if (data.length === 0) {
-                return (
-                  <div class="module-group-empty" key={key} style={{padding: '10px', border: '1px dashed #ccc', textAlign: 'center', color: '#999'}}>
-                    {labelMap[key] || key} (Empty)
-                  </div>
-                )
-             } 
+             if (data.length === 0) return null
 
              return (
                <div class="module-group" key={key}>
                  {data.map((item: any) => (
                    <div 
-                     class={['a4-block', store.activeModuleId === item.id && 'is-active']}
+                    class={['a4-block', store.activeModuleId === item.id && 'is-active']}
+                    style={{ padding: `${store.themeConfig.blockPadding ?? 16}px` }}
                      onClick={(e) => { e.stopPropagation(); onSelect(item.id, itemType) }}
                    >
                      {registry[itemType]?.(item) || null}

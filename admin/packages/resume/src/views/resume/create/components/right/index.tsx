@@ -1,6 +1,6 @@
 import './index.scss'
 import { defineComponent, computed } from 'vue'
-import { Button, Input, Textarea, Select } from '@pkg/ui'
+import { Button, Input, Textarea, Select, InputNumber, Slider } from '@pkg/ui'
 import { useResumeStore } from '@pkg/resume'
 import { requestUploadFile } from '@pkg/core'
 
@@ -12,8 +12,11 @@ export default defineComponent({
     // 获取当前选中的数据
     const currentData = computed(() => {
       const { activeModuleId, activeModuleType, content } = store
-      console.log('Right: computed currentData', { activeModuleId, activeModuleType })
       if (!activeModuleId) return null
+      
+      if (activeModuleType === 'style') {
+        return { pagePadding: store.themeConfig.pagePadding }
+      }
       
       if (activeModuleId === 'profile') return content.profile
       if (activeModuleId === 'skills') return { detail: content.skills.join('\n') } // 特殊处理技能列表
@@ -42,6 +45,11 @@ export default defineComponent({
         return
       }
 
+      if (activeModuleType === 'style') {
+        store.updateTheme({ [key]: val })
+        return
+      }
+
       if (activeModuleId === 'skills') {
          // 技能特殊处理：字符串换行分割
          if (key === 'detail') {
@@ -62,22 +70,6 @@ export default defineComponent({
       }
     }
 
-    // 删除当前选中项
-    const removeCurrent = () => {
-       const { activeModuleId, activeModuleType } = store
-       if (!activeModuleId || activeModuleId === 'profile' || activeModuleId === 'skills') return
-
-       const listMap: Record<string, any> = {
-        education: 'educations',
-        work: 'experiences',
-        project: 'projects'
-      }
-      const listKey = listMap[activeModuleType || '']
-      if (listKey) {
-        store.removeListItem(listKey, activeModuleId)
-      }
-    }
-
     return () => (
       <div class="resume-right">
         {!currentData.value && <div class="panel-empty">请选择组件进行编辑</div>}
@@ -91,7 +83,6 @@ export default defineComponent({
                 <div class="field-block"><div class="field-label">职位/头衔</div><Input value={currentData.value.title} onUpdate:modelValue={(v: any) => update('title', v)} /></div>
                 <div class="field-block"><div class="field-label">电话</div><Input value={currentData.value.phone} onUpdate:modelValue={(v: any) => update('phone', v)} /></div>
                 <div class="field-block"><div class="field-label">邮箱</div><Input value={currentData.value.email} onUpdate:modelValue={(v: any) => update('email', v)} /></div>
-                <div class="field-block"><div class="field-label">个人简介</div><Textarea rows={4} value={currentData.value.summary} onUpdate:modelValue={(v: any) => update('summary', v)} /></div>
                 <div class="field-block"><div class="field-label">头像</div>
                    <div class="avatar-upload">
                       <div class="preview" style={{width:'80px',height:'80px',border:'1px solid var(--color-border-base)'}}> 
@@ -104,6 +95,27 @@ export default defineComponent({
                         if (res?.data?.url) update('avatar', res.data.url)
                       }}/>
                    </div>
+                </div>
+              </div>
+            )}
+
+            {/* 个人总结表单（独立） */}
+            {store.activeModuleType === 'summary' && (
+              <div class="field-group">
+                <div class="field-block"><div class="field-label">个人简介</div><Textarea rows={6} value={store.content.profile.summary} onUpdate:value={(v: any) => update('summary', v)} /></div>
+              </div>
+            )}
+
+            {/* 页面样式配置 */}
+            {store.activeModuleType === 'style' && (
+              <div class="field-group">
+                <div class="field-block">
+                  <div class="field-label">页面内边距 (px)</div>
+                  <InputNumber min={0} max={96} value={store.themeConfig.pagePadding ?? 24} onUpdate:value={(v: any) => update('pagePadding', Number(v) || 0)} />
+                </div>
+                <div class="field-block">
+                  <div class="field-label">模块内边距 (px)</div>
+                  <InputNumber min={0} max={96} value={store.themeConfig.blockPadding ?? 16} onUpdate:value={(v: any) => update('blockPadding', Number(v) || 0)} />
                 </div>
               </div>
             )}
@@ -121,7 +133,6 @@ export default defineComponent({
                     <div class="field-block" style={{flex:1}}><div class="field-label">结束时间</div><Input value={currentData.value.endDate} onUpdate:modelValue={(v: any) => update('endDate', v)} /></div>
                  </div>
                  <div class="field-block"><div class="field-label">描述</div><Textarea rows={6} value={currentData.value.description} onUpdate:modelValue={(v: any) => update('description', v)} /></div>
-                 <div class="panel-actions"><Button variant="text" onClick={removeCurrent}>删除此条</Button></div>
                </div>
             )}
 
@@ -135,7 +146,6 @@ export default defineComponent({
                     <div class="field-block" style={{flex:1}}><div class="field-label">结束时间</div><Input value={currentData.value.endDate} onUpdate:modelValue={(v: any) => update('endDate', v)} /></div>
                  </div>
                  <div class="field-block"><div class="field-label">工作内容</div><Textarea rows={8} value={currentData.value.description} onUpdate:modelValue={(v: any) => update('description', v)} /></div>
-                 <div class="panel-actions"><Button variant="text" onClick={removeCurrent}>删除此条</Button></div>
                </div>
             )}
 
@@ -149,14 +159,13 @@ export default defineComponent({
                     <div class="field-block" style={{flex:1}}><div class="field-label">结束时间</div><Input value={currentData.value.endDate} onUpdate:modelValue={(v: any) => update('endDate', v)} /></div>
                  </div>
                  <div class="field-block"><div class="field-label">项目描述</div><Textarea rows={8} value={currentData.value.description} onUpdate:modelValue={(v: any) => update('description', v)} /></div>
-                 <div class="panel-actions"><Button variant="text" onClick={removeCurrent}>删除此条</Button></div>
                </div>
             )}
 
             {/* 技能表单 (简化版) */}
             {store.activeModuleType === 'skills' && (
                <div class="field-group">
-                 <div class="field-block"><div class="field-label">技能列表 (每行一个)</div><Textarea rows={10} value={currentData.value.detail} onUpdate:modelValue={(v: any) => update('detail', v)} /></div>
+                <div class="field-block"><div class="field-label">技能列表 (每行一个)</div><Textarea rows={10} value={currentData.value.detail} onUpdate:value={(v: any) => update('detail', v)} /></div>
                  <div class="panel-actions"><Button variant="text" onClick={() => store.updateModuleData('skills', [])}>清空技能</Button></div>
                </div>
             )}

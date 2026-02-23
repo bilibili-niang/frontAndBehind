@@ -10,22 +10,20 @@ export default defineComponent({
     const onDrop = (e: DragEvent) => { 
       e.preventDefault(); 
       const type = e.dataTransfer?.getData('text/plain') || ''; 
-      console.log('Center: onDrop', { type })
       if (!type) return
 
       if (type === 'basic-info' || type === 'summary') {
-        store.setActiveModule('profile', 'profile')
+        store.setActiveModule('profile', type === 'summary' ? 'summary' : 'profile')
+      } else if (type === 'style') {
+        store.setActiveModule('style', 'style')
       } else if (type === 'education') {
         const newId = store.addListItem('educations', { school: 'New School' })
-        console.log('Center: added education', newId)
         store.setActiveModule(newId, 'education')
       } else if (type === 'work') {
         const newId = store.addListItem('experiences', { company: 'New Company' })
-        console.log('Center: added work', newId)
         store.setActiveModule(newId, 'work')
       } else if (type === 'project') {
         const newId = store.addListItem('projects', { name: 'New Project' })
-        console.log('Center: added project', newId)
         store.setActiveModule(newId, 'project')
       } else if (type === 'skills') {
         store.setActiveModule('skills', 'skills')
@@ -48,14 +46,6 @@ export default defineComponent({
       startX = e.clientX
       startOffset = offsetY.value
       startOffsetX = offsetX.value
-      console.log('drag:start', {
-        startX,
-        startY,
-        offsetX: offsetX.value,
-        offsetY: offsetY.value,
-        center: { w: centerRef.value?.clientWidth, h: centerRef.value?.clientHeight },
-        wrapper: { w: wrapperRef.value?.offsetWidth, h: wrapperRef.value?.offsetHeight }
-      })
       window.addEventListener('mousemove', onHandleMove)
       window.addEventListener('mouseup', onHandleUp)
     }
@@ -91,13 +81,11 @@ export default defineComponent({
       offsetY.value = Math.max(minY, Math.min(nextY, maxY))
       offsetX.value = Math.max(minX, Math.min(nextX, maxX))
       
-      // console.log('drag:move', { dx, dy, nextX, nextY, offsetX: offsetX.value, offsetY: offsetY.value })
     }
     const onHandleUp = () => {
       dragging.value = false
       window.removeEventListener('mousemove', onHandleMove)
       window.removeEventListener('mouseup', onHandleUp)
-      console.log('drag:end', { offsetX: offsetX.value, offsetY: offsetY.value })
     }
 
     onMounted(async () => {
