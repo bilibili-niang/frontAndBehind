@@ -22,9 +22,10 @@ const defaultContent: ResumeContent = {
   educations: [],
   experiences: [],
   projects: [],
+  awards: [],
   skills: [],
   customModules: [],
-  layout: { order: ['profile', 'educations', 'experiences', 'projects', 'skills'], hidden: [] }
+  layout: { order: ['profile', 'educations', 'experiences', 'projects', 'skills', 'awards'], hidden: [] }
 }
 
 export const useResumeStore = defineStore('resume', {
@@ -60,7 +61,7 @@ export const useResumeStore = defineStore('resume', {
     },
 
     // 更新列表型模块中的单项 (例如 Education)
-    updateListItem(moduleKey: 'educations' | 'experiences' | 'projects', itemId: string, data: any) {
+    updateListItem(moduleKey: 'educations' | 'experiences' | 'projects' | 'awards', itemId: string, data: any) {
       const list = this.content[moduleKey] as any[]
       const index = list.findIndex(item => item.id === itemId)
       if (index !== -1) {
@@ -69,14 +70,14 @@ export const useResumeStore = defineStore('resume', {
     },
 
     // 添加列表项
-    addListItem(moduleKey: 'educations' | 'experiences' | 'projects', item: any = {}) {
+    addListItem(moduleKey: 'educations' | 'experiences' | 'projects' | 'awards', item: any = {}) {
       const newItem = { id: uuid(8), ...item }
       ;(this.content[moduleKey] as any[]).push(newItem)
       return newItem.id
     },
 
     // 删除列表项
-    removeListItem(moduleKey: 'educations' | 'experiences' | 'projects', itemId: string) {
+    removeListItem(moduleKey: 'educations' | 'experiences' | 'projects' | 'awards', itemId: string) {
       this.content[moduleKey] = (this.content[moduleKey] as any[]).filter(item => item.id !== itemId)
       if (this.activeModuleId === itemId) {
         this.activeModuleId = null
@@ -84,7 +85,7 @@ export const useResumeStore = defineStore('resume', {
     },
     
     // 移动列表项
-    moveListItem(moduleKey: 'educations' | 'experiences' | 'projects', itemId: string, direction: 'up' | 'down') {
+    moveListItem(moduleKey: 'educations' | 'experiences' | 'projects' | 'awards', itemId: string, direction: 'up' | 'down') {
       const list = this.content[moduleKey] as any[]
       const index = list.findIndex(item => item.id === itemId)
       if (index === -1) return

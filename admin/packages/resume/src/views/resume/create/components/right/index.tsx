@@ -26,6 +26,7 @@ export default defineComponent({
         education: 'educations',
         work: 'experiences',
         project: 'projects',
+        award: 'awards',
         custom: 'customModules'
       }
       const listKey = listMap[activeModuleType || '']
@@ -62,7 +63,8 @@ export default defineComponent({
       const listMap: Record<string, any> = {
         education: 'educations',
         work: 'experiences',
-        project: 'projects'
+        project: 'projects',
+        award: 'awards'
       }
       const listKey = listMap[activeModuleType || '']
       if (listKey) {
@@ -152,7 +154,7 @@ export default defineComponent({
                     <div class="field-block" style={{flex:1}}><div class="field-label">开始时间</div><Input value={currentData.value.startDate} onUpdate:modelValue={(v: any) => update('startDate', v)} /></div>
                     <div class="field-block" style={{flex:1}}><div class="field-label">结束时间</div><Input value={currentData.value.endDate} onUpdate:modelValue={(v: any) => update('endDate', v)} /></div>
                  </div>
-                 <div class="field-block"><div class="field-label">描述</div><Textarea rows={6} value={currentData.value.description} onUpdate:modelValue={(v: any) => update('description', v)} /></div>
+                 <div class="field-block"><div class="field-label">描述</div><Textarea rows={6} value={currentData.value.description} onUpdate:value={(v: any) => update('description', v)} /></div>
                </div>
             )}
 
@@ -165,7 +167,7 @@ export default defineComponent({
                     <div class="field-block" style={{flex:1}}><div class="field-label">开始时间</div><Input value={currentData.value.startDate} onUpdate:modelValue={(v: any) => update('startDate', v)} /></div>
                     <div class="field-block" style={{flex:1}}><div class="field-label">结束时间</div><Input value={currentData.value.endDate} onUpdate:modelValue={(v: any) => update('endDate', v)} /></div>
                  </div>
-                 <div class="field-block"><div class="field-label">工作内容</div><Textarea rows={8} value={currentData.value.description} onUpdate:modelValue={(v: any) => update('description', v)} /></div>
+                 <div class="field-block"><div class="field-label">工作内容</div><Textarea rows={8} value={currentData.value.description} onUpdate:value={(v: any) => update('description', v)} /></div>
                </div>
             )}
 
@@ -178,15 +180,27 @@ export default defineComponent({
                     <div class="field-block" style={{flex:1}}><div class="field-label">开始时间</div><Input value={currentData.value.startDate} onUpdate:modelValue={(v: any) => update('startDate', v)} /></div>
                     <div class="field-block" style={{flex:1}}><div class="field-label">结束时间</div><Input value={currentData.value.endDate} onUpdate:modelValue={(v: any) => update('endDate', v)} /></div>
                  </div>
-                 <div class="field-block"><div class="field-label">项目描述</div><Textarea rows={8} value={currentData.value.description} onUpdate:modelValue={(v: any) => update('description', v)} /></div>
+                 <div class="field-block"><div class="field-label">项目描述</div><Textarea rows={8} value={currentData.value.description} onUpdate:value={(v: any) => update('description', v)} /></div>
                </div>
+            )}
+
+            {/* 获奖表单 */}
+            {store.activeModuleType === 'award' && (
+              <div class="field-group">
+                <div class="field-block"><div class="field-label">奖项名称</div><Input value={currentData.value.name} onUpdate:modelValue={(v: any) => update('name', v)} /></div>
+                <div class="flex gap-2">
+                  <div class="field-block" style={{flex:1}}><div class="field-label">级别</div><Input value={currentData.value.level} onUpdate:modelValue={(v: any) => update('level', v)} /></div>
+                  <div class="field-block" style={{flex:1}}><div class="field-label">颁发机构</div><Input value={currentData.value.org} onUpdate:modelValue={(v: any) => update('org', v)} /></div>
+                </div>
+                <div class="field-block"><div class="field-label">获奖时间</div><Input value={currentData.value.date} onUpdate:modelValue={(v: any) => update('date', v)} /></div>
+                <div class="field-block"><div class="field-label">详细说明</div><Textarea rows={6} value={currentData.value.detail} onUpdate:value={(v: any) => update('detail', v)} /></div>
+              </div>
             )}
 
             {/* 技能表单 (简化版) */}
             {store.activeModuleType === 'skills' && (
                <div class="field-group">
                 <div class="field-block"><div class="field-label">技能列表 (每行一个)</div><Textarea rows={10} value={currentData.value.detail} onUpdate:value={(v: any) => update('detail', v)} /></div>
-                 <div class="panel-actions"><Button variant="text" onClick={() => store.updateModuleData('skills', [])}>清空技能</Button></div>
                </div>
             )}
 

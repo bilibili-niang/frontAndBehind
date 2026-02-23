@@ -18,6 +18,24 @@ export default defineComponent({
   name: 'resume-left',
   setup() {
     const store = useResumeStore()
+    const singleAdded = (type: string) => {
+      if (type === 'basic-info') {
+        const p: any = store.content.profile || {}
+        return !!(p.name || p.title || p.email || p.phone || p.location || p.avatar || (p.summary && String(p.summary).trim()))
+      }
+      if (type === 'summary') {
+        const p: any = store.content.profile || {}
+        return !!(p.summary && String(p.summary).trim())
+      }
+      return false
+    }
+    const getCount = (type: string) => {
+      if (type === 'education') return store.content.educations.length
+      if (type === 'work') return store.content.experiences.length
+      if (type === 'project') return store.content.projects.length
+      if (type === 'award') return (store.content as any).awards?.length || 0
+      return 0
+    }
     const onDragStart = (e: DragEvent, type: string) => {
       e.dataTransfer?.setData('text/plain', type)
     }
@@ -39,6 +57,12 @@ export default defineComponent({
         store.setActiveModule(newId, 'project')
       } else if (type === 'skills') {
         store.setActiveModule('skills', 'skills')
+      } else if (type === 'award') {
+        const newId = store.addListItem('awards', { name: 'New Award' })
+        store.setActiveModule(newId, 'award')
+        if (!store.content.layout.order.includes('awards')) {
+          store.updateLayoutOrder([...store.content.layout.order, 'awards'])
+        }
       }
     }
     return () => (
@@ -56,6 +80,15 @@ export default defineComponent({
                 <span class="suffix-icon" aria-label={it.label}>
                   <Icon name={it.icon as any} />
                 </span>
+              )}
+              {!it.icon && getCount(it.type) > 0 && (
+                <span class="suffix-badge">{getCount(it.type)}</span>
+              )}
+              {it.type === 'skills' && Array.isArray(store.content.skills) && store.content.skills.length > 0 && (
+                <span class="suffix-tag">已添加</span>
+              )}
+              {(it.type === 'basic-info' || it.type === 'summary') && singleAdded(it.type) && (
+                <span class="suffix-tag">已添加</span>
               )}
             </div>
           ))}

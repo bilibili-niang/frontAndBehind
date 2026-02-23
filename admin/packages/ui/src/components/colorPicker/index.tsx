@@ -64,7 +64,6 @@ export default defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    console.debug('[ColorPicker] setup start, props=', props)
     const base = parseColor(props.modelValue)
     const hsv = ref(rgbToHsv(base.r, base.g, base.b))
     const alpha = ref(base.a)
@@ -157,19 +156,10 @@ export default defineComponent({
       const inPopover = pop ? pop.contains(target) : false
       const pathHit = path.includes(el) || (pop ? path.includes(pop) : false)
       const inside = inTrigger || inPopover || pathHit
-      if (!inside && open.value) {
-        console.debug('[ColorPicker] outside click, closing panel')
-        open.value = false
-      }
+      if (!inside && open.value) open.value = false
     }
-    onMounted(() => {
-      console.debug('[ColorPicker] mounted')
-      document.addEventListener('mousedown', closeOnOutside)
-    })
-    onBeforeUnmount(() => {
-      console.debug('[ColorPicker] beforeUnmount')
-      document.removeEventListener('mousedown', closeOnOutside)
-    })
+    onMounted(() => { document.addEventListener('mousedown', closeOnOutside) })
+    onBeforeUnmount(() => { document.removeEventListener('mousedown', closeOnOutside) })
 
     const panel = () => (
       <div class={`${PREFIX_CLS}-color-picker` + (props.compact ? ' is-compact' : '')}>
@@ -233,21 +223,14 @@ export default defineComponent({
             onClick={(e) => {
               e.preventDefault()
               e.stopPropagation()
-              console.debug('[ColorPicker] trigger clicked')
               if (triggerEl.value) {
                 const rect = triggerEl.value.getBoundingClientRect()
-                console.debug('[ColorPicker] rect', rect)
                 panelLeft.value = rect.left
                 panelTop.value = rect.bottom + 6
-                console.debug('[ColorPicker] pre-position', { left: panelLeft.value, top: panelTop.value })
               }
               open.value = true
-              console.debug('[ColorPicker] open=', open.value)
             }}
-            onMousedown={() => {
-              // 作为兜底，部分环境下 click 事件可能被拦截
-              console.debug('[ColorPicker] trigger mousedown')
-            }}
+            onMousedown={() => {}}
           />
           {open.value && (
             <Teleport to="body">

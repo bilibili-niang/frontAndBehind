@@ -1,6 +1,13 @@
 import { defineComponent, ref } from 'vue'
 import { useResumeStore } from '@pkg/resume'
 
+const renderText = (txt?: string) => {
+  const t = String(txt || '').trim()
+  if (!t) return null
+  const lines = t.split(/\r?\n/).filter(Boolean)
+  return <div class="text">{lines.map((l) => <div>{l}</div>)}</div>
+}
+
 const BasicInfo = (p: any) => {
   const hasAny = !!(p?.name || p?.phone || p?.email || p?.location || p?.summary || p?.avatar)
   if (!hasAny) return null
@@ -11,7 +18,7 @@ const BasicInfo = (p: any) => {
         {p.name && <div class="title">{p.name}</div>}
         <div class="meta">{[p.phone, p.email].filter(Boolean).join(' / ')}</div>
         {p.location && <div class="meta">{p.location}</div>}
-        {p.summary && <div class="text">{p.summary}</div>}
+        {renderText(p.summary)}
       </div>
     </div>
   )
@@ -19,13 +26,13 @@ const BasicInfo = (p: any) => {
 const Summary = (p: any) => (
   <div class="widget widget-summary">
     <div class="section-title">个人总结</div>
-    <div class="text">{p.text || ''}</div>
+    {renderText(p.text)}
   </div>
 )
 const PlainSection = (label: string, p: any) => (
   <div class="widget widget-section">
     <div class="section-title">{label}</div>
-    <div class="text">{p.text || ''}</div>
+    {renderText(p.text)}
   </div>
 )
 
@@ -37,7 +44,7 @@ const registry: Record<string, (p: any) => any> = {
       <div class="section-title">教育经历</div>
       <div class="meta">{[p.school, p.major, p.degree].filter(Boolean).join(' | ')}</div>
       <div class="meta">{[p.startDate, p.endDate].filter(Boolean).join(' - ')}</div>
-      {p.description && <div class="text">{p.description}</div>}
+      {renderText(p.description)}
     </div>
   ),
   work: (p) => (
@@ -45,7 +52,7 @@ const registry: Record<string, (p: any) => any> = {
       <div class="section-title">工作经历</div>
       <div class="meta">{[p.company, p.position].filter(Boolean).join(' | ')}</div>
       <div class="meta">{[p.startDate, p.endDate].filter(Boolean).join(' - ')}</div>
-      {p.description && <div class="text">{p.description}</div>}
+      {renderText(p.description)}
     </div>
   ),
   project: (p) => (
@@ -53,7 +60,7 @@ const registry: Record<string, (p: any) => any> = {
       <div class="section-title">项目经历</div>
       <div class="meta">{[p.name, p.role].filter(Boolean).join(' | ')}</div>
       <div class="meta">{[p.startDate, p.endDate].filter(Boolean).join(' - ')}</div>
-      {p.description && <div class="text">{p.description}</div>}
+      {renderText(p.description)}
     </div>
   ),
   skills: (p) => PlainSection('专业技能', p),
@@ -62,7 +69,15 @@ const registry: Record<string, (p: any) => any> = {
       <div class="section-title">获奖</div>
       <div class="meta">{[p.name, p.level].filter(Boolean).join(' | ')}</div>
       <div class="meta">{[p.org, p.date].filter(Boolean).join(' / ')}</div>
-      {p.detail && <div class="text">{p.detail}</div>}
+      {renderText(p.detail)}
+    </div>
+  ),
+  awards: (p) => (
+    <div class="widget widget-award">
+      <div class="section-title">获奖</div>
+      <div class="meta">{[p.name, p.level].filter(Boolean).join(' | ')}</div>
+      <div class="meta">{[p.org, p.date].filter(Boolean).join(' / ')}</div>
+      {renderText(p.detail)}
     </div>
   )
 }
@@ -74,7 +89,8 @@ const labelMap: Record<string, string> = {
   work: '工作经历',
   project: '项目经历',
   skills: '专业技能',
-  award: '获奖'
+  award: '获奖',
+  awards: '获奖'
 }
 
 const placeholderComponent = (type: string) => (
@@ -91,10 +107,15 @@ export default defineComponent({
     
     return () => (
       <div class="a4-page" style={{ color: '#333', padding: `${store.themeConfig.pagePadding ?? 24}px` }} onClick={() => store.setActiveModule(null, null)}>
+        {console.debug('[Render] layout.order=', store.content.layout.order)}
         {/* 遍历布局顺序 */}
         {store.content.layout.order.map((key) => {
-          // 获取模块数据
-          const data = store.content[key as keyof typeof store.content]
+          // 获取模块数据（兼容旧键名 'award' 映射到 'awards'）
+          let data: any = store.content[key as keyof typeof store.content] as any
+          if (key === 'award' && !Array.isArray(data)) {
+            data = (store.content as any).awards
+          }
+          console.debug('[Render] key=', key, 'dataType=', Array.isArray(data) ? 'array' : typeof data, 'length=', Array.isArray(data) ? data.length : undefined)
           
           // 如果是对象类型（Profile），渲染单个
           if (key === 'profile') {
@@ -133,11 +154,7 @@ export default defineComponent({
                   {store.themeConfig.blockDividerEnabled !== false && (
                     <div class="block-divider" style={{ height: `${store.themeConfig.blockDividerWidth ?? 1}px`, background: store.themeConfig.blockDividerColor ?? 'rgba(0,0,0,0.06)' }} />
                   )}
-                 {store.activeModuleId === 'skills' && (
-                    <div class="a4-block-controls" onClick={(e) => e.stopPropagation()}>
-                      <div class="ctrl-btn delete" onClick={() => store.updateModuleData('skills', [])}>🗑️</div>
-                    </div>
-                 )}
+                 
                </div>
              )
           }
@@ -150,9 +167,12 @@ export default defineComponent({
                educations: 'education',
                experiences: 'work',
                projects: 'project',
+               awards: 'award',
+               award: 'award',
                customModules: 'custom'
              }
              const itemType = typeMap[key] || key
+             console.debug('[Render] list itemType=', itemType, 'count=', Array.isArray(data) ? data.length : 0)
              
              if (data.length === 0) return null
 
@@ -184,6 +204,32 @@ export default defineComponent({
              )
           }
         })}
+        {!store.content.layout.order.includes('awards') && Array.isArray((store.content as any).awards) && (store.content as any).awards.length > 0 && (
+          <div class="module-group" key="awards">
+            {(store.content as any).awards.map((item: any) => (
+              <div 
+                class={['a4-block', store.activeModuleId === item.id && 'is-active']}
+                style={{ 
+                  padding: `${store.themeConfig.blockPadding ?? 16}px`, 
+                  marginBottom: `${store.themeConfig.blockGap ?? 12}px`
+                }}
+                onClick={(e) => { e.stopPropagation(); onSelect(item.id, 'award') }}
+              >
+                {registry['award']?.(item) || null}
+                {store.themeConfig.blockDividerEnabled !== false && (
+                  <div class="block-divider" style={{ height: `${store.themeConfig.blockDividerWidth ?? 1}px`, background: store.themeConfig.blockDividerColor ?? 'rgba(0,0,0,0.06)' }} />
+                )}
+                {store.activeModuleId === item.id && (
+                  <div class="a4-block-controls" onClick={(e) => e.stopPropagation()}>
+                    <div class="ctrl-btn delete" onClick={() => store.removeListItem('awards', item.id)}>🗑️</div>
+                    <div class="ctrl-btn" onClick={() => store.moveListItem('awards', item.id, 'up')}>↑</div>
+                    <div class="ctrl-btn" onClick={() => store.moveListItem('awards', item.id, 'down')}>↓</div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     )
   }

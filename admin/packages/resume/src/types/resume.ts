@@ -16,6 +16,7 @@ export interface ResumeContent {
   educations: EducationItem[];
   experiences: ExperienceItem[];
   projects: ProjectItem[];
+  awards: AwardItem[];
   skills: string[];
   customModules: CustomModule[];
   // 模块排序与显示控制
@@ -82,6 +83,16 @@ export interface ProjectItem {
   endDate: string;
   description: string;
   link?: string;
+}
+
+// 获奖
+export interface AwardItem {
+  id: string;
+  name: string;
+  level?: string;
+  org?: string;
+  date?: string;
+  detail?: string;
 }
 
 // 自定义模块 (如：奖项、证书、语言)

@@ -42,6 +42,30 @@
         justify-content: center;
         font-size: 16px;
       }
+      .suffix-badge {
+        min-width: 24px;
+        height: 20px;
+        padding: 0 6px;
+        border-radius: 10px;
+        background: var(--anteng-color-primary-500);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+      .suffix-tag {
+        height: 20px;
+        padding: 0 8px;
+        border-radius: 10px;
+        border: 1px solid var(--anteng-color-primary-400);
+        background: var(--anteng-color-primary-50);
+        color: var(--anteng-color-primary-700);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
     }
   }
 }
