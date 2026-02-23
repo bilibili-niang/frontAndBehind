@@ -27,7 +27,7 @@ const useUserStore = defineStore('USER', () => {
   const getUserInfo = async () => {
     try {
       const res = await request({
-        url: '/null-cornerstone-system/me',
+        url: '/api/user/me',
         method: 'get'
       })
       userInfo.value = res.data

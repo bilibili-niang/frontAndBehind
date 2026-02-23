@@ -41,19 +41,19 @@ class UserProfileController {
         return
       }
 
-      // 映射为前端期望的结构
       const data = {
         id: user.id,
         name: user.userName || '匿名用户',
         avatar: user.avatar || '/defaultAvatar.png',
         phone: user.phoneNumber || '',
-        // 个人资料内容（用于用户信息设置页等）
+        account: user.userName || '',
+        merchantName: '',
+        realName: null,
+        status: typeof (user as any).status === 'number' ? (user as any).status : 1,
+        merchantId: '',
         infoContent: {
           name: user.userName || '',
-          // 性别：1 男，0 女，null 保密
-          gender:
-            user.gender === '男' ? 1 : user.gender === '女' ? 0 : null
-          // 可在此扩展更多字段：address、height、faceImage 等
+          gender: user.gender === '男' ? 1 : user.gender === '女' ? 0 : null
         }
       }
 
@@ -61,6 +61,25 @@ class UserProfileController {
     } catch (e: any) {
       ctx.body = ctxBody({ success: false, code: 500, msg: e?.message || '获取用户信息失败', data: null })
     }
+  }
+  @routeConfig({
+    method: 'get',
+    path: '/null-cornerstone-system/me',
+    summary: '兼容路径：当前用户信息',
+    tags: ['用户']
+  })
+  async me(ctx: Context) {
+    return this.getUserProfile(ctx)
+  }
+
+  @routeConfig({
+    method: 'get',
+    path: '/user/me',
+    summary: '当前登录用户信息',
+    tags: ['用户']
+  })
+  async currentUser(ctx: Context) {
+    return this.getUserProfile(ctx)
   }
 }
 
