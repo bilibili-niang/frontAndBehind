@@ -35,6 +35,7 @@ export { default as Radio } from './components/radio'
 export { default as TestFloat } from './components/test-float'
 export { default as ColorPicker } from './components/colorPicker'
 export { default as UploadImage } from './components/uploadImage'
+export { default as ExpandList } from './components/expandList'
 
 export {
   ConfigProvider,

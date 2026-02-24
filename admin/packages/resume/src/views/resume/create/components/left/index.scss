@@ -44,6 +44,25 @@
       &:active {
         cursor: grabbing;
       }
+      .children-panel {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+        margin-top: 8px;
+      }
+      .child-card {
+        border: 1px solid var(--color-border-base);
+        border-radius: var(--border-radious);
+        padding: 8px 10px;
+        background: var(--anteng-color-bg-100);
+        cursor: pointer;
+      }
+      .child-card:hover {
+        border-color: var(--anteng-color-primary-400);
+        box-shadow: 0 0 0 2px var(--anteng-color-primary-200);
+      }
+      .child-title { font-size: 13px; font-weight: 600; }
+      .child-sub { font-size: 12px; color: var(--color-text-secondary); }
       .suffix-badge {
         min-width: 24px;
         height: 20px;

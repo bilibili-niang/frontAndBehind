@@ -1,6 +1,6 @@
 import './index.scss'
-import { defineComponent } from 'vue'
-import { Icon } from '@pkg/ui'
+import { defineComponent, ref } from 'vue'
+import { Icon, Button, ExpandList } from '@pkg/ui'
 import { useResumeStore } from '@pkg/resume'
 
 const registry = [
@@ -18,6 +18,7 @@ export default defineComponent({
   name: 'resume-left',
   setup() {
     const store = useResumeStore()
+    const expanded = ref<Record<string, boolean>>({})
     const singleAdded = (type: string) => {
       if (type === 'basic-info') {
         const p: any = store.content.profile || {}
@@ -39,6 +40,8 @@ export default defineComponent({
     const onDragStart = (e: DragEvent, type: string) => {
       e.dataTransfer?.setData('text/plain', type)
     }
+    const isListType = (type: string) => ['education', 'work', 'project', 'award'].includes(type)
+    const toggleExpand = (type: string) => expanded.value[type] = !expanded.value[type]
     const onAdd = (type: string) => {
       if (type === 'basic-info' || type === 'summary') {
         store.setActiveModule('profile', type === 'summary' ? 'summary' : 'profile')
@@ -65,35 +68,59 @@ export default defineComponent({
         }
       }
     }
+    const selectItem = (type: string, id: string) => {
+      const typeMap: Record<string, string> = { education: 'education', work: 'work', project: 'project', award: 'award' }
+      store.setActiveModule(id, typeMap[type])
+    }
     return () => (
       <div class="resume-left">
         <div class="resume-components-list">
           {registry.map((it) => (
-            <div
-              class="resume-component-item"
-              draggable
-              onDragstart={(e: DragEvent) => onDragStart(e, it.type)}
-              onClick={() => onAdd(it.type)}
-            >
-              <div class="prefix">
-                {it.icon && (
-                  <span class="prefix-icon" aria-label={it.label}>
-                    <Icon name={it.icon as any} />
-                  </span>
-                )}
-                <span class="title">{it.label}</span>
-              </div>
-              <div class="suffix">
-                {!it.icon && getCount(it.type) > 0 && (
-                  <span class="suffix-badge">{getCount(it.type)}</span>
-                )}
-                {it.type === 'skills' && Array.isArray(store.content.skills) && store.content.skills.length > 0 && (
-                  <span class="suffix-tag">已添加</span>
-                )}
-                {(it.type === 'basic-info' || it.type === 'summary') && singleAdded(it.type) && (
-                  <span class="suffix-tag">已添加</span>
-                )}
-              </div>
+            <div draggable onDragstart={(e: DragEvent) => onDragStart(e, it.type)}>
+              {isListType(it.type) ? (
+                <ExpandList
+                  title={it.label}
+                  icon={it.icon as any}
+                  count={getCount(it.type)}
+                  expanded={!!expanded.value[it.type]}
+                  onToggle={() => toggleExpand(it.type)}
+                  onAdd={() => onAdd(it.type)}
+                  items={
+                    it.type === 'education' ? store.content.educations.map((x: any) => ({
+                      id: x.id, title: [x.school, x.major, x.degree].filter(Boolean).join(' | '), sub: [x.startDate, x.endDate].filter(Boolean).join(' - ')
+                    })) :
+                    it.type === 'work' ? store.content.experiences.map((x: any) => ({
+                      id: x.id, title: [x.company, x.position].filter(Boolean).join(' | '), sub: [x.startDate, x.endDate].filter(Boolean).join(' - ')
+                    })) :
+                    it.type === 'project' ? store.content.projects.map((x: any) => ({
+                      id: x.id, title: [x.name, x.role].filter(Boolean).join(' | '), sub: [x.startDate, x.endDate].filter(Boolean).join(' - ')
+                    })) :
+                    (store.content as any).awards.map((x: any) => ({
+                      id: x.id, title: [x.name, x.level].filter(Boolean).join(' | '), sub: [x.org, x.date].filter(Boolean).join(' / ')
+                    }))
+                  }
+                  onItemClick={(id: string) => selectItem(it.type, id)}
+                />
+              ) : (
+                <div
+                  class="resume-component-item"
+                  onClick={() => onAdd(it.type)}
+                >
+                  <div class="prefix">
+                    {it.icon && (
+                      <span class="prefix-icon" aria-label={it.label}>
+                        <Icon name={it.icon as any} />
+                      </span>
+                    )}
+                    <span class="title">{it.label}</span>
+                  </div>
+                  <div class="suffix">
+                    {(it.type === 'basic-info' || it.type === 'summary') && singleAdded(it.type) && (
+                      <span class="suffix-tag">已添加</span>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
