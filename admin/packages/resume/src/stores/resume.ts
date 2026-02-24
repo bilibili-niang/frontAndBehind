@@ -42,6 +42,13 @@ export const useResumeStore = defineStore('resume', {
     setResumeId(id: string | null) {
       this.resumeId = id
     },
+    reset() {
+      this.content = JSON.parse(JSON.stringify(defaultContent)) as ResumeContent
+      this.themeConfig = { ...defaultTheme } as ThemeConfig
+      this.activeModuleId = null
+      this.activeModuleType = null
+      this.resumeId = null
+    },
 
     // 选中模块
     setActiveModule(id: string | null, type: string | null = null) {

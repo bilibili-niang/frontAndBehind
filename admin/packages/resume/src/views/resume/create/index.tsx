@@ -1,5 +1,5 @@
 import './index.scss'
-import { defineComponent, onMounted, ref, computed } from 'vue'
+import { defineComponent, onMounted, ref, computed, watch } from 'vue'
 import { ROUTE_META_PURE } from '@pkg/core'
 import Center from './components/center'
 import Left from './components/left'
@@ -22,15 +22,20 @@ export default defineComponent({
     const saving = ref(false)
     const qualityModal = ref(false)
     const quality = ref<'low'|'normal'|'high'>('normal')
-    onMounted(async () => {
-      if (id) {
-        const res: any = await $resumeDetail(id)
+    const loadOrReset = async (rid: string) => {
+      if (rid) {
+        const res: any = await $resumeDetail(rid)
         const payload = res?.data?.data
+        store.reset()
         store.fromJSON(payload || '{}')
-        store.setResumeId(String(res?.data?.id || id))
+        store.setResumeId(String(res?.data?.id || rid))
         title.value = res?.data?.title || title.value
+      } else {
+        store.reset()
+        title.value = '未命名简历'
       }
-    })
+    }
+    onMounted(async () => { await loadOrReset(id) })
     const onSave = async () => {
       saving.value = true
       try {
@@ -97,6 +102,7 @@ export default defineComponent({
       URL.revokeObjectURL(url)
     }
     const inNewMode = computed(() => !route.query.id)
+    watch(() => route.query.id, async (val) => { await loadOrReset(String(val || '')) })
     return () => (
       <div class="resume-create-page">
         <div class="resume-create-page__header">
