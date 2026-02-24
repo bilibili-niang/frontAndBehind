@@ -75,21 +75,25 @@ export default defineComponent({
               onDragstart={(e: DragEvent) => onDragStart(e, it.type)}
               onClick={() => onAdd(it.type)}
             >
-              <span>{it.label}</span>
-              {it.icon && (
-                <span class="suffix-icon" aria-label={it.label}>
-                  <Icon name={it.icon as any} />
-                </span>
-              )}
-              {!it.icon && getCount(it.type) > 0 && (
-                <span class="suffix-badge">{getCount(it.type)}</span>
-              )}
-              {it.type === 'skills' && Array.isArray(store.content.skills) && store.content.skills.length > 0 && (
-                <span class="suffix-tag">已添加</span>
-              )}
-              {(it.type === 'basic-info' || it.type === 'summary') && singleAdded(it.type) && (
-                <span class="suffix-tag">已添加</span>
-              )}
+              <div class="prefix">
+                {it.icon && (
+                  <span class="prefix-icon" aria-label={it.label}>
+                    <Icon name={it.icon as any} />
+                  </span>
+                )}
+                <span class="title">{it.label}</span>
+              </div>
+              <div class="suffix">
+                {!it.icon && getCount(it.type) > 0 && (
+                  <span class="suffix-badge">{getCount(it.type)}</span>
+                )}
+                {it.type === 'skills' && Array.isArray(store.content.skills) && store.content.skills.length > 0 && (
+                  <span class="suffix-tag">已添加</span>
+                )}
+                {(it.type === 'basic-info' || it.type === 'summary') && singleAdded(it.type) && (
+                  <span class="suffix-tag">已添加</span>
+                )}
+              </div>
             </div>
           ))}
         </div>

@@ -21,6 +21,7 @@ export default defineComponent({
     const title = ref('未命名简历')
     const saving = ref(false)
     const qualityModal = ref(false)
+    const exporting = ref(false)
     const quality = ref<'low'|'normal'|'high'>('normal')
     const loadOrReset = async (rid: string) => {
       if (rid) {
@@ -76,30 +77,36 @@ export default defineComponent({
     const confirmExport = async () => {
       qualityModal.value = false
       store.setActiveModule(null, null)
+      exporting.value = true
       const node = document.querySelector('.a4-page') as HTMLElement
-      if (!node) return
+      if (!node) { exporting.value = false; return }
+      document.body.classList.add('exporting-pdf')
       const pixelRatio = quality.value === 'high' ? 3 : quality.value === 'low' ? 1.5 : 2
-      const dataUrl = await toPng(node, { cacheBust: true, pixelRatio, style: { boxShadow: 'none', margin: '0' } })
-      const pngBytes = await fetch(dataUrl).then(r => r.arrayBuffer())
-      const pdf = await PDFDocument.create()
-      const img = await pdf.embedPng(pngBytes)
-      const wPx = node.offsetWidth
-      const hPx = node.offsetHeight
-      const scale = quality.value === 'high' ? 1.25 : quality.value === 'low' ? 0.95 : 1
-      const wPt = wPx * 0.75 * scale
-      const hPt = hPx * 0.75 * scale
-      const page = pdf.addPage([wPt, hPt])
-      page.drawImage(img, { x: 0, y: 0, width: wPt, height: hPt })
-      const bytes = await pdf.save()
-      const blob = new Blob([bytes], { type: 'application/pdf' })
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = `${title.value || 'resume'}.pdf`
-      document.body.appendChild(a)
-      a.click()
-      a.remove()
-      URL.revokeObjectURL(url)
+      try {
+        const dataUrl = await toPng(node, { cacheBust: true, pixelRatio, style: { boxShadow: 'none', margin: '0' } })
+        const pngBytes = await fetch(dataUrl).then(r => r.arrayBuffer())
+        const pdf = await PDFDocument.create()
+        const img = await pdf.embedPng(pngBytes)
+        const wPx = node.offsetWidth
+        const hPx = node.offsetHeight
+        const wPt = wPx * 0.75
+        const hPt = hPx * 0.75
+        const page = pdf.addPage([wPt, hPt])
+        page.drawImage(img, { x: 0, y: 0, width: wPt, height: hPt })
+        const bytes = await pdf.save()
+        const blob = new Blob([bytes], { type: 'application/pdf' })
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `${title.value || 'resume'}.pdf`
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+        URL.revokeObjectURL(url)
+      } finally {
+        document.body.classList.remove('exporting-pdf')
+        exporting.value = false
+      }
     }
     const inNewMode = computed(() => !route.query.id)
     watch(() => route.query.id, async (val) => { await loadOrReset(String(val || '')) })
@@ -126,6 +133,14 @@ export default defineComponent({
                 <Button variant="text" onClick={() => (qualityModal.value=false)}>取消</Button>
                 <Button color="primary" onClick={confirmExport}>确定</Button>
               </div>
+            </div>
+          </div>
+        )}
+        {exporting.value && (
+          <div class="global-overlay">
+            <div class="card">
+              <div class="spinner" />
+              <div>正在导出 PDF ...</div>
             </div>
           </div>
         )}

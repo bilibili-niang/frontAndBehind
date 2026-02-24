@@ -25,6 +25,10 @@
 	.pdf-modal .modal-title { font-weight: 600; margin-bottom: 12px; }
 	.pdf-modal .modal-body { display: flex; gap: 12px; align-items: center; }
 	.pdf-modal .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+	.global-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.28); display: flex; align-items: center; justify-content: center; z-index: 2000; }
+	.global-overlay .card { min-width: 200px; padding: 16px 20px; border-radius: 12px; background: var(--anteng-color-bg-100); border: 1px solid var(--color-border-base); box-shadow: 0 10px 24px rgba(0,0,0,.25); display: flex; align-items: center; gap: 12px; }
+	.global-overlay .spinner { width: 24px; height: 24px; border: 3px solid var(--color-border-base); border-top-color: var(--anteng-color-primary-500); border-radius: 50%; animation: spin 1s linear infinite; }
+	@keyframes spin { to { transform: rotate(360deg); } }
 	.a4-page {
 		width: 794px;
 		min-height: 1123px;
@@ -54,6 +58,22 @@
 	.widget .section-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
 	.a4-block .block-divider { position: absolute; left: 0; right: 0; bottom: 0; }
 }
+
+/* 禁用导出时的 hover/选中视觉效果 */
+.exporting-pdf .a4-page { box-shadow: none !important; }
+.exporting-pdf .a4-block,
+.exporting-pdf .a4-block.is-active,
+.exporting-pdf .a4-block:hover {
+	outline: none !important;
+	box-shadow: none !important;
+	background: none !important;
+}
+.exporting-pdf .a4-block-controls { display: none !important; }
+.exporting-pdf .a4-drag-handle { display: none !important; }
+.exporting-pdf .resume-left,
+.exporting-pdf .resume-right,
+.exporting-pdf .resume-create-page__header,
+.exporting-pdf .pdf-modal { display: none !important; }
 	@media print {
 		@page { size: A4; margin: 0; }
 		* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
