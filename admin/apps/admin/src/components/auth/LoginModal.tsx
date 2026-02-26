@@ -57,25 +57,33 @@ export default defineComponent({
           )
         }}
       >
-        <div class="flex flex-col gap-4">
-          <Input
-            label="用户名"
-            variant="outlined"
-            density="comfortable"
-            hideDetails
-            modelValue={userName.value}
-            onUpdate:modelValue={(v: string) => (userName.value = v)}
-          />
-          <Input
-            label="密码"
-            type="password"
-            variant="outlined"
-            density="comfortable"
-            hideDetails
-            modelValue={password.value}
-            onUpdate:modelValue={(v: string) => (password.value = v)}
-          />
-        </div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            submit()
+          }}
+        >
+          <div class="flex flex-col gap-4">
+            <Input
+              label="用户名"
+              variant="outlined"
+              density="comfortable"
+              hideDetails
+              modelValue={userName.value}
+              onUpdate:modelValue={(v: string) => (userName.value = v)}
+            />
+            <Input
+              label="密码"
+              type="password"
+              variant="outlined"
+              density="comfortable"
+              hideDetails
+              modelValue={password.value}
+              onUpdate:modelValue={(v: string) => (password.value = v)}
+            />
+            <button type="submit" style="display:none" />
+          </div>
+        </form>
       </Modal>
     )
   }

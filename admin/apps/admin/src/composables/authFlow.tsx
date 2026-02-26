@@ -53,25 +53,33 @@ function ensureModal() {
     width: 420,
     persistent: true,
     content: () => (
-      <div class="flex flex-col gap-4 p-3">
-        <Input
-          label="用户名"
-          variant="outlined"
-          density="comfortable"
-          hideDetails
-          modelValue={state.userName}
-          onUpdate:modelValue={(v: string) => (state.userName = v)}
-        />
-        <Input
-          label="密码"
-          type="password"
-          variant="outlined"
-          density="comfortable"
-          hideDetails
-          modelValue={state.password}
-          onUpdate:modelValue={(v: string) => (state.password = v)}
-        />
-      </div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+          submit()
+        }}
+      >
+        <div class="flex flex-col gap-4 p-3">
+          <Input
+            label="用户名"
+            variant="outlined"
+            density="comfortable"
+            hideDetails
+            modelValue={state.userName}
+            onUpdate:modelValue={(v: string) => (state.userName = v)}
+          />
+          <Input
+            label="密码"
+            type="password"
+            variant="outlined"
+            density="comfortable"
+            hideDetails
+            modelValue={state.password}
+            onUpdate:modelValue={(v: string) => (state.password = v)}
+          />
+          <button type="submit" style="display:none" />
+        </div>
+      </form>
     ),
     actions: () => (
       <div class="w-full flex justify-end gap-2">

@@ -302,7 +302,13 @@ export default defineComponent({
 
     const Sms = () => {
       return (
-        <>
+        <form
+          class="login-form-inner"
+          onSubmit={(e) => {
+            e.preventDefault()
+            handleLogin()
+          }}
+        >
           <div class="main-title">手机短信登录</div>
           <Input
             class="ipt"
@@ -323,30 +329,33 @@ export default defineComponent({
               </div>
             }
           ></Input>
-          <Button class="primary-btn" type="primary" loading={state.loading} onClick={handleLogin}>
+          <Button class="primary-btn" type="primary" loading={state.loading} htmlType="submit">
             登录
           </Button>
           <div class="toggle-type clickable" onClick={() => (state.type = 'pwd')}>
             密码登录
           </div>
-        </>
+        </form>
       )
     }
 
     const Pwd = () => {
       return (
-        <>
-          <div class="main-title">账号密码登录</div>
-
-          {/* 登录方式选择 */}
-          <div class="login-method-selector">
+        <form
+          class="login-form-inner"
+          onSubmit={(e) => {
+            e.preventDefault()
+            handleLogin()
+          }}
+        >
+          <div class="login-method-tabs">
             <Radio.Group
               value={state.loginMethod}
-              onChange={(e: any) => (state.loginMethod = e.target.value)}
+              onChange={(e) => (state.loginMethod = e.target.value as any)}
             >
-              <Radio value="account">手机号+密码</Radio>
-              <Radio value="userName">用户名+密码</Radio>
-              <Radio value="phoneNumber" disabled>手机号</Radio>
+              <Radio.Button value="account">手机号+密码</Radio.Button>
+              <Radio.Button value="userName">用户名+密码</Radio.Button>
+              <Radio.Button value="phoneNumber">手机号</Radio.Button>
             </Radio.Group>
           </div>
 
@@ -358,20 +367,20 @@ export default defineComponent({
             value={state.account}
             onChange={(e) => (state.account = e.target.value as string)}
           ></Input>
-          {state.proclaimed ? (
-            <Input
-              class="ipt"
-              placeholder="请输入密码"
-              value={state.password}
-              onChange={(e) => (state.password = e.target.value as string)}
-              suffix={
-                <div class="suffix-icon" onClick={() => (state.proclaimed = false)}>
-                  <Icon name="preview"></Icon>
-                </div>
-              }
-            ></Input>
-          ) : (
-            <div class="ipt-wrap">
+          <div class="ipt-wrap">
+            {state.proclaimed ? (
+              <Input
+                class="ipt"
+                placeholder="请输入密码"
+                value={state.password}
+                onChange={(e) => (state.password = e.target.value as string)}
+                suffix={
+                  <div class="suffix-icon" onClick={() => (state.proclaimed = false)}>
+                    <Icon name="preview"></Icon>
+                  </div>
+                }
+              ></Input>
+            ) : (
               <Input
                 class="ipt"
                 type="password"
@@ -384,16 +393,16 @@ export default defineComponent({
                   </div>
                 }
               ></Input>
-            </div>
-          )}
+            )}
+          </div>
 
-          <Button class="primary-btn" type="primary" loading={state.loading} onClick={handleLogin}>
+          <Button class="primary-btn" type="primary" loading={state.loading} htmlType="submit">
             登录
           </Button>
           <div class="login-page-bottom-limit">
-            <a onClick={() => (state.type = 'resetPassword')}>忘记密码</a>
+            <a onClick={() => (state.type = 'resetPassword')}>忘记密码？</a>
           </div>
-        </>
+        </form>
       )
     }
 
@@ -459,7 +468,13 @@ export default defineComponent({
 
     const ResetPassword = () => {
       return (
-        <>
+        <form
+          class="login-form-inner"
+          onSubmit={(e) => {
+            e.preventDefault()
+            handleLogin()
+          }}
+        >
           <div class="main-title">忘记密码</div>
           <Input
             class="ipt"
@@ -491,13 +506,13 @@ export default defineComponent({
               </div>
             }
           ></Input>
-          <Button class="primary-btn" type="primary" loading={state.loading} onClick={handleLogin}>
+          <Button class="primary-btn" type="primary" loading={state.loading} htmlType="submit">
             重置密码
           </Button>
           <div class="toggle-type clickable" onClick={() => (state.type = 'pwd')}>
             返回
           </div>
-        </>
+        </form>
       )
     }
 

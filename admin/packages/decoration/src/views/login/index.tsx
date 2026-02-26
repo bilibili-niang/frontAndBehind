@@ -64,7 +64,13 @@ export default defineComponent({
 
     const Sms = () => {
       return (
-        <>
+        <form
+          class="login-form-inner"
+          onSubmit={(e) => {
+            e.preventDefault()
+            handleLogin()
+          }}
+        >
           <div class="main-title">手机短信登录</div>
           <Button class="toggle-wechat" onClick={() => (state.type = 'qrcode')}>
             <img src={wechat} alt="" />
@@ -84,19 +90,25 @@ export default defineComponent({
             onChange={(e) => (state.code = e.target.value as string)}
             suffix={<div class="sm-btn clickable">发送</div>}
           ></Input>
-          <Button class="primary-btn" type="primary">
+          <Button class="primary-btn" type="primary" htmlType="submit">
             登录
           </Button>
           <div class="toggle-type clickable" onClick={() => (state.type = 'pwd')}>
             密码登录
           </div>
-        </>
+        </form>
       )
     }
 
     const Pwd = () => {
       return (
-        <>
+        <form
+          class="login-form-inner"
+          onSubmit={(e) => {
+            e.preventDefault()
+            handleLogin()
+          }}
+        >
           <div class="main-title">账号密码登录</div>
           <Button class="toggle-wechat" onClick={() => (state.type = 'qrcode')}>
             <img src={wechat} alt="" />
@@ -136,13 +148,13 @@ export default defineComponent({
             ></Input>
           )}
 
-          <Button class="primary-btn" type="primary" loading={state.loading} onClick={handleLogin}>
+          <Button class="primary-btn" type="primary" loading={state.loading} htmlType="submit">
             登录
           </Button>
           <div class="toggle-type clickable" onClick={() => (state.type = 'sms')}>
             手机短信登录
           </div>
-        </>
+        </form>
       )
     }
 
