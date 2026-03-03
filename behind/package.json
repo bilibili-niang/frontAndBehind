@@ -8,10 +8,11 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=local dotenv -e .env nodemon ./src/main.ts",
+    "init-db": "cross-env NODE_ENV=local dotenv -e .env ts-node ./scripts/init-db.ts",
     "prod": "cross-env NODE_ENV=production dotenv -e .env.production nodemon ./src/main.ts",
     "commit": "git-cz"
   },
-  "config": {
+  "config": { 
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
