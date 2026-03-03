@@ -3,7 +3,6 @@ import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import { Card, createEChartsWidget } from '@pkg/core'
 import { Select } from '@pkg/ui'
 import type { RouteMeta } from '@/router/routeMeta'
-import { platformSelection } from '@/views/dataOverview'
 import * as echarts from 'echarts'
 
 export default defineComponent({
@@ -664,14 +663,7 @@ export default defineComponent({
         {/* 过滤器 */}
         <div class="user-profile-query-bar">
           <span class="user-profile-query-label">平台：</span>
-          <Select
-            value={query.value.platform}
-            options={platformSelection}
-            onChange={(v: any) => {
-              query.value.platform = v
-              applyFilters()
-            }}
-          />
+
           <span class="user-profile-query-label">时间：</span>
           <Select
             value={query.value.time}

@@ -4,7 +4,7 @@ import { registerRoutes, router } from '@pkg/core'
 import { resumeRoutes } from '@pkg/resume'
 // 移除登录判断拦截
 
-const defaultRoutePath = '/dataOverview'
+const defaultRoutePath = '/welcome'
 
 const children = [...generatedChildrenRoutes, ...resumeRoutes]
 // 将 admin 的根路由注册到 @pkg/core 的 router 实例上
