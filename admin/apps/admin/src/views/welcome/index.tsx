@@ -14,7 +14,8 @@ export default defineComponent({
         title: '简历制作',
         description: '创建专业的个人简历',
         image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20resume%20creation%20dashboard&image_size=square',
-        useRouter: true
+        useRouter: true,
+        target: '_blank'
       }
     ]
 

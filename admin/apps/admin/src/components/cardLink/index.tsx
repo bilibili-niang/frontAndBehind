@@ -28,7 +28,12 @@ export default defineComponent({
 
     const handleClick = (link: CardLinkItem) => {
       if (link.useRouter) {
-        router.push(link.url)
+        if (link.target === '_blank') {
+          const routeData = router.resolve({ path: link.url })
+          window.open(routeData.href, '_blank')
+        } else {
+          router.push(link.url)
+        }
       }
     }
 
