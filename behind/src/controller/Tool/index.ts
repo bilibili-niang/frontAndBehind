@@ -10,7 +10,7 @@ class ToolController {
 
   @routeConfig({
     method: 'post',
-    path: '/api/tool/translate',
+    path: '/tool/translate',
     summary: '翻译',
     tags: ['工具', '翻译'],
   })
@@ -32,7 +32,7 @@ class ToolController {
 
   @routeConfig({
     method: 'get',
-    path: '/api/tool/illegal-request/list',
+    path: '/tool/illegal-request/list',
     summary: '非法请求日志-分页查询',
     tags: ['工具', '系统日志'],
     request: {

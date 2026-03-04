@@ -5,11 +5,12 @@ const indexRouter = new Router()
 
 // 获取当前目录下所有的文件，排除当前文件
 const files = fs.readdirSync(__dirname)
-  .filter(file => file !== 'index.ts')
+  .filter(file => file !== 'index.ts' && file !== 'api-index.ts')
 files.forEach(file => {
   const routeModule = require(`./${file}`)
-  if (routeModule.routes) {
-    indexRouter.use(routeModule.routes())
+  const router = routeModule?.routes ? routeModule : routeModule?.default
+  if (router?.routes) {
+    indexRouter.use(router.routes())
   }
 })
 

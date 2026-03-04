@@ -11,8 +11,9 @@ const files = fs
 
 files.forEach(file => {
   const routeModule = require(`./${file}`)
-  if (routeModule.routes) {
-    apiRouter.use(routeModule.routes())
+  const router = routeModule?.routes ? routeModule : routeModule?.default
+  if (router?.routes) {
+    apiRouter.use(router.routes())
   }
 })
 
