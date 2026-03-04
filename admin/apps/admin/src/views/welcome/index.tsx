@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue' 
 import { CardLink } from '@/components'
+import type { RouteMeta } from '@/router/routeMeta'
 import './style.scss'
 
 export default defineComponent({
