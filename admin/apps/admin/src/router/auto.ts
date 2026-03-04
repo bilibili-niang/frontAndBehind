@@ -1,5 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 import type { RouteMeta } from '@/router/routeMeta'
+import { resumeRoutes } from '@pkg/resume'
 
 // 使用统一的 RouteMeta 类型定义
 
@@ -71,6 +72,27 @@ const childrenRaw: RouteRecordRaw[] = Object.keys(viewModules).map((key) => {
     component: viewModules[key] as any
   }
 })
+
+// Flatten resumeRoutes and merge into childrenRaw
+const flattenRoutes = (routes: any[]) => {
+  const res: any[] = []
+  routes.forEach((r) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { children, ...rest } = r
+    res.push(rest)
+    if (children) {
+      res.push(...flattenRoutes(children))
+    }
+  })
+  return res
+}
+const resumeChildren = flattenRoutes(resumeRoutes)
+resumeChildren.forEach((r: any) => {
+  if (r.path && r.meta) {
+    rawMetaMap.set(r.path, r.meta as any)
+  }
+})
+childrenRaw.push(...resumeChildren)
 
 // 生产环境：过滤标记为 hideInProd 的路由，以及其子路由（同一级目录）
 const prodHiddenParents = new Set<string>()

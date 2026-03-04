@@ -57,13 +57,6 @@ export default defineComponent({
 
     return () => (
       <div class="main-sidebar">
-        <div
-          class="p-3 flex flex-column">
-          <a
-            onClick={() => {
-              router.push('/resume/home')
-            }}>简历制作</a>
-        </div>
         <Menu
           mode="inline"
           items={items.value as any}
