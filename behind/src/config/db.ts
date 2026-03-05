@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize-typescript'
 import User from '@/schema/user'
 import Authority from '@/schema/authority'
 import * as process from 'node:process'
-import { info } from './log4j'
+import { info, error } from './log4j'
 import Resume from '@/schema/resume'
 import IllegalRequest from '@/schema/illegalRequest'
 import Navigation from '@/schema/navigation'
@@ -13,11 +13,15 @@ import Shop from '@/schema/shop'
 
 // 根据环境确定数据库名称
 const NODE_ENV = process.env.NODE_ENV || 'local' // 默认使用 local 环境
-console.log('NODE_ENV:', NODE_ENV)
+info(`NODE_ENV: ${NODE_ENV}`)
 
 // 根据运行环境选择不同的数据库名称
 const getDatabaseName = () => {
-  // 如果是测试环境，使用测试数据库
+  // 优先使用环境变量配置的数据库名
+  if (process.env.DATABASE_NAME) {
+    return process.env.DATABASE_NAME
+  }
+  // 如果没有配置，根据环境使用默认数据库名
   if (NODE_ENV === 'local') {
     return 'birthdayDb_test'
   }
@@ -58,8 +62,8 @@ seq.authenticate()
   .then(() => {
     info('数据库连接成功')
   })
-  .catch((err) => {
-    console.error('无法连接到数据库:', err)
+  .catch((err: unknown) => {
+    error(`无法连接到数据库: ${err}`)
   })
 
 export default seq

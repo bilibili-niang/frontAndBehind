@@ -4,6 +4,7 @@ import fs from 'fs'
 import { responses, routeConfig, z } from 'koa-swagger-decorator'
 import { ctxBody } from '@/utils'
 import { commonResponse } from '@/controller/common'
+import { debug } from '@/config/log4j'
 
 type ImageItem = {
   url: string
@@ -78,7 +79,7 @@ class IconsController {
       // 与 app/index.ts 保持一致的静态目录定位
       const iconsRoot = path.join(__dirname, '../../static/icons')
 
-      console.log('iconsRoot', iconsRoot)
+      debug(`iconsRoot: ${iconsRoot}`)
 
       if (!fs.existsSync(iconsRoot)) {
         ctx.body = ctxBody({ success: true, code: 200, msg: '目录不存在，返回空列表', data: [] })

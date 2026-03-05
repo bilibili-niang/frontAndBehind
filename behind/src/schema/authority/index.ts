@@ -1,5 +1,5 @@
 import { Column, DataType, Length, Table } from 'sequelize-typescript'
-import BaseModel from '@/schema/baseModal'
+import BaseModel from '@/schema/baseModel'
 
 @Table({
   tableName: 'authority',

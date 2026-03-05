@@ -1,5 +1,5 @@
 import { BeforeSave, Column, DataType, Default, IsEmail, IsUrl, Length, Table, Unique } from 'sequelize-typescript'
-import BaseModel from '@/schema/baseModal'
+import BaseModel from '@/schema/baseModel'
 
 @Table({
   tableName: 'user',

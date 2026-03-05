@@ -1,5 +1,5 @@
 import { Column, DataType, Table, Default } from 'sequelize-typescript'
-import BaseModel from '@/schema/baseModal'
+import BaseModel from '@/schema/baseModel'
 
 @Table({
   tableName: 'illegal_request',

@@ -18,7 +18,7 @@ export const setAdminUser = () => {
   })
     .then(res => {
       if (!res) {
-        console.log('添加admin用户')
+        info('添加admin用户')
         User.create({
           userName: process.env.ADMIN_USER_NAME,
           password: md5(process.env.ADMIN_USER_PASSWORD),

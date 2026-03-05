@@ -129,35 +129,30 @@ const env = dotenv.config().parsed
 
 ## 🟡 中优先级问题
 
-### 4. 大量遗留的 console.log
+### ☑️ 4. 大量遗留的 console.log **[已解决]**
 
-**问题描述**: 代码中混有 20 处 `console.log/warn/error`，应统一使用 log4j
+**状态**: ✅ 已修复 (2026-03-05)
 
-**涉及文件及位置**:
-| 文件 | 行号 | 内容 |
-|------|------|------|
-| `config/db.ts` | 16 | console.log('NODE_ENV:', NODE_ENV) |
-| `config/db.ts` | 62 | console.error('无法连接到数据库:', err) |
-| `controller/User/index.ts` | 134-135 | console.log('res') |
-| `controller/Resume/index.ts` | 88-89 | console.log('ctx') |
-| `controller/WeatherForGaode/index.ts` | 24, 35-36 | console.log('进入...') |
-| `controller/Icons/index.ts` | 81 | console.log('iconsRoot', ...) |
-| `main.ts` | 17-18 | console.log('Server is running...') |
-| `utils/verification.ts` | 8-9, 29-30 | console.log(...) |
-| `utils/initialize/index.ts` | 21 | console.log('添加admin用户') |
-| `utils/ctxBodySpecification.ts` | 51 | console.warn('Validation issues:', ...) |
-| `service/tool/translate/index.ts` | 36 | console.error('翻译请求失败:', ...) |
-| `config/errorHandler.ts` | 3 | console.log('ctx', ctx) |
+**问题描述**: 代码中混有 16 处 `console.log/warn/error`，应统一使用 log4j
 
-**改进方案**: 统一使用 log4j
-```typescript
-import { info, error, warn } from '@/config/log4j'
+**涉及文件及修复状态**:
+| 文件 | 状态 | 修改内容 |
+|------|------|----------|
+| `config/db.ts` | ✅ | console.log -> info, console.error -> error |
+| `main.ts` | ✅ | console.log -> info |
+| `utils/verification.ts` | ✅ | console.log -> debug |
+| `utils/initialize/index.ts` | ✅ | console.log -> info |
+| `utils/ctxBodySpecification.ts` | ✅ | console.warn -> warn |
+| `service/tool/translate/index.ts` | ✅ | console.error -> error |
+| `controller/WeatherForGaode/index.ts` | ✅ | console.log -> debug/error |
+| `controller/Icons/index.ts` | ✅ | console.log -> debug |
+| `config/errorHandler.ts` | ✅ | console.log -> debug, console.error -> error |
 
-// 替换
-info('Server is running at http://localhost:' + env.PORT)
-error('无法连接到数据库:', err)
-warn('Validation issues:', { missing, invalid, extra })
-```
+**修复内容**:
+1. 所有 `console.log` 替换为对应的 log4j 方法 (info/debug)
+2. 所有 `console.warn` 替换为 `warn`
+3. 所有 `console.error` 替换为 `error`
+4. 统一错误类型处理为 `e: unknown`
 
 ---
 
@@ -211,29 +206,30 @@ try {
 
 ---
 
-### 7. 数据库配置硬编码
+### ☑️ 7. 数据库配置硬编码 **[已解决]**
+
+**状态**: ✅ 已修复 (2026-03-05)
 
 **问题描述**: 数据库名称硬编码在代码中
 
 **涉及文件**:
-- `src/config/db.ts` (第 21-28 行)
+- `src/config/db.ts` ✅
 
-**问题代码**:
+**修复内容**:
+优先使用环境变量 `DATABASE_NAME`，如果没有配置则使用默认逻辑
+
+**修复后代码**:
 ```typescript
 const getDatabaseName = () => {
-  if (NODE_ENV === 'local') {
-    return 'birthdayDb_test'  // ❌ 硬编码
+  // 优先使用环境变量配置的数据库名
+  if (process.env.DATABASE_NAME) {
+    return process.env.DATABASE_NAME
   }
-  return 'birthdayDb'  // ❌ 硬编码
-}
-```
-
-**改进方案**: 使用环境变量
-```typescript
-const getDatabaseName = () => {
-  return process.env.DATABASE_NAME || (
-    NODE_ENV === 'local' ? 'birthdayDb_test' : 'birthdayDb'
-  )
+  // 如果没有配置，根据环境使用默认数据库名
+  if (NODE_ENV === 'local') {
+    return 'birthdayDb_test'
+  }
+  return 'birthdayDb'
 }
 ```
 
@@ -269,12 +265,20 @@ const getDatabaseName = () => {
 
 ---
 
-### 10. 目录拼写错误
+### ☑️ 10. 目录拼写错误 **[已解决]**
+
+**状态**: ✅ 已修复 (2026-03-05)
 
 **问题描述**: 目录名拼写错误
 
 **涉及目录**:
-- `src/schema/baseModal/`  ->  应该是 `baseModel/`
+- `src/schema/baseModal/`  ->  `src/schema/baseModel/` ✅
+
+**修复内容**:
+1. 创建新目录 `src/schema/baseModel/`
+2. 复制 `baseModal/index.ts` 到 `baseModel/index.ts`
+3. 更新 9 个文件的导入路径：`@/schema/baseModal` -> `@/schema/baseModel`
+4. 删除旧目录 `src/schema/baseModal/`
 
 ---
 
@@ -296,13 +300,13 @@ const getDatabaseName = () => {
 | 🔴 高 | MD5 密码替换为 bcrypt | User/index.ts | 2h | ⏳ 待修复 |
 | 🔴 高 | ~~定义类型接口替换 any~~ | ~~jwtMiddleware.ts, controller/*~~ | ~~4h~~ | ✅ **已修复** |
 | 🔴 高 | 环境变量校验 | main.ts, config/db.ts | 1h | ⏳ 待修复 |
-| 🟡 中 | 替换 console.log 为 log4j | 12 个文件 | 2h | ⏳ 待修复 |
+| 🟡 中 | ~~替换 console.log 为 log4j~~ | ~~12 个文件~~ | ~~2h~~ | ✅ **已修复** |
 | 🟡 中 | CORS 按环境配置 | app/index.ts | 0.5h | ⏳ 待修复 |
 | 🟡 中 | ~~统一错误处理风格~~ | ~~controller/*~~ | ~~3h~~ | ✅ **已修复** |
-| 🟡 中 | 数据库名使用环境变量 | config/db.ts | 0.5h | ⏳ 待修复 |
+| 🟡 中 | ~~数据库名使用环境变量~~ | ~~config/db.ts~~ | ~~0.5h~~ | ✅ **已修复** |
 | 🟢 低 | 增加参数校验 | controller/* | 4h | ⏳ 待修复 |
 | 🟢 低 | 补充代码注释 | controller/* | 2h | ⏳ 待修复 |
-| 🟢 低 | 修正目录拼写 | schema/baseModal/ | 0.5h | ⏳ 待修复 |
+| 🟢 低 | ~~修正目录拼写~~ | ~~schema/baseModal/~~ | ~~0.5h~~ | ✅ **已修复** |
 
 ---
 
@@ -310,7 +314,7 @@ const getDatabaseName = () => {
 
 1. **第一阶段（安全优先）**: 问题 2 (MD5密码) + 问题 3 (环境变量校验)
 2. **第二阶段（类型安全）**: ~~问题 1 (any类型) ✅~~ + ~~问题 6 (错误处理统一) ✅~~
-3. **第三阶段（代码规范）**: 问题 4 (console.log) + 问题 5 (CORS)
+3. **第三阶段（代码规范）**: ~~问题 4 (console.log) ✅~~ + 问题 5 (CORS)
 4. **第四阶段（细节优化）**: 问题 7-10
 
 > **进度更新**: 2026-03-05 已完成问题 1 和 问题 6
@@ -331,5 +335,8 @@ const getDatabaseName = () => {
 |------|---------|------|
 | 2026-03-05 | 问题 1: 类型安全问题 - 替换 `any` 类型 | c01578d |
 | 2026-03-05 | 问题 6: 统一错误处理风格为 try-catch | c01578d |
+| 2026-03-05 | 问题 4: 替换 console.log 为 log4j | 待提交 |
+| 2026-03-05 | 问题 7: 数据库配置硬编码 | 待提交 |
+| 2026-03-05 | 问题 10: 修正目录拼写 | 待提交 |
 
-**当前进度**: 2/10 问题已修复 (20%)
+**当前进度**: 5/10 问题已修复 (50%)

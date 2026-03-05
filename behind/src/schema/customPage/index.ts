@@ -1,5 +1,5 @@
 import { Column, DataType, Table } from 'sequelize-typescript'
-import BaseModel from '@/schema/baseModal'
+import BaseModel from '@/schema/baseModel'
 
 // 使用 sequelize-typescript 装饰器，保持与其他模型一致
 @Table({

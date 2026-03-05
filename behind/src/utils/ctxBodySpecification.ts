@@ -1,3 +1,5 @@
+import { warn } from '@/config/log4j'
+
 // 对返回的响应状态进行规范
 /*
 * 强制传入的数据返回指定的格式
@@ -48,7 +50,7 @@ export const checkDesign = (params: any, paramType: Record<string, {
 
       // 如果有缺失或无效的参数，可以根据业务逻辑决定是抛出错误还是简单地返回它们
       if (missing.length > 0 || Object.keys(invalid).length > 0 || extra.length > 0) {
-        console.warn('Validation issues:', { missing, invalid, extra })
+        warn(`Validation issues: ${JSON.stringify({ missing, invalid, extra })}`)
         // 这里可以选择抛出错误或者返回包含问题的结果
         // throw new Error(JSON.stringify({ missing, invalid, extra }));
       }

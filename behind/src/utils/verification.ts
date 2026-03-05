@@ -1,12 +1,12 @@
 import { ctxBody } from '@/utils'
+import { debug } from '@/config/log4j'
 
 /*
 * 对post传参进行校验
 * */
 const verificationPost = (ctx: any, cla: any) => {
   return new Promise((resolve, reject) => {
-    console.log('swaggerDocument:')
-    console.log(cla.swaggerDocument)
+    debug(`swaggerDocument: ${JSON.stringify(cla.swaggerDocument)}`)
 
     const { body = null } = ctx.request
     if (!body) {
@@ -26,8 +26,7 @@ const verificationPost = (ctx: any, cla: any) => {
 * 期望的校验方法应该是传入指定校验的class,获取class的swaggerDocument,然后对比body中的参数是否正确,如果不正确的话,响应对应的description
 * */
 const validate = async (ctx, next): Promise<any> => {
-  console.log('后去后置ctx:')
-  console.log(ctx)
+  debug(`后置ctx: ${JSON.stringify(ctx)}`)
 
   await next()
 }

@@ -2,6 +2,7 @@ import { middlewares, routeConfig, z } from 'koa-swagger-decorator'
 import { ctxBody } from '@/utils'
 import { Context } from 'koa'
 import { $getWeatherFromGaode } from '@/api/weather'
+import { debug, error } from '@/config/log4j'
 
 class WeatherForGaode {
   @routeConfig({
@@ -21,20 +22,24 @@ class WeatherForGaode {
     // jwtMust
   ])
   async getWeatherFromGaode(ctx: Context, args) {
-    console.log('进入 $getWeatherFromGaode 接口逻辑了')
-    await $getWeatherFromGaode()
-      .then(res => {
-        ctx.body = ctxBody({
-          success: true,
-          code: 200,
-          msg: `查询天气成功`,
-          data: res
-        })
+    debug('进入 $getWeatherFromGaode 接口逻辑了')
+    try {
+      const res = await $getWeatherFromGaode()
+      ctx.body = ctxBody({
+        success: true,
+        code: 200,
+        msg: `查询天气成功`,
+        data: res
       })
-      .catch(e => {
-        console.log('e:')
-        console.log(e)
+    } catch (e: unknown) {
+      error(`查询天气失败: ${e}`)
+      ctx.body = ctxBody({
+        success: false,
+        code: 500,
+        msg: '查询天气失败',
+        data: e
       })
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import CryptoJS from 'crypto-js'
 import { TRANSLATE_APP_ID, TRANSLATE_APP_KEY } from '@/constant' // 确保这些常量在 Node 环境可用
+import { error } from '@/config/log4j'
 
 function truncate(q) {
   const len = q.length
@@ -32,8 +33,9 @@ export const $transform = async (value) => {
     })
 
     return response.data
-  } catch (error) {
-    console.error('翻译请求失败:', error.response?.data || error.message)
-    throw error
+  } catch (err: unknown) {
+    const e = err as { response?: { data?: string }, message?: string }
+    error(`翻译请求失败: ${e.response?.data || e.message}`)
+    throw err
   }
 }
