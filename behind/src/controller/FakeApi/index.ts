@@ -1,12 +1,17 @@
 import { body, responses, routeConfig, z } from 'koa-swagger-decorator'
 import { Context } from 'koa'
 import { ctxBody } from '@/utils'
-import { generateByDataSchema, DataSchemaSpec } from '@/utils/fake'
 import { FakeGenerateReq, FakeGenerateRes, IFakeGenerateReq } from './type'
-import { Op } from 'sequelize'
-import Navigation from '@/schema/navigation'
+import { fakeApiService } from '@/service/FakeApiService'
 
+/**
+ * FakeApi 控制器
+ * 只负责：接收请求、调用 Service、返回响应
+ */
 class FakeApiController {
+  /**
+   * 根据 dataSchema 生成测试数据
+   */
   @routeConfig({
     method: 'post',
     path: '/fakeApi/generate',
@@ -18,6 +23,7 @@ class FakeApiController {
   async generate(ctx: Context, args: { body: IFakeGenerateReq }) {
     try {
       const { dataSchema, count = 10 } = args.body || ({} as IFakeGenerateReq)
+
       if (!dataSchema || !dataSchema.type || !dataSchema.schema) {
         ctx.body = ctxBody({
           success: false,
@@ -27,19 +33,14 @@ class FakeApiController {
         return
       }
 
-      const spec: DataSchemaSpec = {
-        type: dataSchema.type,
-        schema: dataSchema.schema
-      }
-
-      const result = generateByDataSchema(spec, count)
+      const result = fakeApiService.generateTestData(dataSchema, count)
 
       // 数组时使用后端统一返回结构；对象直接返回对象
       ctx.body = ctxBody({
         success: true,
         code: 200,
         msg: '生成测试数据成功',
-        data: spec.type === 'array' ? result : result
+        data: result.type === 'array' ? result.data : result.data
       })
     } catch (e: any) {
       ctx.body = ctxBody({
@@ -51,6 +52,9 @@ class FakeApiController {
     }
   }
 
+  /**
+   * 小程序端底部菜单装修列表（分页）
+   */
   @routeConfig({
     method: 'get',
     path: '/fakeApi/navigationList',
@@ -73,51 +77,17 @@ class FakeApiController {
       const { size, current, page, scene, name, status } = ctx.parsed.query as any
       const cur = Number(page) > 0 ? Number(page) : Number(current)
 
-      const where: any = {}
-      if (scene) where.scene = String(scene)
-      if (typeof status !== 'undefined') where.status = Number(status)
-      if (name) where.name = { [Op.like]: `%${name}%` }
-
-      const pageSize = Number(size)
-      const offset = (cur - 1) * pageSize
-
-      const res = await Navigation.findAndCountAll({
-        where,
-        limit: pageSize,
-        offset,
-        order: [['updatedAt', 'DESC']]
-      })
-
-      const total = res.count
-      const pages = Math.ceil(total / pageSize)
-      const records = (res.rows || []).map((row: any) => ({
-        id: row.id,
-        name: row.name,
-        editUser: row.editUser,
-        createTime: row.createdAt ? new Date(row.createdAt).toISOString() : null,
-        updateTime: row.updatedAt ? new Date(row.updatedAt).toISOString() : null,
-        status: row.status,
-        scene: row.scene
-      }))
-
-      const paginationData = {
-        countId: '',
-        current: cur,
-        maxLimit: pageSize,
-        optimizeCountSql: true,
-        orders: [],
-        pages,
-        records,
-        searchCount: true,
-        size: pageSize,
-        total
-      }
+      const result = await fakeApiService.getNavigationList(
+        { scene, name, status },
+        cur,
+        Number(size)
+      )
 
       ctx.body = ctxBody({
         success: true,
         code: 200,
         msg: '获取装修导航列表成功',
-        data: paginationData
+        data: result
       })
     } catch (e: any) {
       ctx.body = ctxBody({
