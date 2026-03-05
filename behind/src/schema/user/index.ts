@@ -1,4 +1,4 @@
-import { BeforeSave, Column, DataType, Default, IsEmail, IsUrl, Length, Table, Unique } from 'sequelize-typescript'
+import { Column, DataType, Default, IsEmail, IsUrl, Length, Table } from 'sequelize-typescript'
 import BaseModel from '@/schema/baseModel'
 
 @Table({
@@ -78,13 +78,4 @@ export default class User extends BaseModel {
     comment: '性别',
   })
   declare gender: string
-
-  // 在保存（创建/更新）前确保管理员的状态为1
-  @BeforeSave
-  static ensureAdminStatus(instance: User) {
-    const isAdminVal = (instance as any).isAdmin
-    if (isAdminVal === true || isAdminVal === 1) {
-      instance.status = 1
-    }
-  }
 }

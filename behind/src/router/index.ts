@@ -1,14 +1,44 @@
-import fs from 'fs'
 import Router from 'koa-router'
+
+// 显式导入所有路由模块
+import authWeappRouter from './authWeapp'
+import decorateRouter from './decorate'
+import fakeApiRouter from './fakeApi'
+import iconsRouter from './icons'
+import navigationRouter from './navigation'
+import resumeRouter from './resume'
+import shopRouter from './shop'
+import staticRouter from './static'
+import systemPageRouter from './systemPage'
+import testRouter from './test'
+import toolRouter from './tool'
+import uploadRouter from './upload'
+import userRouter from './user'
+import userProfileRouter from './userProfile'
+import weatherRouter from './wather'
 
 const indexRouter = new Router()
 
-// 获取当前目录下所有的文件，排除当前文件
-const files = fs.readdirSync(__dirname)
-  .filter(file => file !== 'index.ts' && file !== 'api-index.ts')
-files.forEach(file => {
-  const routeModule = require(`./${file}`)
-  const router = routeModule?.routes ? routeModule : routeModule?.default
+// 注册所有路由
+const routers = [
+  authWeappRouter,
+  decorateRouter,
+  fakeApiRouter,
+  iconsRouter,
+  navigationRouter,
+  resumeRouter,
+  shopRouter,
+  staticRouter,
+  systemPageRouter,
+  testRouter,
+  toolRouter,
+  uploadRouter,
+  userRouter,
+  userProfileRouter,
+  weatherRouter
+]
+
+routers.forEach(router => {
   if (router?.routes) {
     indexRouter.use(router.routes())
   }

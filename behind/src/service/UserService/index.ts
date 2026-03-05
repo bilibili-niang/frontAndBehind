@@ -107,9 +107,16 @@ export class UserService {
   async create(userData: CreateUserData) {
     const { password, ...restData } = userData
 
+    // 业务规则：管理员状态必须为 1
+    let status = restData.status
+    if (restData.isAdmin === true || restData.isAdmin === 1) {
+      status = 1
+    }
+
     return await userRepository.create({
       ...restData,
-      password: md5(password)
+      password: md5(password),
+      status
     })
   }
 
@@ -121,6 +128,25 @@ export class UserService {
    */
   async getUserList(current: number, size: number) {
     return await userRepository.findUserList(current, size)
+  }
+
+  /**
+   * 更新用户
+   * @param id 用户 ID
+   * @param userData 用户数据
+   * @returns 更新后的用户
+   */
+  async update(id: string, userData: Partial<CreateUserData>) {
+    // 业务规则：管理员状态必须为 1
+    let status = userData.status
+    if (userData.isAdmin === true || userData.isAdmin === 1) {
+      status = 1
+    }
+
+    return await userRepository.update(id, {
+      ...userData,
+      status
+    })
   }
 
   /**

@@ -59,6 +59,20 @@ export class UserRepository extends BaseRepository<User> {
       { attributes: { exclude: ['password'] } }
     )
   }
+
+  /**
+   * 更新用户
+   * @param id 用户 ID
+   * @param userData 用户数据
+   * @returns 更新后的用户
+   */
+  async update(id: string, userData: any): Promise<User | null> {
+    const user = await this.findById(id)
+    if (!user) {
+      return null
+    }
+    return await user.update(userData)
+  }
 }
 
 export const userRepository = new UserRepository()
