@@ -157,6 +157,16 @@ export class UserService {
   async deleteUser(id: string): Promise<number> {
     return await userRepository.deleteById(id)
   }
+
+  /**
+   * 检查用户是否存在
+   * @param id 用户 ID
+   * @returns 是否存在
+   */
+  async checkUserExists(id: string): Promise<boolean> {
+    const user = await userRepository.findById(id)
+    return !!user
+  }
 }
 
 export const userService = new UserService()
