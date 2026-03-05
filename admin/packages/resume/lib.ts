@@ -9,7 +9,8 @@ export const resumeRoutes: IRoute[] = [
     redirect: '/resume/home',
     meta: {
       title: '简历',
-      icon: 'box'
+      icon: 'box',
+      order: 2
     },
     children: [
       {
@@ -17,6 +18,7 @@ export const resumeRoutes: IRoute[] = [
         name: 'resume-home',
         meta: {
           title: '简历首页',
+          hideInMenu: true,
           purePage: true,
           order: 2,
           keepAlive: true

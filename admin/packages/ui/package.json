@@ -24,13 +24,14 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
-    "@pkg/config": "workspace:*",
     "@fontsource/roboto": "5.2.6",
     "@mdi/font": "7.4.47",
+    "@pkg/config": "workspace:*",
     "ant-design-vue": "^4.2.6",
+    "gsap": "^3.14.2",
+    "highlight.js": "^11.11.1",
     "simplebar": "^6.2.5",
     "simplebar-vue": "^2.3.2",
-    "highlight.js": "^11.11.1",
     "vue": "^3.5.17",
     "vuetify": "^3.9.1"
   },

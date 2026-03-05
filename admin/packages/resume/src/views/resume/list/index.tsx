@@ -2,6 +2,7 @@ import { computed, defineComponent, ref } from 'vue'
 import { useSearchTable, $resumeList } from '@pkg/core'
 import { Button, Image } from '@pkg/ui'
 import { useRouter } from 'vue-router'
+import type { RouteMeta } from '@/router/routeMeta'
 
 export default defineComponent({
   setup() {
@@ -79,3 +80,8 @@ export default defineComponent({
     return () => Table
   }
 })
+
+export const routeMeta: RouteMeta = {
+  // 是否隐藏侧边菜单
+  hideInMenu: true
+}

@@ -1,12 +1,11 @@
 import MainLayout from '@/layouts/MainLayout'
 import { generatedChildrenRoutes } from './auto'
 import { registerRoutes, router } from '@pkg/core'
-import { resumeRoutes } from '@pkg/resume'
 // 移除登录判断拦截
 
 const defaultRoutePath = '/welcome'
 
-const children = [...generatedChildrenRoutes, ...resumeRoutes]
+const children = [...generatedChildrenRoutes]
 // 将 admin 的根路由注册到 @pkg/core 的 router 实例上
 router.addRoute({
   path: '/',
