@@ -1,6 +1,7 @@
 import { Context, Next } from 'koa'
 import { ctxBody, jwtDecryption, getTokenFromHeader } from '@/utils'
 import User from '@/schema/user'
+import { JWTPayload, KoaContextWithUser } from '@/types'
 
 // 需要鉴权的路由占位（如需基于路径开关鉴权可使用）
 export let needAuthRouters: string[] = []
@@ -12,12 +13,12 @@ export const jwtMiddleware = async (ctx: Context, next: Next) => {
     const token = getTokenFromHeader(ctx)
     if (token) {
       try {
-        const payload: any = jwtDecryption(token)
-        ;(ctx as any).decode = payload
+        const payload = jwtDecryption(token) as JWTPayload
+        ;(ctx as KoaContextWithUser).decode = payload
         const userId = payload?.id
         if (userId) {
           const user = await User.findOne({ where: { id: String(userId) }, raw: true })
-          if (user) (ctx as any).user = user
+          if (user) (ctx as KoaContextWithUser).user = user
         }
       } catch (_) {
         // 忽略解密错误，交由路由级 jwtMust 处理
@@ -37,7 +38,7 @@ export const jwtMust = async (ctx: Context, next: Next) => {
     return
   }
   try {
-    const payload: any = jwtDecryption(token)
+    const payload = jwtDecryption(token) as JWTPayload
     const userId = payload?.id
     if (!userId) {
       ctx.status = 401
@@ -50,8 +51,8 @@ export const jwtMust = async (ctx: Context, next: Next) => {
       ctx.body = ctxBody({ success: false, code: 401, msg: '用户不存在或已删除', data: null })
       return
     }
-    ;(ctx as any).decode = payload
-    ;(ctx as any).user = user
+    ;(ctx as KoaContextWithUser).decode = payload
+    ;(ctx as KoaContextWithUser).user = user
     await next()
   } catch (_) {
     ctx.status = 401

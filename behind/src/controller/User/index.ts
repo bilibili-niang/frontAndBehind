@@ -16,6 +16,8 @@ import User from '@/schema/user'
 import { ctxBody, deleteByIdMiddleware, jwtEncryption, paginationMiddleware } from '@/utils'
 import { headerParams, paginationQuery } from '@/controller/common/queryType'
 import { jwtMust } from '@/middleware'
+import { Op } from 'sequelize'
+import { KoaContextWithUser, UserInfo } from '@/types'
 
 class UserController {
   @routeConfig({
@@ -28,26 +30,26 @@ class UserController {
   @responses(CreateUserRes)
   async CreateUser(ctx: Context, args: ParsedArgs<ICreateUserReq>) {
     const { password, ...restData } = args.body
-    await User.create({
-      ...restData,
-      password: md5(password)
-    })
-      .then((res: any) => {
-        ctx.body = ctxBody({
-          success: true,
-          code: 200,
-          msg: '创建用户成功',
-          data: res
-        })
+    try {
+      const res = await User.create({
+        ...restData,
+        password: md5(password)
       })
-      .catch(e => {
-        ctx.body = ctxBody({
-          success: false,
-          code: 500,
-          msg: '创建用户失败',
-          data: e?.errors?.[0]?.message
-        })
+      ctx.body = ctxBody({
+        success: true,
+        code: 200,
+        msg: '创建用户成功',
+        data: res
       })
+    } catch (e: unknown) {
+      const error = e as { errors?: Array<{ message: string }> }
+      ctx.body = ctxBody({
+        success: false,
+        code: 500,
+        msg: '创建用户失败',
+        data: error?.errors?.[0]?.message
+      })
+    }
   }
 
   @routeConfig({
@@ -59,7 +61,7 @@ class UserController {
   @body(LoginReq)
   @responses(UserLoginRes)
   async UserLogin(ctx: Context, args: ParsedArgs<ILoginReq>) {
-    const loginError = e => {
+    const loginError = (e: unknown) => {
       return ctxBody({
         success: false,
         code: 500,
@@ -78,13 +80,17 @@ class UserController {
       })
       return
     }
-    
-    // 导入 Sequelize 操作符
-    const { Op } = require('sequelize')
-    
+
     // 根据提供的字段构建查询条件
-    let whereCondition: any = { password }
-    
+    interface WhereCondition {
+      password: string
+      [Op.or]?: Array<{ userName?: string } | { phoneNumber?: string }>
+      userName?: string
+      phoneNumber?: string
+    }
+
+    let whereCondition: WhereCondition = { password }
+
     if (account) {
       // 如果提供了通用账号字段，支持用户名或手机号登录
       whereCondition = {
@@ -99,46 +105,43 @@ class UserController {
     } else if (phoneNumber) {
       whereCondition = { ...whereCondition, phoneNumber }
     }
-    
-    await User.findOne({
-      where: whereCondition
-    })
-      .then((res: any) => {
-        // TODO jwt
-        if (res) {
-          const plain = typeof res.toJSON === 'function' ? res.toJSON() : res
-          delete plain?.password
-          const token = jwtEncryption(plain)
-          const userInfo = {
-            id: plain.id,
-            userName: plain.userName,
-            avatar: plain.avatar,
-            phoneNumber: plain.phoneNumber,
-            email: plain.email,
-            gender: plain.gender,
-            isAdmin: plain.isAdmin,
-            status: plain.status,
-            createdAt: plain.createdAt,
-            updatedAt: plain.updatedAt,
-          }
-          ctx.body = ctxBody({
-            success: true,
-            code: 200,
-            msg: '用户登录成功',
-            data: {
-              token,
-              userInfo
-            }
-          })
-        } else {
-          console.log('res')
-          console.log(res)
-          ctx.body = loginError(res)
+
+    try {
+      const res = await User.findOne({
+        where: whereCondition
+      })
+      if (res) {
+        const plain = typeof res.toJSON === 'function' ? res.toJSON() : res
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { password: _, ...userWithoutPassword } = plain
+        const token = jwtEncryption(userWithoutPassword)
+        const userInfo: UserInfo = {
+          id: plain.id,
+          userName: plain.userName,
+          avatar: plain.avatar,
+          phoneNumber: plain.phoneNumber,
+          email: plain.email,
+          gender: plain.gender,
+          isAdmin: plain.isAdmin,
+          status: plain.status,
+          createdAt: plain.createdAt,
+          updatedAt: plain.updatedAt,
         }
-      })
-      .catch(e => {
-        ctx.body = loginError(e)
-      })
+        ctx.body = ctxBody({
+          success: true,
+          code: 200,
+          msg: '用户登录成功',
+          data: {
+            token,
+            userInfo
+          }
+        })
+      } else {
+        ctx.body = loginError(null)
+      }
+    } catch (e: unknown) {
+      ctx.body = loginError(e)
+    }
   }
 
   @routeConfig({
