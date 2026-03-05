@@ -19,7 +19,20 @@ import { jwtMust } from '@/middleware'
 import { Op } from 'sequelize'
 import { KoaContextWithUser, UserInfo } from '@/types'
 
+/**
+ * 用户控制器
+ * 处理用户相关的业务逻辑，包括用户创建、登录、查询和删除
+ */
 class UserController {
+  /**
+   * 创建用户
+   * @param ctx - Koa 上下文对象
+   * @param args - 请求参数，包含用户创建信息
+   * @description
+   * 1. 接收用户创建请求，密码使用 MD5 加密存储
+   * 2. 调用 User.create 创建用户记录
+   * 3. 返回创建结果，成功返回 200，失败返回 500
+   */
   @routeConfig({
     method: 'post',
     path: '/user/create',
@@ -52,6 +65,23 @@ class UserController {
     }
   }
 
+  /**
+   * 用户登录
+   * @param ctx - Koa 上下文对象
+   * @param args - 请求参数，包含登录凭证
+   * @description
+   * 登录逻辑说明：
+   * 1. 支持三种登录方式：
+   *    - account: 通用账号（可以是用户名或手机号）
+   *    - userName: 用户名登录
+   *    - phoneNumber: 手机号登录
+   * 2. 必须提供至少一种账号标识，否则返回 400 错误
+   * 3. 密码使用 MD5 加密后与数据库比对
+   * 4. 登录成功后：
+   *    - 生成 JWT Token（不包含密码字段）
+   *    - 返回用户基本信息
+   * 5. 登录失败返回 500 错误
+   */
   @routeConfig({
     method: 'post',
     path: '/user/login',
@@ -144,6 +174,13 @@ class UserController {
     }
   }
 
+  /**
+   * 获取用户列表
+   * @param ctx - Koa 上下文对象
+   * @param args - 请求参数，包含分页信息
+   * @description
+   * 使用分页中间件查询用户列表，需要 JWT 认证
+   */
   @routeConfig({
     method: 'get',
     path: '/user/list',
@@ -162,6 +199,13 @@ class UserController {
     await paginationMiddleware(ctx, User, '用户列表')
   }
 
+  /**
+   * 删除指定用户
+   * @param ctx - Koa 上下文对象
+   * @param args - 请求参数，包含用户 ID
+   * @description
+   * 使用删除中间件删除指定用户，需要 JWT 认证
+   */
   @routeConfig({
     method: 'delete',
     path: '/user/delete',
