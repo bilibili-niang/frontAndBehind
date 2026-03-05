@@ -353,5 +353,587 @@ class UserRepository {
 
 ---
 
+# 📝 详细修改清单（按优先级排序）
+
+## 第一阶段：建立基础架构（必须先完成）
+
+### 任务 1：创建目录结构
+
+**操作**：创建以下空目录
+
+```bash
+mkdir -p src/service
+mkdir -p src/repository
+mkdir -p src/dto/user
+mkdir -p src/dto/shop
+mkdir -p src/dto/resume
+```
+
+**预期结果**：
+```
+src/
+├── service/        # 新增
+├── repository/     # 新增
+└── dto/            # 新增
+    ├── user/
+    ├── shop/
+    └── resume/
+```
+
+---
+
+### 任务 2：提取 User 模块（作为示例模块）
+
+#### 2.1 创建 UserRepository
+
+**新建文件**：`src/repository/UserRepository.ts`
+
+```typescript
+import User from '@/schema/user'
+import { Op } from 'sequelize'
+
+export interface FindUserCriteria {
+  account?: string
+  userName?: string
+  phoneNumber?: string
+  password?: string
+}
+
+export class UserRepository {
+  /**
+   * 根据条件查找用户
+   */
+  async findByCredentials(criteria: FindUserCriteria) {
+    const where: any = {}
+    
+    if (criteria.password) {
+      where.password = criteria.password
+    }
+    
+    if (criteria.account) {
+      where[Op.or] = [
+        { userName: criteria.account },
+        { phoneNumber: criteria.account }
+      ]
+    } else if (criteria.userName) {
+      where.userName = criteria.userName
+    } else if (criteria.phoneNumber) {
+      where.phoneNumber = criteria.phoneNumber
+    }
+    
+    return await User.findOne({ where })
+  }
+
+  /**
+   * 创建用户
+   */
+  async create(userData: any) {
+    return await User.create(userData)
+  }
+
+  /**
+   * 根据ID查找用户
+   */
+  async findById(id: string) {
+    return await User.findByPk(id)
+  }
+
+  /**
+   * 分页查询用户列表
+   */
+  async findAndCountAll(options: { limit: number; offset: number }) {
+    return await User.findAndCountAll({
+      ...options,
+      attributes: { exclude: ['password'] }
+    })
+  }
+
+  /**
+   * 删除用户
+   */
+  async deleteById(id: string) {
+    return await User.destroy({ where: { id } })
+  }
+}
+
+export const userRepository = new UserRepository()
+```
+
+#### 2.2 创建 UserService
+
+**新建文件**：`src/service/UserService.ts`
+
+```typescript
+import md5 from 'md5'
+import { userRepository, FindUserCriteria } from '@/repository/UserRepository'
+import { jwtEncryption } from '@/utils'
+import { UserInfo } from '@/types'
+
+export interface LoginCredentials {
+  account?: string
+  userName?: string
+  phoneNumber?: string
+  password: string
+}
+
+export interface LoginResult {
+  token: string
+  userInfo: UserInfo
+}
+
+export interface CreateUserData {
+  userName: string
+  password: string
+  phoneNumber?: string
+  email?: string
+  avatar?: string
+  gender?: string
+  [key: string]: any
+}
+
+export class UserService {
+  /**
+   * 用户登录
+   */
+  async login(credentials: LoginCredentials): Promise<LoginResult> {
+    const { account, userName, phoneNumber, password } = credentials
+    
+    // 验证至少提供一个账号标识
+    if (!account && !userName && !phoneNumber) {
+      throw new Error('账号错误：account、userName 或 phoneNumber 至少提供一个')
+    }
+
+    // 构建查询条件
+    const criteria: FindUserCriteria = {
+      password: md5(password)
+    }
+    
+    if (account) {
+      criteria.account = account
+    } else if (userName) {
+      criteria.userName = userName
+    } else if (phoneNumber) {
+      criteria.phoneNumber = phoneNumber
+    }
+
+    // 查询用户
+    const user = await userRepository.findByCredentials(criteria)
+    
+    if (!user) {
+      throw new Error('用户不存在或密码错误')
+    }
+
+    // 转换为普通对象
+    const plain = typeof user.toJSON === 'function' ? user.toJSON() : user
+    
+    // 移除密码字段
+    const { password: _, ...userWithoutPassword } = plain as any
+    
+    // 生成 JWT
+    const token = jwtEncryption(userWithoutPassword)
+    
+    // 构建用户信息
+    const userInfo: UserInfo = {
+      id: plain.id,
+      userName: plain.userName,
+      avatar: plain.avatar,
+      phoneNumber: plain.phoneNumber,
+      email: plain.email,
+      gender: plain.gender,
+      isAdmin: plain.isAdmin,
+      status: plain.status,
+      createdAt: plain.createdAt,
+      updatedAt: plain.updatedAt,
+    }
+
+    return { token, userInfo }
+  }
+
+  /**
+   * 创建用户
+   */
+  async create(userData: CreateUserData) {
+    const { password, ...restData } = userData
+    
+    return await userRepository.create({
+      ...restData,
+      password: md5(password)
+    })
+  }
+}
+
+export const userService = new UserService()
+```
+
+#### 2.3 重构 UserController
+
+**修改文件**：`src/controller/User/index.ts`
+
+**修改内容**：
+```typescript
+import { Context } from 'koa'
+import { body, middlewares, ParsedArgs, responses, routeConfig } from 'koa-swagger-decorator'
+import {
+  CreateUserReq,
+  CreateUserRes,
+  DeleteUserQuery,
+  DeleteUserRes,
+  IDeleteUserQuery,
+  LoginReq,
+  UserListRes,
+  UserLoginRes
+} from './type'
+import { ICreateUserReq, ILoginReq } from '@/controller/User/type'
+import { userService } from '@/service/UserService'
+import { userRepository } from '@/repository/UserRepository'
+import { ctxBody, deleteByIdMiddleware, paginationMiddleware } from '@/utils'
+import { headerParams, paginationQuery } from '@/controller/common/queryType'
+import { jwtMust } from '@/middleware'
+
+/**
+ * 用户控制器
+ * 只负责：接收请求、调用 Service、返回响应
+ */
+class UserController {
+  /**
+   * 创建用户
+   */
+  @routeConfig({
+    method: 'post',
+    path: '/user/create',
+    summary: '创建用户',
+    tags: ['用户'],
+  })
+  @body(CreateUserReq)
+  @responses(CreateUserRes)
+  async CreateUser(ctx: Context, args: ParsedArgs<ICreateUserReq>) {
+    try {
+      const res = await userService.create(args.body)
+      ctx.body = ctxBody({
+        success: true,
+        code: 200,
+        msg: '创建用户成功',
+        data: res
+      })
+    } catch (e: unknown) {
+      const error = e as { message?: string; errors?: Array<{ message: string }> }
+      ctx.body = ctxBody({
+        success: false,
+        code: 500,
+        msg: error.message || '创建用户失败',
+        data: error?.errors?.[0]?.message
+      })
+    }
+  }
+
+  /**
+   * 用户登录
+   */
+  @routeConfig({
+    method: 'post',
+    path: '/user/login',
+    summary: '用户登录',
+    tags: ['用户', '登录']
+  })
+  @body(LoginReq)
+  @responses(UserLoginRes)
+  async UserLogin(ctx: Context, args: ParsedArgs<ILoginReq>) {
+    try {
+      const result = await userService.login(args.body)
+      ctx.body = ctxBody({
+        success: true,
+        code: 200,
+        msg: '用户登录成功',
+        data: result
+      })
+    } catch (e: unknown) {
+      const error = e as { message?: string }
+      ctx.body = ctxBody({
+        success: false,
+        code: 500,
+        msg: error.message || '用户登录失败',
+        data: null
+      })
+    }
+  }
+
+  /**
+   * 获取用户列表
+   */
+  @routeConfig({
+    method: 'get',
+    path: '/user/list',
+    summary: '用户列表',
+    tags: ['用户'],
+    request: {
+      headers: headerParams(),
+      query: paginationQuery()
+    },
+  })
+  @middlewares([jwtMust])
+  @responses(UserListRes)
+  async getUserList(ctx: Context) {
+    await paginationMiddleware(ctx, userRepository as any, '用户列表')
+  }
+
+  /**
+   * 删除指定用户
+   */
+  @routeConfig({
+    method: 'delete',
+    path: '/user/delete',
+    summary: '删除指定用户',
+    tags: ['用户'],
+    request: {
+      headers: headerParams(),
+      query: DeleteUserQuery
+    }
+  })
+  @middlewares([jwtMust])
+  @responses(DeleteUserRes)
+  async deleteUser(ctx: Context, args: ParsedArgs<IDeleteUserQuery>) {
+    await deleteByIdMiddleware(ctx, userRepository as any, '用户')
+  }
+}
+
+export { UserController }
+```
+
+**关键改动**：
+- 移除 `md5`、`User` Model、`jwtEncryption` 的直接使用
+- 移除登录逻辑、查询条件构建
+- 改为调用 `userService.create()` 和 `userService.login()`
+- Controller 只负责：调用 Service、处理异常、返回响应
+
+---
+
+### 任务 3：提取通用分页逻辑到 Repository
+
+**修改文件**：`src/utils/factory.ts`
+
+**当前问题**：
+```typescript
+// 问题：工具函数直接操作数据库
+const paginationMiddleware = async (ctx: any, model: any, msg?: string) => {
+  // ... 直接调用 model.findAndCountAll
+}
+```
+
+**修改方案**：
+
+创建基础 Repository 类：`src/repository/BaseRepository.ts`
+
+```typescript
+import { Model, FindOptions } from 'sequelize'
+
+export interface PaginationOptions {
+  current: number
+  size: number
+}
+
+export interface PaginationResult<T> {
+  records: T[]
+  total: number
+  current: number
+  size: number
+  pages: number
+}
+
+export abstract class BaseRepository<T extends Model> {
+  protected model: any
+
+  constructor(model: any) {
+    this.model = model
+  }
+
+  /**
+   * 分页查询
+   */
+  async paginate(
+    options: PaginationOptions,
+    findOptions?: FindOptions
+  ): Promise<PaginationResult<T>> {
+    const { current, size } = options
+    const offset = (current - 1) * size
+
+    const { count, rows } = await this.model.findAndCountAll({
+      ...findOptions,
+      limit: size,
+      offset,
+    })
+
+    return {
+      records: rows as T[],
+      total: count,
+      current,
+      size,
+      pages: Math.ceil(count / size),
+    }
+  }
+
+  /**
+   * 根据ID删除
+   */
+  async deleteById(id: string): Promise<number> {
+    return await this.model.destroy({ where: { id } })
+  }
+
+  /**
+   * 根据ID查找
+   */
+  async findById(id: string): Promise<T | null> {
+    return await this.model.findByPk(id)
+  }
+}
+```
+
+然后修改 `UserRepository` 继承 `BaseRepository`：
+
+```typescript
+import { BaseRepository } from './BaseRepository'
+import User from '@/schema/user'
+
+export class UserRepository extends BaseRepository<User> {
+  constructor() {
+    super(User)
+  }
+  
+  // ... 其他特定方法
+}
+```
+
+---
+
+## 第二阶段：重构其他模块（按优先级）
+
+### 任务 4：重构 Shop 模块
+
+**参考 User 模块的重构方式**：
+
+1. 创建 `src/repository/ShopRepository.ts`
+2. 创建 `src/service/ShopService.ts`
+3. 重构 `src/controller/Shop/index.ts`
+
+**特别注意**：
+- `generateShopCode()` 逻辑移到 Service
+- location 数据转换移到 Service
+- longitude/latitude 转换移到 Service
+
+### 任务 5：重构 Resume 模块
+
+**参考 User 模块的重构方式**
+
+**特别注意**：
+- `toPlain()` 数据转换移到 Service
+- JSON parse/stringify 移到 Service
+
+### 任务 6-17：重构其他 Controller
+
+按同样模式重构：
+- AuthWeapp
+- Decorate
+- FakeApi
+- Icons
+- Navigation
+- SystemPage
+- Test
+- Tool
+- Upload
+- UserProfile
+- WeatherForGaode
+
+---
+
+## 第三阶段：清理和优化
+
+### 任务 18：清理 utils/factory.ts
+
+**操作**：
+```typescript
+// 删除 paginationMiddleware 和 deleteByIdMiddleware
+// 或者改为使用 Repository 的方法
+```
+
+### 任务 19：统一错误处理
+
+**创建**：`src/middleware/errorMiddleware.ts`
+
+```typescript
+import { Context, Next } from 'koa'
+import { ctxBody } from '@/utils'
+
+export const errorHandler = async (ctx: Context, next: Next) => {
+  try {
+    await next()
+  } catch (err: any) {
+    ctx.status = err.status || 500
+    ctx.body = ctxBody({
+      success: false,
+      code: ctx.status,
+      msg: err.message || '服务器内部错误',
+      data: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    })
+  }
+}
+```
+
+### 任务 20：统一响应格式
+
+**创建**：`src/utils/response.ts`
+
+```typescript
+export const success = <T>(data: T, msg = '操作成功') => ({
+  success: true,
+  code: 200,
+  msg,
+  data
+})
+
+export const error = (msg: string, code = 500, data?: any) => ({
+  success: false,
+  code,
+  msg,
+  data
+})
+```
+
+---
+
+## 📋 修改检查清单
+
+### 每个模块重构时需要检查：
+
+- [ ] Repository 是否只操作数据库，无业务逻辑
+- [ ] Service 是否包含所有业务逻辑
+- [ ] Controller 是否只调用 Service，无直接操作数据库
+- [ ] 类型定义是否清晰，无 any
+- [ ] 错误处理是否统一
+- [ ] 单元测试是否可编写
+
+### 重构顺序建议：
+
+1. ✅ 创建目录结构
+2. ✅ 创建 BaseRepository
+3. ✅ 重构 User 模块（作为示例）
+4. ⬜ 重构 Shop 模块
+5. ⬜ 重构 Resume 模块
+6. ⬜ 重构其他模块（每次 1-2 个）
+7. ⬜ 清理 utils/factory.ts
+8. ⬜ 统一错误处理
+9. ⬜ 编写单元测试
+
+---
+
+## ⚠️ 注意事项
+
+1. **不要一次性重构所有模块** - 风险太高，逐个模块来
+2. **每次重构后都要测试** - 确保功能正常
+3. **保持接口兼容** - 前端请求的 URL 和参数格式不要变
+4. **先写新代码，再删旧代码** - 避免中间状态无法运行
+5. **提交要频繁** - 每个模块重构完就提交
+
+---
+
 **报告生成时间**: 2026-03-05  
+**最后更新**: 2026-03-05  
 **分析范围**: behind/src/ 目录下所有 TypeScript 文件
