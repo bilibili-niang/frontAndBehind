@@ -1,10 +1,17 @@
 import { middlewares, routeConfig, z } from 'koa-swagger-decorator'
 import { ctxBody } from '@/utils'
 import { Context } from 'koa'
-import { $getWeatherFromGaode } from '@/api/weather'
-import { debug, error } from '@/config/log4j'
+import { weatherForGaodeService } from '@/service/WeatherForGaodeService'
+import { error } from '@/config/log4j'
 
+/**
+ * 高德天气控制器
+ * 只负责：接收请求、调用 Service、返回响应
+ */
 class WeatherForGaode {
+  /**
+   * 天气查询-高德api
+   */
   @routeConfig({
     method: 'get',
     path: '/weather/gaode',
@@ -12,19 +19,16 @@ class WeatherForGaode {
     tags: ['天气'],
     request: {
       query: z.object({
-        // 城市code
-        // code: z.coerce.string().default('350211').transform(val => val ? val : '350211')
         code: z.coerce.string().default('350211')
       })
     }
   })
-  @middlewares([
-    // jwtMust
-  ])
+  @middlewares([])
   async getWeatherFromGaode(ctx: Context, args) {
-    debug('进入 $getWeatherFromGaode 接口逻辑了')
     try {
-      const res = await $getWeatherFromGaode()
+      const { code } = ctx.parsed.query as any
+      const res = await weatherForGaodeService.getWeather(code)
+
       ctx.body = ctxBody({
         success: true,
         code: 200,
