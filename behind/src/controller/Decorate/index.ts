@@ -1,10 +1,15 @@
 import { body, routeConfig, z } from 'koa-swagger-decorator'
-import { Op } from 'sequelize'
-import { ctxBody, formatDateTime } from '@/utils'
-import CustomPage from '@/schema/customPage'
-import SystemPage from '@/schema/systemPage'
+import { ctxBody } from '@/utils'
+import { decorateService } from '@/service/DecorateService'
 
+/**
+ * 装修控制器
+ * 只负责：接收请求、调用 Service、返回响应
+ */
 class DecorateController {
+  /**
+   * 系统装修页面详情（按 key/scene 查询）
+   */
   @routeConfig({
     method: 'get',
     path: '/decorate/system/detail',
@@ -20,55 +25,33 @@ class DecorateController {
   async systemDetail(ctx: any) {
     try {
       const { key, scene } = ctx.parsed.query as any
+
       if (!key) {
         ctx.body = ctxBody({ success: false, code: 400, msg: 'key 不能为空', data: null })
         return
       }
 
-      const where: any = { key }
-      if (scene) where.scene = scene
-      where.isDeleted = 0
+      const detail = await decorateService.getSystemPageDetail(key, scene)
 
-      const row: any = await SystemPage.findOne({ where, order: [['updatedAt', 'DESC']] })
-      if (!row) {
+      if (!detail) {
         ctx.body = ctxBody({ success: false, code: 404, msg: '未找到匹配的系统页面', data: null })
         return
-      }
-
-      let parsedDecorate: any = null
-      if (row?.decorate) {
-        try { parsedDecorate = JSON.parse(row.decorate) } catch (_) { parsedDecorate = row.decorate }
       }
 
       ctx.body = ctxBody({
         success: true,
         code: 200,
         msg: '获取系统装修页面详情成功',
-        data: {
-          id: row.id,
-          tenantId: row.tenantId,
-          key: row.key,
-          title: row.title,
-          tags: row.tags,
-          decorate: parsedDecorate,
-          origin: row.origin,
-          version: row.version,
-          createUser: row.createUser,
-          updateUser: row.updateUser,
-          createTime: formatDateTime(row.createdAt),
-          updateTime: formatDateTime(row.updatedAt),
-          isDeleted: row.isDeleted,
-          // 兼容旧字段
-          name: row.name,
-          scene: row.scene,
-          editUser: row.editUser,
-          description: row.description
-        }
+        data: detail
       })
     } catch (e: any) {
       ctx.body = ctxBody({ success: false, code: 500, msg: '获取系统装修页面详情失败', data: e?.message || e })
     }
   }
+
+  /**
+   * 自定义装修页面列表（分页）
+   */
   @routeConfig({
     method: 'get',
     path: '/decorate/customize/list',
@@ -78,7 +61,6 @@ class DecorateController {
       query: z.object({
         scene: z.string().optional(),
         name: z.string().optional(),
-        // 仅返回已装修的页面（decorate 非空）；默认 true
         onlyDecorated: z.coerce.boolean().default(true),
         size: z.coerce.number().default(20).transform(v => (v > 0 ? v : 20)),
         page: z.coerce.number().default(1).transform(v => (v > 0 ? v : 1))
@@ -89,61 +71,26 @@ class DecorateController {
     try {
       const { size, page, name, scene, onlyDecorated } = ctx.parsed.query as any
 
-      const where: any = {}
-      if (name) where.name = { [Op.like]: `%${name}%` }
-      if (scene) where.scene = scene
-      if (onlyDecorated) {
-        // 仅返回有装修配置的页面
-        where.decorate = { [Op.not]: null }
-      }
-
-      const limit = Number(size) || 20
-      const offset = (Number(page) - 1) * limit
-
-      const { count, rows } = await CustomPage.findAndCountAll({
-        where,
-        limit,
-        offset,
-        order: [['updatedAt', 'DESC']]
-      })
-
-      const total = count
-      const pages = Math.ceil(total / limit)
-      const records = (rows || []).map((row: any) => ({
-        id: row.id,
-        name: row.name,
-        scene: row.scene,
-        editUser: row.editUser,
-        description: row.description,
-        // 自定义页面无 key
-        title: row.name,
-        version: row.version,
-        createTime: formatDateTime(row.createdAt),
-        updateTime: formatDateTime(row.updatedAt)
-      }))
+      const result = await decorateService.getCustomPageList(
+        { scene, name, onlyDecorated },
+        Number(page),
+        Number(size)
+      )
 
       ctx.body = ctxBody({
         success: true,
         code: 200,
         msg: '获取自定义装修页面列表成功',
-        data: {
-          countId: '',
-          current: Number(page),
-          maxLimit: limit,
-          optimizeCountSql: true,
-          orders: [],
-          pages,
-          records,
-          searchCount: true,
-          size: limit,
-          total
-        }
+        data: result
       })
     } catch (e: any) {
       ctx.body = ctxBody({ success: false, code: 500, msg: '获取自定义装修页面列表失败', data: e?.message || e })
     }
   }
 
+  /**
+   * 创建自定义装修页面
+   */
   @routeConfig({
     method: 'post',
     path: '/decorate/customize/create',
@@ -168,24 +115,24 @@ class DecorateController {
         return
       }
 
-      const payload: any = {
-        name: title,
+      const result = await decorateService.createCustomPage({
         scene,
-        description: description || null,
-        editUser: editUser || null,
-        version: version || null
-      }
-      if (decorate) {
-        payload.decorate = typeof decorate === 'string' ? decorate : JSON.stringify(decorate)
-      }
+        title,
+        decorate,
+        description,
+        editUser,
+        version
+      })
 
-      const created = await CustomPage.create(payload)
-      ctx.body = ctxBody({ success: true, code: 200, msg: '创建自定义页面成功', data: { id: created.id } })
+      ctx.body = ctxBody({ success: true, code: 200, msg: '创建自定义页面成功', data: result })
     } catch (e: any) {
       ctx.body = ctxBody({ success: false, code: 500, msg: '创建自定义页面失败', data: e?.message || e })
     }
   }
 
+  /**
+   * 更新自定义装修页面
+   */
   @routeConfig({
     method: 'put',
     path: '/decorate/customize/update/:id',
@@ -193,7 +140,6 @@ class DecorateController {
     tags: ['装修-自定义装修']
   })
   @body(z.object({
-    // REST：id 通过路径参数传递
     title: z.string().optional(),
     description: z.string().optional(),
     editUser: z.string().optional(),
@@ -205,32 +151,36 @@ class DecorateController {
       const parsedBody = ctx.parsed.body || ctx.request.body || {}
       const pathId = (ctx.params as any)?.id
       const id = String(pathId || '')
+
       if (!id) {
         ctx.body = ctxBody({ success: false, code: 400, msg: '缺少更新目标：id 必须在路径中提供' })
         return
       }
 
       const { title, decorate, description, editUser, version } = parsedBody
-      const updates: any = {}
-      if (title) updates.name = title
-      if (description !== undefined) updates.description = description
-      if (editUser !== undefined) updates.editUser = editUser
-      if (version !== undefined) updates.version = version
-      if (decorate !== undefined) {
-        updates.decorate = typeof decorate === 'string' ? decorate : JSON.stringify(decorate)
-      }
 
-      const [count] = await CustomPage.update(updates, { where: { id } })
-      if (count === 0) {
+      const success = await decorateService.updateCustomPage(id, {
+        title,
+        decorate,
+        description,
+        editUser,
+        version
+      })
+
+      if (!success) {
         ctx.body = ctxBody({ success: false, code: 404, msg: '更新失败，记录不存在' })
         return
       }
+
       ctx.body = ctxBody({ success: true, code: 200, msg: '更新自定义页面成功' })
     } catch (e: any) {
       ctx.body = ctxBody({ success: false, code: 500, msg: '更新自定义页面失败', data: e?.message || e })
     }
   }
 
+  /**
+   * 获取自定义装修页面详情
+   */
   @routeConfig({
     method: 'get',
     path: '/decorate/customize/detail',
@@ -243,42 +193,33 @@ class DecorateController {
   async detail(ctx: any) {
     try {
       const { id } = ctx.parsed.query
+
       if (!id) {
         ctx.body = ctxBody({ success: false, code: 400, msg: 'id 不能为空' })
         return
       }
-      const row: any = await CustomPage.findByPk(id)
-      if (!row) {
+
+      const detail = await decorateService.getCustomPageDetail(id)
+
+      if (!detail) {
         ctx.body = ctxBody({ success: false, code: 404, msg: '记录不存在' })
         return
       }
-      // 解析 decorate JSON
-      let parsedDecorate: any = null
-      if (row.decorate) {
-        try { parsedDecorate = JSON.parse(row.decorate) } catch (_) { parsedDecorate = row.decorate }
-      }
+
       ctx.body = ctxBody({
         success: true,
         code: 200,
         msg: '获取详情成功',
-        data: {
-          id: row.id,
-          name: row.name,
-          scene: row.scene,
-          editUser: row.editUser,
-          description: row.description,
-          title: row.name,
-          version: row.version,
-          decorate: parsedDecorate,
-          createTime: formatDateTime(row.createdAt),
-          updateTime: formatDateTime(row.updatedAt)
-        }
+        data: detail
       })
     } catch (e: any) {
       ctx.body = ctxBody({ success: false, code: 500, msg: '获取详情失败', data: e?.message || e })
     }
   }
 
+  /**
+   * 删除自定义装修页面
+   */
   @routeConfig({
     method: 'delete',
     path: '/decorate/customize/delete',
@@ -291,15 +232,19 @@ class DecorateController {
   async delete(ctx: any) {
     try {
       const { id } = ctx.parsed.query
+
       if (!id) {
         ctx.body = ctxBody({ success: false, code: 400, msg: 'id 不能为空' })
         return
       }
-      const count = await CustomPage.destroy({ where: { id } })
-      if (count === 0) {
+
+      const success = await decorateService.deleteCustomPage(id)
+
+      if (!success) {
         ctx.body = ctxBody({ success: false, code: 404, msg: '删除失败，记录不存在' })
         return
       }
+
       ctx.body = ctxBody({ success: true, code: 200, msg: '删除自定义页面成功' })
     } catch (e: any) {
       ctx.body = ctxBody({ success: false, code: 500, msg: '删除自定义页面失败', data: e?.message || e })
