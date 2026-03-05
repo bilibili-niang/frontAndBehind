@@ -19,40 +19,44 @@
 
 ## 🔴 高优先级问题
 
-### 1. 类型安全问题 - 大量使用 `any`
+### ☑️ 1. 类型安全问题 - 大量使用 `any` **[已解决]**
+
+**状态**: ✅ 已修复 (2026-03-05)
 
 **问题描述**: 代码中多处使用 `any` 类型，失去 TypeScript 类型保护
 
 **涉及文件**:
-- `src/middleware/jwtMiddleware.ts`
-- `src/controller/User/index.ts`
-- `src/controller/Resume/index.ts`
+- `src/middleware/jwtMiddleware.ts` ✅
+- `src/controller/User/index.ts` ✅
+- `src/controller/Resume/index.ts` ✅
 
-**问题代码**:
-```typescript
-// jwtMiddleware.ts
-const payload: any = jwtDecryption(token)  // ❌ 应避免 any
-;(ctx as any).decode = payload             // ❌ 应避免 any
-;(ctx as any).user = user                  // ❌ 应避免 any
-```
+**修复内容**:
+1. 创建 `src/types/index.ts` 定义通用类型接口
+2. 替换 `jwtMiddleware.ts` 中的 `any` 为 `JWTPayload` 和 `KoaContextWithUser`
+3. 替换 User Controller 中的 `any` 为具体类型
+4. 替换 Resume Controller 中的 `any` 为 `ResumeData` 类型
 
-**改进方案**: 定义明确的类型接口
+**使用的类型定义**:
 ```typescript
 // types/index.ts
-interface JWTPayload {
+export interface JWTPayload {
   id: string
   userName?: string
+  avatar?: string
+  phoneNumber?: string
+  email?: string
+  gender?: string
   isAdmin?: boolean
-  // ...其他字段
+  status?: number
+  roleId?: number
+  iat?: number
+  exp?: number
 }
 
-interface KoaContextWithUser extends Context {
+export interface KoaContextWithUser extends Context {
   decode?: JWTPayload
   user?: User
 }
-
-// 使用
-const payload = jwtDecryption(token) as JWTPayload
 ```
 
 ---
@@ -179,34 +183,29 @@ ctx.set('Access-Control-Allow-Origin', allowOrigin)
 
 ---
 
-### 6. 错误处理风格不一致
+### ☑️ 6. 错误处理风格不一致 **[已解决]**
+
+**状态**: ✅ 已修复 (2026-03-05)
 
 **问题描述**: 代码中混用 `.then().catch()` 和 `try-catch`，建议统一
 
 **涉及文件**:
-- `src/controller/User/index.ts` - 使用 .then().catch()
-- `src/controller/Resume/index.ts` - 混合使用
+- `src/controller/User/index.ts` ✅ - 已统一为 try-catch
+- `src/controller/Resume/index.ts` ✅ - 已统一为 try-catch
 
-**问题代码**:
+**修复内容**:
+- 将所有 `.then().catch()` 链式调用改为 `async/await + try-catch`
+- 统一错误类型处理为 `e: unknown`，然后类型断言
+
+**修复后代码示例**:
 ```typescript
-// 混合风格
-await User.create({...})
-  .then((res: any) => { ... })  // ❌ 混用
-  .catch(e => { ... })
-
-// 其他地方用 try-catch
+// User/index.ts
 try {
-  await someAsync()
-} catch (e) { ... }
-```
-
-**改进方案**: 统一使用 async/await + try-catch
-```typescript
-try {
-  const res = await User.create({...})
-  ctx.body = ctxBody({ success: true, data: res })
-} catch (e) {
-  ctx.body = ctxBody({ success: false, msg: '创建失败' })
+  const res = await User.create({...restData, password: md5(password)})
+  ctx.body = ctxBody({ success: true, code: 200, msg: '创建用户成功', data: res })
+} catch (e: unknown) {
+  const error = e as { errors?: Array<{ message: string }> }
+  ctx.body = ctxBody({ success: false, code: 500, msg: '创建用户失败', data: error?.errors?.[0]?.message })
 }
 ```
 
@@ -292,27 +291,29 @@ const getDatabaseName = () => {
 
 ## 📋 改进任务清单
 
-| 优先级 | 问题 | 涉及文件 | 预计工作量 |
-|--------|------|----------|-----------|
-| 🔴 高 | MD5 密码替换为 bcrypt | User/index.ts | 2h |
-| 🔴 高 | 定义类型接口替换 any | jwtMiddleware.ts, controller/* | 4h |
-| 🔴 高 | 环境变量校验 | main.ts, config/db.ts | 1h |
-| 🟡 中 | 替换 console.log 为 log4j | 12 个文件 | 2h |
-| 🟡 中 | CORS 按环境配置 | app/index.ts | 0.5h |
-| 🟡 中 | 统一错误处理风格 | controller/* | 3h |
-| 🟡 中 | 数据库名使用环境变量 | config/db.ts | 0.5h |
-| 🟢 低 | 增加参数校验 | controller/* | 4h |
-| 🟢 低 | 补充代码注释 | controller/* | 2h |
-| 🟢 低 | 修正目录拼写 | schema/baseModal/ | 0.5h |
+| 优先级 | 问题 | 涉及文件 | 预计工作量 | 状态 |
+|--------|------|----------|-----------|------|
+| 🔴 高 | MD5 密码替换为 bcrypt | User/index.ts | 2h | ⏳ 待修复 |
+| 🔴 高 | ~~定义类型接口替换 any~~ | ~~jwtMiddleware.ts, controller/*~~ | ~~4h~~ | ✅ **已修复** |
+| 🔴 高 | 环境变量校验 | main.ts, config/db.ts | 1h | ⏳ 待修复 |
+| 🟡 中 | 替换 console.log 为 log4j | 12 个文件 | 2h | ⏳ 待修复 |
+| 🟡 中 | CORS 按环境配置 | app/index.ts | 0.5h | ⏳ 待修复 |
+| 🟡 中 | ~~统一错误处理风格~~ | ~~controller/*~~ | ~~3h~~ | ✅ **已修复** |
+| 🟡 中 | 数据库名使用环境变量 | config/db.ts | 0.5h | ⏳ 待修复 |
+| 🟢 低 | 增加参数校验 | controller/* | 4h | ⏳ 待修复 |
+| 🟢 低 | 补充代码注释 | controller/* | 2h | ⏳ 待修复 |
+| 🟢 低 | 修正目录拼写 | schema/baseModal/ | 0.5h | ⏳ 待修复 |
 
 ---
 
 ## 🚀 推荐改进顺序
 
 1. **第一阶段（安全优先）**: 问题 2 (MD5密码) + 问题 3 (环境变量校验)
-2. **第二阶段（类型安全）**: 问题 1 (any类型) + 问题 6 (错误处理统一)
+2. **第二阶段（类型安全）**: ~~问题 1 (any类型) ✅~~ + ~~问题 6 (错误处理统一) ✅~~
 3. **第三阶段（代码规范）**: 问题 4 (console.log) + 问题 5 (CORS)
 4. **第四阶段（细节优化）**: 问题 7-10
+
+> **进度更新**: 2026-03-05 已完成问题 1 和 问题 6
 
 ---
 
@@ -321,3 +322,14 @@ const getDatabaseName = () => {
 - 评分基于 2026-03-05 的代码状态
 - 建议定期更新此文档
 - 修复后请在对应问题前打勾 ☑️
+
+---
+
+## 📈 修复进度
+
+| 日期 | 修复问题 | 提交 |
+|------|---------|------|
+| 2026-03-05 | 问题 1: 类型安全问题 - 替换 `any` 类型 | c01578d |
+| 2026-03-05 | 问题 6: 统一错误处理风格为 try-catch | c01578d |
+
+**当前进度**: 2/10 问题已修复 (20%)
