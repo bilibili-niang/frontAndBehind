@@ -4,12 +4,13 @@ import {
   FindSystemPageCriteria
 } from '@/repository/SystemPageRepository'
 import { formatDateTime } from '@/utils'
+import { StandardPaginationResult } from '@/types/common'
 
 /**
  * 装修配置
  */
 export interface DecorateConfig {
-  [key: string]: any
+  [key: string]: unknown
 }
 
 /**
@@ -54,18 +55,7 @@ export interface SystemPageListItem {
 /**
  * 分页结果
  */
-export interface PaginationResult {
-  countId: string
-  current: number
-  maxLimit: number
-  optimizeCountSql: boolean
-  orders: any[]
-  pages: number
-  records: SystemPageListItem[]
-  searchCount: boolean
-  size: number
-  total: number
-}
+export type PaginationResult = StandardPaginationResult<SystemPageListItem>
 
 /**
  * 系统页面 Service

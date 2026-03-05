@@ -6,12 +6,13 @@ import {
   FindCustomPageCriteria
 } from '@/repository/DecorateRepository'
 import { formatDateTime } from '@/utils'
+import { StandardPaginationResult } from '@/types/common'
 
 /**
  * 装修配置
  */
 export interface DecorateConfig {
-  [key: string]: any
+  [key: string]: unknown
 }
 
 /**
@@ -71,18 +72,7 @@ export interface CustomPageDetail {
 /**
  * 分页结果
  */
-export interface PaginationResult {
-  countId: string
-  current: number
-  maxLimit: number
-  optimizeCountSql: boolean
-  orders: any[]
-  pages: number
-  records: CustomPageListItem[]
-  searchCount: boolean
-  size: number
-  total: number
-}
+export type PaginationResult = StandardPaginationResult<CustomPageListItem>
 
 /**
  * 装修 Service

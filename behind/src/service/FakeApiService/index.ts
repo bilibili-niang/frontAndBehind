@@ -1,19 +1,20 @@
 import { generateByDataSchema, DataSchemaSpec } from '@/utils/fake'
 import { navigationRepository } from '@/repository/NavigationRepository'
+import { StandardPaginationResult } from '@/types/common'
 
 /**
  * DataSchema 规范
  */
 export interface DataSchemaInput {
   type: 'object' | 'array'
-  schema: Record<string, any>
+  schema: Record<string, unknown>
 }
 
 /**
  * 生成测试数据结果
  */
 export interface GenerateResult {
-  data: any
+  data: unknown
   type: 'object' | 'array'
 }
 
@@ -33,18 +34,7 @@ export interface NavigationListItem {
 /**
  * 分页结果
  */
-export interface PaginationResult {
-  countId: string
-  current: number
-  maxLimit: number
-  optimizeCountSql: boolean
-  orders: any[]
-  pages: number
-  records: NavigationListItem[]
-  searchCount: boolean
-  size: number
-  total: number
-}
+export type PaginationResult = StandardPaginationResult<NavigationListItem>
 
 /**
  * FakeApi Service

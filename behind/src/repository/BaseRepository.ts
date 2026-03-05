@@ -1,23 +1,7 @@
 import { Model, FindOptions } from 'sequelize'
+import { PaginationOptions, PaginationResult } from '@/types/common'
 
-/**
- * 分页选项
- */
-export interface PaginationOptions {
-  current: number
-  size: number
-}
-
-/**
- * 分页结果
- */
-export interface PaginationResult<T> {
-  records: T[]
-  total: number
-  current: number
-  size: number
-  pages: number
-}
+export { PaginationOptions, PaginationResult }
 
 /**
  * 基础 Repository 类

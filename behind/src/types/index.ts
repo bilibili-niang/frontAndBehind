@@ -93,3 +93,6 @@ export interface UserInfo {
   createdAt?: Date
   updatedAt?: Date
 }
+
+// 导出通用类型
+export * from './common'

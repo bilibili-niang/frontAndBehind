@@ -1,11 +1,12 @@
 import { illegalRequestRepository } from '@/repository/ToolRepository'
 import { $transform } from '@/service/tool'
+import { PaginationResult as CommonPaginationResult } from '@/types/common'
 
 /**
  * 翻译结果
  */
 export interface TranslateResult {
-  [key: string]: any
+  [key: string]: unknown
 }
 
 /**
@@ -24,12 +25,9 @@ export interface IllegalRequestListItem {
 }
 
 /**
- * 分页结果
+ * 分页结果（使用通用分页类型）
  */
-export interface PaginationResult {
-  count: number
-  rows: IllegalRequestListItem[]
-}
+export interface PaginationResult extends CommonPaginationResult<IllegalRequestListItem> {}
 
 /**
  * 工具 Service
