@@ -1,13 +1,18 @@
 import { body, responses, routeConfig } from 'koa-swagger-decorator'
 import { Context } from 'koa'
 import { TranslateReqType, TranslateResType, IllegalLogListRes } from './type'
-import { $transform } from '@/service/tool'
 import { ctxBody } from '@/utils'
 import { paginationQuery } from '@/controller/common'
-import { IllegalRequest } from '@/schema'
+import { toolService } from '@/service/ToolService'
 
+/**
+ * 工具控制器
+ * 只负责：接收请求、调用 Service、返回响应
+ */
 class ToolController {
-
+  /**
+   * 翻译
+   */
   @routeConfig({
     method: 'post',
     path: '/tool/translate',
@@ -18,18 +23,19 @@ class ToolController {
   @responses(TranslateResType)
   async translateWord(ctx: Context, args) {
     const { keyword } = args.body
-    await $transform(keyword)
-      .then(res => {
-        ctx.body = ctxBody({
-          success: true,
-          code: 200,
-          msg: `翻译一下`,
-          data: res
-        })
-      })
+    const res = await toolService.translate(keyword)
 
+    ctx.body = ctxBody({
+      success: true,
+      code: 200,
+      msg: `翻译一下`,
+      data: res
+    })
   }
 
+  /**
+   * 非法请求日志-分页查询
+   */
   @routeConfig({
     method: 'get',
     path: '/tool/illegal-request/list',
@@ -41,13 +47,10 @@ class ToolController {
   })
   @responses(IllegalLogListRes)
   async getIllegalRequestList(ctx: Context) {
-    const { size, page } = ctx.parsed.query
     try {
-      const res = await IllegalRequest.findAndCountAll({
-        limit: Number(size),
-        offset: Number((page - 1) * size),
-        order: [['createdAt', 'DESC']]
-      })
+      const { size, page } = ctx.parsed.query
+      const res = await toolService.getIllegalRequestList(Number(page), Number(size))
+
       ctx.body = ctxBody({
         success: true,
         code: 200,
@@ -63,7 +66,6 @@ class ToolController {
       })
     }
   }
-
 }
 
 export {
