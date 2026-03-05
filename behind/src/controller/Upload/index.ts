@@ -1,38 +1,16 @@
 import { Context } from 'koa'
-import path from 'path'
-import fs from 'fs'
 import { body, routeConfig, z } from 'koa-swagger-decorator'
 import { ctxBody } from '@/utils'
+import { uploadService, KoaBodyFile } from '@/service/UploadService'
 
-type KoaBodyFile = {
-  filepath?: string
-  path?: string
-  size?: number
-  type?: string
-  mimetype?: string
-  name?: string
-  originalFilename?: string
-}
-
-const ensureUploadDir = (absUploadDir: string) => {
-  try {
-    if (!fs.existsSync(absUploadDir)) {
-      fs.mkdirSync(absUploadDir, { recursive: true })
-    }
-  } catch (_) {}
-}
-
-const getSafeFilename = (file: KoaBodyFile) => {
-  const fp = (file.filepath || file.path || '') as string
-  return path.basename(fp)
-}
-
-const buildPublicUrl = (ctx: Context, filename: string) => {
-  const origin = ctx.origin || `${ctx.protocol}://${ctx.host}`
-  return `${origin}/upload/${filename}`
-}
-
+/**
+ * 上传控制器
+ * 只负责：接收请求、调用 Service、返回响应
+ */
 class UploadController {
+  /**
+   * 单文件上传（图片优先）
+   */
   @routeConfig({
     method: 'post',
     path: '/upload/image',
@@ -45,31 +23,28 @@ class UploadController {
       const files = (ctx.request as any)?.files || {}
       const file: KoaBodyFile | KoaBodyFile[] = (files as any).file || (files as any).image
       const target: KoaBodyFile = Array.isArray(file) ? (file[0] as any) : (file as any)
+
       if (!target || !(target.filepath || target.path)) {
         ctx.body = ctxBody({ success: false, code: 400, msg: '未接收到文件，请使用字段名 file', data: null })
         return
       }
 
-      const filename = getSafeFilename(target)
-      const url = buildPublicUrl(ctx, filename)
+      const result = uploadService.processSingleFile(target, ctx)
 
       ctx.body = ctxBody({
         success: true,
         code: 200,
         msg: '上传成功',
-        data: {
-          url,
-          uri: filename,
-          size: target.size || 0,
-          mime: (target.mimetype || target.type || ''),
-          filename: (target.originalFilename || target.name || filename)
-        }
+        data: result
       })
     } catch (e: any) {
       ctx.body = ctxBody({ success: false, code: 500, msg: '上传失败', data: e?.message || e })
     }
   }
 
+  /**
+   * 批量上传文件
+   */
   @routeConfig({
     method: 'post',
     path: '/upload/batch',
@@ -81,18 +56,8 @@ class UploadController {
       const files = (ctx.request as any)?.files || {}
       const list: KoaBodyFile | KoaBodyFile[] = (files as any).files || (files as any).file
       const arr: KoaBodyFile[] = Array.isArray(list) ? (list as any) : [list as any]
-      const result = arr
-        .filter(f => f && (f.filepath || f.path))
-        .map(f => {
-          const filename = getSafeFilename(f)
-          return {
-            url: buildPublicUrl(ctx, filename),
-            uri: filename,
-            size: f.size || 0,
-            mime: (f.mimetype || f.type || ''),
-            filename: (f.originalFilename || f.name || filename)
-          }
-        })
+
+      const result = uploadService.processBatchFiles(arr, ctx)
 
       if (result.length === 0) {
         ctx.body = ctxBody({ success: false, code: 400, msg: '未接收到文件数组，请使用字段名 files', data: null })
@@ -105,13 +70,31 @@ class UploadController {
     }
   }
 
-  // 兼容老路径：/null-cornerstone-system/upload/image
-  @routeConfig({ method: 'post', path: '/null-cornerstone-system/upload/image', summary: '兼容路径：单文件上传', tags: ['系统', '兼容'] })
-  async legacyImage(ctx: Context) { return this.uploadImage(ctx) }
+  /**
+   * 兼容老路径：单文件上传
+   */
+  @routeConfig({
+    method: 'post',
+    path: '/null-cornerstone-system/upload/image',
+    summary: '兼容路径：单文件上传',
+    tags: ['系统', '兼容']
+  })
+  async legacyImage(ctx: Context) {
+    return this.uploadImage(ctx)
+  }
 
-  // 兼容老路径：/null-cornerstone-system/upload/batch
-  @routeConfig({ method: 'post', path: '/null-cornerstone-system/upload/batch', summary: '兼容路径：批量上传', tags: ['系统', '兼容'] })
-  async legacyBatch(ctx: Context) { return this.uploadBatch(ctx) }
+  /**
+   * 兼容老路径：批量上传
+   */
+  @routeConfig({
+    method: 'post',
+    path: '/null-cornerstone-system/upload/batch',
+    summary: '兼容路径：批量上传',
+    tags: ['系统', '兼容']
+  })
+  async legacyBatch(ctx: Context) {
+    return this.uploadBatch(ctx)
+  }
 }
 
 export { UploadController }
