@@ -11,7 +11,7 @@ import {
   UserLoginRes
 } from './type'
 import { ICreateUserReq, ILoginReq } from '@/controller/User/type'
-import { userService } from '@/service/UserService'
+import { userService } from '@/service/userService'
 import { userRepository } from '@/repository/UserRepository'
 import { ctxBody } from '@/utils'
 import { headerParams, paginationQuery } from '@/controller/common/queryType'
