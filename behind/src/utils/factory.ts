@@ -1,3 +1,10 @@
+/**
+ * @deprecated 此文件已废弃，请勿使用
+ * 请使用 Repository 模式替代：
+ * - paginationMiddleware -> BaseRepository.paginate()
+ * - deleteByIdMiddleware -> BaseRepository.deleteById()
+ */
+
 import { ctxBody } from '@/utils'
 import seq from '@/config/db'
 import { toInteger } from 'lodash'
@@ -5,12 +12,13 @@ import { toInteger } from 'lodash'
 seq
 
 
-/*
-* 构建一个分页查询
-* @param {ctx} koa的Context
-* @param {model} sequelize的model
-* @param {msg} 分页查询的提示信息
-* */
+/**
+ * @deprecated 请使用 BaseRepository.paginate() 替代
+ * 构建一个分页查询
+ * @param {ctx} koa的Context
+ * @param {model} sequelize的model
+ * @param {msg} 分页查询的提示信息
+ */
 const paginationMiddleware = async (ctx: any, model: any, msg?: string) => {
   const parsed: any = ctx.parsed?.query || {}
   // 兼容 current/page 两种命名
@@ -60,9 +68,11 @@ const paginationMiddleware = async (ctx: any, model: any, msg?: string) => {
       })
     })
 }
-/*
-* 通过id删除
-* */
+
+/**
+ * @deprecated 请使用 BaseRepository.deleteById() 替代
+ * 通过id删除
+ */
 const deleteByIdMiddleware = async (ctx: any, model: any, msg?: string) => {
   const { id } = ctx.parsed.query
   await model.destroy({
