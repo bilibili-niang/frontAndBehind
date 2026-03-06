@@ -127,7 +127,8 @@ export const setDefaultSystemPages = async () => {
     } else {
       info(`系统页面种子：所有场景的必备页面均已存在，无需创建`)
     }
-  } catch (e: any) {
-    info(`系统页面种子：创建失败 -> ${e?.message ?? e}`)
+  } catch (e: unknown) {
+    const errorMsg = e instanceof Error ? e.message : String(e)
+    info(`系统页面种子：创建失败 -> ${errorMsg}`)
   }
 }
