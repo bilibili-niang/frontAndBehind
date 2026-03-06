@@ -1,10 +1,6 @@
 /* eslint-disable */
-import axios, { AxiosError, type AxiosInstance } from 'axios'
+import axios, { AxiosError, type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios'
 
-declare module 'axios' {
-  export interface AxiosRequestConfig {
-  }
-}
 export type ResponseBody<D> = Promise<ResponseData<D>>
 export type ResponseData<D> = {
   code: number
@@ -28,20 +24,6 @@ export type ResponsePaginationData<Record> = ResponseBody<PaginationData<Record>
 export const getAuthHeaders = () => {
   return {}
 }
-// 覆盖 AxiosResponse 默认类型
-declare module 'axios' {
-  interface AxiosInstance extends Axios {
-    // 自定义
-    <T = any, R = ResponseData<T>, D = any>(config: AxiosRequestConfig<D>): Promise<R>
-
-    <T = any, R = ResponseData<T>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R>
-    defaults: Omit<AxiosDefaults, 'headers'> & {
-      headers: HeadersDefaults & {
-        [key: string]: AxiosHeaderValue
-      }
-    }
-  }
-}
 const request: AxiosInstance = axios.create({
   baseURL: '',
   timeout: 30000, // 请求超时时间
@@ -53,15 +35,15 @@ const err = (error: AxiosError) => {
  * @description 请求发起前的拦截器
  * @returns {AxiosRequestConfig} config
  */
-request.interceptors.request.use(async (config: any) => {
-  Object.assign(config.headers, getAuthHeaders())
+request.interceptors.request.use(async (config: AxiosRequestConfig) => {
+  Object.assign(config.headers || {}, getAuthHeaders())
   return config
 })
 /**
  * @description 响应收到后的拦截器
  * @returns {AxiosResponse} payload
  */
-request.interceptors.response.use(async (response: any) => {
+request.interceptors.response.use(async (response: AxiosResponse) => {
   return Promise.resolve(response.data)
 }, err)
 export {

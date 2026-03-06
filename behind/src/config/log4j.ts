@@ -88,16 +88,19 @@ const warnLogger = log4js.getLogger('warn')
 const errorLogger = log4js.getLogger('error')
 const fatalLogger = log4js.getLogger('fatal')
 
-interface LogContext {
+/**
+ * 日志上下文类型
+ */
+export interface LogContext {
   ip?: string;
   method?: string;
   path?: string;
   statusCode?: number;
-  headers?: any;
-  payload?: any;
+  headers?: Record<string, unknown>;
+  payload?: unknown;
   userAgent?: string;
 
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const formatMessage = (message: string, context?: LogContext) => {
@@ -138,9 +141,10 @@ const persistIfIllegal = async (level: string, reason: string, context?: LogCont
         userAgent: context?.userAgent
       })
     }
-  } catch (err: any) {
+  } catch (err: unknown) {
     // 避免递归，这里直接用底层 logger 或 console
-    try { errorLogger.error(`非法路由持久化判断失败: ${err?.message || err}`) } catch (_) { /* noop */ }
+    const errorMsg = err instanceof Error ? err.message : String(err)
+    try { errorLogger.error(`非法路由持久化判断失败: ${errorMsg}`) } catch (_) { /* noop */ }
   }
 }
 
