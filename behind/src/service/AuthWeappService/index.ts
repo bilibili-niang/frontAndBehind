@@ -66,7 +66,7 @@ export class AuthWeappService {
 
     // 已绑定手机号/用户则直接返回 token
     if (row.userId || row.phoneNumber) {
-      let user: any = null
+      let user: Awaited<ReturnType<typeof userRepository.findById>> = null
 
       if (row.userId) {
         user = await userRepository.findById(row.userId)

@@ -7,6 +7,7 @@ import {
 } from '@/repository/DecorateRepository'
 import { formatDateTime } from '@/utils'
 import { StandardPaginationResult } from '@/types/common'
+import { Model } from 'sequelize'
 
 /**
  * 装修配置
@@ -152,8 +153,8 @@ export class DecorateService {
 
     const pages = Math.ceil(result.total / result.size)
 
-    const records: CustomPageListItem[] = result.records.map((row: any) => {
-      const plain = typeof row.toJSON === 'function' ? row.toJSON() : row
+    const records: CustomPageListItem[] = result.records.map((row: Model) => {
+      const plain = row.toJSON() as CustomPageListItem & { createdAt: Date; updatedAt: Date }
       return {
         id: plain.id,
         name: plain.name,

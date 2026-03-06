@@ -5,6 +5,7 @@ import {
 } from '@/repository/SystemPageRepository'
 import { formatDateTime } from '@/utils'
 import { StandardPaginationResult } from '@/types/common'
+import { Model } from 'sequelize'
 
 /**
  * 装修配置
@@ -90,8 +91,8 @@ export class SystemPageService {
   /**
    * 格式化系统页面数据为详情对象
    */
-  private formatPageDetail(row: any): SystemPageDetail {
-    const plain = typeof row.toJSON === 'function' ? row.toJSON() : row
+  private formatPageDetail(row: Model): SystemPageDetail {
+    const plain = row.toJSON() as SystemPageDetail & { createdAt: Date; updatedAt: Date }
 
     return {
       id: plain.id,
@@ -249,8 +250,8 @@ export class SystemPageService {
 
     const pages = Math.ceil(result.total / result.size)
 
-    const records: SystemPageListItem[] = result.records.map((row: any) => {
-      const plain = typeof row.toJSON === 'function' ? row.toJSON() : row
+    const records: SystemPageListItem[] = result.records.map((row: Model) => {
+      const plain = row.toJSON() as SystemPageListItem & { createdAt: Date; updatedAt: Date }
       return {
         id: plain.id,
         name: plain.name,

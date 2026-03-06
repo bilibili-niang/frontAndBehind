@@ -1,5 +1,6 @@
 import { navigationRepository, NavigationData, FindNavigationCriteria } from '@/repository/NavigationRepository'
 import { formatDateTime } from '@/utils'
+import { Model } from 'sequelize'
 
 /**
  * 导航配置项
@@ -79,7 +80,7 @@ export class NavigationService {
     const next: NavigationConfig = { ...config }
 
     if (Array.isArray(config.list)) {
-      next.list = config.list.map((item: any) => {
+      next.list = config.list.map((item: Record<string, unknown>) => {
         if (!item || typeof item !== 'object') return item
 
         const hasText = typeof item.text !== 'undefined' && item.text !== null
@@ -258,8 +259,8 @@ export class NavigationService {
 
     const pages = Math.ceil(result.total / result.size)
 
-    const records: NavigationListItem[] = result.records.map((row: any) => {
-      const plain = typeof row.toJSON === 'function' ? row.toJSON() : row
+    const records: NavigationListItem[] = result.records.map((row: Model) => {
+      const plain = row.toJSON() as NavigationListItem & { createdAt: Date; updatedAt: Date }
       return {
         id: plain.id,
         name: plain.name,

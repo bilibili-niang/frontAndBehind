@@ -1,4 +1,5 @@
 import { resumeRepository, ResumeData } from '@/repository/ResumeRepository'
+import { Model } from 'sequelize'
 
 /**
  * 创建简历数据
@@ -40,15 +41,13 @@ export class ResumeService {
    * 将简历数据转换为普通对象
    * 处理 data 字段的 JSON 解析
    */
-  private toPlain(resume: any): ResumeListItem {
+  private toPlain(resume: Model | null): ResumeListItem {
     if (!resume) {
       return { id: '', userId: '', data: {} }
     }
 
     // 转换为普通对象
-    const base = resume && typeof resume.toJSON === 'function'
-      ? resume.toJSON()
-      : typeof resume === 'object' ? { ...resume } : { id: '', userId: '', data: resume }
+    const base = resume.toJSON() as ResumeListItem & { data: string | object }
 
     // 处理 data 字段
     try {
@@ -61,7 +60,7 @@ export class ResumeService {
       base.data = {}
     }
 
-    return base as ResumeListItem
+    return base
   }
 
   /**
@@ -71,7 +70,7 @@ export class ResumeService {
    */
   async create(data: CreateResumeData): Promise<ResumeListItem> {
     // 将 data 对象转为 JSON 字符串
-    const createData: any = { ...data }
+    const createData: CreateResumeData & { data?: string } = { ...data }
     if (data.data && typeof data.data === 'object') {
       createData.data = JSON.stringify(data.data)
     }
@@ -121,7 +120,7 @@ export class ResumeService {
    */
   async update(id: string, userId: string, data: UpdateResumeData): Promise<ResumeListItem | null> {
     // 将 data 对象转为 JSON 字符串
-    const updateData: any = { ...data }
+    const updateData: UpdateResumeData & { data?: string } = { ...data }
     if (data.data && typeof data.data === 'object') {
       updateData.data = JSON.stringify(data.data)
     }

@@ -69,7 +69,7 @@ export class UserProfileService {
       }
 
       return { success: true, code: 200, msg: 'ok', payload }
-    } catch (e: any) {
+    } catch (e: unknown) {
       return { success: false, code: 401, msg: '登录凭证无效或已过期' }
     }
   }

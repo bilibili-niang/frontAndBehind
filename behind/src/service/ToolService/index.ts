@@ -1,6 +1,7 @@
 import { illegalRequestRepository } from '@/repository/ToolRepository'
 import { $transform } from '@/service/tool'
 import { PaginationResult as CommonPaginationResult } from '@/types/common'
+import { Model } from 'sequelize'
 
 /**
  * 翻译结果
@@ -55,8 +56,8 @@ export class ToolService {
       { order: [['createdAt', 'DESC']] }
     )
 
-    const rows: IllegalRequestListItem[] = result.records.map((row: any) => {
-      const plain = typeof row.toJSON === 'function' ? row.toJSON() : row
+    const rows: IllegalRequestListItem[] = result.records.map((row: Model) => {
+      const plain = row.toJSON() as IllegalRequestListItem & { createdAt: string }
       return {
         id: plain.id,
         ip: plain.ip,

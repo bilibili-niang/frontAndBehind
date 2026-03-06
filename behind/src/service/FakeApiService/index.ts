@@ -1,6 +1,7 @@
 import { generateByDataSchema, DataSchemaSpec } from '@/utils/fake'
 import { navigationRepository } from '@/repository/NavigationRepository'
 import { StandardPaginationResult } from '@/types/common'
+import { Model } from 'sequelize'
 
 /**
  * DataSchema 规范
@@ -81,8 +82,8 @@ export class FakeApiService {
 
     const pages = Math.ceil(result.total / result.size)
 
-    const records: NavigationListItem[] = result.records.map((row: any) => {
-      const plain = typeof row.toJSON === 'function' ? row.toJSON() : row
+    const records: NavigationListItem[] = result.records.map((row: Model) => {
+      const plain = row.toJSON() as NavigationListItem & { createdAt: Date; updatedAt: Date }
       return {
         id: plain.id,
         name: plain.name,
