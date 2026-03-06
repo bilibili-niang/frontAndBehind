@@ -3,6 +3,14 @@ import { Context } from 'koa'
 import { ctxBody } from '@/utils'
 import { commonResponse } from '@/controller/common'
 import { navigationService } from '@/service/NavigationService'
+import {
+  NavigationQuery,
+  NavigationParams,
+  CreateNavigationBody,
+  UpdateNavigationBody,
+  DeleteNavigationResult
+} from '@/types/navigation'
+import { getErrorMessage } from '@/types/controller'
 
 /**
  * 导航控制器
@@ -31,7 +39,7 @@ class NavigationController {
   }))
   async actived(ctx: Context) {
     try {
-      const { origin, scene } = ctx.parsed.query as any
+      const { origin, scene } = ctx.parsed?.query as NavigationQuery
       const resolvedScene = typeof scene !== 'undefined' && scene !== null && scene !== ''
         ? String(scene)
         : (typeof origin !== 'undefined' && origin !== null && origin !== '' ? String(origin) : undefined)
@@ -49,8 +57,8 @@ class NavigationController {
         msg: data.items ? '获取已激活导航成功' : '未找到已激活导航，返回空配置',
         data
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '获取已激活导航失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '获取已激活导航失败', data: getErrorMessage(e) })
     }
   }
 
@@ -73,11 +81,11 @@ class NavigationController {
   }))
   async create(ctx: Context) {
     try {
-      const data = ctx.parsed.body as any
+      const data = ctx.parsed?.body as CreateNavigationBody
       const res = await navigationService.create(data)
       ctx.body = ctxBody({ success: true, code: 200, msg: '创建导航成功', data: res })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '创建导航失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '创建导航失败', data: getErrorMessage(e) })
     }
   }
 
@@ -101,8 +109,8 @@ class NavigationController {
   }))
   async update(ctx: Context) {
     try {
-      const pathId = (ctx.params as any)?.id
-      const { id: bodyId, ...rest } = ctx.parsed.body as any
+      const pathId = (ctx.params as NavigationParams)?.id
+      const { id: bodyId, ...rest } = ctx.parsed?.body as UpdateNavigationBody
       const id = String(pathId || bodyId || '')
 
       if (!id) {
@@ -112,8 +120,8 @@ class NavigationController {
 
       const latest = await navigationService.update(id, rest)
       ctx.body = ctxBody({ success: true, code: 200, msg: '更新导航成功', data: latest })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '更新导航失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '更新导航失败', data: getErrorMessage(e) })
     }
   }
 
@@ -131,8 +139,8 @@ class NavigationController {
   })
   async delete(ctx: Context) {
     try {
-      const { id } = ctx.parsed.query as any
-      const result = await navigationService.delete(id)
+      const { id } = ctx.parsed?.query as NavigationQuery
+      const result: DeleteNavigationResult = await navigationService.delete(id)
 
       if (!result.success) {
         ctx.body = ctxBody({ success: false, code: result.message?.includes('使用中') ? 403 : 404, msg: result.message, data: { id } })
@@ -140,8 +148,8 @@ class NavigationController {
       }
 
       ctx.body = ctxBody({ success: true, code: 200, msg: '删除导航成功', data: { id } })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '删除导航失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '删除导航失败', data: getErrorMessage(e) })
     }
   }
 
@@ -159,7 +167,7 @@ class NavigationController {
   })
   async detail(ctx: Context) {
     try {
-      const { id } = ctx.parsed.query as any
+      const { id } = ctx.parsed?.query as NavigationQuery
       const detail = await navigationService.getDetail(id)
 
       if (!detail) {
@@ -173,8 +181,8 @@ class NavigationController {
         msg: '获取导航详情成功',
         data: detail
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '获取导航详情失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '获取导航详情失败', data: getErrorMessage(e) })
     }
   }
 
@@ -198,7 +206,7 @@ class NavigationController {
   })
   async list(ctx: Context) {
     try {
-      const { size, page, scene, name, status } = ctx.parsed.query as any
+      const { size, page, scene, name, status } = ctx.parsed?.query as NavigationQuery
 
       const result = await navigationService.getList(
         { scene, name, status },
@@ -212,8 +220,8 @@ class NavigationController {
         msg: '获取导航列表成功',
         data: result
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '获取导航列表失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '获取导航列表失败', data: getErrorMessage(e) })
     }
   }
 }

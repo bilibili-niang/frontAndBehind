@@ -1,6 +1,14 @@
 import { body, routeConfig, z } from 'koa-swagger-decorator'
+import { Context } from 'koa'
 import { ctxBody } from '@/utils'
 import { systemPageService } from '@/service/SystemPageService'
+import {
+  CreateSystemPageBody,
+  UpdateSystemPageBody,
+  SystemPageQuery,
+  SystemPageParams,
+  DeleteResult
+} from '@/types/systemPage'
 
 /**
  * 系统页面控制器
@@ -22,7 +30,7 @@ class SystemPageController {
       key: z.string().optional(),
       title: z.string().nonempty(),
       tags: z.string().optional(),
-      decorate: z.union([z.string(), z.record(z.any())]).optional(),
+      decorate: z.union([z.string(), z.record(z.unknown())]).optional(),
       origin: z.coerce.number().optional(),
       version: z.string().optional(),
       tenantId: z.string().optional(),
@@ -31,9 +39,9 @@ class SystemPageController {
       createUser: z.string().optional()
     })
   )
-  async create(ctx: any) {
+  async create(ctx: Context) {
     try {
-      const data = ctx.parsed.body as any
+      const data = ctx.parsed?.body as CreateSystemPageBody
       const detail = await systemPageService.createSystemPage(data)
 
       ctx.body = ctxBody({
@@ -42,8 +50,9 @@ class SystemPageController {
         msg: '创建系统页面成功',
         data: detail
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '创建系统页面失败', data: e?.message || e })
+    } catch (e: unknown) {
+      const error = e instanceof Error ? e.message : String(e)
+      ctx.body = ctxBody({ success: false, code: 500, msg: '创建系统页面失败', data: error })
     }
   }
 
@@ -63,7 +72,7 @@ class SystemPageController {
       key: z.string().optional(),
       title: z.string().optional(),
       tags: z.string().optional(),
-      decorate: z.union([z.string(), z.record(z.any())]).optional(),
+      decorate: z.union([z.string(), z.record(z.unknown())]).optional(),
       origin: z.coerce.number().optional(),
       version: z.string().optional(),
       tenantId: z.string().optional(),
@@ -72,10 +81,10 @@ class SystemPageController {
       updateUser: z.string().optional()
     })
   )
-  async update(ctx: any) {
+  async update(ctx: Context) {
     try {
-      const pathId = (ctx.params as any)?.id
-      const { id: bodyId, ...rest } = ctx.parsed.body as any
+      const pathId = (ctx.params as SystemPageParams)?.id
+      const { id: bodyId, ...rest } = ctx.parsed?.body as UpdateSystemPageBody
       const id = String(pathId || bodyId || '')
 
       if (!id) {
@@ -96,8 +105,9 @@ class SystemPageController {
         msg: '更新系统页面成功',
         data: detail
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '更新系统页面失败', data: e?.message || e })
+    } catch (e: unknown) {
+      const error = e instanceof Error ? e.message : String(e)
+      ctx.body = ctxBody({ success: false, code: 500, msg: '更新系统页面失败', data: error })
     }
   }
 
@@ -113,11 +123,11 @@ class SystemPageController {
       query: z.object({ id: z.string().nonempty() })
     }
   })
-  async delete(ctx: any) {
+  async delete(ctx: Context) {
     try {
-      const { id } = ctx.parsed.query as any
+      const { id } = ctx.parsed?.query as SystemPageQuery
 
-      const result = await systemPageService.deleteSystemPage(id)
+      const result: DeleteResult = await systemPageService.deleteSystemPage(id)
 
       if (!result.success) {
         const code = result.msg === '系统默认页面不可删除' ? 403 : 404
@@ -126,8 +136,9 @@ class SystemPageController {
       }
 
       ctx.body = ctxBody({ success: true, code: 200, msg: '删除系统页面成功', data: { id } })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '删除系统页面失败', data: e?.message || e })
+    } catch (e: unknown) {
+      const error = e instanceof Error ? e.message : String(e)
+      ctx.body = ctxBody({ success: false, code: 500, msg: '删除系统页面失败', data: error })
     }
   }
 
@@ -143,9 +154,9 @@ class SystemPageController {
       query: z.object({ id: z.string().nonempty() })
     }
   })
-  async detail(ctx: any) {
+  async detail(ctx: Context) {
     try {
-      const { id } = ctx.parsed.query as any
+      const { id } = ctx.parsed?.query as SystemPageQuery
 
       const detail = await systemPageService.getSystemPageDetail(id)
 
@@ -160,8 +171,9 @@ class SystemPageController {
         msg: '获取系统页面详情成功',
         data: detail
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '获取系统页面详情失败', data: e?.message || e })
+    } catch (e: unknown) {
+      const error = e instanceof Error ? e.message : String(e)
+      ctx.body = ctxBody({ success: false, code: 500, msg: '获取系统页面详情失败', data: error })
     }
   }
 
@@ -182,9 +194,9 @@ class SystemPageController {
       })
     }
   })
-  async list(ctx: any) {
+  async list(ctx: Context) {
     try {
-      const { size, page, name, scene } = ctx.parsed.query as any
+      const { size, page, name, scene } = ctx.parsed?.query as SystemPageQuery
 
       const result = await systemPageService.getSystemPageList(
         { scene, name },
@@ -198,10 +210,11 @@ class SystemPageController {
         msg: '获取系统页面列表成功',
         data: result
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '获取系统页面列表失败', data: e?.message || e })
+    } catch (e: unknown) {
+      const error = e instanceof Error ? e.message : String(e)
+      ctx.body = ctxBody({ success: false, code: 500, msg: '获取系统页面列表失败', data: error })
     }
   }
 }
 
-export { SystemPageController }
+export default new SystemPageController()
