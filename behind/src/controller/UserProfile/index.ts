@@ -2,6 +2,7 @@ import { Context } from 'koa'
 import { routeConfig } from 'koa-swagger-decorator'
 import { ctxBody } from '@/utils'
 import { userProfileService } from '@/service/UserProfileService'
+import { getErrorMessage } from '@/types/controller'
 
 /**
  * 用户资料控制器
@@ -35,8 +36,8 @@ class UserProfileController {
       }
 
       ctx.body = ctxBody({ success: true, code: 200, msg: 'ok', data: profile })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: e?.message || '获取用户信息失败', data: null })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: getErrorMessage(e) || '获取用户信息失败', data: null })
     }
   }
 

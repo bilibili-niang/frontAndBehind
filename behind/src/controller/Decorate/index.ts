@@ -1,6 +1,15 @@
 import { body, routeConfig, z } from 'koa-swagger-decorator'
+import { Context } from 'koa'
 import { ctxBody } from '@/utils'
 import { decorateService } from '@/service/DecorateService'
+import {
+  DecorateQuery,
+  DecorateParams,
+  CreateDecorateBody,
+  UpdateDecorateBody,
+  CustomizeListCriteria
+} from '@/types/decorate'
+import { getErrorMessage } from '@/types/controller'
 
 /**
  * 装修控制器
@@ -22,9 +31,9 @@ class DecorateController {
       })
     }
   })
-  async systemDetail(ctx: any) {
+  async systemDetail(ctx: Context) {
     try {
-      const { key, scene } = ctx.parsed.query as any
+      const { key, scene } = ctx.parsed?.query as DecorateQuery
 
       if (!key) {
         ctx.body = ctxBody({ success: false, code: 400, msg: 'key 不能为空', data: null })
@@ -44,8 +53,8 @@ class DecorateController {
         msg: '获取系统装修页面详情成功',
         data: detail
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '获取系统装修页面详情失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '获取系统装修页面详情失败', data: getErrorMessage(e) })
     }
   }
 
@@ -67,12 +76,13 @@ class DecorateController {
       })
     }
   })
-  async customizeList(ctx: any) {
+  async customizeList(ctx: Context) {
     try {
-      const { size, page, name, scene, onlyDecorated } = ctx.parsed.query as any
+      const { size, page, name, scene, onlyDecorated } = ctx.parsed?.query as DecorateQuery
 
+      const criteria: CustomizeListCriteria = { scene, name, onlyDecorated }
       const result = await decorateService.getCustomPageList(
-        { scene, name, onlyDecorated },
+        criteria,
         Number(page),
         Number(size)
       )
@@ -83,8 +93,8 @@ class DecorateController {
         msg: '获取自定义装修页面列表成功',
         data: result
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '获取自定义装修页面列表失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '获取自定义装修页面列表失败', data: getErrorMessage(e) })
     }
   }
 
@@ -103,11 +113,11 @@ class DecorateController {
     description: z.string().optional(),
     editUser: z.string().optional(),
     version: z.string().optional(),
-    decorate: z.union([z.string(), z.record(z.any())]).optional()
+    decorate: z.union([z.string(), z.record(z.unknown())]).optional()
   }))
-  async create(ctx: any) {
+  async create(ctx: Context) {
     try {
-      const body = ctx.parsed.body || ctx.request.body || {}
+      const body = (ctx.parsed?.body || ctx.request.body || {}) as CreateDecorateBody
       const { scene, title, decorate, description, editUser, version } = body
 
       if (!scene || !title) {
@@ -125,8 +135,8 @@ class DecorateController {
       })
 
       ctx.body = ctxBody({ success: true, code: 200, msg: '创建自定义页面成功', data: result })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '创建自定义页面失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '创建自定义页面失败', data: getErrorMessage(e) })
     }
   }
 
@@ -144,12 +154,12 @@ class DecorateController {
     description: z.string().optional(),
     editUser: z.string().optional(),
     version: z.string().optional(),
-    decorate: z.union([z.string(), z.record(z.any())]).optional()
+    decorate: z.union([z.string(), z.record(z.unknown())]).optional()
   }))
-  async update(ctx: any) {
+  async update(ctx: Context) {
     try {
-      const parsedBody = ctx.parsed.body || ctx.request.body || {}
-      const pathId = (ctx.params as any)?.id
+      const parsedBody = (ctx.parsed?.body || ctx.request.body || {}) as UpdateDecorateBody
+      const pathId = (ctx.params as DecorateParams)?.id
       const id = String(pathId || '')
 
       if (!id) {
@@ -173,8 +183,8 @@ class DecorateController {
       }
 
       ctx.body = ctxBody({ success: true, code: 200, msg: '更新自定义页面成功' })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '更新自定义页面失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '更新自定义页面失败', data: getErrorMessage(e) })
     }
   }
 
@@ -190,9 +200,9 @@ class DecorateController {
       query: z.object({ id: z.string().nonempty() })
     }
   })
-  async detail(ctx: any) {
+  async detail(ctx: Context) {
     try {
-      const { id } = ctx.parsed.query
+      const { id } = ctx.parsed?.query as DecorateQuery
 
       if (!id) {
         ctx.body = ctxBody({ success: false, code: 400, msg: 'id 不能为空' })
@@ -212,8 +222,8 @@ class DecorateController {
         msg: '获取详情成功',
         data: detail
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '获取详情失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '获取详情失败', data: getErrorMessage(e) })
     }
   }
 
@@ -229,9 +239,9 @@ class DecorateController {
       query: z.object({ id: z.string().nonempty() })
     }
   })
-  async delete(ctx: any) {
+  async delete(ctx: Context) {
     try {
-      const { id } = ctx.parsed.query
+      const { id } = ctx.parsed?.query as DecorateQuery
 
       if (!id) {
         ctx.body = ctxBody({ success: false, code: 400, msg: 'id 不能为空' })
@@ -246,8 +256,8 @@ class DecorateController {
       }
 
       ctx.body = ctxBody({ success: true, code: 200, msg: '删除自定义页面成功' })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '删除自定义页面失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '删除自定义页面失败', data: getErrorMessage(e) })
     }
   }
 }

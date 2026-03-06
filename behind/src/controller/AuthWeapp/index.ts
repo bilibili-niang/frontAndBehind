@@ -2,6 +2,7 @@ import { Context } from 'koa'
 import { body, routeConfig, z } from 'koa-swagger-decorator'
 import { ctxBody } from '@/utils'
 import { authWeappService } from '@/service/AuthWeappService'
+import { getErrorMessage } from '@/types/controller'
 
 /**
  * 微信小程序认证控制器
@@ -21,13 +22,13 @@ class AuthWeappController {
   @body(z.object({ code: z.string().nonempty() }))
   async weappLogin(ctx: Context) {
     try {
-      const { code } = ctx.parsed.body as any
+      const { code } = ctx.parsed?.body as { code: string }
       const result = await authWeappService.weappLogin(code)
 
       const msg = result.status === 1 ? '登录成功' : '需绑定手机号'
       ctx.body = ctxBody({ success: true, code: 200, msg, data: result })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: e?.message || '登录失败', data: null })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: getErrorMessage(e) || '登录失败', data: null })
     }
   }
 
@@ -43,12 +44,12 @@ class AuthWeappController {
   @body(z.object({ openId: z.string().nonempty(), code: z.string().nonempty() }))
   async weappBind(ctx: Context) {
     try {
-      const { openId, code } = ctx.parsed.body as any
+      const { openId, code } = ctx.parsed?.body as { openId: string; code: string }
       const result = await authWeappService.weappBind(openId, code)
 
       ctx.body = ctxBody({ success: true, code: 200, msg: '绑定并登录成功', data: result })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: e?.message || '绑定失败', data: null })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: getErrorMessage(e) || '绑定失败', data: null })
     }
   }
 }

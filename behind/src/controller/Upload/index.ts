@@ -2,6 +2,18 @@ import { Context } from 'koa'
 import { body, routeConfig, z } from 'koa-swagger-decorator'
 import { ctxBody } from '@/utils'
 import { uploadService, KoaBodyFile } from '@/service/UploadService'
+import { getErrorMessage } from '@/types/controller'
+
+/**
+ * 文件上传请求类型扩展
+ */
+interface RequestWithFiles extends Context['request'] {
+  files?: {
+    file?: KoaBodyFile | KoaBodyFile[]
+    image?: KoaBodyFile | KoaBodyFile[]
+    files?: KoaBodyFile | KoaBodyFile[]
+  }
+}
 
 /**
  * 上传控制器
@@ -20,9 +32,10 @@ class UploadController {
   @body(z.object({}))
   async uploadImage(ctx: Context) {
     try {
-      const files = (ctx.request as any)?.files || {}
-      const file: KoaBodyFile | KoaBodyFile[] = (files as any).file || (files as any).image
-      const target: KoaBodyFile = Array.isArray(file) ? (file[0] as any) : (file as any)
+      const request = ctx.request as RequestWithFiles
+      const files = request.files || {}
+      const file: KoaBodyFile | KoaBodyFile[] | undefined = files.file || files.image
+      const target: KoaBodyFile | undefined = Array.isArray(file) ? file[0] : file
 
       if (!target || !(target.filepath || target.path)) {
         ctx.body = ctxBody({ success: false, code: 400, msg: '未接收到文件，请使用字段名 file', data: null })
@@ -37,8 +50,8 @@ class UploadController {
         msg: '上传成功',
         data: result
       })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '上传失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '上传失败', data: getErrorMessage(e) })
     }
   }
 
@@ -53,9 +66,10 @@ class UploadController {
   })
   async uploadBatch(ctx: Context) {
     try {
-      const files = (ctx.request as any)?.files || {}
-      const list: KoaBodyFile | KoaBodyFile[] = (files as any).files || (files as any).file
-      const arr: KoaBodyFile[] = Array.isArray(list) ? (list as any) : [list as any]
+      const request = ctx.request as RequestWithFiles
+      const files = request.files || {}
+      const list: KoaBodyFile | KoaBodyFile[] | undefined = files.files || files.file
+      const arr: KoaBodyFile[] = Array.isArray(list) ? list : list ? [list] : []
 
       const result = uploadService.processBatchFiles(arr, ctx)
 
@@ -65,8 +79,8 @@ class UploadController {
       }
 
       ctx.body = ctxBody({ success: true, code: 200, msg: '批量上传成功', data: result })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '批量上传失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '批量上传失败', data: getErrorMessage(e) })
     }
   }
 

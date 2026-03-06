@@ -5,6 +5,7 @@ import { responses, routeConfig, z } from 'koa-swagger-decorator'
 import { ctxBody } from '@/utils'
 import { commonResponse } from '@/controller/common'
 import { debug } from '@/config/log4j'
+import { getErrorMessage } from '@/types/controller'
 
 type ImageItem = {
   url: string
@@ -117,8 +118,8 @@ class IconsController {
         .filter(Boolean) as SourceTab[]
 
       ctx.body = ctxBody({ success: true, code: 200, msg: '获取图标素材成功', data })
-    } catch (e: any) {
-      ctx.body = ctxBody({ success: false, code: 500, msg: '获取图标素材失败', data: e?.message || e })
+    } catch (e: unknown) {
+      ctx.body = ctxBody({ success: false, code: 500, msg: '获取图标素材失败', data: getErrorMessage(e) })
     }
   }
 }

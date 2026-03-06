@@ -3,6 +3,19 @@ import { Context } from 'koa'
 import { ctxBody } from '@/utils'
 import { FakeGenerateReq, FakeGenerateRes, IFakeGenerateReq } from './type'
 import { fakeApiService } from '@/service/FakeApiService'
+import { getErrorMessage } from '@/types/controller'
+
+/**
+ * 导航列表查询参数
+ */
+interface NavigationListQuery {
+  size?: number
+  current?: number
+  page?: number
+  scene?: string
+  name?: string
+  status?: number
+}
 
 /**
  * FakeApi 控制器
@@ -42,12 +55,12 @@ class FakeApiController {
         msg: '生成测试数据成功',
         data: result.type === 'array' ? result.data : result.data
       })
-    } catch (e: any) {
+    } catch (e: unknown) {
       ctx.body = ctxBody({
         success: false,
         code: 500,
         msg: '生成测试数据失败',
-        data: e?.message || e
+        data: getErrorMessage(e)
       })
     }
   }
@@ -74,7 +87,7 @@ class FakeApiController {
   })
   async navigationList(ctx: Context) {
     try {
-      const { size, current, page, scene, name, status } = ctx.parsed.query as any
+      const { size, current, page, scene, name, status } = ctx.parsed?.query as NavigationListQuery
       const cur = Number(page) > 0 ? Number(page) : Number(current)
 
       const result = await fakeApiService.getNavigationList(
@@ -89,12 +102,12 @@ class FakeApiController {
         msg: '获取装修导航列表成功',
         data: result
       })
-    } catch (e: any) {
+    } catch (e: unknown) {
       ctx.body = ctxBody({
         success: false,
         code: 500,
         msg: '获取装修导航列表失败',
-        data: e?.message || e
+        data: getErrorMessage(e)
       })
     }
   }
