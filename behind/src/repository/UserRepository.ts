@@ -1,4 +1,4 @@
-import { Op } from 'sequelize'
+import { Op, WhereOptions } from 'sequelize'
 import User from '@/schema/user'
 import { BaseRepository } from './BaseRepository'
 
@@ -11,6 +11,21 @@ export interface FindUserCriteria {
   phoneNumber?: string
   password?: string
 }
+
+/**
+ * 用户数据更新类型
+ */
+export type UserUpdateData = Partial<{
+  userName: string
+  password: string
+  phoneNumber: string
+  email: string
+  avatar: string
+  gender: string
+  isAdmin: boolean
+  status: number
+  roleId: number
+}>
 
 /**
  * 用户 Repository
@@ -27,7 +42,7 @@ export class UserRepository extends BaseRepository<User> {
    * @returns 用户实例或 null
    */
   async findByCredentials(criteria: FindUserCriteria): Promise<User | null> {
-    const where: any = {}
+    const where: WhereOptions<User> = {}
 
     if (criteria.password) {
       where.password = criteria.password
@@ -66,7 +81,7 @@ export class UserRepository extends BaseRepository<User> {
    * @param userData 用户数据
    * @returns 更新后的用户
    */
-  async update(id: string, userData: any): Promise<User | null> {
+  async update(id: string, userData: UserUpdateData): Promise<User | null> {
     const user = await this.findById(id)
     if (!user) {
       return null

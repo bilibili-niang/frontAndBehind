@@ -1,4 +1,4 @@
-import { Model, FindOptions } from 'sequelize'
+import { Model, FindOptions, ModelCtor } from 'sequelize'
 import { PaginationOptions, PaginationResult } from '@/types/common'
 
 export { PaginationOptions, PaginationResult }
@@ -8,9 +8,9 @@ export { PaginationOptions, PaginationResult }
  * 提供通用的 CRUD 和分页功能
  */
 export abstract class BaseRepository<T extends Model> {
-  protected model: any
+  protected model: ModelCtor<T>
 
-  constructor(model: any) {
+  constructor(model: ModelCtor<T>) {
     this.model = model
   }
 
