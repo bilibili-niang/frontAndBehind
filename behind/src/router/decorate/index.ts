@@ -10,4 +10,4 @@ router.swagger()
 
 router.applyRoute(DecorateController)
 
-module.exports = router
+export default router

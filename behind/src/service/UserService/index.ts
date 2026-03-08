@@ -143,7 +143,7 @@ export class UserService {
       status = 1
     }
 
-    return await userRepository.update(id, {
+    return await userRepository.updateUser(id, {
       ...userData,
       status
     })

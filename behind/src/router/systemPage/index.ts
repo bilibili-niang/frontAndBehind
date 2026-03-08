@@ -10,4 +10,4 @@ router.swagger()
 
 router.applyRoute(SystemPageController)
 
-module.exports = router
+export default router

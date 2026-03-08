@@ -48,7 +48,7 @@ export abstract class BaseRepository<T extends Model> {
    * @returns 删除的记录数
    */
   async deleteById(id: string): Promise<number> {
-    return await this.model.destroy({ where: { id } })
+    return await this.model.destroy({ where: { id } as any })
   }
 
   /**
@@ -65,7 +65,7 @@ export abstract class BaseRepository<T extends Model> {
    * @param data 记录数据
    * @returns 创建的记录
    */
-  async create(data: Partial<T>): Promise<T> {
+  async create(data: any): Promise<T> {
     return await this.model.create(data)
   }
 
@@ -75,7 +75,8 @@ export abstract class BaseRepository<T extends Model> {
    * @param data 更新数据
    * @returns 更新的记录数
    */
-  async update(id: string, data: Partial<T>): Promise<number> {
-    return await this.model.update(data, { where: { id } })
+  async update(id: string, data: any): Promise<number> {
+    const [affectedCount] = await this.model.update(data, { where: { id } as any })
+    return affectedCount
   }
 }

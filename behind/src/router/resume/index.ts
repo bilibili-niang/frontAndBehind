@@ -11,4 +11,4 @@ router.swagger()
 router
   .applyRoute(ResumeController)
 
-module.exports = router
+export default router

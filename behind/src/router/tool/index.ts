@@ -10,4 +10,4 @@ router.swagger()
 router
   .applyRoute(ToolController)
 
-module.exports = router
+export default router

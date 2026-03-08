@@ -10,4 +10,4 @@ router.swagger()
 
 router.applyRoute(UserProfileController)
 
-module.exports = router
+export default router

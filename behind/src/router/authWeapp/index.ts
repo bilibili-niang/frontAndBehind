@@ -8,4 +8,4 @@ router.swagger()
 
 router.applyRoute(AuthWeappController)
 
-module.exports = router
+export default router

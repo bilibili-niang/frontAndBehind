@@ -15,4 +15,4 @@ router.swagger()
 router
   .applyRoute(TestController)
 
-module.exports=router
+export default router

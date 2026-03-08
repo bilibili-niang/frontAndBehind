@@ -10,4 +10,4 @@ router.swagger()
 
 router.applyRoute(NavigationController)
 
-module.exports = router
+export default router

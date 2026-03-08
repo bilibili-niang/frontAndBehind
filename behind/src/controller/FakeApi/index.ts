@@ -46,7 +46,7 @@ class FakeApiController {
         return
       }
 
-      const result = fakeApiService.generateTestData(dataSchema, count)
+      const result = fakeApiService.generateTestData(dataSchema as any, count)
 
       // 数组时使用后端统一返回结构；对象直接返回对象
       ctx.body = ctxBody({

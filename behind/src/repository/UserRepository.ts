@@ -81,7 +81,7 @@ export class UserRepository extends BaseRepository<User> {
    * @param userData 用户数据
    * @returns 更新后的用户
    */
-  async update(id: string, userData: UserUpdateData): Promise<User | null> {
+  async updateUser(id: string, userData: UserUpdateData): Promise<User | null> {
     const user = await this.findById(id)
     if (!user) {
       return null

@@ -7,4 +7,4 @@ router.swagger()
 
 router.applyRoute(ShopController)
 
-module.exports = router
+export default router

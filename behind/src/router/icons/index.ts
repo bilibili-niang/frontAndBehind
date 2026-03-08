@@ -7,4 +7,4 @@ const router = new SwaggerRouter({ spec: swaggerSpec })
 router.swagger()
 router.applyRoute(IconsController)
 
-module.exports = router
+export default router

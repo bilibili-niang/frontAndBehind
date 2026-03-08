@@ -11,4 +11,4 @@ router.swagger()
 router
   .applyRoute(WeatherForGaode)
 
-module.exports = router
+export default router

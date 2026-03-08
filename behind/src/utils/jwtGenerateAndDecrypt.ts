@@ -1,5 +1,5 @@
 // const jwt = require('jsonwebtoken')
-import jwt from 'jsonwebtoken'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 import { salt } from '@/constant'
 import { jwtExpiresIn } from '@/constant/jwt'
 
@@ -18,6 +18,8 @@ export const jwtEncryption = (data: object, expirationTime: string = jwtExpiresI
 * @param {string} token - 需要解密的token
 * @return {object} - 解密后的数据
 * */
-export const jwtDecryption = (token: string) => {
+export const jwtDecryption = (token: string): string | JwtPayload => {
   return jwt.verify(token, salt)
 }
+
+export { JwtPayload }
