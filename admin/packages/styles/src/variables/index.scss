@@ -1,1 +1,157 @@
+// 项目类名前缀
+$prefix: "ice";
+@import "./colors-variables.scss";
+// 浅色模式作用域
+@mixin light-mode {
+	[theme="light"] {
+		@content;
+	}
+}
+// 暗色模式作用域
+@mixin dark-mode {
+	:where([theme="dark"]) {
+		@content;
+	}
+}
+@mixin dark {
+	[theme="dark"] & {
+		@content;
+	}
+}
+$size-font-base: 14px;
+$size-gap-base: 8px;
+$size-gap-half: 4px;
+$size-gap-secondary: 6px;
+$color-info: #1677ff;
+$color-error: #eb2f06;
+$color-error-hover: rgb(235, 47, 6, 0.7);
+$color-success: #2ecc71;
+$color-warn: #f1c40f;
+$color-price: #ff2b60;
+// 主题色背景时，字体颜色
+$color-text-primary-bg: var(--ice-color-primary-text, #fff);
+$color-text-base: var(--color-text-base);
+$color-text-secondary: var(--color-text-secondary);
+$color-text-tertiary: var(--color-text-tertiary);
+$color-text-disabled: var(--color-text-disabled);
+$color-text-inverse: var(--color-text-inverse);
+$color-border-base: var(--color-border-base);
+$color-border-secondary: var(--color-border--secondary);
+$color-border-split: var(--color-border--split);
+$color-primary: var(--ice-color-primary);
+$color-primary-hover: var(--ice-color-primary-400);
+$color-primary-hover-soft: var(--ice-color-primary-01);
+$color-primary-active: var(--ice-color-primary-600);
+$color-primary-50: var(--ice-color-primary-50);
+$color-primary-100: var(--ice-color-primary-100);
+$color-primary-200: var(--ice-color-primary-200);
+$color-primary-300: var(--ice-color-primary-300);
+$color-primary-400: var(--ice-color-primary-400);
+$color-primary-500: var(--ice-color-primary-500);
+$color-primary-600: var(--ice-color-primary-600);
+$color-primary-700: var(--ice-color-primary-700);
+$color-primary-800: var(--ice-color-primary-800);
+$color-primary-900: var(--ice-color-primary-900);
+$color-primary-950: var(--ice-color-primary-950);
+$color-primary-01: var(--ice-color-primary-01);
+$color-primary-02: var(--ice-color-primary-02);
+$color-primary-03: var(--ice-color-primary-03);
+$color-primary-04: var(--ice-color-primary-04);
+$color-primary-05: var(--ice-color-primary-05);
+$color-primary-06: var(--ice-color-primary-06);
+$color-primary-07: var(--ice-color-primary-07);
+$color-primary-08: var(--ice-color-primary-08);
+$color-primary-09: var(--ice-color-primary-09);
+$color-bg-50: var(--ice-color-bg-50);
+$color-bg-100: var(--ice-color-bg-100);
+$color-bg-200: var(--ice-color-bg-200);
+$color-bg-300: var(--ice-color-bg-300);
+$color-bg-400: var(--ice-color-bg-400);
+$color-bg-500: var(--ice-color-bg-500);
+$color-bg-600: var(--ice-color-bg-600);
+$color-bg-700: var(--ice-color-bg-700);
+$color-bg-800: var(--ice-color-bg-800);
+$color-bg-900: var(--ice-color-bg-900);
+$color-bg-950: var(--ice-color-bg-950);
+$border-base: 1px solid $color-border-base;
+$border-primary: 1px solid $color-primary;
+$border-hover: 1px solid $color-primary;
+$border-radius-base: 2px;
+$shadow-focus: 0 0 0 4px $color-primary-02;
+$jsf-ui-component-height: var(--ui-component-height, 36px);
+// 有上下各1px边框 26 = 28 - 2
+$jsf-ui-component-line-height: var(--ui-component-line-height, 34px);
+// $jsf-ui-component-container-width: 192px;
+$jsf-ui-component-container-width: var(--component-container-width, 211px);
+$ui-bg: var(--ui-bg);
+$ui-bg-hover: var(--ui-bg-hover);
+$ui-border-color: var(--ui-border-color);
+$ui-border-color-hover: var(--ui-border-color);
+$ui-border-color-focus: $color-primary;
+$ui-border-radius: 4px;
+$ui-wave: 0 0 0 4px $color-primary-02;
+$ui-popup-bg: var(--ui-popup-bg);
+$ui-switch-bg: var(--ui-switch-bg);
+$ui-switch-bg-hover: var(--ui-switch-bg-hover);
+// 全局 CSS 变量：弹窗距离顶部的偏移与额外减值
+:root {
+	--ice-modal-offset-top: 100px; // 弹窗与页面顶部的起始偏移
+	--ice-modal-offset-extra: 160px; // 额外减去的空间（头部、内边距、页脚等）
+}
+// SCSS 变量桥接，便于在样式中复用
+$modal-offset-top: var(--ice-modal-offset-top, 100px);
+$modal-offset-extra: var(--ice-modal-offset-extra, 160px);
+// 滚动条美化的类名
+.scrollBarBeautification {
+	/* 滚动条美化 */
+	&::-webkit-scrollbar {
+		height: 4px;
+		width: 2px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: var(--ice-color-bg-50);
+		border-radius: 8px;
+		width: 2px;
+	}
+	&::-webkit-scrollbar-track {
+		background: var(--ice-color-bg-100);
+	}
+	&::-webkit-scrollbar-button {
+		display: none;
+	}
+}
+/*
+  通用滚动条美化类：.ui-scrollbar / .
+  - 仅负责原生滚动条的基础美化（WebKit/Chromium）
+  - 若项目启用了 OverlayScrollbars，全局脚本会自动对该类进行增强
+  - 宿主可按需在容器上添加该类以获得一致的滚动体验
+*/
+.ui-scrollbar {
+	position: relative;
+	/* 原生滚动条（WebKit）样式 */
+	&::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+	&::-webkit-scrollbar-thumb {
+		width: 6px;
+		border-radius: 8px;
+		background: rgba(0, 0, 0, 0.15);
+	}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	&::-webkit-scrollbar-button {
+		display: none;
+	}
+}
+.font-color-theme-primary {
+	color: var(--ice-color-primary-500);
+}
+.text-align-center {
+	text-align: center;
+}
+
+// 组件内部padding
+
 $comp-padding: 16px;
