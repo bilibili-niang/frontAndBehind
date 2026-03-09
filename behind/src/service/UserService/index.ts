@@ -1,4 +1,3 @@
-import md5 from 'md5'
 import { userRepository, FindUserCriteria } from '@/repository/UserRepository'
 import { jwtEncryption } from '@/utils'
 import { UserInfo } from '@/types'
@@ -59,7 +58,7 @@ export class UserService {
 
     // 构建查询条件
     const criteria: FindUserCriteria = {
-      password: md5(password)
+      password
     }
 
     if (account) {
@@ -123,7 +122,7 @@ export class UserService {
 
     return await userRepository.create({
       ...restData,
-      password: md5(password),
+      password,
       status
     })
   }

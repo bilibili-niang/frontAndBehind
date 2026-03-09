@@ -6,6 +6,7 @@ addAliases({
   '@': __dirname
 })
 import app from './app'
+import '@/config/db'
 import { info } from '@/config/log4j'
 
 const env = dotenv.config().parsed
