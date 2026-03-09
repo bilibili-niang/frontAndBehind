@@ -1,4 +1,4 @@
-.anteng-global-loading {
+.ice-global-loading {
   width: 106px;
   height: 106px;
   --bg: 255, 255, 255;
@@ -22,7 +22,7 @@
     backdrop-filter: blur(2px);
     box-shadow: 0 0 64px rgba(0, 0, 0, 0.2);
   }
-  .anteng-global-loading__tip {
+  .ice-global-loading__tip {
     font-size: 11px;
     color: #aaa;
     margin-top: -14px;
@@ -30,7 +30,7 @@
     font-weight: 300;
     letter-spacing: 0.5px;
   }
-  .anteng-global-loading__close {
+  .ice-global-loading__close {
     position: absolute;
     top: 0;
     right: 0;

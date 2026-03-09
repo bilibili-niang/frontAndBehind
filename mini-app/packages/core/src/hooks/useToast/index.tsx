@@ -7,15 +7,15 @@ import './style.scss'
 const useToast = (message: any) => {
   const popup = usePopup({
     content: (
-      <div class="anteng-toast">
-        <div class="anteng-toast-content">{renderAnyNode(message)}</div>
+      <div class="ice-toast">
+        <div class="ice-toast-content">{renderAnyNode(message)}</div>
       </div>
     ),
     placement: 'center',
     maskVisible: false,
     maskCloseable: false,
     zIndex: 9999,
-    className: 'anteng-toast-popup'
+    className: 'ice-toast-popup'
   })
   setTimeout(() => {
     popup.close()

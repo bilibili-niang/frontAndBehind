@@ -25,12 +25,12 @@ export default defineComponent({
       return (
         <>
           {/* <div class="basic-layout__app-item clickable --active">
-            <img src="https://dev-cdn.cardcat.cn/anteng/example_01.png" draggable={false} />
+            <img src="https://dev-cdn.cardcat.cn/ice/example_01.png" draggable={false} />
             <strong>精选商城</strong>
           </div>
           <Badge size="small" offset={[-8, 3]} count={8}>
             <div class="basic-layout__app-item clickable">
-              <img src="https://dev-cdn.cardcat.cn/anteng/example_02.png" style="padding: 3px;" draggable={false} />
+              <img src="https://dev-cdn.cardcat.cn/ice/example_02.png" style="padding: 3px;" draggable={false} />
               <strong>供应链平台</strong>
             </div>
           </Badge> */}
@@ -69,7 +69,7 @@ export default defineComponent({
                           ]}
                           onClick={() => useClick(child)}
                         >
-                          <img class="hyperelliptic" src="https://dev-cdn.cardcat.cn/anteng/example_03.png" alt="" />
+                          <img class="hyperelliptic" src="https://dev-cdn.cardcat.cn/ice/example_03.png" alt="" />
                           <div>
                             <strong>{child.title}</strong>
                             {/* <small>社区生活数字化运营方案</small> */}

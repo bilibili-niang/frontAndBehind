@@ -85,7 +85,7 @@ router.afterEach((to, from, failure) => {
       url: window.location.href,
       route: last(to.matched)?.path,
       path: to.path,
-      anteng: true
+      ice: true
     },
     '*'
   )

@@ -3,7 +3,7 @@
 export const TENCENT_MAP_KEY = ''
 
 /** 腾讯地图应用来源 */
-export const TENCENT_MAP_REFERER = 'anteng'
+export const TENCENT_MAP_REFERER = 'ice'
 
 /** 默认用户头像，未登录、未设置时使用 */
 export const DEFAULT_AVATAR = '/defaultAvatar.png'

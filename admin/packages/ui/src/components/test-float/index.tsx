@@ -53,7 +53,7 @@ export default defineComponent({
       if (!isTestMode) return null
 
       return (
-        <div class="anteng-test-float">
+        <div class="ice-test-float">
           <div class="toggle" onClick={toggle} title={open.value ? '收起' : '展开'}>
             <Icon name={open.value ? 'arrow-down' : 'arrow-up'}/>
           </div>

@@ -52,7 +52,7 @@ export interface SurveyFormStyles {
 
 export const generateDefaultFormStyles = (): SurveyFormStyles => ({
   index: {
-    backgroundImage: 'https://dev-cdn.anteng.cn/upload/5e97376a7d789a59c3dd7db2602ccf30.jpg',
+    backgroundImage: 'https://dev-cdn.ice.cn/upload/5e97376a7d789a59c3dd7db2602ccf30.jpg',
     paddingTop: 180,
     title: {
       text: '',
@@ -80,7 +80,7 @@ export const generateDefaultFormStyles = (): SurveyFormStyles => ({
     }
   },
   end: {
-    backgroundImage: 'https://dev-cdn.anteng.cn/upload/5e97376a7d789a59c3dd7db2602ccf30.jpg',
+    backgroundImage: 'https://dev-cdn.ice.cn/upload/5e97376a7d789a59c3dd7db2602ccf30.jpg',
     paddingTop: 180,
     title: {
       text: '',

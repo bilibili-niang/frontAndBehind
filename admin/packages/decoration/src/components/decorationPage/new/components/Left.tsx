@@ -88,7 +88,7 @@ export default defineComponent({
 
     return () => (
       <div
-        class="decoration-left p-3 border-r border-[var(--color-border-base)] bg-[var(--anteng-color-bg-300)]">
+        class="decoration-left p-3 border-r border-[var(--color-border-base)] bg-[var(--ice-color-bg-300)]">
         {renderLayerPanel()}
         <div class="property-tabs-container">
           <PropertyTabs

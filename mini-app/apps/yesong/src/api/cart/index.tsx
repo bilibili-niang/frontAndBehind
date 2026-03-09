@@ -3,7 +3,7 @@ import request, { getMerchantId } from '../request'
 /** 获取购物车信息 */
 export const getCartInfo = () => {
   return request({
-    url: '/anteng-cornerstone-goods-wap/m/shoppingCart',
+    url: '/ice-cornerstone-goods-wap/m/shoppingCart',
     method: 'get',
     params: {
       merchantId: getMerchantId()
@@ -19,7 +19,7 @@ export interface ICartItemParams {
 /** 添加商品到购物车 */
 export const addGoodsToCart = (params: ICartItemParams) => {
   return request({
-    url: '/anteng-cornerstone-goods-wap/m/shoppingCart',
+    url: '/ice-cornerstone-goods-wap/m/shoppingCart',
     method: 'post',
     params: {
       merchantId: getMerchantId()
@@ -31,7 +31,7 @@ export const addGoodsToCart = (params: ICartItemParams) => {
 /** 更新购物车项 */
 export const updateCartItem = (id: string, params: ICartItemParams) => {
   return request({
-    url: '/anteng-cornerstone-goods-wap/m/shoppingCart',
+    url: '/ice-cornerstone-goods-wap/m/shoppingCart',
     method: 'put',
     params: {
       merchantId: getMerchantId()
@@ -46,7 +46,7 @@ export const updateCartItem = (id: string, params: ICartItemParams) => {
 /** 删除购物车项 */
 export const removeCartItem = (cartItemIds: string[]) => {
   return request({
-    url: '/anteng-cornerstone-goods-wap/m/shoppingCart/items',
+    url: '/ice-cornerstone-goods-wap/m/shoppingCart/items',
     method: 'delete',
     params: {
       merchantId: getMerchantId()

@@ -98,40 +98,7 @@ const navigateToUnionPay = (
   params: { cqpMpAppId: string; cqpMpPath: string },
   options: Parameters<typeof usePay>[1]
 ) => {
-  if (process.env.TARO_ENV === 'h5') {
-    useOpenWeapp({
-      appId: params.cqpMpAppId,
-      path: params.cqpMpPath,
-      appName: '云闪付',
-      appLogo: 'https://dev-cdn.anteng.cn/upload/e248d3a7a6a15c0e311afebd647275a8.svg',
-      success: () => {
-        options?.success?.()
-      },
-      fail: err => {
-        options?.fail?.(err?.errMsg)
-      },
-      complete: () => {
-        options?.complete?.()
-      }
-    })
-  } else {
-    Taro.navigateToMiniProgram({
-      appId: params.cqpMpAppId,
-      path: params.cqpMpPath,
-      envVersion: 'release'
-    })
-      .then(res => {
-        useResponseMessage(res)
-        options?.success?.()
-      })
-      .catch(err => {
-        console.log(err)
-        options?.fail?.(err.errMsg)
-      })
-      .finally(() => {
-        options?.complete?.()
-      })
-  }
+  console.log('跳转支付')
 }
 
 export default usePay

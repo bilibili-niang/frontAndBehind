@@ -30,7 +30,7 @@ export const useCheckThirdPartyImageFromRichText = (richText: string) => {
   // 提取，去重，过滤
   const images = uniq(extractImageLinks(richText))
   return images.filter((item) => {
-    return !item.includes('anteng')
+    return !item.includes('ice')
   })
 }
 

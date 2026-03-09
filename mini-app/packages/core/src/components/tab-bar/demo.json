@@ -8,26 +8,26 @@
     {
       "key": "index",
       "text": "首页",
-      "icon": "https://dev-cdn.anteng.cn/upload/20231208/d7962819ab71c8631222d8a2fe679cc8.png",
-      "activeIcon": "https://dev-cdn.anteng.cn/upload/20231208/72994d9fbe76b0a53b7b9c21df47f797.gif"
+      "icon": "https://dev-cdn.ice.cn/upload/20231208/d7962819ab71c8631222d8a2fe679cc8.png",
+      "activeIcon": "https://dev-cdn.ice.cn/upload/20231208/72994d9fbe76b0a53b7b9c21df47f797.gif"
     },
     {
       "key": "cate",
       "text": "分类",
-      "icon": "https://dev-cdn.anteng.cn/upload/20231208/84c472e19bb698c25653f7ee2ab7f75d.png",
-      "activeIcon": "https://dev-cdn.anteng.cn/upload/20231208/196a191800b59ef2c2216cba64aee0b1.gif"
+      "icon": "https://dev-cdn.ice.cn/upload/20231208/84c472e19bb698c25653f7ee2ab7f75d.png",
+      "activeIcon": "https://dev-cdn.ice.cn/upload/20231208/196a191800b59ef2c2216cba64aee0b1.gif"
     },
     {
       "key": "cart",
       "text": "理财",
-      "icon": "https://dev-cdn.cardcat.cn/anteng/system-solid-68-savings.gif",
-      "activeIcon": "https://dev-cdn.cardcat.cn/anteng/system-solid-68-savings.png"
+      "icon": "https://dev-cdn.cardcat.cn/ice/system-solid-68-savings.gif",
+      "activeIcon": "https://dev-cdn.cardcat.cn/ice/system-solid-68-savings.png"
     },
     {
       "key": "profile",
       "text": "我的",
-      "icon": "https://dev-cdn.cardcat.cn/anteng/system-regular-8-account.png",
-      "activeIcon": "https://dev-cdn.cardcat.cn/anteng/system-solid-8-account.gif"
+      "icon": "https://dev-cdn.cardcat.cn/ice/system-regular-8-account.png",
+      "activeIcon": "https://dev-cdn.cardcat.cn/ice/system-solid-8-account.gif"
     }
   ]
 }

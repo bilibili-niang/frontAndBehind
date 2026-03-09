@@ -138,10 +138,10 @@ export default defineComponent({
 
     return () => {
       return (
-        <div class={['anteng-search', content.value.length > 0 && 'clearable']}>
-          <div class="anteng-search__content">
-            <Icon class="anteng-search__icon" name="search" />
-            <div class="anteng-search__input-wrap">
+        <div class={['ice-search', content.value.length > 0 && 'clearable']}>
+          <div class="ice-search__content">
+            <Icon class="ice-search__icon" name="search" />
+            <div class="ice-search__input-wrap">
               {process.env.TARO_ENV === 'h5' ? (
                 <form
                   action="javascript:void(0);"
@@ -152,7 +152,7 @@ export default defineComponent({
                   <input
                     ref={inputRef}
                     type="search"
-                    class="anteng-search__input input"
+                    class="ice-search__input input"
                     value={content.value}
                     onInput={onChange}
                     onFocus={onFocus}
@@ -163,7 +163,7 @@ export default defineComponent({
                 </form>
               ) : (
                 <Input
-                  class="anteng-search__input input"
+                  class="ice-search__input input"
                   value={content.value}
                   onInput={onChange}
                   confirmType="search"
@@ -177,7 +177,7 @@ export default defineComponent({
               )}
               {placeholderVisible.value && keywordsList.value.length > 1 && (
                 <TextSlider
-                  class="anteng-search__placeholder placeholder"
+                  class="ice-search__placeholder placeholder"
                   autoplay={autoplay.value}
                   list={keywordsList.value}
                   current={currentKeywords.value}
@@ -186,7 +186,7 @@ export default defineComponent({
               )}
             </div>
             {props.clearAble && (
-              <div class="anteng-search__clear" onClick={clear}>
+              <div class="ice-search__clear" onClick={clear}>
                 <Icon name="close-round-fill" />
               </div>
             )}

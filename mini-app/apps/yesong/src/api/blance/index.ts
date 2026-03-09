@@ -6,7 +6,7 @@ import request from '../request'
  */
 export const getUserBalance = () => {
   return request({
-    url: '/anteng-cornerstone-auth-wap/m/account/balance',
+    url: '/ice-cornerstone-auth-wap/m/account/balance',
     method: 'get',
     withMerchantId: true,
     params: {
@@ -20,7 +20,7 @@ export const getUserBalance = () => {
  */
 export const getAccountLog = (params: any) => {
   return request({
-    url: '/anteng-cornerstone-auth-wap/m/account/record/',
+    url: '/ice-cornerstone-auth-wap/m/account/record/',
     method: 'get',
     withMerchantId: true,
     params

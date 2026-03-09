@@ -84,7 +84,7 @@ export default defineComponent({
             <Table
               sticky={{
                 getContainer: () =>
-                  (document.querySelector('.anteng-basic-layout__router-view-content') as HTMLElement) ||
+                  (document.querySelector('.ice-basic-layout__router-view-content') as HTMLElement) ||
                   containerRef.value!,
                 offsetHeader: (props.tableStickyTop ?? 0) + 8,
                 offsetScroll: 4

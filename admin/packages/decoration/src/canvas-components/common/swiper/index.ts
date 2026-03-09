@@ -5,7 +5,7 @@ export default defineDeckComponent({
   key: 'swiper',
   name: '轮播图',
   version: '0.1.1',
-  thumbnail: 'https://dev-cdn.kacat.cn/upload/20240625/ebe17ce6a6e88de7e51d5aca59dd4eca.png',
+  thumbnail: 'https://dev-cdn.dev-cdn.ice.cn/upload/20240625/ebe17ce6a6e88de7e51d5aca59dd4eca.png',
   images: [],
   type: 'common',
   render: () => import('./render'),

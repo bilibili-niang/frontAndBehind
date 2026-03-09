@@ -2,12 +2,12 @@
   height: $jsf-ui-component-height;
   width: 100%;
 
-  .anteng-input-number-group > .anteng-input-number:first-child,
-  .anteng-input-number-group .anteng-input-number-group-addon:first-child {
+  .ice-input-number-group > .ice-input-number:first-child,
+  .ice-input-number-group .ice-input-number-group-addon:first-child {
     border-radius: $ui-border-radius;
   }
 
-  .anteng-input-number-group .anteng-input-number-group-addon {
+  .ice-input-number-group .ice-input-number-group-addon {
     background: none;
     position: absolute;
     top: 0;

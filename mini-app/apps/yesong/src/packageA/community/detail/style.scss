@@ -91,7 +91,7 @@
   font-size: 12px;
 }
 .comment-item .actions .action.like {
-  color: var(--anteng-color-primary);
+  color: var(--ice-color-primary);
 }
 
 /* 浮动发布按钮，避开底部安全区与 TabBar */
@@ -104,8 +104,8 @@
   width: 52px;
   height: 52px;
   border-radius: 26px;
-  background: var(--anteng-color-primary);
-  box-shadow: 0 6px 16px rgba(var(--anteng-color-primary-rgb, 0,0,0), 0.35);
+  background: var(--ice-color-primary);
+  box-shadow: 0 6px 16px rgba(var(--ice-color-primary-rgb, 0,0,0), 0.35);
   display: flex;
   align-items: center;
   justify-content: center;

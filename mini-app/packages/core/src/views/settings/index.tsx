@@ -57,7 +57,7 @@ export const Settings = defineComponent({
                     <div class="label">
                       <Image
                         class="logo"
-                        src="https://cdn.anteng.cn/upload/20240903/36235b059bdff7f28a6f21de0b7dde38.svg"
+                        src="https://cdn.ice.cn/upload/20240903/36235b059bdff7f28a6f21de0b7dde38.svg"
                       />
                       绑定微信
                     </div>

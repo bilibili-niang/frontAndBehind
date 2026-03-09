@@ -282,6 +282,6 @@ export const requestGetGoodsListByRule = (params: RequestPagination<GoodsListByR
 /** 获取供应商客服消息 */
 export const $getGoodsSupplierContactInfo = (supplierId: string) => {
   return request({
-    url: `/anteng-cornerstone-goods-wap/m/goods/service/${supplierId}`
+    url: `/ice-cornerstone-goods-wap/m/goods/service/${supplierId}`
   })
 }

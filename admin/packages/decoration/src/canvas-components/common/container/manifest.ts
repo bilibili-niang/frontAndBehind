@@ -4,7 +4,7 @@ export default {
   key: 'container',
   name: '基础容器',
   version: '0.1.0',
-  thumbnail: 'https://dev-cdn.kacat.cn/upload/20231025/dcda0ff682fe16282f187706dc9bb8b3.gif',
+  thumbnail: 'https://dev-cdn.dev-cdn.ice.cn/upload/20231025/dcda0ff682fe16282f187706dc9bb8b3.gif',
   schema: {
     type: 'object',
     properties: {

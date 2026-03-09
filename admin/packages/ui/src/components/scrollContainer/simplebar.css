@@ -88,7 +88,7 @@
   background: rgba(0, 0, 0, 0.08);
 }
 .at-scrollbar .simplebar-scrollbar::before {
-  /*background-color: var(--anteng-color-primary-200);*/
+  /*background-color: var(--ice-color-primary-200);*/
   background-color: var(--color-text-tertiary);
   border-radius: var(--sb-thickness, 6px);
   opacity: 1 !important;
@@ -100,7 +100,7 @@
 }
 /* 正确的 hover 写法：在容器上悬停时改变 ::before 的颜色 */
 .at-scrollbar .simplebar-scrollbar:hover::before {
-  background-color: var(--anteng-color-primary-300);
+  background-color: var(--ice-color-primary-300);
   cursor: pointer;
 }
 

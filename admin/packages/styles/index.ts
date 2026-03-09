@@ -13,10 +13,10 @@ import './src/atomic/border-radius.scss'
 
 export const toggleThemeMode = (mode?: 'dark' | 'light') => {
   // 统一读取命名空间键；不再读取/写入旧键，避免重复
-  const saved = localStorage.getItem('anteng-theme-mode') as 'dark' | 'light' | null
+  const saved = localStorage.getItem('ice-theme-mode') as 'dark' | 'light' | null
   const v = mode ?? saved ?? 'light'
   document.documentElement.setAttribute('theme', v)
-  localStorage.setItem('anteng-theme-mode', v)
+  localStorage.setItem('ice-theme-mode', v)
   // 清理旧键（一次性），防止污染
   localStorage.removeItem('theme-mode')
   console.info('[styles] toggleThemeMode:', { modeArg: mode, saved, applied: v })

@@ -108,12 +108,12 @@
   flex-shrink: 0;
   width: 600px;
   --jsf-width: 600px;
-  max-height: calc(100vh - (var(--anteng-modal-offset-top, 100px) + var(--anteng-modal-offset-extra, 160px)));
+  max-height: calc(100vh - (var(--ice-modal-offset-top, 100px) + var(--ice-modal-offset-extra, 160px)));
   margin-left: 12px;
   margin-right: 3px;
   position: relative;
   .jsf_form--standard.jsf_form {
-    max-height: calc(100vh - (var(--anteng-modal-offset-top, 100px) + var(--anteng-modal-offset-extra, 160px)));
+    max-height: calc(100vh - (var(--ice-modal-offset-top, 100px) + var(--ice-modal-offset-extra, 160px)));
     margin-top: 12px;
     margin-bottom: 4px;
     .jsf_form-content {

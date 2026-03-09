@@ -198,8 +198,8 @@ export default defineComponent({
             y: 1100,
             width: editorPoster.value.qrcode.size,
             height: editorPoster.value.qrcode.size,
-            // url: qrCodeUrl.value || 'https://dev-cdn.anteng.cn/upload/db870a3b1ee7a76eacbd68506a8ebd3b.png',
-            url: qrCodeUrl.value || 'https://dev-cdn.anteng.cn/upload/72b3fcb5135bb9566a7cbb8ce05a85a1.png',
+            // url: qrCodeUrl.value || 'https://dev-cdn.ice.cn/upload/db870a3b1ee7a76eacbd68506a8ebd3b.png',
+            url: qrCodeUrl.value || 'https://dev-cdn.ice.cn/upload/72b3fcb5135bb9566a7cbb8ce05a85a1.png',
             // 渲染二维码这里如果有圆角,二维码底下会有一条线(OnlyAppleCanDo),可能是 base64src 这个方法在安卓和ios下的差异导致的
             // borderRadiusGroup: [15, 15, 15, 15],
             zIndex: 999

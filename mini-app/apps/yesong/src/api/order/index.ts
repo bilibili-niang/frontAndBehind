@@ -31,7 +31,7 @@ export interface IGoodsOrderParams {
 
 export const commitGoodsOrder = (params: IGoodsOrderParams) => {
   return request({
-    url: '/anteng-cornerstone-order-wap/m/goods/order',
+    url: '/ice-cornerstone-order-wap/m/goods/order',
     method: 'post',
     withUtm: true,
     data: {
@@ -50,7 +50,7 @@ export interface ICartGoodsOrderParams extends Omit<IGoodsOrderParams, 'goodsId'
 // 提交购物车商品订单
 export const commitCartGoodsOrder = (params: ICartGoodsOrderParams) => {
   return request({
-    url: '/anteng-cornerstone-order-wap/m/shoppingCart/order',
+    url: '/ice-cornerstone-order-wap/m/shoppingCart/order',
     method: 'post',
     params: {
       merchantId: getMerchantId()
@@ -69,7 +69,7 @@ export const getOrderList = (
   }>
 ) => {
   return request<PaginationData<any>>({
-    url: '/anteng-cornerstone-order-wap/m/goods/order',
+    url: '/ice-cornerstone-order-wap/m/goods/order',
     method: 'get',
     params: {
       merchantId: getMerchantId(),
@@ -87,7 +87,7 @@ export const getGoodsOrderDetail = async (orderNo: string, supplier?: string) =>
 
   try {
     const res = await request<IOrderDetail>({
-      url: `/anteng-cornerstone-order-wap/m/goods/order/${orderNo}`,
+      url: `/ice-cornerstone-order-wap/m/goods/order/${orderNo}`,
       method: 'get'
     })
     if (res.code === 200 && res.data?.subOrders) {
@@ -108,7 +108,7 @@ export const getGoodsOrderDetail = async (orderNo: string, supplier?: string) =>
 /** 取消待支付订单 */
 export const cancelPaymentPendingOrder = (id: string) => {
   return request({
-    url: `/anteng-cornerstone-order-wap/m/goods/order/${id}/cancel`,
+    url: `/ice-cornerstone-order-wap/m/goods/order/${id}/cancel`,
     method: 'put'
   })
 }
@@ -116,7 +116,7 @@ export const cancelPaymentPendingOrder = (id: string) => {
 /** 获取订单数量 */
 export const requestGetOrderCounts = () => {
   return request({
-    url: '/anteng-cornerstone-order-wap/m/goods/order/status/num',
+    url: '/ice-cornerstone-order-wap/m/goods/order/status/num',
     method: 'get',
     withMerchantId: true
   })
@@ -125,7 +125,7 @@ export const requestGetOrderCounts = () => {
 /** 确认收货 */
 export const requestCompleteOrder = (id: string, platform: 'weapp' | 'h5') => {
   return request({
-    url: `/anteng-cornerstone-order-wap/m/goods/order/${id}/complete`,
+    url: `/ice-cornerstone-order-wap/m/goods/order/${id}/complete`,
     params: {
       platform
     },
@@ -145,7 +145,7 @@ export const requestSubmitAfterSale = (options: {
 }) => {
   const { amount, images, desc, mainOrderNo, reason, subOrderNo, type, count } = options
   return request({
-    url: '/anteng-cornerstone-order-wap/m/afterSaleOrder/apply',
+    url: '/ice-cornerstone-order-wap/m/afterSaleOrder/apply',
     method: 'post',
     withMerchantId: true,
     data: {
@@ -163,7 +163,7 @@ export const requestSubmitAfterSale = (options: {
 
 export const requestCancelAfterSale = (afterSaleOrderNo: string) => {
   return request({
-    url: `/anteng-cornerstone-order-wap/m/afterSaleOrder/apply/${afterSaleOrderNo}`,
+    url: `/ice-cornerstone-order-wap/m/afterSaleOrder/apply/${afterSaleOrderNo}`,
     withMerchantId: true,
     method: 'delete'
   })
@@ -171,7 +171,7 @@ export const requestCancelAfterSale = (afterSaleOrderNo: string) => {
 
 export const $getAfterSaleOrders = (options: RequestPagination<{}>) => {
   return request<PaginationData<any>>({
-    url: '/anteng-cornerstone-order-wap/m/afterSaleOrder',
+    url: '/ice-cornerstone-order-wap/m/afterSaleOrder',
     withMerchantId: true,
     method: 'get',
     params: options
@@ -180,7 +180,7 @@ export const $getAfterSaleOrders = (options: RequestPagination<{}>) => {
 
 export const requestGetAfterSaleDetail = (afterSaleOrderNo: string) => {
   return request<IAfterSaleOrder>({
-    url: `/anteng-cornerstone-order-wap/m/afterSaleOrder/${afterSaleOrderNo}`,
+    url: `/ice-cornerstone-order-wap/m/afterSaleOrder/${afterSaleOrderNo}`,
     method: 'get'
   })
 }
@@ -193,7 +193,7 @@ export const requestUpdateAfterSaleExpress = (
   }
 ) => {
   return request({
-    url: `/anteng-cornerstone-order-wap/m/afterSaleOrder/${afterSaleOrderNo}/courier`,
+    url: `/ice-cornerstone-order-wap/m/afterSaleOrder/${afterSaleOrderNo}/courier`,
     method: 'put',
     data: {
       courierName: options.expressName,
@@ -213,7 +213,7 @@ export const $getRefundAmountCalculator = (
   cancelToken?: CancelTokenSource
 ) => {
   return request({
-    url: '/anteng-cornerstone-finance/refund/amount-calculate',
+    url: '/ice-cornerstone-finance/refund/amount-calculate',
     method: 'get',
     params: {
       outOrderNo: orderNo,

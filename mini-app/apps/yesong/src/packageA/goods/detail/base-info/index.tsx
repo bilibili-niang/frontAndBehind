@@ -73,7 +73,7 @@ const SaleTime = defineComponent({
         <div class="goods-detail-sale-time">
           <Image
             class="main-icon a"
-            src="https://dev-cdn.anteng.cn/upload/20240425/4bbe548ebfbd6528eb8ed3eee2c18c99.png"
+            src="https://dev-cdn.ice.cn/upload/20240425/4bbe548ebfbd6528eb8ed3eee2c18c99.png"
           />
           <div class="status">
             <div class="text">
@@ -147,7 +147,7 @@ export default defineComponent({
             y: Number(nowData.qrcodeY) * 2,
             width: nowData.qrcodeSize * 2,
             height: nowData.qrcodeSize * 2,
-            url: qrCode.value || 'https://dev-cdn.anteng.cn/upload/88f732391832df89cd317167b66efa77.png',
+            url: qrCode.value || 'https://dev-cdn.ice.cn/upload/88f732391832df89cd317167b66efa77.png',
             borderRadiusGroup: [16, 16, 16, 16],
             // 不能太低
             zIndex: 999

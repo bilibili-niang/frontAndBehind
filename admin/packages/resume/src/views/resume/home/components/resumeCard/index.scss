@@ -5,9 +5,9 @@
 	flex-direction: column;
 	height: 240px; // 稍微增加高度
 	width: 100%; // 宽度由 grid 控制
-	border: var(--anteng-color-primary-200) 1px solid;
+	border: var(--ice-color-primary-200) 1px solid;
 	border-radius: 12px; // 更圆润的圆角
-	background: var(--anteng-color-bg-100);
+	background: var(--ice-color-bg-100);
 	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 	position: relative;
 	overflow: hidden; // 确保子元素不溢出圆角
@@ -15,14 +15,14 @@
 		cursor: pointer;
 		transform: translateY(-6px); // 更明显的上浮
 		box-shadow: 0 12px 32px rgba(0, 0, 0, .08); // 更柔和的阴影
-		border-color: var(--anteng-color-primary-200);
-		// background: var(--anteng-color-bg-150); // 移除背景色变化，保持干净
+		border-color: var(--ice-color-primary-200);
+		// background: var(--ice-color-bg-150); // 移除背景色变化，保持干净
 	}
 
 	// 缩略图区域
 	.preview-area {
 		height: 140px;
-		background-color: var(--anteng-color-bg-200);
+		background-color: var(--ice-color-bg-200);
 		position: relative;
 		overflow: hidden;
 
@@ -48,7 +48,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		background: var(--anteng-color-bg-100); // 适配深色模式
+		background: var(--ice-color-bg-100); // 适配深色模式
 		z-index: 1;
 
 		.title {
@@ -61,7 +61,7 @@
 
 		.bottom-info-time {
 			font-size: 12px;
-			color: var(--anteng-color-text-tertiary); // 使用更浅的颜色
+			color: var(--ice-color-text-tertiary); // 使用更浅的颜色
 		}
 	}
 
@@ -83,7 +83,7 @@
 
 	// 空状态卡片样式优化
 	&.resume-card-empty {
-		background: var(--anteng-color-bg-100); // 使用项目背景色变量
+		background: var(--ice-color-bg-100); // 使用项目背景色变量
 		transition: all 0.2s ease;
 		display: flex;
 		align-items: center;
@@ -95,7 +95,7 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			color: var(--anteng-color-text-tertiary);
+			color: var(--ice-color-text-tertiary);
 			transition: color 0.2s ease;
 			width: 100%;
 			height: 100%;
@@ -104,7 +104,7 @@
 				width: 64px; // 加大图标区域
 				height: 64px;
 				border-radius: 50%;
-				background: var(--anteng-color-bg-200); // 默认状态下深一点的背景，显出层次
+				background: var(--ice-color-bg-200); // 默认状态下深一点的背景，显出层次
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -122,23 +122,23 @@
 		}
 
 		&:hover {
-			border-color: var(--anteng-color-primary-400);
-			background: var(--anteng-color-bg-100); // 保持背景色一致
+			border-color: var(--ice-color-primary-400);
+			background: var(--ice-color-bg-100); // 保持背景色一致
 			box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12); // 添加悬浮阴影
 			transform: translateY(-6px);
 
 			.empty-icon {
-				color: var(--anteng-color-primary-600);
+				color: var(--ice-color-primary-600);
 
 				.icon-wrapper {
 					transform: scale(1.1) rotate(90deg);
-					background: var(--anteng-color-primary-50);
-					color: var(--anteng-color-primary-500);
+					background: var(--ice-color-primary-50);
+					color: var(--ice-color-primary-500);
 					box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 				}
 
 				.empty-text {
-					color: var(--anteng-color-primary-600);
+					color: var(--ice-color-primary-600);
 				}
 			}
 		}

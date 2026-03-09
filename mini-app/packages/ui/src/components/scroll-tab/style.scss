@@ -1,26 +1,26 @@
-.anteng-scroll-tab {
+.ice-scroll-tab {
   width: 100%;
   overflow: hidden;
-  &.anteng-scroll-tab--vertical {
+  &.ice-scroll-tab--vertical {
     height: 100%;
-    .anteng-scroll-tab__scroll {
+    .ice-scroll-tab__scroll {
       height: 100%;
     }
-    .anteng-scroll-tab__content {
+    .ice-scroll-tab__content {
       flex-direction: column;
     }
   }
 }
 
-.anteng-scroll-tab__scroll {
+.ice-scroll-tab__scroll {
   scroll-behavior: smooth;
 }
 
-.anteng-scroll-tab__content {
+.ice-scroll-tab__content {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
-.anteng-scroll-tab__item {
+.ice-scroll-tab__item {
   flex-shrink: 0;
 }

@@ -56,46 +56,46 @@
   --color-5: #4096ff;
   --color-4: #69b1ff;
 
-  /* anteng 前缀变量与通用变量映射，供 SCSS 中的 $color-* 使用 */
-  --anteng-color-primary: var(--color-6, #1677ff);
-  --anteng-color-primary-400: var(--color-4, #69b1ff);
+  /* ice 前缀变量与通用变量映射，供 SCSS 中的 $color-* 使用 */
+  --ice-color-primary: var(--color-6, #1677ff);
+  --ice-color-primary-400: var(--color-4, #69b1ff);
 
   /* 透明度序列，使用 color-mix 兼容生成（老浏览器会退化为透明） */
-  --anteng-color-primary-01: color-mix(in oklab, var(--color-6, #1677ff) 10%, transparent);
-  --anteng-color-primary-02: color-mix(in oklab, var(--color-6, #1677ff) 20%, transparent);
-  --anteng-color-primary-03: color-mix(in oklab, var(--color-6, #1677ff) 30%, transparent);
-  --anteng-color-primary-04: color-mix(in oklab, var(--color-6, #1677ff) 40%, transparent);
-  --anteng-color-primary-05: color-mix(in oklab, var(--color-6, #1677ff) 50%, transparent);
-  --anteng-color-primary-06: color-mix(in oklab, var(--color-6, #1677ff) 60%, transparent);
-  --anteng-color-primary-07: color-mix(in oklab, var(--color-6, #1677ff) 70%, transparent);
-  --anteng-color-primary-08: color-mix(in oklab, var(--color-6, #1677ff) 80%, transparent);
-  --anteng-color-primary-09: color-mix(in oklab, var(--color-6, #1677ff) 90%, transparent);
+  --ice-color-primary-01: color-mix(in oklab, var(--color-6, #1677ff) 10%, transparent);
+  --ice-color-primary-02: color-mix(in oklab, var(--color-6, #1677ff) 20%, transparent);
+  --ice-color-primary-03: color-mix(in oklab, var(--color-6, #1677ff) 30%, transparent);
+  --ice-color-primary-04: color-mix(in oklab, var(--color-6, #1677ff) 40%, transparent);
+  --ice-color-primary-05: color-mix(in oklab, var(--color-6, #1677ff) 50%, transparent);
+  --ice-color-primary-06: color-mix(in oklab, var(--color-6, #1677ff) 60%, transparent);
+  --ice-color-primary-07: color-mix(in oklab, var(--color-6, #1677ff) 70%, transparent);
+  --ice-color-primary-08: color-mix(in oklab, var(--color-6, #1677ff) 80%, transparent);
+  --ice-color-primary-09: color-mix(in oklab, var(--color-6, #1677ff) 90%, transparent);
 
   /* 主色 50-950 映射到通用 1-10 档位，保证不缺变量 */
-  --anteng-color-primary-50: var(--color-1, #e6f4ff);
-  --anteng-color-primary-100: var(--color-2, #bae0ff);
-  --anteng-color-primary-200: var(--color-3, #91caff);
-  --anteng-color-primary-300: var(--color-4, #69b1ff);
-  --anteng-color-primary-400: var(--color-5, #4096ff);
-  --anteng-color-primary-500: var(--color-6, #1677ff);
-  --anteng-color-primary-600: var(--color-7, #0958d9);
-  --anteng-color-primary-700: var(--color-8, #0747a6);
-  --anteng-color-primary-800: var(--color-9, #053a85);
-  --anteng-color-primary-900: var(--color-10, #03265c);
-  --anteng-color-primary-950: var(--color-10, #03265c);
+  --ice-color-primary-50: var(--color-1, #e6f4ff);
+  --ice-color-primary-100: var(--color-2, #bae0ff);
+  --ice-color-primary-200: var(--color-3, #91caff);
+  --ice-color-primary-300: var(--color-4, #69b1ff);
+  --ice-color-primary-400: var(--color-5, #4096ff);
+  --ice-color-primary-500: var(--color-6, #1677ff);
+  --ice-color-primary-600: var(--color-7, #0958d9);
+  --ice-color-primary-700: var(--color-8, #0747a6);
+  --ice-color-primary-800: var(--color-9, #053a85);
+  --ice-color-primary-900: var(--color-10, #03265c);
+  --ice-color-primary-950: var(--color-10, #03265c);
 
   /* 背景 50-950 映射（宿主若提供 v-color-bg-* 将自动使用） */
-  --anteng-color-bg-50: var(--v-color-bg-50, #fdfdfd);
-  --anteng-color-bg-100: var(--v-color-bg-100, #fcfcfc);
-  --anteng-color-bg-200: var(--v-color-bg-200, #fafafa);
-  --anteng-color-bg-300: var(--v-color-bg-300, #ffffff);
-  --anteng-color-bg-400: var(--v-color-bg-400, #f6f6f6);
-  --anteng-color-bg-500: var(--v-color-bg-500, #f2f2f2);
-  --anteng-color-bg-600: var(--v-color-bg-600, #f1f3f5);
-  --anteng-color-bg-700: var(--v-color-bg-700, #e9ecef);
-  --anteng-color-bg-800: var(--v-color-bg-800, #dee2e6);
-  --anteng-color-bg-900: var(--v-color-bg-900, #dde1e3);
-  --anteng-color-bg-950: var(--v-color-bg-950, #d8d8d8);
+  --ice-color-bg-50: var(--v-color-bg-50, #fdfdfd);
+  --ice-color-bg-100: var(--v-color-bg-100, #fcfcfc);
+  --ice-color-bg-200: var(--v-color-bg-200, #fafafa);
+  --ice-color-bg-300: var(--v-color-bg-300, #ffffff);
+  --ice-color-bg-400: var(--v-color-bg-400, #f6f6f6);
+  --ice-color-bg-500: var(--v-color-bg-500, #f2f2f2);
+  --ice-color-bg-600: var(--v-color-bg-600, #f1f3f5);
+  --ice-color-bg-700: var(--v-color-bg-700, #e9ecef);
+  --ice-color-bg-800: var(--v-color-bg-800, #dee2e6);
+  --ice-color-bg-900: var(--v-color-bg-900, #dde1e3);
+  --ice-color-bg-950: var(--v-color-bg-950, #d8d8d8);
 }
 
 /* 基础元素默认文本颜色（低优先级，便于宿主覆盖） */

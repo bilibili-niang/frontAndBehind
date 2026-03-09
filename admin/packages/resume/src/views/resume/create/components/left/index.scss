@@ -4,7 +4,7 @@
   height: 100%;
   width: 20%;
   min-width: 260px;
-  background: var(--anteng-color-bg-100);
+  background: var(--ice-color-bg-100);
   border-right: 1px solid var(--color-border-base);
   .resume-components-list {
     display: flex;
@@ -15,7 +15,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: var(--anteng-color-bg-200);
+      background: var(--ice-color-bg-200);
       border: 1px solid var(--color-border-base);
       border-radius: var(--border-radious);
       padding: 8px 12px;
@@ -30,16 +30,16 @@
         border-radius: 6px;
         border: 1px solid var(--color-border-base);
         background: var(--ui-bg);
-        color: var(--anteng-color-primary-600);
+        color: var(--ice-color-primary-600);
         display: inline-flex;
         align-items: center;
         justify-content: center;
         font-size: 16px;
       }
       &:hover {
-        background: var(--anteng-color-bg-300);
-        border-color: var(--anteng-color-primary-400);
-        box-shadow: 0 0 0 2px var(--anteng-color-primary-200);
+        background: var(--ice-color-bg-300);
+        border-color: var(--ice-color-primary-400);
+        box-shadow: 0 0 0 2px var(--ice-color-primary-200);
       }
       &:active {
         cursor: grabbing;
@@ -54,12 +54,12 @@
         border: 1px solid var(--color-border-base);
         border-radius: var(--border-radious);
         padding: 8px 10px;
-        background: var(--anteng-color-bg-100);
+        background: var(--ice-color-bg-100);
         cursor: pointer;
       }
       .child-card:hover {
-        border-color: var(--anteng-color-primary-400);
-        box-shadow: 0 0 0 2px var(--anteng-color-primary-200);
+        border-color: var(--ice-color-primary-400);
+        box-shadow: 0 0 0 2px var(--ice-color-primary-200);
       }
       .child-title { font-size: 13px; font-weight: 600; }
       .child-sub { font-size: 12px; color: var(--color-text-secondary); }
@@ -68,7 +68,7 @@
         height: 20px;
         padding: 0 6px;
         border-radius: 10px;
-        background: var(--anteng-color-primary-500);
+        background: var(--ice-color-primary-500);
         color: #fff;
         display: inline-flex;
         align-items: center;
@@ -79,9 +79,9 @@
         height: 20px;
         padding: 0 8px;
         border-radius: 10px;
-        border: 1px solid var(--anteng-color-primary-400);
-        background: var(--anteng-color-primary-50);
-        color: var(--anteng-color-primary-700);
+        border: 1px solid var(--ice-color-primary-400);
+        background: var(--ice-color-primary-50);
+        color: var(--ice-color-primary-700);
         display: inline-flex;
         align-items: center;
         justify-content: center;

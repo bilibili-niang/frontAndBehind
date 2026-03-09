@@ -22,7 +22,7 @@ export default {
             <p>若图片中包含二维码等可长按识别的内容可开启，否则不建议开启</p>
             <img
               style="width:400px;height:374px;"
-              src="https://dev-cdn.kacat.cn/upload/ac813f7ebdeaac91c96a99526c5c7cb6.jpg"
+              src="https://dev-cdn.dev-cdn.ice.cn/upload/ac813f7ebdeaac91c96a99526c5c7cb6.jpg"
             />
           </div>
         )

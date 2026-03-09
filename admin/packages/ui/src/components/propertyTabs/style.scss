@@ -26,18 +26,18 @@
     height: 28px;
     padding: 0 12px;
     border-radius: 14px; /* 圆形胶囊 */
-    background: var(--anteng-color-bg-300);
-    color: var(--anteng-color-text-300);
+    background: var(--ice-color-bg-300);
+    color: var(--ice-color-text-300);
     cursor: pointer;
     transition: all 0.16s ease;
     &:hover {
-      background: var(--anteng-color-bg-100);
+      background: var(--ice-color-bg-100);
     }
     &.--active {
-      color: var(--anteng-color-primary);
-      background: var(--anteng-color-bg-500);
+      color: var(--ice-color-primary);
+      background: var(--ice-color-bg-500);
       .property-tabs-title {
-        color: var(--anteng-color-primary);
+        color: var(--ice-color-primary);
       }
     }
     &::after {

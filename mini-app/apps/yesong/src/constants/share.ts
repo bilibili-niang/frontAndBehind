@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro'
 /** 默认分享内容 */
 export const DEFAULT_SHARE_PAYLOAD: Taro.WeappShareAppMessageReturnObject = {
   // title: '欢迎使用卡猫微店',
-  // imageUrl: 'https://dev-cdn.cardcat.cn/anteng/CHxDpOit7DNh.png',
+  // imageUrl: 'https://dev-cdn.cardcat.cn/ice/CHxDpOit7DNh.png',
   path: undefined, // 默认当前页面路径
   promise: undefined as any
 }

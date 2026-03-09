@@ -30,7 +30,7 @@ const List = defineComponent({
           </div>
           <img
             style="width:100%;border:2px solid rgba(255, 255, 255, 0.2);border-radius:5px;margin-top:10px"
-            src="https://dev-cdn.kacat.cn/upload/3fff422085b94deceb50d45162669b0b.png"
+            src="https://dev-cdn.dev-cdn.ice.cn/upload/3fff422085b94deceb50d45162669b0b.png"
             alt=""
           />
         </div>

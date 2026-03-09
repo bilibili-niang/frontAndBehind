@@ -171,12 +171,12 @@ export function generateColorPalette(primaryColor: string) {
     const newL = l + (factor - 0.5) * 100
     const [shadeR, shadeG, shadeB] = hslToRgb(h, s, newL)
     const hex = `#${((1 << 24) + (shadeR << 16) + (shadeG << 8) + shadeB).toString(16).slice(1)}`
-    shades[`--anteng-color-primary-${shade}`] = hex
+    shades[`--ice-color-primary-${shade}`] = hex
   }
 
   const rgbString = `${r}, ${g}, ${b}`
-  shades['--anteng-color-primary-rgb'] = rgbString
-  shades['--anteng-color-primary'] = primaryColor
+  shades['--ice-color-primary-rgb'] = rgbString
+  shades['--ice-color-primary'] = primaryColor
 
   return shades
 }

@@ -1,10 +1,10 @@
-.anteng-toast-popup {
+.ice-toast-popup {
   pointer-events: none;
   .c_popup__content {
     width: 100%;
   }
 }
-.anteng-toast {
+.ice-toast {
   position: relative;
   top: -20vh;
   max-width: 80vw; /* 设置最大宽度为视口宽度的 80% */
@@ -24,17 +24,17 @@
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   transition: all 0.4s ease-in-out 0s;
-  animation: anteng-toast 0.3s both;
+  animation: ice-toast 0.3s both;
 }
 
-.anteng-toast-content {
+.ice-toast-content {
   flex: 1;
   white-space: pre-line; /* 允许正常换行 */
   word-break: break-word; /* 当单词太长时进行换行 */
   hyphens: auto; /* 根据需要自动添加连字符 */
 }
 
-@keyframes anteng-toast {
+@keyframes ice-toast {
   from {
     opacity: 0;
   }

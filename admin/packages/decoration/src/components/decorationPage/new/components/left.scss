@@ -119,9 +119,9 @@
     background: var(--v-color-bg-200);
   }
   .layer-item.--active {
-    background: var(--anteng-color-primary-50);
-    border-color: var(--anteng-color-primary-300);
-    box-shadow: inset 3px 0 0 var(--anteng-color-primary-500);
+    background: var(--ice-color-primary-50);
+    border-color: var(--ice-color-primary-300);
+    box-shadow: inset 3px 0 0 var(--ice-color-primary-500);
   }
   .layer-item__name {
     font-size: 13px;
@@ -171,9 +171,9 @@
     color: var(--color-text-base);
   }
   .segmented__item.--active {
-    background: var(--anteng-color-primary-50);
-    color: var(--anteng-color-primary-800);
-    border-color: var(--anteng-color-primary-300);
+    background: var(--ice-color-primary-50);
+    color: var(--ice-color-primary-800);
+    border-color: var(--ice-color-primary-300);
   }
 
   /* 覆盖 PropertyTabs 默认内容背景（保持左侧面板透明） */

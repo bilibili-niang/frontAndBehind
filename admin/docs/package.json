@@ -1,7 +1,7 @@
 {
-  "name": "anteng-frontend-docs",
+  "name": "ice-frontend-docs",
   "version": "1.0.0",
-  "description": "anTeng前端管理系统开发文档",
+  "description": "ice前端管理系统开发文档",
   "main": "index.js",
   "scripts": {
     "dev": "vitepress dev",
@@ -16,7 +16,7 @@
     "documentation",
     "vitepress"
   ],
-  "author": "anTeng Team",
+  "author": "ice Team",
   "license": "MIT",
   "devDependencies": {
     "vitepress": "^1.6.4"

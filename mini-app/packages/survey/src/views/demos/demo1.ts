@@ -21,7 +21,7 @@ export default {
   },
   styles: {
     index: {
-      backgroundImage: 'https://dev-cdn.anteng.cn/upload/5e97376a7d789a59c3dd7db2602ccf30.jpg',
+      backgroundImage: 'https://dev-cdn.ice.cn/upload/5e97376a7d789a59c3dd7db2602ccf30.jpg',
       title: '',
       description: '',
       button: {
@@ -41,7 +41,7 @@ export default {
       }
     },
     end: {
-      backgroundImage: 'https://dev-cdn.anteng.cn/upload/5e97376a7d789a59c3dd7db2602ccf30.jpg',
+      backgroundImage: 'https://dev-cdn.ice.cn/upload/5e97376a7d789a59c3dd7db2602ccf30.jpg',
       tip: {
         text: '',
         color: '#000000'

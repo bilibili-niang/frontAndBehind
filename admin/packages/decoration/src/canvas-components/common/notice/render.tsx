@@ -54,7 +54,7 @@ const mockList = [
     }
   },
   {
-    icon: { url: 'https://dev-cdn.cardcat.cn/kacat/example_04.png', width: 0, height: 0 },
+    icon: { url: 'https://dev-cdn.cardcat.cn/dev-cdn.ice/example_04.png', width: 0, height: 0 },
     text: '尚未配置，请添加内容节点',
     color: '#333333',
     arrow: {
@@ -65,7 +65,7 @@ const mockList = [
     }
   },
   {
-    icon: { url: 'https://dev-cdn.cardcat.cn/kacat/example_12.png', width: 0, height: 0 },
+    icon: { url: 'https://dev-cdn.cardcat.cn/dev-cdn.ice/example_12.png', width: 0, height: 0 },
     text: '尚未配置，请添加内容节点',
     color: '#333333',
     arrow: {

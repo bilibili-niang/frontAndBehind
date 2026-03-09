@@ -535,7 +535,7 @@ const SearchTable = defineComponent({
       calcMaxWidth()
       try {
         const target =
-          document.querySelector('.anteng-basic-layout__router-view-content') ||
+          document.querySelector('.ice-basic-layout__router-view-content') ||
           document.querySelector('.main-scroll .ui-scrollbar')
         if (target) {
           wo.observe(target)

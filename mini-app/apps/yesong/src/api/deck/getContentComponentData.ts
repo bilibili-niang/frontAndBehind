@@ -9,7 +9,7 @@ const getContentComponentData = (payload: IContentComponentOptions | IContentCom
   return new Promise((resolve, reject) => {
     request({
       baseURL: REQUEST_DOMAIN,
-      url: '/anteng-microstore-decorate-wap/m/decorate/component/data',
+      url: '/ice-microstore-decorate-wap/m/decorate/component/data',
       method: 'POST',
       data: Array.isArray(payload)
         ? payload.map((item) => {

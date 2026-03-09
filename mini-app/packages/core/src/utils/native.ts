@@ -4,7 +4,7 @@ import { WebViewBridge } from './webview-bridge'
 
 const $createShortLink = (originString: string) => {
   return request({
-    url: '/anteng-cornerstone-system/short-url',
+    url: '/ice-cornerstone-system/short-url',
     method: 'post',
     data: {
       originString,

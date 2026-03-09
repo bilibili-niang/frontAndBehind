@@ -11,20 +11,20 @@ const genderOptions = [
     value: 1,
     label: '男',
     icon: 'male',
-    logo: 'https://dev-cdn.anteng.cn/upload/f20bcbfb1765ed19e79b0d0e7d3269d8.png'
+    logo: 'https://dev-cdn.ice.cn/upload/f20bcbfb1765ed19e79b0d0e7d3269d8.png'
   },
   {
     class: 'female',
     value: 0,
     label: '女',
     icon: 'female',
-    logo: 'https://dev-cdn.anteng.cn/upload/eb36a09d3420d8ce2a9743a8afb3cedf.png'
+    logo: 'https://dev-cdn.ice.cn/upload/eb36a09d3420d8ce2a9743a8afb3cedf.png'
   },
   {
     class: 'secret',
     value: undefined,
     label: '保密',
-    logo: 'https://dev-cdn.anteng.cn/upload/0d761b06798212b23a7594bebc3b5f3b.png'
+    logo: 'https://dev-cdn.ice.cn/upload/0d761b06798212b23a7594bebc3b5f3b.png'
   }
 ]
 

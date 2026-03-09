@@ -7,7 +7,7 @@ import { uuid } from '@pkg/utils'
 export const ScrollTabItem = (props, { slots }) => {
   const cnt = slots.default?.()
   if (!cnt) return null
-  return <div class="anteng-scroll-tab__item">{cnt}</div>
+  return <div class="ice-scroll-tab__item">{cnt}</div>
 }
 
 export default defineComponent({
@@ -34,12 +34,12 @@ export default defineComponent({
     const query = Taro.createSelectorQuery()
     query.select(`.${id}`).boundingClientRect()
     if (process.env.TARO_ENV === 'h5') {
-      query.selectAll(`.${id} .anteng-scroll-tab__item`).boundingClientRect()
+      query.selectAll(`.${id} .ice-scroll-tab__item`).boundingClientRect()
     } else {
       // 小程序端 跨组件需要加 >>> 选择器
-      query.selectAll(`.${id} >>> .anteng-scroll-tab__item`).boundingClientRect()
+      query.selectAll(`.${id} >>> .ice-scroll-tab__item`).boundingClientRect()
     }
-    query.select(`.${id} .anteng-scroll-tab__scroll`).scrollOffset()
+    query.select(`.${id} .ice-scroll-tab__scroll`).scrollOffset()
 
     const autoFit = () => {
       if (containerRef.value?.ctx) {
@@ -76,16 +76,16 @@ export default defineComponent({
 
     return () => {
       return (
-        <div class={['anteng-scroll-tab', id, props.vertical && 'anteng-scroll-tab--vertical']} ref={containerRef}>
+        <div class={['ice-scroll-tab', id, props.vertical && 'ice-scroll-tab--vertical']} ref={containerRef}>
           <ScrollView
-            class="anteng-scroll-tab__scroll"
+            class="ice-scroll-tab__scroll"
             scrollX={!props.vertical}
             scrollY={props.vertical}
             scrollLeft={scrollLeft.value}
             scrollTop={scrollTop.value}
             scrollWithAnimation
           >
-            <div class="anteng-scroll-tab__content">{slots.default?.()}</div>
+            <div class="ice-scroll-tab__content">{slots.default?.()}</div>
           </ScrollView>
         </div>
       )

@@ -21,7 +21,7 @@ export const requestGetSearchResults = (
   }>
 ) => {
   return request<PaginationData<ISearchResult>>({
-    url: '/anteng-cornerstone-goods-wap/m/goods/search',
+    url: '/ice-cornerstone-goods-wap/m/goods/search',
     method: 'get',
     withMerchantId: true,
     params: {
@@ -38,7 +38,7 @@ export const $getGoodsList = (
   }>
 ) => {
   return request<PaginationData<ISearchResult>>({
-    url: '/anteng-cornerstone-goods-wap/m/goods',
+    url: '/ice-cornerstone-goods-wap/m/goods',
     method: 'get',
     withMerchantId: true,
     params
@@ -47,7 +47,7 @@ export const $getGoodsList = (
 // 另一个商品搜索接口,只是传参方式不同
 export const $getGoodsBySearchParams = params => {
   return request({
-    url: '/anteng-cornerstone-goods-wap/m/goods/search',
+    url: '/ice-cornerstone-goods-wap/m/goods/search',
     method: 'get',
     withMerchantId: true,
     params

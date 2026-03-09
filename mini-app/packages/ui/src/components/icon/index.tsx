@@ -3,7 +3,7 @@ import './style.scss'
 import './icon.scss'
 
 export default defineComponent({
-  name: 'anteng-icon',
+  name: 'ice-icon',
   props: {
     name: {
       type: String,
@@ -12,7 +12,7 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     return () => {
-      return <div class={['anteng-icon iconfont icon', `icon-${props.name}`]}>{slots.default?.()}</div>
+      return <div class={['ice-icon iconfont icon', `icon-${props.name}`]}>{slots.default?.()}</div>
     }
   }
 })

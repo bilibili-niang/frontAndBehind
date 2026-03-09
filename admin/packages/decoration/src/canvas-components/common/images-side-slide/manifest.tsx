@@ -134,7 +134,7 @@ export default {
             <p>当每行显示仍有剩余空间时，自动拉伸节点占满剩余空间。</p>
             <img
               style="width: 400px;"
-              src="https://dev-cdn.kacat.cn/upload/20240613/2d748baba0f36d04ae999bd725ae0eb3.png"
+              src="https://dev-cdn.dev-cdn.ice.cn/upload/20240613/2d748baba0f36d04ae999bd725ae0eb3.png"
               alt=""
             />
           </div>

@@ -185,7 +185,7 @@ const useAppStore = defineStore('App', () => {
     if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color)) {
       themeColorMap.value = {
         ...generateColorPalette(color),
-        '--anteng-color-primary-text': fontColor || '#ffffff'
+        '--ice-color-primary-text': fontColor || '#ffffff'
       }
     } else {
       theme.value = color

@@ -5,7 +5,7 @@ import { DeckComponentConfig } from '../types'
 import Taro from '@tarojs/taro'
 import { useAction } from '../../hooks/useAction'
 
-const DEFAULT_ICON = 'https://dev-cdn.cardcat.cn/anteng/notice-default-icon.svg'
+const DEFAULT_ICON = 'https://dev-cdn.cardcat.cn/ice/notice-default-icon.svg'
 
 type ImageDefine = any
 type Action = any
@@ -55,7 +55,7 @@ const mockList = [
     }
   },
   {
-    icon: { url: 'https://dev-cdn.cardcat.cn/anteng/example_04.png', width: 0, height: 0 },
+    icon: { url: 'https://dev-cdn.cardcat.cn/ice/example_04.png', width: 0, height: 0 },
     text: '尚未配置，请添加内容节点',
     color: '#333333',
     arrow: {
@@ -66,7 +66,7 @@ const mockList = [
     }
   },
   {
-    icon: { url: 'https://dev-cdn.cardcat.cn/anteng/example_12.png', width: 0, height: 0 },
+    icon: { url: 'https://dev-cdn.cardcat.cn/ice/example_12.png', width: 0, height: 0 },
     text: '尚未配置，请添加内容节点',
     color: '#333333',
     arrow: {

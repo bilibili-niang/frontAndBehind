@@ -15,7 +15,7 @@ function useContextMenu(e: MouseEvent = lastClickEvent, config: ContextMenuConfi
   e.preventDefault()
 
   const container = document.createElement('div')
-  container.className = 'anteng-ui-modal-root'
+  container.className = 'ice-ui-modal-root'
   document.body.append(container)
 
   const cancel = () => {

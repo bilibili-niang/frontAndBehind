@@ -21,7 +21,7 @@ import { uuid } from '@pkg/utils'
 
 const check = (url: string) => {
   return request({
-    url: '/anteng-venue-wap/m/userFaceImg/check',
+    url: '/ice-venue-wap/m/userFaceImg/check',
     method: 'post',
     data: {
       faceImageUrl: url
@@ -190,12 +190,12 @@ export default defineComponent({
 })
 
 const wrongList = [
-  { image: 'https://dev-cdn.anteng.cn/upload/d178ae48c32bbf64b78b814200971fb7.png', title: '非人物照' },
-  { image: 'https://dev-cdn.anteng.cn/upload/52c255af8b03520e20a7998eec7ec1e2.png', title: '五官遮挡' },
-  { image: 'https://dev-cdn.anteng.cn/upload/fba75213d9ac0c5192d9fd3504238dfd.png', title: '模糊不清' },
-  { image: 'https://dev-cdn.anteng.cn/upload/f33233a3d89113f64fec04fe148796d6.png', title: '衣着不当' },
-  { image: 'https://dev-cdn.anteng.cn/upload/30d455f94c5090b80ca3427969f69c88.png', title: '角度不正' },
-  { image: 'https://dev-cdn.anteng.cn/upload/8fa4eae8b6ccf91d0367eb6d50aa79a1.png', title: '多人照片' }
+  { image: 'https://dev-cdn.ice.cn/upload/d178ae48c32bbf64b78b814200971fb7.png', title: '非人物照' },
+  { image: 'https://dev-cdn.ice.cn/upload/52c255af8b03520e20a7998eec7ec1e2.png', title: '五官遮挡' },
+  { image: 'https://dev-cdn.ice.cn/upload/fba75213d9ac0c5192d9fd3504238dfd.png', title: '模糊不清' },
+  { image: 'https://dev-cdn.ice.cn/upload/f33233a3d89113f64fec04fe148796d6.png', title: '衣着不当' },
+  { image: 'https://dev-cdn.ice.cn/upload/30d455f94c5090b80ca3427969f69c88.png', title: '角度不正' },
+  { image: 'https://dev-cdn.ice.cn/upload/8fa4eae8b6ccf91d0367eb6d50aa79a1.png', title: '多人照片' }
 ]
 
 const useUploadFaceImage = (options: { url?: string; onSuccess: (url: string) => void }) => {
@@ -268,7 +268,7 @@ const useExample = (Actions?: () => any) => {
             <div class="subtitle">请上传本人五官清晰照片</div>
             <div
               class="image"
-              style="background-image:url('https://dev-cdn.anteng.cn/upload/f50faac6dee4de514bdee81be285a6a9.png')"
+              style="background-image:url('https://dev-cdn.ice.cn/upload/f50faac6dee4de514bdee81be285a6a9.png')"
             >
               <div class="badge">
                 <Icon name="check-fill" />
@@ -451,14 +451,14 @@ const useFaceCapture = (options: { onSuccess: (url: string) => void; onAlbum: ()
               ) : (
                 <>
                   <div class="album" onClick={onAlbum}>
-                    <Image src="https://dev-cdn.anteng.cn/upload/0b855145f6f8807e0d7edfd173ea6ce1.svg" class="icon" />
+                    <Image src="https://dev-cdn.ice.cn/upload/0b855145f6f8807e0d7edfd173ea6ce1.svg" class="icon" />
                     <div class="text">相册选择</div>
                   </div>
 
                   <div class="shot" onTouchstart={onShot}></div>
 
                   <div class="flip" onClick={onFlip}>
-                    <Image src="https://dev-cdn.anteng.cn/upload/29110fedc65828edf2e941f6edf96c54.svg" class="icon" />
+                    <Image src="https://dev-cdn.ice.cn/upload/29110fedc65828edf2e941f6edf96c54.svg" class="icon" />
                     <div class="text">翻转</div>
                   </div>
                 </>

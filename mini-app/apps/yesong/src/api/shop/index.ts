@@ -71,7 +71,7 @@ export const getGoodsSuitableShops = (
   }>
 ) => {
   return request<PaginationData<ShopItem>>({
-    url: `/anteng-cornerstone-goods-wap/m/goods/${params.goodsId}/shop`,
+    url: `/ice-cornerstone-goods-wap/m/goods/${params.goodsId}/shop`,
     method: 'GET',
     withLocation: true,
     params

@@ -161,7 +161,7 @@ export default defineComponent({
             width: editorPoster.value.qrcode.size,
             height: editorPoster.value.qrcode.size,
             base64Url: posterQrcodeImage.value,
-            url: posterQrcodeImage.value || 'https://dev-cdn.anteng.cn/upload/72b3fcb5135bb9566a7cbb8ce05a85a1.png',
+            url: posterQrcodeImage.value || 'https://dev-cdn.ice.cn/upload/72b3fcb5135bb9566a7cbb8ce05a85a1.png',
             zIndex: 15
           }
         ]

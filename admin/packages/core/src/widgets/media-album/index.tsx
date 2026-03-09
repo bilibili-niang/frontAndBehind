@@ -190,13 +190,13 @@ export const generateMediaAlbumSchema = (rootValue?: any, typeOptions = MEDIA_AL
                 title={
                   <img
                     style="width:800px;"
-                    src="https://dev-cdn.kacat.cn/upload/20240621/2b75b9402de8fdac279495c1302be8ec.jpg"
+                    src="https://dev-cdn.dev-cdn.ice.cn/upload/20240621/2b75b9402de8fdac279495c1302be8ec.jpg"
                     alt=""
                   />
                 }
               >
                 <div
-                  style="text-decoration: underline;text-decoration-style: dashed;text-decoration-color:var(--kacat-color-primary);text-underline-offset: 3px;cursor: help;
+                  style="text-decoration: underline;text-decoration-style: dashed;text-decoration-color:var(--dev-cdn.ice-color-primary);text-underline-offset: 3px;cursor: help;
             "
                 >
                   视频号ID

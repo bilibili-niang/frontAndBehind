@@ -63,9 +63,9 @@ let cachedFont: string | null = null
 function getTableCellFont(): string {
   if (cachedFont) return cachedFont
 
-  const element = document.querySelector('.anteng-table-cell')
+  const element = document.querySelector('.ice-table-cell')
   if (!element) {
-    console.warn('未找到 .anteng-table-cell 元素，使用默认字体样式')
+    console.warn('未找到 .ice-table-cell 元素，使用默认字体样式')
     return CONSTANTS.DEFAULT_FONT
   }
 

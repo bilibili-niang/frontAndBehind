@@ -19,7 +19,7 @@ export interface IGoodsGroup {
 /** 获取商品分组详情 */
 export const requestGetGoodsGroupDetail = (id: string) => {
   return request<IGoodsGroup>({
-    url: `/anteng-cornerstone-goods-wap/m/group/${id}`,
+    url: `/ice-cornerstone-goods-wap/m/group/${id}`,
     method: 'get'
   })
 }
@@ -58,7 +58,7 @@ export const requestGetGroupGoods = (
 ) => {
   const { groupId, ...restParams } = params
   return request<PaginationData<IGroupGoods>>({
-    url: `/anteng-cornerstone-goods-wap/m/goods/group/${groupId}`,
+    url: `/ice-cornerstone-goods-wap/m/goods/group/${groupId}`,
     method: 'get',
     params: restParams
   })

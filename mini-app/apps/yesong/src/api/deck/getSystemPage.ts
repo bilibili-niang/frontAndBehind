@@ -11,7 +11,7 @@ const requestGetSystemPage = (key: string) => {
   }
 
   const task = request({
-    url: '/anteng-microstore-decorate-wap/m/decorate/system',
+    url: '/ice-microstore-decorate-wap/m/decorate/system',
     withMerchantId: true,
     params: {
       origin: ORIGIN_STORE,

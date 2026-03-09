@@ -286,12 +286,12 @@ export default defineComponent({
                 ...hintStyle.value,
                 background:
                   props.direction === 'top'
-                    ? `linear-gradient(to bottom, color-mix(in oklab, var(--anteng-color-primary-500, var(--v-theme-primary, #3b82f6)) 60%, transparent) 0%, transparent 100%)`
+                    ? `linear-gradient(to bottom, color-mix(in oklab, var(--ice-color-primary-500, var(--v-theme-primary, #3b82f6)) 60%, transparent) 0%, transparent 100%)`
                     : props.direction === 'bottom'
-                      ? `linear-gradient(to top, color-mix(in oklab, var(--anteng-color-primary-500, var(--v-theme-primary, #3b82f6)) 60%, transparent) 0%, transparent 100%)`
+                      ? `linear-gradient(to top, color-mix(in oklab, var(--ice-color-primary-500, var(--v-theme-primary, #3b82f6)) 60%, transparent) 0%, transparent 100%)`
                       : props.direction === 'left'
-                        ? `linear-gradient(to right, color-mix(in oklab, var(--anteng-color-primary-500, var(--v-theme-primary, #3b82f6)) 60%, transparent) 0%, transparent 100%)`
-                        : `linear-gradient(to left, color-mix(in oklab, var(--anteng-color-primary-500, var(--v-theme-primary, #3b82f6)) 60%, transparent) 0%, transparent 100%)`
+                        ? `linear-gradient(to right, color-mix(in oklab, var(--ice-color-primary-500, var(--v-theme-primary, #3b82f6)) 60%, transparent) 0%, transparent 100%)`
+                        : `linear-gradient(to left, color-mix(in oklab, var(--ice-color-primary-500, var(--v-theme-primary, #3b82f6)) 60%, transparent) 0%, transparent 100%)`
               }}
             />
           )}

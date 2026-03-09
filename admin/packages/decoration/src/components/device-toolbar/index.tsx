@@ -32,7 +32,7 @@ export default defineComponent({
     return () => (
       <div class="device-toolbar w-full flex items-center justify-between px-3 py-1">
         <div class="left">
-          <span class="chip bg-[var(--anteng-color-bg-500)] text-[var(--color-text-secondary)] border border-[var(--color-border-base)] rounded-full px-2 py-0.5 text-xs mr-2">设备：iPhone6/7/8</span>
+          <span class="chip bg-[var(--ice-color-bg-500)] text-[var(--color-text-secondary)] border border-[var(--color-border-base)] rounded-full px-2 py-0.5 text-xs mr-2">设备：iPhone6/7/8</span>
           <div class="zoom-control" title="缩放">
             <button class="ctrl-btn" aria-label="缩小" onClick={() => stepZoom('out')}>
               <Icon name="zoom-out" />

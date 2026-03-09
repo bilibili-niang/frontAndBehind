@@ -5,7 +5,7 @@ import { commonQRCodePropsDefine } from './common'
 import './style.scss'
 
 export default defineComponent({
-  name: 'anteng-qr-code',
+  name: 'ice-qr-code',
   props: commonQRCodePropsDefine,
   setup(props) {
     const canvasId = `qr-code-${uuid()}`
@@ -50,8 +50,8 @@ export default defineComponent({
     })
     return () => {
       return (
-        <div class="anteng-qr-code">
-          <canvas class="anteng-qr-code__canvas" id={canvasId}></canvas>
+        <div class="ice-qr-code">
+          <canvas class="ice-qr-code__canvas" id={canvasId}></canvas>
         </div>
       )
     }

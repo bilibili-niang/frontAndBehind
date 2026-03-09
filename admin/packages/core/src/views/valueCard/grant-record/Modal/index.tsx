@@ -6,7 +6,7 @@ import { moneyToYuan } from '@pkg/utils'
 export const budgetRecord = (cardNo?: string) => {
   const { Table, refresh } = useSearchTable({
     title: '储值卡收支明细',
-    requestURL: `/anteng-venue-admin/cardRecord/${cardNo}`,
+    requestURL: `/ice-venue-admin/cardRecord/${cardNo}`,
     filter: {
       list: [
         {

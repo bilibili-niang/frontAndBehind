@@ -26,12 +26,12 @@ $transition: all 0.4s linear;
     width: 6px;
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--anteng-color-bg-50);
+    background: var(--ice-color-bg-50);
     border-radius: 8px;
     width: 6px;
   }
   &::-webkit-scrollbar-track {
-    background: var(--anteng-color-bg-100);
+    background: var(--ice-color-bg-100);
   }
   &::-webkit-scrollbar-button {
     display: none;

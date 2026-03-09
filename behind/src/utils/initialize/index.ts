@@ -53,12 +53,12 @@ export const setDefaultNavigation = async () => {
           text: '测试名字',
           icon: {
             normal: {
-              url: 'https://dev-cdn.cardcat.cn/kacat/system-solid-68-savings.gif',
+              url: 'https://dev-cdn.cardcat.cn/dev-cdn.ice/system-solid-68-savings.gif',
               width: 400,
               height: 400
             },
             active: {
-              url: 'https://dev-cdn.cardcat.cn/kacat/system-solid-41-home.gif',
+              url: 'https://dev-cdn.cardcat.cn/dev-cdn.ice/system-solid-41-home.gif',
               width: 400,
               height: 400
             }

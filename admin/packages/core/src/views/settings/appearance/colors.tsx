@@ -26,7 +26,7 @@ export default defineComponent({
                 <div style="font-size: 14px; font-weight: 500; margin-bottom: 12px;margin-top: 48px;">{key}</div>
                 <div class="dev-colors__list">
                   {Object.keys((themeConfig.primaryColors as any)[key]).map((variable) => {
-                    const cssVarName = `--anteng-${variable}`
+                    const cssVarName = `--ice-${variable}`
                     const cssVarRef = `var(${cssVarName})`
                     return (
                       <div

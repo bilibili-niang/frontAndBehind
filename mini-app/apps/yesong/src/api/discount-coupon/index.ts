@@ -49,7 +49,7 @@ export const $receiveDiscountCoupon = (params: {
   goodsGroupId?: string
 }) => {
   return request({
-    url: '/anteng-cornerstone-goods-wap/m/goods/coupon/receive',
+    url: '/ice-cornerstone-goods-wap/m/goods/coupon/receive',
     method: 'get',
     params,
     withMerchantId: true
@@ -65,7 +65,7 @@ export const $getMyDiscountCouponList = (
 ) => {
   const { useable, ...restParams } = params
   return request<PaginationData<IDiscountCouponRecord>>({
-    url: '/anteng-cornerstone-goods-wap/m/goods/coupon/record',
+    url: '/ice-cornerstone-goods-wap/m/goods/coupon/record',
     withMerchantId: true,
     params: {
       ...restParams,
@@ -77,7 +77,7 @@ export const $getMyDiscountCouponList = (
 /** 获取我的优惠券数量 */
 export const $getMyDiscountCouponCounts = () => {
   return request({
-    url: '/anteng-cornerstone-goods-wap/m/goods/coupon/record/status/number',
+    url: '/ice-cornerstone-goods-wap/m/goods/coupon/record/status/number',
     withMerchantId: true
   })
 }
@@ -96,7 +96,7 @@ export const $getOrderUseableDiscountCouponList = (
   const { recordNo, items, ...restParams } = params
 
   return request<PaginationData<IDiscountCouponRecord>>({
-    url: '/anteng-cornerstone-goods-wap/m/goods/coupon/order/show',
+    url: '/ice-cornerstone-goods-wap/m/goods/coupon/order/show',
     method: 'post',
     withMerchantId: true,
     data: {
@@ -116,7 +116,7 @@ export const $getOrderUseableDiscountCouponList = (
 /** 获取已领取优惠券详情 */
 export const $getDiscountCouponRecordDetail = (recordNo: string) => {
   return request<IDiscountCouponRecord>({
-    url: '/anteng-cornerstone-goods-wap/m/goods/coupon/record/detail',
+    url: '/ice-cornerstone-goods-wap/m/goods/coupon/record/detail',
     method: 'get',
     withMerchantId: true,
     params: {
@@ -133,7 +133,7 @@ export const $getDiscountCouponUseableGoods = (
   }>
 ) => {
   return request({
-    url: '/anteng-cornerstone-goods-wap/m/goods/coupon/scope',
+    url: '/ice-cornerstone-goods-wap/m/goods/coupon/scope',
     method: 'get',
     withMerchantId: true,
     params
@@ -143,7 +143,7 @@ export const $getDiscountCouponUseableGoods = (
 /** 获取卡券模板详情 */
 export const $getDiscountCouponTemplateDetail = (templateId: string) => {
   return request<IDiscountCoupon>({
-    url: '/anteng-cornerstone-goods-wap/m/goods/coupon/detail',
+    url: '/ice-cornerstone-goods-wap/m/goods/coupon/detail',
     method: 'get',
     withMerchantId: true,
     params: {

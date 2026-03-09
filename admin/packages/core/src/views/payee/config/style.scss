@@ -11,14 +11,14 @@
     font-size: 16px;
   }
 
-  .anteng-tabs-nav {
+  .ice-tabs-nav {
     position: sticky;
     top: 0;
     background-color: $color-bg-300;
 
     z-index: 20;
     padding-bottom: 8px;
-    .anteng-tabs-tab {
+    .ice-tabs-tab {
       font-size: 20px;
       font-weight: bold;
     }
@@ -56,7 +56,7 @@
     position: relative;
     padding: 8px 8px;
     margin: 4px;
-    background-color: var(--anteng-color-bg-400);
+    background-color: var(--ice-color-bg-400);
     border-radius: 8px;
     font-size: 13px;
     white-space: nowrap;

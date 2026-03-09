@@ -1,14 +1,14 @@
 # API 概览
 
-本文档描述了anTeng前端管理系统的API接口规范和使用方法。
+本文档描述了ice前端管理系统的API接口规范和使用方法。
 
 ## 基础信息
 
 ### 接口地址
 
 - **开发环境**: `http://localhost:8080/api`
-- **测试环境**: `https://test-api.anteng.com/api`
-- **生产环境**: `https://api.anteng.com/api`
+- **测试环境**: `https://test-api.ice.com/api`
+- **生产环境**: `https://api.ice.com/api`
 
 ### 请求格式
 

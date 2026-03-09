@@ -53,7 +53,7 @@ body {
 }
 
 /* 主要滚动容器稳定滚动条占位，避免出现/消失造成布局抖动 */
-:where(.main-sidebar, .bottom-content, .anteng-basic-layout__menu, .basic-layout__apps) {
+:where(.main-sidebar, .bottom-content, .ice-basic-layout__menu, .basic-layout__apps) {
   scrollbar-gutter: stable both-edges;
   overscroll-behavior: contain;
 }
@@ -63,7 +63,7 @@ body {
 /* 主题切换期间启用正常动画与过渡，便于观察颜色过渡效果 */
 
 /* 可以按需为重绘成本较高的容器再降级一次阴影与滤镜（可选） */
-// :where(html[data-theme-switching='true']) .anteng-page-view-content { box-shadow: none !important; filter: none !important; }
+// :where(html[data-theme-switching='true']) .ice-page-view-content { box-shadow: none !important; filter: none !important; }
 
 /* OverlayScrollbars 全局定制：缩窄滚动条宽度，并按主题调整颜色 */
 :where(.os-scrollbar) { --os-size: 4px; }

@@ -1,13 +1,13 @@
-.anteng-confirm {
-  .anteng-content {
+.ice-confirm {
+  .ice-content {
     background-color: $ui-popup-bg;
     color: $color-text-base;
   }
 }
-.anteng-confirm .anteng-confirm-body .anteng-confirm-title {
+.ice-confirm .ice-confirm-body .ice-confirm-title {
   color: $color-text-base;
 }
-.anteng-confirm .anteng-confirm-body .anteng-confirm-content {
+.ice-confirm .ice-confirm-body .ice-confirm-content {
   color: $color-text-base;
 }
 .#{$prefix}-modal-root .#{$prefix}-modal-wrap {
@@ -45,7 +45,7 @@
     background-color: $color-bg-300;
     .jsf_form {
       // 弹窗中表单容器的最大高度（与顶部偏移一致）
-      max-height: calc(100vh - (var(--anteng-modal-offset-top, 100px) + var(--anteng-modal-offset-extra, 160px)));
+      max-height: calc(100vh - (var(--ice-modal-offset-top, 100px) + var(--ice-modal-offset-extra, 160px)));
     }
   }
   .#{$prefix}-modal-header {

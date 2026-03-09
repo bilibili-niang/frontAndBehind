@@ -4,7 +4,7 @@ import './style.scss'
 export const ScrollTabItem = (props: any, { slots }: any) => {
   const cnt = slots.default?.()
   if (!cnt) return null
-  return <div class="anteng-scroll-tab__item">{cnt}</div>
+  return <div class="ice-scroll-tab__item">{cnt}</div>
 }
 
 export default defineComponent({
@@ -31,7 +31,7 @@ export default defineComponent({
 
     const autoFit = () => {
       ;(
-        [].slice.call(containerRef.value.querySelectorAll('.anteng-scroll-tab__item'))[props.current] as HTMLElement
+        [].slice.call(containerRef.value.querySelectorAll('.ice-scroll-tab__item'))[props.current] as HTMLElement
       )?.scrollIntoView({
         behavior: 'smooth',
         inline: props.vertical ? 'nearest' : 'center',
@@ -45,9 +45,9 @@ export default defineComponent({
 
     return () => {
       return (
-        <div class={['anteng-scroll-tab', id, props.vertical && 'anteng-scroll-tab--vertical']} ref={containerRef}>
-          <div class="anteng-scroll-tab__scroll ui-scrollbar--hidden">
-            <div class="anteng-scroll-tab__content">{slots.default?.()}</div>
+        <div class={['ice-scroll-tab', id, props.vertical && 'ice-scroll-tab--vertical']} ref={containerRef}>
+          <div class="ice-scroll-tab__scroll ui-scrollbar--hidden">
+            <div class="ice-scroll-tab__content">{slots.default?.()}</div>
           </div>
         </div>
       )

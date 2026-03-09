@@ -41,7 +41,7 @@
     width: calc(var(--switch-h) - var(--pad) * 2);
     height: calc(var(--switch-h) - var(--pad) * 2);
     border-radius: 50%;
-    background: var(--anteng-color-primary-400); /* 浅色默认使用主题主色 */
+    background: var(--ice-color-primary-400); /* 浅色默认使用主题主色 */
     transition: transform 0.28s cubic-bezier(.2,.8,.2,1), background 0.25s ease;
     will-change: transform;
     display: inline-flex;

@@ -13,9 +13,9 @@ const id = `id-${uuid()}`
 const query = Taro.createSelectorQuery()
 
 if (process.env.TARO_ENV === 'h5') {
-  query.selectAll(`.${id} .anteng-scroll-tab__item`).boundingClientRect()
+  query.selectAll(`.${id} .ice-scroll-tab__item`).boundingClientRect()
 } else {
   // 小程序端 跨组件需要加 >>> 选择器
-  query.selectAll(`.${id} >>> .anteng-scroll-tab__item`).boundingClientRect()
+  query.selectAll(`.${id} >>> .ice-scroll-tab__item`).boundingClientRect()
 }
 ```

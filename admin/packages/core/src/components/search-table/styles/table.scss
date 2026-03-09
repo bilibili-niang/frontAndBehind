@@ -257,13 +257,13 @@ $color-bg-base: $color-bg-100;
   .#{$prefix}-table-ping-right .#{$prefix}-table-cell-fix-right-last:after {
     box-shadow: inset -10px 0 8px -8px #00000078;
   }
-  td.anteng-table-column-sort {
+  td.ice-table-column-sort {
     background: $color-bg-200;
   }
-  .anteng-table-wrapper .anteng-table.anteng-table-bordered .anteng-table-tbody > tr > td {
+  .ice-table-wrapper .ice-table.ice-table-bordered .ice-table-tbody > tr > td {
     border-color: $color-border-base;
   }
-  .anteng-table-wrapper .anteng-table-cell-scrollbar:not([rowspan]) {
+  .ice-table-wrapper .ice-table-cell-scrollbar:not([rowspan]) {
     box-shadow: none;
   }
 }
@@ -279,35 +279,35 @@ $color-bg-base: $color-bg-100;
 .#{$prefix}-table-placeholder .#{$prefix}-table-cell {
   background: none !important;
 }
-.anteng-table-wrapper
-.anteng-table-thead
+.ice-table-wrapper
+.ice-table-thead
 > tr
-> th:not(:last-child):not(.anteng-table-selection-column):not(.anteng-table-row-expand-icon-cell):not(
+> th:not(:last-child):not(.ice-table-selection-column):not(.ice-table-row-expand-icon-cell):not(
     [colspan]
   )::before,
-.anteng-table-wrapper
-.anteng-table-thead
+.ice-table-wrapper
+.ice-table-thead
 > tr
-> td:not(:last-child):not(.anteng-table-selection-column):not(.anteng-table-row-expand-icon-cell):not(
+> td:not(:last-child):not(.ice-table-selection-column):not(.ice-table-row-expand-icon-cell):not(
     [colspan]
   )::before {
   background-color: $color-border-base;
 }
-.anteng-table-wrapper .anteng-table:not(.anteng-table-bordered) .anteng-table-tbody > tr:last-child > td {
+.ice-table-wrapper .ice-table:not(.ice-table-bordered) .ice-table-tbody > tr:last-child > td {
   border-color: $color-border-base;
 }
 @include dark-mode {
-  .anteng-table-wrapper .anteng-table.anteng-table-bordered > .anteng-table-title {
+  .ice-table-wrapper .ice-table.ice-table-bordered > .ice-table-title {
     border-color: $color-border-base;
   }
 }
-.anteng-table-wrapper .anteng-table .anteng-table-title,
-.anteng-table-wrapper .anteng-table .anteng-table-header {
+.ice-table-wrapper .ice-table .ice-table-title,
+.ice-table-wrapper .ice-table .ice-table-header {
   border-radius: 0;
 }
-.anteng-table-wrapper .anteng-table-sticky-scroll {
+.ice-table-wrapper .ice-table-sticky-scroll {
   border-top: none;
 }
-.anteng-spin-nested-loading .anteng-spin-container::after {
+.ice-spin-nested-loading .ice-spin-container::after {
   background: $color-bg-500;
 }

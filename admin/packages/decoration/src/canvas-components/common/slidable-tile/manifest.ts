@@ -62,7 +62,7 @@ export default {
             title: '主标题内容',
             subtitle: '副标题内容',
             icon: {
-              url: 'http://kacat-test.oss-cn-hangzhou.aliyuncs.com/upload/4d0934d2b8e54fc74331f7f3ce48a6fe.png'
+              url: 'http://dev-cdn.ice-test.oss-cn-hangzhou.aliyuncs.com/upload/4d0934d2b8e54fc74331f7f3ce48a6fe.png'
             },
             backgroundColor: '#fff',
             action: null,

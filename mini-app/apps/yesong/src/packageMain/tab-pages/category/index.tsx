@@ -479,7 +479,7 @@ export default defineComponent({
               >
                 <Image
                   class="category-page__banner"
-                  src="https://dev-cdn.anteng.cn/upload/20240514/8f6516c361bdcf92433128f3a1a522a3.webp"
+                  src="https://dev-cdn.ice.cn/upload/20240514/8f6516c361bdcf92433128f3a1a522a3.webp"
                   mode="widthFix"
                 />
               </div> */}

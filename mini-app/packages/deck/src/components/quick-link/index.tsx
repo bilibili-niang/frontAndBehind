@@ -70,7 +70,7 @@ export default defineComponent({
           return {
             title: '标题内容',
             image: {
-              url: `https://dev-cdn.cardcat.cn/anteng/example_${('0' + (index + 1)).slice(-2)}.png`,
+              url: `https://dev-cdn.cardcat.cn/ice/example_${('0' + (index + 1)).slice(-2)}.png`,
               size: 256,
               height: 256
             },

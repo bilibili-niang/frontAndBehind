@@ -1,12 +1,12 @@
 export * from './order'
 
 /** 组件库类名前缀 */
-export const PREFIX_CLS = 'anteng'
+export const PREFIX_CLS = 'ice'
 
 export const withPrefix = (text: string) => `${PREFIX_CLS}-${text}`
 
 /** 默认 logo 图标 */
-export const LOGO_URL = 'https://dev-cdn.anteng.cn/upload/b3488689043533a61d23db9c688596ea.png'
+export const LOGO_URL = 'https://dev-cdn.ice.cn/upload/b3488689043533a61d23db9c688596ea.png'
 
 /** 默认用户头像，未登录,未设置时使用 */
 export const DEFAULT_AVATAR = '/defaultAvatar.png'

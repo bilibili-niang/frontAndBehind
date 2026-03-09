@@ -15,7 +15,7 @@
   }
 }
 .main-layout .main-sidebar {
-  background: var(--anteng-color-bg-100);
+  background: var(--ice-color-bg-100);
   border-right: 1px solid var(--ui-border-color);
   padding: 0;
   overflow-y: auto;
@@ -29,7 +29,7 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-color: var(--anteng-color-bg-800);
+  background-color: var(--ice-color-bg-800);
   display: flex;
   flex-direction: column;
   padding: 0 !important;
@@ -135,7 +135,7 @@
 	justify-content: flex-end;
 	padding: 0 12px;
 	border-bottom: 1px solid var(--ui-border-color);
-	background: var(--anteng-color-bg-600);
+	background: var(--ice-color-bg-600);
 	/* 贴边显示，避免产生左右 5px 的留白 */
 	top: 0;
 	left: 0;
@@ -151,7 +151,7 @@
 	}
 
   &-pure-background {
-    background: var(--anteng-color-bg-50) !important;
+    background: var(--ice-color-bg-50) !important;
   }
 }
 .main-layout .bottom-content {
@@ -222,7 +222,7 @@
   padding: 2px 8px;
   border-radius: 999px;
   background: var(--color-6);
-  color: var(--anteng-color-primary-text, #fff);
+  color: var(--ice-color-primary-text, #fff);
   border: 1px solid var(--ui-border-color);
 }
 .text-base {
@@ -258,7 +258,7 @@
 /* 设置弹窗 - 主题开关美化（仅作用于设置面板） */
 .settings-section {
   padding: 20px;
-  :where(.anteng-switch) {
+  :where(.ice-switch) {
     --switch-height: 24px;
     --switch-width: 48px;
     --switch-pad: 2px;
@@ -270,18 +270,18 @@
     box-shadow: inset 0 0 0 1px var(--color-border-base);
     transition: background 0.2s ease, box-shadow 0.2s ease;
   }
-  :where(.anteng-switch:hover) {
+  :where(.ice-switch:hover) {
     background: var(--ui-switch-bg-hover);
     box-shadow: inset 0 0 0 1px var(--color-border-base), 0 2px 8px rgba(0, 0, 0, .08);
   }
   /* 隐藏原内层，使用自定义圆点 */
-  :where(.anteng-switch .anteng-switch-inner),
-  :where(.anteng-switch .anteng-switch-handle),
-  :where(.anteng-switch .anteng-switch-loading-icon) {
+  :where(.ice-switch .ice-switch-inner),
+  :where(.ice-switch .ice-switch-handle),
+  :where(.ice-switch .ice-switch-loading-icon) {
     display: none !important;
   }
   /* 圆点 */
-  :where(.anteng-switch)::after {
+  :where(.ice-switch)::after {
     content: "";
     position: absolute;
     top: var(--switch-pad);
@@ -294,24 +294,24 @@
     transition: transform 0.18s ease, background 0.2s ease;
   }
   /* 选中态：使用主题主色的浅色混合作为轨道 */
-  :where(.anteng-switch.anteng-switch-checked) {
-    background: var(--anteng-color-primary-02);
+  :where(.ice-switch.ice-switch-checked) {
+    background: var(--ice-color-primary-02);
   }
-  :where(.anteng-switch.anteng-switch-checked)::after {
+  :where(.ice-switch.ice-switch-checked)::after {
     transform: translateX(calc(var(--switch-width) - var(--switch-height)));
   }
 }
 /* 深色主题下稍增强对比 */
 [theme="dark"] {
   .settings-section {
-    :where(.anteng-switch) {
+    :where(.ice-switch) {
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14);
     }
   }
 }
 [theme="dark"] {
   .settings-section {
-    :where(.anteng-switch)::after {
+    :where(.ice-switch)::after {
       background: #fff;
     }
   }

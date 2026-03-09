@@ -2,7 +2,7 @@
 
 ## 概述
 
-anTeng 前端管理系统是一个基于 Vue 3 + TypeScript + Vite + Ant Design Vue 构建的企业级前端管理解决方案。项目采用 pnpm + monorepo 工作区，将可复用能力沉淀为独立包并在应用内组合使用，兼顾工程可维护性与多端复用。
+ice 前端管理系统是一个基于 Vue 3 + TypeScript + Vite + Ant Design Vue 构建的企业级前端管理解决方案。项目采用 pnpm + monorepo 工作区，将可复用能力沉淀为独立包并在应用内组合使用，兼顾工程可维护性与多端复用。
 
 ## 技术栈
 

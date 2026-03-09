@@ -4,7 +4,7 @@ import Popup, { usePopupClose } from './popup'
 import Navigator, { NavigatorOptions } from '../navigator'
 import { renderAnyNode, uuid } from '@pkg/utils'
 import { BaseEventOrigFunction, ScrollView, ScrollViewProps } from '@tarojs/components'
-import Anteng, { emitter, navigateBack, useAppStore, useLogin, useUserStore } from '@pkg/core/lib'
+import ice, { emitter, navigateBack, useAppStore, useLogin, useUserStore } from '@pkg/core/lib'
 import { storeToRefs } from 'pinia'
 import Taro, { useRouter } from '@tarojs/taro'
 import useCoreStore from '../../stores/core'
@@ -116,9 +116,9 @@ export default defineComponent({
       () => props.enableShareAppMessage,
       enable => {
         if (enable) {
-          Anteng.showShareMenu()
+          ice.showShareMenu()
         } else {
-          Anteng.hideShareMenu()
+          ice.hideShareMenu()
         }
       },
       { immediate: true }

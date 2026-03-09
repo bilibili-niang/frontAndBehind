@@ -2,7 +2,7 @@
   user-select: none;
   .jsf_form-item {
     width: 600px;
-    .anteng-picker {
+    .ice-picker {
       width: 100%;
     }
   }
@@ -48,7 +48,7 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, var(--anteng-color-primary, #1890ff), #40a9ff);
+      background: linear-gradient(90deg, var(--ice-color-primary, #1890ff), #40a9ff);
       z-index: 1;
     }
   }
@@ -66,7 +66,7 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--anteng-color-primary, #1890ff), #40a9ff);
+    background: linear-gradient(135deg, var(--ice-color-primary, #1890ff), #40a9ff);
     color: #fff;
     display: flex;
     align-items: center;
@@ -116,12 +116,12 @@
       transform: translate(-50%, -50%) scale(1);
       opacity: 1;
     }
-    .anteng-icon {
+    .ice-icon {
       font-size: 22px;
       transition: all 0.2s ease-out;
       filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
     }
-    &:hover .anteng-icon {
+    &:hover .ice-icon {
       transform: scale(1.2);
       filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
     }
@@ -204,7 +204,7 @@
   width: 100%;
   position: relative;
   .activity-create-content {
-    background-color: var(--anteng-color-bg-100);
+    background-color: var(--ice-color-bg-100);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     display: flex;
@@ -215,7 +215,7 @@
   }
   .loading-content-fixed {
     opacity: 0.9;
-    background: var(--anteng-color-bg-100);
+    background: var(--ice-color-bg-100);
     position: absolute;
     align-items: center;
     display: flex;
@@ -234,7 +234,7 @@
   }
 }
 .activity-create-content {
-  background-color: var(--anteng-color-bg-300);
+  background-color: var(--ice-color-bg-300);
   height: fit-content;
   position: relative;
 }
@@ -274,12 +274,12 @@
   position: relative;
   white-space: nowrap;
   &.active {
-    color: var(--anteng-color-primary);
+    color: var(--ice-color-primary);
     position: relative;
     z-index: 0;
     &::after {
-      background-color: var(--anteng-color-primary-02);
-      border: 1px solid var(--anteng-color-primary);
+      background-color: var(--ice-color-primary-02);
+      border: 1px solid var(--ice-color-primary);
       border-radius: 20px;
       content: "";
       height: 28px;
@@ -289,7 +289,7 @@
     }
   }
   &:hover {
-    color: var(--anteng-color-primary);
+    color: var(--ice-color-primary);
   }
 }
 /* 内容区域 */
@@ -317,12 +317,12 @@
     width: 6px;
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--anteng-color-bg-50);
+    background: var(--ice-color-bg-50);
     border-radius: 8px;
     width: 6px;
   }
   &::-webkit-scrollbar-track {
-    background: var(--anteng-color-bg-100);
+    background: var(--ice-color-bg-100);
   }
   &::-webkit-scrollbar-button {
     display: none;
@@ -336,14 +336,14 @@
 .elevator-content-item {
   margin-bottom: 1px;
   .jsf-collapse {
-    background: var(--anteng-color-bg-300);
+    background: var(--ice-color-bg-300);
     border: none;
     border-radius: 0;
     margin-bottom: 0;
     width: 100%;
     .jsf-collapse__header {
       align-items: center;
-      background: var(--anteng-color-bg-300);
+      background: var(--ice-color-bg-300);
       border-bottom: none;
       color: var(--color-text-base);
       cursor: pointer;
@@ -396,7 +396,7 @@
   .w_object {
     padding-bottom: 20px;
     padding-top: 20px;
-    background-color: var(--anteng-color-bg-400);
+    background-color: var(--ice-color-bg-400);
   }
 }
 /* SchemaForm样式覆盖 */
@@ -429,7 +429,7 @@
 }
 .activity-create-content,
 .elevator-content-container {
-  background-color: var(--anteng-color-bg-300);
+  background-color: var(--ice-color-bg-300);
 }
 .jsf_form-content {
   padding-bottom: 0 !important;

@@ -3,8 +3,8 @@ import request from '../request'
 
 export const getPayParams = (orderNo: string) => {
   return request({
-    // url: `/anteng-cornerstone-order-wap/m/unifiedOrder/${orderNo}/payInfo`,
-    url: `/anteng-cornerstone-order-wap/m/unifiedOrder/${orderNo}/payInfoNew`,
+    // url: `/ice-cornerstone-order-wap/m/unifiedOrder/${orderNo}/payInfo`,
+    url: `/ice-cornerstone-order-wap/m/unifiedOrder/${orderNo}/payInfoNew`,
     method: 'get',
     withMerchantId: true,
     params: {

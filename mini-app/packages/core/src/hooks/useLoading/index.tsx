@@ -117,10 +117,10 @@ export const GlobalLoading = defineComponent({
 
     return () => {
       return (
-        <div class={['anteng-global-loading', (props.toastVisible || closeable.value) && 'toast-visible']}>
+        <div class={['ice-global-loading', (props.toastVisible || closeable.value) && 'toast-visible']}>
           <Spin primary={props.toastVisible || closeable.value} />
-          <div class="anteng-global-loading__tip">{props.text}</div>
-          {closeable.value && <Icon class="anteng-global-loading__close" name="close" onClick={close} />}
+          <div class="ice-global-loading__tip">{props.text}</div>
+          {closeable.value && <Icon class="ice-global-loading__close" name="close" onClick={close} />}
         </div>
       )
     }

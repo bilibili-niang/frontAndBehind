@@ -7,7 +7,7 @@ import { ICouponAuditRecord } from './types'
  */
 export const getCouponList = (params: any) => {
   return request({
-    url: '/anteng-cornerstone-order-wap/m/couponRecord/list',
+    url: '/ice-cornerstone-order-wap/m/couponRecord/list',
     method: 'get',
     withMerchantId: true,
     params
@@ -30,7 +30,7 @@ export const $postAuditStaticCoupon = (options: {
   number: number
 }) => {
   return request({
-    url: '/anteng-cornerstone-order-wap/m/goods/coupon/verification',
+    url: '/ice-cornerstone-order-wap/m/goods/coupon/verification',
     method: 'post',
     withMerchantId: true,
     data: options
@@ -51,7 +51,7 @@ export const $postAuditDynamicCoupon = (options: {
   number: number
 }) => {
   return request({
-    url: '/anteng-cornerstone-order-wap/m/goods/coupon/dynamic-verification',
+    url: '/ice-cornerstone-order-wap/m/goods/coupon/dynamic-verification',
     method: 'post',
     withMerchantId: true,
     data: options
@@ -61,7 +61,7 @@ export const $postAuditDynamicCoupon = (options: {
 /** 获取子订单下的卡券核销记录 */
 export const $getCouponAuditRecords = (orderNo: string) => {
   return request<PaginationData<ICouponAuditRecord>>({
-    url: `/anteng-cornerstone-order-wap/m/goods/coupon/verification-record/${orderNo}`,
+    url: `/ice-cornerstone-order-wap/m/goods/coupon/verification-record/${orderNo}`,
     method: 'get',
     withMerchantId: true
   })

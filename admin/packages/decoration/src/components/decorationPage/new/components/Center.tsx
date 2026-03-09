@@ -122,7 +122,7 @@ export default defineComponent({
 
     return () => (
       <div
-        class="decoration-center flex items-center justify-center p-4 overflow-hidden flex-col border-r border-[var(--color-border-base)] bg-[var(--anteng-color-bg-50)]">
+        class="decoration-center flex items-center justify-center p-4 overflow-hidden flex-col border-r border-[var(--color-border-base)] bg-[var(--ice-color-bg-50)]">
         <div
           ref={frameRef}
           class="phone-frame w-[375px] bg-white flex flex-col"

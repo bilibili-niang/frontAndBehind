@@ -1,6 +1,6 @@
 import './components/deck'
 
-import anteng, { useAppStore } from '@pkg/core'
+import ice, { useAppStore } from '@pkg/core'
 
 import {
   QUICK_MENU_ITEM_CATEGORY,
@@ -18,7 +18,7 @@ import { DEFAULT_SHARE_PAYLOAD } from './constants/share'
 
 export default () => {
   // 注册快捷导航默认项
-  anteng.setQuickMenuList(
+  ice.setQuickMenuList(
     process.env.TARO_ENV === 'h5'
       ? [
           QUICK_MENU_ITEM_HOME,
@@ -42,7 +42,7 @@ export default () => {
         ]
   )
 
-  anteng.setDefaultShare(() => {
+  ice.setDefaultShare(() => {
     // console.log(payload)
     return {
       ...DEFAULT_SHARE_PAYLOAD

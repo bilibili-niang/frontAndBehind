@@ -78,7 +78,7 @@ export { default as ImageUploader } from './src/components/image-uploader'
 
 export { CommonProfileHeader } from './src/components/profile-header'
 
-const anteng = {
+const ice = {
   /** 设置快捷导航默认功能项，请确保在 Pinia 挂载后使用 */
   setQuickMenuList: (list: QuickMenuItem[]) => {
     useCoreStore().setQuickMenuList(list)
@@ -91,7 +91,7 @@ const anteng = {
   hideShareMenu: () => {
     if (process.env.TARO_ENV !== 'h5') {
       nextTick(() => {
-        useCoreStore().setDisabledSharePage(anteng.getPageId()!, true)
+        useCoreStore().setDisabledSharePage(ice.getPageId()!, true)
       })
       return Taro.hideShareMenu()
     }
@@ -100,7 +100,7 @@ const anteng = {
   showShareMenu: (options?: Taro.showShareMenu.Option) => {
     if (process.env.TARO_ENV !== 'h5') {
       nextTick(() => {
-        useCoreStore().setDisabledSharePage(anteng.getPageId()!, false)
+        useCoreStore().setDisabledSharePage(ice.getPageId()!, false)
       })
       return Taro.showShareMenu(options ?? {})
     }
@@ -111,7 +111,7 @@ const anteng = {
   }
 }
 
-export default anteng
+export default ice
 
 export * from './src/components/dev'
 

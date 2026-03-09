@@ -53,7 +53,7 @@ export default defineComponent({
           {/* <img class="survey-form-editor-view__banner" src="https://image.wjx.cn/images/theme/vmbg1.png" /> */}
           <img
             class="survey-form-editor-view__banner"
-            src="https://dev-cdn.anteng.cn/upload/5e97376a7d789a59c3dd7db2602ccf30.jpg"
+            src="https://dev-cdn.ice.cn/upload/5e97376a7d789a59c3dd7db2602ccf30.jpg"
           />
           <div class="survey-form-editor-view__page">
             {paginationEnable.value && (

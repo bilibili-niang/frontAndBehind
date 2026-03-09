@@ -92,7 +92,7 @@ export const useWechatBind = async (options?: IWechatBindOptions) => {
       content: () => {
         return (
           <div class="bind-wechat-modal">
-            <Image class="logo" src="https://cdn.anteng.cn/upload/20240903/30953b7dbfe2a77dbd004a5b510577da.svg"></Image>
+            <Image class="logo" src="https://cdn.ice.cn/upload/20240903/30953b7dbfe2a77dbd004a5b510577da.svg"></Image>
             <div class="desc">
               {renderAnyNode(options?.desc) || (
                 <>
