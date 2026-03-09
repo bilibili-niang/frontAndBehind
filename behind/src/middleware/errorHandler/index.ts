@@ -19,14 +19,21 @@ export enum ErrorCode {
  */
 export class BusinessError extends Error {
   public code: number
-  public data?: any
+  public data?: unknown
 
-  constructor(message: string, code: number = ErrorCode.BAD_REQUEST, data?: any) {
+  constructor(message: string, code: number = ErrorCode.BAD_REQUEST, data?: unknown) {
     super(message)
     this.name = 'BusinessError'
     this.code = code
     this.data = data
   }
+}
+
+/**
+ * HTTP 错误类型
+ */
+interface HttpError extends Error {
+  status?: number
 }
 
 /**
@@ -40,7 +47,9 @@ export class BusinessError extends Error {
 export const errorHandler = async (ctx: Context, next: Next) => {
   try {
     await next()
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const errorObj = err as HttpError
+
     // 判断是否为业务错误
     if (err instanceof BusinessError) {
       ctx.status = err.code
@@ -54,19 +63,19 @@ export const errorHandler = async (ctx: Context, next: Next) => {
     }
 
     // 系统错误处理
-    ctx.status = err.status || ErrorCode.INTERNAL_ERROR
+    ctx.status = errorObj.status || ErrorCode.INTERNAL_ERROR
 
     // 记录错误日志
     error(JSON.stringify({
-      message: err.message,
-      stack: err.stack,
-      name: err.name
+      message: errorObj.message,
+      stack: errorObj.stack,
+      name: errorObj.name
     }), {
       ip: ctx.ip,
       method: ctx.method,
       path: ctx.path,
       statusCode: ctx.status,
-      headers: ctx.headers,
+      headers: ctx.headers as Record<string, unknown>,
       payload: ctx.request.body ?? ctx.query,
       userAgent: ctx.headers['user-agent'] as string
     })
@@ -78,7 +87,7 @@ export const errorHandler = async (ctx: Context, next: Next) => {
       success: false,
       msg: formatted.message,
       data: process.env.NODE_ENV === 'development'
-        ? { issues: formatted.issues, detail: formatted.detail, stack: err.stack }
+        ? { issues: formatted.issues, detail: formatted.detail, stack: errorObj.stack }
         : { issues: formatted.issues }
     })
   }
