@@ -10,7 +10,7 @@ export interface LoginCredentials {
   account?: string
   userName?: string
   phoneNumber?: string
-  password: string
+  password?: string
 }
 
 /**
@@ -25,8 +25,8 @@ export interface LoginResult {
  * 创建用户数据
  */
 export interface CreateUserData {
-  userName: string
-  password: string
+  userName?: string
+  password?: string
   phoneNumber?: string
   email?: string
   avatar?: string
@@ -51,6 +51,10 @@ export class UserService {
     // 验证至少提供一个账号标识
     if (!account && !userName && !phoneNumber) {
       throw new Error('账号错误：account、userName 或 phoneNumber 至少提供一个')
+    }
+
+    if (!password) {
+      throw new Error('密码不能为空')
     }
 
     // 构建查询条件
@@ -106,6 +110,10 @@ export class UserService {
    */
   async create(userData: CreateUserData) {
     const { password, ...restData } = userData
+
+    if (!password) {
+      throw new Error('密码不能为空')
+    }
 
     // 业务规则：管理员状态必须为 1
     let status = restData.status

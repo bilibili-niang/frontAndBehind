@@ -1,5 +1,5 @@
 /* eslint-disable */
-import axios, { AxiosError, type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios'
+import axios, { AxiosError, type AxiosInstance, type InternalAxiosRequestConfig, type AxiosResponse } from 'axios'
 
 export type ResponseBody<D> = Promise<ResponseData<D>>
 export type ResponseData<D> = {
@@ -35,7 +35,7 @@ const err = (error: AxiosError) => {
  * @description 请求发起前的拦截器
  * @returns {AxiosRequestConfig} config
  */
-request.interceptors.request.use(async (config: AxiosRequestConfig) => {
+request.interceptors.request.use(async (config: InternalAxiosRequestConfig) => {
   Object.assign(config.headers || {}, getAuthHeaders())
   return config
 })

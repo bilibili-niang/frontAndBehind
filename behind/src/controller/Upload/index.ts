@@ -7,7 +7,7 @@ import { getErrorMessage } from '@/types/controller'
 /**
  * 文件上传请求类型扩展
  */
-interface RequestWithFiles extends Context['request'] {
+type RequestWithFiles = Context['request'] & {
   files?: {
     file?: KoaBodyFile | KoaBodyFile[]
     image?: KoaBodyFile | KoaBodyFile[]

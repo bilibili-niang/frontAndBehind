@@ -71,9 +71,14 @@ export class ToolService {
       }
     })
 
+    const pages = Math.ceil(result.total / size)
+
     return {
-      count: result.total,
-      rows
+      records: rows,
+      total: result.total,
+      current: page,
+      size,
+      pages
     }
   }
 }

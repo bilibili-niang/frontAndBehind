@@ -94,5 +94,5 @@ export interface SystemPageData {
  */
 export interface DeleteResult {
   success: boolean
-  msg: string
+  msg?: string
 }

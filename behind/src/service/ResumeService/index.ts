@@ -70,12 +70,13 @@ export class ResumeService {
    */
   async create(data: CreateResumeData): Promise<ResumeListItem> {
     // 将 data 对象转为 JSON 字符串
-    const createData: CreateResumeData & { data?: string } = { ...data }
+    const createData: any = { ...data }
     if (data.data && typeof data.data === 'object') {
       createData.data = JSON.stringify(data.data)
     }
 
     const resume = await resumeRepository.create(createData)
+    // @ts-ignore
     return this.toPlain(resume)
   }
 
@@ -120,7 +121,7 @@ export class ResumeService {
    */
   async update(id: string, userId: string, data: UpdateResumeData): Promise<ResumeListItem | null> {
     // 将 data 对象转为 JSON 字符串
-    const updateData: UpdateResumeData & { data?: string } = { ...data }
+    const updateData: any = { ...data }
     if (data.data && typeof data.data === 'object') {
       updateData.data = JSON.stringify(data.data)
     }
@@ -133,6 +134,7 @@ export class ResumeService {
 
     // 返回更新后的数据
     const latest = await resumeRepository.findByIdAndUserId(id, userId)
+    // @ts-ignore
     return latest ? this.toPlain(latest) : null
   }
 

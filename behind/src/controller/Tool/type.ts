@@ -20,21 +20,21 @@ const TranslateResType = commonResponse({
 * */
 const IllegalLogListRes = commonResponse({
   data: z.object({
-    count: z.number(),
-    rows: z.array(z.object({
+    records: z.array(z.object({
       id: z.string(),
       ip: z.string().optional().nullable(),
+      url: z.string().optional().nullable(),
       method: z.string().optional().nullable(),
-      path: z.string().optional().nullable(),
-      statusCode: z.number().optional().nullable(),
-      level: z.string().optional().nullable(),
-      reason: z.string().optional().nullable(),
       headers: z.string().optional().nullable(),
-      payload: z.string().optional().nullable(),
-      userAgent: z.string().optional().nullable(),
-      createdAt: z.string().optional(),
-      updatedAt: z.string().optional()
-    }))
+      body: z.string().optional().nullable(),
+      query: z.string().optional().nullable(),
+      reason: z.string().optional().nullable(),
+      createTime: z.string().optional(),
+    })),
+    total: z.number(),
+    current: z.number(),
+    size: z.number(),
+    pages: z.number(),
   })
 })
 

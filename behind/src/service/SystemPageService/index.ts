@@ -124,6 +124,7 @@ export class SystemPageService {
     scene: string
     key?: string
     title: string
+    name?: string
     tags?: string
     decorate?: object | string
     config?: object | string
@@ -162,6 +163,7 @@ export class SystemPageService {
     scene?: string
     key?: string
     title?: string
+    name?: string
     tags?: string
     decorate?: object | string
     config?: object | string
