@@ -217,4 +217,4 @@ class SystemPageController {
   }
 }
 
-export default new SystemPageController()
+export { SystemPageController }

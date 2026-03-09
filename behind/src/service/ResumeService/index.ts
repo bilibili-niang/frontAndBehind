@@ -70,7 +70,7 @@ export class ResumeService {
    */
   async create(data: CreateResumeData): Promise<ResumeListItem> {
     // 将 data 对象转为 JSON 字符串
-    const createData: CreateResumeData & { data?: string } = { ...data }
+    const createData: any = { ...data }
     if (data.data && typeof data.data === 'object') {
       createData.data = JSON.stringify(data.data)
     }
@@ -120,7 +120,7 @@ export class ResumeService {
    */
   async update(id: string, userId: string, data: UpdateResumeData): Promise<ResumeListItem | null> {
     // 将 data 对象转为 JSON 字符串
-    const updateData: UpdateResumeData & { data?: string } = { ...data }
+    const updateData: any = { ...data }
     if (data.data && typeof data.data === 'object') {
       updateData.data = JSON.stringify(data.data)
     }
