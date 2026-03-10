@@ -58,8 +58,10 @@ export default defineComponent({
             {props.count > 0 && <span class="suffix-badge">{props.count}</span>}
             <span class="add-action" onClick={add}>+ {props.addText}</span>
           </div>
-          {/* 未展开且有内容时，显示底部预览条 */}
-          {!props.expanded && props.count > 0 && <div class="ui-expand-list__preview" />}
+          {/* 预览条：始终渲染，通过 CSS 类控制显隐，实现平滑过渡 */}
+          {props.count > 0 && (
+            <div class={`ui-expand-list__preview ${props.expanded ? 'is-expanded' : ''}`} />
+          )}
         </div>
         <Transition
           onEnter={onEnter}
