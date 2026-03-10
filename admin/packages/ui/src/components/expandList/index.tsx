@@ -12,6 +12,7 @@ export default defineComponent({
     count: { type: Number, default: 0 },
     expanded: { type: Boolean, default: false },
     addText: { type: String, default: '添加' },
+    activeId: { type: String, default: '' },
     items: { type: Array as () => Array<{ id: string, title: string, sub?: string }>, default: () => [] },
     onAdd: { type: Function as any, default: undefined },
     onToggle: { type: Function as any, default: undefined },
@@ -47,8 +48,11 @@ export default defineComponent({
         onComplete: done
       })
     }
+    const hasActiveChild = () => {
+      return props.items.some(it => it.id === props.activeId)
+    }
     return () => (
-      <div class="ui-expand-list">
+      <div class={`ui-expand-list ${hasActiveChild() ? 'has-active-child' : ''}`}>
         <div class="ui-expand-list__header" onClick={toggle}>
           <div class="prefix">
             {props.icon && <span class="prefix-icon"><Icon name={props.icon as any} /></span>}
@@ -71,7 +75,11 @@ export default defineComponent({
           {props.expanded ? (
             <div class="ui-expand-list__body">
               {props.items.map((it) => (
-                <div class="child-card" key={it.id} onClick={(e) => { e.stopPropagation(); handleClickItem(it.id) }}>
+                <div 
+                  class={`child-card ${props.activeId === it.id ? 'is-active' : ''}`} 
+                  key={it.id} 
+                  onClick={(e) => { e.stopPropagation(); handleClickItem(it.id) }}
+                >
                   <div class="child-title">{it.title || '未命名'}</div>
                   {it.sub && <div class="child-sub">{it.sub}</div>}
                 </div>

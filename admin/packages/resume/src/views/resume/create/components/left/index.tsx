@@ -37,10 +37,43 @@ export default defineComponent({
       if (type === 'award') return (store.content as any).awards?.length || 0
       return 0
     }
+    
+    // 映射函数：根据类型返回对应的 items 列表
+    const getItems = (type: string) => {
+      if (type === 'education') {
+        return store.content.educations.map((x: any) => ({
+          id: x.id,
+          title: [x.school, x.major, x.degree].filter(Boolean).join(' | '),
+          sub: [x.startDate, x.endDate].filter(Boolean).join(' - ')
+        }))
+      }
+      if (type === 'work') {
+        return store.content.experiences.map((x: any) => ({
+          id: x.id,
+          title: [x.company, x.position].filter(Boolean).join(' | '),
+          sub: [x.startDate, x.endDate].filter(Boolean).join(' - ')
+        }))
+      }
+      if (type === 'project') {
+        return store.content.projects.map((x: any) => ({
+          id: x.id,
+          title: [x.name, x.role].filter(Boolean).join(' | '),
+          sub: [x.startDate, x.endDate].filter(Boolean).join(' - ')
+        }))
+      }
+      if (type === 'award') {
+        return ((store.content as any).awards || []).map((x: any) => ({
+          id: x.id,
+          title: [x.name, x.level].filter(Boolean).join(' | '),
+          sub: [x.org, x.date].filter(Boolean).join(' / ')
+        }))
+      }
+      return []
+    }
+    const isListType = (type: string) => ['education', 'work', 'project', 'award'].includes(type)
     const onDragStart = (e: DragEvent, type: string) => {
       e.dataTransfer?.setData('text/plain', type)
     }
-    const isListType = (type: string) => ['education', 'work', 'project', 'award'].includes(type)
     const toggleExpand = (type: string) => expanded.value[type] = !expanded.value[type]
     const onAdd = (type: string) => {
       if (type === 'basic-info' || type === 'summary') {
@@ -85,21 +118,9 @@ export default defineComponent({
                   expanded={!!expanded.value[it.type]}
                   onToggle={() => toggleExpand(it.type)}
                   onAdd={() => onAdd(it.type)}
-                  items={
-                    it.type === 'education' ? store.content.educations.map((x: any) => ({
-                      id: x.id, title: [x.school, x.major, x.degree].filter(Boolean).join(' | '), sub: [x.startDate, x.endDate].filter(Boolean).join(' - ')
-                    })) :
-                    it.type === 'work' ? store.content.experiences.map((x: any) => ({
-                      id: x.id, title: [x.company, x.position].filter(Boolean).join(' | '), sub: [x.startDate, x.endDate].filter(Boolean).join(' - ')
-                    })) :
-                    it.type === 'project' ? store.content.projects.map((x: any) => ({
-                      id: x.id, title: [x.name, x.role].filter(Boolean).join(' | '), sub: [x.startDate, x.endDate].filter(Boolean).join(' - ')
-                    })) :
-                    (store.content as any).awards.map((x: any) => ({
-                      id: x.id, title: [x.name, x.level].filter(Boolean).join(' | '), sub: [x.org, x.date].filter(Boolean).join(' / ')
-                    }))
-                  }
+                  items={getItems(it.type)}
                   onItemClick={(id: string) => selectItem(it.type, id)}
+                  activeId={store.activeModuleId}
                 />
               ) : (
                 <div
