@@ -41,13 +41,13 @@ export class ResumeService {
    * 将简历数据转换为普通对象
    * 处理 data 字段的 JSON 解析
    */
-  private toPlain(resume: Model | null): ResumeListItem {
+  private toPlain(resume: Model | null | any): ResumeListItem {
     if (!resume) {
       return { id: '', userId: '', data: {} }
     }
 
     // 转换为普通对象
-    const base = resume.toJSON() as ResumeListItem & { data: string | object }
+    const base = (typeof resume.toJSON === 'function' ? resume.toJSON() : resume) as ResumeListItem & { data: string | object }
 
     // 处理 data 字段
     try {
