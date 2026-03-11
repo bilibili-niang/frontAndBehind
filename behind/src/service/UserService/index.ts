@@ -1,4 +1,5 @@
 import { userRepository, FindUserCriteria } from '@/repository/UserRepository'
+import { permissionService, UserPermissionInfo } from '@/service/PermissionService'
 import { jwtEncryption } from '@/utils'
 import { UserInfo } from '@/types'
 
@@ -17,6 +18,7 @@ export interface LoginCredentials {
 export interface LoginResult {
   token: string
   userInfo: UserInfo
+  permissions: UserPermissionInfo
 }
 
 /**
@@ -96,7 +98,10 @@ export class UserService {
       updatedAt: plain.updatedAt,
     }
 
-    return { token, userInfo }
+    // 获取用户权限信息
+    const permissions = await permissionService.getUserPermissions(plain.id)
+
+    return { token, userInfo, permissions }
   }
 
   /**
