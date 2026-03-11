@@ -1,10 +1,11 @@
-import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw, type NavigationGuardNext } from 'vue-router'
 
 import BasicLayout, { BasicLayoutException } from '../components/layouts/basic-layout'
 import PageView from '../components/layouts/page-view'
 import Exception404 from '../views/exception/404'
 import useBasicLayoutStore from '../stores/basic-layout'
 import useUserStore from '../stores/user'
+import usePermissionStore from '../stores/permission'
 import blank from '../views/exception/blank'
 import { last } from 'lodash'
 import { AppProgress } from '../components/baseApp'
@@ -63,9 +64,61 @@ const router = createRouter({
   ]
 })
 
+/**
+ * 检查路由权限
+ * @param to 目标路由
+ * @param permissionStore 权限 store
+ * @returns 是否有权限
+ */
+function checkRoutePermission(to: any, permissionStore: ReturnType<typeof usePermissionStore>): boolean {
+  // 不需要权限的路由
+  const publicPaths = ['/login', '/404', '/blank']
+  if (publicPaths.includes(to.path)) {
+    return true
+  }
+
+  // 检查是否需要特定权限
+  const requiredPermission = to.meta?.permission as string | undefined
+  if (requiredPermission) {
+    return permissionStore.hasPermission(requiredPermission)
+  }
+
+  // 检查是否需要特定角色
+  const requiredRole = to.meta?.role as string | undefined
+  if (requiredRole) {
+    return permissionStore.hasRole(requiredRole)
+  }
+
+  // 默认允许访问
+  return true
+}
+
 router.beforeEach((to, from, next) => {
-  next()
   AppProgress.start()
+
+  const permissionStore = usePermissionStore()
+  const userStore = useUserStore()
+
+  // 1. 检查是否已登录
+  if (!userStore.isLogin && to.path !== '/login') {
+    next('/login')
+    return
+  }
+
+  // 2. 已登录用户访问登录页，重定向到首页
+  if (userStore.isLogin && to.path === '/login') {
+    next('/')
+    return
+  }
+
+  // 3. 检查权限
+  if (userStore.isLogin && !checkRoutePermission(to, permissionStore)) {
+    // 无权限，跳转到 403 或 404
+    next('/404')
+    return
+  }
+
+  next()
 })
 
 router.afterEach((to, from, failure) => {

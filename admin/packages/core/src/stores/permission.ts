@@ -1,138 +1,199 @@
-import { flatMapDeep, omit } from 'lodash'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
-export interface MenuItem {
+/**
+ * 菜单树节点
+ */
+export interface MenuTreeNode {
   id: string
-  parentId: string
-  title?: string
-  key?: string
-  value?: string
-  source?: string
-  sort?: number
-  customId?: string
-  customSource?: string
-  customName?: string
-  code?: string
-  name?: string
-  path?: string
-  component?: string
-  hidden?: boolean
-  category?: number
-  children?: MenuItem[]
-}
-
-export const usePermissionStore = defineStore('core-permission', () => {
-  const permissions = ref<MenuItem[]>()
-
-  const controls = computed(() => {
-    // return permissions.value
-    return permissions.value?.filter((item) => item.category == 2)
-  })
-
-  const controlCodes = computed(() => controls.value?.map((item) => item.code) ?? [])
-
-  const generatePermission = (routes: any[]) => {
-    permissions.value = flattenTree(routes)
-
-    console.log('生成权限映射：', permissions.value, controls.value, controlCodes.value)
-  }
-
-  /**
-   * 是否有功能（按钮）权限
-   *
-   * 注意：需在 .env 配置权限前缀 VITE_APP_PERMISSION_PREFIX，否则一律返回 true
-   */
-  const hasPermission = (code: string) => {
-    if (import.meta.env.VITE_APP_USE_BUTTON_PERMISSION == 'false') {
-      return true
-    }
-    try {
-      // 若设置的权限code 不含前缀、表示这个权限是功能模块的
-      // 注意：运营后台对不同应用配置的公共权限 code 必须是相同的！
-      const prefix = import.meta.env.VITE_APP_PERMISSION_PREFIX
-
-      if (!prefix) return true
-
-      if (!code?.startsWith(prefix)) {
-        code = prefix + '-' + code
-      }
-    } catch (err) {
-      return true
-    }
-
-    return controlCodes.value.includes(code)
-  }
-
-  return {
-    generatePermission,
-    hasPermission
-  }
-})
-
-function flattenTree(tree: any): any[] {
-  return flatMapDeep(tree, (node: any) => {
-    return [omit(node, 'children')].concat(flattenTree(node.children || []))
-  })
-}
-
-type PermissionControls =
-  | boolean
-  | string
-  | string[]
-  | {
-  /** 必须同时满足这些权限，优先于 or */
-  and?: string[]
-  /** 必须同时满足这些权限，如有 and 条件将失效 */
-  or?: string[]
+  name: string
+  path: string
+  component: string
+  icon: string
+  permission: string
+  sort: number
+  hidden: boolean
+  keepAlive: boolean
+  children: MenuTreeNode[]
 }
 
 /**
- * 判断是否有权限，
- *
- * 注意：需在 .env 配置权限前缀 VITE_APP_PERMISSION_PREFIX，否则一律视为拥有权限，
- *
- * 可直接传入 boolean，方便用于多应用环境判断
+ * 用户权限信息
  */
-export const withPermission = (controls: PermissionControls, render?: (() => any) | any) => {
-  // 不使用按钮权限控制
-  if (import.meta.env.VITE_APP_USE_BUTTON_PERMISSION == 'false') {
-    console.log('不使用按钮权限控制')
-    return true
-  }
-  const { hasPermission } = usePermissionStore()
-
-  const check = (): boolean => {
-    if (typeof controls === 'boolean') {
-      return controls
-    }
-
-    if (typeof controls === 'string') {
-      return hasPermission(controls)
-    }
-
-    if (Array.isArray(controls)) {
-      // 默认 AND 逻辑
-      return controls.every(hasPermission)
-    }
-
-    if (controls?.and?.length) {
-      // AND 优先
-      return controls.and.every(hasPermission)
-    }
-
-    if (controls?.or?.length) {
-      return controls.or.some(hasPermission)
-    }
-
-    return false
-  }
-
-  const isAllowed = check()
-
-  if (render !== undefined) {
-    return isAllowed ? (typeof render === 'function' ? render() : render) : null
-  }
-
-  return isAllowed
+export interface UserPermissionInfo {
+  roles: string[]
+  permissions: string[]
+  menus: MenuTreeNode[]
 }
+
+/**
+ * 权限 Store
+ * 管理用户权限、角色、菜单
+ */
+const usePermissionStore = defineStore('PERMISSION', () => {
+  // State
+  const roles = ref<string[]>([])
+  const permissions = ref<string[]>([])
+  const menus = ref<MenuTreeNode[]>([])
+
+  // Getters
+  /**
+   * 是否已加载权限
+   */
+  const isLoaded = computed(() => {
+    return permissions.value.length > 0 || roles.value.length > 0
+  })
+
+  /**
+   * 是否为管理员
+   */
+  const isAdmin = computed(() => {
+    return roles.value.includes('admin')
+  })
+
+  /**
+   * 获取扁平化的菜单列表
+   */
+  const flatMenus = computed(() => {
+    const result: MenuTreeNode[] = []
+    const flatten = (items: MenuTreeNode[]) => {
+      items.forEach(item => {
+        result.push(item)
+        if (item.children && item.children.length > 0) {
+          flatten(item.children)
+        }
+      })
+    }
+    flatten(menus.value)
+    return result
+  })
+
+  /**
+   * 获取权限路由
+   */
+  const permissionRoutes = computed(() => {
+    return flatMenus.value.filter(menu => menu.path && !menu.hidden)
+  })
+
+  // Actions
+  /**
+   * 设置权限信息
+   * @param data 权限信息
+   */
+  const setPermissions = (data: UserPermissionInfo) => {
+    roles.value = data.roles || []
+    permissions.value = data.permissions || []
+    menus.value = data.menus || []
+  }
+
+  /**
+   * 检查是否有指定权限
+   * @param permission 权限标识
+   * @returns 是否有权限
+   */
+  const hasPermission = (permission: string | string[]): boolean => {
+    // 管理员拥有所有权限
+    if (isAdmin.value) return true
+
+    const perms = Array.isArray(permission) ? permission : [permission]
+    return perms.some(p => permissions.value.includes(p))
+  }
+
+  /**
+   * 检查是否有指定角色
+   * @param role 角色名称
+   * @returns 是否有角色
+   */
+  const hasRole = (role: string | string[]): boolean => {
+    const rolesList = Array.isArray(role) ? role : [role]
+    return rolesList.some(r => roles.value.includes(r))
+  }
+
+  /**
+   * 检查是否有菜单权限
+   * @param path 菜单路径
+   * @returns 是否有权限
+   */
+  const hasMenuPermission = (path: string): boolean => {
+    // 管理员拥有所有权限
+    if (isAdmin.value) return true
+
+    // 检查是否在权限路由中
+    return permissionRoutes.value.some(route => route.path === path)
+  }
+
+  /**
+   * 清除权限信息
+   */
+  const clearPermissions = () => {
+    roles.value = []
+    permissions.value = []
+    menus.value = []
+  }
+
+  /**
+   * 添加权限
+   * @param permission 权限标识
+   */
+  const addPermission = (permission: string) => {
+    if (!permissions.value.includes(permission)) {
+      permissions.value.push(permission)
+    }
+  }
+
+  /**
+   * 移除权限
+   * @param permission 权限标识
+   */
+  const removePermission = (permission: string) => {
+    const index = permissions.value.indexOf(permission)
+    if (index > -1) {
+      permissions.value.splice(index, 1)
+    }
+  }
+
+  /**
+   * 添加角色
+   * @param role 角色名称
+   */
+  const addRole = (role: string) => {
+    if (!roles.value.includes(role)) {
+      roles.value.push(role)
+    }
+  }
+
+  /**
+   * 移除角色
+   * @param role 角色名称
+   */
+  const removeRole = (role: string) => {
+    const index = roles.value.indexOf(role)
+    if (index > -1) {
+      roles.value.splice(index, 1)
+    }
+  }
+
+  return {
+    // State
+    roles,
+    permissions,
+    menus,
+    // Getters
+    isLoaded,
+    isAdmin,
+    flatMenus,
+    permissionRoutes,
+    // Actions
+    setPermissions,
+    hasPermission,
+    hasRole,
+    hasMenuPermission,
+    clearPermissions,
+    addPermission,
+    removePermission,
+    addRole,
+    removeRole
+  }
+})
+
+export default usePermissionStore
