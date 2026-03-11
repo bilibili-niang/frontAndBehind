@@ -95,14 +95,13 @@ export {
   UserListRes
 }
 
-// 登录请求体：支持账号/用户名/手机号多种登录方式，密码必填。
+// 登录请求体：支持用户名或手机号登录，密码必填。
 // 由于 koa-swagger-decorator 对 @body 的类型要求是 ZodObject，
 // 这里不使用 refine（会返回 ZodEffects），跨字段校验在控制器中处理。
 export const LoginReq = z.object({
-  account: z.string().nonempty().optional(), // 通用账号（可以是用户名、手机号等）
-  userName: z.string().nonempty().optional(),
-  phoneNumber: z.string().nonempty().optional(),
-  password: z.string().nonempty(),
+  userName: z.string().nonempty().optional().describe('用户名'),
+  phoneNumber: z.string().nonempty().optional().describe('手机号'),
+  password: z.string().nonempty().describe('密码'),
 })
 
 export type ILoginReq = z.infer<typeof LoginReq>

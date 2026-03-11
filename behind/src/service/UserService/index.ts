@@ -6,7 +6,6 @@ import { UserInfo } from '@/types'
  * 登录凭证
  */
 export interface LoginCredentials {
-  account?: string
   userName?: string
   phoneNumber?: string
   password?: string
@@ -45,11 +44,11 @@ export class UserService {
    * @throws Error 登录失败时抛出错误
    */
   async login(credentials: LoginCredentials): Promise<LoginResult> {
-    const { account, userName, phoneNumber, password } = credentials
+    const { userName, phoneNumber, password } = credentials
 
     // 验证至少提供一个账号标识
-    if (!account && !userName && !phoneNumber) {
-      throw new Error('账号错误：account、userName 或 phoneNumber 至少提供一个')
+    if (!userName && !phoneNumber) {
+      throw new Error('账号错误：userName 或 phoneNumber 至少提供一个')
     }
 
     if (!password) {
@@ -61,9 +60,7 @@ export class UserService {
       password
     }
 
-    if (account) {
-      criteria.account = account
-    } else if (userName) {
+    if (userName) {
       criteria.userName = userName
     } else if (phoneNumber) {
       criteria.phoneNumber = phoneNumber

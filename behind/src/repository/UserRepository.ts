@@ -6,7 +6,6 @@ import { BaseRepository } from './BaseRepository'
  * 查找用户条件
  */
 export interface FindUserCriteria {
-  account?: string
   userName?: string
   phoneNumber?: string
   password?: string
@@ -48,12 +47,7 @@ export class UserRepository extends BaseRepository<User> {
       where.password = criteria.password
     }
 
-    if (criteria.account) {
-      where[Op.or] = [
-        { userName: criteria.account },
-        { phoneNumber: criteria.account }
-      ]
-    } else if (criteria.userName) {
+    if (criteria.userName) {
       where.userName = criteria.userName
     } else if (criteria.phoneNumber) {
       where.phoneNumber = criteria.phoneNumber
