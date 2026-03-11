@@ -53,7 +53,7 @@ const seq = new Sequelize(DATABASE_NAME, process.env.USER_NAME, process.env.DATA
     connectTimeout: 5000
   },
   query: {
-    raw: true
+    raw: false
   }
 })
 
