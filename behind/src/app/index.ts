@@ -39,11 +39,32 @@ const app = new koa()
  * 捕获应用中的未处理错误，统一返回 JSON 格式的错误响应
  */
 onError(app, {
-  json: function (err, ctx) {
-    ctx.status = 500
+  // 处理所有类型的错误（包括 Zod 验证错误）
+  all: function (err, ctx) {
+    ctx.status = err.status || 400
     const formatted = formatError(err)
     ctx.body = ctxBody({
-      code: 500,
+      code: ctx.status,
+      success: false,
+      msg: formatted.message,
+      data: { issues: formatted.issues, detail: formatted.detail }
+    })
+  },
+  json: function (err, ctx) {
+    ctx.status = err.status || 500
+    const formatted = formatError(err)
+    ctx.body = ctxBody({
+      code: ctx.status,
+      success: false,
+      msg: formatted.message,
+      data: { issues: formatted.issues, detail: formatted.detail }
+    })
+  },
+  html: function (err, ctx) {
+    ctx.status = err.status || 500
+    const formatted = formatError(err)
+    ctx.body = ctxBody({
+      code: ctx.status,
       success: false,
       msg: formatted.message,
       data: { issues: formatted.issues, detail: formatted.detail }
