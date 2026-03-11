@@ -42,22 +42,22 @@ onError(app, {
   json: function (err, ctx) {
     ctx.status = err.status || 400
     const formatted = formatError(err)
-    ctx.body = ctxBody({
+    ctx.body = JSON.stringify(ctxBody({
       code: ctx.status,
       success: false,
       msg: formatted.message,
       data: { issues: formatted.issues, detail: formatted.detail }
-    })
+    }))
   },
   html: function (err, ctx) {
     ctx.status = err.status || 400
     const formatted = formatError(err)
-    ctx.body = ctxBody({
+    ctx.body = JSON.stringify(ctxBody({
       code: ctx.status,
       success: false,
       msg: formatted.message,
       data: { issues: formatted.issues, detail: formatted.detail }
-    })
+    }))
   }
 })
 
