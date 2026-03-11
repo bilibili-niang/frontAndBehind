@@ -59,7 +59,7 @@ export default class User extends BaseModel {
     comment: '手机号',
     allowNull: true,
     validate: {
-      is: /^1[3-9]\d{9}$/
+      is: /^1[3-9]\d{9}$/i
     }
   })
   declare phoneNumber: string

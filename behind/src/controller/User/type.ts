@@ -5,8 +5,10 @@ import { commonResponse } from '@/controller/common'
 const CreateUserReq = z.object({
   userName: z.string().nonempty(),
   password: z.string().nonempty(),
-  // 允许在创建时携带手机号并持久化
-  phoneNumber: z.string().optional(),
+  // 允许在创建时携带手机号并持久化，必须符合中国手机号格式
+  phoneNumber: z.string()
+    .regex(/^1[3-9]\d{9}$/, '手机号格式不正确，必须是11位数字且以1开头')
+    .optional(),
 })
 
 // 创建用户的响应
