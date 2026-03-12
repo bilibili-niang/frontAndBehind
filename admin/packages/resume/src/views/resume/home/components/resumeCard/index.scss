@@ -36,6 +36,113 @@
 			opacity: 0.8;
 			transition: transform 0.4s ease;
 		}
+
+		// 滚动信息样式 - 弹幕风格
+		.scrolling-info-mask {
+			position: absolute;
+			inset: 0;
+			z-index: 2;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			pointer-events: none;
+			overflow: hidden;
+			// 增加一点内边距，防止文字贴边
+			padding: 10px 0;
+
+			.scrolling-content {
+				display: flex;
+				flex-direction: column;
+				gap: 2px; // 减小行间距，使其更紧凑
+				width: 100%;
+				// 整体稍微倾斜
+				transform: skewY(-10deg) translateY(-10px);
+				transition: transform 0.4s ease;
+
+				.scroll-row {
+					display: flex;
+					width: fit-content;
+					white-space: nowrap;
+					// 初始位置在最左侧之外，或者根据动画调整
+					will-change: transform;
+					transition: font-size 0.4s ease, opacity 0.4s ease;
+					line-height: 1.2; // 控制行高，避免字体自带的行高过大
+
+					// 奇数行向左滚动
+					&:nth-child(odd) {
+						animation: ticker-left var(--duration, 25s) linear infinite;
+					}
+
+					// 偶数行向右滚动
+					&:nth-child(even) {
+						animation: ticker-right var(--duration, 30s) linear infinite;
+						align-self: flex-end; // 初始靠右
+					}
+					
+					.scroll-group {
+						display: flex;
+						flex-shrink: 0;
+					}
+
+					.scroll-item {
+						// font-size 由行内样式控制，这里只设置基础属性
+						font-weight: 800;
+						color: var(--ice-color-primary-600); // 主题色
+						margin: 0 24px; // 文字间距加大
+						opacity: 0.15; // 默认低透明度
+						transition: opacity 0.4s ease, color 0.4s ease;
+						text-transform: uppercase; // 可选：大写
+						letter-spacing: 1.5px;
+					}
+				}
+			}
+		}
+	}
+
+	// 鼠标悬浮时：
+	// 1. 文字变清晰
+	// 2. 取消倾斜
+	// 3. 字体大小统一
+	// 4. 速度变慢 (通过 animation-duration 覆盖? CSS 无法平滑过渡 duration，这里主要靠视觉统一)
+	&:hover .scrolling-info-mask {
+		.scrolling-content {
+			transform: skewY(0) translateY(0); // 取消倾斜
+			gap: 4px !important; // 减小 Hover 时的行间距
+			
+			// 使用 will-change 优化性能，提示浏览器该属性会变化
+			will-change: transform; 
+
+			.scroll-row {
+				font-size: 14px !important; // 减小字体大小
+				opacity: 1 !important; // 统一透明度
+				line-height: 1.2 !important; // 减小行高，更紧凑
+				
+				// 统一速度：覆盖 animation-duration
+				animation-duration: 40s !important;
+				
+				// 分离变换属性，减少重排
+				will-change: font-size, opacity;
+
+				.scroll-item {
+					opacity: 0.9;
+					color: var(--ice-color-primary-500);
+					margin: 0 6px; // 进一步减小文字间距
+					
+					// 优化颜色过渡
+					will-change: color, opacity;
+				}
+			}
+		}
+	}
+
+	@keyframes ticker-left {
+		0% { transform: translateX(0); }
+		100% { transform: translateX(-33.33%); } // 因为重复了3次，所以移动 1/3
+	}
+
+	@keyframes ticker-right {
+		0% { transform: translateX(-33.33%); }
+		100% { transform: translateX(0); }
 	}
 
 	&:hover .preview-placeholder {
