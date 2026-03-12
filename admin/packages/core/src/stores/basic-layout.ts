@@ -4,7 +4,7 @@ import { computed, ref, shallowRef } from 'vue'
 import router, { BasicLayout, Exception404, type IRoute } from '../router'
 import { message } from '@pkg/ui'
 import urlParse from 'url-parse'
-import { usePermissionStore } from './permission'
+import usePermissionStore from './permission'
 
 export type PageTab = {
   key: string

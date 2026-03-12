@@ -5,8 +5,11 @@ import authWeappRouter from './authWeapp'
 import decorateRouter from './decorate'
 import fakeApiRouter from './fakeApi'
 import iconsRouter from './icons'
+import menuRouter from './menu'
 import navigationRouter from './navigation'
+import permissionRouter from './permission'
 import resumeRouter from './resume'
+import roleRouter from './role'
 import shopRouter from './shop'
 import staticRouter from './static'
 import systemPageRouter from './systemPage'
@@ -25,8 +28,11 @@ const routers = [
   decorateRouter,
   fakeApiRouter,
   iconsRouter,
+  menuRouter,
   navigationRouter,
+  permissionRouter,
   resumeRouter,
+  roleRouter,
   shopRouter,
   staticRouter,
   systemPageRouter,
