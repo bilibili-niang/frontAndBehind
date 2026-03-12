@@ -1,6 +1,6 @@
 # 🚀 智能简历制作平台 | Resume Builder
 
-一个现代化的全栈简历制作系统，支持可视化编辑、多端适配和一键导出。
+一个基于 Vue 3 + Koa 的全栈简历制作系统，专注于提供简洁高效的简历编辑体验。
 
 [![Vue 3](https://img.shields.io/badge/Vue-3.3+-green.svg)](https://vuejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
@@ -8,19 +8,38 @@
 [![Koa](https://img.shields.io/badge/Koa-2.x-red.svg)](https://koajs.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## ✨ 核心特性
+---
 
-- 🎨 **可视化拖拽编辑** - 像搭积木一样制作简历，所见即所得
-- 📱 **多端适配** - 完美支持 PC、移动端、微信小程序
-- 🎯 **智能模板** - 多种行业模板，一键套用，快速开始
-- 💾 **数据持久化** - 云端保存，随时编辑，永不丢失
-- 📄 **一键导出** - 支持 PDF、Word、图片等多种格式导出
-- 🔐 **微信登录** - 支持微信小程序一键登录，便捷安全
-- 🌐 **RESTful API** - 规范的后端接口设计，完善的 Swagger 文档
+## 📖 项目简介
+
+本项目是一个**全栈简历制作平台**，目前核心功能是**在线简历编辑**。用户可以：
+
+- 📝 在线编辑个人简历内容
+- 🎨 选择和使用简历模板
+- 💾 保存简历到云端
+- � 导出简历为 PDF/图片格式
+
+**项目愿景**：打造一个简单易用、功能完善的简历制作工具，帮助求职者快速创建专业简历。
+
+---
+
+## ✨ 当前功能
+
+| 功能模块 | 状态 | 说明 |
+|---------|------|------|
+| 简历编辑 | ✅ 已完成 | 支持多模块内容编辑 |
+| 模板系统 | ✅ 已完成 | 多种简历模板可选 |
+| 用户系统 | ✅ 已完成 | 注册、登录、JWT 认证 |
+| 权限管理 | ✅ 已完成 | RBAC 角色权限控制 |
+| 数据持久化 | ✅ 已完成 | 云端保存简历数据 |
+| 简历导出 | 🚧 开发中 | PDF/图片导出 |
+| 微信小程序 | 🚧 开发中 | 移动端简历编辑 |
+
+---
 
 ## 🛠 技术栈
 
-### 前端
+### 前端 (admin/)
 - **框架**: Vue 3 + TypeScript
 - **构建工具**: Vite
 - **UI 组件库**: Ant Design Vue + Vuetify
@@ -28,19 +47,20 @@
 - **路由**: Vue Router 4
 - **拖拽组件**: vue-draggable-plus
 
-### 后端
+### 后端 (behind/)
 - **运行环境**: Node.js 18+
-- **框架**: Koa 2.x
-- **语言**: TypeScript
+- **框架**: Koa 2.x + TypeScript
 - **ORM**: Sequelize
 - **数据库**: MySQL
 - **缓存**: Redis（可选）
 - **日志**: log4js
 - **文档**: Swagger / OpenAPI
 
-### 小程序
-- **平台**: 微信小程序原生开发
+### 小程序 (mini-app/)
+- **平台**: 微信小程序
 - **组件库**: 自定义组件 + Vant Weapp
+
+---
 
 ## 📁 项目结构
 
@@ -75,6 +95,8 @@ frontAndBehind/
 │   └── packages/                   # 小程序组件包
 └── _bmad/                          # AI 助手配置
 ```
+
+---
 
 ## 🚀 快速开始
 
@@ -161,11 +183,15 @@ pnpm dev
 - 后端 API: http://localhost:3000
 - Swagger 文档: http://localhost:3000/swagger-html
 
+---
+
 ## 📚 文档
 
 - [后端架构设计](./behind/docs/architecture-issues.md)
 - [代码规范](./behind/docs/code-issues.md)
 - [API 文档](http://localhost:3000/swagger-html)（启动后端后访问）
+
+---
 
 ## 🔧 代码质量
 
@@ -174,6 +200,9 @@ pnpm dev
 - ✅ **统一错误处理** - 全局错误捕获和格式化
 - ✅ **完整的类型定义** - 所有接口都有类型支持
 - ✅ **代码规范** - ESLint + Prettier
+- ✅ **RBAC 权限系统** - 完整的角色权限控制
+
+---
 
 ## 📝 开发规范
 
@@ -197,6 +226,38 @@ chore: 构建过程或辅助工具的变动
 - `feature-*` - 功能分支
 - `hotfix-*` - 紧急修复分支
 
+---
+
+## 🗓 开发路线图
+
+### 第一阶段：基础功能 ✅
+- [x] 简历编辑器
+- [x] 用户系统
+- [x] 模板系统
+- [x] 数据持久化
+
+### 第二阶段：权限系统 ✅
+- [x] RBAC 权限控制
+- [x] 角色管理
+- [x] 菜单权限
+- [x] 数据权限
+
+### 第三阶段：导出功能 🚧
+- [ ] PDF 导出
+- [ ] 图片导出
+- [ ] Word 导出
+
+### 第四阶段：多端适配 🚧
+- [ ] 微信小程序
+- [ ] 移动端适配
+
+### 第五阶段：高级功能 📋
+- [ ] AI 简历优化建议
+- [ ] 简历评分系统
+- [ ] 模板市场
+
+---
+
 ## 🤝 贡献指南
 
 1. Fork 本仓库
@@ -205,9 +266,13 @@ chore: 构建过程或辅助工具的变动
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
 5. 打开一个 Pull Request
 
+---
+
 ## 📄 许可证
 
 本项目基于 [MIT](LICENSE) 许可证开源。
+
+---
 
 ## 🙏 致谢
 
