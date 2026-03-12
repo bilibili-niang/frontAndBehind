@@ -1,5 +1,5 @@
 import { userRepository } from '@/repository/UserRepository'
-import { jwtDecryption } from '@/utils'
+import { jwtDecryption, getTokenFromHeader } from '@/utils'
 import { Context } from 'koa'
 
 /**
@@ -55,7 +55,8 @@ export class UserProfileService {
    * @returns 验证结果
    */
   verifyToken(ctx: Context): AuthResult {
-    const token = ctx.get('Blade-Auth') || (ctx.headers['blade-auth'] as string)
+    // 使用统一的 token 获取逻辑
+    const token = getTokenFromHeader(ctx)
 
     if (!token) {
       return { success: false, code: 401, msg: '未登录或缺少凭证' }

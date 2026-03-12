@@ -93,16 +93,52 @@ function checkRoutePermission(to: any, permissionStore: ReturnType<typeof usePer
   return true
 }
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   AppProgress.start()
 
   const permissionStore = usePermissionStore()
   const userStore = useUserStore()
 
-  // 1. 检查是否已登录
-  if (!userStore.isLogin && to.path !== '/login') {
-    next('/login')
+  // 0. 白名单路由直接放行
+  const publicPaths = ['/login', '/404', '/blank']
+  if (publicPaths.includes(to.path)) {
+    next()
     return
+  }
+
+  // 1. 检查是否已登录
+  if (!userStore.isLogin) {
+    // 尝试从本地存储判断是否有 Token
+    const token = localStorage.getItem('Blade-Auth') || localStorage.getItem('Authorization')
+    if (token) {
+      // 有 Token 但未登录（可能是刷新页面），尝试获取用户信息
+      try {
+        await userStore.getUserInfo()
+        if (userStore.isLogin) {
+          // 获取成功，继续后续逻辑
+          // 如果访问的是登录页，重定向到首页
+          if (to.path === '/login') {
+             next('/')
+             return
+          }
+          // 检查权限
+          if (!checkRoutePermission(to, permissionStore)) {
+             next('/404')
+             return
+          }
+          next()
+          return
+        }
+      } catch (e) {
+        console.error('自动登录失败', e)
+      }
+    }
+
+    // 无 Token 或 获取用户信息失败
+    if (to.path !== '/login') {
+      next('/login')
+      return
+    }
   }
 
   // 2. 已登录用户访问登录页，重定向到首页

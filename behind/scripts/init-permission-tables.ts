@@ -3,7 +3,14 @@
  * 创建角色、权限、菜单相关表
  */
 
-import { sequelize } from '../src/config/db'
+import { addAliases } from 'module-alias'
+import path from 'path'
+
+addAliases({
+  '@': path.join(__dirname, '../src')
+})
+
+import sequelize from '../src/config/db'
 import { info, error } from '../src/config/log4j'
 
 async function initPermissionTables() {
@@ -76,7 +83,7 @@ async function initPermissionTables() {
         UNIQUE KEY uk_user_role (user_id, role_id),
         INDEX idx_user_id (user_id),
         INDEX idx_role_id (role_id),
-        FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
         FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户角色关联表'
     `)

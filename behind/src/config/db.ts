@@ -10,6 +10,12 @@ import SystemPage from '@/schema/systemPage'
 import CustomPage from '@/schema/customPage'
 import AuthWeapp from '@/schema/authWeapp'
 import Shop from '@/schema/shop'
+import Role from '@/schema/role'
+import Permission from '@/schema/permission'
+import UserRole from '@/schema/userRole'
+import RolePermission from '@/schema/rolePermission'
+import Menu from '@/schema/menu'
+import DataPermission from '@/schema/dataPermission'
 
 // 根据环境确定数据库名称
 const NODE_ENV = process.env.NODE_ENV || 'local' // 默认使用 local 环境
@@ -42,7 +48,23 @@ const seq = new Sequelize(DATABASE_NAME, process.env.USER_NAME, process.env.DATA
   host: process.env.DATABASE_HOST || '127.0.0.1',
   port: Number(process.env.DATABASE_PORT),
   logging: false,
-  models: [User, Authority, Resume, IllegalRequest, Navigation, SystemPage, CustomPage, AuthWeapp, Shop],
+  models: [
+    User, 
+    Authority, 
+    Resume, 
+    IllegalRequest, 
+    Navigation, 
+    SystemPage, 
+    CustomPage, 
+    AuthWeapp, 
+    Shop,
+    Role,
+    Permission,
+    UserRole,
+    RolePermission,
+    Menu,
+    DataPermission
+  ],
   pool: {
     max: 5,
     min: 0,

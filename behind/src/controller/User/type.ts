@@ -101,6 +101,7 @@ export {
 export const LoginReq = z.object({
   userName: z.string().nonempty().optional().describe('用户名'),
   phoneNumber: z.string().nonempty().optional().describe('手机号'),
+  account: z.string().nonempty().optional().describe('账号（用户名或手机号）'),
   password: z.string().nonempty().describe('密码'),
 })
 

@@ -9,6 +9,7 @@ import { UserInfo } from '@/types'
 export interface LoginCredentials {
   userName?: string
   phoneNumber?: string
+  account?: string
   password?: string
 }
 
@@ -46,10 +47,10 @@ export class UserService {
    * @throws Error 登录失败时抛出错误
    */
   async login(credentials: LoginCredentials): Promise<LoginResult> {
-    const { userName, phoneNumber, password } = credentials
+    const { userName, phoneNumber, account, password } = credentials
 
     // 验证至少提供一个账号标识
-    if (!userName && !phoneNumber) {
+    if (!userName && !phoneNumber && !account) {
       throw new Error('账号错误：userName 或 phoneNumber 至少提供一个')
     }
 
@@ -66,6 +67,13 @@ export class UserService {
       criteria.userName = userName
     } else if (phoneNumber) {
       criteria.phoneNumber = phoneNumber
+    } else if (account) {
+      // 如果 account 是 11 位数字且以 1 开头，则当作手机号，否则当作用户名
+      if (/^1[3-9]\d{9}$/.test(account)) {
+        criteria.phoneNumber = account
+      } else {
+        criteria.userName = account
+      }
     }
 
     // 查询用户

@@ -16,12 +16,22 @@ export interface ContextWithDecode extends Context {
 // - bladeauth: <token>
 // - Authorization: Bearer <token>
 export const getTokenFromHeader = (ctx: Context): string | null => {
-  const byGet = ctx.get('Blade-Auth') || ctx.get('blade-auth') || ctx.get('bladeauth')
-  const fromHeaders = (ctx.headers['blade-auth'] as string) || (ctx.headers['bladeauth'] as string) || ''
-  const bearer = (ctx.headers['authorization'] as string) || ''
-  const tokenFromBearer = bearer && /^Bearer\s+/i.test(bearer) ? bearer.replace(/^Bearer\s+/i, '') : ''
-  const token = byGet || fromHeaders || tokenFromBearer
-  return token || null
+  // 1. 优先尝试从 Authorization Header 获取 Bearer Token
+  const authHeader = ctx.get('Authorization')
+  if (authHeader && /^Bearer\s+/i.test(authHeader)) {
+    return authHeader.replace(/^Bearer\s+/i, '')
+  }
+
+  // 2. 尝试从 Blade-Auth Header 获取（支持 Bearer 前缀或纯 Token）
+  const bladeAuth = ctx.get('Blade-Auth') || ctx.get('blade-auth')
+  if (bladeAuth) {
+    if (/^Bearer\s+/i.test(bladeAuth)) {
+      return bladeAuth.replace(/^Bearer\s+/i, '')
+    }
+    return bladeAuth
+  }
+
+  return null
 }
 
 // 获取当前登录用户的 ID

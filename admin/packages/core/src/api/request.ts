@@ -47,7 +47,7 @@ export const getAuthHeaders = () => {
   const pure = raw.replace(/^Bearer\s+/i, '') || ''
   return {
     Authorization: bearer || localStorage.getItem('Authorization') || 'Basic c3U6c3Vfc2VjcmV0',
-    'Blade-Auth': pure || null
+    'Blade-Auth': bearer || null // 修改：Blade-Auth 也使用 Bearer 格式，与后端保持一致
   }
 }
 
@@ -120,9 +120,10 @@ request.interceptors.request.use(async (config: any) => {
   } else {
     const raw = localStorage.getItem('Blade-Auth') || ''
     const bearer = /^Bearer\s+/i.test(raw) ? raw : raw ? `Bearer ${raw}` : ''
-    const pure = raw.replace(/^Bearer\s+/i, '')
+    // const pure = raw.replace(/^Bearer\s+/i, '')
     config.headers['Authorization'] = bearer || config.headers['Authorization']
-    config.headers['Blade-Auth'] = pure || config.headers['Blade-Auth']
+    // 统一使用 Bearer 格式
+    config.headers['Blade-Auth'] = bearer || config.headers['Blade-Auth']
   }
 
   return config

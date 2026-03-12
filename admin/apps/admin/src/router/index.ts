@@ -46,7 +46,7 @@ registerRoutes([
 console.log('routes', router)
 
 // 路由守卫：当前不启用登录拦截，所有路由直接放行
-router.beforeEach((_to, _from, next) => next())
+// router.beforeEach((_to, _from, next) => next())
 export default router
 
 export * from './jump'
