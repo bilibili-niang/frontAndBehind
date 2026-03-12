@@ -37,7 +37,7 @@ import useModal from '../../hooks/useModal'
 import { useRoute } from 'vue-router'
 import { renderAnyNode } from '@pkg/utils'
 import { getColumnWidth } from './utils'
-import { withPermission } from '../../stores/permission'
+import usePermissionStore from '../../stores/permission'
 
 export type OmittedTableProps = Omit<TableProps<any>, 'columns'> &
   HTMLAttributes & { columns?: (Exclude<TableProps<any>['columns'], undefined>[number] & { hidden?: boolean })[] } // 拓展 hidden 属性，支持隐藏
@@ -912,8 +912,8 @@ type TableAction = {
   type?: 'default' | 'danger'
   disabled?: boolean
   hidden?: boolean
-  /** 权限，等同于调用 withPermission 的第一个参数，优先级低于 hidden */
-  permission?: Parameters<typeof withPermission>[0]
+  /** 权限，等同于调用 hasPermission 的第一个参数，优先级低于 hidden */
+  permission?: string | string[]
   icon?: any
   onClick?: () => void
   /** 使用 AuthButton 进行权限控制时的权限点，提供则优先使用 AuthButton 渲染 */
@@ -933,6 +933,7 @@ export const useTableAction = (cfg: {
   align?: 'center' | 'left' | 'right'
   list: (TableAction | false | null | undefined)[]
 }) => {
+  const permissionStore = usePermissionStore()
   const list = (cfg.list.filter((item) => !!item) as TableAction[]).map((item) => {
     if (item.hidden) {
       return null
@@ -942,9 +943,9 @@ export const useTableAction = (cfg: {
     // 1) 优先使用 item.perm；2) 否则使用 item.permission；3) 两者皆无则直接渲染
     let allow = true
     if (item.perm) {
-      allow = !!withPermission(item.perm)
+      allow = permissionStore.hasPermission(item.perm)
     } else if (item.permission !== undefined) {
-      allow = !!withPermission(item.permission)
+      allow = permissionStore.hasPermission(item.permission)
     }
 
     // 根据 hiddenMode 处理无权限情况

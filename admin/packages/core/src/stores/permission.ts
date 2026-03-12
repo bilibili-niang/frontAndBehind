@@ -196,4 +196,24 @@ const usePermissionStore = defineStore('PERMISSION', () => {
   }
 })
 
+/**
+ * 权限检查辅助函数
+ * @param permission 权限标识
+ * @returns 是否有权限
+ */
+export const withPermission = (permission: string | string[]): boolean => {
+  const permissionStore = usePermissionStore()
+  return permissionStore.hasPermission(permission)
+}
+
+/**
+ * 角色检查辅助函数
+ * @param role 角色名称
+ * @returns 是否有角色
+ */
+export const withRole = (role: string | string[]): boolean => {
+  const permissionStore = usePermissionStore()
+  return permissionStore.hasRole(role)
+}
+
 export default usePermissionStore
