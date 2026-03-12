@@ -8,6 +8,7 @@ import Permission from './permission'
 import RolePermission from './rolePermission'
 import UserRole from './userRole'
 import Menu from './menu'
+import DataPermission from './dataPermission'
 
 const schemas = []
 
@@ -22,5 +23,6 @@ export {
   Permission,
   RolePermission,
   UserRole,
-  Menu
+  Menu,
+  DataPermission
 }

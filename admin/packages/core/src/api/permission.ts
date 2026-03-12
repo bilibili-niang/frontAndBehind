@@ -330,3 +330,132 @@ export const getCurrentUserMenus = (): Promise<MenuTreeNode[]> => {
     method: 'get'
   })
 }
+
+// ==================== 数据权限 API ====================
+
+/**
+ * 数据权限范围
+ */
+export interface DataScope {
+  value: number
+  label: string
+  description: string
+}
+
+/**
+ * 数据权限规则
+ */
+export interface DataPermission {
+  id: string
+  roleId: string
+  resourceType: string
+  scope: number
+  customRule?: string
+  status: number
+  createdAt: string
+  updatedAt: string
+}
+
+/**
+ * 创建数据权限规则数据
+ */
+export interface CreateDataPermissionData {
+  roleId: string
+  resourceType: string
+  scope: number
+  customRule?: string
+  status?: number
+}
+
+/**
+ * 更新数据权限规则数据
+ */
+export interface UpdateDataPermissionData {
+  scope?: number
+  customRule?: string
+  status?: number
+}
+
+/**
+ * 获取数据权限范围选项
+ */
+export const getDataScopes = (): Promise<DataScope[]> => {
+  return request({
+    url: '/api/data-permission/scopes',
+    method: 'get'
+  })
+}
+
+/**
+ * 获取数据权限规则列表
+ */
+export const getDataPermissionList = (params?: {
+  roleId?: string
+  resourceType?: string
+  page?: number
+  size?: number
+}): Promise<{ list: DataPermission[]; pagination: { page: number; size: number; total: number } }> => {
+  return request({
+    url: '/api/data-permission',
+    method: 'get',
+    params
+  })
+}
+
+/**
+ * 获取当前用户的数据权限
+ */
+export const getCurrentDataPermission = (resourceType: string): Promise<{
+  resourceType: string
+  scope: number
+  condition: { deptIds?: string[]; userIds?: string[] }
+}> => {
+  return request({
+    url: '/api/data-permission/current',
+    method: 'get',
+    params: { resourceType }
+  })
+}
+
+/**
+ * 创建数据权限规则
+ */
+export const createDataPermission = (data: CreateDataPermissionData): Promise<DataPermission> => {
+  return request({
+    url: '/api/data-permission',
+    method: 'post',
+    data
+  })
+}
+
+/**
+ * 更新数据权限规则
+ */
+export const updateDataPermission = (id: string, data: UpdateDataPermissionData): Promise<DataPermission> => {
+  return request({
+    url: `/api/data-permission/${id}`,
+    method: 'put',
+    data
+  })
+}
+
+/**
+ * 删除数据权限规则
+ */
+export const deleteDataPermission = (id: string): Promise<void> => {
+  return request({
+    url: `/api/data-permission/${id}`,
+    method: 'delete'
+  })
+}
+
+/**
+ * 检查数据权限
+ */
+export const checkDataPermission = (resourceType: string, dataId: string): Promise<{ hasPermission: boolean }> => {
+  return request({
+    url: '/api/data-permission/check',
+    method: 'post',
+    data: { resourceType, dataId }
+  })
+}
