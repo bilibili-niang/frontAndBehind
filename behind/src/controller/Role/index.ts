@@ -139,8 +139,52 @@ class RoleController {
   async getUserRoles(ctx: Context) {
     try {
       const { userId } = ctx.params
-      // TODO: 实现获取用户角色服务方法
-      ctx.body = successResponse([])
+      const roles = await permissionService.getUserRoles(userId)
+      ctx.body = successResponse(roles)
+    } catch (err) {
+      const formatted = formatError(err)
+      ctx.body = errorResponse(formatted.message, 500)
+    }
+  }
+
+  /**
+   * 为角色分配权限
+   */
+  @routeConfig({
+    method: 'post',
+    path: '/role/permission',
+    summary: '为角色分配权限',
+    tags: ['角色管理'],
+    description: '为角色分配权限'
+  })
+  @middlewares([jwtMust, RequirePermission('button:role:permission')])
+  async assignPermissionsToRole(ctx: Context) {
+    try {
+      const { roleId, permissionIds } = ctx.request.body as { roleId: string; permissionIds: string[] }
+      await permissionService.assignPermissionsToRole(roleId, permissionIds)
+      ctx.body = successResponse(null, '分配权限成功')
+    } catch (err) {
+      const formatted = formatError(err)
+      ctx.body = errorResponse(formatted.message, 400)
+    }
+  }
+
+  /**
+   * 获取角色的权限
+   */
+  @routeConfig({
+    method: 'get',
+    path: '/role/permission/:roleId',
+    summary: '获取角色的权限',
+    tags: ['角色管理'],
+    description: '获取角色的权限列表'
+  })
+  @middlewares([jwtMust, RequirePermission('menu:role')])
+  async getRolePermissions(ctx: Context) {
+    try {
+      const { roleId } = ctx.params
+      const permissions = await permissionService.getRolePermissions(roleId)
+      ctx.body = successResponse(permissions)
     } catch (err) {
       const formatted = formatError(err)
       ctx.body = errorResponse(formatted.message, 500)
