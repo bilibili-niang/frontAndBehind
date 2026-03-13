@@ -4,28 +4,77 @@ import md5 from 'md5'
  * */
 import User from '@/schema/user'
 import Navigation from '@/schema/navigation'
-import { info } from '@/config/log4j'
+import { info, error } from '@/config/log4j'
 import SystemPage from '@/schema/systemPage'
 import CustomPage from '@/schema/customPage'
 import { defaultPages } from '@/config'
+import Role from '@/schema/role'
+import UserRole from '@/schema/userRole'
+import { sequelize } from '@/config/db'
 
-// 初始化管理员用户
-export const setAdminUser = () => {
-  User.findOne({
-    where: {
-      isAdmin: true
-    }
-  })
-    .then(res => {
-      if (!res) {
-        info('添加admin用户')
-        User.create({
-          userName: process.env.ADMIN_USER_NAME,
-          password: md5(process.env.ADMIN_USER_PASSWORD),
-          isAdmin: true
-        })
+// 初始化管理员用户并关联 admin 角色
+export const setAdminUser = async () => {
+  try {
+    const adminUser = await User.findOne({
+      where: {
+        isAdmin: true
       }
     })
+    
+    if (!adminUser) {
+      info('添加 admin 用户')
+      const newUser = await User.create({
+        userName: process.env.ADMIN_USER_NAME,
+        password: md5(process.env.ADMIN_USER_PASSWORD),
+        isAdmin: true
+      })
+      info(`admin 用户创建成功，ID: ${newUser.id}`)
+      
+      // 为新创建的 admin 用户关联 admin 角色
+      await assignAdminRoleToUser(newUser.id)
+    } else {
+      info('admin 用户已存在')
+      // 检查已存在的 admin 用户是否有关联角色，如果没有则关联
+      await assignAdminRoleToUser(adminUser.id)
+    }
+  } catch (err) {
+    error('初始化 admin 用户失败:', err)
+  }
+}
+
+// 为管理员用户分配 admin 角色
+const assignAdminRoleToUser = async (userId: string) => {
+  try {
+    // 查找 admin 角色
+    const adminRole = await Role.findOne({
+      where: { name: 'admin' }
+    })
+    
+    if (!adminRole) {
+      info('未找到 admin 角色，跳过角色关联')
+      return
+    }
+    
+    // 检查是否已有关联
+    const existingUserRole = await UserRole.findOne({
+      where: {
+        userId,
+        roleId: adminRole.id
+      }
+    })
+    
+    if (!existingUserRole) {
+      await UserRole.create({
+        userId,
+        roleId: adminRole.id
+      })
+      info(`用户 ${userId} 已关联 admin 角色`)
+    } else {
+      info(`用户 ${userId} 已关联 admin 角色，跳过`)
+    }
+  } catch (err) {
+    error('关联 admin 角色失败:', err)
+  }
 }
 
 // 初始化默认导航（仅在首次启动且没有任何导航记录时创建）
