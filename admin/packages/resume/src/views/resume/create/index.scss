@@ -24,6 +24,8 @@
 	.pdf-modal .modal-card { width: 360px; background: var(--ice-color-bg-100); border: 1px solid var(--color-border-base); border-radius: 12px; box-shadow: 0 10px 24px rgba(0,0,0,.25); padding: 16px; }
 	.pdf-modal .modal-title { font-weight: 600; margin-bottom: 12px; }
 	.pdf-modal .modal-body { display: flex; gap: 12px; align-items: center; }
+	.pdf-modal .modal-body .radio { display: inline-flex; align-items: center; gap: 6px; color: var(--color-text-base); cursor: pointer; user-select: none; }
+	.pdf-modal .modal-body .radio input[type="radio"] { accent-color: var(--ice-color-primary-500); cursor: pointer; }
 	.pdf-modal .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
 	.global-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.28); display: flex; align-items: center; justify-content: center; z-index: 2000; }
 	.global-overlay .card { min-width: 200px; padding: 16px 20px; border-radius: 12px; background: var(--ice-color-bg-100); border: 1px solid var(--color-border-base); box-shadow: 0 10px 24px rgba(0,0,0,.25); display: flex; align-items: center; gap: 12px; }
