@@ -3,7 +3,7 @@
  * 为现有用户分配默认角色（user 角色）
  */
 
-import { sequelize } from '@/config/db'
+import sequelize from '@/config/db'
 import { info, error } from '@/config/log4j'
 import User from '@/schema/user'
 import Role from '@/schema/role'

@@ -378,7 +378,10 @@ export class PermissionService {
    * @returns 权限列表
    */
   async getRolePermissions(roleId: string): Promise<Permission[]> {
-    return await rolePermissionRepository.getPermissionsByRoleId(roleId)
+    const rolePermissions = await rolePermissionRepository.findByRoleId(roleId)
+    const permissionIds = [...new Set(rolePermissions.map(rp => rp.permissionId))]
+    if (permissionIds.length === 0) return []
+    return await permissionRepository.findByIds(permissionIds)
   }
 
   /**

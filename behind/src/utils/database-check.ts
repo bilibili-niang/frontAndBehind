@@ -3,7 +3,7 @@
  * 在应用启动时自动运行，确保数据库和基础数据已就绪
  */
 
-import { sequelize } from '@/config/db'
+import sequelize from '@/config/db'
 import { info, error } from '@/config/log4j'
 import { setAdminUser, setDefaultNavigation, setDefaultSystemPages } from '@/utils/initialize'
 import { seedUserRoles } from '../../scripts/seed-user-roles'

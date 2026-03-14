@@ -54,6 +54,16 @@ export class RoleRepository extends BaseRepository<Role> {
   async findDefaultRole(): Promise<Role | null> {
     return await this.model.findOne({ where: { isDefault: true } })
   }
+
+  async findByIds(ids: string[]): Promise<Role[]> {
+    return await this.model.findAll({
+      where: {
+        id: {
+          [Op.in]: ids
+        }
+      }
+    })
+  }
 }
 
 export const roleRepository = new RoleRepository()

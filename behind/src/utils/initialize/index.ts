@@ -10,7 +10,7 @@ import CustomPage from '@/schema/customPage'
 import { defaultPages } from '@/config'
 import Role from '@/schema/role'
 import UserRole from '@/schema/userRole'
-import { sequelize } from '@/config/db'
+import sequelize from '@/config/db'
 
 // 初始化管理员用户并关联 admin 角色
 export const setAdminUser = async () => {
