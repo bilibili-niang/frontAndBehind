@@ -1,5 +1,5 @@
 import './index.scss'
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, watch, nextTick } from 'vue'
 import { Icon, Button, ExpandList } from '@pkg/ui'
 import { useResumeStore } from '@pkg/resume'
 
@@ -19,6 +19,33 @@ export default defineComponent({
   setup() {
     const store = useResumeStore()
     const expanded = ref<Record<string, boolean>>({})
+    const listTypes = new Set(['education', 'work', 'project', 'award'])
+
+    const inferListTypeById = (id: string): string | null => {
+      if (store.content.educations?.some((x: any) => x.id === id)) return 'education'
+      if (store.content.experiences?.some((x: any) => x.id === id)) return 'work'
+      if (store.content.projects?.some((x: any) => x.id === id)) return 'project'
+      if ((store.content as any).awards?.some((x: any) => x.id === id)) return 'award'
+      return null
+    }
+
+    watch(
+      () => [store.activeModuleType, store.activeModuleId] as const,
+      async ([type, id]) => {
+        if (!id) return
+
+        const targetType = (type && listTypes.has(type) ? type : inferListTypeById(id)) as string | null
+        if (!targetType) return
+
+        expanded.value[targetType] = true
+        await nextTick()
+
+        const root = document.querySelector('.resume-left .resume-components-list')
+        const activeEl = root?.querySelector('.ui-expand-list.has-active-child .child-card.is-active') as HTMLElement | null
+        activeEl?.scrollIntoView({ block: 'nearest' })
+      },
+      { immediate: true }
+    )
     const singleAdded = (type: string) => {
       if (type === 'basic-info') {
         const p: any = store.content.profile || {}
