@@ -280,6 +280,32 @@ export const getUserRoles = (userId: string): Promise<Role[]> => {
 }
 
 /**
+ * 为角色分配权限
+ */
+export interface AssignPermissionData {
+  roleId: string
+  permissionIds: string[]
+}
+
+export const assignPermissionsToRole = (data: AssignPermissionData): Promise<void> => {
+  return request({
+    url: '/api/role/permission',
+    method: 'post',
+    data
+  })
+}
+
+/**
+ * 获取角色的权限
+ */
+export const getRolePermissions = (roleId: string): Promise<Permission[]> => {
+  return request({
+    url: `/api/role/permission/${roleId}`,
+    method: 'get'
+  })
+}
+
+/**
  * 获取菜单列表
  */
 export const getMenuList = (): Promise<Menu[]> => {

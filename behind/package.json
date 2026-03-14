@@ -8,10 +8,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=local dotenv -e .env nodemon ./src/main.ts",
-    "init-db": "cross-env NODE_ENV=local dotenv -e .env ts-node ./scripts/init-db.ts",
-    "init-permission": "cross-env NODE_ENV=local dotenv -e .env ts-node ./scripts/init-permission-tables.ts",
-    "seed-permission": "cross-env NODE_ENV=local dotenv -e .env ts-node ./scripts/seed-permission-data.ts",
-    "prod": "cross-env NODE_ENV=production dotenv -e .env.production nodemon ./src/main.ts",
+    "prod": "cross-env NODE_ENV=production dotenv -e .env nodemon ./src/main.ts",
     "commit": "git-cz"
   },
   "config": {

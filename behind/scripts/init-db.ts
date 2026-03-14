@@ -25,6 +25,7 @@ import UserRole from '@/schema/userRole'
 import RolePermission from '@/schema/rolePermission'
 import Menu from '@/schema/menu'
 import DataPermission from '@/schema/dataPermission'
+import { seedUserRoles } from './seed-user-roles'
 
 // 根据环境确定数据库名称
 const NODE_ENV = process.env.NODE_ENV || 'local'
@@ -105,6 +106,7 @@ async function init() {
     await setAdminUser()
     await setDefaultNavigation()
     await setDefaultSystemPages()
+    await seedUserRoles()
     info('默认数据初始化完成')
 
     console.log('\x1b[32m%s\x1b[0m', '数据库初始化成功！')

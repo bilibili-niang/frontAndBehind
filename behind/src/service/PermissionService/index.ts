@@ -344,6 +344,44 @@ export class PermissionService {
   }
 
   /**
+   * 获取用户的角色
+   * @param userId 用户ID
+   * @returns 角色列表
+   */
+  async getUserRoles(userId: string): Promise<Role[]> {
+    const userRoles = await userRoleRepository.findByUserId(userId)
+    const roleIds = userRoles.map(ur => ur.roleId)
+    if (roleIds.length === 0) return []
+    return await roleRepository.findByIds(roleIds)
+  }
+
+  /**
+   * 为角色分配权限
+   * @param roleId 角色ID
+   * @param permissionIds 权限ID列表
+   */
+  async assignPermissionsToRole(roleId: string, permissionIds: string[]): Promise<void> {
+    debug(`为角色分配权限: ${roleId}, ${permissionIds.join(', ')}`)
+
+    // 删除现有权限关联
+    await rolePermissionRepository.deleteByRoleId(roleId)
+
+    // 创建新关联
+    if (permissionIds.length > 0) {
+      await rolePermissionRepository.batchCreate(roleId, permissionIds)
+    }
+  }
+
+  /**
+   * 获取角色的权限
+   * @param roleId 角色ID
+   * @returns 权限列表
+   */
+  async getRolePermissions(roleId: string): Promise<Permission[]> {
+    return await rolePermissionRepository.getPermissionsByRoleId(roleId)
+  }
+
+  /**
    * 获取所有角色
    * @returns 角色列表
    */

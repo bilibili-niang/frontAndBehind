@@ -66,6 +66,15 @@ export class RolePermissionRepository extends BaseRepository<RolePermission> {
     }))
     return await this.model.bulkCreate(records as any)
   }
+
+  /**
+   * 获取角色的所有权限
+   * @param roleId 角色ID
+   * @returns 权限ID列表
+   */
+  async getPermissionsByRoleId(roleId: string): Promise<RolePermission[]> {
+    return await this.model.findAll({ where: { roleId } })
+  }
 }
 
 export const rolePermissionRepository = new RolePermissionRepository()
