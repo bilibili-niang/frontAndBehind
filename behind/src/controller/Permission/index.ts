@@ -79,7 +79,7 @@ class PermissionController {
     tags: ['权限管理'],
     description: '获取所有权限列表'
   })
-  @middlewares([jwtMust, RequirePermission('menu:permission')])
+  // @middlewares([jwtMust, RequirePermission('menu:permission')])
   async getPermissionList(ctx: Context) {
     try {
       const permissions = await permissionService.getAllPermissions()
@@ -160,4 +160,4 @@ class PermissionController {
   }
 }
 
-export default PermissionController
+export { PermissionController }

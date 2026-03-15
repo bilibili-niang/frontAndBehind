@@ -67,6 +67,11 @@ onError(app, {
  */
 // @ts-ignore
 app
+  // 0. DEBUG: 打印请求信息
+  .use(async (ctx, next) => {
+    console.log(`[DEBUG] Request: ${ctx.method} ${ctx.path}`)
+    await next()
+  })
   // 1. 请求体解析：支持 multipart/form-data 文件上传
   .use(koaBody({
     multipart: true,

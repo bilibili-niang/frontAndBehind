@@ -1,6 +1,10 @@
 import request from './request'
 import type { MenuTreeNode } from '../stores/permission'
 
+const requestData = <T>(config: any): Promise<T> => {
+  return request<T>(config).then((res: any) => res?.data as T)
+}
+
 /**
  * 权限项
  */
@@ -157,7 +161,7 @@ export interface AssignRoleData {
  * 获取当前用户权限
  */
 export const getCurrentPermissions = (): Promise<UserPermissionInfo> => {
-  return request({
+  return requestData({
     url: '/api/permission/current',
     method: 'get'
   })
@@ -167,7 +171,7 @@ export const getCurrentPermissions = (): Promise<UserPermissionInfo> => {
  * 检查权限
  */
 export const checkPermission = (permission: string): Promise<{ hasPermission: boolean }> => {
-  return request({
+  return requestData({
     url: '/api/permission/check',
     method: 'post',
     data: { permission }
@@ -178,7 +182,7 @@ export const checkPermission = (permission: string): Promise<{ hasPermission: bo
  * 获取权限列表
  */
 export const getPermissionList = (): Promise<Permission[]> => {
-  return request({
+  return requestData({
     url: '/api/permission/list',
     method: 'get'
   })
@@ -188,7 +192,7 @@ export const getPermissionList = (): Promise<Permission[]> => {
  * 创建权限
  */
 export const createPermission = (data: CreatePermissionData): Promise<Permission> => {
-  return request({
+  return requestData({
     url: '/api/permission/create',
     method: 'post',
     data
@@ -199,7 +203,7 @@ export const createPermission = (data: CreatePermissionData): Promise<Permission
  * 更新权限
  */
 export const updatePermission = (id: string, data: UpdatePermissionData): Promise<Permission> => {
-  return request({
+  return requestData({
     url: `/api/permission/update/${id}`,
     method: 'put',
     data
@@ -210,7 +214,7 @@ export const updatePermission = (id: string, data: UpdatePermissionData): Promis
  * 删除权限
  */
 export const deletePermission = (id: string): Promise<void> => {
-  return request({
+  return requestData({
     url: `/api/permission/delete/${id}`,
     method: 'delete'
   })
@@ -220,7 +224,7 @@ export const deletePermission = (id: string): Promise<void> => {
  * 获取角色列表
  */
 export const getRoleList = (): Promise<Role[]> => {
-  return request({
+  return requestData({
     url: '/api/role/list',
     method: 'get'
   })
@@ -230,7 +234,7 @@ export const getRoleList = (): Promise<Role[]> => {
  * 创建角色
  */
 export const createRole = (data: CreateRoleData): Promise<Role> => {
-  return request({
+  return requestData({
     url: '/api/role/create',
     method: 'post',
     data
@@ -241,7 +245,7 @@ export const createRole = (data: CreateRoleData): Promise<Role> => {
  * 更新角色
  */
 export const updateRole = (id: string, data: UpdateRoleData): Promise<Role> => {
-  return request({
+  return requestData({
     url: `/api/role/update/${id}`,
     method: 'put',
     data
@@ -252,7 +256,7 @@ export const updateRole = (id: string, data: UpdateRoleData): Promise<Role> => {
  * 删除角色
  */
 export const deleteRole = (id: string): Promise<void> => {
-  return request({
+  return requestData({
     url: `/api/role/delete/${id}`,
     method: 'delete'
   })
@@ -262,7 +266,7 @@ export const deleteRole = (id: string): Promise<void> => {
  * 为用户分配角色
  */
 export const assignRolesToUser = (data: AssignRoleData): Promise<void> => {
-  return request({
+  return requestData({
     url: '/api/role/assign',
     method: 'post',
     data
@@ -273,7 +277,7 @@ export const assignRolesToUser = (data: AssignRoleData): Promise<void> => {
  * 获取用户的角色
  */
 export const getUserRoles = (userId: string): Promise<Role[]> => {
-  return request({
+  return requestData({
     url: `/api/role/user/${userId}`,
     method: 'get'
   })
@@ -288,7 +292,7 @@ export interface AssignPermissionData {
 }
 
 export const assignPermissionsToRole = (data: AssignPermissionData): Promise<void> => {
-  return request({
+  return requestData({
     url: '/api/role/permission',
     method: 'post',
     data
@@ -299,7 +303,7 @@ export const assignPermissionsToRole = (data: AssignPermissionData): Promise<voi
  * 获取角色的权限
  */
 export const getRolePermissions = (roleId: string): Promise<Permission[]> => {
-  return request({
+  return requestData({
     url: `/api/role/permission/${roleId}`,
     method: 'get'
   })
@@ -309,7 +313,7 @@ export const getRolePermissions = (roleId: string): Promise<Permission[]> => {
  * 获取菜单列表
  */
 export const getMenuList = (): Promise<Menu[]> => {
-  return request({
+  return requestData({
     url: '/api/menu/list',
     method: 'get'
   })
@@ -319,7 +323,7 @@ export const getMenuList = (): Promise<Menu[]> => {
  * 创建菜单
  */
 export const createMenu = (data: CreateMenuData): Promise<Menu> => {
-  return request({
+  return requestData({
     url: '/api/menu/create',
     method: 'post',
     data
@@ -330,7 +334,7 @@ export const createMenu = (data: CreateMenuData): Promise<Menu> => {
  * 更新菜单
  */
 export const updateMenu = (id: string, data: UpdateMenuData): Promise<Menu> => {
-  return request({
+  return requestData({
     url: `/api/menu/update/${id}`,
     method: 'put',
     data
@@ -341,7 +345,7 @@ export const updateMenu = (id: string, data: UpdateMenuData): Promise<Menu> => {
  * 删除菜单
  */
 export const deleteMenu = (id: string): Promise<void> => {
-  return request({
+  return requestData({
     url: `/api/menu/delete/${id}`,
     method: 'delete'
   })
@@ -351,7 +355,7 @@ export const deleteMenu = (id: string): Promise<void> => {
  * 获取当前用户菜单
  */
 export const getCurrentUserMenus = (): Promise<MenuTreeNode[]> => {
-  return request({
+  return requestData({
     url: '/api/menu/current',
     method: 'get'
   })
@@ -406,7 +410,7 @@ export interface UpdateDataPermissionData {
  * 获取数据权限范围选项
  */
 export const getDataScopes = (): Promise<DataScope[]> => {
-  return request({
+  return requestData({
     url: '/api/data-permission/scopes',
     method: 'get'
   })
@@ -421,7 +425,7 @@ export const getDataPermissionList = (params?: {
   page?: number
   size?: number
 }): Promise<{ list: DataPermission[]; pagination: { page: number; size: number; total: number } }> => {
-  return request({
+  return requestData({
     url: '/api/data-permission',
     method: 'get',
     params
@@ -436,7 +440,7 @@ export const getCurrentDataPermission = (resourceType: string): Promise<{
   scope: number
   condition: { deptIds?: string[]; userIds?: string[] }
 }> => {
-  return request({
+  return requestData({
     url: '/api/data-permission/current',
     method: 'get',
     params: { resourceType }
@@ -447,7 +451,7 @@ export const getCurrentDataPermission = (resourceType: string): Promise<{
  * 创建数据权限规则
  */
 export const createDataPermission = (data: CreateDataPermissionData): Promise<DataPermission> => {
-  return request({
+  return requestData({
     url: '/api/data-permission',
     method: 'post',
     data
@@ -458,7 +462,7 @@ export const createDataPermission = (data: CreateDataPermissionData): Promise<Da
  * 更新数据权限规则
  */
 export const updateDataPermission = (id: string, data: UpdateDataPermissionData): Promise<DataPermission> => {
-  return request({
+  return requestData({
     url: `/api/data-permission/${id}`,
     method: 'put',
     data
@@ -469,7 +473,7 @@ export const updateDataPermission = (id: string, data: UpdateDataPermissionData)
  * 删除数据权限规则
  */
 export const deleteDataPermission = (id: string): Promise<void> => {
-  return request({
+  return requestData({
     url: `/api/data-permission/${id}`,
     method: 'delete'
   })
@@ -479,7 +483,7 @@ export const deleteDataPermission = (id: string): Promise<void> => {
  * 检查数据权限
  */
 export const checkDataPermission = (resourceType: string, dataId: string): Promise<{ hasPermission: boolean }> => {
-  return request({
+  return requestData({
     url: '/api/data-permission/check',
     method: 'post',
     data: { resourceType, dataId }

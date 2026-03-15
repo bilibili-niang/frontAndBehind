@@ -6,7 +6,7 @@
  */
 import { defineComponent, ref, onMounted, computed } from 'vue'
 import { Tabs, Card, Transfer, Table, Tag, Button, message, Spin, Empty } from 'ant-design-vue'
-import { useSearchTable } from '../../components/search-table'
+import { useSearchTable } from '../../../components/search-table'
 import {
   getRoleList,
   getUserRoles,
@@ -16,8 +16,8 @@ import {
   getRolePermissions,
   type Role,
   type Permission
-} from '../../api/permission'
-import { $accountList } from '../../api'
+} from '../../../api/permission'
+import { $accountList } from '../../../api'
 
 const { TabPane } = Tabs
 
@@ -141,27 +141,22 @@ export default defineComponent({
           {
             title: '用户名',
             dataIndex: 'userName',
-            width: 150
+            width: 120
           },
           {
             title: '手机号',
             dataIndex: 'phoneNumber',
-            width: 150
+            width: 120
           },
           {
             title: '状态',
             dataIndex: 'status',
-            width: 100,
+            width: 80,
             customRender: ({ text }: { text: number }) => {
               return <Tag color={text === 1 ? 'success' : 'default'}>
                 {text === 1 ? '启用' : '禁用'}
               </Tag>
             }
-          },
-          {
-            title: '创建时间',
-            dataIndex: 'createdAt',
-            width: 180
           }
         ],
         rowSelection: {
@@ -206,23 +201,27 @@ export default defineComponent({
     })
 
     return () => (
-      <Card>
+      <Card bodyStyle={{ padding: '16px' }}>
         <Tabs v-model:activeKey={activeTab.value}>
-          {/* Tab 1: 用户角色分配 */}
-          <TabPane key="user-role" tab="用户角色分配">
+          {/* Tab 1: 用户分配 */}
+          <TabPane key="user-role" tab="用户分配">
             <Spin spinning={loading.value}>
-              <div style={{ display: 'flex', gap: '24px' }}>
-                {/* 用户列表 */}
-                <div style={{ flex: 1, maxWidth: '500px' }}>
-                  <h3 style={{ marginBottom: '16px' }}>选择用户</h3>
-                  {UserTable()}
+              <div style={{ display: 'flex', gap: '24px', height: 'calc(100vh - 200px)', overflow: 'hidden' }}>
+                {/* 用户列表 - 左侧固定宽度或自适应 */}
+                <div style={{ flex: '1 1 40%', minWidth: '350px', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                  {/* 使用 SearchTable 组件，确保它能自适应高度 */}
+                  <div style={{ flex: 1, overflow: 'hidden' }}>
+                    {UserTable}
+                  </div>
                 </div>
 
-                {/* 角色分配 */}
-                <div style={{ flex: 1 }}>
-                  <h3 style={{ marginBottom: '16px' }}>分配角色</h3>
+                {/* 角色分配 - 右侧 */}
+                <div style={{ flex: '1 1 60%', display: 'flex', flexDirection: 'column', padding: '0 12px' }}>
+                  <h3 style={{ marginBottom: '16px', fontWeight: 'bold' }}>
+                    分配角色 {selectedUserId.value ? <Tag color="blue">已选择用户</Tag> : <Tag>请选择左侧用户</Tag>}
+                  </h3>
                   {selectedUserId.value ? (
-                    <>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
                       <Transfer
                         dataSource={roleTransferData.value}
                         titles={['可选角色', '已分配角色']}
@@ -232,59 +231,68 @@ export default defineComponent({
                         }}
                         render={(item: any) => item.title}
                         listStyle={{
-                          width: '280px',
-                          height: '350px'
+                          width: '100%',
+                          minWidth: '250px',
+                          height: '400px'
                         }}
+                        style={{ width: '100%' }}
                       />
-                      <div style={{ marginTop: '16px', textAlign: 'center' }}>
+                      <div style={{ marginTop: '24px' }}>
                         <Button
                           type="primary"
                           onClick={saveUserRoles}
                           disabled={!selectedUserId.value}
+                          size="large"
                         >
-                          保存用户角色
+                          保存用户角色配置
                         </Button>
                       </div>
-                    </>
+                    </div>
                   ) : (
-                    <Empty description="请先在左侧选择用户" />
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', background: '#f5f5f5', borderRadius: '8px' }}>
+                      <Empty description="请先在左侧列表中选择一个用户进行分配" />
+                    </div>
                   )}
                 </div>
               </div>
             </Spin>
           </TabPane>
 
-          {/* Tab 2: 角色权限管理 */}
-          <TabPane key="role-permission" tab="角色权限管理">
+          {/* Tab 2: 权限管理 */}
+          <TabPane key="role-permission" tab="权限管理">
             <Spin spinning={loading.value}>
-              <div style={{ display: 'flex', gap: '24px' }}>
+              <div style={{ display: 'flex', gap: '24px', height: 'calc(100vh - 200px)', overflow: 'hidden' }}>
                 {/* 角色列表 */}
-                <div style={{ width: '280px' }}>
-                  <h3 style={{ marginBottom: '16px' }}>选择角色</h3>
-                  <Table
-                    columns={[
-                      {
-                        title: '角色名称',
-                        dataIndex: 'displayName'
-                      }
-                    ]}
-                    dataSource={allRoles.value}
-                    rowKey="id"
-                    size="small"
-                    onRow={(record: Role) => ({
-                      onClick: () => handleRoleRowClick(record),
-                      style: { cursor: 'pointer' }
-                    })}
-                    rowClassName={() => 'clickable-row'}
-                    pagination={false}
-                  />
+                <div style={{ width: '280px', display: 'flex', flexDirection: 'column', borderRight: '1px solid #f0f0f0', paddingRight: '16px' }}>
+                  <h3 style={{ marginBottom: '16px', fontWeight: 'bold' }}>角色列表</h3>
+                  <div style={{ flex: 1, overflowY: 'auto' }}>
+                    <Table
+                      columns={[
+                        {
+                          title: '角色名称',
+                          dataIndex: 'displayName'
+                        }
+                      ]}
+                      dataSource={allRoles.value}
+                      rowKey="id"
+                      size="small"
+                      onRow={(record: Role) => ({
+                        onClick: () => handleRoleRowClick(record),
+                        style: { cursor: 'pointer', backgroundColor: selectedRoleId.value === record.id ? '#e6f7ff' : '' }
+                      })}
+                      rowClassName={() => 'clickable-row'}
+                      pagination={false}
+                    />
+                  </div>
                 </div>
 
                 {/* 权限分配 */}
-                <div style={{ flex: 1 }}>
-                  <h3 style={{ marginBottom: '16px' }}>分配权限</h3>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '0 12px' }}>
+                  <h3 style={{ marginBottom: '16px', fontWeight: 'bold' }}>
+                    分配权限 {selectedRoleId.value ? <Tag color="blue">已选择角色</Tag> : <Tag>请选择左侧角色</Tag>}
+                  </h3>
                   {selectedRoleId.value ? (
-                    <>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
                       <Transfer
                         dataSource={permissionTransferData.value}
                         titles={['可选权限', '已分配权限']}
@@ -294,22 +302,28 @@ export default defineComponent({
                         }}
                         render={(item: any) => item.title}
                         listStyle={{
-                          width: '280px',
-                          height: '350px'
+                          width: '100%',
+                          minWidth: '250px',
+                          height: '400px'
                         }}
+                        style={{ width: '100%' }}
+                        showSearch
                       />
-                      <div style={{ marginTop: '16px', textAlign: 'center' }}>
+                      <div style={{ marginTop: '24px' }}>
                         <Button
                           type="primary"
                           onClick={saveRolePermissions}
                           disabled={!selectedRoleId.value}
+                          size="large"
                         >
-                          保存角色权限
+                          保存角色权限配置
                         </Button>
                       </div>
-                    </>
+                    </div>
                   ) : (
-                    <Empty description="请先在左侧选择角色" />
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', background: '#f5f5f5', borderRadius: '8px' }}>
+                      <Empty description="请先在左侧列表中选择一个角色进行分配" />
+                    </div>
                   )}
                 </div>
               </div>

@@ -58,6 +58,7 @@ const childrenRaw: RouteRecordRaw[] = Object.keys(viewModules).map((key) => {
       title,
       requiresAuth: !!meta.requiresAuth,
       hideInMenu: !!meta.hideInMenu,
+      hiddenInMenu: !!meta.hideInMenu,
       order: meta.order,
       icon: meta.icon,
       keepAlive: !!meta.keepAlive,

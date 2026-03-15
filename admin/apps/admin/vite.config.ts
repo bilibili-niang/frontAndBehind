@@ -133,10 +133,10 @@ export default defineConfig(({ mode }) => {
           // target: 'http://localhost:3279',
           changeOrigin: true,
           // 覆写,替换掉/api
-          rewrite: (path) => {
-            // return path
-            return path.replace(/^\/api/, '')
-          }
+          // rewrite: (path) => {
+          //   // return path
+          //   return path.replace(/^\/api/, '')
+          // }
         },
         // 让静态资源 /upload/* 在开发环境同源访问，避免绝对 3279 链接
         '/upload': {

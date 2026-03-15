@@ -10,9 +10,14 @@ import './setup'
 import { useAuthStore } from '@/store/auth'
 import { registerDecorationActions } from '@pkg/decoration'
 
+import { setupPermissionDirectives } from '@pkg/core/src/directives/permission'
+
 const app = createApp(App)
 const pinia = createPinia()
 app.use(pinia)
+
+// 注册权限指令
+setupPermissionDirectives(app)
 
 // 显式从本地初始化登录态（若有）
 useAuthStore().initFromLocal()

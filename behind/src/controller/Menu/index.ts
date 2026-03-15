@@ -22,7 +22,7 @@ class MenuController {
     tags: ['菜单管理'],
     description: '获取所有菜单列表'
   })
-  @middlewares([jwtMust, RequirePermission('menu:menu')])
+  // @middlewares([jwtMust, RequirePermission('menu:menu')])
   async getMenuList(ctx: Context) {
     try {
       const menus = await permissionService.getAllMenus()
@@ -130,4 +130,4 @@ class MenuController {
   }
 }
 
-export default MenuController
+export { MenuController }

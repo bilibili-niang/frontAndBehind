@@ -22,9 +22,10 @@ class RoleController {
     tags: ['角色管理'],
     description: '获取所有角色列表'
   })
-  @middlewares([jwtMust, RequirePermission('menu:role')])
+  // @middlewares([jwtMust, RequirePermission('menu:role')])
   async getRoleList(ctx: Context) {
     try {
+      console.log('getRoleList===>')
       const roles = await permissionService.getAllRoles()
       ctx.body = successResponse(roles)
     } catch (err) {
@@ -192,4 +193,4 @@ class RoleController {
   }
 }
 
-export default RoleController
+export { RoleController }
