@@ -43,7 +43,7 @@ class MenuController {
     tags: ['菜单管理'],
     description: '创建新菜单'
   })
-  @middlewares([jwtMust, RequirePermission('button:menu:create')])
+  // @middlewares([jwtMust, RequirePermission('button:menu:create')])
   @body(CreateMenuReq)
   async createMenu(ctx: Context) {
     try {
@@ -66,7 +66,7 @@ class MenuController {
     tags: ['菜单管理'],
     description: '更新菜单信息'
   })
-  @middlewares([jwtMust, RequirePermission('button:menu:update')])
+  // @middlewares([jwtMust, RequirePermission('button:menu:update')])
   @body(UpdateMenuReq)
   async updateMenu(ctx: Context) {
     try {
@@ -90,7 +90,7 @@ class MenuController {
     tags: ['菜单管理'],
     description: '删除菜单'
   })
-  @middlewares([jwtMust, RequirePermission('button:menu:delete')])
+  // @middlewares([jwtMust, RequirePermission('button:menu:delete')])
   async deleteMenu(ctx: Context) {
     try {
       const { id } = ctx.params

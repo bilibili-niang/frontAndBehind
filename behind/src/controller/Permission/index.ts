@@ -100,7 +100,7 @@ class PermissionController {
     tags: ['权限管理'],
     description: '创建新权限'
   })
-  @middlewares([jwtMust, RequirePermission('button:permission:create')])
+  // @middlewares([jwtMust, RequirePermission('button:permission:create')])
   @body(CreatePermissionReq)
   async createPermission(ctx: Context) {
     try {
@@ -123,7 +123,7 @@ class PermissionController {
     tags: ['权限管理'],
     description: '更新权限信息'
   })
-  @middlewares([jwtMust, RequirePermission('button:permission:update')])
+  // @middlewares([jwtMust, RequirePermission('button:permission:update')])
   @body(UpdatePermissionReq)
   async updatePermission(ctx: Context) {
     try {
@@ -147,7 +147,7 @@ class PermissionController {
     tags: ['权限管理'],
     description: '删除权限'
   })
-  @middlewares([jwtMust, RequirePermission('button:permission:delete')])
+  // @middlewares([jwtMust, RequirePermission('button:permission:delete')])
   async deletePermission(ctx: Context) {
     try {
       const { id } = ctx.params

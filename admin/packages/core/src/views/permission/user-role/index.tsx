@@ -131,16 +131,27 @@ export default defineComponent({
     } = useSearchTable({
       title: '用户列表',
       customRequest: (params) => {
-        return $accountList(params).then((res: any) => ({
-          list: res.list || [],
-          total: res.pagination?.total || 0
-        }))
+        return $accountList(params).then((res: any) => {
+          // 构造 SearchTable (onResolveHandler) 所需的响应结构
+          // 它期望 res.data.records 或 res.data 是数组
+          return {
+            data: {
+              records: res.data?.records || [],
+              total: res.data?.total || 0,
+              size: params.size,
+              current: params.current
+            },
+            success: true,
+            msg: res.msg || 'success',
+            code: res.code || 200
+          }
+        })
       },
       table: {
         columns: [
           {
             title: '用户名',
-            dataIndex: 'userName',
+            dataIndex: 'username',
             width: 120
           },
           {

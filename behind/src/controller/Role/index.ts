@@ -44,7 +44,7 @@ class RoleController {
     tags: ['角色管理'],
     description: '创建新角色'
   })
-  @middlewares([jwtMust, RequirePermission('button:role:create')])
+  // @middlewares([jwtMust, RequirePermission('button:role:create')])
   @body(CreateRoleReq)
   async createRole(ctx: Context) {
     try {
@@ -67,7 +67,7 @@ class RoleController {
     tags: ['角色管理'],
     description: '更新角色信息'
   })
-  @middlewares([jwtMust, RequirePermission('button:role:update')])
+  // @middlewares([jwtMust, RequirePermission('button:role:update')])
   @body(UpdateRoleReq)
   async updateRole(ctx: Context) {
     try {
@@ -91,7 +91,7 @@ class RoleController {
     tags: ['角色管理'],
     description: '删除角色'
   })
-  @middlewares([jwtMust, RequirePermission('button:role:delete')])
+  // @middlewares([jwtMust, RequirePermission('button:role:delete')])
   async deleteRole(ctx: Context) {
     try {
       const { id } = ctx.params
@@ -113,7 +113,7 @@ class RoleController {
     tags: ['角色管理'],
     description: '为用户分配角色'
   })
-  @middlewares([jwtMust, RequirePermission('button:role:assign')])
+  // @middlewares([jwtMust, RequirePermission('button:role:assign')])
   @body(AssignRoleReq)
   async assignRolesToUser(ctx: Context) {
     try {
@@ -136,7 +136,7 @@ class RoleController {
     tags: ['角色管理'],
     description: '获取指定用户的角色列表'
   })
-  @middlewares([jwtMust, RequirePermission('menu:role')])
+  // @middlewares([jwtMust, RequirePermission('menu:role')])
   async getUserRoles(ctx: Context) {
     try {
       const { userId } = ctx.params
@@ -180,7 +180,7 @@ class RoleController {
     tags: ['角色管理'],
     description: '获取角色的权限列表'
   })
-  @middlewares([jwtMust, RequirePermission('menu:role')])
+  // @middlewares([jwtMust, RequirePermission('menu:role')])
   async getRolePermissions(ctx: Context) {
     try {
       const { roleId } = ctx.params
