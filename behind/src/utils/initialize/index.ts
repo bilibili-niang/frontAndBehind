@@ -46,13 +46,19 @@ export const setAdminUser = async () => {
 const assignAdminRoleToUser = async (userId: string) => {
   try {
     // 查找 admin 角色
-    const adminRole = await Role.findOne({
+    let adminRole = await Role.findOne({
       where: { name: 'admin' }
     })
-    
+
     if (!adminRole) {
-      info('未找到 admin 角色，跳过角色关联')
-      return
+      info('未找到 admin 角色，开始创建...')
+      adminRole = await Role.create({
+        name: 'admin',
+        displayName: '超级管理员',
+        description: '系统默认超级管理员，拥有所有权限',
+        status: 1
+      })
+      info(`admin 角色创建成功，ID: ${adminRole.id}`)
     }
     
     // 检查是否已有关联
